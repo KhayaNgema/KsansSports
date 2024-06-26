@@ -31,6 +31,42 @@ namespace MyField.Controllers
         }
 
 
+        public async Task<IActionResult> _PendingClubFines()
+        {
+            var _pendingFines = await _context.Fines
+                .Where(p => p.PaymentStatus == PaymentStatus.Pending && p.Club != null)
+                .Include(p => p.Club)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_PendingClubFinesPartial", _pendingFines);
+        }
+
+        public async Task<IActionResult> PaidClubFines()
+        {
+            var paidFines = await _context.Fines
+                .Where(p => p.PaymentStatus == PaymentStatus.Paid && p.Club != null)
+                .Include(p => p.Club)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_PaidClubFinesPartial", paidFines);
+        }
+
+        public async Task<IActionResult> OverdueClubFines()
+        {
+            var overdueFines = await _context.Fines
+                .Where(p => p.PaymentStatus == PaymentStatus.Overdue && p.Club != null)
+                .Include(p => p.Club)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_OverdueClubFinesPartial", overdueFines);
+        }
+
         public async Task<IActionResult> PendingClubFines ()
         {
             var pendingFines = await _context.Fines
@@ -45,14 +81,7 @@ namespace MyField.Controllers
 
         public async Task<IActionResult> ClubFines()
         {
-            var ksans_SportsDbContext = _context.Fines
-                .Where(mo => mo.ClubId != null)
-                .Include(f => f.Club)
-                .Include(f => f.CreatedBy)
-                .Include(f => f.ModifiedBy)
-                .ToListAsync();
-
-            return View(await ksans_SportsDbContext);
+            return View();
         }
 
         public async Task<IActionResult> IndividualFines()
