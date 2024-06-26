@@ -46,29 +46,78 @@ namespace MyField.Controllers
         }
 
 
-        public async Task<IActionResult> ManagePlayerTransers()
+        public async Task<IActionResult> PlayerTransfers()
         {
+
+            var currentSeason = await _context.League
+                 .Where(c => c.IsCurrent)
+                  .FirstOrDefaultAsync();
+
+
+            ViewBag.CurrentSeason = currentSeason.LeagueYears;
+
+
             return View();
         }
 
         public async Task<IActionResult> PendingTransfers()
         {
-            return PartialView();
+            var pendingTrasfers = await _context.Transfer
+                .Where(p => p.Status == TransferStatus.Pending && 
+                       p.SellerClub.League.IsCurrent && 
+                       p.CustomerClub.League.IsCurrent)
+                .Include(p => p.SellerClub)
+                .Include(p => p.CustomerClub)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_PendingPlayerTransfersPartial", pendingTrasfers);
         }
 
-        public async Task<IActionResult> AcceptedTransfers()
+        public async Task<IActionResult> PaidTransfers()
         {
-            return PartialView();
+            var paidTrasfers = await _context.Transfer
+                .Where(p => p.Status == TransferStatus.Completed &&
+                       p.SellerClub.League.IsCurrent &&
+                       p.CustomerClub.League.IsCurrent)
+                .Include(p => p.SellerClub)
+                .Include(p => p.CustomerClub)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_PaidPlayerTransfersPartial", paidTrasfers);
         }
 
         public async Task<IActionResult> RejectedTransfers()
         {
-            return PartialView();
+            var rejectedTrasfers = await _context.Transfer
+                .Where(p => p.Status == TransferStatus.Rejected &&
+                       p.SellerClub.League.IsCurrent &&
+                       p.CustomerClub.League.IsCurrent)
+                .Include(p => p.SellerClub)
+                .Include(p => p.CustomerClub)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_RejectedPlayerTransfersPartial", rejectedTrasfers);
         }
 
-        public async Task<IActionResult> CompletedTransfers()
+        public async Task<IActionResult> AcceptedTransfers()
         {
-            return PartialView();
+            var acceptedTrasfers = await _context.Transfer
+                .Where(p => p.Status == TransferStatus.Accepted &&
+                       p.SellerClub.League.IsCurrent &&
+                       p.CustomerClub.League.IsCurrent)
+                .Include(p => p.SellerClub)
+                .Include(p => p.CustomerClub)
+                .Include(p => p.CreatedBy)
+                .Include(p => p.ModifiedBy)
+                .ToListAsync();
+
+            return PartialView("_AcceptedPlayerTransfersPartial", acceptedTrasfers);
         }
 
         public async Task<IActionResult> FindPlayerTransferMarket()

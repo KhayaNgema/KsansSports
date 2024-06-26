@@ -220,3 +220,26 @@ INNER JOIN (
 2024-06-26 23:49:01.955 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
 2024-06-26 23:49:36.104 +02:00 [INF] HTTP GET /BillingAndFinance/PlayerTransfers responded 404 in 0.0518 ms
 2024-06-26 23:49:36.149 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2024-06-26 23:53:51.756 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-26 23:53:54.688 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-06-26 23:53:54.706 +02:00 [INF] Now listening on: https://localhost:7102
+2024-06-26 23:53:54.706 +02:00 [INF] Now listening on: http://localhost:5020
+2024-06-26 23:53:54.708 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-26 23:53:54.708 +02:00 [INF] Hosting environment: Development
+2024-06-26 23:53:54.708 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-06-26 23:53:55.008 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-26 23:53:55.682 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 676.5078ms
+2024-06-26 23:53:55.687 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-26 23:53:56.061 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-26 23:53:56.062 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-26 23:53:56.062 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-26 23:53:56.062 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=FP5pwHKB9K8l6Ju9gC97ezIcRS_7bFAUEoZFQvsOWkg - -
+2024-06-26 23:53:56.067 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 380.4601ms
+2024-06-26 23:53:56.068 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.8555ms
+2024-06-26 23:53:56.073 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 11.5779ms
+2024-06-26 23:53:56.073 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=FP5pwHKB9K8l6Ju9gC97ezIcRS_7bFAUEoZFQvsOWkg - - - 200 35986 text/css 10.1478ms
+2024-06-26 23:53:56.073 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 10.4425ms
+2024-06-26 23:53:56.076 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-26 23:53:56.112 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 36.6756ms
+2024-06-26 23:54:04.088 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/BillingAndFinance/PlayerTransfers - -
+2024-06-26 23:54:04.104 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/BillingAndFinance/PlayerTransfers - - - 404 0 - 16.6194ms

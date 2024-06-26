@@ -1,7 +1,7 @@
 ﻿@model MyField.Models.Transfer
 
 @{
-    ViewData["Title"] = ViewBag.LeagueYears + "Player Transfer";
+    ViewData["Title"] = ViewBag.CurrentSeason + " Player Transfer";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 
@@ -13,13 +13,16 @@
 
 <ul class="nav nav-tabs" id="clubFinesTabs" role="tablist" style="overflow-x: auto; white-space: nowrap; display: flex; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none;">
     <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0;">
-        <button class="nav-link active" id="pendingFines-tab" data-bs-toggle="tab" data-bs-target="#pendingFines" type="button" role="tab" aria-controls="pendingFines" aria-selected="true" onclick="loadTab('pendingFines')">Pending<i class="fa fa-half-glass"></i></button>
+        <button class="nav-link active" id="pendingTranfsers-tab" data-bs-toggle="tab" data-bs-target="#pendingTranfsers" type="button" role="tab" aria-controls="pendingTranfsers" aria-selected="true" onclick="loadTab('pendingTranfsers')">Pending</button>
     </li>
     <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
-        <button class="nav-link" id="paidFines-tab" data-bs-toggle="tab" data-bs-target="#paidFines" type="button" role="tab" aria-controls="paidFines" aria-selected="false" onclick="loadTab('paidFines')">Paid</button>
+        <button class="nav-link" id="acceptedTranfsers-tab" data-bs-toggle="tab" data-bs-target="#acceptedTranfsers" type="button" role="tab" aria-controls="acceptedTranfsers" aria-selected="false" onclick="loadTab('acceptedTranfsers')">Accepted</button>
     </li>
     <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
-        <button class="nav-link" id="overdueFines-tab" data-bs-toggle="tab" data-bs-target="#overdueFines" type="button" role="tab" aria-controls="overdueFines" aria-selected="false" onclick="loadTab('overdueFines')">Overdue</button>
+        <button class="nav-link" id="paidTranfsers-tab" data-bs-toggle="tab" data-bs-target="#paidTranfsers" type="button" role="tab" aria-controls="paidTranfsers" aria-selected="false" onclick="loadTab('paidTranfsers')">Paid</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="rejectedTranfsers-tab" data-bs-toggle="tab" data-bs-target="#rejectedTranfsers" type="button" role="tab" aria-controls="rejectedTranfsers" aria-selected="false" onclick="loadTab('rejectedTranfsers')">Rejected</button>
     </li>
 </ul>
 
@@ -34,9 +37,10 @@
 }
 
 <div class="tab-content">
-    <div class="tab-pane fade show active" id="pendingFines" role="tabpanel" aria-labelledby="pendingFines-tab"></div>
-    <div class="tab-pane fade" id="paidFines" role="tabpanel" aria-labelledby="paidFines-tab"></div>
-    <div class="tab-pane fade" id="overdueFines" role="tabpanel" aria-labelledby="overdueFines-tab"></div>
+    <div class="tab-pane fade show active" id="pendingTranfsers" role="tabpanel" aria-labelledby="pendingTranfsers-tab"></div>
+    <div class="tab-pane fade" id="acceptedTranfsers" role="tabpanel" aria-labelledby="acceptedTranfsers-tab"></div>
+    <div class="tab-pane fade" id="paidTranfsers" role="tabpanel" aria-labelledby="paidTranfsers-tab"></div>
+    <div class="tab-pane fade" id="rejectedTranfsers" role="tabpanel" aria-labelledby="rejectedTranfsers-tab"></div>
 </div>
 
 <div id="errorMessage" style="display: none;"></div>
@@ -50,12 +54,14 @@
 
         if ($('#' + tabName).html().trim() === '') {
             var url;
-            if (tabName === 'pendingFines') {
-                url = '@Url.Action("_PendingClubFines", "Fines")';
-            } else if (tabName === 'paidFines') {
-                url = '@Url.Action("PaidClubFines", "Fines")';
-            } else if (tabName === 'overdueFines') {
-                url = '@Url.Action("OverdueCLubFines", "Fines")';
+            if (tabName === 'pendingTranfsers') {
+                url = '@Url.Action("PendingTransfers", "Transfers")';
+            } else if (tabName === 'acceptedTranfsers') {
+                url = '@Url.Action("AcceptedTransfers", "Transfers")';
+            } else if (tabName === 'paidTranfsers') {
+                url = '@Url.Action("PaidTransfers", "Transfers")';
+            } else if (tabName === 'rejectedTranfsers') {
+                url = '@Url.Action("RejectedTransfers", "Transfers")';
             }
 
             $.ajax({
@@ -76,9 +82,10 @@
     }
 
     $(document).ready(function () {
-        loadTab('pendingFines');
-        setTimeout(function () {
-            closeMessage();
-        }, 3000);
+        loadTab('pendingTranfsers');
     });
+
+    setTimeout(function () {
+        closeMessage();
+    }, 3000);
 </script>
