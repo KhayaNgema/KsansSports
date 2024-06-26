@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyField.Models.Tournament>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h4 class="text-center">TOURNAMENTS</h4>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Type
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TournamentType)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

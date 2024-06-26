@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MyField.Models.Player>
+
+<style>
+    #playerTable {
+        border-collapse: collapse;
+    }
+
+        #playerTable th,
+        #playerTable td {
+            border: none;
+            padding: 8px;
+        }
+
+    /* Center align text */
+    #noResultsMessage {
+        text-align: center;
+    }
+</style>
+
+<div style="text-align: center;">
+    <input type="text" id="searchInput" placeholder="Search for your players..." onkeyup="searchTable()" style="width: 300px;">
+</div>
+
+<table id="playerTable" class="table" style="display: none;">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)   @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    <button type="button" class="btn addXIButton" onclick="addXIPlayer(this)" data-player-id="@item.Id">ADD XI</button>
+                </td>
+                <td>
+                    <button type="button" class="btn addSUBButton" onclick="addSubstitutePlayer(this)" data-player-id="@item.Id">ADD SUB</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="noResultsMessage" style="display: none;">Player not found</div>
+
+<script>
+    function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("playerTable");
+        tr = table.getElementsByTagName("tr");
+        var found = false; // Flag to track if any player is found
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td");
+            var rowFound = false; // Flag to track if the current row matches the search
+            for (var j = 0; j < 2; j++) { // Only loop through the first two columns
+                if (j < td.length) { // Check if the column exists
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        rowFound = true; // Set rowFound flag if search matches
+                        found = true; // Set found flag if any player is found
+                        break;
+                    }
+                }
+            }
+            if (rowFound) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+        // Show or hide table based on search results
+        if (filter == "") { // Check if search input field is empty
+            table.style.display = "none"; // Hide table
+            document.getElementById("noResultsMessage").style.display = "none"; // Hide "Player not found" message
+        } else {
+            table.style.display = found ? "" : "none"; // Show or hide table based on search results
+            document.getElementById("noResultsMessage").style.display = found ? "none" : ""; // Show or hide "Player not found" message
+        }
+
+    }
+</script>

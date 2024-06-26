@@ -1,0 +1,12 @@
+﻿<div style="justify-content:space-between;">
+    <button class="homeButton btn btn-md btn-outline-primary active" style="margin-right:10px;" onclick="fetchHomeTeamLineUp(); fetchHomeTeamSubstitutes()">Home</button>
+    <button class="awayButton btn btn-md btn-outline-primary" onclick="fetchAwayTeamLineUp(); fetchAwayTeamSubstitutes(); $('.homeButton').removeClass('active'); ">Away</button>
+</div>
+<br />
+<div class="fans-match-lineups-container">
+    <div>
+        <div style="margin-bottom:20px;" id="teamLineUp" class="lineUp"> </div>
+        <div style="margin-bottom:20px;" id="teamSusbstitutes" class="substitutes"> </div>
+    </div>
+</div>
+

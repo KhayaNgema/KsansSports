@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Sports Coordinator Dashboard";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<style>
+    .card {
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background: white;
+        width: 100%;
+        height: 30vh; /* Reduced height */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); /* 3D shadow effect */
+    }
+
+
+    .card-title {
+        color: #030319;
+        font-size: 20px; /* Adjusted font size */
+    }
+
+    .card-text {
+        color: #030319;
+    }
+
+    .btn-primary {
+        background-color: #B0E0FC;
+        color: #030319;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #030319;
+        }
+
+    .styled-button {
+        background-color: #ffffff;
+        color: #030319;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        text-decoration: none;
+    }
+
+        .styled-button span.arrow {
+            margin-left: 10px;
+        }
+
+    .center-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30%;
+        margin: 0;
+    }
+
+    h2 {
+        color: #D4D4D4;
+    }
+</style>
+
+<br />
+<h2>SPORTS COORDINATOR</h2>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card upcoming-fixtures-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><i class="fas fa-calendar"></i> Upcoming fixtures</h5>
+                    <p class="card-text">Upcoming fixtures are listed here</p>
+                    <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="btn btn-primary mt-auto align-self-end styled-button">
+                        <span>Fixtures</span>
+                        <span class="arrow">&#10148;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card postponed-fixtures-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><i class="fas fa-calendar"></i> Postponed fixtures</h5>
+                    <p class="card-text">Postponed fixtures are listed here.</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.PostponedFixtures</h1>
+                    <a asp-controller="Fixtures" asp-action="PostponedFixtures" class="btn btn-primary mt-auto align-self-end styled-button">
+                        <span>Fixtures</span>
+                        <span class="arrow">&#10148;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="card interrupted-fixtures-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><i class="fas fa-times-circle"></i> Interrupted fixtures</h5>
+                    <p class="card-text">Interrupted fixtures are listed here.</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.InterruptedFixtures</h1>
+                    <a asp-controller="Fixtures" asp-action="InterruptedFixtures" class="btn btn-primary mt-auto align-self-end styled-button">
+                        <span>Fixtures</span>
+                        <span class="arrow">&#10148;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card previous-fixtures-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><i class="fas fa-history"></i> Previous fixtures</h5>
+                    <p class="card-text">Previous fixtures are listed here.</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.PreviousFixtures</h1>
+                    <a asp-controller="Fixtures" asp-action="PreviousFixtures" class="btn btn-primary mt-auto align-self-end styled-button">
+                        <span>Fixtures</span>
+                        <span class="arrow">&#10148;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="card meetings-card">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><i class="fas fa-calendar"></i> Meetings</h5>
+                    <p class="card-text">Meetings are listed here</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.SportMeetings</h1>
+                    <a asp-controller="Meetings" asp-action="NewsMeetings" class="btn btn-primary mt-auto align-self-end styled-button">
+                        <span>Meetings</span>
+                        <span class="arrow">&#10148;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

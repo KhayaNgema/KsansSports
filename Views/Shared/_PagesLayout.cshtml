@@ -1,0 +1,1048 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@ViewData["Title"] - MyField</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyField.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        .navLinks {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+            .navLinks .nav-item {
+                margin-right: 10px;
+                padding: 0;
+            }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-tabs .nav-link:focus,
+        .nav-tabs .nav-link.active,
+        .nav-tabs .nav-link:active {
+            background-color: #007bff !important;
+            color: white;
+        }
+
+        .nav-link.active {
+            color: white !important;
+        }
+
+        .overflow-auto {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+            .overflow-auto::-webkit-scrollbar {
+                display: none;
+            }
+
+        .overflow-auto {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .nav-item {
+            bottom: 0 !important;
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="loginNav">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+
+                <div class="d-flex align-items-center">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none; margin-right: 10px;">&#9776;</a>
+
+                    }
+                    else
+                    {
+                        <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index" style="color:white;">Ksans-sports</a>
+                    }
+                </div>
+
+                <div>
+                    <partial name="_LoginPartial" />
+                </div>
+
+            </div>
+        </nav>
+
+
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            @if (User.IsInRole("System Administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportsNews" asp-action="SportNews" class="nav-link text-light">Sport News </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOffice" class="nav-link text-light">Manage fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Match Results" asp-action="Results" class="nav-link text-light">Manage results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="League" asp-action="League" class="nav-link text-light">League management </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Tournaments" asp-action="Tournaments" class="nav-link text-light">Tournament management  </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Players" asp-action="Players" class="nav-link text-light">Player management</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-exchange-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Player transfer" asp-action="Transfers" class="nav-link text-light">Player transfer </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Finances" asp-action="Finances" class="nav-link text-light">Finance management  </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="ActivityLogs" class="nav-link text-light">Activity log  </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Reports" asp-action="Reports" class="nav-link text-light">Reports & Analytics </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-cogs" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Settings" asp-action="Settings" class="nav-link text-light">Settings</a>
+                            </li>
+
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Sport Administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Leagues" asp-action="Leagues" class="nav-link text-light">Manage league </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-tasks" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="Standings" class="nav-link text-light">Manage standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-exclamation-triangle" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Warnings" asp-action="ClubWarnings" class="nav-link text-light">Manage club warnings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Meetings" asp-action="Meetings" class="nav-link text-light">Manage meetings </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-exchange-alt" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#transfersSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Player Transfers
+                                        <i style="margin-left: 30px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="transfersSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Transfers" asp-action="FindPlayerTransferMarket" class="nav-link text-light">Manage transfers</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Transfers" asp-action="TransferMarket" class="nav-link text-light">Transfer market</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Transfers" asp-action="TransferPeriod" class="nav-link text-light">Transfer period</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportsNews" asp-action="SportNews" class="nav-link text-light">Sport News </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOffice" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="MatchResultsBackOffice" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOffice" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#billingFinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Billing and finance
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="billingFinanceSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Fines" asp-action="MyIndividualFines" class="nav-link text-light">My fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="ClubFines" class="nav-link text-light">Club Fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="PlayerTransfers" class="nav-link text-light">Player transfers</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Billings" asp-action="Transactions" class="nav-link text-light">Transactions</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports & Analytics
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="IndividualFines" class="nav-link text-light">Matches & results</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="ClubFines" class="nav-link text-light">Transfers</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="PlayerTransfers" class="nav-link text-light">Perfomance</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa  fa-history" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#activityLogsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Activity logs
+                                        <i style="margin-left: 50px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="activityLogsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Myself</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="ClubFines" class="nav-link text-light">Sport members</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="BillingAndFinance" asp-action="PlayerTransfers" class="nav-link text-light">System</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Sport Coordinator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-check" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="Index" class="nav-link text-light">Manage match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportsNews" asp-action="News" class="nav-link text-light">Sport News</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOffice" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="Results" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="Standings" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="Clubs" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity log</a>
+                            </li>
+
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+            else if (User.IsInRole("Club Administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="MyClub" class="nav-link text-light">Manage club</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-exchange-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Transfers" asp-action="MyTransfersTabs" class="nav-link text-light">Transfers</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="MyClubPlayers" class="nav-link text-light">Sport News</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="Index" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="Index" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="MyClub" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#billingFinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Billing and finance
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="billingFinanceSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Fines" asp-action="MyIndividualFines" class="nav-link text-light">My fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Fines" asp-action="MyClubFines" class="nav-link text-light">Club fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Billings" asp-action="CLubInvoice" class="nav-link text-light">Invoices</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports and analytics
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="PlayerPerformance" class="nav-link text-light">Player performance</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="ClubPerformance" class="nav-link text-light">Club performance</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="ClubFinance" class="nav-link text-light">Financial</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="Transfers" class="nav-link text-light">Transfers</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#activityLogsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Activity logs
+                                        <i style="margin-left: 50px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="activityLogsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyPlayersActivityLogs" class="nav-link text-light">Players</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyManagersActivityLogs" class="nav-link text-light">Managers</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Myself</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+            else if (User.IsInRole("Club Manager"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Sport news</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixtureLineUpUpdate" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#statsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Stats
+                                        <i style="margin-left: 70px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="statsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Stats" asp-action="ClubStats" class="nav-link text-light">Club stats</a>
+                                    </li>
+@*                                     <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Stats" asp-action="PlayerStats" class="nav-link text-light">Player stats</a>
+                                    </li> *@
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Player"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Sport news</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="FixtureLineUpUpdate" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#statsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Stats
+                                        <i style="margin-left: 70px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="statsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Stats" asp-action="ClubStats" class="nav-link text-light">Club stats</a>
+                                    </li>
+@*                                     <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Stats" asp-action="MyStats" class="nav-link text-light">My stats</a>
+                                    </li> *@
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("News Updator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportNews" asp-action="SportNewsList" class="nav-link text-light">Manage news </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports & Analytics
+                                        <i style="margin-left: 50px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="PlayersActivityLogs" class="nav-link text-light">News reports</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("News administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Manage meetings </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports & Analytics
+                                        <i style="margin-left: 50px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="PlayersActivityLogs" class="nav-link text-light">News reports</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Personnel administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-exchange-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Transfers" asp-action="ManagePlayerTransers" class="nav-link text-light">Manage Player transfers </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Meetings" asp-action="Meetings" class="nav-link text-light">Manage meetings </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fas fa-exclamation-triangle" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Warnings" asp-action="PersonnelWarnings" class="nav-link text-light">Manage Personnel warnings</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Sport News</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-hands-helping" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#billingFinanceSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Billing and finance
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="billingFinanceSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Billings" asp-action="MyFines" class="nav-link text-light">My fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Fines" asp-action="PersonnelFines" class="nav-link text-light">Personnel fines</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Billings" asp-action="PersonnelInvoice" class="nav-link text-light">Invoices</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports & Analytics
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="PersonnelAccountsReports" class="nav-link text-light">Personnel Accounts</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="WarningsReports" class="nav-link text-light">Warnings</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="PersonnelFinancialReports" class="nav-link text-light">Financial</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#logsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Activity logs
+                                        <i style="margin-left: 50px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="logsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="PersonnelLogs" class="nav-link text-light">Personnel logs</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">My activity logs</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Official"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport news </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Reports" asp-action="NewsReports" class="nav-link text-light">Reports & Analytics</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Sport Manager"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="Index" class="nav-link text-light">Manage league </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Manage standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-triangle-exclaimation" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Manage club warnings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Manage meetings </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Sport News </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Clubs</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-money-bill-wave" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Billing and finance </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Reports & Analytics </a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
+                            </li>
+
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            }
+            else if (User.IsInRole("Fans administrator"))
+            {
+                <div id="wrapper">
+                    <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Manage fans</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Sport news</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                            </li>
+
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports & Analytics
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="FansAccountsReports" class="nav-link text-light">Fans Accounts</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="FansWarningsReports" class="nav-link text-light">Fans warnings</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                                <div style="display: flex; align-items: center;">
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#activityLogsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Activity logs
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    </a>
+                                </div>
+                                <ul class="collapse list-unstyled collapsible-menu" id="activityLogsSubmenu" style="margin-left: 35px;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="FansActivityLogs" class="nav-link text-light">Fans</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Myself</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-login-item" style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <i class="fa fa-sign-out-alt" style="color: white; margin-right: 10px;"></i>
+                                    <button type="submit" class="nav-login-link" style="color: white; background-color: transparent; border: none; cursor: pointer;">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            }
+        }
+
+    </header>
+    <div id="loading-overlay">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading...</div>
+        </div>
+    </div>
+
+    <div id="page-content-wrapper" class="main-content">
+        <div class="container-fluid" style="padding-right:20px; padding-left:20px;">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    $(window).on('load', function () {
+        var loadingOverlay = $('#loading-overlay');
+
+        // Hide loading overlay when page has finished loading
+        loadingOverlay.hide();
+
+        // Remove animation from spinner once page has finished loading
+        $('.loading-spinner').css('animation', 'none');
+    });
+
+    $(document).on('click', 'a:not([href^="#"])', function () {
+        var loadingOverlay = $('#loading-overlay');
+
+        // Show loading overlay when navigation starts
+        loadingOverlay.show();
+    });
+
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        $("#page-content-wrapper").toggleClass("shifted");
+        $("#homeTabsNav").toggleClass("shifted");
+        $("#loginNav").toggleClass("shifted");
+    });
+
+    $('.collapsible-menu').on('show.bs.collapse', function () {
+        $(this).prev().find('.caret-rotate').removeClass('collapsed');
+    }).on('hide.bs.collapse', function () {
+        $(this).prev().find('.caret-rotate').addClass('collapsed');
+    });
+</script>
+
+@RenderSection("Scripts", required: false)

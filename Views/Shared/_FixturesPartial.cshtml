@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MyField.Models.Fixture>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h4 class="text-center">KSANS SPORTS FIXTURES</h4>
+<br />
+<div class="fixtures-match-container">
+    @if(Model.Any())
+    {
+        <div class="row">
+            @foreach (var group in Model.OrderBy(item => item.KickOff.Date).GroupBy(item => item.KickOff.Date))
+            {
+                <div class="col-12 mb-2">
+                    <h5 class="text-center date-background">@group.Key.ToString("dddd, MMMM d, yyyy")</h5>
+                </div>
+
+                @foreach (var item in group)
+                {
+                    <div class="col-12 mb-4">
+                        <div class="card h-100 d-flex flex-column justify-content-center position-relative">
+                            <div class="card-body text-center">
+                                <p class="card-text">
+                                    @if (item.HomeTeam != null && item.AwayTeam != null)
+                                    {
+                                        <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
+                                            @Html.DisplayFor(modelItem => item.HomeTeam.ClubName)
+                                            <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image" />
+                                            <span class="font-weight-bold">&nbsp;VS&nbsp;</span>
+                                            <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image" />
+                                            @Html.DisplayFor(modelItem => item.AwayTeam.ClubName)
+                                        </span>
+                                    }
+                                </p>
+                                <p class="card-text">
+                                    <strong>Kick Off:</strong>
+                                    <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
+                                        @item.KickOff.ToString("HH:mm")
+                                    </span>
+                                </p>
+                                <p class="card-text">
+                                    <strong>Location:</strong>
+                                    <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
+                                        @Html.DisplayFor(modelItem => item.Location)
+                                    </span>
+                                </p>
+                                @if (item.FixtureStatus == FixtureStatus.Postponed)
+                                {
+                                    <p class="card-text text-primary">
+                                        @item.FixtureStatus
+                                    </p>
+                                }
+                                else if (item.FixtureStatus == FixtureStatus.Interrupted)
+                                {
+                                    <p class="card-text text-danger">
+                                        @item.FixtureStatus
+                                    </p>
+                                }
+                                else
+                                {
+
+                                }
+
+                                <p>
+                                    <i class="fas fa-flag" style="color:blue"></i>
+                                    @ViewBag.MatchReferee
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-end">
+                                    <a asp-action="FixtureDetailsFans" asp-route-FixtureId="@item.FixtureId" class="btn btn-sm">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are no fixtures for this season yet.</p>
+    }
+</div>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MyField.Models.SportNews>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <style>
+        .italic {
+            font-style: italic;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<br />
+<br />
+<div class="row justify-content-center">
+    @foreach (var item in Model.Take(6))
+    {
+        <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
+            <div class="card">
+
+                <div class="newsImageContainer">
+                    <img src="~/@item.NewsImage" alt="@item.NewsHeading" class="card-img-top" style="height:100%; width:100%; object-fit:cover;" />
+                </div>
+
+                <div class="card-body">
+                    <h4 class="card-title"><strong>@item.NewsHeading</strong></h4>
+                    <p class="card-text">
+                        @if (item.NewsBody.Length > 100)
+                        {
+                            @item.NewsBody.Substring(0, 100) <text>...</text>
+                            <a asp-controller="SportNews" asp-action="Details" asp-route-newsId="@item.NewsId" class="read-more-link">Read More</a>
+                        }
+                        else
+                        {
+                            @item.NewsBody
+                        }
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted italic">@item.AuthoredBy.FirstName @item.AuthoredBy.LastName</small>
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted italic">@item.PublishedDate.ToString("dd MMMM, yyyy - HH:mm")</small>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (Model.Count() > 6)
+{
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <a href="@Url.Action("Index", "SportNews")" class="btn btn-primary">See more...</a>
+        </div>
+    </div>
+}
+
+<script>
+
+</script>

@@ -1,0 +1,40 @@
+﻿
+
+<br />
+<h4 class="text-center">STANDINGS</h4>
+<br />
+<div class="standingContainer" style="width:100%;">
+    <div class="search-bar">
+        <span style="float: left; margin-right: 10px; margin-top: 5px;">Season</span>
+        <select id="leagueSelect" onchange="onLeagueChange()" class="form-select" style="float: left;">
+            @if (ViewBag.Leagues != null)
+            {
+                foreach (var league in ViewBag.Leagues)
+                {
+                    <option value="@league.LeagueId">@league.LeagueYears</option>
+                }
+            }
+        </select>
+        <span class="caret" style="float: left;"></span>
+    </div>
+    <div>
+        <div style="margin-bottom:20px;" id="standingsTable"> </div>
+    </div>
+</div>
+
+<script>
+    function onLeagueChange() {
+        var selectedLeagueId = document.getElementById("leagueSelect").value;
+        if (selectedLeagueId !== "") {
+            $.ajax({
+                url: '/Standings/StandingsTable',
+                data: { leagueId: selectedLeagueId },
+                success: function (data) {
+                    $('#standingsTable').html(data);
+                }
+            });
+        }
+    }
+
+    onLeagueChange();
+</script>

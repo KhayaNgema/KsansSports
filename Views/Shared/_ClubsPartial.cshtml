@@ -1,0 +1,34 @@
+﻿
+@model IEnumerable<MyField.Models.Club>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h4 class="text-center">NFA Clubs</h4>
+<br />
+<div class="club-list-Container">
+    <ul class="clubsList" style="border:none !important; list-style-type: none; padding: 0;">
+        @if (Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <li style="margin-bottom:10px;">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <img src="~/@item.ClubBadge" alt="@item.ClubName" class="club-badge-image" style="margin-right:20px;" />
+                            @Html.DisplayFor(modelItem => item.ClubName) (@Html.DisplayFor(modelItem => item.ClubAbbr))
+                        </div>
+                        <a asp-action="Details" asp-route-id="@item.ClubId" class="btn btn-sm">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                    </div>
+                </li>
+            }
+        }
+        else
+        {
+            <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are currently no clubs for this season</p>
+        }
+    </ul>
+</div>

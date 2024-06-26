@@ -1,0 +1,121 @@
+﻿@model MyField.Models.ActivityLog
+
+@{
+    ViewData["Title"] = " Personnel Activity Logs";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<br />
+@await Html.PartialAsync("_HomeButton")
+<br />
+<h4 class="text-center">Personnel Activity Logs</h4>
+<br />
+
+<ul class="nav nav-tabs" id="transfersTabs" role="tablist" style="overflow-x: auto; white-space: nowrap; display: flex; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none;">
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link active" id="clubAdministratorLogs-tab" data-bs-toggle="tab" data-bs-target="#clubAdministratorLogs" type="button" role="tab" aria-controls="clubAdministratorLogs" aria-selected="true" onclick="loadTab('clubAdministratorLogs')">Club administrators</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="clubManagersLogs-tab" data-bs-toggle="tab" data-bs-target="#clubManagersLogs" type="button" role="tab" aria-controls="clubManagersLogs" aria-selected="false" onclick="loadTab('clubManagersLogs')">Club managers</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="newsAdministratorsLogs-tab" data-bs-toggle="tab" data-bs-target="#newsAdministratorsLogs" type="button" role="tab" aria-controls="newsAdministratorsLogs" aria-selected="false" onclick="loadTab('newsAdministratorsLogs')">News administrators</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0;margin-left: 3px;">
+        <button class="nav-link active" id="newsUpdatersLogs-tab" data-bs-toggle="tab" data-bs-target="#newsUpdatersLogs" type="button" role="tab" aria-controls="newsUpdatersLogs" aria-selected="true" onclick="loadTab('newsUpdatersLogs')">News updaters</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left:3px;">
+        <button class="nav-link" id="officialsLogs-tab" data-bs-toggle="tab" data-bs-target="#officialsLogs" type="button" role="tab" aria-controls="officialsLogs" aria-selected="false" onclick="loadTab('officialsLogs')">Officials</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="playersLogs-tab" data-bs-toggle="tab" data-bs-target="#playersLogs" type="button" role="tab" aria-controls="playersLogs" aria-selected="false" onclick="loadTab('playersLogs')">Players</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link active" id="sportAdministratorsLogs-tab" data-bs-toggle="tab" data-bs-target="#sportAdministratorsLogs" type="button" role="tab" aria-controls="sportAdministratorsLogs" aria-selected="true" onclick="loadTab('sportAdministratorsLogs')">Sport administrators</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="sportCoordinatorsLogs-tab" data-bs-toggle="tab" data-bs-target="#sportCoordinatorsLogs" type="button" role="tab" aria-controls="sportCoordinatorsLogs" aria-selected="false" onclick="loadTab('sportCoordinatorsLogs')">Sport coordinators</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="sportManagersLogs-tab" data-bs-toggle="tab" data-bs-target="#sportManagersLogs" type="button" role="tab" aria-controls="sportManagersLogs" aria-selected="false" onclick="loadTab('sportManagersLogs')">Sport managers</button>
+    </li>
+    <li class="nav-item" role="presentation" style="display: inline-block; margin-bottom: 0; margin-left: 3px;">
+        <button class="nav-link" id="fansAdministratorLogs-tab" data-bs-toggle="tab" data-bs-target="#fansAdministratorLogs" type="button" role="tab" aria-controls="fansAdministratorLogs" aria-selected="false" onclick="loadTab('fansAdministratorLogs')">Fans administrators</button>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="clubAdministratorLogs" role="tabpanel" aria-labelledby="clubAdministratorLogs-tab"></div>
+    <div class="tab-pane fade" id="clubManagersLogs" role="tabpanel" aria-labelledby="clubManagersLogs-tab"></div>
+    <div class="tab-pane fade" id="newsAdministratorsLogs" role="tabpanel" aria-labelledby="newsAdminstratorsLogs-tab"></div>
+    <div class="tab-pane fade show active" id="newsUpdatersLogs" role="tabpanel" aria-labelledby="newsUpdatersLogs-tab"></div>
+    <div class="tab-pane fade" id="officialsLogs" role="tabpanel" aria-labelledby="officialsLogs-tab"></div>
+    <div class="tab-pane fade" id="playersLogs" role="tabpanel" aria-labelledby="playersLogs-tab"></div>
+    <div class="tab-pane fade show active" id="sportAdministratorsLogs" role="tabpanel" aria-labelledby="sportAdministratorsLogs-tab"></div>
+    <div class="tab-pane fade" id="sportCoordinatorsLogs" role="tabpanel" aria-labelledby="sportCoordinatorsLogstab"></div>
+    <div class="tab-pane fade" id="sportManagersLogs" role="tabpanel" aria-labelledby="sportManagersLogs-tab"></div>
+    <div class="tab-pane fade" id="fansAdministratorLogs" role="tabpanel" aria-labelledby="fansAdministratorLogs-tab"></div>
+</div>
+
+<div id="errorMessage" style="display: none;"></div>
+
+<script>
+    function loadTab(tabName) {
+
+        $('.nav-link').removeClass('active');
+
+        $('#' + tabName + '-tab').addClass('active');
+
+        $('.tab-pane').removeClass('show active');
+
+        $('#' + tabName).addClass('show active');
+
+        if ($('#' + tabName).html().trim() === '') {
+            var url;
+            if (tabName === 'clubAdministratorLogs') {
+                url = '@Url.Action("ClubAdministratorsActivityLogs", "ActivityLogs")';
+            } else if (tabName === 'clubManagersLogs') {
+                url = '@Url.Action("ManagersActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'newsAdministratorsLogs') {
+                url = '@Url.Action("NewsAdministratorsActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'newsUpdatersLogs') {
+                url = '@Url.Action("NewsUpdatersActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'officialsLogs') {
+                url = '@Url.Action("OfficialsActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'playersLogs') {
+                url = '@Url.Action("PlayersActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'sportAdministratorsLogs') {
+                url = '@Url.Action("SportAdministratorsActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'sportCoordinatorsLogs') {
+                url = '@Url.Action("SportCoordinatorsActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'sportManagersLogs') {
+                url = '@Url.Action("SportManagersActivityLogs", "ActivityLogs")';
+            }
+            else if (tabName === 'fansAdministratorLogs') {
+                url = '@Url.Action("FansAdministratorsActivityLogs", "ActivityLogs")';
+            }
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#' + tabName).html(data);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error("Error:", errorThrown);
+                }
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        loadTab('clubAdministratorLogs');
+    });
+</script>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<div id="match-lineup-container" style="position: relative;">
+    <div id="lineUpXI"></div>
+    <div style="margin-bottom:20px;" id="lineUpSubstitutes"> </div>
+    <div class="container-footer" style="display: flex; justify-content: flex-end;">
+        <button id="toggleLineupButton" class="btn btn-md btn-success">Set line-up</button>
+    </div>
+</div>
+
+<div id="lineup-container" style="position: relative; display: none;">
+    <br />
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h4 class="text-left" style="margin: 0;">SET Line-up & Subs</h4>
+        <button id="toggleMatchLineupButton" class="btn btn-md btn-success">Show line-up</button>
+    </div>
+    <br />
+    <div id="matchLineUpClubPlayers">
+    </div>
+    <div id="matchXIHolder"> <!-- Your content here --> </div>
+    <div style="margin-bottom:20px;" id="matchSubstitutesHolder"> <!-- Your content here --> </div>
+    <div class="container-footer" style="display: flex; justify-content: flex-end;">
+        <button id="submitButton" class="btn btn-md btn-success">Submit</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("toggleLineupButton").addEventListener("click", function () {
+        var matchLineupContainer = document.getElementById("match-lineup-container");
+        var lineupContainer = document.getElementById("lineup-container");
+        matchLineupContainer.style.display = "none";
+        lineupContainer.style.display = "block";
+    });
+
+    document.getElementById("toggleMatchLineupButton").addEventListener("click", function () {
+        var matchLineupContainer = document.getElementById("match-lineup-container");
+        var lineupContainer = document.getElementById("lineup-container");
+        matchLineupContainer.style.display = "block";
+        lineupContainer.style.display = "none";
+    });
+</script>

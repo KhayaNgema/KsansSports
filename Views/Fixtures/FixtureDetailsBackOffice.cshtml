@@ -1,0 +1,61 @@
+﻿@model MyField.ViewModels.FixtureDetailsBackOfficeViewModel
+
+@{
+    ViewData["Title"] = "Fixture details";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<br />
+@await Html.PartialAsync("_BackButton")
+<br />
+<div class="d-flex justify-content-center">
+    <div class="fixture-details-card">
+        <div class="card-body">
+            <div class="row fixture-details-container">
+                <div class="card-header w-100 text-center" style="margin-bottom:30px;">
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <div class="col-5">
+                            <div class="d-flex flex-column align-items-center">
+                                <img src="~/@Model.HomeTeamBadge" alt="@Model.HomeTeamName" class="club-badge-image mb-2" style="max-width:50px; max-height: 50px;" />
+                                <div>@Html.DisplayFor(modelItem => Model.HomeTeamName)</div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <h4>VS</h4>
+                        </div>
+                        <div class="col-5">
+                            <div class="d-flex flex-column align-items-center">
+                                <img src="~/@Model.AwayTeamBadge" alt="@Model.AwayTeamName" class="club-badge-image mb-2" style="max-width:50px; max-height: 50px;" />
+                                <div>@Html.DisplayFor(modelItem => Model.AwayTeamName)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center" style="margin-bottom:30px; background-color:#f6f6f6"><h5 style="padding:5px;">KickOff</h5></div>
+                <div class="col-md-6 text-center">
+                    <strong>Date: </strong>@Model.KickOff.ToString("dddd, dd MMM, yyyy")
+                </div>
+                <div class="col-md-6 text-center" style="margin-bottom:30px;">
+                    <strong>Time: </strong>@Model.KickOff.ToString("HH:mm")
+                </div>
+                <div class="col-12 text-center" style="margin-bottom:30px; background-color:#f6f6f6"><h5 style="padding:5px;">Stadium</h5></div>
+                <div class="col-md-12 text-center" style="margin-bottom:30px;">
+                    <strong>Stadium: </strong>@Model.StadiumName
+                </div>
+                <div class="col-12 text-center" style="margin-bottom:30px; background-color:#f6f6f6"><h5 style="padding:5px;">Match Officials</h5></div>
+                <div class="col-12"></div>
+                <div class="col text-center">
+                    <div style="margin-bottom:5px;">
+                        <strong>Referee: </strong>@Model.RefereeName
+                    </div>
+                    <div style="margin-bottom:5px;">
+                        <strong>Assistant one: </strong>@Model.AssistantOneName
+                    </div>
+                    <div style="margin-bottom:5px;">
+                        <strong>Assistant two: </strong>@Model.AssistantTwoName
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

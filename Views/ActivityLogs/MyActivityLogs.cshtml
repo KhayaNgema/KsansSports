@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MyField.Models.ActivityLog>
+
+@{
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+<br />
+
+<br />
+@await Html.PartialAsync("_HomeButton")
+<br />
+<h4 class="text-center">Activity logs</h4>
+<br />
+
+<div class="activityLogs-container">
+    @if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-borderless">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr >
+                        <td> @Html.DisplayFor(modelItem => item.Activity)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.DeviceName),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.OSName),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.OSVersion),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.DeviceModel),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.IpAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.Browser),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.BrowserVersion),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.DeviceModel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.City),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.PostalCode),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.Region),
+                            @Html.DisplayFor(modelItem => item.DeviceInfo.Country),
+                        </td>
+                            <td>@Html.DisplayFor(modelItem => item.Timestamp)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">
+        There are no activity logs yet.
+    </p>
+}
+</div>
+

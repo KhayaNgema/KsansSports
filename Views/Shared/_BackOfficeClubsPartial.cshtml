@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MyField.Models.Club>
+
+@{
+    ViewData["Title"] = "Back office clubs";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+<br />
+<h4 class="text-center">NFA Participating Clubs</h4>
+<br />
+<ul class="clubsList" style="border:none !important; list-style-type: none; padding: 0;">
+    @foreach (var item in Model)
+    {
+        <li style="margin-bottom:10px;">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="~/@item.ClubBadge" alt="@item.ClubName" class="club-badge-image" style="margin-right:20px;" />
+                    @Html.DisplayFor(modelItem => item.ClubName) (@Html.DisplayFor(modelItem => item.ClubAbbr))
+                </div>
+                <a asp-action="Details" asp-route-id="@item.ClubId" class="btn btn-sm">
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </li>
+    }
+</ul>
