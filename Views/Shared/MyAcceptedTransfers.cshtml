@@ -51,10 +51,12 @@
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-                            <a asp-action="RejectPlayerTransfer" asp-route-transferId="@item.TransferId" class="btn btn-sm btn-outline-danger">
-                                <i class="fas fa-times-circle "></i>
-                                Reject Transfer
-                            </a>
+                            <form method="post" asp-action="RejectPlayerTransfer" asp-route-transferId="@item.TransferId">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-times-circle"></i>
+                                    Reject Transfer
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 }

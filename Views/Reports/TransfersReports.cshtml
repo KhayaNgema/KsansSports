@@ -1,0 +1,114 @@
+﻿@model IEnumerable<MyField.Models.TransfersReports>
+
+@{
+    ViewData["Title"] = ViewBag.CurrentSeason + " Transfers Reports";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<br />
+@await Html.PartialAsync("_BackButton")
+<br />
+<h4 class="text-center">@ViewBag.CurrentSeason Season Transfers Reports</h4>
+<br />
+<div class="table-responsive">
+    <table class="table table-striped table-borderless">
+        <thead>
+            <tr style="color:white;background-color: #324260; white-space: nowrap;">
+                <th class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                    Category
+                </th>
+                <th class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                    Data
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Season
+                    </td>
+                    <td class="text-right vertical-align" style="width: 50%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.Season.LeagueYears)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Transfer period
+                    </td>
+                    <td class="text-right vertical-align" style="width: 50%; padding-left: 20px;">
+                        @if (item.TransferPeriod != null && item.TransferPeriod.PeriodOpenCount == 1)
+                        {
+                            <p> First round</p>
+                        }
+                        else if (item.TransferPeriod != null && item.TransferPeriod.PeriodOpenCount == 2)
+                        {
+                            <p> Second round</p>
+                        }
+                        else
+                        {
+                            <p> Currently closed</p>
+                        }
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Transfer market count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.TransferMarketCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Total purchased players
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.PurchasedPlayersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Total declined transfers
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.DeclinedTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Total transfers amount
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        R @Html.DisplayFor(modelItem => item.TranferAmount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Total association shares
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        R @Html.DisplayFor(modelItem => item.AssociationCut)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Total clubs shares
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        R @Html.DisplayFor(modelItem => item.ClubsCut)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Transfer rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.TranferRate) %
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

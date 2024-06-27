@@ -31,9 +31,15 @@
             </div>
             <br />
             <div class="form-floating mb-3">
-                <input asp-for="KickOff" class="form-control border-bottom-only" placeholder="KickOff" />
-                <label asp-for="KickOff" class="form-label">Kickoff</label>
-                <span asp-validation-for="KickOff" class="text-danger"></span>
+                <input asp-for="KickOffDate" class="form-control border-bottom-only" placeholder="KickOffDate" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <label asp-for="KickOffDate" class="form-label">Kickoff date</label>
+                <span asp-validation-for="KickOffDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-floating mb-3">
+                <input asp-for="KickOffTime" class="form-control border-bottom-only" placeholder="KickOffTime" type="time" value="@DateTime.Now.ToString("HH:mm")" />
+                <label asp-for="KickOffTime" class="form-label">Kickoff time</label>
+                <span asp-validation-for="KickOffTime" class="text-danger"></span>
             </div>
             <br />
             <div class="form-floating mb-3">

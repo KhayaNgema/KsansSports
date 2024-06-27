@@ -35,6 +35,8 @@ namespace MyField.ViewModels
         [Required(ErrorMessage = "The match date is required")]
         public DateTime MatchDate { get; set; }
 
+        public DateTime MatchTime { get; set; }
+
         [Display(Name = "Match Location")]
         [Required(ErrorMessage = "The location is required")]
         public string Location { get; set; }

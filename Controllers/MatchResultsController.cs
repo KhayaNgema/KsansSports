@@ -48,6 +48,13 @@ namespace MyField.Controllers
                 .Include(m => m.ModifiedBy)
                 .ToListAsync();
 
+            var currentSeason = await _context.League
+                .Where(c => c.IsCurrent)
+                .FirstOrDefaultAsync();
+
+
+            ViewBag.CurrentSeason = currentSeason.LeagueYears;
+
             return View(matchResults);
         }
 
@@ -182,14 +189,15 @@ namespace MyField.Controllers
         }
 
         // GET: MatchResults/Create
-        public IActionResult Create(string homeClubName, string homeTeamBadge, string awayTeamBadge,  string awayClubName, int fixtureId, DateTime kickoff, string location, int homeTeamId, int awayTeamId)
+        public IActionResult Create(string homeClubName, string homeTeamBadge, string awayTeamBadge,  string awayClubName, int fixtureId, DateTime kickoffDate, DateTime kickoffTime, string location, int homeTeamId, int awayTeamId)
         {
             var viewModel = new MatchResultsViewModel
             {
                 HomeTeamId = homeTeamId,
                 AwayTeamId = awayTeamId,
                 FixtureId = fixtureId,
-                MatchDate = kickoff,
+                MatchDate = kickoffDate,
+                MatchTime = kickoffTime,
                 Location = location,
                 HomeTeamBadge = homeTeamBadge,
                 AwayTeamBadge = awayTeamBadge,  
@@ -228,6 +236,7 @@ namespace MyField.Controllers
                     CreatedDateTime = DateTime.Now,
                     ModifiedDateTime = DateTime.Now,
                     MatchDate = viewModel.MatchDate,
+                    MatchTime = viewModel.MatchTime,
                     FixtureId = viewModel.FixtureId,
                     HomeTeamScore = viewModel.HomeTeamScore,
                     AwayTeamScore = viewModel.AwayTeamScore,

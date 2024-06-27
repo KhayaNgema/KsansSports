@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyField.Models.Standing>
 
 @{
-
+    HashSet<string> displayedClubs = new HashSet<string>();
 }
 
 <br />
@@ -48,6 +48,13 @@
                     }
                     @foreach (var item in Model)
                     {
+                        if (displayedClubs.Contains(item.Club.ClubName))
+                        {
+                            continue; 
+                        }
+
+                        displayedClubs.Add(item.Club.ClubName);
+
                         @if (!string.IsNullOrEmpty(item.Reason))
                         {
                             <tr>

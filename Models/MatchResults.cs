@@ -32,7 +32,12 @@ namespace MyField.Models
 
         [Display(Name = "Match date")]
         [Required(ErrorMessage = "The match date is required")]
+
+        [DataType(DataType.Date)]
         public DateTime MatchDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime MatchTime { get; set; }
 
         public DateTime CreatedDateTime { get; set; }
 

@@ -4,48 +4,61 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
+
 <br />
 @await Html.PartialAsync("_BackButton")
+
 <h4 class="text-center">UPDATE SCORE</h4>
+
 <br />
+
 <div class="fixturesContainer">
-    <table style="border-collapse: separate; border-spacing: 20px;">
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
-                    @if (item.HomeTeam != null)
-                    {
-                        <div class="team-badge">
-                            <span class="team-name">@Html.DisplayFor(modelItem => item.HomeTeam.ClubName)</span>
-                            <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image" />
-                        </div>
-                    }
-                </td>
-                <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">VS</td>
-                <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
-                    @if (item.AwayTeam != null)
-                    {
-                        <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image" />
-                        <span>@Html.DisplayFor(modelItem => item.AwayTeam.ClubName)</span>
-                    }
-                </td>
-                <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
-                    <a asp-controller="MatchResults" asp-action="Create"
-                       asp-route-homeClubName="@item.HomeTeam.ClubName"
-                       asp-route-awayClubName="@item.AwayTeam.ClubName"
-                       asp-route-fixtureId="@item.FixtureId"
-                       asp-route-kickoff="@item.KickOff"
-                       asp-route-homeTeamBadge="@item.HomeTeam.ClubBadge"
-                       asp-route-awayTeamBadge="@item.AwayTeam.ClubBadge"
-                       asp-route-location="@item.Location"
-                       asp-route-homeTeamId="@item.HomeTeamId"
-                       asp-route-awayTeamId="@item.AwayTeamId"
-                       style="color: #000325;">
-                        <i class="fas fa-futbol"></i>
-                    </a>
-                </td>
-            </tr>
-        }
-    </table>
+    @if (Model.Any())
+    {
+        <table style="border-collapse: separate; border-spacing: 20px;">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
+                        @if (item.HomeTeam != null)
+                        {
+                            <div class="team-badge">
+                                <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image" />
+                                <span class="team-name">@Html.DisplayFor(modelItem => item.HomeTeam.ClubName)</span>
+                            </div>
+                        }
+                    </td>
+                    <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">VS</td>
+                    <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
+                        @if (item.AwayTeam != null)
+                        {
+                            <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image" />
+                            <span>@Html.DisplayFor(modelItem => item.AwayTeam.ClubName)</span>
+                        }
+                    </td>
+                    <td style="margin-right: 20px; margin-bottom: 20px; padding: 10px;">
+                        <a asp-controller="MatchResults" asp-action="Create"
+                           asp-route-homeClubName="@item.HomeTeam.ClubName"
+                           asp-route-awayClubName="@item.AwayTeam.ClubName"
+                           asp-route-fixtureId="@item.FixtureId"
+                           asp-route-kickoffDate="@item.KickOffDate"
+                           asp-route-kickoffTime="@item.KickOffTime"
+                           asp-route-homeTeamBadge="@item.HomeTeam.ClubBadge"
+                           asp-route-awayTeamBadge="@item.AwayTeam.ClubBadge"
+                           asp-route-location="@item.Location"
+                           asp-route-homeTeamId="@item.HomeTeamId"
+                           asp-route-awayTeamId="@item.AwayTeamId"
+                           style="color: #000325;">
+                            <i class="fas fa-futbol"></i>
+                            Update Score
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are no fixtures yet.</p>
+    }
 </div>

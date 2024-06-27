@@ -1,4 +1,6 @@
-﻿namespace MyField.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyField.ViewModels
 {
     public class FixtureDetailsBackOfficeViewModel
     {
@@ -10,7 +12,11 @@
 
         public string AwayTeamBadge { get; set; }
 
-        public DateTime KickOff {  get; set; }
+        [DataType(DataType.Date)]
+        public DateTime KickOffDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime KickOffTime { get; set; }
 
         public string RefereeName { get; set; } 
 

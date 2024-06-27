@@ -560,7 +560,10 @@ namespace MyField.Migrations
                     b.Property<int>("HomeTeamId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("KickOff")
+                    b.Property<DateTime>("KickOffDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("KickOffTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LeagueId")
@@ -585,7 +588,7 @@ namespace MyField.Migrations
 
                     b.HasIndex("HomeTeamId");
 
-                    b.HasIndex("KickOff");
+                    b.HasIndex("KickOffDate");
 
                     b.HasIndex("LeagueId");
 
@@ -1172,6 +1175,9 @@ namespace MyField.Migrations
                     b.Property<DateTime>("MatchDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("MatchTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ModifiedById")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -1343,6 +1349,27 @@ namespace MyField.Migrations
                     b.ToTable("PlayerTransferMarket");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("BaseType");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("MyField.Models.Reports", b =>
+                {
+                    b.Property<int>("ReportId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportId"));
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ReportId");
+
+                    b.ToTable("Reports");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Reports");
 
                     b.UseTphMappingStrategy();
                 });
@@ -1795,6 +1822,122 @@ namespace MyField.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasDiscriminator().HasValue("ArchiveType");
+                });
+
+            modelBuilder.Entity("MyField.Models.MatchReports", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("FixturedMatchesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InterruptedMatchesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("MatchesRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("MatchesToBePlayedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayedMatchesCounts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostponedMatchesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UnreleasedFixturesCount")
+                        .HasColumnType("int");
+
+                    b.HasIndex("LeagueId");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("LeagueId")
+                                .HasColumnName("MatchReports_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("MatchReports");
+                });
+
+            modelBuilder.Entity("MyField.Models.MatchResultsReports", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("DrawsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpectedResultsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LosesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReleasedResultsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ResultsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UnreleasedResultsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WinsCount")
+                        .HasColumnType("int");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasDiscriminator().HasValue("MatchResultsReports");
+                });
+
+            modelBuilder.Entity("MyField.Models.TransfersReports", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<decimal>("AssociationCut")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ClubsCut")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DeclinedTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PurchasedPlayersCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TranferAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TranferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("TransferMarketCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TransferPeriodId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasIndex("TransferPeriodId");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("LeagueId")
+                                .HasColumnName("TransfersReports_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("TransfersReports");
                 });
 
             modelBuilder.Entity("MyField.Models.Standings_Archive", b =>
@@ -2838,6 +2981,47 @@ namespace MyField.Migrations
                     b.Navigation("ModifiedBy");
 
                     b.Navigation("UserBaseModel");
+                });
+
+            modelBuilder.Entity("MyField.Models.MatchReports", b =>
+                {
+                    b.HasOne("MyField.Models.League", "Season")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Season");
+                });
+
+            modelBuilder.Entity("MyField.Models.MatchResultsReports", b =>
+                {
+                    b.HasOne("MyField.Models.League", "Season")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Season");
+                });
+
+            modelBuilder.Entity("MyField.Models.TransfersReports", b =>
+                {
+                    b.HasOne("MyField.Models.League", "Season")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.TransferPeriod", "TransferPeriod")
+                        .WithMany()
+                        .HasForeignKey("TransferPeriodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Season");
+
+                    b.Navigation("TransferPeriod");
                 });
 
             modelBuilder.Entity("MyField.Models.ClubAdministrator", b =>

@@ -480,8 +480,6 @@ namespace MyField.Controllers
             }
         }
 
-
-
         public async Task<IActionResult> PayFastReturn(int paymentId, int transferId, decimal totalPrice)
         {
             try
@@ -500,6 +498,10 @@ namespace MyField.Controllers
                     .Include(s => s.PlayerTransferMarket)
                     .Include(s => s.SellerClub)
                     .Include(s => s.CustomerClub)
+                    .FirstOrDefaultAsync();
+
+                var transferReport = await _context.TransfersReports
+                    .Where(t => t.Season.IsCurrent)
                     .FirstOrDefaultAsync();
 
                 if (playerTransfer == null)
@@ -529,7 +531,6 @@ namespace MyField.Controllers
                     return Json(new { success = false, message = "User not authenticated." });
                 }
 
-                // Update player transfer and payment statuses
                 playerTransfer.Player.ClubId = playerTransfer.CustomerClubId;
                 playerTransfer.Player.ModifiedBy = user.Id;
                 playerTransfer.Player.ModifiedDateTime = DateTime.Now;
@@ -538,34 +539,49 @@ namespace MyField.Controllers
                 playerTransfer.Status = TransferStatus.Completed;
                 payment.Status = PaymentPaymentStatus.Successful;
 
+                transferReport.PurchasedPlayersCount++;
+                transferReport.TranferAmount += payment.AmountPaid;
+                transferReport.AssociationCut = transferReport.TranferAmount * 0.335m;
+                transferReport.ClubsCut = transferReport.TranferAmount * 0.665m;
+
+                if (transferReport.TransferMarketCount == 0)
+                {
+                    return Json(new { success = false, message = "Transfer market count cannot be zero." });
+                }
+
+                decimal purchasedPercentage = ((decimal)transferReport.PurchasedPlayersCount / transferReport.TransferMarketCount) * 100;
+                decimal declinedPercentage = ((decimal)transferReport.DeclinedTransfersCount / transferReport.TransferMarketCount) * 100;
+
+                decimal transferRate = purchasedPercentage - declinedPercentage;
+
+                transferReport.TranferRate = transferRate;
+
                 _context.Update(payment);
                 _context.Update(playerTransfer);
                 await _context.SaveChangesAsync();
 
-                // Generate invoice and update database
                 var newInvoice = new Invoice
                 {
                     PaymentId = payment.PaymentId,
                     TransferId = playerTransfer.TransferId,
                     InvoiceTimeStamp = DateTime.Now,
                     CreatedById = user.Id,
-                    InvoiceNumber = GenerateInvoiceNumber(paymentId), 
+                    InvoiceNumber = GenerateInvoiceNumber(paymentId),
                     IsEmailed = true
                 };
 
-                payment.ClubId = playerTransfer.CustomerClubId; // Ensure ClubId is set correctly
+                payment.ClubId = playerTransfer.CustomerClubId; 
 
                 _context.Update(payment);
                 _context.Add(newInvoice);
                 await _context.SaveChangesAsync();
 
-
                 var viewName = "Billings/_MyPlayerTransferInvoicePartial";
-                var viewData = new Invoice 
+                var viewData = new Invoice
                 {
                     Transfer = playerTransfer,
                     Payment = payment,
-                    InvoiceNumber = newInvoice.InvoiceNumber 
+                    InvoiceNumber = newInvoice.InvoiceNumber
                 };
 
                 string emailBody = await _viewRenderService.RenderToStringAsync(viewName, viewData);
@@ -590,6 +606,7 @@ namespace MyField.Controllers
                 });
             }
         }
+
 
         private string GeneratePayFastPaymentUrl(int paymentId, decimal amount, int transferId, string returnUrl, string cancelUrl)
         {

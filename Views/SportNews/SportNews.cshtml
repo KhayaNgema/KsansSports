@@ -19,7 +19,7 @@
     </style>
 </head>
 <br />
-@await Html.PartialAsync("_BackButton")
+@await Html.PartialAsync("_HomeButton")
 <h4 class="text-center">SPORT NEWS</h4>
 <br />
 <div class="row justify-content-center">
@@ -38,7 +38,7 @@
                         @if (item.NewsBody.Length > 100)
                         {
                             @item.NewsBody.Substring(0, 100) <text>...</text>
-                            <a href="@Url.Action("Details", "SportNews", new { id = item.NewsId })">Read More</a>
+                            <a href="@Url.Action("Details", "SportNews", new { newsId = item.NewsId })">Read More</a>
                         }
                         else
                         {

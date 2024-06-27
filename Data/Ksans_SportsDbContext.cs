@@ -77,7 +77,7 @@ namespace MyField.Data
 
 
             modelBuilder.Entity<Fixture>()
-                .HasIndex(f => f.KickOff);
+                .HasIndex(f => f.KickOffDate);
         }
 
         public DbSet<MyField.Models.Club> Club { get; set; } = default!;
@@ -161,5 +161,13 @@ namespace MyField.Data
         public DbSet<MyField.Models.TransferPeriod> TransferPeriod { get; set; } = default!;
 
         public DbSet<MyField.Models.MatchFormation_Archive> MatchFormation_Archive { get; set; } = default!;
+
+        public DbSet<MyField.Models.Reports> Reports { get; set; } = default!;
+
+        public DbSet<MyField.Models.MatchReports> MatchReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.TransfersReports> TransfersReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.MatchResultsReports> MatchResultsReports { get; set; } = default!;
     }
 }

@@ -15,8 +15,10 @@ namespace MyField.Models
 
         public string Venue { get; set;}
 
+        [DataType(DataType.Date)]
         public DateTime MeetingDate { get; set;}
-        
+
+        [DataType(DataType.Time)]
         public DateTime MeetingTime { get; set;}  
 
         public string AdditionalComments { get; set;}

@@ -10,7 +10,7 @@
 <br />
 <div class="fixtures-match-container">
     <div class="row">
-        @foreach (var group in Model.OrderBy(item => item.KickOff.Date).GroupBy(item => item.KickOff.Date))
+        @foreach (var group in Model.OrderBy(item => item.KickOffDate).GroupBy(item => item.KickOffDate))
         {
             <div class="col-12 mb-2">
                 <h5 class="text-center date-background">@group.Key.ToString("dddd, MMMM d, yyyy")</h5>
@@ -36,7 +36,7 @@
                             <p class="card-text">
                                 <strong>Kick Off:</strong>
                                 <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                    @item.KickOff.ToString("HH:mm")
+                                    @item.KickOffTime.ToString("HH:mm")
                                 </span>
                             </p>
                             <p class="card-text">

@@ -192,7 +192,8 @@ namespace MyField.Controllers
                 AwayTeamName = fixture.AwayTeam.ClubName,
                 HomeTeamBadge = fixture.HomeTeam.ClubBadge,
                 AwayTeamBadge = fixture.AwayTeam.ClubBadge,
-                KickOff = fixture.KickOff,
+                KickOffDate  = fixture.KickOffDate,
+                KickOffTime = fixture.KickOffTime,
                 StadiumName = fixture.Location,
                 RefereeName = $"{matchOfficials.Refeere.FirstName} {matchOfficials.Refeere.LastName}",
                 AssistantOneName = $"{matchOfficials.AssistantOne.FirstName} {matchOfficials.AssistantOne.LastName}",
@@ -433,7 +434,8 @@ namespace MyField.Controllers
                     FixtureId = viewModel.FixtureId,
                     HomeTeamId = viewModel.HomeTeamId,
                     AwayTeamId = viewModel.AwayTeamId,
-                    KickOff = viewModel.KickOff,
+                    KickOffDate = viewModel.KickOffDate,
+                    KickOffTime = viewModel.KickOffTime,
                     Location = viewModel.Location,
                     CreatedById = userId,
                     ModifiedById = userId,
@@ -463,7 +465,7 @@ namespace MyField.Controllers
                     .FirstOrDefaultAsync();
 
                 await _activityLogger.Log($"Created a new fixture between {newSavedFixture.HomeTeam.ClubName} and {newSavedFixture.AwayTeam.ClubName}", user.Id);
-                TempData["Message"] = $"You have successfully created a new fixture between {newSavedFixture.HomeTeam.ClubName} and {newSavedFixture.AwayTeam.ClubName} that will kickoff at {newSavedFixture.KickOff.ToString("HH:MM")} on {newSavedFixture.KickOff.ToString("dddd, dd MMM yyyy")} at  {newSavedFixture.Location}.";
+                TempData["Message"] = $"You have successfully created a new fixture between {newSavedFixture.HomeTeam.ClubName} and {newSavedFixture.AwayTeam.ClubName} that will kickoff at {newSavedFixture.KickOffTime} on {newSavedFixture.KickOffDate.ToString("dddd, dd MMM yyyy")} at  {newSavedFixture.Location}.";
                 return RedirectToAction(nameof(FixturesBackOffice));
             }
 
@@ -512,7 +514,8 @@ namespace MyField.Controllers
                 FixtureId = fixture.FixtureId,
                 HomeTeamId = fixture.HomeTeamId,
                 AwayTeamId = fixture.AwayTeamId,
-                KickOff = fixture.KickOff,
+                KickOffDate = fixture.KickOffDate,
+                KickOffTime = fixture.KickOffTime,
                 Stadium = fixture.Location,
                 FixtureStatus = fixture.FixtureStatus,
                 RefereeId = matchOfficial.RefeereId,
@@ -575,7 +578,8 @@ namespace MyField.Controllers
 
                     existingFixture.HomeTeamId = viewModel.HomeTeamId;
                     existingFixture.AwayTeamId = viewModel.AwayTeamId;
-                    existingFixture.KickOff = viewModel.KickOff;
+                    existingFixture.KickOffTime = viewModel.KickOffTime;
+                    existingFixture.KickOffDate = viewModel.KickOffDate;
                     existingFixture.Location = viewModel.Stadium;
                     existingFixture.FixtureStatus = viewModel.FixtureStatus;
                     existingFixture.ModifiedDateTime = DateTime.Now;

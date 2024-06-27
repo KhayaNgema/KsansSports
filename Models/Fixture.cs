@@ -16,9 +16,11 @@ namespace MyField.Models
         [Required(ErrorMessage = "Away Team is required")]
         public int AwayTeamId { get; set; }
 
-        [Display(Name = "Kickoff")]
-        [Required(ErrorMessage = "Kickoff time is required")]
-        public DateTime KickOff { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime KickOffDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime KickOffTime { get; set; }
 
         [Display(Name = "Location")]
         [Required(ErrorMessage = "Match location is required")]
@@ -55,7 +57,7 @@ namespace MyField.Models
 
         public Fixture()
         {
-            KickOff = DateTime.MinValue;
+            KickOffDate = DateTime.MinValue;
         }
 
         public ICollection<MatchOfficials> MatchOfficials { get; set; }

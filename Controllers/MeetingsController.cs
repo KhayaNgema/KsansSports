@@ -90,7 +90,7 @@ namespace MyField.Controllers
                     .Where( s => s.Equals(newMeeting))
                     .FirstOrDefaultAsync();
 
-                await _activityLogger.Log($"Scheduled a meetingthat woill take place as follows; Date:{savedMeeting.MeetingDate.ToString("ddd, dd MMM yyyy")}, Time:{savedMeeting.MeetingDate.ToString("HH:MM")}", user.Id);
+                await _activityLogger.Log($"Scheduled a meeting that will take place as follows; Date:{savedMeeting.MeetingDate.ToString("ddd, dd MMM yyyy")}, Time:{savedMeeting.MeetingTime.ToString("HH:mm")}", user.Id);
                 return RedirectToAction(nameof(Index));
             }
 

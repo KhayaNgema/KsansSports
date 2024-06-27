@@ -17,9 +17,11 @@ namespace MyField.ViewModels
         [Display(Name = "Away Team")]
         public int AwayTeamId { get; set; }
 
-        [Required(ErrorMessage = "Kickoff date & time is required")]
-        [Display(Name = "Kick Off")]
-        public DateTime KickOff { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime KickOffDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime KickOffTime { get; set; }
 
         [Required(ErrorMessage = "Stadium is required")]
         [Display(Name = "Location")]

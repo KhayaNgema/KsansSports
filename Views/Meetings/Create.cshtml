@@ -29,13 +29,13 @@
                 <span asp-validation-for="Venue" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="MeetingDate" class="form-control" placeholder="MeetingDate" />
-                <label asp-for="MeetingDate" typeof="date" class="form-label">Meeting date</label>
+                <input asp-for="MeetingDate" class="form-control border-bottom-only" placeholder="MeetingDate" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" value="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                <label asp-for="MeetingDate" class="form-label">Meeting date</label>
                 <span asp-validation-for="MeetingDate" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="MeetingTime" class="form-control border-bottom-only" placeholder="MeetingTime" />
-                <label asp-for="MeetingTime" typeof="time" class="form-label">Meeting time</label>
+                <input asp-for="MeetingTime" class="form-control border-bottom-only" placeholder="MeetingTime" type="time" />
+                <label asp-for="MeetingTime" class="form-label">Meeting time</label>
                 <span asp-validation-for="MeetingTime" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">

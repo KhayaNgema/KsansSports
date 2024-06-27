@@ -154,7 +154,8 @@ namespace MyField.Controllers
                         {
                             HomeTeamId = f.HomeTeamId,
                             AwayTeamId = f.AwayTeamId,
-                            KickOff = f.KickOff,
+                            KickOffDate = f.KickOffDate,
+                            KickOffTime = f.KickOffTime,
                             Location = f.Location,
                             CreatedDateTime = f.CreatedDateTime,
                             ModifiedDateTime = f.ModifiedDateTime,
@@ -219,6 +220,54 @@ namespace MyField.Controllers
                 };
 
                 _context.Add(transferPeriod);
+                await _context.SaveChangesAsync();
+
+
+                var matchReports = new MatchReports
+                {
+                    LeagueId = newSeason.LeagueId,
+                    MatchesToBePlayedCount = 0,
+                    FixturedMatchesCount = 0,
+                    UnreleasedFixturesCount = 0,
+                    InterruptedMatchesCount = 0,
+                    MatchesRate = 0,
+                    PlayedMatchesCounts = 0,
+                    PostponedMatchesCount = 0,
+                };
+
+                _context.Add(matchReports);
+                await _context.SaveChangesAsync();
+
+                var newTransferReports = new TransfersReports
+                {
+                    LeagueId = newSeason.LeagueId,
+                    TransferMarketCount = 0,
+                    PurchasedPlayersCount = 0,
+                    DeclinedTransfersCount = 0,
+                    TransferPeriodId = transferPeriod.TransferPeriodId,
+                    TranferAmount = 0,
+                    AssociationCut = 0,
+                    ClubsCut = 0,
+                    TranferRate = 0,
+                };
+
+                _context.Add(newTransferReports);
+                await _context.SaveChangesAsync();
+
+                var newMatchResultsReports = new MatchResultsReports
+                {
+                    LeagueId = newSeason.LeagueId,
+                    ExpectedResultsCount = 0,
+                    ReleasedResultsCount = 0,
+                    UnreleasedResultsCount = 0,
+                    WinsCount = 0,
+                    LosesCount = 0,
+                    DrawsCount = 0,
+                    ResultsRate = 0,
+                    
+                };
+
+                _context.Add(newMatchResultsReports);
                 await _context.SaveChangesAsync();
 
 

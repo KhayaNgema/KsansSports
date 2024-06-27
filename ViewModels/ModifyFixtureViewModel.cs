@@ -1,4 +1,5 @@
 ﻿using MyField.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyField.ViewModels
 {
@@ -9,7 +10,11 @@ namespace MyField.ViewModels
 
         public int AwayTeamId { get; set; }
 
-        public DateTime KickOff { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime KickOffDate { get; set; }
+
+        [DataType(DataType.Time)]
+        public DateTime KickOffTime { get; set; }
 
         public string RefereeId { get; set; }
 

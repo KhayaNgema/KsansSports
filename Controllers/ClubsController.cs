@@ -94,6 +94,7 @@ namespace MyField.Controllers
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.ClubManager)
                 .Include(s => s.League)
+                .OrderByDescending(s => s.CreatedDateTime)
                 .ToListAsync();
 
             return View(clubs);

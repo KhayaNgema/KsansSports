@@ -546,6 +546,12 @@ namespace MyField.Controllers
                         .Where(t => t.IsCurrent)
                         .FirstOrDefaultAsync();
 
+                    var transferReport = await _context.TransfersReports
+                        .Where(t => t.Season.IsCurrent)
+                        .FirstOrDefaultAsync();
+
+
+
                     var currentSeasonCode = currentSeason?.LeagueCode;
 
                     if (transferPeriod.PeriodOpenCount >= 2)
@@ -588,6 +594,9 @@ namespace MyField.Controllers
                         await _context.PlayerTransferMarket.AddRangeAsync(transferMarkets);
                         await _context.SaveChangesAsync();
 
+                        int transferMarketCount = await GetTransferMarketCountAsync();
+                        transferReport.TransferMarketCount = transferMarketCount;
+
                         TempData["Message"] = $"Transfer period for season {currentSeason.LeagueYears} has been opened successfully and clubs can now start making player purchases";
                         await _activityLogger.Log($"Opened player transfer period for season {currentSeason.LeagueYears}", user.Id);
                         return Ok();
@@ -617,6 +626,11 @@ namespace MyField.Controllers
                     }
                 });
             }
+        }
+
+        public async Task<int> GetTransferMarketCountAsync()
+        {
+            return await _context.PlayerTransferMarket.CountAsync();
         }
 
         public async Task<IActionResult> ClosePlayerTransferPeriod(string seasonCode)
@@ -899,6 +913,10 @@ namespace MyField.Controllers
               .Include(t => t.CustomerClub)
               .FirstOrDefaultAsync(t => t.TransferId == transferId);
 
+            var transferReport = await _context.TransfersReports
+               .Where(t => t.Season.IsCurrent)
+               .FirstOrDefaultAsync();
+
             if (transfer == null)
             {
                 return NotFound();
@@ -912,6 +930,8 @@ namespace MyField.Controllers
                 transfer.Status = TransferStatus.Rejected;
 
             }
+
+            transferReport.DeclinedTransfersCount++;
 
             _context.Update(transfer);
             await _context.SaveChangesAsync();
