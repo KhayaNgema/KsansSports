@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240627182316_RemoveMatchFormationArchive")]
+    partial class RemoveMatchFormationArchive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1059,10 +1062,6 @@ namespace MyField.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("FixtureId")
                         .HasColumnType("int");
 
@@ -1089,10 +1088,6 @@ namespace MyField.Migrations
                     b.HasIndex("ModifiedById");
 
                     b.ToTable("MatchFormation");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("MatchFormation");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MyField.Models.MatchOfficials", b =>
@@ -1798,13 +1793,6 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.Fixture");
 
                     b.HasDiscriminator().HasValue("Fixtures_Archive");
-                });
-
-            modelBuilder.Entity("MyField.Models.MatchFormation_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.MatchFormation");
-
-                    b.HasDiscriminator().HasValue("MatchFormation_Archive");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchResults_Archive", b =>

@@ -540,6 +540,7 @@ namespace MyField.Controllers
                 payment.Status = PaymentPaymentStatus.Successful;
 
                 transferReport.PurchasedPlayersCount++;
+
                 transferReport.TranferAmount += payment.AmountPaid;
                 transferReport.AssociationCut = transferReport.TranferAmount * 0.335m;
                 transferReport.ClubsCut = transferReport.TranferAmount * 0.665m;

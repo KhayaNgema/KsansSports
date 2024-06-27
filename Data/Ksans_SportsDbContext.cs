@@ -169,5 +169,11 @@ namespace MyField.Data
         public DbSet<MyField.Models.TransfersReports> TransfersReports { get; set; } = default!;
 
         public DbSet<MyField.Models.MatchResultsReports> MatchResultsReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.MatchReports_Archive> MatchReportsArchive { get; set; } = default!;
+
+        public DbSet<MyField.Models.MatchResultsReports_Archive> MatchResultsReports_Archive { get; set; } = default!;
+
+        public DbSet<MyField.Models.TransfersReports_Archive> TransfersReports_Archive { get; set; } = default!;
     }
 }

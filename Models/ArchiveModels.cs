@@ -24,4 +24,19 @@
     { 
     
     }
+
+    public class MatchReports_Archive : MatchReports
+    {
+
+    }
+
+    public class MatchResultsReports_Archive : MatchResultsReports
+    {
+
+    }
+
+    public class TransfersReports_Archive : TransfersReports
+    {
+
+    }
 }

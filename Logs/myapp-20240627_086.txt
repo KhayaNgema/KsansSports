@@ -753,3 +753,34 @@ WHERE [l].[IsCurrent] = CAST(1 AS bit)
 2024-06-27 15:06:11.410 +02:00 [INF] Executed action MyField.Controllers.ReportsController.TransfersReports (MyField) in 15.9935ms
 2024-06-27 15:06:11.410 +02:00 [INF] Executed endpoint 'MyField.Controllers.ReportsController.TransfersReports (MyField)'
 2024-06-27 15:06:11.410 +02:00 [INF] HTTP GET /Reports/TransfersReports responded 200 in 16.3446 ms
+2024-06-27 19:38:41.557 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-27 19:38:48.792 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-06-27 19:38:48.858 +02:00 [INF] Now listening on: https://localhost:7102
+2024-06-27 19:38:48.858 +02:00 [INF] Now listening on: http://localhost:5020
+2024-06-27 19:38:48.862 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-27 19:38:48.862 +02:00 [INF] Hosting environment: Development
+2024-06-27 19:38:48.863 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-06-27 19:39:08.189 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/MatchReports - -
+2024-06-27 19:39:09.936 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-27 19:39:09.942 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=RQCJkYXYbCWHrTBJ2YNtxhLUnMoPOO2_MB9r73IJmsE - -
+2024-06-27 19:39:09.942 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-27 19:39:09.942 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-27 19:39:09.945 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/MatchReports - - - 200 - text/html;+charset=utf-8 1763.0292ms
+2024-06-27 19:39:09.951 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.8060ms
+2024-06-27 19:39:09.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 15.7586ms
+2024-06-27 19:39:09.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=RQCJkYXYbCWHrTBJ2YNtxhLUnMoPOO2_MB9r73IJmsE - - - 200 35829 text/css 15.7559ms
+2024-06-27 19:39:09.960 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 23.6715ms
+2024-06-27 19:39:09.967 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-27 19:39:10.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.4880ms
+2024-06-27 19:39:19.967 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/MatchResultsReports - -
+2024-06-27 19:39:20.115 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/MatchResultsReports - - - 200 - text/html;+charset=utf-8 148.0809ms
+2024-06-27 19:39:20.145 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-27 19:39:20.146 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-27 19:39:20.147 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5994ms
+2024-06-27 19:39:20.155 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.5811ms
+2024-06-27 19:39:26.637 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/TransfersReports - -
+2024-06-27 19:39:26.846 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/TransfersReports - - - 200 - text/html;+charset=utf-8 209.4350ms
+2024-06-27 19:39:26.865 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-27 19:39:26.867 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-27 19:39:26.869 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.1231ms
+2024-06-27 19:39:26.872 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 6.3420ms

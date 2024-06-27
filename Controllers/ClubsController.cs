@@ -233,6 +233,11 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
+             var matchResultsReport = await _context.MatchResultsReports
+                .Where(m => m.Season.IsCurrent)
+                .Include(m => m.Season)
+                .FirstOrDefaultAsync();
+
             var newStanding = new Standing
             {
                 LeagueId = currentLeague.LeagueId,
@@ -251,6 +256,8 @@ namespace MyField.Controllers
                 Lose = 0,
                 Wins = 0
             };
+
+            matchResultsReport.ExpectedResultsCount++;
 
             _context.Add(newStanding);
             await _context.SaveChangesAsync();
@@ -286,6 +293,11 @@ namespace MyField.Controllers
                 var userId = user.Id;
 
                 var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+                var matchResultsReport = await _context.MatchResultsReports
+                     .Where(m => m.Season.IsCurrent)
+                     .Include(m => m.Season)
+                     .FirstOrDefaultAsync();
 
                 if (currentLeague == null)
                 {
@@ -341,6 +353,8 @@ namespace MyField.Controllers
                     Lose = 0,
                     Wins = 0
                 };
+
+                matchResultsReport.ExpectedResultsCount++;
 
                 _context.Add(newStanding);
                 await _context.SaveChangesAsync();
