@@ -87,6 +87,7 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+
         app.UseStaticFiles();
 
         app.UseRouting();
@@ -105,8 +106,6 @@ public class Startup
         });
 
         app.ApplicationServices.CreateRolesAndDefaultUser().Wait();
-
-       
     }
 
     private void SetCulture(string cultureCode)

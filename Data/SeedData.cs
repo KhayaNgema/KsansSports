@@ -35,7 +35,7 @@ public static class SeedData
                 }
             }
 
-            // Check if the default admin user already exists
+
             var systemAdmin = await userManager.FindByEmailAsync("admin@gmail.com");
             if (systemAdmin == null)
             {

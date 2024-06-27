@@ -122,6 +122,7 @@ namespace MyField.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByEmailAsync(Input.Email);
+
                     await _activityLogger.Log("Logged in", user.Id);
                     return LocalRedirect(returnUrl);
                 }
