@@ -225,6 +225,11 @@ namespace MyField.Controllers
                      .Include(m => m.Season)
                      .FirstOrDefaultAsync();
 
+                var matchReport = await _context.MatchReports
+                     .Where(m => m.Season.IsCurrent)
+                     .Include(m => m.Season)
+                     .FirstOrDefaultAsync();
+
                 if (currentLeague == null)
                 {
                     ModelState.AddModelError(string.Empty, "No current league found.");
@@ -323,6 +328,8 @@ namespace MyField.Controllers
                     HomeTeamGoals = viewModel.HomeTeamScore
                 };
 
+                _context.Add(awayHeadToHead);
+
                 matchResultsReport.ReleasedResultsCount++;
 
                 if(viewModel.AwayTeamScore > viewModel.HomeTeamScore || viewModel.HomeTeamScore > viewModel.AwayTeamScore)
@@ -335,8 +342,8 @@ namespace MyField.Controllers
                     matchResultsReport.DrawsCount++;
                 }
 
+                matchReport.PlayedMatchesCounts++;
 
-                _context.Add(awayHeadToHead);
                 await _context.SaveChangesAsync();
 
                 var fixtureToUpdate = await _context.Fixture.FindAsync(viewModel.FixtureId);

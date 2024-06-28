@@ -198,7 +198,11 @@ namespace MyField.Controllers
                             InterruptedMatchesCount = m.InterruptedMatchesCount,
                             PostponedMatchesCount = m.PostponedMatchesCount,
                             FixturedMatchesCount = m.FixturedMatchesCount,
-                            MatchesRate = m.MatchesRate,
+                            FixturedMatchesRate = m.FixturedMatchesRate,
+                            UnfixturedMatchesRate = m.UnfixturedMatchesRate,
+                            InterruptedMatchesRate = m.InterruptedMatchesRate,
+                            PlayedMatchesRate = m.PlayedMatchesRate,    
+                            PostponedMatchesRate = m.PostponedMatchesRate,  
                             UnreleasedFixturesCount = m.UnreleasedFixturesCount
                         };
 
@@ -216,7 +220,11 @@ namespace MyField.Controllers
                             WinsCount = r.WinsCount,
                             LosesCount= r.LosesCount,
                             DrawsCount = r.DrawsCount,
-                            ResultsRate = r.ResultsRate,
+                            ReleasedResultsRate = r.ReleasedResultsRate,    
+                            UnreleasedMatchesRate = r.UnreleasedMatchesRate,
+                            WinningRate = r.WinningRate,
+                            LosingRate = r.LosingRate,
+                            DrawingRate = r.DrawingRate,
                             UnreleasedResultsCount = r.UnreleasedResultsCount
                         };
 
@@ -229,13 +237,16 @@ namespace MyField.Controllers
                         var archivedTransfersReports = new TransfersReports_Archive
                         {
                             LeagueId = t.LeagueId,
+                            TransferPeriodId = t.TransferPeriodId,
                             TransferMarketCount = t.TransferMarketCount,
                             PurchasedPlayersCount = t.PurchasedPlayersCount,
                             DeclinedTransfersCount = t.DeclinedTransfersCount,
                             TranferAmount = t.TranferAmount,
                             ClubsCut = t.ClubsCut,
                             AssociationCut = t.AssociationCut,
-                            TranferRate = t.TranferRate,
+                            SuccessfulTranferRate = t.SuccessfulTranferRate,
+                            UnsuccessfulTranferRate = t.UnsuccessfulTranferRate,
+                            NotStartedTransferRate = t.NotStartedTransferRate,
                         };
 
                         _context.TransfersReports_Archive.Add(archivedTransfersReports);
@@ -293,7 +304,11 @@ namespace MyField.Controllers
                     FixturedMatchesCount = 0,
                     UnreleasedFixturesCount = 0,
                     InterruptedMatchesCount = 0,
-                    MatchesRate = 0,
+                    FixturedMatchesRate = 0,
+                    UnfixturedMatchesRate = 0,
+                    PlayedMatchesRate = 0,
+                    InterruptedMatchesRate = 0,
+                    PostponedMatchesRate = 0,
                     PlayedMatchesCounts = 0,
                     PostponedMatchesCount = 0,
                 };
@@ -311,7 +326,9 @@ namespace MyField.Controllers
                     TranferAmount = 0,
                     AssociationCut = 0,
                     ClubsCut = 0,
-                    TranferRate = 0,
+                    SuccessfulTranferRate = 0,
+                    UnsuccessfulTranferRate = 0,
+                    NotStartedTransferRate = 0
                 };
 
                 _context.Add(newTransferReports);
@@ -326,8 +343,11 @@ namespace MyField.Controllers
                     WinsCount = 0,
                     LosesCount = 0,
                     DrawsCount = 0,
-                    ResultsRate = 0,
-                    
+                    ReleasedResultsRate = 0,
+                    UnreleasedMatchesRate = 0,
+                    WinningRate = 0,
+                    LosingRate = 0,
+                    DrawingRate = 0,
                 };
 
                 _context.Add(newMatchResultsReports);

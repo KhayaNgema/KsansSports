@@ -40,6 +40,7 @@ namespace MyField.Controllers
                 .Include(t => t.League)
                 .Include(t => t.CreatedBy)
                 .Include(t => t.ModifiedBy)
+                .OrderByDescending(t => t.CreatedDateTime)
                 .ToListAsync();
 
             return View(transferPeriod);
@@ -257,7 +258,10 @@ namespace MyField.Controllers
             }
 
             var acceptedTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Accepted && mo.SellerClub.ClubId == clubId)
+                .Where(mo => mo.Status == TransferStatus.Accepted && 
+                mo.SellerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .Include(s => s.CustomerClub)
@@ -292,7 +296,10 @@ namespace MyField.Controllers
             }
 
             var rejectedTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Rejected && mo.SellerClub.ClubId == clubId)
+                .Where(mo => mo.Status == TransferStatus.Rejected && 
+                mo.SellerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .Include(s => s.CustomerClub)
@@ -328,7 +335,10 @@ namespace MyField.Controllers
             }
 
             var pendingTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Pending && mo.CustomerClub.ClubId == clubId )
+                .Where(mo => mo.Status == TransferStatus.Pending && 
+                mo.CustomerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -362,7 +372,10 @@ namespace MyField.Controllers
             }
 
             var pendingTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Cancelled && mo.CustomerClub.ClubId == clubId)
+                .Where(mo => mo.Status == TransferStatus.Cancelled &&
+                mo.CustomerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -396,7 +409,10 @@ namespace MyField.Controllers
             }
 
             var acceptedTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Accepted && mo.CustomerClub.ClubId == clubId)
+                .Where(mo => mo.Status == TransferStatus.Accepted &&
+                mo.CustomerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -450,7 +466,10 @@ namespace MyField.Controllers
             }
 
             var rejectedTransfers = await _context.Transfer
-               .Where(mo => mo.Status == TransferStatus.Rejected && mo.CustomerClub.ClubId == clubId)
+               .Where(mo => mo.Status == TransferStatus.Rejected &&
+                mo.CustomerClub.ClubId == clubId &&
+                mo.SellerClub.League.IsCurrent &&
+                mo.CustomerClub.League.IsCurrent)
                .Include(s => s.Player)
                .Include(s => s.SellerClub)
                .ToListAsync();
@@ -484,7 +503,10 @@ namespace MyField.Controllers
             }
 
             var completedTransfers = await _context.Transfer
-                     .Where(mo => mo.Status == TransferStatus.Completed && mo.CustomerClub.ClubId == clubId)
+                     .Where(mo => mo.Status == TransferStatus.Completed &&
+                      mo.CustomerClub.ClubId == clubId &&
+                      mo.SellerClub.League.IsCurrent &&
+                      mo.CustomerClub.League.IsCurrent)
                      .Include(s => s.Player)
                      .Include(s => s.SellerClub)
                      .ToListAsync();
@@ -510,7 +532,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> TransferMarket()
         {
             var playerTransferMarket = await _context.PlayerTransferMarket
-                .Where(p => !p.IsArchived)
+                .Where(p => !p.IsArchived && p.League.IsCurrent)
                 .Include(s => s.Club)
                 .Include(s => s.CreatedBy)
                 .Include(s => s.Player)
@@ -522,7 +544,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> PlayerTransferMarket()
         {
             var playerTransferMarket = await _context.PlayerTransferMarket
-                .Where(p => !p.IsArchived)
+                .Where(p => !p.IsArchived && p.League.IsCurrent)
                 .Include(s => s.Club)
                 .Include(s => s.CreatedBy)
                 .Include(s => s.Player)
@@ -580,7 +602,8 @@ namespace MyField.Controllers
                                 ClubId = player.ClubId,
                                 CreatedById = userId,
                                 CreatedDateTime = DateTime.UtcNow,
-                                SaleStatus = SaleStatus.Available
+                                SaleStatus = SaleStatus.Available,
+                                LeagueId = currentSeason.LeagueId,
                             };
 
                             transferMarkets.Add(transfermarket);

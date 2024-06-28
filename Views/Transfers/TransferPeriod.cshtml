@@ -51,34 +51,38 @@
                         </td>
                         <td>
 
-                            @if(item.PeriodOpenCount >= 2)
+                            @if(item.PeriodOpenCount == 2)
                             {
-                                <span style="background-color:red; padding-top:5px; padding-right:15px; padding-bottom:5px; padding-left:15px; color:white; margin:0; display:inline-block; border-radius:5px;">Limit reached</span>
+                                <p>Second round</p>
+                            }
+                            else if (item.PeriodOpenCount == 1)
+                            {
+                                <p>First round</p>
                             }
                             else
                             {
-                                @Html.DisplayFor(modelItem => item.PeriodOpenCount)
+                                <p>Currently closed</p>
                             }
 
                         </td>
                         <td>
                             @if (item.IsCurrent == true)
                             {
-                                <span style="background-color:green; padding-top:5px; padding-right:15px; padding-bottom:5px; padding-left:15px; color:white; margin:0; display:inline-block; border-radius:5px;">YES</span>
+                                <p>YES</p>
                             }
                             else
                             {
-                                <span style="background-color:grey; padding-top:5px; padding-right:15px; padding-bottom:5px; padding-left:15px; color:white; margin:0; display:inline-block; border-radius:5px;">NO</span>
+                                <p>NO</p>
                             }
                         </td>
                         <td>
                             @if (item.IsOpened == true)
                             {
-                                <span style="background-color:green; padding-top:5px; padding-right:15px; padding-bottom:5px; padding-left:15px; color:white; margin:0; display:inline-block; border-radius:5px;">YES</span>
+                                <p>YES</p>
                             }
                             else
                             {
-                                <span style="background-color:grey; padding-top:5px; padding-right:15px; padding-bottom:5px; padding-left:15px; color:white; margin:0; display:inline-block; border-radius:5px;">NO</span>
+                                <p>NO</p>
                             }
                         </td>
                         <td>

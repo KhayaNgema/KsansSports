@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240628122542_AddLeeeeee")]
+    partial class AddLeeeeee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1836,17 +1839,14 @@ namespace MyField.Migrations
                     b.Property<int>("FixturedMatchesCount")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("FixturedMatchesRate")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("InterruptedMatchesCount")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("InterruptedMatchesRate")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("MatchesRate")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("MatchesToBePlayedCount")
                         .HasColumnType("int");
@@ -1854,17 +1854,8 @@ namespace MyField.Migrations
                     b.Property<int>("PlayedMatchesCounts")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("PlayedMatchesRate")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("PostponedMatchesCount")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("PostponedMatchesRate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("UnfixturedMatchesRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("UnreleasedFixturesCount")
                         .HasColumnType("int");
@@ -1884,9 +1875,6 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Reports");
 
-                    b.Property<decimal>("DrawingRate")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("DrawsCount")
                         .HasColumnType("int");
 
@@ -1899,23 +1887,14 @@ namespace MyField.Migrations
                     b.Property<int>("LosesCount")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("LosingRate")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("ReleasedResultsCount")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("ReleasedResultsRate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("UnreleasedMatchesRate")
+                    b.Property<decimal>("ResultsRate")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("UnreleasedResultsCount")
                         .HasColumnType("int");
-
-                    b.Property<decimal>("WinningRate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("WinsCount")
                         .HasColumnType("int");

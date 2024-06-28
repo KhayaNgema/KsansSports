@@ -22,11 +22,19 @@ namespace MyField.Models
 
         public int PlayedMatchesCounts { get; set; }
 
-        public int PostponedMatchesCount { get; set; }
+        public int PostponedMatchesCount { get; set; }  
 
         public int InterruptedMatchesCount { get; set; }
 
-        public decimal MatchesRate { get; set; }
+        public decimal FixturedMatchesRate { get; set; }
+
+        public decimal UnfixturedMatchesRate { get; set; }
+
+        public decimal PlayedMatchesRate { get; set; }
+
+        public decimal PostponedMatchesRate { get; set; }
+
+        public decimal InterruptedMatchesRate { get; set; }
     }
 
     public class MatchResultsReports: Reports
@@ -47,7 +55,16 @@ namespace MyField.Models
 
         public int DrawsCount { get; set; }
 
-        public decimal ResultsRate { get; set; }
+        public decimal ReleasedResultsRate { get; set; }
+
+        public decimal UnreleasedMatchesRate { get; set; }
+
+        public decimal WinningRate { get; set; }
+
+
+        public decimal LosingRate { get; set; }
+
+        public decimal DrawingRate { get; set; }
     }
 
     public class TransfersReports : Reports
@@ -72,6 +89,11 @@ namespace MyField.Models
 
         public decimal ClubsCut { get; set; }
 
-        public decimal TranferRate { get; set; }
+        public decimal SuccessfulTranferRate { get; set; }
+
+        public decimal UnsuccessfulTranferRate { get; set; }
+
+        public decimal NotStartedTransferRate { get; set; }
+
     }
 }

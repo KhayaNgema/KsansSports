@@ -422,6 +422,11 @@ namespace MyField.Controllers
 
                 var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
 
+                var matchReport = await _context.MatchReports
+                     .Where(m => m.Season.IsCurrent)
+                     .Include(m => m.Season)
+                     .FirstOrDefaultAsync();
+
                 if (currentLeague == null)
                 {
                     ModelState.AddModelError(string.Empty, "No current league found.");
@@ -456,6 +461,10 @@ namespace MyField.Controllers
                 };
 
                 _context.Add(newOfficials);
+                await _context.SaveChangesAsync();
+
+                matchReport.FixturedMatchesCount++;
+
                 await _context.SaveChangesAsync();
 
                 var newSavedFixture = await _context.Fixture
@@ -630,6 +639,11 @@ namespace MyField.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
+            var matchReport = await _context.MatchReports
+                 .Where(m => m.Season.IsCurrent)
+                 .Include(m => m.Season)
+                  .FirstOrDefaultAsync();
+
             var fixture = await _context.Fixture
                 .Where(f => f.FixtureId == id)
                 .Include(f => f.HomeTeam)
@@ -641,6 +655,8 @@ namespace MyField.Controllers
             fixture.ModifiedById = user.Id;
 
             _context.Update(fixture);
+
+            matchReport.InterruptedMatchesCount++;
           
             await _context.SaveChangesAsync();
 
@@ -654,6 +670,11 @@ namespace MyField.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
+            var matchReport = await _context.MatchReports
+                .Where(m => m.Season.IsCurrent)
+                .Include(m => m.Season)
+                .FirstOrDefaultAsync();
+
             var fixture = await _context.Fixture
                 .Where(f => f.FixtureId == id)
                 .Include(f => f.HomeTeam)
@@ -663,8 +684,9 @@ namespace MyField.Controllers
             fixture.FixtureStatus = FixtureStatus.Postponed;
             fixture.ModifiedDateTime = DateTime.Now;
             fixture.ModifiedById = user.Id;
-
             _context.Update(fixture);
+
+            matchReport.PostponedMatchesRate++;
 
             await _context.SaveChangesAsync();
 

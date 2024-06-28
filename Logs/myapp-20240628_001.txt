@@ -412,3 +412,230 @@ WHERE [l].[IsCurrent] = CAST(1 AS bit)
 2024-06-28 00:02:22.115 +02:00 [INF] Executed endpoint 'MyField.Controllers.ReportsController.MatchReports (MyField)'
 2024-06-28 00:02:22.115 +02:00 [INF] HTTP GET /Reports/MatchReports responded 200 in 66.7175 ms
 2024-06-28 00:02:22.131 +02:00 [INF] The file /css/site.css was not modified
+2024-06-28 12:41:10.602 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-28 12:41:15.519 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-06-28 12:41:15.550 +02:00 [INF] Now listening on: https://localhost:7102
+2024-06-28 12:41:15.550 +02:00 [INF] Now listening on: http://localhost:5020
+2024-06-28 12:41:15.552 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-28 12:41:15.552 +02:00 [INF] Hosting environment: Development
+2024-06-28 12:41:15.552 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-06-28 12:41:20.725 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:41:21.098 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-28 12:41:21.098 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - -
+2024-06-28 12:41:21.098 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-28 12:41:21.098 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 378.0313ms
+2024-06-28 12:41:21.102 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:41:21.111 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.4653ms
+2024-06-28 12:41:21.116 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - - - 200 35852 text/css 17.9590ms
+2024-06-28 12:41:21.116 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 18.1248ms
+2024-06-28 12:41:21.124 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 25.6965ms
+2024-06-28 12:41:21.125 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:41:21.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-06-28 12:41:21.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 66.7718ms
+2024-06-28 12:41:21.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-06-28 12:41:21.216 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 5430 image/x-icon 1.4615ms
+2024-06-28 12:41:21.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 303.4616ms
+2024-06-28 12:41:21.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp - -
+2024-06-28 12:41:21.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg - -
+2024-06-28 12:41:21.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg - -
+2024-06-28 12:41:21.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp - -
+2024-06-28 12:41:21.485 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg - - - 200 15195 image/jpeg 1.7496ms
+2024-06-28 12:41:21.485 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg - - - 200 13452 image/jpeg 1.7680ms
+2024-06-28 12:41:21.490 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp - - - 200 74468 image/webp 6.9578ms
+2024-06-28 12:41:21.524 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp - - - 200 1143530 image/webp 40.6153ms
+2024-06-28 12:41:23.913 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-06-28 12:41:24.114 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 200.3797ms
+2024-06-28 12:41:25.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/standings - -
+2024-06-28 12:41:25.210 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/standings - - - 200 - text/html;+charset=utf-8 110.7509ms
+2024-06-28 12:41:25.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2054 - -
+2024-06-28 12:41:25.422 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2054 - - - 200 - text/html;+charset=utf-8 206.8723ms
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-06-28 12:41:25.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-06-28 12:41:25.427 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-06-28 12:41:25.427 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-06-28 12:41:25.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.3227ms
+2024-06-28 12:41:25.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.1554ms
+2024-06-28 12:41:25.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.1821ms
+2024-06-28 12:41:25.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.8686ms
+2024-06-28 12:41:25.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.9557ms
+2024-06-28 12:41:25.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.9722ms
+2024-06-28 12:41:25.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.0436ms
+2024-06-28 12:41:25.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 2.9054ms
+2024-06-28 12:41:31.908 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-06-28 12:41:32.002 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 94.1742ms
+2024-06-28 12:41:32.017 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-06-28 12:41:32.017 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-06-28 12:41:32.021 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 3.3547ms
+2024-06-28 12:41:32.022 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 5.0227ms
+2024-06-28 12:41:32.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-06-28 12:41:32.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:41:32.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:41:32.026 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.6839ms
+2024-06-28 12:41:32.028 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 2.2854ms
+2024-06-28 12:41:32.031 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.1832ms
+2024-06-28 12:41:40.819 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267
+2024-06-28 12:41:43.699 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267 - 302 0 - 2880.6055ms
+2024-06-28 12:41:43.702 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:41:43.707 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 5.1057ms
+2024-06-28 12:41:43.710 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:41:44.017 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 306.6418ms
+2024-06-28 12:41:44.030 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:41:44.032 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:41:44.032 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4067ms
+2024-06-28 12:41:44.033 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.3546ms
+2024-06-28 12:42:55.887 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOffice - -
+2024-06-28 12:42:56.077 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOffice - - - 200 - text/html;+charset=utf-8 190.1868ms
+2024-06-28 12:42:56.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-06-28 12:42:56.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-06-28 12:42:56.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-06-28 12:42:56.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-06-28 12:42:56.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-06-28 12:42:56.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:42:56.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-06-28 12:42:56.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-06-28 12:42:56.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-06-28 12:42:56.096 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-06-28 12:42:56.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.9600ms
+2024-06-28 12:42:56.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 2.1460ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 2.5121ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.7265ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.6985ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.2512ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 3.1551ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 2.3285ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 2.4572ms
+2024-06-28 12:42:56.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 2.4433ms
+2024-06-28 12:42:56.099 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.5049ms
+2024-06-28 12:42:59.834 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:42:59.837 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 3.1353ms
+2024-06-28 12:42:59.842 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:42:59.863 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 20.2863ms
+2024-06-28 12:42:59.873 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:42:59.873 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:42:59.874 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2431ms
+2024-06-28 12:42:59.878 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.7232ms
+2024-06-28 12:43:01.647 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-06-28 12:43:01.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 185.5038ms
+2024-06-28 12:43:01.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:01.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:01.845 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1734ms
+2024-06-28 12:43:01.848 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.8923ms
+2024-06-28 12:43:03.169 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:43:03.173 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 4.1332ms
+2024-06-28 12:43:03.176 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:43:03.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 16.5225ms
+2024-06-28 12:43:03.203 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:03.204 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:03.205 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2030ms
+2024-06-28 12:43:03.206 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.0956ms
+2024-06-28 12:43:04.242 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/MatchResultsBackOffice - -
+2024-06-28 12:43:04.398 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/MatchResultsBackOffice - - - 200 - text/html;+charset=utf-8 155.3993ms
+2024-06-28 12:43:04.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:04.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:04.408 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4144ms
+2024-06-28 12:43:04.413 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.3154ms
+2024-06-28 12:43:05.807 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:43:05.825 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 18.1310ms
+2024-06-28 12:43:05.837 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:05.838 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:05.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1749ms
+2024-06-28 12:43:05.840 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.3914ms
+2024-06-28 12:43:08.206 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/Leagues - -
+2024-06-28 12:43:08.335 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/Leagues - - - 200 - text/html;+charset=utf-8 128.1758ms
+2024-06-28 12:43:08.347 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:08.347 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:08.347 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1625ms
+2024-06-28 12:43:08.351 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.3980ms
+2024-06-28 12:43:10.016 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:43:10.020 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 3.5608ms
+2024-06-28 12:43:10.023 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:43:10.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 15.4562ms
+2024-06-28 12:43:10.052 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:10.053 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:10.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1337ms
+2024-06-28 12:43:10.054 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.5285ms
+2024-06-28 12:43:12.271 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/Standings - -
+2024-06-28 12:43:12.348 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/Standings - - - 200 - text/html;+charset=utf-8 76.7596ms
+2024-06-28 12:43:12.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:12.362 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:12.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.8090ms
+2024-06-28 12:43:12.367 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 5.8383ms
+2024-06-28 12:43:16.870 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:43:16.930 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 59.8398ms
+2024-06-28 12:43:16.962 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:43:16.964 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:43:16.965 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5609ms
+2024-06-28 12:43:16.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.6344ms
+2024-06-28 12:44:15.210 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-06-28 12:44:17.133 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 1922.3750ms
+2024-06-28 12:44:17.142 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:44:17.152 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 10.3205ms
+2024-06-28 12:44:17.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:44:17.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:44:17.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.9399ms
+2024-06-28 12:44:17.254 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 37.7890ms
+2024-06-28 12:44:17.301 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-06-28 12:44:17.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 33.1899ms
+2024-06-28 12:44:17.343 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg - -
+2024-06-28 12:44:17.345 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp - -
+2024-06-28 12:44:17.345 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg - -
+2024-06-28 12:44:17.345 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp - -
+2024-06-28 12:44:17.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg - - - 200 13452 image/jpeg 2.6046ms
+2024-06-28 12:44:17.347 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg - - - 200 15195 image/jpeg 1.8767ms
+2024-06-28 12:44:17.351 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp - - - 200 74468 image/webp 5.4948ms
+2024-06-28 12:44:17.396 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp - - - 200 1143530 image/webp 50.3554ms
+2024-06-28 12:44:25.723 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-06-28 12:44:25.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 115.5640ms
+2024-06-28 12:44:26.378 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/standings - -
+2024-06-28 12:44:26.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/standings - - - 200 - text/html;+charset=utf-8 26.2604ms
+2024-06-28 12:44:26.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2054 - -
+2024-06-28 12:44:26.588 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2054 - - - 200 - text/html;+charset=utf-8 162.0953ms
+2024-06-28 12:44:26.603 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-06-28 12:44:26.603 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-06-28 12:44:26.603 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-06-28 12:44:26.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-06-28 12:44:26.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-06-28 12:44:26.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-06-28 12:44:26.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-06-28 12:44:26.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-06-28 12:44:26.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 2.7099ms
+2024-06-28 12:44:26.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 3.3132ms
+2024-06-28 12:44:26.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 3.5325ms
+2024-06-28 12:44:26.607 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 2.4998ms
+2024-06-28 12:44:26.608 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 2.8802ms
+2024-06-28 12:44:26.613 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 8.6081ms
+2024-06-28 12:44:26.614 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 8.8906ms
+2024-06-28 12:44:26.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 9.3939ms
+2024-06-28 12:44:27.564 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/clubs - -
+2024-06-28 12:44:27.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/clubs - - - 200 - text/html;+charset=utf-8 193.6027ms
+2024-06-28 12:44:27.762 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-06-28 12:44:27.763 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.0790ms
+2024-06-28 12:46:17.946 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-06-28 12:46:17.996 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 50.4821ms
+2024-06-28 12:46:18.064 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-06-28 12:46:18.066 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:46:18.067 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.8201ms
+2024-06-28 12:46:18.088 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 23.1668ms
+2024-06-28 12:46:18.101 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:46:18.114 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 12.9902ms
+2024-06-28 12:46:29.460 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267
+2024-06-28 12:46:31.623 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267 - 302 0 - 2162.7757ms
+2024-06-28 12:46:31.635 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 12:46:31.643 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 8.6834ms
+2024-06-28 12:46:31.654 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 12:46:31.701 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 46.9176ms
+2024-06-28 12:46:31.772 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:46:31.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:46:31.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.6986ms
+2024-06-28 12:46:31.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.0392ms
+2024-06-28 12:46:37.580 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/TransfersReports - -
+2024-06-28 12:46:37.980 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/TransfersReports - - - 200 - text/html;+charset=utf-8 399.4753ms
+2024-06-28 12:46:38.030 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 12:46:38.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 12:46:38.036 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.8714ms
+2024-06-28 12:46:38.044 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.0381ms

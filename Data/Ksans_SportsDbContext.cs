@@ -74,6 +74,12 @@ namespace MyField.Data
                  .HasValue<ClubAdministrator>("ClubAdministrator")
                  .HasValue<ClubManager>("ClubManager");
 
+            modelBuilder.Entity<MatchFormation>()
+                 .HasDiscriminator<string>("Discriminator")
+                 .HasValue<MatchFormation>("MatchFormation")
+                 .HasValue<MatchFormation_Archive>("MatchFormation_Archive");
+
+
 
 
             modelBuilder.Entity<Fixture>()

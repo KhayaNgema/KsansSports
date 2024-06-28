@@ -83,16 +83,47 @@
                 </tr>
                 <tr class="ellipsis">
                     <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
-                        Matches rate
+                        Fixtured matches rate
                     </td>
                     <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
-                        @Html.DisplayFor(modelItem => item.MatchesRate) %
+                        @Html.DisplayFor(modelItem => item.FixturedMatchesRate) %
                     </td>
                 </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Not fixtured matches rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.UnfixturedMatchesRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Played matches rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.PlayedMatchesRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Postponed matches rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.PostponedMatchesRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Interrupted matches rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.InterruptedMatchesRate) %
+                    </td>
+                </tr>
+
             }
         </tbody>
     </table>
 </div>
-    </tbody>
-</table>
-</div>
+

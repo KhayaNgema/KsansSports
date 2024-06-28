@@ -13,6 +13,10 @@ namespace MyField.Models
 
         public virtual Player Player { get; set; }
 
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }  
+
         public int ClubId { get; set; }
 
         public virtual Club Club { get; set; }

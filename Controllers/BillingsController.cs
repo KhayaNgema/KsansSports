@@ -552,10 +552,16 @@ namespace MyField.Controllers
 
                 decimal purchasedPercentage = ((decimal)transferReport.PurchasedPlayersCount / transferReport.TransferMarketCount) * 100;
                 decimal declinedPercentage = ((decimal)transferReport.DeclinedTransfersCount / transferReport.TransferMarketCount) * 100;
+                decimal notStartedPercentage = ((decimal)(transferReport.TransferMarketCount - transferReport.PurchasedPlayersCount - transferReport.DeclinedTransfersCount) / transferReport.TransferMarketCount) * 100;
 
-                decimal transferRate = purchasedPercentage - declinedPercentage;
+                decimal successfulTransferRate = purchasedPercentage;
+                decimal unsuccessfulTransferRate = declinedPercentage;
+                decimal notStartedTransferRate = notStartedPercentage;
 
-                transferReport.TranferRate = transferRate;
+                transferReport.SuccessfulTranferRate = successfulTransferRate;
+                transferReport.UnsuccessfulTranferRate = unsuccessfulTransferRate;
+                transferReport.NotStartedTransferRate = notStartedTransferRate;
+
 
                 _context.Update(payment);
                 _context.Update(playerTransfer);

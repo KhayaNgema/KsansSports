@@ -55,7 +55,7 @@
                             <a href="@Url.Action("PayPlayerTransfer", "Billings",
                                         new { transferId = item.TransferId})" class="btn btn-outline-success btn-sm">
                                 <i class="fas fa-money-bill-wave "></i>
-                                Pay @ViewBag.PlayerMarketValue
+                                Pay @item.Player.MarketValue
                             </a>
                             <a asp-action="CancelPlayerTransfer" asp-route-transferId="@item.TransferId" class="btn btn-sm btn-outline-danger">
                                 <i class="fas fa-times-circle "></i>

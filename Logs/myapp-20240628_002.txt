@@ -1,0 +1,959 @@
+2024-06-28 12:41:11.763 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.769 +02:00 [WRN] No store type was specified for the decimal property 'MatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'ResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:11.770 +02:00 [WRN] No store type was specified for the decimal property 'TranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-06-28 12:41:15.132 +02:00 [INF] Executed DbCommand (52ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.202 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.204 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.205 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.206 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.206 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.207 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.207 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.208 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.209 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.209 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.210 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:15.259 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.439 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.440 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.441 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.448 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.449 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.450 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:15.451 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:20.908 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:41:20.925 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:41:20.941 +02:00 [INF] Executing ViewResult, running view Index.
+2024-06-28 12:41:21.085 +02:00 [INF] Executed ViewResult - view Index executed in 146.3949ms.
+2024-06-28 12:41:21.089 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 162.5107ms
+2024-06-28 12:41:21.089 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:41:21.091 +02:00 [INF] HTTP GET / responded 200 in 183.6435 ms
+2024-06-28 12:41:21.116 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-06-28 12:41:21.116 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-06-28 12:41:21.123 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-06-28 12:41:21.182 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-06-28 12:41:21.190 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-06-28 12:41:21.216 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-06-28 12:41:21.409 +02:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:41:21.460 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-06-28 12:41:21.476 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 17.859ms.
+2024-06-28 12:41:21.477 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 286.8244ms
+2024-06-28 12:41:21.477 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-06-28 12:41:21.477 +02:00 [INF] HTTP GET /sportnews responded 200 in 295.0643 ms
+2024-06-28 12:41:21.485 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg'
+2024-06-28 12:41:21.485 +02:00 [INF] Sending file. Request path: '/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg'
+2024-06-28 12:41:21.490 +02:00 [INF] Sending file. Request path: '/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp'
+2024-06-28 12:41:21.523 +02:00 [INF] Sending file. Request path: '/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp'
+2024-06-28 12:41:23.920 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-06-28 12:41:23.926 +02:00 [INF] Route matched with {action = "Index", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.FixturesController (MyField).
+2024-06-28 12:41:23.981 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:41:24.102 +02:00 [INF] Executed DbCommand (24ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[IsActive], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId]
+FROM [Fixture] AS [f]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+LEFT JOIN [MatchOfficials] AS [m] ON [f].[FixtureId] = [m].[FixtureId]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) AND [f].[LeagueId] = @__currentLeague_LeagueId_0
+ORDER BY [f].[FixtureId], [c].[ClubId], [c0].[ClubId]
+2024-06-28 12:41:24.103 +02:00 [INF] Executing PartialViewResult, running view _FixturesPartial.
+2024-06-28 12:41:24.113 +02:00 [INF] Executed PartialViewResult - view _FixturesPartial executed in 10.2339ms.
+2024-06-28 12:41:24.113 +02:00 [INF] Executed action MyField.Controllers.FixturesController.Index (MyField) in 187.1312ms
+2024-06-28 12:41:24.113 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-06-28 12:41:24.113 +02:00 [INF] HTTP GET /fixtures responded 200 in 193.3091 ms
+2024-06-28 12:41:25.101 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-06-28 12:41:25.105 +02:00 [INF] Route matched with {action = "Index", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.StandingsController (MyField).
+2024-06-28 12:41:25.158 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+ORDER BY [l].[CreatedDateTime] DESC
+2024-06-28 12:41:25.177 +02:00 [INF] Executing PartialViewResult, running view _StandingsPartial.
+2024-06-28 12:41:25.210 +02:00 [INF] Executed PartialViewResult - view _StandingsPartial executed in 33.3307ms.
+2024-06-28 12:41:25.210 +02:00 [INF] Executed action MyField.Controllers.StandingsController.Index (MyField) in 105.449ms
+2024-06-28 12:41:25.210 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-06-28 12:41:25.210 +02:00 [INF] HTTP GET /standings responded 200 in 109.6228 ms
+2024-06-28 12:41:25.215 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-06-28 12:41:25.226 +02:00 [INF] Route matched with {action = "StandingsTable", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StandingsTable(System.Nullable`1[System.Int32]) on controller MyField.Controllers.StandingsController (MyField).
+2024-06-28 12:41:25.271 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@__leagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StandingId], [s].[ClubId], [s].[CreatedById], [s].[CreatedDateTime], [s].[Discriminator], [s].[Draw], [s].[GoalDifference], [s].[GoalsConceded], [s].[GoalsScored], [s].[Last5Games], [s].[LeagueId], [s].[Lose], [s].[MatchPlayed], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[Points], [s].[Position], [s].[Reason], [s].[Wins], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Standing] AS [s]
+INNER JOIN [Club] AS [c] ON [s].[ClubId] = [c].[ClubId]
+WHERE [s].[LeagueId] = @__leagueId_0
+ORDER BY [s].[Points] DESC, [s].[GoalDifference] DESC, [s].[MatchPlayed]
+2024-06-28 12:41:25.378 +02:00 [INF] Executing PartialViewResult, running view _StandingsTablePartial.
+2024-06-28 12:41:25.421 +02:00 [INF] Executed PartialViewResult - view _StandingsTablePartial executed in 42.9329ms.
+2024-06-28 12:41:25.421 +02:00 [INF] Executed action MyField.Controllers.StandingsController.StandingsTable (MyField) in 195.4989ms
+2024-06-28 12:41:25.421 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-06-28 12:41:25.421 +02:00 [INF] HTTP GET /Standings/StandingsTable responded 200 in 206.3664 ms
+2024-06-28 12:41:25.427 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-06-28 12:41:25.427 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'
+2024-06-28 12:41:25.427 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'
+2024-06-28 12:41:25.428 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'
+2024-06-28 12:41:25.428 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'
+2024-06-28 12:41:25.428 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'
+2024-06-28 12:41:25.428 +02:00 [INF] Sending file. Request path: '/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'
+2024-06-28 12:41:25.430 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-06-28 12:41:31.910 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-06-28 12:41:31.921 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-06-28 12:41:31.946 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Invalid"
+2024-06-28 12:41:31.950 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-06-28 12:41:32.002 +02:00 [INF] Executed page /Account/Login in 81.0025ms
+2024-06-28 12:41:32.002 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-06-28 12:41:32.002 +02:00 [INF] HTTP POST /Identity/Account/Login responded 200 in 91.4579 ms
+2024-06-28 12:41:32.021 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation\dist\jquery.validate.js'
+2024-06-28 12:41:32.022 +02:00 [INF] Sending file. Request path: '/Images/NFA_logo.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\NFA_logo.jpg'
+2024-06-28 12:41:32.028 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2024-06-28 12:41:40.828 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-06-28 12:41:40.828 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-06-28 12:41:40.837 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2024-06-28 12:41:40.880 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-28 12:41:41.026 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2024-06-28 12:41:41.045 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:41:41.048 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:41:41.054 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2024-06-28 12:41:41.060 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-06-28 12:41:41.065 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:41:41.078 +02:00 [INF] Start processing HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:41:41.080 +02:00 [INF] Sending HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:41:42.627 +02:00 [INF] Received HTTP response headers after 1545.3011ms - 200
+2024-06-28 12:41:42.628 +02:00 [INF] End processing HTTP request after 1551.1836ms - 200
+2024-06-28 12:41:42.658 +02:00 [INF] Start processing HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:41:42.658 +02:00 [INF] Sending HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:41:43.465 +02:00 [INF] Received HTTP response headers after 806.8824ms - 200
+2024-06-28 12:41:43.465 +02:00 [INF] End processing HTTP request after 807.2375ms - 200
+2024-06-28 12:41:43.630 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DeviceInfo] ([Browser], [BrowserVersion], [City], [Country], [DeviceModel], [DeviceName], [IpAddress], [Latitude], [Longitude], [OSName], [OSVersion], [PostalCode], [Region])
+OUTPUT INSERTED.[DeviceInfoId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-06-28 12:41:43.691 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 450), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ActivityLogs] ([Activity], [DeviceInfoId], [Timestamp], [UserBaseModelId], [UserId])
+OUTPUT INSERTED.[ActivityLogId]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-06-28 12:41:43.696 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-06-28 12:41:43.698 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-06-28 12:41:43.699 +02:00 [INF] Executed page /Account/Login in 2870.6661ms
+2024-06-28 12:41:43.699 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-06-28 12:41:43.699 +02:00 [INF] HTTP POST /Identity/Account/Login responded 302 in 2871.4201 ms
+2024-06-28 12:41:43.706 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:41:43.706 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:41:43.707 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-06-28 12:41:43.707 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 0.7514ms
+2024-06-28 12:41:43.707 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:41:43.707 +02:00 [INF] HTTP GET / responded 302 in 0.9712 ms
+2024-06-28 12:41:43.713 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:41:43.715 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:41:43.849 +02:00 [INF] Executed DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:41:43.858 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:41:43.863 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:41:43.899 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:41:43.904 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:41:43.906 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:41:44.017 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 112.0183ms.
+2024-06-28 12:41:44.017 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 301.08ms
+2024-06-28 12:41:44.017 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:41:44.017 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 304.2387 ms
+2024-06-28 12:42:55.893 +02:00 [INF] Executing endpoint 'MyField.Controllers.ClubsController.ClubsBackOffice (MyField)'
+2024-06-28 12:42:55.895 +02:00 [INF] Route matched with {action = "ClubsBackOffice", controller = "Clubs", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ClubsBackOffice() on controller MyField.Controllers.ClubsController (MyField).
+2024-06-28 12:42:56.003 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[Player_ClubId], [t].[EndDate], [t].[IsActive], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsActive], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture], [t1].[ClubManager_ClubId], [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [Club] AS [c]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [c].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsActive], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [c].[ModifiedById] = [t0].[Id]
+LEFT JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture], [a1].[ClubManager_ClubId]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'ClubManager'
+) AS [t1] ON [c].[ClubId] = [t1].[ClubManager_ClubId]
+INNER JOIN [League] AS [l] ON [c].[LeagueId] = [l].[LeagueId]
+ORDER BY [c].[CreatedDateTime] DESC
+2024-06-28 12:42:56.039 +02:00 [INF] Executing ViewResult, running view ClubsBackOffice.
+2024-06-28 12:42:56.076 +02:00 [INF] Executed ViewResult - view ClubsBackOffice executed in 38.7284ms.
+2024-06-28 12:42:56.077 +02:00 [INF] Executed action MyField.Controllers.ClubsController.ClubsBackOffice (MyField) in 181.4666ms
+2024-06-28 12:42:56.077 +02:00 [INF] Executed endpoint 'MyField.Controllers.ClubsController.ClubsBackOffice (MyField)'
+2024-06-28 12:42:56.077 +02:00 [INF] HTTP GET /Clubs/ClubsBackOffice responded 200 in 183.8994 ms
+2024-06-28 12:42:56.096 +02:00 [INF] Sending file. Request path: '/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'
+2024-06-28 12:42:56.097 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-06-28 12:42:59.836 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:42:59.836 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:42:59.837 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-06-28 12:42:59.837 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 0.7578ms
+2024-06-28 12:42:59.837 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:42:59.837 +02:00 [INF] HTTP GET / responded 302 in 1.2626 ms
+2024-06-28 12:42:59.846 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:42:59.846 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:42:59.850 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:42:59.851 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:42:59.852 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:42:59.856 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:42:59.860 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:42:59.860 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:42:59.862 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 1.9464ms.
+2024-06-28 12:42:59.862 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 15.8995ms
+2024-06-28 12:42:59.862 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:42:59.862 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 16.3385 ms
+2024-06-28 12:43:01.649 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-06-28 12:43:01.652 +02:00 [INF] Route matched with {action = "FixturesBackOffice", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FixturesBackOffice() on controller MyField.Controllers.FixturesController (MyField).
+2024-06-28 12:43:01.660 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:01.752 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[IsActive], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[Player_ClubId], [t].[EndDate], [t].[IsActive], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsActive], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [Fixture] AS [f]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [f].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsActive], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [f].[ModifiedById] = [t0].[Id]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) OR ([f].[FixtureStatus] = 3 AND [f].[LeagueId] = @__currentLeague_LeagueId_0)
+ORDER BY [f].[CreatedDateTime] DESC
+2024-06-28 12:43:01.793 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:01.796 +02:00 [INF] Executing ViewResult, running view FixturesBackOffice.
+2024-06-28 12:43:01.832 +02:00 [INF] Executed ViewResult - view FixturesBackOffice executed in 37.4503ms.
+2024-06-28 12:43:01.832 +02:00 [INF] Executed action MyField.Controllers.FixturesController.FixturesBackOffice (MyField) in 179.7104ms
+2024-06-28 12:43:01.832 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-06-28 12:43:01.832 +02:00 [INF] HTTP GET /Fixtures/FixturesBackOffice responded 200 in 183.8014 ms
+2024-06-28 12:43:03.171 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:43:03.171 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:03.172 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-06-28 12:43:03.172 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 0.5966ms
+2024-06-28 12:43:03.173 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:43:03.173 +02:00 [INF] HTTP GET / responded 302 in 1.7276 ms
+2024-06-28 12:43:03.177 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:03.177 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:03.180 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:43:03.181 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:43:03.182 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:43:03.185 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:43:03.188 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:43:03.188 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:43:03.189 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 1.2683ms.
+2024-06-28 12:43:03.190 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 12.4012ms
+2024-06-28 12:43:03.190 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:03.190 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 13.1229 ms
+2024-06-28 12:43:04.245 +02:00 [INF] Executing endpoint 'MyField.Controllers.MatchResultsController.MatchResultsBackOffice (MyField)'
+2024-06-28 12:43:04.248 +02:00 [INF] Route matched with {action = "MatchResultsBackOffice", controller = "MatchResults", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MatchResultsBackOffice() on controller MyField.Controllers.MatchResultsController (MyField).
+2024-06-28 12:43:04.254 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:04.346 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[ResultsId], [m].[AwayTeamId], [m].[AwayTeamScore], [m].[CreatedById], [m].[CreatedDateTime], [m].[Discriminator], [m].[FixtureId], [m].[HomeTeamId], [m].[HomeTeamScore], [m].[LeagueId], [m].[Location], [m].[MatchDate], [m].[MatchTime], [m].[ModifiedById], [m].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[IsActive], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[Player_ClubId], [t].[EndDate], [t].[IsActive], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsActive], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [MatchResult] AS [m]
+INNER JOIN [Club] AS [c] ON [m].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [m].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [m].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsActive], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [m].[ModifiedById] = [t0].[Id]
+WHERE [m].[LeagueId] = @__currentLeague_LeagueId_0
+2024-06-28 12:43:04.365 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:04.367 +02:00 [INF] Executing ViewResult, running view MatchResultsBackOffice.
+2024-06-28 12:43:04.397 +02:00 [INF] Executed ViewResult - view MatchResultsBackOffice executed in 31.3414ms.
+2024-06-28 12:43:04.398 +02:00 [INF] Executed action MyField.Controllers.MatchResultsController.MatchResultsBackOffice (MyField) in 149.2794ms
+2024-06-28 12:43:04.398 +02:00 [INF] Executed endpoint 'MyField.Controllers.MatchResultsController.MatchResultsBackOffice (MyField)'
+2024-06-28 12:43:04.398 +02:00 [INF] HTTP GET /MatchResults/MatchResultsBackOffice responded 200 in 152.8078 ms
+2024-06-28 12:43:05.809 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:05.809 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:05.814 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:43:05.815 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:43:05.816 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:43:05.819 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:43:05.823 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:43:05.823 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:43:05.825 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 1.5254ms.
+2024-06-28 12:43:05.825 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 15.4379ms
+2024-06-28 12:43:05.825 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:05.825 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 15.9088 ms
+2024-06-28 12:43:08.209 +02:00 [INF] Executing endpoint 'MyField.Controllers.LeaguesController.Leagues (MyField)'
+2024-06-28 12:43:08.213 +02:00 [INF] Route matched with {action = "Leagues", controller = "Leagues", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Leagues() on controller MyField.Controllers.LeaguesController (MyField).
+2024-06-28 12:43:08.314 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[Player_ClubId], [t].[EndDate], [t].[IsActive], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsActive], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [League] AS [l]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [l].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsActive], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [l].[ModifiedById] = [t0].[Id]
+ORDER BY [l].[CreatedDateTime] DESC
+2024-06-28 12:43:08.318 +02:00 [INF] Executing ViewResult, running view Leagues.
+2024-06-28 12:43:08.334 +02:00 [INF] Executed ViewResult - view Leagues executed in 16.8952ms.
+2024-06-28 12:43:08.334 +02:00 [INF] Executed action MyField.Controllers.LeaguesController.Leagues (MyField) in 121.7963ms
+2024-06-28 12:43:08.334 +02:00 [INF] Executed endpoint 'MyField.Controllers.LeaguesController.Leagues (MyField)'
+2024-06-28 12:43:08.334 +02:00 [INF] HTTP GET /Leagues/Leagues responded 200 in 125.1544 ms
+2024-06-28 12:43:10.018 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:43:10.019 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:10.019 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-06-28 12:43:10.019 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 0.3631ms
+2024-06-28 12:43:10.019 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:43:10.019 +02:00 [INF] HTTP GET / responded 302 in 1.0219 ms
+2024-06-28 12:43:10.025 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:10.025 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:10.028 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:43:10.029 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:43:10.030 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:43:10.033 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:43:10.037 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:43:10.037 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:43:10.038 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 1.0489ms.
+2024-06-28 12:43:10.038 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 12.7144ms
+2024-06-28 12:43:10.038 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:10.038 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 12.9433 ms
+2024-06-28 12:43:12.276 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.Standings (MyField)'
+2024-06-28 12:43:12.279 +02:00 [INF] Route matched with {action = "Standings", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Standings() on controller MyField.Controllers.StandingsController (MyField).
+2024-06-28 12:43:12.283 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:12.302 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StandingId], [s].[ClubId], [s].[CreatedById], [s].[CreatedDateTime], [s].[Discriminator], [s].[Draw], [s].[GoalDifference], [s].[GoalsConceded], [s].[GoalsScored], [s].[Last5Games], [s].[LeagueId], [s].[Lose], [s].[MatchPlayed], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[Points], [s].[Position], [s].[Reason], [s].[Wins], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Standing] AS [s]
+INNER JOIN [Club] AS [c] ON [s].[ClubId] = [c].[ClubId]
+WHERE [s].[LeagueId] = @__currentLeague_LeagueId_0
+ORDER BY [s].[Points] DESC, [s].[GoalDifference] DESC, [s].[MatchPlayed]
+2024-06-28 12:43:12.305 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:43:12.308 +02:00 [INF] Executing ViewResult, running view Standings.
+2024-06-28 12:43:12.348 +02:00 [INF] Executed ViewResult - view Standings executed in 41.4369ms.
+2024-06-28 12:43:12.348 +02:00 [INF] Executed action MyField.Controllers.StandingsController.Standings (MyField) in 69.1084ms
+2024-06-28 12:43:12.348 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.Standings (MyField)'
+2024-06-28 12:43:12.348 +02:00 [INF] HTTP GET /Standings/Standings responded 200 in 71.8117 ms
+2024-06-28 12:43:16.877 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:16.877 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:43:16.888 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:43:16.896 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:43:16.900 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:43:16.916 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:43:16.924 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:43:16.926 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:43:16.930 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 3.898ms.
+2024-06-28 12:43:16.930 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 52.3178ms
+2024-06-28 12:43:16.930 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:43:16.930 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 52.7894 ms
+2024-06-28 12:44:15.221 +02:00 [INF] Executing endpoint '/Account/Logout'
+2024-06-28 12:44:15.232 +02:00 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2024-06-28 12:44:15.237 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2024-06-28 12:44:15.244 +02:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2024-06-28 12:44:15.245 +02:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-06-28 12:44:15.245 +02:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2024-06-28 12:44:15.246 +02:00 [INF] User logged out.
+2024-06-28 12:44:15.253 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:44:15.254 +02:00 [INF] Start processing HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:44:15.254 +02:00 [INF] Sending HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:44:16.373 +02:00 [INF] Received HTTP response headers after 1118.9461ms - 200
+2024-06-28 12:44:16.373 +02:00 [INF] End processing HTTP request after 1119.3779ms - 200
+2024-06-28 12:44:16.375 +02:00 [INF] Start processing HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:44:16.375 +02:00 [INF] Sending HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:44:17.096 +02:00 [INF] Received HTTP response headers after 720.5834ms - 200
+2024-06-28 12:44:17.096 +02:00 [INF] End processing HTTP request after 721.3226ms - 200
+2024-06-28 12:44:17.113 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DeviceInfo] ([Browser], [BrowserVersion], [City], [Country], [DeviceModel], [DeviceName], [IpAddress], [Latitude], [Longitude], [OSName], [OSVersion], [PostalCode], [Region])
+OUTPUT INSERTED.[DeviceInfoId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-06-28 12:44:17.130 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 450), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ActivityLogs] ([Activity], [DeviceInfoId], [Timestamp], [UserBaseModelId], [UserId])
+OUTPUT INSERTED.[ActivityLogId]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-06-28 12:44:17.131 +02:00 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-06-28 12:44:17.132 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-06-28 12:44:17.132 +02:00 [INF] Executed page /Account/Logout in 1900.2702ms
+2024-06-28 12:44:17.132 +02:00 [INF] Executed endpoint '/Account/Logout'
+2024-06-28 12:44:17.132 +02:00 [INF] HTTP POST /Identity/Account/Logout responded 302 in 1910.8392 ms
+2024-06-28 12:44:17.146 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:44:17.147 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:44:17.148 +02:00 [INF] Executing ViewResult, running view Index.
+2024-06-28 12:44:17.151 +02:00 [INF] Executed ViewResult - view Index executed in 3.6997ms.
+2024-06-28 12:44:17.151 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 4.7738ms
+2024-06-28 12:44:17.152 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:44:17.152 +02:00 [INF] HTTP GET / responded 200 in 5.5955 ms
+2024-06-28 12:44:17.301 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-06-28 12:44:17.301 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-06-28 12:44:17.327 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:44:17.331 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-06-28 12:44:17.333 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 1.929ms.
+2024-06-28 12:44:17.334 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 32.0746ms
+2024-06-28 12:44:17.334 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-06-28 12:44:17.334 +02:00 [INF] HTTP GET /sportnews responded 200 in 32.4431 ms
+2024-06-28 12:44:17.346 +02:00 [INF] Sending file. Request path: '/UploadedFiles/ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\ebf2f576-0c38-46c6-b089-437d258466fd_News Image 2.jpeg'
+2024-06-28 12:44:17.347 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f120a366-df6c-4ebd-a8fe-0e3982fcb87f_News Image.jpeg'
+2024-06-28 12:44:17.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\aef02fed-b92a-4987-9811-ca72909a893e_News Image 3.webp'
+2024-06-28 12:44:17.396 +02:00 [INF] Sending file. Request path: '/UploadedFiles/1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\1386e1f1-9e75-425a-b20d-ee4cbbbc6505_News News.webp'
+2024-06-28 12:44:25.726 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-06-28 12:44:25.726 +02:00 [INF] Route matched with {action = "Index", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.FixturesController (MyField).
+2024-06-28 12:44:25.752 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:44:25.835 +02:00 [INF] Executed DbCommand (81ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[IsActive], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId]
+FROM [Fixture] AS [f]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+LEFT JOIN [MatchOfficials] AS [m] ON [f].[FixtureId] = [m].[FixtureId]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) AND [f].[LeagueId] = @__currentLeague_LeagueId_0
+ORDER BY [f].[FixtureId], [c].[ClubId], [c0].[ClubId]
+2024-06-28 12:44:25.836 +02:00 [INF] Executing PartialViewResult, running view _FixturesPartial.
+2024-06-28 12:44:25.838 +02:00 [INF] Executed PartialViewResult - view _FixturesPartial executed in 1.9688ms.
+2024-06-28 12:44:25.838 +02:00 [INF] Executed action MyField.Controllers.FixturesController.Index (MyField) in 111.0259ms
+2024-06-28 12:44:25.838 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-06-28 12:44:25.838 +02:00 [INF] HTTP GET /fixtures responded 200 in 112.1734 ms
+2024-06-28 12:44:26.379 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-06-28 12:44:26.379 +02:00 [INF] Route matched with {action = "Index", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.StandingsController (MyField).
+2024-06-28 12:44:26.400 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+ORDER BY [l].[CreatedDateTime] DESC
+2024-06-28 12:44:26.401 +02:00 [INF] Executing PartialViewResult, running view _StandingsPartial.
+2024-06-28 12:44:26.403 +02:00 [INF] Executed PartialViewResult - view _StandingsPartial executed in 2.0842ms.
+2024-06-28 12:44:26.404 +02:00 [INF] Executed action MyField.Controllers.StandingsController.Index (MyField) in 24.4001ms
+2024-06-28 12:44:26.404 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-06-28 12:44:26.404 +02:00 [INF] HTTP GET /standings responded 200 in 25.2274 ms
+2024-06-28 12:44:26.427 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-06-28 12:44:26.428 +02:00 [INF] Route matched with {action = "StandingsTable", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StandingsTable(System.Nullable`1[System.Int32]) on controller MyField.Controllers.StandingsController (MyField).
+2024-06-28 12:44:26.470 +02:00 [INF] Executed DbCommand (35ms) [Parameters=[@__leagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StandingId], [s].[ClubId], [s].[CreatedById], [s].[CreatedDateTime], [s].[Discriminator], [s].[Draw], [s].[GoalDifference], [s].[GoalsConceded], [s].[GoalsScored], [s].[Last5Games], [s].[LeagueId], [s].[Lose], [s].[MatchPlayed], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[Points], [s].[Position], [s].[Reason], [s].[Wins], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Standing] AS [s]
+INNER JOIN [Club] AS [c] ON [s].[ClubId] = [c].[ClubId]
+WHERE [s].[LeagueId] = @__leagueId_0
+ORDER BY [s].[Points] DESC, [s].[GoalDifference] DESC, [s].[MatchPlayed]
+2024-06-28 12:44:26.473 +02:00 [INF] Executing PartialViewResult, running view _StandingsTablePartial.
+2024-06-28 12:44:26.587 +02:00 [INF] Executed PartialViewResult - view _StandingsTablePartial executed in 114.0024ms.
+2024-06-28 12:44:26.587 +02:00 [INF] Executed action MyField.Controllers.StandingsController.StandingsTable (MyField) in 158.9728ms
+2024-06-28 12:44:26.587 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-06-28 12:44:26.587 +02:00 [INF] HTTP GET /Standings/StandingsTable responded 200 in 160.2956 ms
+2024-06-28 12:44:26.606 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-06-28 12:44:26.607 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'
+2024-06-28 12:44:26.607 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'
+2024-06-28 12:44:26.607 +02:00 [INF] Sending file. Request path: '/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'
+2024-06-28 12:44:26.608 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'
+2024-06-28 12:44:26.613 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'
+2024-06-28 12:44:26.614 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'
+2024-06-28 12:44:26.615 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-06-28 12:44:27.565 +02:00 [INF] Executing endpoint 'MyField.Controllers.ClubsController.Index (MyField)'
+2024-06-28 12:44:27.606 +02:00 [INF] Route matched with {action = "Index", controller = "Clubs", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.ClubsController (MyField).
+2024-06-28 12:44:27.635 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:44:27.733 +02:00 [INF] Executed DbCommand (60ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Club] AS [c]
+WHERE [c].[LeagueId] = @__currentLeague_LeagueId_0
+2024-06-28 12:44:27.735 +02:00 [INF] Executing PartialViewResult, running view _ClubsPartial.
+2024-06-28 12:44:27.757 +02:00 [INF] Executed PartialViewResult - view _ClubsPartial executed in 23.0689ms.
+2024-06-28 12:44:27.757 +02:00 [INF] Executed action MyField.Controllers.ClubsController.Index (MyField) in 151.155ms
+2024-06-28 12:44:27.757 +02:00 [INF] Executed endpoint 'MyField.Controllers.ClubsController.Index (MyField)'
+2024-06-28 12:44:27.757 +02:00 [INF] HTTP GET /clubs responded 200 in 192.6828 ms
+2024-06-28 12:44:27.763 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'
+2024-06-28 12:46:17.962 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-06-28 12:46:17.968 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-06-28 12:46:17.973 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Invalid"
+2024-06-28 12:46:17.973 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-06-28 12:46:17.994 +02:00 [INF] Executed page /Account/Login in 26.4362ms
+2024-06-28 12:46:17.995 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-06-28 12:46:17.996 +02:00 [INF] HTTP POST /Identity/Account/Login responded 200 in 33.8361 ms
+2024-06-28 12:46:18.087 +02:00 [INF] Sending file. Request path: '/Images/NFA_logo.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\NFA_logo.jpg'
+2024-06-28 12:46:29.462 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-06-28 12:46:29.463 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-06-28 12:46:29.465 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2024-06-28 12:46:29.476 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-06-28 12:46:29.672 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2024-06-28 12:46:29.678 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:46:29.682 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-06-28 12:46:29.685 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2024-06-28 12:46:29.687 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-06-28 12:46:29.693 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-06-28 12:46:29.694 +02:00 [INF] Start processing HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:46:29.694 +02:00 [INF] Sending HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-06-28 12:46:30.795 +02:00 [INF] Received HTTP response headers after 1100.9427ms - 200
+2024-06-28 12:46:30.795 +02:00 [INF] End processing HTTP request after 1101.6384ms - 200
+2024-06-28 12:46:30.797 +02:00 [INF] Start processing HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:46:30.797 +02:00 [INF] Sending HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-06-28 12:46:31.587 +02:00 [INF] Received HTTP response headers after 789.8343ms - 200
+2024-06-28 12:46:31.587 +02:00 [INF] End processing HTTP request after 790.5848ms - 200
+2024-06-28 12:46:31.603 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DeviceInfo] ([Browser], [BrowserVersion], [City], [Country], [DeviceModel], [DeviceName], [IpAddress], [Latitude], [Longitude], [OSName], [OSVersion], [PostalCode], [Region])
+OUTPUT INSERTED.[DeviceInfoId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-06-28 12:46:31.621 +02:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 450), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ActivityLogs] ([Activity], [DeviceInfoId], [Timestamp], [UserBaseModelId], [UserId])
+OUTPUT INSERTED.[ActivityLogId]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-06-28 12:46:31.621 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-06-28 12:46:31.622 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-06-28 12:46:31.622 +02:00 [INF] Executed page /Account/Login in 2159.6188ms
+2024-06-28 12:46:31.622 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-06-28 12:46:31.622 +02:00 [INF] HTTP POST /Identity/Account/Login responded 302 in 2160.1493 ms
+2024-06-28 12:46:31.641 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:46:31.641 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:46:31.642 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-06-28 12:46:31.643 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 0.8689ms
+2024-06-28 12:46:31.643 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-06-28 12:46:31.643 +02:00 [INF] HTTP GET / responded 302 in 2.1873 ms
+2024-06-28 12:46:31.659 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:46:31.659 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-06-28 12:46:31.671 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-06-28 12:46:31.674 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-06-28 12:46:31.678 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-06-28 12:46:31.689 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsActive], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-06-28 12:46:31.693 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-06-28 12:46:31.693 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-06-28 12:46:31.699 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 5.4885ms.
+2024-06-28 12:46:31.699 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 39.925ms
+2024-06-28 12:46:31.700 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-06-28 12:46:31.700 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 40.9568 ms
+2024-06-28 12:46:37.588 +02:00 [INF] Executing endpoint 'MyField.Controllers.ReportsController.TransfersReports (MyField)'
+2024-06-28 12:46:37.618 +02:00 [INF] Route matched with {action = "TransfersReports", controller = "Reports", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] TransfersReports() on controller MyField.Controllers.ReportsController (MyField).
+2024-06-28 12:46:37.735 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [r].[ReportId], [r].[Discriminator], [r].[AssociationCut], [r].[ClubsCut], [r].[DeclinedTransfersCount], [r].[TransfersReports_LeagueId], [r].[PurchasedPlayersCount], [r].[TranferAmount], [r].[TranferRate], [r].[TransferMarketCount], [r].[TransferPeriodId], [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime], [t].[TransferPeriodId], [t].[CreatedById], [t].[CreatedDateTime], [t].[IsCurrent], [t].[IsOpened], [t].[LeagueId], [t].[ModifiedById], [t].[ModifiedDateTime], [t].[PeriodOpenCount]
+FROM [Reports] AS [r]
+INNER JOIN [League] AS [l] ON [r].[TransfersReports_LeagueId] = [l].[LeagueId]
+INNER JOIN [TransferPeriod] AS [t] ON [r].[TransferPeriodId] = [t].[TransferPeriodId]
+WHERE [r].[Discriminator] IN (N'TransfersReports', N'TransfersReports_Archive') AND [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:46:37.885 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-06-28 12:46:37.896 +02:00 [INF] Executing ViewResult, running view TransfersReports.
+2024-06-28 12:46:37.978 +02:00 [INF] Executed ViewResult - view TransfersReports executed in 84.1732ms.
+2024-06-28 12:46:37.978 +02:00 [INF] Executed action MyField.Controllers.ReportsController.TransfersReports (MyField) in 360.1126ms
+2024-06-28 12:46:37.978 +02:00 [INF] Executed endpoint 'MyField.Controllers.ReportsController.TransfersReports (MyField)'
+2024-06-28 12:46:37.979 +02:00 [INF] HTTP GET /Reports/TransfersReports responded 200 in 390.3949 ms
+2024-06-28 13:02:44.183 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-06-28 13:02:47.489 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-06-28 13:02:47.516 +02:00 [INF] Now listening on: https://localhost:7102
+2024-06-28 13:02:47.516 +02:00 [INF] Now listening on: http://localhost:5020
+2024-06-28 13:02:47.517 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-06-28 13:02:47.518 +02:00 [INF] Hosting environment: Development
+2024-06-28 13:02:47.518 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-06-28 13:02:48.112 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 13:02:48.313 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 203.1484ms
+2024-06-28 13:02:48.319 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 13:02:48.733 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-28 13:02:48.735 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-28 13:02:48.735 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 415.4374ms
+2024-06-28 13:02:48.735 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - -
+2024-06-28 13:02:48.735 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:02:48.740 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.3200ms
+2024-06-28 13:02:48.744 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 9.5871ms
+2024-06-28 13:02:48.744 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - - - 200 35852 text/css 9.5340ms
+2024-06-28 13:02:48.746 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 12.7002ms
+2024-06-28 13:02:48.746 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:02:48.768 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.6057ms
+2024-06-28 13:02:48.852 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-06-28 13:02:48.854 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 5430 image/x-icon 1.4757ms
+2024-06-28 13:02:55.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/TransfersReports - -
+2024-06-28 13:02:55.460 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/TransfersReports - - - 200 - text/html;+charset=utf-8 244.7213ms
+2024-06-28 13:02:55.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:02:55.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:02:55.473 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.3505ms
+2024-06-28 13:02:55.480 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.6410ms
+2024-06-28 13:03:11.356 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-28 13:03:11.357 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - -
+2024-06-28 13:03:11.357 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-28 13:03:11.358 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 1.1272ms
+2024-06-28 13:03:11.358 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - - - 200 35852 text/css 1.7163ms
+2024-06-28 13:03:11.359 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.9355ms
+2024-06-28 13:03:11.418 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-06-28 13:03:11.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 9.2922ms
+2024-06-28 13:03:35.824 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/Leagues - -
+2024-06-28 13:03:35.994 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/Leagues - - - 200 - text/html;+charset=utf-8 169.7536ms
+2024-06-28 13:03:36.003 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-06-28 13:03:36.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.9034ms
+2024-06-28 13:03:36.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - -
+2024-06-28 13:03:36.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - -
+2024-06-28 13:03:36.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:03:36.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1971ms
+2024-06-28 13:03:36.006 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Yr70lAyYxos0nYJf_NB1-UQ4ygK4uoXdUk7vbTMk_M8 - - - 200 1907 text/css 0.8707ms
+2024-06-28 13:03:36.007 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=6wmjROR1jglq3dwxjzBoTzBkMgbg-HsZStZJQn3ZS7U - - - 200 35852 text/css 1.5742ms
+2024-06-28 13:03:36.016 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:03:36.019 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.0071ms
+2024-06-28 13:03:37.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/StartLeague - -
+2024-06-28 13:03:37.464 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/StartLeague - - - 200 - text/html;+charset=utf-8 33.3443ms
+2024-06-28 13:03:37.474 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:03:37.475 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:03:37.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2376ms
+2024-06-28 13:03:37.477 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.7663ms
+2024-06-28 13:04:28.334 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274
+2024-06-28 13:04:30.927 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274 - 500 - text/html;+charset=utf-8 2592.9704ms
+2024-06-28 13:04:30.937 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:04:30.937 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:04:30.937 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2119ms
+2024-06-28 13:04:30.940 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.5564ms
+2024-06-28 13:04:40.988 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274
+2024-06-28 13:04:41.891 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274 - 302 0 - 902.4113ms
+2024-06-28 13:04:41.894 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/Leagues - -
+2024-06-28 13:04:41.913 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/Leagues - - - 200 - text/html;+charset=utf-8 18.9983ms
+2024-06-28 13:04:41.924 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:04:41.925 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:04:41.925 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1610ms
+2024-06-28 13:04:41.927 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.8742ms
+2024-06-28 13:04:41.954 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-06-28 13:04:41.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 5430 image/x-icon 0.6887ms
+2024-06-28 13:04:48.618 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-06-28 13:04:48.625 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 7.0992ms
+2024-06-28 13:04:48.628 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 13:04:48.641 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 13.4014ms
+2024-06-28 13:04:48.652 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:04:48.652 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:04:48.653 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1937ms
+2024-06-28 13:04:48.654 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.5026ms
+2024-06-28 13:04:50.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOffice - -
+2024-06-28 13:04:50.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOffice - - - 200 - text/html;+charset=utf-8 172.0966ms
+2024-06-28 13:04:50.790 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-06-28 13:04:50.790 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-06-28 13:04:50.792 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.2427ms
+2024-06-28 13:04:50.792 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 2.0513ms
+2024-06-28 13:04:50.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-06-28 13:04:50.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-06-28 13:04:50.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:04:50.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-06-28 13:04:50.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-06-28 13:04:50.796 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-06-28 13:04:50.796 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-06-28 13:04:50.796 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.7555ms
+2024-06-28 13:04:50.796 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:04:50.796 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.3053ms
+2024-06-28 13:04:50.796 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 0.9093ms
+2024-06-28 13:04:50.796 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-06-28 13:04:50.796 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.6200ms
+2024-06-28 13:04:50.797 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.0467ms
+2024-06-28 13:04:50.797 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.3084ms
+2024-06-28 13:04:50.798 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.1635ms
+2024-06-28 13:04:50.798 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 2.6475ms
+2024-06-28 13:04:50.799 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.7798ms
+2024-06-28 13:06:03.769 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-06-28 13:06:03.780 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 11.5050ms
+2024-06-28 13:06:03.792 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:06:03.792 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4231ms
+2024-06-28 13:06:04.531 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/Leagues - -
+2024-06-28 13:06:04.548 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/Leagues - - - 200 - text/html;+charset=utf-8 16.6539ms
+2024-06-28 13:06:04.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:06:04.559 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3201ms
+2024-06-28 13:06:05.351 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/StartLeague - -
+2024-06-28 13:06:05.355 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/StartLeague - - - 200 - text/html;+charset=utf-8 3.7710ms
+2024-06-28 13:06:05.367 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:06:05.368 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2677ms
+2024-06-28 13:06:07.614 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274
+2024-06-28 13:06:07.625 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274 - 200 - text/html;+charset=utf-8 11.1093ms
+2024-06-28 13:06:07.634 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:06:07.634 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:06:07.635 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1614ms
+2024-06-28 13:06:07.636 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.4294ms
+2024-06-28 13:06:43.882 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274
+2024-06-28 13:06:45.742 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Leagues/StartLeague application/x-www-form-urlencoded 274 - 500 - text/html;+charset=utf-8 1860.0992ms
+2024-06-28 13:06:45.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-06-28 13:06:45.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-06-28 13:06:45.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.9412ms
+2024-06-28 13:06:45.782 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.7728ms
