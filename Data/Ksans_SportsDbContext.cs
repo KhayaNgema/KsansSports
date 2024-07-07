@@ -181,5 +181,12 @@ namespace MyField.Data
         public DbSet<MyField.Models.MatchResultsReports_Archive> MatchResultsReports_Archive { get; set; } = default!;
 
         public DbSet<MyField.Models.TransfersReports_Archive> TransfersReports_Archive { get; set; } = default!;
+        public DbSet<MyField.Models.ClubPerformanceReport> ClubPerformanceReports { get; set; } = default!;
+        public DbSet<MyField.Models.ClubTransferReport> ClubTransferReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.ClubTransferReports_Archive> ClubTransferReports_Archive { get; set; } = default!;
+        public DbSet<MyField.Models.ClubPerformanceReports_Archive> ClubPerformanceReports_Archive { get; set; } = default!;
+
+        public DbSet<MyField.Models.TestUserFeedback> TestUserFeedbacks { get; set; } = default!;
     }
 }

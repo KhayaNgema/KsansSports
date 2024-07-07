@@ -9,6 +9,10 @@ namespace MyField.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransferId { get; set; }
 
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+
         [ForeignKey("PlayerId")]
         public string PlayerId { get; set; }
 

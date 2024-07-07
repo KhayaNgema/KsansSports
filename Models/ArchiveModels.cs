@@ -39,4 +39,15 @@
     {
 
     }
+
+    public class ClubTransferReports_Archive : ClubTransferReport
+    {
+
+    }
+
+
+    public class ClubPerformanceReports_Archive : ClubPerformanceReport
+    {
+
+    }
 }

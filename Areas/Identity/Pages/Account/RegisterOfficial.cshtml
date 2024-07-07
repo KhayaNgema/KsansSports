@@ -47,8 +47,9 @@
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="Input.DateOfBirth" class="form-control border-bottom-only" />
-                <label asp-for="Input.DateOfBirth">Date of birth</label>
+                <input asp-for="Input.DateOfBirth" class="form-control border-bottom-only" placeholder="DateOfBirth" type="date"
+                       min="1900-01-01" max="@DateTime.Now.AddYears(-10).ToString("yyyy-MM-dd")" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <label asp-for="Input.DateOfBirth">Date of Birth</label>
                 <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
             </div>
 

@@ -29,6 +29,33 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
+        public async Task<IActionResult> StandingsBackOffice()
+        {
+            var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+            if (currentLeague == null)
+            {
+                ModelState.AddModelError(string.Empty, "No current league found.");
+            }
+
+            var standings = _context.Standing
+                .Where(s => s.LeagueId == currentLeague.LeagueId)
+                .Include(s => s.Club)
+                .OrderByDescending(s => s.Points)
+                .ThenByDescending(s => s.GoalDifference)
+                .ThenBy(s => s.MatchPlayed)
+                .ToList();
+
+            var currentSeason = await _context.League
+                .Where(c => c.IsCurrent)
+                .FirstOrDefaultAsync();
+
+            ViewBag.CurrentSeason = currentSeason.LeagueYears;
+
+            return View(standings);
+        }
+
+
         public async Task<IActionResult> Standings()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);

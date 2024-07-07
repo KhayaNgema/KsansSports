@@ -135,6 +135,22 @@ namespace MyField.Controllers
             return View(clubs);
         }
 
+        public async Task<IActionResult> ClubsBackOfficeUsers()
+        {
+            var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+            if (currentLeague == null)
+            {
+                ModelState.AddModelError(string.Empty, "No current league found.");
+            }
+
+
+            var clubs = await _context.Club
+                .Where(mo => mo.LeagueId == currentLeague.LeagueId)
+                .ToListAsync();
+
+            return View( clubs);
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -257,9 +273,54 @@ namespace MyField.Controllers
                 Wins = 0
             };
 
+            _context.Add(newStanding);
+            await _context.SaveChangesAsync();
+
+            var clubTransferReport = new ClubTransferReport
+            {
+                LeagueId = currentLeague.LeagueId,
+                ClubId = existingClub.ClubId,
+                OverallTransfersCount = 0,
+                OutgoingTransfersCount = 0,
+                IncomingTransfersCount = 0,
+                SuccessfulIncomingTransfersCount = 0,
+                SuccessfulOutgoingTransfersCount = 0,
+                RejectedIncomingTransfersCount = 0,
+                RejectedOutgoingTransfersCount = 0,
+                NotActionedIncomingTransferCount = 0,
+                NotActionedOutgoigTransferCount = 0,
+                OutgoingTransferRate = 0,
+                IncomingTransferRate = 0,
+                SuccessfullIncomingTransferRate = 0,
+                SuccessfullOutgoingTransferRate = 0,
+                RejectedIncomingTransferRate = 0,
+                RejectedOutgoingTransferRate = 0,
+                NotActionedIncomingTransferRate = 0,
+                NotActionedOutgoingTransferRate= 0
+            };
+
+            var clubPerformanceReport = new ClubPerformanceReport
+            {
+                ClubId = existingClub.ClubId,
+                LeagueId = currentLeague.LeagueId,
+                StandingId = newStanding.StandingId,
+                GamesToPlayCount = 0,
+                GamesPlayedCount = 0,
+                GamesNotPlayedCount = 0,
+                GamesWinCount = 0,
+                GamesLoseCount = 0,
+                GamesDrawCount = 0,
+                GamesPlayedRate = 0,
+                GamesNotPlayedRate = 0,
+                GamesWinRate = 0,
+                GamesDrawRate = 0,
+                GamesLoseRate = 0
+            };
+
             matchResultsReport.ExpectedResultsCount++;
 
-            _context.Add(newStanding);
+            _context.Add(clubTransferReport);
+            _context.Add(clubPerformanceReport);
             await _context.SaveChangesAsync();
 
             TempData["Message"] = $"{existingClub.ClubName} has successfully rejoined the current league.";
@@ -320,7 +381,6 @@ namespace MyField.Controllers
                     Status = ClubStatus.Active,
                     IsActive = true,
                     ClubCode = GenerateClubCode(viewModel),
-                 /*   ClubManagerId = "485ebf7a - 68a9 - 4416 - a32a - 78435ed8ba0d",*/
                 };
 
                 if (ClubBadges != null && ClubBadges.Length > 0)
@@ -354,9 +414,51 @@ namespace MyField.Controllers
                     Wins = 0
                 };
 
+                var clubTransferReport = new ClubTransferReport
+                {
+                    LeagueId = currentLeague.LeagueId,
+                    ClubId = newClub.ClubId,
+                    OverallTransfersCount = 0,
+                    OutgoingTransfersCount = 0,
+                    IncomingTransfersCount = 0,
+                    SuccessfulIncomingTransfersCount = 0,
+                    SuccessfulOutgoingTransfersCount = 0,
+                    RejectedIncomingTransfersCount = 0,
+                    RejectedOutgoingTransfersCount = 0,
+                    NotActionedIncomingTransferCount = 0,
+                    NotActionedOutgoigTransferCount = 0,
+                    OutgoingTransferRate = 0,
+                    IncomingTransferRate = 0,
+                    SuccessfullIncomingTransferRate = 0,
+                    SuccessfullOutgoingTransferRate = 0,
+                    RejectedIncomingTransferRate = 0,
+                    RejectedOutgoingTransferRate = 0,
+                    NotActionedIncomingTransferRate = 0,
+                    NotActionedOutgoingTransferRate = 0
+                };
+
+                var clubPerformanceReport = new ClubPerformanceReport
+                {
+                    LeagueId = currentLeague.LeagueId,
+                    StandingId = newStanding.StandingId,
+                    GamesToPlayCount = 0,
+                    GamesPlayedCount = 0,
+                    GamesNotPlayedCount = 0,
+                    GamesWinCount = 0,
+                    GamesLoseCount = 0,
+                    GamesDrawCount = 0,
+                    GamesPlayedRate = 0,
+                    GamesNotPlayedRate = 0,
+                    GamesWinRate = 0,
+                    GamesDrawRate = 0,
+                    GamesLoseRate =0
+                };
+
                 matchResultsReport.ExpectedResultsCount++;
 
                 _context.Add(newStanding);
+                _context.Add(clubPerformanceReport);
+                _context.Add(clubTransferReport);
                 await _context.SaveChangesAsync();
                 TempData["Message"] = $"{viewModel.ClubName} has been added successfully.";
                 return RedirectToAction(nameof(ClubsBackOffice));

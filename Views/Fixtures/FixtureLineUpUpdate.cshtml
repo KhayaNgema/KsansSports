@@ -60,14 +60,20 @@
                                 </p>
                             }
                         </div>
-                        <div class="card-footer">
+                        @if(User.IsInRole("Club manager"))
+                        {
+                            <div class="card-footer">
                                 <div class="d-flex justify-content-end">
                                     <a asp-action="FixtureDetails" asp-route-id="@item.FixtureId" class="btn btn-sm">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
                                 </div>
-                        </div>
+                            </div>
+                        }
+                        else
+                        {
 
+                        }
                 </div>
                 </div>
             }

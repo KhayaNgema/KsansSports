@@ -226,7 +226,7 @@ namespace MyField.Controllers
                             f.FixtureStatus == FixtureStatus.Postponed ||
                             f.FixtureStatus == FixtureStatus.Interrupted ||
                             f.FixtureStatus == FixtureStatus.Ended &&
-                            f.LeagueId == currentLeague.LeagueId)
+                            f.League.IsCurrent)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .Include (f => f.CreatedBy)

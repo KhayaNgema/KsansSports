@@ -1,0 +1,184 @@
+﻿@model IEnumerable<MyField.Models.ClubTransferReport>
+
+@{
+    ViewData["Title"] = ViewBag.ClubName + " Transfers Reports";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<br />
+@await Html.PartialAsync("_HomeButton")
+<br />
+<h4 class="text-center">@ViewBag.ClubName Transfers Report</h4>
+<br />
+<div class="table-responsive">
+    <table class="table table-striped table-borderless">
+        <thead>
+            <tr style="color:white;background-color: #324260; white-space: nowrap;">
+                <th class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                    Category
+                </th>
+                <th class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                    Data
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Club
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.Club.ClubName)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Season
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.League.LeagueYears)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Overall transfers
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.OverallTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Outgoing transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.OutgoingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Incoming transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.IncomingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Successful outgoing transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.SuccessfulOutgoingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Successful incoming transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.SuccessfulIncomingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Rejected outgoing transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.RejectedOutgoingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Rejected incoming transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.RejectedIncomingTransfersCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Not actioned incoming transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.NotActionedIncomingTransferCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Not actioned outgoing transfers count
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.NotActionedOutgoigTransferCount)
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Outgoing transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.OutgoingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Incoming transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.IncomingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Successful outgoing transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.SuccessfullOutgoingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Successful incoming transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.SuccessfullIncomingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Rejected outgoing transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.RejectedOutgoingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Rejected incoming transfers rate
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.RejectedIncomingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Not actioned incoming transfers rate 
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.NotActionedIncomingTransferRate) %
+                    </td>
+                </tr>
+                <tr class="ellipsis">
+                    <td class="text-left vertical-align" style="width: 30%; padding-right: 20px;">
+                        Not actioned outgoing transfers rate 
+                    </td>
+                    <td class="text-right vertical-align" style="width: 70%; padding-left: 20px;">
+                        @Html.DisplayFor(modelItem => item.NotActionedOutgoingTransferRate) %
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

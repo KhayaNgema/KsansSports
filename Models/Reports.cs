@@ -6,7 +6,7 @@ namespace MyField.Models
     public class Reports
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ReportId { get; set; } 
+        public int ReportId { get; set; }
     }
 
 
@@ -14,7 +14,7 @@ namespace MyField.Models
     {
         public int LeagueId { get; set; }
 
-        public virtual League Season { get; set; }  
+        public virtual League Season { get; set; }
         public int MatchesToBePlayedCount { get; set; }
         public int FixturedMatchesCount { get; set; }
 
@@ -22,7 +22,7 @@ namespace MyField.Models
 
         public int PlayedMatchesCounts { get; set; }
 
-        public int PostponedMatchesCount { get; set; }  
+        public int PostponedMatchesCount { get; set; }
 
         public int InterruptedMatchesCount { get; set; }
 
@@ -37,7 +37,7 @@ namespace MyField.Models
         public decimal InterruptedMatchesRate { get; set; }
     }
 
-    public class MatchResultsReports: Reports
+    public class MatchResultsReports : Reports
     {
         public int LeagueId { get; set; }
 
@@ -83,9 +83,9 @@ namespace MyField.Models
 
         public int DeclinedTransfersCount { get; set; }
 
-        public decimal TranferAmount { get; set; } 
+        public decimal TranferAmount { get; set; }
 
-        public decimal AssociationCut {  get; set; }
+        public decimal AssociationCut { get; set; }
 
         public decimal ClubsCut { get; set; }
 
@@ -95,5 +95,84 @@ namespace MyField.Models
 
         public decimal NotStartedTransferRate { get; set; }
 
+    }
+
+    public class ClubPerformanceReport : Reports
+    {
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+        public int ClubId { get; set; }
+
+        public virtual Club Club { get; set; }
+
+        public int GamesToPlayCount { get; set; }
+
+        public int GamesPlayedCount { get; set; }
+
+        public int GamesNotPlayedCount { get; set; }
+
+        public int GamesWinCount { get; set; }
+
+        public int GamesLoseCount { get; set; }
+
+        public int GamesDrawCount { get; set; }
+
+        public decimal GamesPlayedRate { get; set; }
+
+        public decimal GamesNotPlayedRate { get; set; }
+
+        public decimal GamesWinRate { get; set; }
+
+        public decimal GamesLoseRate { get; set; }
+
+        public decimal GamesDrawRate { get; set; }
+
+        public int StandingId { get; set; }
+
+        public virtual Standing ClubStanding { get; set; }
+    }
+
+    public class ClubTransferReport : Reports
+    {
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+        public int ClubId { get; set; }
+
+        public virtual Club Club { get; set; }
+        public int OverallTransfersCount { get; set; }
+
+        public int OutgoingTransfersCount { get; set; }
+
+        public int IncomingTransfersCount { get; set; }
+
+        public decimal OutgoingTransferRate { get; set; }
+
+        public decimal IncomingTransferRate { get; set; }
+
+        public int SuccessfulOutgoingTransfersCount { get; set; }
+
+        public int SuccessfulIncomingTransfersCount { get; set; }
+
+        public int RejectedOutgoingTransfersCount {  get; set; }
+
+        public int RejectedIncomingTransfersCount { get; set; }
+
+        public int NotActionedIncomingTransferCount { get; set; }
+
+        public int NotActionedOutgoigTransferCount { get; set; }
+
+        public decimal SuccessfullIncomingTransferRate { get; set; }
+
+        public decimal RejectedOutgoingTransferRate { get; set; }
+
+        public decimal SuccessfullOutgoingTransferRate { get; set; }
+
+        public decimal RejectedIncomingTransferRate { get; set; }
+
+        public decimal NotActionedIncomingTransferRate { get; set; }
+
+        public decimal NotActionedOutgoingTransferRate { get; set; }
     }
 }

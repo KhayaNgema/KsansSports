@@ -11,6 +11,8 @@ using MyField.Interfaces;
 using System.Web;
 using SelectPdf;
 using System.Numerics;
+using MyField.Migrations;
+using System.Security.Cryptography.Xml;
 
 namespace MyField.Controllers
 {
@@ -504,6 +506,18 @@ namespace MyField.Controllers
                     .Where(t => t.Season.IsCurrent)
                     .FirstOrDefaultAsync();
 
+                var sellerClubTransferReport = await _context.ClubTransferReports
+                    .Where(c => c.ClubId == playerTransfer.SellerClub.ClubId &&
+                    c.League.IsCurrent)
+                    .Include(c => c.Club)
+                    .FirstOrDefaultAsync();
+
+                var buyerClubTransferReport = await _context.ClubTransferReports
+                    .Where(c => c.ClubId == playerTransfer.CustomerClub.ClubId &&
+                    c.League.IsCurrent)
+                    .Include(c => c.Club)
+                    .FirstOrDefaultAsync();
+
                 if (playerTransfer == null)
                 {
                     System.Diagnostics.Debug.WriteLine($"Player transfer with TransferId: {transferId} not found.");
@@ -550,17 +564,10 @@ namespace MyField.Controllers
                     return Json(new { success = false, message = "Transfer market count cannot be zero." });
                 }
 
-                decimal purchasedPercentage = ((decimal)transferReport.PurchasedPlayersCount / transferReport.TransferMarketCount) * 100;
-                decimal declinedPercentage = ((decimal)transferReport.DeclinedTransfersCount / transferReport.TransferMarketCount) * 100;
-                decimal notStartedPercentage = ((decimal)(transferReport.TransferMarketCount - transferReport.PurchasedPlayersCount - transferReport.DeclinedTransfersCount) / transferReport.TransferMarketCount) * 100;
 
-                decimal successfulTransferRate = purchasedPercentage;
-                decimal unsuccessfulTransferRate = declinedPercentage;
-                decimal notStartedTransferRate = notStartedPercentage;
+                buyerClubTransferReport.SuccessfulOutgoingTransfersCount++;
+                sellerClubTransferReport.SuccessfulIncomingTransfersCount++;
 
-                transferReport.SuccessfulTranferRate = successfulTransferRate;
-                transferReport.UnsuccessfulTranferRate = unsuccessfulTransferRate;
-                transferReport.NotStartedTransferRate = notStartedTransferRate;
 
 
                 _context.Update(payment);
@@ -584,6 +591,7 @@ namespace MyField.Controllers
                 await _context.SaveChangesAsync();
 
                 var viewName = "Billings/_MyPlayerTransferInvoicePartial";
+
                 var viewData = new Invoice
                 {
                     Transfer = playerTransfer,

@@ -5,6 +5,7 @@ namespace MyField.ViewModels
 {
     public class InitiatePlayerTransferViewModel
     {
+        public int LeagueId { get; set; }
         public int MarketId { get; set; }
         public string PlayerId { get; set; }
         public int SellerClubId { get; set; }

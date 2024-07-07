@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyField.Data;
 using MyField.Interfaces;
+using MyField.Migrations;
 using MyField.Models;
 using MyField.Services;
+using MyField.ViewModels;
 
 namespace MyField.Controllers
 {
@@ -25,6 +28,248 @@ namespace MyField.Controllers
             _userManager = userManager;
             _activityLogger = activityLogger;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> TestFeedback()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TestFeedback(FeedbackViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var feedback = new TestUserFeedback
+                {
+                    FeedbackText = viewModel.FeedbackText,
+                    CreatedDateTime = DateTime.Now
+                };
+
+                _context.Add(feedback);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = $"Thanks for sharing your feedback successfully. We value your opinion.";
+
+                return RedirectToAction(nameof(TestFeedback));
+            }
+
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> ClubPerformanceReports()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubPerformanceReports = await _context.ClubPerformanceReports
+                .Where(c => c.ClubId == clubId && c.League.IsCurrent)
+                .Include(c => c.League)
+                .Include(c => c.Club)
+                .Include(c => c.ClubStanding)
+                .ToListAsync();
+
+            var overallMatchCount = await GetOverallMatchCountAsync();
+
+           
+
+            foreach (var clubPerformanceReport in clubPerformanceReports)
+            {
+                clubPerformanceReport.GamesToPlayCount = overallMatchCount * overallMatchCount - 2;
+
+                clubPerformanceReport.GamesNotPlayedCount = clubPerformanceReport.GamesToPlayCount - clubPerformanceReport.GamesPlayedCount;
+
+                if (overallMatchCount > 0)
+                {
+                    clubPerformanceReport.GamesPlayedRate = ((decimal)clubPerformanceReport.GamesPlayedCount / overallMatchCount) * 100;
+                    clubPerformanceReport.GamesNotPlayedRate = ((decimal)clubPerformanceReport.GamesNotPlayedCount / overallMatchCount) * 100;
+                    clubPerformanceReport.GamesWinRate = ((decimal)clubPerformanceReport.GamesWinCount / overallMatchCount) * 100;
+                    clubPerformanceReport.GamesLoseRate = ((decimal)clubPerformanceReport.GamesLoseCount / overallMatchCount) * 100;
+                    clubPerformanceReport.GamesDrawRate = ((decimal)clubPerformanceReport.GamesDrawCount / overallMatchCount) * 100;
+
+                    decimal totalMatchesRate = clubPerformanceReport.GamesPlayedRate + clubPerformanceReport.GamesNotPlayedRate;
+                    if (totalMatchesRate > 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalMatchesRate;
+                        clubPerformanceReport.GamesPlayedRate *= adjustmentFactor;
+                        clubPerformanceReport.GamesNotPlayedRate *= adjustmentFactor;
+                    }
+
+                    decimal totalPerformanceRate = clubPerformanceReport.GamesWinRate +
+                                                   clubPerformanceReport.GamesLoseRate +
+                                                   clubPerformanceReport.GamesDrawRate;
+                    if (totalPerformanceRate > 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalPerformanceRate;
+                        clubPerformanceReport.GamesWinRate *= adjustmentFactor;
+                        clubPerformanceReport.GamesLoseRate *= adjustmentFactor;
+                        clubPerformanceReport.GamesDrawRate *= adjustmentFactor;
+                    }
+                }
+            }
+
+            var club = await _context.Club
+                .FirstOrDefaultAsync(mo => mo.ClubId == clubId);
+
+            ViewBag.ClubName = club?.ClubName;
+
+            return View(clubPerformanceReports);
+        }
+
+
+
+        public async Task<IActionResult> ClubTransferReport()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubTransferReports = await _context.ClubTransferReports
+                .Where(c => c.ClubId == clubId && 
+                 c.League.IsCurrent)
+                .Include(c => c.Club)
+                .Include(c => c.League)
+                .ToListAsync();
+
+            foreach (var clubTransferReport in clubTransferReports)
+            {
+                var overallMatchCount = await GetOverallTransfersCountAsync(clubId.Value);
+
+                clubTransferReport.OverallTransfersCount = overallMatchCount;
+
+                clubTransferReport.NotActionedIncomingTransferCount = clubTransferReport.IncomingTransfersCount - 
+                    (clubTransferReport.SuccessfulIncomingTransfersCount + 
+                    clubTransferReport.RejectedIncomingTransfersCount);
+                clubTransferReport.NotActionedOutgoigTransferCount = clubTransferReport.OutgoingTransfersCount -
+                    (clubTransferReport.SuccessfulOutgoingTransfersCount + clubTransferReport.RejectedOutgoingTransfersCount);
+
+                if (clubTransferReport.OverallTransfersCount > 0)
+                {
+                    var overallTransfersCount = clubTransferReport.OverallTransfersCount;
+
+
+                    clubTransferReport.OutgoingTransferRate = ((decimal)clubTransferReport.OutgoingTransfersCount / overallTransfersCount) * 100;
+                    clubTransferReport.IncomingTransferRate = ((decimal)clubTransferReport.IncomingTransfersCount / overallTransfersCount) * 100;
+                    clubTransferReport.SuccessfullIncomingTransferRate = ((decimal)clubTransferReport.SuccessfulIncomingTransfersCount / clubTransferReport.IncomingTransfersCount) * 100;
+                    clubTransferReport.SuccessfullOutgoingTransferRate = ((decimal)clubTransferReport.SuccessfulOutgoingTransfersCount / clubTransferReport.OutgoingTransfersCount) * 100;
+                    clubTransferReport.RejectedIncomingTransferRate = ((decimal)clubTransferReport.RejectedIncomingTransfersCount / clubTransferReport.IncomingTransfersCount) * 100;
+                    clubTransferReport.RejectedOutgoingTransferRate = ((decimal)clubTransferReport.RejectedOutgoingTransfersCount / clubTransferReport.OutgoingTransfersCount) * 100;
+                    clubTransferReport.NotActionedIncomingTransferRate = ((decimal)clubTransferReport.IncomingTransfersCount - (clubTransferReport.SuccessfulIncomingTransfersCount + clubTransferReport.RejectedIncomingTransfersCount)) * 100;
+                    clubTransferReport.NotActionedOutgoingTransferRate = ((decimal)clubTransferReport.OutgoingTransfersCount - (clubTransferReport.SuccessfulOutgoingTransfersCount + clubTransferReport.RejectedOutgoingTransfersCount)) * 100;
+
+                    decimal totalTransfersRate = clubTransferReport.OutgoingTransferRate + clubTransferReport.IncomingTransferRate;
+                    if (totalTransfersRate != 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalTransfersRate;
+                        clubTransferReport.OutgoingTransferRate *= adjustmentFactor;
+                        clubTransferReport.IncomingTransferRate *= adjustmentFactor;
+                    }
+
+                    decimal totalSuccessRates = clubTransferReport.SuccessfullIncomingTransferRate + 
+                        clubTransferReport.RejectedIncomingTransferRate +
+                        clubTransferReport.NotActionedIncomingTransferRate;
+                    if (totalSuccessRates != 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalSuccessRates;
+                        clubTransferReport.SuccessfullIncomingTransferRate *= adjustmentFactor;
+                        clubTransferReport.RejectedIncomingTransferRate *= adjustmentFactor;
+                        clubTransferReport.NotActionedIncomingTransferRate *= adjustmentFactor;
+                    }
+
+                    decimal totalRejectedRates = clubTransferReport.SuccessfullOutgoingTransferRate + 
+                        clubTransferReport.RejectedOutgoingTransferRate +
+                        clubTransferReport.NotActionedOutgoingTransferRate;
+                    if (totalRejectedRates != 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalRejectedRates;
+                        clubTransferReport.SuccessfullOutgoingTransferRate *= adjustmentFactor;
+                        clubTransferReport.RejectedOutgoingTransferRate *= adjustmentFactor;
+                        clubTransferReport.NotActionedOutgoingTransferRate *= adjustmentFactor;
+                    }
+
+
+                }
+            }
+
+            var club = await _context.Club
+                .FirstOrDefaultAsync(mo => mo.ClubId == clubId);
+
+            ViewBag.ClubName = club?.ClubName;
+
+            return View(clubTransferReports);
+        }
+
+
+
+
+        public async Task<IActionResult> PlayerPerformance()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                     (user as ClubManager)?.ClubId ??
+                     (user as Player)?.ClubId;
+
+            var clubs = await _context.Club
+                          .FirstOrDefaultAsync(mo => mo.ClubId == clubId);
+
+            ViewBag.ClubName = clubs?.ClubName;
+
+            return View();
+        }
+
+
         public async Task<IActionResult> MatchReports()
         {
             var matchReport = await _context.MatchReports
@@ -36,7 +281,7 @@ namespace MyField.Controllers
 
             if (overallMatchCount > 0)
             {
-                matchReport.MatchesToBePlayedCount = (overallMatchCount * overallMatchCount) - overallMatchCount;
+                matchReport.MatchesToBePlayedCount = overallMatchCount * (overallMatchCount - 1);
             }
             else
             {
@@ -167,6 +412,12 @@ namespace MyField.Controllers
             return View(matchResultsReports);
         }
 
+        public async Task<int> GetOverallMatchesToPlayCountAsync()
+        {
+            return await _context.Club
+                .Where(c => c.League.IsCurrent)
+                .CountAsync();
+        }
 
         public async Task<int> GetOverallMatchResultsCountAsync()
         {
@@ -174,6 +425,16 @@ namespace MyField.Controllers
                 .Where(c => c.League.IsCurrent)
                 .CountAsync();
         }
+
+        public async Task<int> GetOverallTransfersCountAsync(int clubId)
+        {
+            return await _context.Transfer
+                .Where(c =>
+                    (c.SellerClub.ClubId == clubId || c.CustomerClub.ClubId == clubId) &&
+                    (c.League.IsCurrent || c.League.IsCurrent))
+                .CountAsync();
+        }
+
 
         public async Task<int> GetOverallMatchCountAsync()
         {

@@ -88,6 +88,8 @@ namespace MyField.Controllers
                     var oldMatchReports = await _context.MatchReports.Where( m => m.LeagueId == oldLeague.LeagueId).ToListAsync();
                     var oldMatchResultsReports = await _context.MatchResultsReports.Where(r => r.LeagueId == oldLeague.LeagueId).ToListAsync();
                     var oldTransfersReports = await _context.TransfersReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                    var oldClubTransfersReports = await _context.ClubTransferReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                    var oldClubPerformanceReports = await _context.ClubPerformanceReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
 
                     foreach (var s in oldStandings)
                     {
@@ -253,6 +255,58 @@ namespace MyField.Controllers
                         await _context.SaveChangesAsync();
                     }
 
+                    foreach (var c in oldClubTransfersReports)
+                    {
+                        var archivedClubTransfersReports = new ClubTransferReports_Archive
+                        {
+                            ClubId = c.ClubId,
+                            LeagueId = c.LeagueId,
+                            OverallTransfersCount = c.OverallTransfersCount,
+                            IncomingTransfersCount = c.IncomingTransfersCount,
+                            OutgoingTransfersCount = c.OutgoingTransfersCount,
+                            SuccessfulIncomingTransfersCount = c.SuccessfulIncomingTransfersCount,
+                            SuccessfulOutgoingTransfersCount = c.SuccessfulOutgoingTransfersCount,
+                            RejectedIncomingTransfersCount = c.RejectedIncomingTransfersCount,
+                            RejectedOutgoingTransfersCount = c.RejectedOutgoingTransfersCount,
+                            IncomingTransferRate = c.IncomingTransferRate,
+                            OutgoingTransferRate = c.OutgoingTransferRate,
+                            SuccessfullIncomingTransferRate = c.SuccessfullIncomingTransferRate,
+                            SuccessfullOutgoingTransferRate = c.SuccessfullOutgoingTransferRate,
+                            RejectedIncomingTransferRate = c.RejectedIncomingTransferRate,
+                            RejectedOutgoingTransferRate = c.RejectedOutgoingTransferRate
+                        };
+
+                        _context.ClubTransferReports_Archive.Add(archivedClubTransfersReports);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    foreach (var c in oldClubPerformanceReports)
+                    {
+                        var archivedClubPerformanceReports = new ClubPerformanceReports_Archive
+                        {
+                            ClubId = c.ClubId,
+                            LeagueId = c.LeagueId,
+                            StandingId = c.StandingId,
+                            GamesToPlayCount = c.GamesToPlayCount,
+                            GamesPlayedCount = c.GamesPlayedCount,  
+                            GamesNotPlayedCount = c.GamesNotPlayedCount,
+                            GamesWinCount = c.GamesWinCount,
+                            GamesLoseCount = c.GamesLoseCount,
+                            GamesDrawCount = c.GamesDrawCount,
+                            GamesPlayedRate = c.GamesPlayedRate,
+                            GamesNotPlayedRate = c.GamesNotPlayedRate,
+                            GamesWinRate = c.GamesWinRate,
+                            GamesLoseRate = c.GamesLoseRate,
+                            GamesDrawRate = c.GamesDrawRate
+                        };
+
+                        _context.ClubPerformanceReports_Archive.Add(archivedClubPerformanceReports);
+                        await _context.SaveChangesAsync();
+                    }
+
+
+                    _context.ClubPerformanceReports.RemoveRange(oldClubPerformanceReports);
+                    _context.ClubTransferReports.RemoveRange(oldClubTransfersReports);
                     _context.MatchReports.RemoveRange(oldMatchReports);
                     _context.MatchResultsReports.RemoveRange(oldMatchResultsReports);
                     _context.TransfersReports.RemoveRange(oldTransfersReports);

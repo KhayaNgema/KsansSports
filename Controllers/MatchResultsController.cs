@@ -344,6 +344,41 @@ namespace MyField.Controllers
 
                 matchReport.PlayedMatchesCounts++;
 
+                var savedMatchResults = await _context.MatchResult
+                    .Where(m => m.Equals(newMatchResults))
+                    .Include(m => m.HomeTeam)
+                    .Include(m => m.AwayTeam)
+                    .FirstOrDefaultAsync();
+
+                var homeTeamPerformanceReport = await _context.ClubPerformanceReports
+                           .Where(h => h.ClubId == savedMatchResults.HomeTeam.ClubId &&
+                           h.League.IsCurrent)
+                           .FirstOrDefaultAsync();
+
+                var awayTeamPerformanceReport = await _context.ClubPerformanceReports
+                            .Where(h => h.ClubId == savedMatchResults.AwayTeam.ClubId &&
+                              h.League.IsCurrent)
+                             .FirstOrDefaultAsync();
+
+                if(viewModel.HomeTeamScore > viewModel.AwayTeamScore)
+                {
+                    homeTeamPerformanceReport.GamesWinCount++;
+                    awayTeamPerformanceReport.GamesLoseCount++;
+                }
+                else if(viewModel.HomeTeamScore < viewModel.AwayTeamScore)
+                {
+                    homeTeamPerformanceReport.GamesLoseCount++;
+                    awayTeamPerformanceReport.GamesWinCount++;
+                }
+                else
+                {
+                    homeTeamPerformanceReport.GamesDrawCount++;
+                    awayTeamPerformanceReport.GamesDrawCount++;
+                }
+
+                homeTeamPerformanceReport.GamesPlayedCount++;
+                awayTeamPerformanceReport.GamesPlayedCount++;
+
                 await _context.SaveChangesAsync();
 
                 var fixtureToUpdate = await _context.Fixture.FindAsync(viewModel.FixtureId);
@@ -355,12 +390,7 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
                 }
 
-                var savedMatchResults = await _context.MatchResult
-                    .Where( m => m.Equals(newMatchResults))
-                    .Include(m => m.HomeTeam)
-                    .Include(m => m.AwayTeam)
-                    .FirstOrDefaultAsync();
-
+                TempData["Message"] = $"You have successfully uploaded results for a match between {savedMatchResults.HomeTeam.ClubName} and {savedMatchResults.AwayTeam.ClubName}.";
                 await _activityLogger.Log($"Uploaded results for match between {savedMatchResults.HomeTeam.ClubName} and {savedMatchResults.AwayTeam.ClubName}", user.Id);
                 return RedirectToAction(nameof(MatchResultsBackOffice));
             }

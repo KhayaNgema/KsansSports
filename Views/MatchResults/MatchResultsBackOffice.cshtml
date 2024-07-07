@@ -10,9 +10,9 @@
         position: absolute;
         z-index: 1000;
         display: none;
-        max-width: 200px; /* Adjust width as needed */
+        max-width: 200px; 
         overflow-y: auto;
-        max-height: calc(100vh - 200px); /* Adjust max height as needed */
+        max-height: calc(100vh - 200px); 
     }
 
         .dropdown-menu.show {
@@ -21,7 +21,7 @@
 </style>
 
 <br />
-@await Html.PartialAsync("_BackButton")
+@await Html.PartialAsync("_HomeButton")
 <h4 class="text-center">@ViewBag.CurrentSeason Season Match Results</h4>
 <br />
 @if (Model.Any()) 
@@ -141,13 +141,11 @@ else
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Toggle dropdown when dropdown button is clicked
         $('.manual-toggle').on('click', function () {
             var $dropdownMenu = $(this).next('.dropdown-menu');
             $('.dropdown-menu').removeClass('show');
             $dropdownMenu.toggleClass('show');
 
-            // Adjust dropdown position
             var $button = $(this);
             var offset = $button.offset();
             var menuWidth = $dropdownMenu.outerWidth();
@@ -156,7 +154,6 @@ else
             var viewportWidth = $(window).width();
             var viewportHeight = $(window).height();
 
-            // Check if dropdown goes out of viewport on the right
             if (offset.left + menuWidth > viewportWidth) {
                 $dropdownMenu.css({
                     left: 'auto',
@@ -169,7 +166,6 @@ else
                 });
             }
 
-            // Check if dropdown goes out of viewport on the bottom
             if (offset.top + buttonHeight + menuHeight > viewportHeight) {
                 $dropdownMenu.css({
                     top: 'auto',
@@ -183,7 +179,6 @@ else
             }
         });
 
-        // Close dropdown on document click
         $(document).on('click', function (e) {
             if (!$(e.target).closest('.dropdown').length) {
                 $('.dropdown-menu').removeClass('show');

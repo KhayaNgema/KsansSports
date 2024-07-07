@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
@@ -66,9 +67,11 @@ namespace MyField.Controllers
             var pendingTrasfers = await _context.Transfer
                 .Where(p => p.Status == TransferStatus.Pending && 
                        p.SellerClub.League.IsCurrent && 
-                       p.CustomerClub.League.IsCurrent)
+                       p.CustomerClub.League.IsCurrent &&
+                       p.League.IsCurrent)
                 .Include(p => p.SellerClub)
                 .Include(p => p.CustomerClub)
+                .Include(p => p.Player)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
                 .ToListAsync();
@@ -81,9 +84,11 @@ namespace MyField.Controllers
             var paidTrasfers = await _context.Transfer
                 .Where(p => p.Status == TransferStatus.Completed &&
                        p.SellerClub.League.IsCurrent &&
-                       p.CustomerClub.League.IsCurrent)
+                       p.CustomerClub.League.IsCurrent &&
+                       p.League.IsCurrent)
                 .Include(p => p.SellerClub)
                 .Include(p => p.CustomerClub)
+                .Include(p => p.Player)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
                 .ToListAsync();
@@ -96,9 +101,11 @@ namespace MyField.Controllers
             var rejectedTrasfers = await _context.Transfer
                 .Where(p => p.Status == TransferStatus.Rejected &&
                        p.SellerClub.League.IsCurrent &&
-                       p.CustomerClub.League.IsCurrent)
+                       p.CustomerClub.League.IsCurrent &&
+                       p.League.IsCurrent)
                 .Include(p => p.SellerClub)
                 .Include(p => p.CustomerClub)
+                .Include(p => p.Player)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
                 .ToListAsync();
@@ -111,9 +118,11 @@ namespace MyField.Controllers
             var acceptedTrasfers = await _context.Transfer
                 .Where(p => p.Status == TransferStatus.Accepted &&
                        p.SellerClub.League.IsCurrent &&
-                       p.CustomerClub.League.IsCurrent)
+                       p.CustomerClub.League.IsCurrent &&
+                       p.League.IsCurrent)
                 .Include(p => p.SellerClub)
                 .Include(p => p.CustomerClub)
+                .Include(p => p.Player)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
                 .ToListAsync();
@@ -223,7 +232,9 @@ namespace MyField.Controllers
             }
 
             var pendingTransfers = await _context.Transfer
-                .Where(mo => mo.Status == TransferStatus.Pending && mo.SellerClub.ClubId == clubId)
+                .Where(mo => mo.Status == TransferStatus.Pending && 
+                mo.SellerClub.ClubId == clubId &&
+                 mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                  .Include(s => s.CustomerClub)
@@ -261,7 +272,8 @@ namespace MyField.Controllers
                 .Where(mo => mo.Status == TransferStatus.Accepted && 
                 mo.SellerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                 mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .Include(s => s.CustomerClub)
@@ -299,7 +311,8 @@ namespace MyField.Controllers
                 .Where(mo => mo.Status == TransferStatus.Rejected && 
                 mo.SellerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                 mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .Include(s => s.CustomerClub)
@@ -338,7 +351,8 @@ namespace MyField.Controllers
                 .Where(mo => mo.Status == TransferStatus.Pending && 
                 mo.CustomerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                 mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -375,7 +389,8 @@ namespace MyField.Controllers
                 .Where(mo => mo.Status == TransferStatus.Cancelled &&
                 mo.CustomerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -412,7 +427,8 @@ namespace MyField.Controllers
                 .Where(mo => mo.Status == TransferStatus.Accepted &&
                 mo.CustomerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                mo.League.IsCurrent)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .ToListAsync();
@@ -469,7 +485,8 @@ namespace MyField.Controllers
                .Where(mo => mo.Status == TransferStatus.Rejected &&
                 mo.CustomerClub.ClubId == clubId &&
                 mo.SellerClub.League.IsCurrent &&
-                mo.CustomerClub.League.IsCurrent)
+                mo.CustomerClub.League.IsCurrent &&
+                mo.League.IsCurrent)
                .Include(s => s.Player)
                .Include(s => s.SellerClub)
                .ToListAsync();
@@ -506,7 +523,8 @@ namespace MyField.Controllers
                      .Where(mo => mo.Status == TransferStatus.Completed &&
                       mo.CustomerClub.ClubId == clubId &&
                       mo.SellerClub.League.IsCurrent &&
-                      mo.CustomerClub.League.IsCurrent)
+                      mo.CustomerClub.League.IsCurrent &&
+                      mo.League.IsCurrent)
                      .Include(s => s.Player)
                      .Include(s => s.SellerClub)
                      .ToListAsync();
@@ -519,8 +537,9 @@ namespace MyField.Controllers
         public async Task<IActionResult> TransferList()
         {
             var transferLists = await _context.Transfer
+                .Where(t => t.League.IsCurrent)
                 .Include(s => s.SellerClub)
-                 .Include(s => s.CustomerClub)
+                .Include(s => s.CustomerClub)
                 .Include(s => s.CreatedBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.Player)
@@ -739,6 +758,7 @@ namespace MyField.Controllers
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
 
+
                 if (player == null)
                 {
                     TempData["Errors"] = new List<string> { "Player not found." };
@@ -746,7 +766,8 @@ namespace MyField.Controllers
                 }
 
                 var transferMarket = await _context.PlayerTransferMarket
-                    .Where(mo => mo.PlayerTransferMarketId == marketId)
+                    .Where(mo => mo.PlayerTransferMarketId == marketId &&
+                    mo.League.IsCurrent)
                     .FirstOrDefaultAsync();
 
                 if (transferMarket == null)
@@ -763,6 +784,7 @@ namespace MyField.Controllers
 
                 var viewModel = new InitiatePlayerTransferViewModel
                 {
+                    LeagueId = transferMarket.LeagueId,
                     MarketId = transferMarket.PlayerTransferMarketId,
                     PlayerId = playerId,
                     SellerClubId = clubId,
@@ -789,96 +811,104 @@ namespace MyField.Controllers
             }
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> InitiatePlayerTransfer(InitiatePlayerTransferViewModel viewModel)
         {
             try
             {
-                if (ModelState.IsValid)
+                var loggedInUser = await _userManager.GetUserAsync(User);
+
+                if (loggedInUser == null || !(loggedInUser is ClubAdministrator clubAdministrator))
                 {
-                    var loggedInUser = await _userManager.GetUserAsync(User);
+                    TempData["Errors"] = new List<string> { "User is not authorized" };
+                    return View(viewModel);
+                }
 
-                    if (loggedInUser == null || !(loggedInUser is ClubAdministrator clubAdministrator))
-                    {
-                        TempData["Errors"] = new List<string> { "User is not authorized" };
-                        return View(viewModel);
-                    }
+                var transferMarket = await _context.PlayerTransferMarket
+                    .Where(mo => mo.PlayerTransferMarketId == viewModel.MarketId)
+                    .Include(s => s.Player)
+                    .Include(s => s.Club)
+                    .FirstOrDefaultAsync();
 
-                    var transferMarket = await _context.PlayerTransferMarket
-                        .Where(mo => mo.PlayerTransferMarketId == viewModel.MarketId)
-                        .Include(s => s.Player)
-                        .Include(s => s.Club)
-                        .FirstOrDefaultAsync();
+                if (transferMarket == null)
+                {
+                    TempData["Errors"] = new List<string> { "Transfer market not found" };
+                    return RedirectToAction("ErrorPage", "Home", new { errorMessage = "Transfer market not found." });
+                }
 
-                    if (transferMarket == null)
-                    {
-                        TempData["Errors"] = new List<string> { "Transfer market not found" };
-                        return RedirectToAction("ErrorPage", "Home", new { errorMessage = "Transfer market not found." });
-                    }
+                if (transferMarket.Player == null)
+                {
+                    TempData["Errors"] = new List<string> { "Player not found in the transfer market" };
+                    return RedirectToAction("ErrorPage", "Home", new { errorMessage = "Player not found in the transfer market." });
+                }
 
-                    if (transferMarket.Player == null)
-                    {
-                        TempData["Errors"] = new List<string> { "Player not found in the transfer market" };
-                        return RedirectToAction("ErrorPage", "Home", new { errorMessage = "Player not found in the transfer market." });
-                    }
-
-
-                    if (transferMarket.Player.ClubId == clubAdministrator.ClubId)
-                    {
-                        TempData["Message"] = $"You can't initiate transfer communication for your own player! Please select other clubs' players";
-                        return RedirectToAction(nameof(TransferMarket));
-                    }
-
-                    if (transferMarket.SaleStatus == SaleStatus.Unavailable)
-                    {
-                        TempData["Message"] = $"This player have signed a new contract with another club. Please try signing available players.";
-                        return RedirectToAction(nameof(TransferMarket));
-                    }
-
-                    var newPlayerTransfer = new Transfer
-                    {
-                        PlayerTransferMarketId = transferMarket.PlayerTransferMarketId,
-                        PlayerId = viewModel.PlayerId,
-                        CustomerClubId = clubAdministrator.ClubId,
-                        SellerClubId = viewModel.SellerClubId,
-                        CreatedDateTime = DateTime.Now,
-                        CreatedById = loggedInUser.Id,
-                        ModifiedById = loggedInUser.Id,
-                        ModifiedDateTime = DateTime.Now,
-                        Approved_Declined_ById = loggedInUser.Id,
-                        Status = TransferStatus.Pending,
-                    };
-
-                    await _context.SaveChangesAsync();
-
-                    _context.Transfer.Add(newPlayerTransfer);
-                    await _context.SaveChangesAsync();
-                    TempData["Message"] = $"You have successfully initiated communication with {viewModel.ClubName} for {viewModel.FirstName} {viewModel.LastName} transfer";
+                if (transferMarket.Player.ClubId == clubAdministrator.ClubId)
+                {
+                    TempData["Message"] = $"You can't initiate transfer communication for your own player! Please select other clubs' players.";
                     return RedirectToAction(nameof(TransferMarket));
                 }
-                else
-                {
-                    var modelStateErrors = ModelState.Values
-                        .SelectMany(v => v.Errors)
-                        .Select(e => e.ErrorMessage)
-                        .ToList();
 
-                    string errorMessage = "Model state is invalid. Errors: " + string.Join("; ", modelStateErrors);
-                    return RedirectToAction("ErrorPage", "Home", new { errorMessage = errorMessage });
+                if (transferMarket.SaleStatus == SaleStatus.Unavailable)
+                {
+                    TempData["Message"] = $"This player has signed a new contract with another club. Please try signing available players.";
+                    return RedirectToAction(nameof(TransferMarket));
                 }
+
+                var newPlayerTransfer = new Transfer
+                {
+                    LeagueId = viewModel.LeagueId,
+                    PlayerTransferMarketId = transferMarket.PlayerTransferMarketId,
+                    PlayerId = viewModel.PlayerId,
+                    CustomerClubId = clubAdministrator.ClubId,
+                    SellerClubId = viewModel.SellerClubId,
+                    CreatedDateTime = DateTime.Now,
+                    CreatedById = loggedInUser.Id,
+                    ModifiedById = loggedInUser.Id,
+                    ModifiedDateTime = DateTime.Now,
+                    Approved_Declined_ById = loggedInUser.Id,
+                    Status = TransferStatus.Pending,
+                };
+
+                _context.Transfer.Add(newPlayerTransfer);
+                await _context.SaveChangesAsync();
+
+                var sellerClubTransferReport = await _context.ClubTransferReports
+                    .Where(c => c.ClubId == viewModel.SellerClubId &&
+                    c.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
+                var buyerClubTransferReport = await _context.ClubTransferReports
+                    .Where(c => c.ClubId == clubAdministrator.ClubId &&
+                    c.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
+                if (sellerClubTransferReport != null && buyerClubTransferReport != null)
+                {
+                    sellerClubTransferReport.IncomingTransfersCount++;
+                    buyerClubTransferReport.OutgoingTransfersCount++;
+
+                    await _context.SaveChangesAsync();
+                }
+
+                TempData["Message"] = $"You have successfully initiated communication with {viewModel.ClubName} for {viewModel.FirstName} {viewModel.LastName}'s transfer.";
+                return RedirectToAction(nameof(TransferMarket));
             }
             catch (Exception ex)
             {
-                string errorMessage = "An error occurred while processing your request: " + ex.Message;
-                if (ex.InnerException != null)
+                return Json(new
                 {
-                    errorMessage += " See the inner exception for details: " + ex.InnerException.Message + $" MarketId: {viewModel.MarketId}";
-                }
-                return RedirectToAction("ErrorPage", "Home", new { errorMessage = errorMessage });
+                    success = false,
+                    message = "Failed to process player transfer: " + ex.Message,
+                    errorDetails = new
+                    {
+                        InnerException = ex.InnerException?.Message,
+                        StackTrace = ex.StackTrace
+                    }
+                });
             }
         }
+
 
 
 
@@ -889,6 +919,7 @@ namespace MyField.Controllers
             var loggedInUser = await _userManager.GetUserAsync(User);
 
             var transfer = await _context.Transfer
+                .Where(t => t.League.IsCurrent)
                .Include(t => t.Player)
                .Include(t => t.CustomerClub)
                .FirstOrDefaultAsync(t => t.TransferId == transferId);
@@ -932,13 +963,27 @@ namespace MyField.Controllers
             var loggedInUser = await _userManager.GetUserAsync(User);
 
             var transfer = await _context.Transfer
+              .Where(t => t.League.IsCurrent)
               .Include(t => t.Player)
               .Include(t => t.CustomerClub)
+              .Include(t => t.SellerClub)
               .FirstOrDefaultAsync(t => t.TransferId == transferId);
 
             var transferReport = await _context.TransfersReports
                .Where(t => t.Season.IsCurrent)
                .FirstOrDefaultAsync();
+
+            var sellerClubTransferReport = await _context.ClubTransferReports
+                .Where(c => c.ClubId == transfer.SellerClub.ClubId && 
+                c.League.IsCurrent)
+                .Include(c => c.Club)
+                .FirstOrDefaultAsync();
+
+            var buyerClubTransferReport = await _context.ClubTransferReports
+                .Where(c => c.ClubId == transfer.CustomerClub.ClubId &&
+                c.League.IsCurrent)
+                .Include(c => c.Club)
+                .FirstOrDefaultAsync();
 
             if (transfer == null)
             {
@@ -951,16 +996,17 @@ namespace MyField.Controllers
                 transfer.Approved_Declined_ById = loggedInUser.Id;
                 transfer.ModifiedDateTime = DateTime.Now;
                 transfer.Status = TransferStatus.Rejected;
-
             }
 
-            transferReport.DeclinedTransfersCount++;
+            buyerClubTransferReport.RejectedOutgoingTransfersCount++;
+            sellerClubTransferReport.RejectedIncomingTransfersCount++;
 
             _context.Update(transfer);
             await _context.SaveChangesAsync();
 
 
             string message = $"You have rejected player transfer communication for ";
+
             if (transfer.Player != null && transfer.CustomerClub != null)
             {
                 message += $"{transfer.Player.FirstName} {transfer.Player.LastName} with {transfer.CustomerClub.ClubName}!";

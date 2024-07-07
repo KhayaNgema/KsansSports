@@ -350,7 +350,7 @@
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="MyClubPlayers" class="nav-link text-light">Sport News</a>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport News</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
@@ -358,15 +358,15 @@
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="MatchResults" asp-action="Index" class="nav-link text-light">Match results</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Standings" asp-action="Index" class="nav-link text-light">Standings</a>
+                                <a asp-controller="Standings" asp-action="StandingsBackOffice" class="nav-link text-light">Standings</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="MyClub" class="nav-link text-light">Clubs</a>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOfficeUsers" class="nav-link text-light">Clubs</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
@@ -401,13 +401,10 @@
                                         <a asp-controller="Reports" asp-action="PlayerPerformance" class="nav-link text-light">Player performance</a>
                                     </li>
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Reports" asp-action="ClubPerformance" class="nav-link text-light">Club performance</a>
+                                        <a asp-controller="Reports" asp-action="ClubPerformanceReports" class="nav-link text-light">Club performance</a>
                                     </li>
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Reports" asp-action="ClubFinance" class="nav-link text-light">Financial</a>
-                                    </li>
-                                    <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Reports" asp-action="Transfers" class="nav-link text-light">Transfers</a>
+                                        <a asp-controller="Reports" asp-action="ClubTransferReport" class="nav-link text-light">Transfers</a>
                                     </li>
                                 </ul>
                             </li>
@@ -994,6 +991,10 @@
             </main>
         </div>
     </div>
+
+    <a asp-controller="Reports" asp-action="TestFeedback" class="floating-button">
+        <span class="rotate">Share Feedback</span>
+    </a>
 
     </body>
 

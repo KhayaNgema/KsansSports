@@ -1523,6 +1523,26 @@ namespace MyField.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("MyField.Models.TestUserFeedback", b =>
+                {
+                    b.Property<int>("FeedbackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeedbackId"));
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FeedbackText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FeedbackId");
+
+                    b.ToTable("TestUserFeedbacks");
+                });
+
             modelBuilder.Entity("MyField.Models.Tournament", b =>
                 {
                     b.Property<int>("TournamentId")
@@ -1614,6 +1634,9 @@ namespace MyField.Migrations
                     b.Property<int>("CustomerClubId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ModifiedById")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -1644,6 +1667,8 @@ namespace MyField.Migrations
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("CustomerClubId");
+
+                    b.HasIndex("LeagueId");
 
                     b.HasIndex("ModifiedById");
 
@@ -1827,6 +1852,144 @@ namespace MyField.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasDiscriminator().HasValue("ArchiveType");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubPerformanceReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GamesDrawCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("GamesDrawRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("GamesLoseCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("GamesLoseRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("GamesNotPlayedCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("GamesNotPlayedRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("GamesPlayedCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("GamesPlayedRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("GamesToPlayCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GamesWinCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("GamesWinRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StandingId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("ClubId");
+
+                    b.HasIndex("LeagueId");
+
+                    b.HasIndex("StandingId");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("ClubId")
+                                .HasColumnName("ClubPerformanceReport_ClubId");
+
+                            t.Property("LeagueId")
+                                .HasColumnName("ClubPerformanceReport_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("ClubPerformanceReport");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubTransferReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("IncomingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("IncomingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LeagueId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NotActionedIncomingTransferCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("NotActionedIncomingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("NotActionedOutgoigTransferCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("NotActionedOutgoingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OutgoingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OutgoingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OverallTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RejectedIncomingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RejectedIncomingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RejectedOutgoingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RejectedOutgoingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuccessfulIncomingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuccessfulOutgoingTransfersCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SuccessfullIncomingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SuccessfullOutgoingTransferRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasIndex("ClubId");
+
+                    b.HasIndex("LeagueId");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("LeagueId")
+                                .HasColumnName("ClubTransferReport_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("ClubTransferReport");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchReports", b =>
@@ -2083,6 +2246,35 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.UserBaseModel");
 
                     b.HasDiscriminator().HasValue("SystemAdministrator");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubPerformanceReports_Archive", b =>
+                {
+                    b.HasBaseType("MyField.Models.ClubPerformanceReport");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("ClubId")
+                                .HasColumnName("ClubPerformanceReport_ClubId");
+
+                            t.Property("LeagueId")
+                                .HasColumnName("ClubPerformanceReport_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("ClubPerformanceReports_Archive");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubTransferReports_Archive", b =>
+                {
+                    b.HasBaseType("MyField.Models.ClubTransferReport");
+
+                    b.ToTable("Reports", t =>
+                        {
+                            t.Property("LeagueId")
+                                .HasColumnName("ClubTransferReport_LeagueId");
+                        });
+
+                    b.HasDiscriminator().HasValue("ClubTransferReports_Archive");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchReports_Archive", b =>
@@ -2966,6 +3158,12 @@ namespace MyField.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MyField.Models.League", "League")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MyField.Models.ClubAdministrator", "ModifiedBy")
                         .WithMany()
                         .HasForeignKey("ModifiedById")
@@ -2995,6 +3193,8 @@ namespace MyField.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("CustomerClub");
+
+                    b.Navigation("League");
 
                     b.Navigation("ModifiedBy");
 
@@ -3057,6 +3257,52 @@ namespace MyField.Migrations
                     b.Navigation("ModifiedBy");
 
                     b.Navigation("UserBaseModel");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubPerformanceReport", b =>
+                {
+                    b.HasOne("MyField.Models.Club", "Club")
+                        .WithMany()
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.League", "League")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Standing", "ClubStanding")
+                        .WithMany()
+                        .HasForeignKey("StandingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Club");
+
+                    b.Navigation("ClubStanding");
+
+                    b.Navigation("League");
+                });
+
+            modelBuilder.Entity("MyField.Models.ClubTransferReport", b =>
+                {
+                    b.HasOne("MyField.Models.Club", "Club")
+                        .WithMany()
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.League", "League")
+                        .WithMany()
+                        .HasForeignKey("LeagueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Club");
+
+                    b.Navigation("League");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchReports", b =>
