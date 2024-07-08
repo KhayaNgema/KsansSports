@@ -288,6 +288,9 @@ namespace MyField.Controllers
                 var user = await _userManager.GetUserAsync(User);
                 var userId = user.Id;
 
+                var personnelFinancialReport = await _context.PersonnelFinancialReports
+                    .FirstOrDefaultAsync();
+
                 var newIndividualFine = new Fine
                 {
                     FineDetails = viewModel.FineDetails,
@@ -300,6 +303,9 @@ namespace MyField.Controllers
                     ModifiedById = userId,
                     ModifiedDateTime = DateTime.Now,
                 };
+
+                personnelFinancialReport.ExpectedRepayableAmount = personnelFinancialReport.ExpectedRepayableAmount + viewModel.FineAmount;
+                personnelFinancialReport.RepayableFinesCount++;
 
                 newIndividualFine.PaymentStatus = PaymentStatus.Pending;
 

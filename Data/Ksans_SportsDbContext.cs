@@ -188,5 +188,13 @@ namespace MyField.Data
         public DbSet<MyField.Models.ClubPerformanceReports_Archive> ClubPerformanceReports_Archive { get; set; } = default!;
 
         public DbSet<MyField.Models.TestUserFeedback> TestUserFeedbacks { get; set; } = default!;
+
+        public DbSet<MyField.Models.OverallNewsReport> OverallNewsReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.IndividualNewsReport> IndividualNewsReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.PersonnelAccountsReport> PersonnelAccountsReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.PersonnelFinancialReport> PersonnelFinancialReports{ get; set; } = default!;
     }
 }

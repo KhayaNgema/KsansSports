@@ -1992,6 +1992,21 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("ClubTransferReport");
                 });
 
+            modelBuilder.Entity("MyField.Models.IndividualNewsReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ReadersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SportNewsId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("SportNewsId");
+
+                    b.HasDiscriminator().HasValue("IndividualNewsReport");
+                });
+
             modelBuilder.Entity("MyField.Models.MatchReports", b =>
                 {
                     b.HasBaseType("MyField.Models.Reports");
@@ -2086,6 +2101,102 @@ namespace MyField.Migrations
                     b.HasIndex("LeagueId");
 
                     b.HasDiscriminator().HasValue("MatchResultsReports");
+                });
+
+            modelBuilder.Entity("MyField.Models.OverallNewsReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ApprovedNewsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ApprovedNewsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("AuthoredNewsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NewsReadersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PublishedNewsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PublishedNewsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RejectedNewsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("RejectedNewsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("OverallNewsReport");
+                });
+
+            modelBuilder.Entity("MyField.Models.PersonnelAccountsReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ActiveAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ActiveAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("InactiveAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("InactiveAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OverallAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuspendedAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SuspendedAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("PersonnelAccountsReport");
+                });
+
+            modelBuilder.Entity("MyField.Models.PersonnelFinancialReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<decimal>("ExpectedRepayableAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OverdueFinesRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OverduePaymentFineCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PaidFinesRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PaidPaymentFinesCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PendingFinesRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PendingPaymentFinesCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RepayableFinesCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPaidAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalUnpaidAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("PersonnelFinancialReport");
                 });
 
             modelBuilder.Entity("MyField.Models.TransfersReports", b =>
@@ -3303,6 +3414,17 @@ namespace MyField.Migrations
                     b.Navigation("Club");
 
                     b.Navigation("League");
+                });
+
+            modelBuilder.Entity("MyField.Models.IndividualNewsReport", b =>
+                {
+                    b.HasOne("MyField.Models.SportNews", "SportNews")
+                        .WithMany()
+                        .HasForeignKey("SportNewsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SportNews");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchReports", b =>

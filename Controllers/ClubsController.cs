@@ -172,6 +172,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> BackOfficeClubs()
         {
             var clubs = await _context.Club
+                .Where(c => c.League.IsCurrent)
                 .ToListAsync();
 
             return PartialView("_BackOfficeClubsPartial", clubs);

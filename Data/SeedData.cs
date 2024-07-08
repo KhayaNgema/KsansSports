@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 using MyField.Models;
+using MyField.Data;
+using Microsoft.EntityFrameworkCore;
 
 public static class SeedData
 {
@@ -13,19 +15,9 @@ public static class SeedData
         {
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<UserBaseModel>>();
+            var context = scope.ServiceProvider.GetRequiredService<Ksans_SportsDbContext>();
 
-            string[] roleNames = { "Club Administrator", 
-                "Club Manager", 
-                "Player", 
-                "Sport Administrator", 
-                "News Updator", 
-                "Sport Coordinator", 
-                "System Administrator", 
-                "Official", 
-                "News administrator", 
-                "Fans administrator",
-                "Personnel administrator", 
-                "Sport manager" };
+            string[] roleNames = { "Club Administrator", "Club Manager", "Player", "Sport Administrator", "News Updator", "Sport Coordinator", "System Administrator", "Official", "News administrator", "Fans administrator", "Personnel administrator", "Sport manager" };
 
             foreach (var roleName in roleNames)
             {
@@ -35,11 +27,9 @@ public static class SeedData
                 }
             }
 
-
             var systemAdmin = await userManager.FindByEmailAsync("admin@gmail.com");
             if (systemAdmin == null)
             {
-                // Create a new UserBaseModel instance (not SystemAdministrator)
                 var defaultUser = new SportsMember
                 {
                     FirstName = "Main",
@@ -52,20 +42,17 @@ public static class SeedData
                     EmailConfirmed = true,
                     CreatedDateTime = DateTime.Now,
                     ModifiedDateTime = DateTime.Now,
-                    CreatedBy = "default-user-id", // set the default user ID
-                    ModifiedBy = "default-user-id" // set the default user ID
+                    CreatedBy = "default-user-id",
+                    ModifiedBy = "default-user-id"
                 };
 
-                // Create the user with the specified password
                 var result = await userManager.CreateAsync(defaultUser, "Admin@123");
 
-                // If user creation is successful, assign the System Administrator role
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(defaultUser, "System Administrator");
                 }
             }
-
 
             var sportsAdmin = await userManager.FindByEmailAsync("Sportadmin@gmail.com");
             if (sportsAdmin == null)
@@ -83,7 +70,7 @@ public static class SeedData
                     CreatedDateTime = DateTime.Now,
                     ModifiedDateTime = DateTime.Now,
                     CreatedBy = "default-user-id",
-                    ModifiedBy = "default-user-id" 
+                    ModifiedBy = "default-user-id"
                 };
 
                 var result = await userManager.CreateAsync(defaultUser, "Admin@123");
@@ -254,8 +241,61 @@ public static class SeedData
                     await userManager.AddToRoleAsync(defaultUser, "Fans administrator");
                 }
             }
+
+            var overallNewsReport = new OverallNewsReport
+            {
+                AuthoredNewsCount = 0,
+                ApprovedNewsCount = 0,
+                PublishedNewsCount = 0,
+                RejectedNewsCount = 0,
+                NewsReadersCount = 0,
+                ApprovedNewsRate = 0,
+                PublishedNewsRate = 0,
+                RejectedNewsRate = 0,
+            };
+
+            if (!await context.OverallNewsReports.AnyAsync())
+            {
+                context.OverallNewsReports.Add(overallNewsReport);
+                await context.SaveChangesAsync();
+            }
+
+            var personnelAccountsReport = new PersonnelAccountsReport
+            {
+                OverallAccountsCount = 0,
+                ActiveAccountsCount = 0,
+                InactiveAccountsCount = 0,
+                SuspendedAccountsCount = 0,
+                ActiveAccountsRate = 0,
+                InactiveAccountsRate = 0,
+                SuspendedAccountsRate = 0,
+            };
+
+            if (!await context.PersonnelAccountsReports.AnyAsync())
+            {
+                context.PersonnelAccountsReports.Add(personnelAccountsReport);
+                await context.SaveChangesAsync();
+            }
+
+            var personnelFinancialReport = new PersonnelFinancialReport
+            {
+                ExpectedRepayableAmount = 0,
+                PaidPaymentFinesCount = 0,
+                PendingPaymentFinesCount = 0,
+                OverduePaymentFineCount = 0,
+                TotalPaidAmount = 0,
+                TotalUnpaidAmount = 0,
+                RepayableFinesCount = 0,
+                OverdueFinesRate = 0,
+                PaidFinesRate = 0,  
+                PendingFinesRate = 0
+            };
+
+            if (!await context.PersonnelFinancialReports.AnyAsync())
+            {
+                context.PersonnelFinancialReports.Add(personnelFinancialReport);
+                await context.SaveChangesAsync();
+            }
         }
-
-
     }
 }

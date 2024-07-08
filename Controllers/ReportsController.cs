@@ -17,16 +17,79 @@ namespace MyField.Controllers
         private readonly FileUploadService _fileUploadService;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
 
         public ReportsController(Ksans_SportsDbContext context,
             FileUploadService fileUploadService,
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            RoleManager<IdentityRole> roleManager)
         {
             _context = context;
             _fileUploadService = fileUploadService;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _roleManager = roleManager;
+        }
+
+        public async Task<IActionResult> PersonnelFinancialReports()
+        {
+            var personnelFinancialReports = await _context.PersonnelFinancialReports.ToListAsync();
+
+            foreach (var personnelFinancialReport in personnelFinancialReports)
+            {
+                personnelFinancialReport.PendingPaymentFinesCount = personnelFinancialReport.RepayableFinesCount - personnelFinancialReport.PaidPaymentFinesCount;
+
+                personnelFinancialReport.TotalUnpaidAmount = personnelFinancialReport.ExpectedRepayableAmount - personnelFinancialReport.TotalPaidAmount;
+
+                if (personnelFinancialReport.RepayableFinesCount > 0)
+                {
+                    personnelFinancialReport.PaidFinesRate = ((decimal)personnelFinancialReport.PaidPaymentFinesCount / personnelFinancialReport.RepayableFinesCount) * 100;
+                    personnelFinancialReport.PendingFinesRate = ((decimal)personnelFinancialReport.PendingPaymentFinesCount / personnelFinancialReport.RepayableFinesCount) * 100;
+                    personnelFinancialReport.OverdueFinesRate = ((decimal)personnelFinancialReport.OverduePaymentFineCount / personnelFinancialReport.RepayableFinesCount) * 100;
+                }
+                else
+                {
+                    personnelFinancialReport.PaidFinesRate = 0;
+                    personnelFinancialReport.PendingFinesRate = 0;
+                    personnelFinancialReport.OverdueFinesRate = 0;
+                }
+
+                decimal totalFineRate = personnelFinancialReport.PaidFinesRate + personnelFinancialReport.PendingFinesRate + personnelFinancialReport.OverdueFinesRate;
+
+                if (totalFineRate > 0)
+                {
+                    decimal adjustmentFactor = 100 / totalFineRate;
+                    personnelFinancialReport.PaidFinesRate *= adjustmentFactor;
+                    personnelFinancialReport.PendingFinesRate *= adjustmentFactor;
+                    personnelFinancialReport.OverdueFinesRate *= adjustmentFactor;
+                }
+            }
+
+            return View(personnelFinancialReports);
+        }
+
+
+        public async Task<IActionResult> PersonnelAccountsReports()
+        {
+            var personnelAccountsReports = await _context.PersonnelAccountsReports
+                .ToListAsync();
+
+            var overallPersonnelAccountsCount = await GetOverallPersonnelAccountsCountAsync();
+
+
+            foreach (var personnelAccountReport in personnelAccountsReports)
+            {
+                personnelAccountReport.OverallAccountsCount = overallPersonnelAccountsCount;
+            }
+
+            return View(personnelAccountsReports);
+        }
+
+        public async Task<IActionResult> WarningsReports()
+        {
+            return View();
         }
 
         [HttpGet]
@@ -55,6 +118,23 @@ namespace MyField.Controllers
             }
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> IndividualNewsReports()
+        {
+            var newsReports = await _context.IndividualNewsReports
+                .Include(n => n.SportNews)
+                .ToListAsync();
+
+            return View(newsReports);
+        }
+
+        public async Task<IActionResult> NewsReports()
+        {
+            var newsReports = await _context.OverallNewsReports
+                .ToListAsync();
+
+            return View(newsReports);
         }
 
         public async Task<IActionResult> ClubPerformanceReports()
@@ -411,6 +491,25 @@ namespace MyField.Controllers
 
             return View(matchResultsReports);
         }
+
+        public async Task<int> GetOverallPersonnelAccountsCountAsync()
+        {
+            var users = _userManager.Users.ToList();
+            int count = 0;
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Any())
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+
 
         public async Task<int> GetOverallMatchesToPlayCountAsync()
         {

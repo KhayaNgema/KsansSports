@@ -451,31 +451,35 @@
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Sport news</a>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport news</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="FixtureLineUpUpdate" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Clubs</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOfficeUsers" class="nav-link text-light">Clubs</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
-                                    <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
-                                    <a href="#statsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
-                                        Stats
-                                        <i style="margin-left: 70px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                    <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
+                                    <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                        Reports and analytics
+                                        <i style="margin-left: 3px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
                                     </a>
                                 </div>
-                                <ul class="collapse list-unstyled collapsible-menu" id="statsSubmenu" style="margin-left: 35px;">
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Stats" asp-action="ClubStats" class="nav-link text-light">Club stats</a>
+                                        <a asp-controller="Reports" asp-action="PlayerPerformance" class="nav-link text-light">Player performance</a>
                                     </li>
-@*                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Stats" asp-action="PlayerStats" class="nav-link text-light">Player stats</a>
-                                    </li> *@
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="ClubPerformanceReports" class="nav-link text-light">Club performance</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
@@ -505,31 +509,35 @@
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Home" asp-action="About" class="nav-link text-light">Sport news</a>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport news</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="FixtureLineUpUpdate" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Clubs</a>
                             </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOfficeUsers" class="nav-link text-light">Clubs</a>
+                            </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
                                     <i class="fa fa-poll" style="color: white; margin-right: 5px;"></i>
                                     <a href="#statsSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
-                                        Stats
+                                        Reports & Analytics
                                         <i style="margin-left: 70px; margin-top:1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
                                     </a>
                                 </div>
-                                <ul class="collapse list-unstyled collapsible-menu" id="statsSubmenu" style="margin-left: 35px;">
+                                <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Stats" asp-action="ClubStats" class="nav-link text-light">Club stats</a>
+                                        <a asp-controller="Reports" asp-action="MyPlayerPerformance" class="nav-link text-light">My performance</a>
                                     </li>
-@*                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Stats" asp-action="MyStats" class="nav-link text-light">My stats</a>
-                                    </li> *@
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="ClubPerformanceReports" class="nav-link text-light">Club performance</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
@@ -572,7 +580,7 @@
 
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                                <a asp-controller="Standings" asp-action="StandingsBackOffice" class="nav-link text-light">Standings</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
@@ -589,7 +597,10 @@
                                 </div>
                                 <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="ActivityLogs" asp-action="PlayersActivityLogs" class="nav-link text-light">News reports</a>
+                                        <a asp-controller="Reports" asp-action="NewsReports" class="nav-link text-light">Overall news reports</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="IndividualNewsReports" class="nav-link text-light">Individual news reports</a>
                                     </li>
                                 </ul>
                             </li>
@@ -618,21 +629,17 @@
                                 <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
-                                <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Manage meetings </a>
-                            </li>
-                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
                             </li>
 
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                                <a asp-controller="Standings" asp-action="StandingsBackOffice" class="nav-link text-light">Standings</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
@@ -649,7 +656,10 @@
                                 </div>
                                 <ul class="collapse list-unstyled collapsible-menu" id="reportsSubmenu" style="margin-left: 35px;">
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="ActivityLogs" asp-action="PlayersActivityLogs" class="nav-link text-light">News reports</a>
+                                        <a asp-controller="Reports" asp-action="NewsReports" class="nav-link text-light">Overall news reports</a>
+                                    </li>
+                                    <li style="margin-top: 10px; list-style-type: none;">
+                                        <a asp-controller="Reports" asp-action="IndividualNewsReports" class="nav-link text-light">Individual news reports</a>
                                     </li>
                                 </ul>
                             </li>
@@ -685,26 +695,26 @@
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="Meetings" asp-action="Meetings" class="nav-link text-light">Manage meetings </a>
                             </li>
-@*                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fas fa-exclamation-triangle" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="Warnings" asp-action="PersonnelWarnings" class="nav-link text-light">Manage Personnel warnings</a>
-                            </li> *@
+                            </li>
 
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Sport News</a>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport News</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-futbol" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Match results</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Standings</a>
+                                <a asp-controller="Standings" asp-action="StandingsBackOffice" class="nav-link text-light">Standings</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-hands-helping" style="color: white; margin-right: 5px;"></i>
@@ -742,9 +752,10 @@
                                     <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="PersonnelAccountsReports" class="nav-link text-light">Personnel Accounts</a>
                                     </li>
-@*                                     <li style="margin-top: 10px; list-style-type: none;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="WarningsReports" class="nav-link text-light">Warnings</a>
-                                    </li> *@
+                                    </li>
+
                                     <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="PersonnelFinancialReports" class="nav-link text-light">Financial</a>
                                     </li>
@@ -784,16 +795,20 @@
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport news </a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
                             </li>
 
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
@@ -803,11 +818,6 @@
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
-                            </li>
-
-                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
-                                <i class="fa fa-chart-line" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Reports" asp-action="NewsReports" class="nav-link text-light">Reports & Analytics</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -904,29 +914,25 @@
                                 <a asp-controller="Home" asp-action="Index" class="nav-link text-light">Home</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
-                                <i class="fa fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Manage fans</a>
-                            </li>
-                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-newspaper" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Sport news</a>
+                                <a asp-controller="SportNews" asp-action="SportNews" class="nav-link text-light">Sport news</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-calendar-alt" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Fixtures" asp-action="BackOfficeFixtures" class="nav-link text-light">Fixtures</a>
+                                <a asp-controller="Fixtures" asp-action="FixturesBackOfficeUsers" class="nav-link text-light">Fixtures</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-futbol" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="MatchResults" asp-action="BackOfficeMatchResults" class="nav-link text-light">Match results</a>
+                                <a asp-controller="MatchResults" asp-action="MatchResults" class="nav-link text-light">Match results</a>
                             </li>
 
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-trophy" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Standings" asp-action="BackOfficeStandings" class="nav-link text-light">Standings</a>
+                                <a asp-controller="Standings" asp-action="StandingsBackOffice" class="nav-link text-light">Standings</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="BackOfficeClubs" class="nav-link text-light">Clubs</a>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOffice" class="nav-link text-light">Clubs</a>
                             </li>
 
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
@@ -941,9 +947,9 @@
                                     <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="FansAccountsReports" class="nav-link text-light">Fans Accounts</a>
                                     </li>
-@*                                     <li style="margin-top: 10px; list-style-type: none;">
+                                    <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="FansWarningsReports" class="nav-link text-light">Fans warnings</a>
-                                    </li> *@
+                                    </li>
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">

@@ -814,6 +814,7 @@ namespace MyField.Controllers
                 }
 
                 var user = await _userManager.GetUserAsync(User);
+
                 if (user == null)
                 {
                     System.Diagnostics.Debug.WriteLine("User not authenticated.");
@@ -823,6 +824,15 @@ namespace MyField.Controllers
 
                 System.Diagnostics.Debug.WriteLine($"User found: {userId}");
 
+                var personnelFinancialReport = await _context.PersonnelFinancialReports
+                     .FirstOrDefaultAsync();
+
+                if (fine.Offender != null)
+                {
+
+                    personnelFinancialReport.PaidPaymentFinesCount++;
+                    personnelFinancialReport.TotalPaidAmount = personnelFinancialReport.TotalPaidAmount + payment.AmountPaid;
+                }
 
 
 

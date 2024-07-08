@@ -19,6 +19,11 @@ namespace MyField.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> PersonnelWarnings()
+        {
+            return View();
+        }
+
 
 
         // GET: Warnings

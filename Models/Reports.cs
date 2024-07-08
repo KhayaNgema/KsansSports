@@ -175,4 +175,76 @@ namespace MyField.Models
 
         public decimal NotActionedOutgoingTransferRate { get; set; }
     }
+
+    public class OverallNewsReport : Reports
+    {
+        public int AuthoredNewsCount { get; set; }
+
+        public int ApprovedNewsCount { get; set; }  
+
+        public int PublishedNewsCount { get; set; }
+
+        public int RejectedNewsCount { get; set; }
+
+        public int NewsReadersCount { get; set; }
+
+        public decimal ApprovedNewsRate { get; set; }
+
+        public decimal PublishedNewsRate { get; set; }  
+
+        public decimal RejectedNewsRate { get; set; }
+    }
+
+    public class IndividualNewsReport : Reports
+    {
+        public int ReadersCount { get; set; }
+
+        [ForeignKey("SportNewsId")]
+        public int SportNewsId { get; set; }
+
+        public virtual SportNews SportNews { get; set; }
+    }
+
+    public class PersonnelAccountsReport : Reports
+    {
+        public int OverallAccountsCount { get; set; }
+
+        public int ActiveAccountsCount { get; set; }
+
+        public int InactiveAccountsCount { get; set; }
+
+        public int SuspendedAccountsCount { get; set; }
+
+        public decimal ActiveAccountsRate { get; set; }
+
+        public decimal InactiveAccountsRate { get; set; }   
+
+        public decimal SuspendedAccountsRate { get; set;}
+    }
+
+    public class PersonnelFinancialReport : Reports
+    {
+
+        public decimal ExpectedRepayableAmount { get; set; }
+
+        public decimal TotalPaidAmount { get; set; }
+
+        public decimal TotalUnpaidAmount { get; set; }
+
+        public int RepayableFinesCount { get; set; }
+
+        public int PaidPaymentFinesCount { get; set; }
+
+        public int PendingPaymentFinesCount { get; set; }
+
+        public int OverduePaymentFineCount { get; set; }
+
+        public decimal PaidFinesRate { get; set; }
+
+        public decimal PendingFinesRate { get;set; }
+
+        public decimal OverdueFinesRate { get; set; }
+    }
+
+
 }

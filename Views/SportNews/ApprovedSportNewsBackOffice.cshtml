@@ -94,37 +94,3 @@
     </tbody>
 </table>
 </div>
-@* <div class="modal fade" id="sportNewsModal" tabindex="-1" role="dialog" aria-labelledby="sportNewsModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="sportNewsModalLabel">Sport News Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    function openSportNewsDetailsModal(newsId) {
-        $.ajax({
-            url: '@Url.Action("Details", "SportNews")',
-            type: 'GET',
-            data: { id: newsId },
-            success: function (data) {
-                $('#sportNewsModal .modal-body').html(data);
-                $('#sportNewsModal').modal('show');
-            },
-            error: function () {
-                alert('Error loading sport news details.');
-            }
-        });
-    }
-</script> *@
-
-
