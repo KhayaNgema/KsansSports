@@ -831,6 +831,11 @@ namespace MyField.Controllers
                     .Include(s => s.Club)
                     .FirstOrDefaultAsync();
 
+                var transfer = await _context.Transfer
+                    .Where(t => t.Player.Id == viewModel.PlayerId &&
+                    t.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
                 if (transferMarket == null)
                 {
                     TempData["Errors"] = new List<string> { "Transfer market not found" };
@@ -846,6 +851,12 @@ namespace MyField.Controllers
                 if (transferMarket.Player.ClubId == clubAdministrator.ClubId)
                 {
                     TempData["Message"] = $"You can't initiate transfer communication for your own player! Please select other clubs' players.";
+                    return RedirectToAction(nameof(TransferMarket));
+                }
+
+                if (viewModel.PlayerId == transfer.PlayerId && transfer.Status == TransferStatus.Accepted)
+                {
+                    TempData["Message"] = $"You cannot initiate transfer communication for this player since it has been already accepted for another buyer club.";
                     return RedirectToAction(nameof(TransferMarket));
                 }
 

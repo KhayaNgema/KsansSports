@@ -1,49 +1,12 @@
-﻿@model IEnumerable<MyField.Models.Comment>
-
-@{
-    ViewData["Title"] = "Index";
+﻿@{
+    ViewData["Title"] = "Personnel Warnings";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
+<br />
+@await Html.PartialAsync("_HomeButton")
+<h4 class="text-center">Chats</h4>
+<br />
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="table-responsive">
-    <table class="table table-striped table-borderless">
-        <thead>
-            <tr style="color:white;background-color: #324260; white-space: nowrap;">
-            <th>
-                @Html.DisplayNameFor(model => model.CommentText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommenterId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CommentDateTime)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr class="ellipsis">
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommenterId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CommentDateTime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CommentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CommentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CommentId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div style="text-align:center; justify-content:center;">
+    <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">Comming soon...</p>
 </div>

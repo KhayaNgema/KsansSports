@@ -15,8 +15,6 @@ namespace MyField.Models
 
         public string PlayerCard {  get; set; } 
 
-        public bool IsActive { get; set; }
-
         [Display(Name = "Club")]
         public int ClubId { get; set; }
         public virtual Club Club { get; set; }

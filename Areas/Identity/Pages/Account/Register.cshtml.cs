@@ -144,7 +144,9 @@ namespace MyField.Areas.Identity.Pages.Account
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,  
                     Email = Input.Email,
-                    DateOfBirth = Input.DateOfBirth,    
+                    DateOfBirth = Input.DateOfBirth,   
+                    IsActive = true,
+                    IsSuspended = false
                 };
 
                 if (Input.ProfilePicture != null && Input.ProfilePicture.Length > 0)

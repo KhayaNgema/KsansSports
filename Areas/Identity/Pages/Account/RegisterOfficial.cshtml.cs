@@ -134,6 +134,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     CreatedDateTime = DateTime.Now,
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
+                    IsActive = true,
+                    IsSuspended = false
                 };
 
 

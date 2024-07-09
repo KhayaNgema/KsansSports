@@ -31,20 +31,138 @@ namespace MyField.Controllers
             _userManager = userManager;
         }
 
+
+        public async Task<IActionResult> SportAdministrators()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Administrator");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var sportAdministrators = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(sportAdministrators);
+        }
+
+        public async Task<IActionResult> SportManagers()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Manager");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var sportManagers = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(sportManagers);
+        }
+
+        public async Task<IActionResult> SportCoordinators()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Coordinator");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var sportCoordinators = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(sportCoordinators);
+        }
+
+        public async Task<IActionResult> Officials()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Official");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var officials = await _context.Officials
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(officials);
+        }
+
+        public async Task<IActionResult> ClubAdministrators()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club administrator");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var clubAdministrators = await _context.ClubAdministrator
+                .Where(u => userIds.Contains(u.Id))
+                .Include( u => u.Club)
+                .ToListAsync();
+
+            return View(clubAdministrators);
+        }
+
+        public async Task<IActionResult> ClubManagers()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club manager");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var clubManagers = await _context.ClubManager
+                .Where(u => userIds.Contains(u.Id))
+                .Include(u => u.Club)
+                .ToListAsync();
+
+            return View(clubManagers);
+        }
+
+        public async Task<IActionResult> DivisionPlayers()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Player");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var divisionPlayers = await _context.Player
+                .Where(u => userIds.Contains(u.Id))
+                .Include(u => u.Club)
+                .ToListAsync();
+
+            return View(divisionPlayers);
+        }
+
+
+        public async Task<IActionResult> NewsAdministrators()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News administrator");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var newsAdministrators = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(newsAdministrators);
+        }
+
+        public async Task<IActionResult> NewsUpdaters()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News updater");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var newsUpdaters = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(newsUpdaters);
+        }
+
+        public async Task<IActionResult> FansAdministrators()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Fans administrator");
+            var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
+
+            var fansAdministrators = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id))
+                .ToListAsync();
+
+            return View(fansAdministrators);
+        }
+
+
         public async Task<IActionResult> SystemUsers()
         {
             var systemUsers = await _context.Users
                 .ToListAsync();
 
             return View(systemUsers);
-        }
-
-        public async Task<IActionResult> SportMembers()
-        {
-            var sportMembers = await _context.SportMember
-                .ToListAsync();
-
-            return View(sportMembers);
         }
 
         public async Task<IActionResult> MyClubPlayers()
@@ -116,13 +234,6 @@ namespace MyField.Controllers
             return View(clubAdministrators);
         }
 
-        public async Task<IActionResult> Officials()
-        {
-            var officials = await _context.Officials
-                .ToListAsync();
-
-            return View(officials);
-        }
 
         public async Task<IActionResult> DeActivateUser()
         {

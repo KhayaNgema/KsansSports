@@ -155,7 +155,9 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
                     Position = Input.Position,
-                    MarketValue = Input.MarketValue
+                    MarketValue = Input.MarketValue,
+                    IsActive = true,
+                    IsSuspended = false
                 };
 
                 var loggedInUser = await _userManager.GetUserAsync(User);

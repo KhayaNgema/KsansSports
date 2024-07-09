@@ -78,11 +78,54 @@ namespace MyField.Controllers
 
             var overallPersonnelAccountsCount = await GetOverallPersonnelAccountsCountAsync();
 
+            var activePersonnelAccountsCount = await GetActivePersonnelAccountsCountAsync();
+
+            var inactivePersonnelAccountsCount = await GetInactivePersonnelAccountsCountAsync();
+
+            var suspendedPersonnelAccountsCount = await GetSuspendedPersonnelAccountsCountAsync();
+
 
             foreach (var personnelAccountReport in personnelAccountsReports)
             {
                 personnelAccountReport.OverallAccountsCount = overallPersonnelAccountsCount;
+
+                personnelAccountReport.ActiveAccountsCount = activePersonnelAccountsCount;
+
+                personnelAccountReport.InactiveAccountsCount = inactivePersonnelAccountsCount;
+
+                personnelAccountReport.SuspendedAccountsCount = suspendedPersonnelAccountsCount;
+
+                if(personnelAccountReport.OverallAccountsCount > 0)
+                {
+                    if(personnelAccountReport.ActiveAccountsCount > 0)
+                    {
+                        personnelAccountReport.ActiveAccountsRate = ((decimal)activePersonnelAccountsCount / overallPersonnelAccountsCount) * 100;
+                    }
+
+                    if(personnelAccountReport.InactiveAccountsCount > 0)
+                    {
+                        personnelAccountReport.InactiveAccountsRate = ((decimal)inactivePersonnelAccountsCount / overallPersonnelAccountsCount) *100;
+                    }
+
+                    if(personnelAccountReport.SuspendedAccountsCount > 0)
+                    {
+                        personnelAccountReport.SuspendedAccountsRate = ((decimal)suspendedPersonnelAccountsCount / overallPersonnelAccountsCount) * 100;
+                    }
+
+                    decimal totalPersonnelAccountsRate = personnelAccountReport.ActiveAccountsRate +
+                               personnelAccountReport.InactiveAccountsRate +
+                               personnelAccountReport.SuspendedAccountsRate;
+                    if (totalPersonnelAccountsRate > 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalPersonnelAccountsRate;
+                        personnelAccountReport.ActiveAccountsRate *= adjustmentFactor;
+                        personnelAccountReport.InactiveAccountsRate *= adjustmentFactor;
+                        personnelAccountReport.SuspendedAccountsRate *= adjustmentFactor;
+                    }
+
+                }
             }
+
 
             return View(personnelAccountsReports);
         }
@@ -509,6 +552,61 @@ namespace MyField.Controllers
             return count;
         }
 
+        public async Task<int> GetActivePersonnelAccountsCountAsync()
+        {
+            var users = _userManager.Users
+                .Where( u => u.IsActive).ToList();
+            int count = 0;
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Any())
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+
+        public async Task<int> GetInactivePersonnelAccountsCountAsync()
+        {
+            var users = _userManager.Users
+                .Where(u => !u.IsActive).ToList();
+            int count = 0;
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Any())
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+
+        public async Task<int> GetSuspendedPersonnelAccountsCountAsync()
+        {
+            var users = _userManager.Users
+                .Where(u => u.IsSuspended).ToList();
+            int count = 0;
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Any())
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
 
 
         public async Task<int> GetOverallMatchesToPlayCountAsync()

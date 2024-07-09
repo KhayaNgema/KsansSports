@@ -133,6 +133,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     CreatedDateTime = DateTime.Now,
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
+                    IsActive = true,
+                    IsSuspended = false
                 };
 
                 if (Input.ProfilePicture != null && Input.ProfilePicture.Length > 0)

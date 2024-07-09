@@ -1702,6 +1702,42 @@ object-fit:cover;
 }
 
 
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    max-width: 200px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+    .dropdown-menu.show {
+        display: block;
+    }
+
+
+.whatsapp-button {
+    text-decoration: none;
+}
+
+    .whatsapp-button button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #25D366;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .whatsapp-button button i {
+            margin-right: 10px;
+        }
+
 
 
 
