@@ -33,6 +33,64 @@ namespace MyField.Controllers
             _roleManager = roleManager;
         }
 
+
+        public async Task<IActionResult> FansAccountsReports()
+        {
+            var fansAccountsReports = await _context.FansAccountsReports
+                .ToListAsync();
+
+            var overallFansAccountsCount = await GetOverallFansAccountsCountAsync();
+
+            var activeFansAccountsCount = await GetActiveFansAccountsCountAsync();
+
+            var inactiveFansAccountsCount = await GetInactiveFansAccountsCountAsync();
+
+            var suspendedFansAccountsCount = await GetSuspendedFansAccountsCountAsync();
+
+            foreach(var fansAccountReport in fansAccountsReports)
+            {
+                fansAccountReport.OverallFansAccountsCount = overallFansAccountsCount;
+
+                fansAccountReport.ActiveFansAccountsCount = activeFansAccountsCount;
+
+                fansAccountReport.InactiveFansAccountsCount = inactiveFansAccountsCount;
+
+                fansAccountReport.SuspendedFansAccountsCount = suspendedFansAccountsCount;
+
+                if(overallFansAccountsCount > 0)
+                {
+                    if(activeFansAccountsCount > 0)
+                    {
+                        fansAccountReport.ActiveFansAccountsRate = ((decimal)activeFansAccountsCount / overallFansAccountsCount) * 100;
+                    }
+
+                    if (inactiveFansAccountsCount > 0)
+                    {
+                        fansAccountReport.InactiveFansAccountsRate = ((decimal)inactiveFansAccountsCount / overallFansAccountsCount) * 100;
+                    }
+
+                    if (suspendedFansAccountsCount > 0)
+                    {
+                        fansAccountReport.SuspendedFansAccountsRate = ((decimal)suspendedFansAccountsCount / overallFansAccountsCount) * 100;
+                    }
+
+                    decimal totalFansAccountsRate = fansAccountReport.ActiveFansAccountsRate +
+                              fansAccountReport.InactiveFansAccountsRate +
+                              fansAccountReport.SuspendedFansAccountsRate;
+                    if (totalFansAccountsRate > 0)
+                    {
+                        decimal adjustmentFactor = 100 / totalFansAccountsRate;
+                        fansAccountReport.ActiveFansAccountsRate *= adjustmentFactor;
+                        fansAccountReport.InactiveFansAccountsRate *= adjustmentFactor;
+                        fansAccountReport.SuspendedFansAccountsRate *= adjustmentFactor;
+                    }
+                }
+            }
+
+
+            return View(fansAccountsReports);
+        }
+
         public async Task<IActionResult> PersonnelFinancialReports()
         {
             var personnelFinancialReports = await _context.PersonnelFinancialReports.ToListAsync();
@@ -533,6 +591,33 @@ namespace MyField.Controllers
             ViewBag.CurrentSeason = currentSeason?.LeagueYears;
 
             return View(matchResultsReports);
+        }
+
+        public async Task<int> GetOverallFansAccountsCountAsync()
+        {
+            return await _context.Fans
+                .CountAsync();
+        }
+
+        public async Task<int> GetActiveFansAccountsCountAsync()
+        {
+            return await _context.Fans
+                .Where( f => f.IsActive)
+                .CountAsync();
+        }
+
+        public async Task<int> GetInactiveFansAccountsCountAsync()
+        {
+            return await _context.Fans
+                .Where(f => !f.IsActive)
+                .CountAsync();
+        }
+
+        public async Task<int> GetSuspendedFansAccountsCountAsync()
+        {
+            return await _context.Fans
+                .Where(f => !f.IsSuspended)
+                .CountAsync();
         }
 
         public async Task<int> GetOverallPersonnelAccountsCountAsync()

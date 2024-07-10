@@ -544,7 +544,7 @@ namespace MyField.Controllers
             _context.Update(club);
             await _context.SaveChangesAsync();
 
-            TempData["Message"] = $"You have successfully unsuspended {club.ClubName} and now they will be able to access all features of the system.";
+            TempData["Message"] = $"You have successfully suspended {club.ClubName} and now they will be able to access all features of the system.";
 
             return RedirectToAction(nameof(ClubsBackOffice));
         }
@@ -571,7 +571,7 @@ namespace MyField.Controllers
             _context.Update(club);
             await _context.SaveChangesAsync();
 
-            TempData["Message"] = $"You have successfully suspended {club.ClubName} and now they won't be able to access some system features due to te decision you have made.";
+            TempData["Message"] = $"You have successfully unsuspended {club.ClubName} and now they won't be able to access some system features due to te decision you have made.";
 
             return RedirectToAction(nameof(ClubsBackOffice));
         }

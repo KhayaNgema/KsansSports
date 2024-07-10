@@ -32,6 +32,14 @@ namespace MyField.Controllers
         }
 
 
+        public async Task<IActionResult> DivisionFans()
+        {
+            var divisionFans = await _context.Fans
+                .ToListAsync();
+
+            return View(divisionFans);
+        }
+
         public async Task<IActionResult> SportAdministrators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Administrator");

@@ -124,8 +124,15 @@ namespace MyField.Controllers
 
         public async Task<IActionResult> FansActivityLogs()
         {
-            return View();
+
+            var fansActivityLogs = await _context.ActivityLogs
+                .Where(log => !_context.Users
+                    .Any(u => u.Id == log.UserId))
+                .ToListAsync();
+
+            return View(fansActivityLogs);
         }
+
 
         public async Task<IActionResult> ClubAdministratorsActivityLogs()
         {

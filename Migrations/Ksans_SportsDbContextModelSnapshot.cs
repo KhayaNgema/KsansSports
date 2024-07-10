@@ -1998,6 +1998,34 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("ClubTransferReport");
                 });
 
+            modelBuilder.Entity("MyField.Models.FansAccountsReport", b =>
+                {
+                    b.HasBaseType("MyField.Models.Reports");
+
+                    b.Property<int>("ActiveFansAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ActiveFansAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("InactiveFansAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("InactiveFansAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("OverallFansAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuspendedFansAccountsCount")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SuspendedFansAccountsRate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasDiscriminator().HasValue("FansAccountsReport");
+                });
+
             modelBuilder.Entity("MyField.Models.IndividualNewsReport", b =>
                 {
                     b.HasBaseType("MyField.Models.Reports");

@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>@ViewData["Title"] - MyField</title>
+    <title>@ViewData["Title"] - K&S Foundation</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyField.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
 
     <style>
         .navLinks {
@@ -224,9 +225,6 @@
                                         <a asp-controller="Fines" asp-action="ClubFines" class="nav-link text-light">Club Fines</a>
                                     </li>
                                     <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Fines" asp-action="MyIndividualFines" class="nav-link text-light">Club Fines</a>
-                                    </li>
-                                    <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Billings" asp-action="Transactions" class="nav-link text-light">Transactions</a>
                                     </li>
                                 </ul>
@@ -248,6 +246,10 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
                                     <i class="fa  fa-history" style="color: white; margin-right: 5px;"></i>
@@ -259,12 +261,6 @@
                                 <ul class="collapse list-unstyled collapsible-menu" id="activityLogsSubmenu" style="margin-left: 35px;">
                                     <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Myself</a>
-                                    </li>
-                                    <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="BillingAndFinance" asp-action="ClubFines" class="nav-link text-light">Sport members</a>
-                                    </li>
-                                    <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="BillingAndFinance" asp-action="PlayerTransfers" class="nav-link text-light">System</a>
                                     </li>
                                 </ul>
                             </li>
@@ -328,6 +324,10 @@
                                         <a asp-controller="Billings" asp-action="MyInvoices" class="nav-link text-light">Invoices</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -422,6 +422,10 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
                                     <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -514,6 +518,10 @@
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
                             </li>
@@ -587,6 +595,10 @@
                                         <a asp-controller="Reports" asp-action="ClubPerformanceReports" class="nav-link text-light">Club performance</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -669,6 +681,10 @@
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
                             </li>
@@ -742,6 +758,10 @@
                                         <a asp-controller="Reports" asp-action="IndividualNewsReports" class="nav-link text-light">Individual news reports</a>
                                     </li>
                                 </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -839,6 +859,10 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
                                     <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
@@ -915,6 +939,10 @@
                                 </ul>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
                             </li>
@@ -983,6 +1011,10 @@
                                 <a asp-controller="Home" asp-action="About" class="nav-link text-light">Reports & Analytics </a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-history" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="ActivityLogs" asp-action="MyActivityLogs" class="nav-link text-light">Activity logs</a>
                             </li>
@@ -1027,7 +1059,7 @@
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa  fa-users" style="color: white; margin-right: 5px;"></i>
-                                <a asp-controller="Clubs" asp-action="ClubsBackOffice" class="nav-link text-light">Clubs</a>
+                                <a asp-controller="Clubs" asp-action="ClubsBackOfficeUsers" class="nav-link text-light">Clubs</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">
@@ -1059,10 +1091,11 @@
                                     <li style="margin-top: 10px; list-style-type: none;">
                                         <a asp-controller="Reports" asp-action="FansAccountsReports" class="nav-link text-light">Fans Accounts</a>
                                     </li>
-                                    <li style="margin-top: 10px; list-style-type: none;">
-                                        <a asp-controller="Reports" asp-action="FansWarningsReports" class="nav-link text-light">Fans warnings</a>
-                                    </li>
                                 </ul>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-user" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Queries" asp-action="SupportQueries" class="nav-link text-light">Support</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
                                 <div style="display: flex; align-items: center;">

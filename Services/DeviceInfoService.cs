@@ -41,7 +41,6 @@ namespace MyField.Services
 
                 if (parsedData["device"] != null)
                 {
-                    // Extracting device information
                     deviceInfo.DeviceName = parsedData["device"]["brand"]?.ToString();
                     deviceInfo.DeviceModel = parsedData["device"]["model"]?.ToString();
                 }

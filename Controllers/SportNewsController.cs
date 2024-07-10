@@ -33,6 +33,28 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;   
         }
 
+        public async Task<IActionResult> ToBeModifiedSportNews()
+        {
+            var newsToBeModified = await _context.SportNew
+                .Where(n => n.NewsStatus == NewsStatus.ToBeModified)
+                .ToListAsync();
+
+            return View(newsToBeModified);
+        }
+
+        public async Task <IActionResult> PublishedSportNewsBackOffice()
+        {
+
+            var sportsNews = await _context.SportNew
+                  .Where(s => s.NewsStatus == NewsStatus.Approved)
+                  .Include(s => s.AuthoredBy)
+                  .Include(s => s.ModifiedBy)
+                  .Include(s => s.PublishedBy)
+                  .ToListAsync();
+
+            return View(sportsNews);
+        }
+
 
         public async Task<IActionResult> PublishedSportNews()
         {

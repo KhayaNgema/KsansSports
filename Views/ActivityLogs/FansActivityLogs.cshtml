@@ -1,10 +1,15 @@
 ﻿@model IEnumerable<MyField.Models.ActivityLog>
+@{
+    ViewData["Title"] = "Fans Activity Logs";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
 <br />
 
 <br />
 @await Html.PartialAsync("_HomeButton")
 <br />
-<h4 class="text-center">Activity logs</h4>
+<h4 class="text-center">Fans Activity Logs</h4>
 <br />
 
 @if (Model.Any())

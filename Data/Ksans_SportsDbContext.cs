@@ -196,5 +196,7 @@ namespace MyField.Data
         public DbSet<MyField.Models.PersonnelAccountsReport> PersonnelAccountsReports { get; set; } = default!;
 
         public DbSet<MyField.Models.PersonnelFinancialReport> PersonnelFinancialReports{ get; set; } = default!;
+        public DbSet<MyField.Models.FansAccountsReport> FansAccountsReports { get; set; } = default!;
+
     }
 }

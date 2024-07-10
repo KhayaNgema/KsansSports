@@ -76,6 +76,13 @@ namespace MyField.Controllers
                 .Include(m => m.ModifiedBy)
                 .ToListAsync();
 
+            var currentSeason = await _context.League
+                .Where(c => c.IsCurrent)
+                .FirstOrDefaultAsync();
+
+
+            ViewBag.CurrentSeason = currentSeason.LeagueYears;
+
             return View(matchResults);
         }
 

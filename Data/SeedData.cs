@@ -296,6 +296,24 @@ public static class SeedData
                 context.PersonnelFinancialReports.Add(personnelFinancialReport);
                 await context.SaveChangesAsync();
             }
+
+
+            var fansAccountsReport = new FansAccountsReport
+            {
+               OverallFansAccountsCount = 0,
+               ActiveFansAccountsCount = 0,
+               InactiveFansAccountsCount = 0,
+               SuspendedFansAccountsCount = 0,
+               ActiveFansAccountsRate = 0,
+               InactiveFansAccountsRate = 0,
+               SuspendedFansAccountsRate = 0
+            };
+
+            if (!await context.FansAccountsReports.AnyAsync())
+            {
+                context.FansAccountsReports.Add(fansAccountsReport);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

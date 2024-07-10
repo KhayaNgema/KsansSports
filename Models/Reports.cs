@@ -155,7 +155,7 @@ namespace MyField.Models
 
         public int SuccessfulIncomingTransfersCount { get; set; }
 
-        public int RejectedOutgoingTransfersCount {  get; set; }
+        public int RejectedOutgoingTransfersCount { get; set; }
 
         public int RejectedIncomingTransfersCount { get; set; }
 
@@ -180,7 +180,7 @@ namespace MyField.Models
     {
         public int AuthoredNewsCount { get; set; }
 
-        public int ApprovedNewsCount { get; set; }  
+        public int ApprovedNewsCount { get; set; }
 
         public int PublishedNewsCount { get; set; }
 
@@ -190,7 +190,7 @@ namespace MyField.Models
 
         public decimal ApprovedNewsRate { get; set; }
 
-        public decimal PublishedNewsRate { get; set; }  
+        public decimal PublishedNewsRate { get; set; }
 
         public decimal RejectedNewsRate { get; set; }
     }
@@ -217,9 +217,9 @@ namespace MyField.Models
 
         public decimal ActiveAccountsRate { get; set; }
 
-        public decimal InactiveAccountsRate { get; set; }   
+        public decimal InactiveAccountsRate { get; set; }
 
-        public decimal SuspendedAccountsRate { get; set;}
+        public decimal SuspendedAccountsRate { get; set; }
     }
 
     public class PersonnelFinancialReport : Reports
@@ -241,10 +241,25 @@ namespace MyField.Models
 
         public decimal PaidFinesRate { get; set; }
 
-        public decimal PendingFinesRate { get;set; }
+        public decimal PendingFinesRate { get; set; }
 
         public decimal OverdueFinesRate { get; set; }
     }
 
+    public class FansAccountsReport : Reports
+    {
+        public int OverallFansAccountsCount { get; set; }
 
+        public int ActiveFansAccountsCount { get; set; }
+
+        public int InactiveFansAccountsCount { get; set; }
+
+        public int SuspendedFansAccountsCount { get; set; }
+
+        public decimal ActiveFansAccountsRate { get; set; }
+
+        public decimal InactiveFansAccountsRate { get; set; }
+
+        public decimal SuspendedFansAccountsRate { get; set; }
+    }
 }

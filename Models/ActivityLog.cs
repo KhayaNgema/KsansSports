@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyField.Models
@@ -14,8 +15,6 @@ namespace MyField.Models
         public string UserId { get; set; }
 
         public virtual UserBaseModel UserBaseModel { get; set; }
-
-
 
         public DateTime Timestamp { get; set; }
 

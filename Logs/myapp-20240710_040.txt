@@ -1,0 +1,1056 @@
+2024-07-10 18:53:43.218 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.227 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.228 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:43.229 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-10 18:53:45.307 +02:00 [INF] Executed DbCommand (48ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.425 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.428 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.429 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.432 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.436 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.437 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.439 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.440 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.442 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.444 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.445 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-10 18:53:45.511 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.773 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.775 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.776 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.788 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.791 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.792 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.794 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-10 18:53:45.823 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-10 18:53:45.832 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-10 18:53:45.838 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-10 18:53:45.844 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-10 18:53:46.564 +02:00 [INF] Executing endpoint 'MyField.Controllers.MatchResultsController.MatchResults (MyField)'
+2024-07-10 18:53:46.577 +02:00 [INF] Route matched with {action = "MatchResults", controller = "MatchResults", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MatchResults() on controller MyField.Controllers.MatchResultsController (MyField).
+2024-07-10 18:53:46.645 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-10 18:53:46.813 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [m].[ResultsId], [m].[AwayTeamId], [m].[AwayTeamScore], [m].[CreatedById], [m].[CreatedDateTime], [m].[Discriminator], [m].[FixtureId], [m].[HomeTeamId], [m].[HomeTeamScore], [m].[LeagueId], [m].[Location], [m].[MatchDate], [m].[MatchTime], [m].[ModifiedById], [m].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[IsActive], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[Player_ClubId], [t].[EndDate], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [MatchResult] AS [m]
+INNER JOIN [Club] AS [c] ON [m].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [m].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [m].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [m].[ModifiedById] = [t0].[Id]
+WHERE [m].[LeagueId] = @__currentLeague_LeagueId_0
+2024-07-10 18:53:46.938 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-10 18:53:46.973 +02:00 [INF] Executing ViewResult, running view MatchResults.
+2024-07-10 18:53:47.218 +02:00 [INF] Executed ViewResult - view MatchResults executed in 246.4767ms.
+2024-07-10 18:53:47.221 +02:00 [INF] Executed action MyField.Controllers.MatchResultsController.MatchResults (MyField) in 643.6141ms
+2024-07-10 18:53:47.221 +02:00 [INF] Executed endpoint 'MyField.Controllers.MatchResultsController.MatchResults (MyField)'
+2024-07-10 18:53:47.223 +02:00 [INF] HTTP GET /MatchResults/MatchResults responded 200 in 659.9079 ms
+2024-07-10 18:53:47.242 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-10 18:53:47.242 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-07-10 18:53:47.242 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-10 18:53:47.242 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-07-10 18:53:47.242 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-10 18:53:47.334 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-10 18:53:54.645 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-10 18:53:54.646 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-10 18:53:54.648 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-10 18:53:54.731 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2024-07-10 18:54:59.194 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-10 18:55:03.140 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-10 18:55:03.178 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-10 18:55:03.178 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-10 18:55:03.184 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-10 18:55:03.188 +02:00 [INF] Hosting environment: Development
+2024-07-10 18:55:03.188 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-10 18:55:03.387 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/MatchResults - -
+2024-07-10 18:55:04.220 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:55:04.220 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:55:04.220 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:55:04.220 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 18:55:04.222 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 18:55:04.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/MatchResults - - - 200 - text/html;+charset=utf-8 843.0967ms
+2024-07-10 18:55:04.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 12.9196ms
+2024-07-10 18:55:04.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 11.3330ms
+2024-07-10 18:55:04.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 13.0142ms
+2024-07-10 18:55:04.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 12.9323ms
+2024-07-10 18:55:04.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 12.9342ms
+2024-07-10 18:55:04.240 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:55:04.243 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 3.0972ms
+2024-07-10 18:55:04.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-10 18:55:04.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 2.1304ms
+2024-07-10 18:55:24.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:55:24.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:55:24.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:55:24.610 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.9329ms
+2024-07-10 18:55:24.612 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.2200ms
+2024-07-10 18:55:24.612 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.9948ms
+2024-07-10 18:55:24.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:55:24.649 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 5.8719ms
+2024-07-10 18:55:31.175 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:55:31.189 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 14.0815ms
+2024-07-10 18:55:31.192 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:55:31.367 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 175.4009ms
+2024-07-10 18:55:31.378 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:55:31.380 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1488ms
+2024-07-10 18:55:31.381 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:55:31.381 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:55:31.382 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2547ms
+2024-07-10 18:55:31.383 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.5468ms
+2024-07-10 18:55:31.383 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:55:31.383 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4409ms
+2024-07-10 18:55:31.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:55:31.412 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.9526ms
+2024-07-10 18:55:35.433 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOfficeUsers - -
+2024-07-10 18:55:35.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/ClubsBackOfficeUsers - - - 200 - text/html;+charset=utf-8 42.6689ms
+2024-07-10 18:55:35.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:55:35.490 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1703ms
+2024-07-10 18:55:35.493 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:55:35.493 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:55:35.494 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8016ms
+2024-07-10 18:55:35.495 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.2884ms
+2024-07-10 18:55:35.496 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 18:55:35.496 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 18:55:35.498 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.5920ms
+2024-07-10 18:55:35.502 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 5.7929ms
+2024-07-10 18:55:35.504 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:55:35.504 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4452ms
+2024-07-10 18:55:35.523 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:55:35.526 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.9887ms
+2024-07-10 18:55:39.742 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-10 18:55:41.814 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 2071.4497ms
+2024-07-10 18:55:41.817 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:55:41.834 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 17.3806ms
+2024-07-10 18:55:41.844 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:55:41.846 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7930ms
+2024-07-10 18:55:41.846 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:55:41.846 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:55:41.847 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8991ms
+2024-07-10 18:55:41.848 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1488ms
+2024-07-10 18:55:41.849 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:55:41.849 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2104ms
+2024-07-10 18:55:41.869 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:55:41.873 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.9496ms
+2024-07-10 18:55:42.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:42.252 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 82.6099ms
+2024-07-10 18:55:42.258 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:42.258 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:42.261 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.9246ms
+2024-07-10 18:55:42.261 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 3.0787ms
+2024-07-10 18:55:47.093 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:47.177 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 83.9076ms
+2024-07-10 18:55:48.203 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:48.211 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 8.0533ms
+2024-07-10 18:55:48.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:48.219 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:48.222 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 3.6544ms
+2024-07-10 18:55:48.223 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 4.1282ms
+2024-07-10 18:55:49.545 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:49.550 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 4.9789ms
+2024-07-10 18:55:50.461 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:50.467 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 6.1883ms
+2024-07-10 18:55:50.475 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:50.475 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:50.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 6.5615ms
+2024-07-10 18:55:50.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 6.6464ms
+2024-07-10 18:55:51.443 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:51.448 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 4.3602ms
+2024-07-10 18:55:52.367 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:52.373 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 5.4917ms
+2024-07-10 18:55:52.380 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:52.380 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:52.383 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.7719ms
+2024-07-10 18:55:52.383 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 3.6065ms
+2024-07-10 18:55:53.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:53.365 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 3.9689ms
+2024-07-10 18:55:54.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:54.349 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 7.5465ms
+2024-07-10 18:55:54.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:54.356 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:54.357 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.1148ms
+2024-07-10 18:55:54.357 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.6281ms
+2024-07-10 18:55:55.428 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:55.431 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 3.5700ms
+2024-07-10 18:55:56.612 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:56.618 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 6.1620ms
+2024-07-10 18:55:56.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:56.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:56.627 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 3.6540ms
+2024-07-10 18:55:56.628 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 4.1014ms
+2024-07-10 18:55:57.888 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:55:57.893 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 5.0841ms
+2024-07-10 18:55:58.849 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:55:58.856 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 6.5158ms
+2024-07-10 18:55:58.862 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:55:58.862 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:55:58.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 4.8597ms
+2024-07-10 18:55:58.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 4.9248ms
+2024-07-10 18:56:15.102 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:56:15.107 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 4.9257ms
+2024-07-10 18:56:16.235 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:56:16.239 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 4.0274ms
+2024-07-10 18:56:16.245 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:56:16.245 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:56:16.247 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.9327ms
+2024-07-10 18:56:16.247 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 2.0671ms
+2024-07-10 18:56:16.938 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:56:16.943 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 4.1727ms
+2024-07-10 18:56:17.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:56:17.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 3.6477ms
+2024-07-10 18:56:17.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:56:17.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:56:17.432 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.0135ms
+2024-07-10 18:56:17.433 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 2.0747ms
+2024-07-10 18:56:18.077 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/fixtures - -
+2024-07-10 18:56:18.081 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/fixtures - - - 200 - text/html;+charset=utf-8 3.5928ms
+2024-07-10 18:56:19.115 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:56:19.120 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 5.3869ms
+2024-07-10 18:56:19.126 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:56:19.126 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:56:19.128 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.6710ms
+2024-07-10 18:56:19.128 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.7542ms
+2024-07-10 18:56:20.064 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - -
+2024-07-10 18:56:20.073 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - - - 302 0 - 9.3024ms
+2024-07-10 18:56:20.077 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D2030 - -
+2024-07-10 18:56:20.160 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D2030 - - - 200 - text/html;+charset=utf-8 82.8335ms
+2024-07-10 18:56:20.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:20.174 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5744ms
+2024-07-10 18:56:20.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:20.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:20.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-07-10 18:56:20.177 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-10 18:56:20.178 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6970ms
+2024-07-10 18:56:20.178 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 0.9832ms
+2024-07-10 18:56:20.181 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 3.5833ms
+2024-07-10 18:56:20.181 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 3.8717ms
+2024-07-10 18:56:20.201 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-10 18:56:20.202 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:20.202 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:20.203 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2232ms
+2024-07-10 18:56:20.203 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 2.2464ms
+2024-07-10 18:56:20.207 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 5.5244ms
+2024-07-10 18:56:29.892 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D2030 application/x-www-form-urlencoded 266
+2024-07-10 18:56:31.347 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D2030 application/x-www-form-urlencoded 266 - 302 0 - 1454.6527ms
+2024-07-10 18:56:31.350 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - -
+2024-07-10 18:56:31.504 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - - - 200 - text/html;+charset=utf-8 153.3749ms
+2024-07-10 18:56:31.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:31.518 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 3.0004ms
+2024-07-10 18:56:31.520 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:31.520 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:31.521 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7575ms
+2024-07-10 18:56:31.521 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:31.521 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:56:31.521 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1634ms
+2024-07-10 18:56:31.521 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1984ms
+2024-07-10 18:56:31.523 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.3143ms
+2024-07-10 18:56:31.543 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:31.545 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.4822ms
+2024-07-10 18:56:41.781 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:56:41.784 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 2.5200ms
+2024-07-10 18:56:41.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:56:41.828 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 40.6598ms
+2024-07-10 18:56:41.839 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:41.841 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7423ms
+2024-07-10 18:56:41.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:41.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:41.845 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.5762ms
+2024-07-10 18:56:41.846 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.0184ms
+2024-07-10 18:56:41.848 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:41.849 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.1051ms
+2024-07-10 18:56:41.870 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:41.873 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.4909ms
+2024-07-10 18:56:46.929 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ActivityLogs/MyActivityLogs - -
+2024-07-10 18:56:47.105 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ActivityLogs/MyActivityLogs - - - 200 - text/html;+charset=utf-8 176.6380ms
+2024-07-10 18:56:47.115 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:47.117 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.9396ms
+2024-07-10 18:56:47.119 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:47.120 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:47.121 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:47.121 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.0784ms
+2024-07-10 18:56:47.122 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5815ms
+2024-07-10 18:56:47.122 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.6186ms
+2024-07-10 18:56:47.146 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:47.149 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.2843ms
+2024-07-10 18:56:55.394 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:56:55.396 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.3760ms
+2024-07-10 18:56:55.399 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:56:55.409 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 10.2090ms
+2024-07-10 18:56:55.420 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:55.421 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6311ms
+2024-07-10 18:56:55.425 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:55.425 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:55.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8008ms
+2024-07-10 18:56:55.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.1305ms
+2024-07-10 18:56:55.429 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:55.429 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2456ms
+2024-07-10 18:56:55.445 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:55.448 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8902ms
+2024-07-10 18:56:58.750 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/SportAdministrators - -
+2024-07-10 18:56:58.792 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/SportAdministrators - - - 200 - text/html;+charset=utf-8 41.4400ms
+2024-07-10 18:56:58.804 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:56:58.808 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:56:58.809 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 0.7245ms
+2024-07-10 18:56:58.810 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 4.0153ms
+2024-07-10 18:56:58.811 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:56:58.811 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-10 18:56:58.813 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2829ms
+2024-07-10 18:56:58.813 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 1.8843ms
+2024-07-10 18:56:58.830 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:56:58.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1092ms
+2024-07-10 18:56:58.958 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:56:58.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1383ms
+2024-07-10 18:57:11.934 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/RegisterSportsMember application/x-www-form-urlencoded 225
+2024-07-10 18:57:11.992 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/RegisterSportsMember application/x-www-form-urlencoded 225 - 200 - text/html;+charset=utf-8 57.7390ms
+2024-07-10 18:57:12.003 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:12.004 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.1427ms
+2024-07-10 18:57:12.007 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:12.007 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:12.007 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6163ms
+2024-07-10 18:57:12.008 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.5253ms
+2024-07-10 18:57:12.010 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:12.010 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-10 18:57:12.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3328ms
+2024-07-10 18:57:12.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 0.9417ms
+2024-07-10 18:57:12.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-10 18:57:12.012 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.6760ms
+2024-07-10 18:57:12.034 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:12.037 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.7209ms
+2024-07-10 18:57:13.522 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/SportAdministrators - -
+2024-07-10 18:57:13.543 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/SportAdministrators - - - 200 - text/html;+charset=utf-8 21.2439ms
+2024-07-10 18:57:13.557 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:13.559 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.8535ms
+2024-07-10 18:57:13.561 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:13.561 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:13.562 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7933ms
+2024-07-10 18:57:13.563 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.3689ms
+2024-07-10 18:57:13.563 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-10 18:57:13.564 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.7453ms
+2024-07-10 18:57:13.586 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:13.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0534ms
+2024-07-10 18:57:13.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:13.642 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1760ms
+2024-07-10 18:57:16.851 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:57:16.852 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.1951ms
+2024-07-10 18:57:16.855 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:57:16.861 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.7891ms
+2024-07-10 18:57:16.876 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:16.878 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7232ms
+2024-07-10 18:57:16.878 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:16.879 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.0163ms
+2024-07-10 18:57:16.880 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:16.880 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:16.881 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2996ms
+2024-07-10 18:57:16.881 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6472ms
+2024-07-10 18:57:16.905 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:16.908 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0154ms
+2024-07-10 18:57:19.258 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/SportCoordinators - -
+2024-07-10 18:57:19.283 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/SportCoordinators - - - 200 - text/html;+charset=utf-8 24.2228ms
+2024-07-10 18:57:19.293 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:19.295 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.3489ms
+2024-07-10 18:57:19.297 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:19.297 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:19.298 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6849ms
+2024-07-10 18:57:19.298 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-10 18:57:19.298 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1275ms
+2024-07-10 18:57:19.299 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 1.1681ms
+2024-07-10 18:57:19.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:19.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1286ms
+2024-07-10 18:57:19.381 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:19.381 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1837ms
+2024-07-10 18:57:20.509 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:57:20.510 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.9549ms
+2024-07-10 18:57:20.512 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:57:20.520 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 7.4844ms
+2024-07-10 18:57:20.533 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:20.536 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:20.536 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 3.6202ms
+2024-07-10 18:57:20.536 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:20.539 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 3.0799ms
+2024-07-10 18:57:20.539 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 3.3938ms
+2024-07-10 18:57:20.541 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:20.542 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5458ms
+2024-07-10 18:57:20.564 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:20.567 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.7252ms
+2024-07-10 18:57:24.847 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/ClubAdministrators - -
+2024-07-10 18:57:24.915 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/ClubAdministrators - - - 200 - text/html;+charset=utf-8 68.6417ms
+2024-07-10 18:57:24.927 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:24.929 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.9909ms
+2024-07-10 18:57:24.931 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:24.931 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:24.933 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-10 18:57:24.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.4303ms
+2024-07-10 18:57:24.933 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2f6377e7-5fe1-44ba-8323-eb15725c399f_367156172_253070104210166_634433630690747435_n.jpg - -
+2024-07-10 18:57:24.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.1172ms
+2024-07-10 18:57:24.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 2.4793ms
+2024-07-10 18:57:24.940 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 18:57:24.941 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.2494ms
+2024-07-10 18:57:24.942 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2f6377e7-5fe1-44ba-8323-eb15725c399f_367156172_253070104210166_634433630690747435_n.jpg - - - 200 165725 image/jpeg 9.4624ms
+2024-07-10 18:57:24.953 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/42ab20a8-a724-4ea6-a171-1b7dc83c4d34_367156172_253070104210166_634433630690747435_n.jpg - -
+2024-07-10 18:57:24.953 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:24.953 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-10 18:57:24.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.2250ms
+2024-07-10 18:57:24.957 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.9485ms
+2024-07-10 18:57:24.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/42ab20a8-a724-4ea6-a171-1b7dc83c4d34_367156172_253070104210166_634433630690747435_n.jpg - - - 200 165725 image/jpeg 5.0741ms
+2024-07-10 18:57:25.078 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:25.079 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2348ms
+2024-07-10 18:57:25.127 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2cb81328-0aed-49fc-852f-13d9cdfe2a10_WIN_20240412_11_44_12_Pro.jpg - -
+2024-07-10 18:57:25.128 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2210451e-98aa-4951-a0e9-2c939fc09292_321517872_582548340296288_4633387136593122244_n.jpg - -
+2024-07-10 18:57:25.128 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 18:57:25.128 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.7340ms
+2024-07-10 18:57:25.130 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2210451e-98aa-4951-a0e9-2c939fc09292_321517872_582548340296288_4633387136593122244_n.jpg - - - 200 68304 image/jpeg 2.4908ms
+2024-07-10 18:57:25.132 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2cb81328-0aed-49fc-852f-13d9cdfe2a10_WIN_20240412_11_44_12_Pro.jpg - - - 200 158075 image/jpeg 4.8719ms
+2024-07-10 18:57:45.137 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:57:45.138 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.6243ms
+2024-07-10 18:57:45.141 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:57:45.148 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.7475ms
+2024-07-10 18:57:45.162 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:45.163 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.8954ms
+2024-07-10 18:57:45.165 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:45.165 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:45.166 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1335ms
+2024-07-10 18:57:45.167 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.8038ms
+2024-07-10 18:57:45.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:45.168 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1953ms
+2024-07-10 18:57:45.192 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:45.195 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.6492ms
+2024-07-10 18:57:47.551 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Reports/TestFeedback - -
+2024-07-10 18:57:47.573 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Reports/TestFeedback - - - 200 - text/html;+charset=utf-8 22.1532ms
+2024-07-10 18:57:47.584 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:47.586 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.2734ms
+2024-07-10 18:57:47.588 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:47.588 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:47.590 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.9862ms
+2024-07-10 18:57:47.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:47.590 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1147ms
+2024-07-10 18:57:47.590 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.4108ms
+2024-07-10 18:57:47.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:47.611 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.5691ms
+2024-07-10 18:57:47.791 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:57:47.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 3.2490ms
+2024-07-10 18:57:48.798 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:57:48.799 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.1098ms
+2024-07-10 18:57:48.803 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:57:48.811 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 7.9081ms
+2024-07-10 18:57:48.822 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:48.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1647ms
+2024-07-10 18:57:48.828 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:48.828 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:48.830 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2119ms
+2024-07-10 18:57:48.830 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.5246ms
+2024-07-10 18:57:48.832 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:48.832 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5001ms
+2024-07-10 18:57:48.854 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:48.857 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.4936ms
+2024-07-10 18:57:53.168 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-10 18:57:54.511 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 1343.4304ms
+2024-07-10 18:57:54.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:57:54.517 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 2.3864ms
+2024-07-10 18:57:54.530 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:54.533 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.3782ms
+2024-07-10 18:57:54.534 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:54.535 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:54.535 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.4723ms
+2024-07-10 18:57:54.535 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.5709ms
+2024-07-10 18:57:54.539 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:54.540 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3523ms
+2024-07-10 18:57:54.557 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:57:54.560 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.9084ms
+2024-07-10 18:57:54.680 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-10 18:57:54.682 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 2.3937ms
+2024-07-10 18:57:54.718 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 18:57:54.718 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 18:57:54.720 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.6238ms
+2024-07-10 18:57:54.720 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.6478ms
+2024-07-10 18:57:58.273 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-10 18:57:58.277 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 4.3796ms
+2024-07-10 18:57:58.288 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:57:58.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.3936ms
+2024-07-10 18:57:58.293 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:57:58.293 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:57:58.294 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-07-10 18:57:58.294 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-10 18:57:58.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7391ms
+2024-07-10 18:57:58.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.2479ms
+2024-07-10 18:57:58.295 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 1.4238ms
+2024-07-10 18:57:58.295 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 1.7742ms
+2024-07-10 18:57:58.301 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-10 18:57:58.302 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.9337ms
+2024-07-10 18:57:58.303 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:57:58.303 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1989ms
+2024-07-10 18:58:08.817 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267
+2024-07-10 18:58:09.534 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267 - 302 0 - 716.6893ms
+2024-07-10 18:58:09.537 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:58:09.539 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.4719ms
+2024-07-10 18:58:09.541 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:58:09.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 31.1075ms
+2024-07-10 18:58:09.585 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:09.585 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2552ms
+2024-07-10 18:58:14.710 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Leagues/Leagues - -
+2024-07-10 18:58:14.860 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Leagues/Leagues - - - 200 - text/html;+charset=utf-8 150.2071ms
+2024-07-10 18:58:14.871 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:14.871 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2213ms
+2024-07-10 18:58:20.882 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/Standings - -
+2024-07-10 18:58:20.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/Standings - - - 200 - text/html;+charset=utf-8 89.0674ms
+2024-07-10 18:58:20.982 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 18:58:20.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.6067ms
+2024-07-10 18:58:20.982 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 18:58:20.983 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.1780ms
+2024-07-10 18:58:20.984 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:20.984 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1831ms
+2024-07-10 18:58:23.546 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/EditPoints/3233 - -
+2024-07-10 18:58:23.666 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/EditPoints/3233 - - - 200 - text/html;+charset=utf-8 119.6585ms
+2024-07-10 18:58:23.678 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:23.678 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2287ms
+2024-07-10 18:58:27.391 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/Standings - -
+2024-07-10 18:58:27.402 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/Standings - - - 200 - text/html;+charset=utf-8 11.4846ms
+2024-07-10 18:58:27.415 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:27.416 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2194ms
+2024-07-10 18:58:28.847 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/EditPoints/3232 - -
+2024-07-10 18:58:28.855 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/EditPoints/3232 - - - 200 - text/html;+charset=utf-8 8.2740ms
+2024-07-10 18:58:28.868 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:28.868 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2363ms
+2024-07-10 18:58:31.611 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/Standings - -
+2024-07-10 18:58:31.624 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/Standings - - - 200 - text/html;+charset=utf-8 12.9435ms
+2024-07-10 18:58:31.634 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:31.634 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2243ms
+2024-07-10 18:58:36.781 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Meetings/Meetings - -
+2024-07-10 18:58:36.845 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Meetings/Meetings - - - 200 - text/html;+charset=utf-8 63.9008ms
+2024-07-10 18:58:36.855 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:36.856 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2115ms
+2024-07-10 18:58:39.124 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:58:39.125 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.8486ms
+2024-07-10 18:58:39.127 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:58:39.133 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.0534ms
+2024-07-10 18:58:39.145 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:39.145 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2833ms
+2024-07-10 18:58:44.853 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Transfers/FindPlayerTransferMarket - -
+2024-07-10 18:58:44.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Transfers/FindPlayerTransferMarket - - - 200 - text/html;+charset=utf-8 13.5737ms
+2024-07-10 18:58:44.878 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:44.879 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1902ms
+2024-07-10 18:58:44.897 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Transfers/PlayerTransferMarket - -
+2024-07-10 18:58:45.035 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Transfers/PlayerTransferMarket - - - 200 - text/html;+charset=utf-8 137.6923ms
+2024-07-10 18:58:45.041 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/23736bc7-56a6-4554-894e-3f6a503956e6_Van jik.jpeg - -
+2024-07-10 18:58:45.043 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/23736bc7-56a6-4554-894e-3f6a503956e6_Van jik.jpeg - - - 200 9521 image/jpeg 1.2334ms
+2024-07-10 18:58:45.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - -
+2024-07-10 18:58:45.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - -
+2024-07-10 18:58:45.044 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b9ee9099-c260-470d-b69f-582a3ccf8c4a_Virgil.jpeg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - - - 200 6924 image/jpeg 1.2865ms
+2024-07-10 18:58:45.045 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - - - 200 5746 image/jpeg 1.3454ms
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - -
+2024-07-10 18:58:45.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - -
+2024-07-10 18:58:45.046 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - -
+2024-07-10 18:58:45.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - - - 200 7893 image/jpeg 1.8515ms
+2024-07-10 18:58:45.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b9ee9099-c260-470d-b69f-582a3ccf8c4a_Virgil.jpeg - - - 200 6621 image/jpeg 1.2265ms
+2024-07-10 18:58:45.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - - - 200 5378 image/jpeg 1.3612ms
+2024-07-10 18:58:45.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - - - 200 5939 image/jpeg 1.8945ms
+2024-07-10 18:58:45.047 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - - - 200 13429 image/jpeg 1.3164ms
+2024-07-10 18:58:45.047 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - - - 200 5939 image/jpeg 0.8972ms
+2024-07-10 18:58:45.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - - - 200 176605 image/jpeg 4.9608ms
+2024-07-10 18:58:45.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - - - 200 165725 image/jpeg 5.2538ms
+2024-07-10 18:58:45.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - - - 200 157796 image/jpeg 4.9856ms
+2024-07-10 18:58:49.229 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:58:49.229 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.8041ms
+2024-07-10 18:58:49.233 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:58:49.241 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 7.7157ms
+2024-07-10 18:58:49.252 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:49.253 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2026ms
+2024-07-10 18:58:53.193 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Transfers/TransferMarket - -
+2024-07-10 18:58:53.231 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Transfers/TransferMarket - - - 200 - text/html;+charset=utf-8 37.8763ms
+2024-07-10 18:58:53.243 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/23736bc7-56a6-4554-894e-3f6a503956e6_Van jik.jpeg - -
+2024-07-10 18:58:53.244 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 18:58:53.244 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/23736bc7-56a6-4554-894e-3f6a503956e6_Van jik.jpeg - - - 200 9521 image/jpeg 1.0423ms
+2024-07-10 18:58:53.246 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.8934ms
+2024-07-10 18:58:53.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:53.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - -
+2024-07-10 18:58:53.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - -
+2024-07-10 18:58:53.248 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1835ms
+2024-07-10 18:58:53.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b9ee9099-c260-470d-b69f-582a3ccf8c4a_Virgil.jpeg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - -
+2024-07-10 18:58:53.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - -
+2024-07-10 18:58:53.250 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - -
+2024-07-10 18:58:53.250 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - -
+2024-07-10 18:58:53.250 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 18:58:53.251 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - - - 200 7893 image/jpeg 2.6326ms
+2024-07-10 18:58:53.251 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - - - 200 5378 image/jpeg 2.5447ms
+2024-07-10 18:58:53.251 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b9ee9099-c260-470d-b69f-582a3ccf8c4a_Virgil.jpeg - - - 200 6621 image/jpeg 2.6375ms
+2024-07-10 18:58:53.252 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - - - 200 5746 image/jpeg 3.0958ms
+2024-07-10 18:58:53.252 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - - - 200 6924 image/jpeg 3.7141ms
+2024-07-10 18:58:53.256 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - - - 200 13429 image/jpeg 6.4944ms
+2024-07-10 18:58:53.256 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - - - 200 5939 image/jpeg 6.0850ms
+2024-07-10 18:58:53.257 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - - - 200 5939 image/jpeg 8.1025ms
+2024-07-10 18:58:53.259 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 9.0753ms
+2024-07-10 18:58:53.259 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - - - 200 176605 image/jpeg 10.5376ms
+2024-07-10 18:58:53.260 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - - - 200 165725 image/jpeg 10.9788ms
+2024-07-10 18:58:53.260 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - - - 200 157796 image/jpeg 10.0194ms
+2024-07-10 18:58:59.211 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Transfers/TransferPeriod - -
+2024-07-10 18:58:59.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Transfers/TransferPeriod - - - 200 - text/html;+charset=utf-8 138.9727ms
+2024-07-10 18:58:59.367 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:58:59.368 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2715ms
+2024-07-10 18:59:10.057 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:59:10.058 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:59:10.058 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:59:10.058 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.4452ms
+2024-07-10 18:59:10.058 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 0.7261ms
+2024-07-10 18:59:10.059 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7592ms
+2024-07-10 18:59:10.101 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:59:10.104 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.5881ms
+2024-07-10 18:59:30.480 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 18:59:30.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.0787ms
+2024-07-10 18:59:30.487 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 18:59:30.494 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.4128ms
+2024-07-10 18:59:30.508 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 18:59:30.510 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.2816ms
+2024-07-10 18:59:30.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 18:59:30.515 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 18:59:30.516 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8560ms
+2024-07-10 18:59:30.516 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 18:59:30.516 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.6304ms
+2024-07-10 18:59:30.516 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1094ms
+2024-07-10 18:59:30.544 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 18:59:30.547 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.4802ms
+2024-07-10 19:00:11.955 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-10 19:00:12.154 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 198.2711ms
+2024-07-10 19:00:12.164 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:12.165 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6921ms
+2024-07-10 19:00:12.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:12.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:12.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 19:00:12.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 19:00:12.169 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8705ms
+2024-07-10 19:00:12.169 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.9766ms
+2024-07-10 19:00:12.169 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.5304ms
+2024-07-10 19:00:12.170 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.7367ms
+2024-07-10 19:00:12.187 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:12.190 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.7227ms
+2024-07-10 19:00:12.263 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:12.264 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2713ms
+2024-07-10 19:00:21.900 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/PostponeFixture/5100 - -
+2024-07-10 19:00:23.800 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/PostponeFixture/5100 - - - 302 0 - 1899.8240ms
+2024-07-10 19:00:23.804 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-10 19:00:23.817 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 12.8290ms
+2024-07-10 19:00:23.830 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:23.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1397ms
+2024-07-10 19:00:23.835 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:23.835 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:23.835 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6914ms
+2024-07-10 19:00:23.836 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 0.9464ms
+2024-07-10 19:00:23.837 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-10 19:00:23.837 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-10 19:00:23.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8242ms
+2024-07-10 19:00:23.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.2929ms
+2024-07-10 19:00:23.863 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:23.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.7711ms
+2024-07-10 19:00:23.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:23.932 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3093ms
+2024-07-10 19:00:33.436 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:00:33.438 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 1.6115ms
+2024-07-10 19:00:33.443 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:00:33.451 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 8.1018ms
+2024-07-10 19:00:33.466 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:33.472 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:33.474 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 7.0952ms
+2024-07-10 19:00:33.474 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:33.474 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:33.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8342ms
+2024-07-10 19:00:33.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.4476ms
+2024-07-10 19:00:33.475 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4761ms
+2024-07-10 19:00:33.499 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:33.502 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0862ms
+2024-07-10 19:00:37.552 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNews - -
+2024-07-10 19:00:37.569 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNews - - - 200 - text/html;+charset=utf-8 17.0278ms
+2024-07-10 19:00:37.580 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:37.582 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7140ms
+2024-07-10 19:00:37.584 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:37.584 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:37.585 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8468ms
+2024-07-10 19:00:37.585 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 19:00:37.585 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 19:00:37.588 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 4.0042ms
+2024-07-10 19:00:37.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 4.2516ms
+2024-07-10 19:00:37.589 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 4.4780ms
+2024-07-10 19:00:37.594 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:37.594 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1726ms
+2024-07-10 19:00:37.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:37.611 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.2519ms
+2024-07-10 19:00:41.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - -
+2024-07-10 19:00:41.831 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - - - 200 - text/html;+charset=utf-8 7.7851ms
+2024-07-10 19:00:41.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:41.847 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.8022ms
+2024-07-10 19:00:41.850 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:41.851 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.0179ms
+2024-07-10 19:00:41.851 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:41.852 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 19:00:41.853 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.3046ms
+2024-07-10 19:00:41.853 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:41.853 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1195ms
+2024-07-10 19:00:41.853 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.0419ms
+2024-07-10 19:00:41.873 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:41.876 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0712ms
+2024-07-10 19:00:44.045 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:00:44.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.7121ms
+2024-07-10 19:00:44.049 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:00:44.054 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 5.0572ms
+2024-07-10 19:00:44.065 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:44.067 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.8876ms
+2024-07-10 19:00:44.069 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:44.069 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:44.070 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6070ms
+2024-07-10 19:00:44.070 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.0005ms
+2024-07-10 19:00:44.074 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:44.074 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2441ms
+2024-07-10 19:00:44.090 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:44.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.3093ms
+2024-07-10 19:00:46.574 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNews - -
+2024-07-10 19:00:46.577 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNews - - - 200 - text/html;+charset=utf-8 2.9984ms
+2024-07-10 19:00:46.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:46.592 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.3755ms
+2024-07-10 19:00:46.594 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:46.595 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:46.595 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 19:00:46.595 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 19:00:46.596 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.3780ms
+2024-07-10 19:00:46.596 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8044ms
+2024-07-10 19:00:46.596 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.1277ms
+2024-07-10 19:00:46.597 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 2.3805ms
+2024-07-10 19:00:46.616 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:46.617 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:46.617 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2191ms
+2024-07-10 19:00:46.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 4.9799ms
+2024-07-10 19:00:48.613 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - -
+2024-07-10 19:00:48.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2030 - - - 200 - text/html;+charset=utf-8 8.0210ms
+2024-07-10 19:00:48.633 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:48.635 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7095ms
+2024-07-10 19:00:48.637 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:48.637 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:48.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6332ms
+2024-07-10 19:00:48.638 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:48.638 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 19:00:48.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1689ms
+2024-07-10 19:00:48.638 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.3394ms
+2024-07-10 19:00:48.641 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 3.4081ms
+2024-07-10 19:00:48.661 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:48.663 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.6933ms
+2024-07-10 19:00:50.167 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:00:50.168 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.8020ms
+2024-07-10 19:00:50.171 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:00:50.177 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.4192ms
+2024-07-10 19:00:50.189 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:50.191 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7709ms
+2024-07-10 19:00:50.193 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:50.193 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:50.194 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.0751ms
+2024-07-10 19:00:50.195 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.7594ms
+2024-07-10 19:00:50.196 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:50.196 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3643ms
+2024-07-10 19:00:50.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:50.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.7475ms
+2024-07-10 19:00:52.480 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNews - -
+2024-07-10 19:00:52.483 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNews - - - 200 - text/html;+charset=utf-8 2.8266ms
+2024-07-10 19:00:52.497 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:52.499 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.4976ms
+2024-07-10 19:00:52.502 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:52.502 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:52.502 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-10 19:00:52.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8413ms
+2024-07-10 19:00:52.503 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 19:00:52.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.2694ms
+2024-07-10 19:00:52.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 1.0495ms
+2024-07-10 19:00:52.504 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.3094ms
+2024-07-10 19:00:52.513 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:52.513 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1672ms
+2024-07-10 19:00:52.525 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:52.528 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1078ms
+2024-07-10 19:00:54.192 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2031 - -
+2024-07-10 19:00:54.200 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=2031 - - - 200 - text/html;+charset=utf-8 7.4642ms
+2024-07-10 19:00:54.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:54.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5415ms
+2024-07-10 19:00:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-10 19:00:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3151ms
+2024-07-10 19:00:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2151ms
+2024-07-10 19:00:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.3074ms
+2024-07-10 19:00:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.2135ms
+2024-07-10 19:00:54.233 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:54.236 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1184ms
+2024-07-10 19:00:59.443 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:00:59.444 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.7404ms
+2024-07-10 19:00:59.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:00:59.453 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 5.5631ms
+2024-07-10 19:00:59.465 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:00:59.467 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6025ms
+2024-07-10 19:00:59.470 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:00:59.470 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:00:59.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:00:59.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.4513ms
+2024-07-10 19:00:59.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3118ms
+2024-07-10 19:00:59.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 2.0713ms
+2024-07-10 19:00:59.495 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:00:59.497 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8850ms
+2024-07-10 19:01:03.674 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyIndividualFines - -
+2024-07-10 19:01:03.683 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyIndividualFines - - - 200 - text/html;+charset=utf-8 9.2534ms
+2024-07-10 19:01:03.696 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:03.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5976ms
+2024-07-10 19:01:03.699 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:03.699 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:03.700 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7163ms
+2024-07-10 19:01:03.700 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.0613ms
+2024-07-10 19:01:03.702 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:03.702 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2149ms
+2024-07-10 19:01:03.716 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:03.719 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8651ms
+2024-07-10 19:01:03.936 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyPendingFines - -
+2024-07-10 19:01:04.006 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyPendingFines - - - 200 - text/html;+charset=utf-8 70.1106ms
+2024-07-10 19:01:04.778 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyPaidFines - -
+2024-07-10 19:01:04.823 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyPaidFines - - - 200 - text/html;+charset=utf-8 45.5278ms
+2024-07-10 19:01:05.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyOverDueFines - -
+2024-07-10 19:01:05.373 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyOverDueFines - - - 200 - text/html;+charset=utf-8 50.4233ms
+2024-07-10 19:01:06.083 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:01:06.084 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.9384ms
+2024-07-10 19:01:06.088 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:01:06.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.5073ms
+2024-07-10 19:01:06.107 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:06.108 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5713ms
+2024-07-10 19:01:06.114 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:06.114 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:06.114 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6032ms
+2024-07-10 19:01:06.115 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1865ms
+2024-07-10 19:01:06.117 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:06.117 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2489ms
+2024-07-10 19:01:06.131 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:06.134 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8933ms
+2024-07-10 19:01:09.457 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/ClubFines - -
+2024-07-10 19:01:09.467 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/ClubFines - - - 200 - text/html;+charset=utf-8 9.5722ms
+2024-07-10 19:01:09.480 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:09.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:09.483 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:09.483 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 3.4234ms
+2024-07-10 19:01:09.484 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:09.484 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2970ms
+2024-07-10 19:01:09.485 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3803ms
+2024-07-10 19:01:09.487 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 3.6193ms
+2024-07-10 19:01:09.506 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:09.509 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.5570ms
+2024-07-10 19:01:09.683 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/_PendingClubFines - -
+2024-07-10 19:01:09.752 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/_PendingClubFines - - - 200 - text/html;+charset=utf-8 69.0675ms
+2024-07-10 19:01:09.756 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-10 19:01:09.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.6671ms
+2024-07-10 19:01:15.452 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:01:15.453 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.9724ms
+2024-07-10 19:01:15.457 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:01:15.463 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.8236ms
+2024-07-10 19:01:15.476 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:15.478 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6739ms
+2024-07-10 19:01:15.481 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:15.481 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:15.482 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1224ms
+2024-07-10 19:01:15.482 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.4678ms
+2024-07-10 19:01:15.484 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:15.484 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3691ms
+2024-07-10 19:01:15.500 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:15.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0076ms
+2024-07-10 19:01:19.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyIndividualFines - -
+2024-07-10 19:01:19.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyIndividualFines - - - 200 - text/html;+charset=utf-8 2.3764ms
+2024-07-10 19:01:19.337 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:19.339 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5620ms
+2024-07-10 19:01:19.341 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:19.341 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:19.343 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 2.3669ms
+2024-07-10 19:01:19.344 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:19.344 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2002ms
+2024-07-10 19:01:19.344 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 3.1516ms
+2024-07-10 19:01:19.360 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:19.363 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.6989ms
+2024-07-10 19:01:19.533 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyPendingFines - -
+2024-07-10 19:01:19.536 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyPendingFines - - - 200 - text/html;+charset=utf-8 3.8957ms
+2024-07-10 19:01:20.830 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyPaidFines - -
+2024-07-10 19:01:20.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyPaidFines - - - 200 - text/html;+charset=utf-8 3.1594ms
+2024-07-10 19:01:21.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/MyOverDueFines - -
+2024-07-10 19:01:21.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/MyOverDueFines - - - 200 - text/html;+charset=utf-8 3.7372ms
+2024-07-10 19:01:22.145 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-10 19:01:22.146 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 0.9004ms
+2024-07-10 19:01:22.149 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-10 19:01:22.156 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 6.7171ms
+2024-07-10 19:01:22.169 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:22.174 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 4.9774ms
+2024-07-10 19:01:22.179 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:22.180 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.3987ms
+2024-07-10 19:01:22.180 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:22.180 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:22.181 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2443ms
+2024-07-10 19:01:22.181 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.0225ms
+2024-07-10 19:01:22.193 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:22.196 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8865ms
+2024-07-10 19:01:24.814 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/ClubFines - -
+2024-07-10 19:01:24.816 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/ClubFines - - - 200 - text/html;+charset=utf-8 1.5285ms
+2024-07-10 19:01:24.829 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-10 19:01:24.831 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.8034ms
+2024-07-10 19:01:24.833 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - -
+2024-07-10 19:01:24.833 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-10 19:01:24.834 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7147ms
+2024-07-10 19:01:24.834 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Gysrlj8lrS3qG8lAcmrNjkSCBypnGf1-5BaXTwd_izg - - - 200 37038 text/css 1.1303ms
+2024-07-10 19:01:24.836 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-10 19:01:24.837 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2675ms
+2024-07-10 19:01:24.851 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-10 19:01:24.856 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 5.5045ms
+2024-07-10 19:01:25.023 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/_PendingClubFines - -
+2024-07-10 19:01:25.028 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/_PendingClubFines - - - 200 - text/html;+charset=utf-8 5.4759ms
+2024-07-10 19:01:25.032 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-10 19:01:25.032 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.6077ms
+2024-07-10 19:02:33.779 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/PaidClubFines - -
+2024-07-10 19:02:33.811 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/PaidClubFines - - - 200 - text/html;+charset=utf-8 32.5944ms
+2024-07-10 19:02:34.635 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fines/OverdueCLubFines - -
+2024-07-10 19:02:34.668 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fines/OverdueCLubFines - - - 200 - text/html;+charset=utf-8 32.3517ms

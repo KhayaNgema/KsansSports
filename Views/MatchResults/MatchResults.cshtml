@@ -1,48 +1,55 @@
 ﻿@model IEnumerable<MyField.Models.MatchResults>
 
 @{
-    ViewData["Title"] = "Back Office Match Results";
+    ViewData["Title"] = ViewBag.CurrentSeason + " Match Results";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
     DateTime currentDate = DateTime.MinValue;
 }
 
 <br />
 @await Html.PartialAsync("_HomeButton")
-<h4 class="text-center">MATCH RESULTS</h4>
+<h4 class="text-center">@ViewBag.CurrentSeason Match Results</h4>
 <br />
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-lg-8">
             <div class="scrollable-container">
-                <div class="match-card-container" style="border:none;">
-                    @foreach (var item in Model.OrderBy(match => match.MatchDate))
-                    {
-                        if (currentDate != item.MatchDate.Date)
+                @if (Model.Any())
+                {
+                    <div class="match-card-container" style="border:none;">
+                        @foreach (var item in Model.OrderBy(match => match.MatchDate))
                         {
-                            <h5 class="text-center date-background">@item.MatchDate.ToShortDateString()</h5>
-                            currentDate = item.MatchDate.Date;
-                        }
-                        <div class="match-card mb-4 border-0">
-                            <div class="card-body">
-                                <div class="row align-items-center justify-content-center">
-                                    <div class="col-sm-3 text-center">
-                                        <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image mb-2" />
-                                        <h5 class="card-title mb-0">@item.HomeTeam.ClubName</h5>
-                                    </div>
-                                    <div class="col-sm-3 text-center">
-                                        <h2 class="vs font-weight-bold mb-0" style="margin-bottom: -10px;">@item.HomeTeamScore - @item.AwayTeamScore</h2>
-                                        <p class="card-text text-center">Full time</p>
-                                    </div>
-                                    <div class="col-sm-3 text-center">
-                                        <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image mb-2" />
-                                        <h5 class="card-title mb-0">@item.AwayTeam.ClubName</h5>
+                            if (currentDate != item.MatchDate.Date)
+                            {
+                                <h6 class="text-center date-background">@item.MatchDate.ToShortDateString()</h6>
+                                currentDate = item.MatchDate.Date;
+                            }
+                            <div class="match-card mb-4 border-0">
+                                <div class="card-body">
+                                    <div class="row align-items-center justify-content-center">
+                                        <div class="col-sm-3 text-center">
+                                            <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image mb-2" />
+                                            <h6 class="card-title mb-0">@item.HomeTeam.ClubName</h6>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <h5 class="vs font-weight-bold mb-0" style="margin-bottom: -10px;">@item.HomeTeamScore - @item.AwayTeamScore</h5>
+                                            <p class="card-text text-center">Full time</p>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image mb-2" />
+                                            <h6 class="card-title mb-0">@item.AwayTeam.ClubName</h6>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are currently no match results for this season</p>
+                }
             </div>
         </div>
     </div>

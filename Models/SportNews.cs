@@ -62,5 +62,6 @@ namespace MyField.Models
         Awaiting_Approval,
         Approved,
         Rejected,
+        ToBeModified
     }
 }
