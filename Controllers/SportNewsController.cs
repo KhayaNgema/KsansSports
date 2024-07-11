@@ -33,10 +33,47 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;   
         }
 
+
+        public async Task<IActionResult> NewsReview(int? newsId)
+        {
+            if (newsId == null || _context.SportNew == null)
+            {
+                return NotFound();
+            }
+
+            var overallNewsReports = await _context.OverallNewsReports
+                .FirstOrDefaultAsync();
+
+            var individualNewsReports = await _context.IndividualNewsReports
+                .Where(i => i.SportNewsId == newsId)
+                .Include(i => i.SportNews)
+                .FirstOrDefaultAsync();
+
+            overallNewsReports.NewsReadersCount++;
+            individualNewsReports.ReadersCount++;
+
+            await _context.SaveChangesAsync();
+
+            var sportNews = await _context.SportNew
+                .Include(s => s.AuthoredBy)
+                .Include(s => s.ModifiedBy)
+                .Include(s => s.PublishedBy)
+                .Include(s => s.RejectedBy)
+                .FirstOrDefaultAsync(m => m.NewsId == newsId);
+            if (sportNews == null)
+            {
+                return NotFound();
+            }
+
+            return View(sportNews);
+        }
+
         public async Task<IActionResult> ToBeModifiedSportNews()
         {
             var newsToBeModified = await _context.SportNew
                 .Where(n => n.NewsStatus == NewsStatus.ToBeModified)
+                .Include( n=> n.AuthoredBy)
+                .Include(n => n.ModifiedBy)
                 .ToListAsync();
 
             return View(newsToBeModified);
@@ -101,7 +138,7 @@ namespace MyField.Controllers
             return View(sportsNews);
         }
 
-        // GET: AwaitingApprovalSportNews
+
         public async Task<IActionResult> AwaitingApprovalSportNewsAdmin()
         {
             var sportsNews = await _context.SportNew
@@ -178,6 +215,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> SportNews()
         {
             var sportsNews = await _context.SportNew
+                .Where(s => s.NewsStatus == NewsStatus.Approved)
                 .ToListAsync();
 
             return View( sportsNews);
@@ -428,9 +466,38 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
         }
 
-        public async Task<IActionResult> DeclineNews(int? id)
+        public async Task<IActionResult> AskReEditNews(int? newsId)
         {
-            if (id == null || _context.SportNew == null)
+            if (newsId == null || _context.SportNew == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var sportNews = await _context.SportNew.FindAsync(newsId);
+            if (sportNews == null)
+            {
+                return NotFound();
+            }
+
+
+            sportNews.NewsStatus = NewsStatus.ToBeModified;
+            sportNews.ModifiedDateTime = DateTime.UtcNow;
+            sportNews.ModifiedById = userId;
+
+            await _context.SaveChangesAsync();
+
+            await _activityLogger.Log($"Sent news with heading {sportNews.NewsHeading} back to author for modification",  user.Id);
+
+
+            return RedirectToAction(nameof(AwaitingApprovalSportNews));
+        }
+
+        public async Task<IActionResult> DeclineNews(int? newsId)
+        {
+            if (newsId == null || _context.SportNew == null)
             {
                 return NotFound();
             }
@@ -441,7 +508,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var sportNews = await _context.SportNew.FindAsync(id);
+            var sportNews = await _context.SportNew.FindAsync(newsId);
             if (sportNews == null)
             {
                 return NotFound();

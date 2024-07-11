@@ -78,7 +78,7 @@
                             <p>Inactive</p>
                         }
                     </td>
-                    <td class="text-right">
+                   @*  <td class="text-right">
                         <div class="dropdown">
                             <button class="btn btn-primary btn-sm dropdown-toggle manual-toggle" type="button">
                                 Actions
@@ -98,7 +98,7 @@
                                 </a>
                             </div>
                         </div>
-                    </td>
+                    </td> *@
                 </tr>
             }
         </tbody>
@@ -115,51 +115,6 @@
             });
         });
     });
-
-    $(document).on('click', '.dropdown-toggle', function (event) {
-        event.stopPropagation();
-        var $this = $(this);
-        $('.dropdown-menu').not($this.next('.dropdown-menu')).removeClass('show');
-        var $menu = $this.next('.dropdown-menu');
-        $menu.toggleClass('show');
-
-        var offset = $this.offset();
-        var menuHeight = $menu.outerHeight();
-        var menuWidth = $menu.outerWidth();
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
-        var scrollTop = $(window).scrollTop();
-        var scrollLeft = $(window).scrollLeft();
-
-        var spaceBelow = windowHeight - (offset.top - scrollTop + $this.outerHeight());
-        var spaceAbove = offset.top - scrollTop;
-        var spaceRight = windowWidth - (offset.left - scrollLeft + $this.outerWidth());
-        var spaceLeft = offset.left - scrollLeft;
-
-        if (spaceBelow >= menuHeight || spaceBelow >= spaceAbove) {
-            $menu.css('top', '100%');
-            $menu.css('bottom', 'auto');
-        } else {
-            $menu.css('top', 'auto');
-            $menu.css('bottom', '100%');
-        }
-
-        if (spaceRight >= menuWidth || spaceRight >= spaceLeft) {
-            $menu.css('left', '0');
-            $menu.css('right', 'auto');
-        } else {
-            $menu.css('left', 'auto');
-            $menu.css('right', '0');
-        }
-    });
-
-    $(document).on('click', function (event) {
-        var $target = $(event.target);
-        if (!$target.closest('.dropdown-menu').length && !$target.closest('.dropdown-toggle').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-
     setTimeout(function () {
         document.getElementById("tempDataMessage").style.display = "none";
     }, 5000);

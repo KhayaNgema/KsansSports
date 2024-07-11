@@ -831,11 +831,6 @@ namespace MyField.Controllers
                     .Include(s => s.Club)
                     .FirstOrDefaultAsync();
 
-                var transfer = await _context.Transfer
-                    .Where(t => t.Player.Id == viewModel.PlayerId &&
-                    t.League.IsCurrent)
-                    .FirstOrDefaultAsync();
-
                 if (transferMarket == null)
                 {
                     TempData["Errors"] = new List<string> { "Transfer market not found" };
@@ -854,7 +849,12 @@ namespace MyField.Controllers
                     return RedirectToAction(nameof(TransferMarket));
                 }
 
-                if (viewModel.PlayerId == transfer.PlayerId && transfer.Status == TransferStatus.Accepted)
+                var transfer = await _context.Transfer
+                    .Where(t => t.PlayerId == viewModel.PlayerId && t.League.IsCurrent)
+                    .Include(t => t.Player)
+                    .FirstOrDefaultAsync();
+
+                if (transfer != null && transfer.PlayerId == viewModel.PlayerId && transfer.Status == TransferStatus.Accepted)
                 {
                     TempData["Message"] = $"You cannot initiate transfer communication for this player since it has been already accepted for another buyer club.";
                     return RedirectToAction(nameof(TransferMarket));
@@ -885,20 +885,25 @@ namespace MyField.Controllers
                 await _context.SaveChangesAsync();
 
                 var sellerClubTransferReport = await _context.ClubTransferReports
-                    .Where(c => c.ClubId == viewModel.SellerClubId &&
-                    c.League.IsCurrent)
+                    .Where(c => c.ClubId == viewModel.SellerClubId && c.League.IsCurrent)
                     .FirstOrDefaultAsync();
 
                 var buyerClubTransferReport = await _context.ClubTransferReports
-                    .Where(c => c.ClubId == clubAdministrator.ClubId &&
-                    c.League.IsCurrent)
+                    .Where(c => c.ClubId == clubAdministrator.ClubId && c.League.IsCurrent)
                     .FirstOrDefaultAsync();
 
-                if (sellerClubTransferReport != null && buyerClubTransferReport != null)
+                if (sellerClubTransferReport != null)
                 {
                     sellerClubTransferReport.IncomingTransfersCount++;
-                    buyerClubTransferReport.OutgoingTransfersCount++;
+                }
 
+                if (buyerClubTransferReport != null)
+                {
+                    buyerClubTransferReport.OutgoingTransfersCount++;
+                }
+
+                if (sellerClubTransferReport != null || buyerClubTransferReport != null)
+                {
                     await _context.SaveChangesAsync();
                 }
 
@@ -919,6 +924,7 @@ namespace MyField.Controllers
                 });
             }
         }
+
 
 
 

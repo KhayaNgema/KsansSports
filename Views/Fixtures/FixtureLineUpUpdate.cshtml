@@ -60,12 +60,12 @@
                                 </p>
                             }
                         </div>
-                        @if(User.IsInRole("Club manager"))
+                        @if(User.IsInRole("Club Manager") && item.FixtureStatus == FixtureStatus.Upcoming)
                         {
                             <div class="card-footer">
                                 <div class="d-flex justify-content-end">
-                                    <a asp-action="FixtureDetails" asp-route-id="@item.FixtureId" class="btn btn-sm">
-                                        <i class="fas fa-info-circle"></i>
+                                    <a class="btn btn sm btn-outline-primary" asp-action="FixtureDetails" asp-route-id="@item.FixtureId" class="btn btn-sm">
+                                        <i class="fas fa-pen"></i>
                                     </a>
                                 </div>
                             </div>

@@ -1,4 +1,6 @@
-﻿namespace MyField.ViewModels
+﻿using MyField.Models;
+
+namespace MyField.ViewModels
 {
     public class MeetingViewModel
     {
@@ -13,5 +15,7 @@
         public DateTime MeetingTime { get; set; }
 
         public string AdditionalComments { get; set; }
+
+        public MeetingAttendees MeetingAttendes { get; set; }
     }
 }

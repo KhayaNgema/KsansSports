@@ -6,19 +6,22 @@
 
 }
 <br />
-@await Html.PartialAsync("_BackButton")
+@await Html.PartialAsync("_HomeButton")
 <h4 class="text-center">Awaiting Approval Sport News</h4>
 <br />
 <div class="table-responsive">
     <table class="table table-striped table-borderless">
         <thead>
             <tr style="color:white;background-color: #324260; white-space: nowrap;">
+                <th>
+                    @Html.DisplayNameFor(model => model.NewsImage)
+                </th>
             <th>
                 @Html.DisplayNameFor(model => model.NewsHeading)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishedDate)
-            </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AuthoredBy)
+                </th>
             <th>
                 @Html.DisplayNameFor(model => model.ModifiedDateTime)
             </th>
@@ -26,13 +29,7 @@
                 @Html.DisplayNameFor(model => model.ModifiedBy)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AuthoredBy)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.NewsBody)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewsImage)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NewsStatus)
@@ -40,20 +37,20 @@
             <th>
                 Details
             </th>
-            <th>
-                Actions
-            </th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
        <tr class="ellipsis">
+                    <td>
+                        <img src="~/@item.NewsImage" alt="News Image" class="sport-news-image">
+                    </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NewsHeading)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedDate)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuthoredBy.FirstName) @Html.DisplayFor(modelItem => item.AuthoredBy.LastName)
+                    </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ModifiedDateTime)
             </td>
@@ -61,29 +58,15 @@
                     @Html.DisplayFor(modelItem => item.ModifiedBy.FirstName)    @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.AuthoredBy.FirstName) @Html.DisplayFor(modelItem => item.AuthoredBy.LastName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NewsBody)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NewsImage)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NewsStatus)
             </td>
                 <td style="white-space: nowrap;">
-                    <a href="@Url.Action("Details", "SportNews", new { id = item.NewsId })">
-                        <i class="fas fa-info-circle" style="color: #2E5A88;"></i>
+                    <a href="@Url.Action("NewsReview", "SportNews", new { newsId = item.NewsId })">
+                        <i class="fas fa-pen" style="color: #2E5A88;"></i>
                     </a>
-                </td>
-                <td>
-                    <form asp-action="ApproveNews" asp-route-id="@item.NewsId" method="post">
-                        <button type="submit" class="btn btn-primary">Approve</button>
-                    </form>
-                    <form asp-action="DeclineNews" asp-route-id="@item.NewsId" method="post">
-                        <button type="submit" class="btn btn-danger">Decline</button>
-                    </form>
                 </td>
         </tr>
 }

@@ -529,22 +529,22 @@ namespace MyField.Controllers
                 .Where( c => c.ClubId == id)
                 .FirstOrDefaultAsync(); 
 
-            if (club.Status == ClubStatus.Suspended)
+            if (club.IsSuspended == true)
             {
                 TempData["Message"] = $"This club is already suspended.";
 
                 return RedirectToAction(nameof(ClubsBackOffice));
             }
-            
 
-            club.Status = ClubStatus.Suspended;
+
+            club.IsSuspended = true;
             club.ModifiedById = user.Id;
             club.ModifiedDateTime = DateTime.Now;
 
             _context.Update(club);
             await _context.SaveChangesAsync();
 
-            TempData["Message"] = $"You have successfully suspended {club.ClubName} and now they will be able to access all features of the system.";
+            TempData["Message"] = $"You have successfully suspended {club.ClubName} and now they won't be able to access all features of the system.";
 
             return RedirectToAction(nameof(ClubsBackOffice));
         }
@@ -557,21 +557,21 @@ namespace MyField.Controllers
                 .Where(c => c.ClubId == id)
                 .FirstOrDefaultAsync();
 
-            if (club.Status == ClubStatus.Active)
+            if (club.IsSuspended == false)
             {
                 TempData["Message"] = $"This club is already active";
 
                 return RedirectToAction(nameof(ClubsBackOffice));
             }
 
-            club.Status = ClubStatus.Active;
+            club.IsSuspended = false;
             club.ModifiedById = user.Id;
             club.ModifiedDateTime = DateTime.Now;
 
             _context.Update(club);
             await _context.SaveChangesAsync();
 
-            TempData["Message"] = $"You have successfully unsuspended {club.ClubName} and now they won't be able to access some system features due to te decision you have made.";
+            TempData["Message"] = $"You have successfully unsuspended {club.ClubName} and now they will be able to access some system features due to te decision you have made.";
 
             return RedirectToAction(nameof(ClubsBackOffice));
         }

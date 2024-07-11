@@ -13,6 +13,10 @@
     <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MeetingAttendes" class="control-label"></label>
+                <select asp-for="MeetingAttendes" class="form-control border-bottom-only" asp-items="@((IEnumerable<SelectListItem>)ViewData["MeetingsAttendes"])"></select>
+            </div>
             <div class="form-floating mb-3">
                 <input asp-for="MeetingTitle" class="form-control border-bottom-only" placeholder="MeetingTitle" />
                 <label asp-for="MeetingTitle" class="form-label">Meeting title</label>

@@ -316,6 +316,9 @@ namespace MyField.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsSuspended")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
@@ -1224,6 +1227,9 @@ namespace MyField.Migrations
 
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("MeetingAttendees")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("MeetingDate")
                         .HasColumnType("datetime2");

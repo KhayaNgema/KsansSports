@@ -36,5 +36,47 @@ namespace MyField.Models
 
         [ForeignKey("ModifiedById")]
         public virtual SportsMember ModifiedBy { get; set; }
+
+        public MeetingAttendees MeetingAttendees { get; set; }
+    }
+
+
+    public enum MeetingAttendees
+    {
+        [Display(Name = "Everyone")]
+        Everyone,
+
+        [Display(Name = "Sport Administrators")]
+        Sport_Administrators,
+
+        [Display(Name = "Sport Managers")]
+        Sport_Managers,
+
+        [Display(Name = "Sport Coordinators")]
+        Sport_Coordinators,
+
+        [Display(Name = "News Administrators")]
+        News_Administrators,
+
+        [Display(Name = "News Updaters")]
+        News_Updaters,
+
+        [Display(Name = "Club Administrators")]
+        Club_Administrators,
+
+        [Display(Name = "Club Managers")]
+        Club_Managers,
+
+        [Display(Name = "Personnel Administrators")]
+        Personnel_Administrators,
+
+        [Display(Name = "Fans Administrators")]
+        Fans_Administrators,
+
+        [Display(Name = "Officials")]
+        Officials,
+
+        [Display(Name = "Players")]
+        Players
     }
 }

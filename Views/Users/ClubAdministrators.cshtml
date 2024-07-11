@@ -85,27 +85,28 @@
                             <p>Inactive</p>
                         }
                     </td>
-                    <td class="text-right">
-                        <div class="dropdown">
-                            <button class="btn btn-primary btn-sm dropdown-toggle manual-toggle" type="button">
-                                Actions
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="@Url.Action("ModifyFixture", "Fixtures", new { id = item.Id })">
-                                    <i class="fas fa-pen" style="color: #28a745;"></i> View profile
-                                </a>
-                                <a class="dropdown-item" href="@Url.Action("FixtureDetailsBackOffice", "Fixtures", new { id = item.Id })">
-                                    <i class="fas fa-info-circle" style="color: blue;"></i> Deactivate
-                                </a>
-                                <a class="dropdown-item" href="@Url.Action("PostponeFixture", "Fixtures", new { id = item.Id })">
-                                    <i class="fas fa-clock" style="color: #dc3545;"></i> Suspend
-                                </a>
-                                <a class="dropdown-item" href="@Url.Action("DeleteFixture", "Fixtures", new { id = item.Id  })">
-                                    <i class="fas fa-trash" style="color: red;"></i> Delete
-                                </a>
-                            </div>
+@*                     <td class="text-right">
+                        <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                            Actions
+                        </button>
+                        <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
+                            <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
+                                <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
+                            </a>
+                            <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
+                                <i class="tab-item" style="color: blue;"></i> Update
+                            </a>
+                            <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
+                                <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
+                            </a>
+                            <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
+                                <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
+                            </a>
+                            <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
+                                <i class="fas fa-trash" style="color: red;"></i> Delete
+                            </a>
                         </div>
-                    </td>
+                    </td> *@
                 </tr>
             }
         </tbody>
@@ -122,51 +123,6 @@
             });
         });
     });
-
-    $(document).on('click', '.dropdown-toggle', function (event) {
-        event.stopPropagation();
-        var $this = $(this);
-        $('.dropdown-menu').not($this.next('.dropdown-menu')).removeClass('show');
-        var $menu = $this.next('.dropdown-menu');
-        $menu.toggleClass('show');
-
-        var offset = $this.offset();
-        var menuHeight = $menu.outerHeight();
-        var menuWidth = $menu.outerWidth();
-        var windowHeight = $(window).height();
-        var windowWidth = $(window).width();
-        var scrollTop = $(window).scrollTop();
-        var scrollLeft = $(window).scrollLeft();
-
-        var spaceBelow = windowHeight - (offset.top - scrollTop + $this.outerHeight());
-        var spaceAbove = offset.top - scrollTop;
-        var spaceRight = windowWidth - (offset.left - scrollLeft + $this.outerWidth());
-        var spaceLeft = offset.left - scrollLeft;
-
-        if (spaceBelow >= menuHeight || spaceBelow >= spaceAbove) {
-            $menu.css('top', '100%');
-            $menu.css('bottom', 'auto');
-        } else {
-            $menu.css('top', 'auto');
-            $menu.css('bottom', '100%');
-        }
-
-        if (spaceRight >= menuWidth || spaceRight >= spaceLeft) {
-            $menu.css('left', '0');
-            $menu.css('right', 'auto');
-        } else {
-            $menu.css('left', 'auto');
-            $menu.css('right', '0');
-        }
-    });
-
-    $(document).on('click', function (event) {
-        var $target = $(event.target);
-        if (!$target.closest('.dropdown-menu').length && !$target.closest('.dropdown-toggle').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-
     setTimeout(function () {
         document.getElementById("tempDataMessage").style.display = "none";
     }, 5000);

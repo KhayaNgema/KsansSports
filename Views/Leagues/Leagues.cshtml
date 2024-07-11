@@ -34,7 +34,6 @@
                 <th >CreatedDateTime</th>
                 <th >ModifiedBy</th>
                 <th >ModifiedDateTime</th>
-                <th >More</th>
             </tr>
         </thead>
         <tbody>
@@ -60,10 +59,6 @@
                         <div>
                             <span class="fa fa-clock"></span> @item.ModifiedDateTime.ToString("HH:mm:ss")
                         </div>
-                    </td>
-                   
-                    <td>
-                        <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.LeagueId">Details</a>
                     </td>
                 </tr>
             }

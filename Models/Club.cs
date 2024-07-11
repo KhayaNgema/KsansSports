@@ -60,6 +60,8 @@ namespace MyField.Models
 
         public string? ClubManagerId { get; set; }
 
+        public bool IsSuspended { get; set; }
+
         public ClubManager ClubManager { get; set; }
 
         public Club()
@@ -72,6 +74,5 @@ namespace MyField.Models
     {
         Active,
         Previous_Season,
-        Suspended,
     }
 }

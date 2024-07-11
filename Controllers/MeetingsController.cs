@@ -30,9 +30,80 @@ namespace MyField.Controllers
 
         public async Task<IActionResult> Meetings()
         {
-            var ksans_SportsDbContext = _context.Meeting.Include(m => m.CreatedBy).Include(m => m.ModifiedBy);
-            return View(await ksans_SportsDbContext.ToListAsync());
+            IQueryable<Meeting> meetingsQuery = _context.Meeting
+                .Include(m => m.CreatedBy)
+                .Include(m => m.ModifiedBy);
+
+            if (User.IsInRole("Sport Coordinator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Sport_Coordinators
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Club Administrator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Club_Administrators
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Club Manager"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Club_Managers
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Player"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Players
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Sport Administrator"))
+            {
+                meetingsQuery = meetingsQuery;
+            }
+            else if (User.IsInRole("News Updator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.News_Updaters
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Official"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Officials
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("News administrator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.News_Administrators
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Fans administrator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Fans_Administrators
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Personnel administrator"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Personnel_Administrators
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+            else if (User.IsInRole("Sport manager"))
+            {
+                meetingsQuery = meetingsQuery
+                    .Where(m => m.MeetingAttendees == MeetingAttendees.Sport_Managers
+                             || m.MeetingAttendees == MeetingAttendees.Everyone);
+            }
+
+            var meetings = await meetingsQuery.ToListAsync();
+
+            return View(meetings);
         }
+
 
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,6 +126,10 @@ namespace MyField.Controllers
 
         public IActionResult Create()
         {
+            ViewData["MeetingsAttendes"] = Enum.GetValues(typeof(MeetingAttendees))
+                     .Cast<MeetingAttendees>()
+                     .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
+
             return View();
         }
 
@@ -79,6 +154,7 @@ namespace MyField.Controllers
                     CreatedDateTime = DateTime.Now,
                     ModifiedById = userId,
                     ModifiedDateTime = DateTime.Now,
+                    MeetingAttendees = viewModel.MeetingAttendes
                 };
 
 
@@ -90,9 +166,14 @@ namespace MyField.Controllers
                     .Where( s => s.Equals(newMeeting))
                     .FirstOrDefaultAsync();
 
+                TempData["Message"] = $"You have successfully scheduled a meeting that will take place at {viewModel.Venue}. on {viewModel.MeetingDate} at {viewModel.MeetingTime}. You invited {viewModel.MeetingAttendes} to join the meeting.";
                 await _activityLogger.Log($"Scheduled a meeting that will take place as follows; Date:{savedMeeting.MeetingDate.ToString("ddd, dd MMM yyyy")}, Time:{savedMeeting.MeetingTime.ToString("HH:mm")}", user.Id);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Meetings));
             }
+
+            ViewData["MeetingsAttendes"] = Enum.GetValues(typeof(MeetingAttendees))
+                    .Cast<MeetingAttendees>()
+                    .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
 
             return View(viewModel);
         }

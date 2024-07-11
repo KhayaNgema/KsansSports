@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Sport Administrator Dashboard";
+    ViewData["Title"] = "Sport Manager Dashboard";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 
@@ -62,7 +62,7 @@
 </style>
 
 <br />
-<h2>SPORT ADMINISTRATOR</h2>
+<h2>SPORT MANAGER</h2>
 <br />
 
 <div class="container">
@@ -73,7 +73,7 @@
                     <h5 class="card-title"><i class="fas fa-users"></i> Participating Clubs</h5>
                     <p class="card-text">Participating clubs will be listed here</p>
                     <h1 class="card-text text-center center-number">@ViewBag.ParticipatingClubs</h1>
-                    <a asp-controller="Clubs" asp-action="Clubs" class="btn btn-primary mt-auto align-self-end styled-button">
+                    <a asp-controller="Clubs" asp-action="ClubsBackOffice" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Clubs</span>
                         <span class="arrow">&#10148;</span>
                     </a>

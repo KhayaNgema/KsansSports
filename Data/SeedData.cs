@@ -81,15 +81,15 @@ public static class SeedData
                 }
             }
 
-            var sportCoordinator = await userManager.FindByEmailAsync("codi@gmail.com");
+            var sportCoordinator = await userManager.FindByEmailAsync("coordinator@gmail.com");
             if (sportCoordinator == null)
             {
                 var defaultUser = new SportsMember
                 {
                     FirstName = "Sport",
                     LastName = "Coordinator",
-                    UserName = "codi@gmail.com",
-                    Email = "codi@gmail.com",
+                    UserName = "coordinator@gmail.com",
+                    Email = "coordinator@gmail.com",
                     PhoneNumber = "0660278127",
                     DateOfBirth = DateTime.Now,
                     ProfilePicture = "khaya.jpg",
@@ -239,6 +239,33 @@ public static class SeedData
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(defaultUser, "Fans administrator");
+                }
+            }
+
+            var sportManager = await userManager.FindByEmailAsync("manager@gmail.com");
+            if (sportManager == null)
+            {
+                var defaultUser = new SportsMember
+                {
+                    FirstName = "Khayalethu",
+                    LastName = "Msweli",
+                    UserName = "manager@gmail.com",
+                    Email = "manager@gmail.com",
+                    PhoneNumber = "0660278127",
+                    DateOfBirth = DateTime.Now,
+                    ProfilePicture = "khaya.jpg",
+                    EmailConfirmed = true,
+                    CreatedDateTime = DateTime.Now,
+                    ModifiedDateTime = DateTime.Now,
+                    CreatedBy = "default-user-id",
+                    ModifiedBy = "default-user-id"
+                };
+
+                var result = await userManager.CreateAsync(defaultUser, "Manager@123");
+
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(defaultUser, "Sport manager");
                 }
             }
 

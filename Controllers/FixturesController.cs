@@ -265,6 +265,23 @@ namespace MyField.Controllers
                 .Include(f => f.ModifiedBy)
                 .ToListAsync();
 
+            foreach (var fixture in fixtures)
+            {
+                var matchReferee = await _context.MatchOfficials
+                    .Where(mo => mo.FixtureId == fixture.FixtureId)
+                    .Include(s => s.Refeere)
+                    .FirstOrDefaultAsync();
+
+                if (matchReferee != null && matchReferee.Refeere != null)
+                {
+                    ViewBag.MatchReferee = matchReferee.Refeere.FirstName + " " + matchReferee.Refeere.LastName;
+                }
+                else
+                {
+                    ViewBag.MatchReferee = "Referee information not found";
+                }
+            }
+
             return View(fixtures);
         }
 

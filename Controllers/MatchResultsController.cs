@@ -124,6 +124,7 @@ namespace MyField.Controllers
             ViewBag.ClubName = club.ClubName;
 
             var matchResults = await _context.MatchResult
+                                             .Where( m => m.League.IsCurrent)
                                              .Include(m => m.HomeTeam)
                                              .Include(m => m.AwayTeam)
                                              .Where(mo => mo.HomeTeam.ClubId == clubId || mo.AwayTeam.ClubId == clubId)

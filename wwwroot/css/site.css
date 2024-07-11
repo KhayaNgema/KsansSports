@@ -1149,7 +1149,7 @@ body {
     }
 }
 .matchResultContainer {
-    max-width: 700px; /* Adjust the maximum width as needed */
+    max-width: 800px; /* Adjust the maximum width as needed */
     margin: 0 auto; /* Center the container horizontally */
     padding: 10px;
     background-color: white; /* Add background color */
@@ -1702,18 +1702,32 @@ object-fit:cover;
 }
 
 
-.dropdown-menu {
+.action-tab {
     position: absolute;
-    z-index: 1000;
-    display: none;
-    max-width: 200px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
     overflow-y: auto;
-    max-height: calc(100vh - 200px);
+    z-index: 1000;
+    right: 10px; 
+    min-width: 150px; 
+    white-space: nowrap; 
 }
 
-    .dropdown-menu.show {
+
+    .action-tab a {
         display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+        white-space: nowrap;
     }
+
+        .action-tab a:hover {
+            background-color: #95a5a6; 
+            color:white;
+        }
 
 
 .whatsapp-button {
@@ -1737,7 +1751,6 @@ object-fit:cover;
         .whatsapp-button button i {
             margin-right: 10px;
         }
-
 
 
 

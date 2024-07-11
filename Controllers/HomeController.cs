@@ -62,12 +62,11 @@ namespace MyField.Controllers
             var roles = await _userManager.GetRolesAsync(user);
 
 
-            // Determine the appropriate view based on user roles
             if (roles.Contains("System Administrator"))
             {
                 return View("SystemAdministratorDashboard");
             }
-            else if (roles.Contains("Sports Coordinator"))
+            else if (roles.Contains("Sport Coordinator"))
             {
                 return View("SportsCoordinatorDashboard");
             }
@@ -171,7 +170,7 @@ namespace MyField.Controllers
             {
                 return View("NewsAdministratorDashboard");
             }
-            else if (roles.Contains("Sport Manager"))
+            else if (roles.Contains("Sport manager"))
             {
                 return View("SportManagerDashboard");
             }

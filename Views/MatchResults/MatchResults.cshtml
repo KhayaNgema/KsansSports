@@ -11,46 +11,52 @@
 <h4 class="text-center">@ViewBag.CurrentSeason Match Results</h4>
 <br />
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-12 col-lg-8">
-            <div class="scrollable-container">
-                @if (Model.Any())
-                {
-                    <div class="match-card-container" style="border:none;">
-                        @foreach (var item in Model.OrderBy(match => match.MatchDate))
+<div class="matchResultContainer">
+    @if (Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-borderless">
+                <tbody>
+                    @foreach (var item in Model.OrderBy(match => match.MatchDate))
+                    {
+                        if (currentDate != item.MatchDate.Date)
                         {
-                            if (currentDate != item.MatchDate.Date)
-                            {
-                                <h6 class="text-center date-background">@item.MatchDate.ToShortDateString()</h6>
-                                currentDate = item.MatchDate.Date;
-                            }
-                            <div class="match-card mb-4 border-0">
-                                <div class="card-body">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-sm-3 text-center">
-                                            <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image mb-2" />
-                                            <h6 class="card-title mb-0">@item.HomeTeam.ClubName</h6>
-                                        </div>
-                                        <div class="col-sm-3 text-center">
-                                            <h5 class="vs font-weight-bold mb-0" style="margin-bottom: -10px;">@item.HomeTeamScore - @item.AwayTeamScore</h5>
-                                            <p class="card-text text-center">Full time</p>
-                                        </div>
-                                        <div class="col-sm-3 text-center">
-                                            <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image mb-2" />
-                                            <h6 class="card-title mb-0">@item.AwayTeam.ClubName</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <tr>
+                                <td colspan="4">
+                                    <h6 class="text-center date-background">@item.MatchDate.ToShortDateString()</h6>
+                                </td>
+                            </tr>
+                            currentDate = item.MatchDate.Date;
                         }
-                    </div>
-                }
-                else
-                {
-                    <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are currently no match results for this season</p>
-                }
-            </div>
+                        <tr style="white-space: nowrap!important;">
+                            <td class="text-center">
+                                <div style="display: flex; align-items: center; justify-content: center;">
+                                    <p class="card-title mb-0" style="font-size:16px; font-weight:500;">@item.HomeTeam.ClubName</p>
+                                    <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image mb-2" style="margin-right: 10px;" />
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <h5 class="text-center font-weight-bold mb-0">@item.HomeTeamScore - @item.AwayTeamScore</h5>
+                            </td>
+                            <td class="text-center">
+                                <div style="display: flex; align-items: center; justify-content: center;">
+                                    <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image mb-2" style="margin-right: 10px;" />
+                                    <p class="card-title mb-0" style="font-size:16px;  font-weight:500;">@item.AwayTeam.ClubName</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <div style="border-bottom: 1px solid #ccc; margin: 3px 0;"></div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-    </div>
+    }
+    else
+    {
+        <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are not match results at the moment yet.</p>
+    }
 </div>

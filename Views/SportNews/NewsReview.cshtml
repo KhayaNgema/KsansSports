@@ -1,0 +1,51 @@
+﻿@model MyField.Models.SportNews
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+<br />
+@await Html.PartialAsync("_HomeButton")
+<h4 class="text-center">Sport News Review</h4>
+<br />
+<div class="col-md-12 col-sm-12 col-lg-12 sport-news-content">
+    <h4 class="sport-news-heading">@Model.NewsHeading</h4>
+    <hr />
+    <div class="row">
+        <div>
+            <div>
+                <img src="~/@Model.NewsImage" alt="News Image" class="sport-news-image-modal">
+            </div>
+            <div>
+                <em>@Model.PublishedDate.ToString("dd MMMM, yyyy - HH:mm")</em>
+            </div>
+            <br />
+            <div class="mr-3">
+                @Model.AuthoredBy.FirstName @Model.AuthoredBy.LastName
+            </div>
+
+            <hr />
+            <div>
+                <p>@Model.NewsBody</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <form asp-action="ApproveNews" asp-route-newsId="@Model.NewsId" method="post">
+                <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Approve</button>
+            </form>
+        </div>
+        <div class="col-4">
+            <form asp-action="AskReEditNews" asp-route-newsId="@Model.NewsId" method="post">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-pen"></i> Re-edit</button>
+            </form>
+        </div>
+        <div class="col-4">
+            <form asp-action="DeclineNews" asp-route-newsId="@Model.NewsId" method="post">
+                <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"></i> Decline</button>
+            </form>
+        </div>
+    </div>
+</div>
+
