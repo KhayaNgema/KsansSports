@@ -13,7 +13,7 @@
 <br />
 <div class="club-edit-container">
     <div class="col-md-12">
-        <form asp-action="UpdateClubPlayer" method="post" enctype="multipart/form-data">
+        <form asp-action="UpdateClubPlayer" asp-controller="Users" method="post" enctype="multipart/form-data">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />

@@ -59,6 +59,9 @@ public class Startup
         services.AddScoped<IPaymentService, PayFastPaymentService>();
         services.AddHttpClient<DeviceInfoService>();
         services.AddHttpClient();
+/*        services.AddHostedService<FixtureSchedulerHostedService>();
+        services.AddScoped<FixtureService>();*/
+
 
 
         services.AddLogging(loggingBuilder =>

@@ -18,6 +18,15 @@
     </form>
 </div>
 <br />
+@if (TempData["Message"] != null)
+{
+    <div id="tempDataMessage" class="alert @(TempData["Message"].ToString().Contains("successfully") ? "alert-success" : "alert-danger")" role="alert">
+        @TempData["Message"]
+        <span class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </div>
+}
 <div class="table-responsive">
     <table class="table table-striped table-borderless">
         <thead>
@@ -65,11 +74,11 @@
                         @Html.DisplayFor(modelItem => item.PhoneNumber)
                     </td>
                     <td>
-                        @if (item.IsActive == true)
+                        @if (item.IsActive == true && item.IsSuspended == false)
                         {
                             <p>Active</p>
                         }
-                        else if (item.IsSuspended == true)
+                        else if (item.IsSuspended == true && item.IsActive == true)
                         {
                             <p>Suspended</p>
                         }
@@ -78,28 +87,31 @@
                             <p>Inactive</p>
                         }
                     </td>
-@*                     <td class="text-right">
-                        <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                    <td class="text-right">
+                        <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.Id">
                             Actions
                         </button>
-                        <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                            <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
-                                <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
+                        <div class="action-tab" id="actionTab-@item.Id" style="display: none;">
+                            <a class="tab-item" href="@Url.Action("UpdateClubAdministrator", "Users", new { userId = item.Id })">
+                                <i class="fas fa-user" style="color: blue;"></i> Profile
                             </a>
-                            <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
-                                <i class="tab-item" style="color: blue;"></i> Update
+                            <a class="tab-item" href="@Url.Action("Deactivate", "Users", new { userId = item.Id  })">
+                                <i class="fas fa-pause" style="color: red;"></i> Deactivate
                             </a>
-                            <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
-                                <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
+                            <a class="tab-item" href="@Url.Action("Activate", "Users", new { userId = item.Id })">
+                                <i class="fas fa-check-circle" style="color: green;"></i> Activate
                             </a>
-                            <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
-                                <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
+                            <a class="tab-item" href="@Url.Action("Suspend", "Users", new { userId = item.Id })">
+                                <i class="fas fa-ban" style="color: red;"></i> Suspend
                             </a>
-                            <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
+                            <a class="tab-item" href="@Url.Action("Unsuspend", "Users", new { userId = item.Id })">
+                                <i class="fas fa-check-circle" style="color: green;"></i> Unsuspend
+                            </a>
+                            <a class="tab-item" href="@Url.Action("Delete", "Users", new { userId = item.Id })">
                                 <i class="fas fa-trash" style="color: red;"></i> Delete
                             </a>
                         </div>
-                    </td> *@
+                    </td>
                 </tr>
             }
         </tbody>

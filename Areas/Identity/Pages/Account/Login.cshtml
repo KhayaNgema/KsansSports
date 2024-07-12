@@ -26,23 +26,20 @@
                     <label asp-for="Input.Password" class="form-label">Password</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
+                <div class="row align-items-center">
+                    <div class="checkbox mb-3 col-6 d-flex align-items-center">
+                        <label asp-for="Input.RememberMe" class="form-label d-flex align-items-center mb-0">
+                            <input class="form-check-input me-2" asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                    <div class="col-6 text-end">
+                        <a id="forgot-password" asp-page="./ForgotPassword">forgot password?</a>
+                    </div>
                 </div>
+                <br />
                 <div>
                     <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" style="margin-bottom:2px; border-radius:15px;">Log in</button>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group" style="display: flex; justify-content: flex-end;">
-                            <p>
-                                <a id="forgot-password" asp-page="./ForgotPassword">forgot password?</a>
-                            </p>
-                        </div>
-                    </div>
                 </div>
                 <div style="display: flex; justify-content: center;">
                     <p style="margin-right: 5px;">Don't have an account?</p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create a new account</a>

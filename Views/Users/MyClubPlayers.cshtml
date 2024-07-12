@@ -79,32 +79,52 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.MarketValue)
                         </td>
-                        <td>
-                            Status
-                        </td>
-@*                     <td class="text-right">
-                        <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                    <td>
+                        @if (item.IsActive == true && item.IsSuspended == false)
+                        {
+                            <p>Active</p>
+                        }
+                        else if (item.IsSuspended == true && item.IsActive == true)
+                        {
+                            <p>Suspended</p>
+                        }
+                        else
+                        {
+                            <p>Inactive</p>
+                        }
+                    </td>
+                    <td class="text-right">
+                        <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.Id">
                             Actions
                         </button>
-                        <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                            <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
-                                <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
-                            </a>
-                            <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
-                                <i class="tab-item" style="color: blue;"></i> Update
-                            </a>
-                            <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
-                                <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
-                            </a>
-                            <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
-                                <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
-                            </a>
-                            <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
-                                <i class="fas fa-trash" style="color: red;"></i> Delete
-                            </a>
+                        <div class="action-tab" id="actionTab-@item.Id" style="display: none;">
+                            @if (User.IsInRole("Personnel Administrator"))
+                            {
+                                <a class="tab-item" href="@Url.Action("Deactivate", "Users", new { userId = item.Id  })">
+                                    <i class="fas fa-pause" style="color: red;"></i> Deactivate
+                                </a>
+                                <a class="tab-item" href="@Url.Action("Activate", "Users", new { userId = item.Id })">
+                                    <i class="fas fa-check-circle" style="color: green;"></i> Activate
+                                </a>
+                                <a class="tab-item" href="@Url.Action("Suspend", "Users", new { userId = item.Id })">
+                                    <i class="fas fa-ban" style="color: red;"></i> Suspend
+                                </a>
+                                <a class="tab-item" href="@Url.Action("Unsuspend", "Users", new { userId = item.Id })">
+                                    <i class="fas fa-check-circle" style="color: green;"></i> Unsuspend
+                                </a>
+                                <a class="tab-item" href="@Url.Action("Delete", "Users", new { userId = item.Id })">
+                                    <i class="fas fa-trash" style="color: red;"></i> Delete
+                                </a>
+                            }
+                            else if (User.IsInRole("Club Administrator"))
+                            {
+                                <a class="tab-item" href="@Url.Action("UpdateClubPlayer", "Users", new { userId = item.Id })">
+                                    <i class="fas fa-user" style="color: blue;"></i> Profile
+                                </a>
+                            }
                         </div>
-                    </td> *@
-                    </tr>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
