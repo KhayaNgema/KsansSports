@@ -96,34 +96,25 @@
                             <td>@Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)</td>
                             <td>@Html.DisplayFor(modelItem => item.ModifiedDateTime)</td>
                         }
-                       @*  <td class="text-right">
-                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                        <td class="text-right">
+                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.FixtureId">
                                 Actions
                             </button>
-                            <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
-                                    <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
+                            <div class="action-tab" id="actionTab-@item.FixtureId" style="display: none;">
+                                <a class="tab-item" href="@Url.Action("ModifyFixture", "Fixtures", new { id = item.FixtureId })">
+                                    <i class="fas fa-pen" style="color: blue;"></i> Update
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
-                                    <i class="tab-item" style="color: blue;"></i> Update
+                                <a class="tab-item" href="@Url.Action("InterruptFixture", "Fixtures", new { id = item.FixtureId })">
+                                    <i class="fas fa-pause" style="color: red"></i> Interrupt
                                 </a>
-                                <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
+                                <a class="tab-item" href="@Url.Action("PostponeFixture", "Fixtures", new {  id = item.FixtureId  })">
+                                    <i class="fas fa-clock" style="color: red"></i> Postpone
                                 </a>
-                                <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
-                                </a>
-                                <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fas fa-trash" style="color: red;"></i> Delete
+                                <a class="tab-item" href="@Url.Action("DeleteFixture", "Fixtures", new {  id = item.FixtureId  })">
+                                    <i class="fas fa-trash" style="color: red"></i> Delete
                                 </a>
                             </div>
                         </td>
-                        <td style="white-space: nowrap;">
-                            <a href="@Url.Action("Details", "Clubs", new { id = item.ClubId })" class="btn btn-outline-primary btn-sm">
-                                <i class="fas fa-info-circle" style="color: #2E5A88;"></i>
-                                Details
-                            </a>
-                        </td> *@
                     </tr>
                 }
             </tbody>

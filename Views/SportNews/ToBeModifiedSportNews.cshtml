@@ -67,29 +67,22 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NewsStatus)
                         </td>
-@*                         <td class="text-right">
-                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                        <td class="text-right">
+                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.NewsId">
                                 Actions
                             </button>
-                            <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
-                                    <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
+                            <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
+                                <a class="tab-item" href="@Url.Action("ReEditSportNews", "SportNews", new {newsId = item.NewsId })">
+                                    <i class="fas fa-pen" style="color: blue"></i> Re-edit
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
-                                    <i class="tab-item" style="color: blue;"></i> Update
+                                <a class="tab-item" href="@Url.Action("ReSubmitSportNews", "SportNews", new { newsId = item.NewsId})">
+                                    <i class="fa fa-redo" style="color: green;"></i> Re-submit
                                 </a>
-                                <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
-                                </a>
-                                <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
-                                </a>
-                                <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fas fa-trash" style="color: red;"></i> Delete
+                                <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
+                                    <i class="fa fa-trash" style="color: red;"></i> Delete
                                 </a>
                             </div>
-                        </td> *@
-
+                        </td>
                     </tr>
                 }
             </tbody>
