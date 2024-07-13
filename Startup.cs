@@ -1,4 +1,5 @@
-﻿using Hangfire;
+﻿using Microsoft.AspNetCore.Builder;
+using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,11 +9,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.AspNetCore;
 using MyField.Data;
 using MyField.Models;
 using MyField.Services;
 using MyField.Interfaces;
 using System.Globalization;
+using System.Reflection;
+
+
+
 using System.Threading;
 
 public class Startup
@@ -21,27 +27,27 @@ public class Startup
     {
         Configuration = configuration;
     }
-
     public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection services)
     {
+
         var connectionString = Configuration.GetConnectionString("DefaultConnection");
         services.AddDbContext<Ksans_SportsDbContext>(options =>
             options.UseSqlServer(connectionString));
-
         services.AddDefaultIdentity<UserBaseModel>(options =>
         {
             options.SignIn.RequireConfirmedAccount = true;
         })
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<Ksans_SportsDbContext>();
-
         services.AddAutoMapper(typeof(Startup));
         services.AddControllersWithViews();
         services.AddRazorPages();
 
         services.AddHttpContextAccessor();
+
+
 
         SetCulture("en-US");
 
@@ -54,6 +60,10 @@ public class Startup
         services.AddScoped<IPaymentService, PayFastPaymentService>();
         services.AddHttpClient<DeviceInfoService>();
         services.AddHttpClient();
+        /*        services.AddHostedService<FixtureSchedulerHostedService>();
+                services.AddScoped<FixtureService>();*/
+
+
         services.AddScoped<FixtureService>();
 
         services.AddHangfire(config => config
@@ -73,6 +83,8 @@ public class Startup
 
         services.AddLogging(loggingBuilder =>
         {
+            loggingBuilder.ClearProviders(); // Clear the default providers
+            loggingBuilder.AddSerilog(dispose: true); // Add Serilog
             loggingBuilder.ClearProviders();
             loggingBuilder.AddSerilog(dispose: true);
         });
@@ -80,10 +92,10 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+        // Serilog configuration
         Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs/myapp-.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
-
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -96,8 +108,14 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+
         app.UseStaticFiles();
+
         app.UseRouting();
+
+        app.UseAuthentication();
+
+        app.UseAuthorization();
 
 
         app.UseHangfireDashboard("/hangfire", new DashboardOptions
@@ -105,14 +123,14 @@ public class Startup
             Authorization = new[] { new HangfireAuthorizationFilter() }
         });
 
-        app.UseAuthentication();
-        app.UseAuthorization();
+
         app.UseSerilogRequestLogging();
 
+        app.UseSerilogRequestLogging();
         RecurringJob.AddOrUpdate<FixtureService>(
             "schedule-fixtures",
             service => service.ScheduleFixturesAsync(),
-            Cron.Weekly(DayOfWeek.Sunday, 17, 0));
+            Cron.Weekly(DayOfWeek.Monday, 0, 0));
 
         app.UseEndpoints(endpoints =>
         {
@@ -123,6 +141,8 @@ public class Startup
         });
 
         app.ApplicationServices.CreateRolesAndDefaultUser().Wait();
+
+
     }
 
     private void SetCulture(string cultureCode)
@@ -131,4 +151,6 @@ public class Startup
         Thread.CurrentThread.CurrentCulture = culture;
         Thread.CurrentThread.CurrentUICulture = culture;
     }
+
+
 }

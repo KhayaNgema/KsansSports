@@ -22,7 +22,7 @@ namespace MyField.Services
         public async Task ScheduleFixturesAsync()
         {
             var clubs = await _context.Club
-                .Where( c=> c.League.IsCurrent)
+                .Where(c => c.League.IsCurrent)
                 .ToListAsync();
 
             if (clubs == null || clubs.Count < 8)
@@ -155,7 +155,5 @@ namespace MyField.Services
 
             await _context.SaveChangesAsync();
         }
-
-
     }
 }

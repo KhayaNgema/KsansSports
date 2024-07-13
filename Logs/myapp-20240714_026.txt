@@ -1,0 +1,778 @@
+2024-07-14 00:13:10.113 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.127 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.128 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.129 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.130 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.131 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:10.132 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-14 00:13:11.099 +02:00 [INF] Executed DbCommand (43ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.262 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.266 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.269 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.272 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.275 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.278 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.281 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.285 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.289 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.293 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.296 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:11.405 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.702 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.714 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.716 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.736 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.739 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.742 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.745 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.748 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:11.798 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-14 00:13:11.813 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-14 00:13:11.825 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-14 00:13:11.836 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-14 00:13:12.123 +02:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: (localdb)\mssqllocaldb@Ksans_Sports'
+2024-07-14 00:13:12.123 +02:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-14 00:13:12.124 +02:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-14 00:13:12.202 +02:00 [INF] Server khaya-asuszenbo:13964:eb07f2c0 successfully announced in 29.9841 ms
+2024-07-14 00:13:12.213 +02:00 [INF] Server khaya-asuszenbo:13964:eb07f2c0 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-14 00:13:12.267 +02:00 [INF] 1 servers were removed due to timeout
+2024-07-14 00:13:12.424 +02:00 [INF] Server khaya-asuszenbo:13964:eb07f2c0 all the dispatchers started
+2024-07-14 00:13:13.977 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:14.027 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-14 00:13:14.089 +02:00 [INF] Executing ViewResult, running view Index.
+2024-07-14 00:13:14.685 +02:00 [INF] Executed ViewResult - view Index executed in 585.1975ms.
+2024-07-14 00:13:14.773 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 742.5901ms
+2024-07-14 00:13:14.775 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:14.818 +02:00 [INF] HTTP GET / responded 200 in 809.0209 ms
+2024-07-14 00:13:14.820 +02:00 [INF] HTTP GET / responded 200 in 853.0810 ms
+2024-07-14 00:13:14.859 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-14 00:13:14.903 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-14 00:13:14.903 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-14 00:13:14.989 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-14 00:13:14.998 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-14 00:13:15.441 +02:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+2024-07-14 00:13:15.631 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-07-14 00:13:15.677 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 48.8442ms.
+2024-07-14 00:13:15.678 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 680.1864ms
+2024-07-14 00:13:15.679 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-14 00:13:15.679 +02:00 [INF] HTTP GET /sportnews responded 200 in 689.9473 ms
+2024-07-14 00:13:15.679 +02:00 [INF] HTTP GET /sportnews responded 200 in 690.0744 ms
+2024-07-14 00:13:15.725 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'
+2024-07-14 00:13:15.727 +02:00 [INF] Sending file. Request path: '/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'
+2024-07-14 00:13:24.543 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:24.545 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-14 00:13:24.551 +02:00 [INF] Executing ViewResult, running view Index.
+2024-07-14 00:13:24.574 +02:00 [INF] Executed ViewResult - view Index executed in 24.2769ms.
+2024-07-14 00:13:24.589 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 43.3112ms
+2024-07-14 00:13:24.589 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:24.589 +02:00 [INF] HTTP GET / responded 200 in 46.5847 ms
+2024-07-14 00:13:24.590 +02:00 [INF] HTTP GET / responded 200 in 47.1000 ms
+2024-07-14 00:13:24.662 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-14 00:13:24.670 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-14 00:13:24.670 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-14 00:13:24.734 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-14 00:13:24.734 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-14 00:13:24.757 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+2024-07-14 00:13:24.763 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-07-14 00:13:24.765 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 1.9009ms.
+2024-07-14 00:13:24.765 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 31.3181ms
+2024-07-14 00:13:24.765 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-14 00:13:24.765 +02:00 [INF] HTTP GET /sportnews responded 200 in 31.7500 ms
+2024-07-14 00:13:24.765 +02:00 [INF] HTTP GET /sportnews responded 200 in 31.8232 ms
+2024-07-14 00:13:24.784 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'
+2024-07-14 00:13:24.784 +02:00 [INF] Sending file. Request path: '/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'
+2024-07-14 00:13:26.532 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-07-14 00:13:26.644 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-07-14 00:13:26.870 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Invalid"
+2024-07-14 00:13:26.888 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-07-14 00:13:27.211 +02:00 [INF] Executed page /Account/Login in 565.4951ms
+2024-07-14 00:13:27.211 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-07-14 00:13:27.212 +02:00 [INF] HTTP POST /Identity/Account/Login responded 200 in 679.9478 ms
+2024-07-14 00:13:27.212 +02:00 [INF] HTTP POST /Identity/Account/Login responded 200 in 680.1866 ms
+2024-07-14 00:13:27.653 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation\dist\jquery.validate.js'
+2024-07-14 00:13:27.663 +02:00 [INF] Sending file. Request path: '/Images/NFA_logo.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\NFA_logo.jpg'
+2024-07-14 00:13:27.682 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2024-07-14 00:13:39.445 +02:00 [INF] Executing endpoint '/Account/Login'
+2024-07-14 00:13:39.447 +02:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-07-14 00:13:39.468 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2024-07-14 00:13:39.579 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedUserName] = @__normalizedUserName_0
+2024-07-14 00:13:40.138 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-14 00:13:40.215 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-07-14 00:13:40.226 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-14 00:13:40.253 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2024-07-14 00:13:40.282 +02:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-07-14 00:13:40.292 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-14 00:13:40.329 +02:00 [INF] Start processing HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-07-14 00:13:40.343 +02:00 [INF] Sending HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-07-14 00:13:41.593 +02:00 [INF] Received HTTP response headers after 1237.4548ms - 200
+2024-07-14 00:13:41.597 +02:00 [INF] End processing HTTP request after 1276.2848ms - 200
+2024-07-14 00:13:41.689 +02:00 [INF] Start processing HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-07-14 00:13:41.689 +02:00 [INF] Sending HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-07-14 00:13:42.031 +02:00 [INF] Received HTTP response headers after 342.1792ms - 200
+2024-07-14 00:13:42.032 +02:00 [INF] End processing HTTP request after 343.0108ms - 200
+2024-07-14 00:13:42.774 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DeviceInfo] ([Browser], [BrowserVersion], [City], [Country], [DeviceModel], [DeviceName], [IpAddress], [Latitude], [Longitude], [OSName], [OSVersion], [PostalCode], [Region])
+OUTPUT INSERTED.[DeviceInfoId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-07-14 00:13:43.019 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 450), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ActivityLogs] ([Activity], [DeviceInfoId], [Timestamp], [UserBaseModelId], [UserId])
+OUTPUT INSERTED.[ActivityLogId]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-07-14 00:13:43.039 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-07-14 00:13:43.048 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-07-14 00:13:43.050 +02:00 [INF] Executed page /Account/Login in 3602.9641ms
+2024-07-14 00:13:43.050 +02:00 [INF] Executed endpoint '/Account/Login'
+2024-07-14 00:13:43.050 +02:00 [INF] HTTP POST /Identity/Account/Login responded 302 in 3605.4914 ms
+2024-07-14 00:13:43.050 +02:00 [INF] HTTP POST /Identity/Account/Login responded 302 in 3605.5840 ms
+2024-07-14 00:13:43.071 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:43.071 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-14 00:13:43.072 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-07-14 00:13:43.073 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 1.895ms
+2024-07-14 00:13:43.073 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-14 00:13:43.073 +02:00 [INF] HTTP GET / responded 302 in 2.2977 ms
+2024-07-14 00:13:43.073 +02:00 [INF] HTTP GET / responded 302 in 2.3574 ms
+2024-07-14 00:13:43.083 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-07-14 00:13:43.089 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-07-14 00:13:43.228 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 2
+2024-07-14 00:13:43.288 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 1
+2024-07-14 00:13:43.302 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [SportNew] AS [s]
+WHERE [s].[NewsStatus] = 0
+2024-07-14 00:13:43.386 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-14 00:13:43.390 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-07-14 00:13:43.393 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-07-14 00:13:43.706 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 315.2475ms.
+2024-07-14 00:13:43.707 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 618.1692ms
+2024-07-14 00:13:43.707 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-07-14 00:13:43.707 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 624.3831 ms
+2024-07-14 00:13:43.707 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 624.4323 ms
+2024-07-14 00:17:48.351 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-14 00:17:48.489 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-14 00:17:51.079 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-14 00:17:57.761 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-14 00:17:57.883 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-14 00:17:57.883 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-14 00:17:57.958 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-14 00:17:57.959 +02:00 [INF] Hosting environment: Development
+2024-07-14 00:17:57.959 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-14 00:17:58.673 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:17:59.457 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 784.6453ms
+2024-07-14 00:17:59.478 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:18:01.287 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:18:01.309 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:18:01.313 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:18:01.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:01.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 106.8491ms
+2024-07-14 00:18:01.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 98.4830ms
+2024-07-14 00:18:01.463 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 1985.2367ms
+2024-07-14 00:18:01.465 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 155.1232ms
+2024-07-14 00:18:01.465 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 178.1622ms
+2024-07-14 00:18:01.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:01.541 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 70.1989ms
+2024-07-14 00:18:05.271 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:18:05.718 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 200 - text/html 448.0945ms
+2024-07-14 00:18:05.725 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:18:05.727 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:18:05.727 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:18:05.808 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 82.8985ms
+2024-07-14 00:18:05.808 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 81.1569ms
+2024-07-14 00:18:05.817 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:05.836 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 18.8001ms
+2024-07-14 00:18:05.844 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:05.846 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 119.8089ms
+2024-07-14 00:18:05.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 91.5338ms
+2024-07-14 00:18:06.217 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:18:06.223 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 6.0973ms
+2024-07-14 00:18:08.224 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:18:08.339 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 115.1323ms
+2024-07-14 00:18:10.373 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:18:10.403 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 29.7953ms
+2024-07-14 00:18:10.546 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:18:10.709 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 162.9161ms
+2024-07-14 00:18:10.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:18:10.807 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 28.0115ms
+2024-07-14 00:18:10.819 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:18:10.820 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:10.821 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:18:10.825 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.1098ms
+2024-07-14 00:18:10.833 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 13.2215ms
+2024-07-14 00:18:10.837 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 17.5059ms
+2024-07-14 00:18:16.092 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-14 00:18:18.995 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 2904.6341ms
+2024-07-14 00:18:19.003 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:18:19.060 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 57.9405ms
+2024-07-14 00:18:19.081 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:19.084 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:19.091 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 7.5761ms
+2024-07-14 00:18:19.106 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-14 00:18:19.107 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.9934ms
+2024-07-14 00:18:19.304 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 198.0373ms
+2024-07-14 00:18:19.313 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-14 00:18:19.313 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-14 00:18:19.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 13.2333ms
+2024-07-14 00:18:19.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 13.8227ms
+2024-07-14 00:18:23.042 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:18:23.092 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 401 0 - 50.1115ms
+2024-07-14 00:18:23.856 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:18:23.860 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 401 0 - 3.0827ms
+2024-07-14 00:18:26.371 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:18:26.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 34.7111ms
+2024-07-14 00:18:26.454 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:18:26.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:18:26.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:18:26.488 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:26.491 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 2.6575ms
+2024-07-14 00:18:26.502 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 13.3057ms
+2024-07-14 00:18:26.502 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 48.3304ms
+2024-07-14 00:18:26.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 14.7404ms
+2024-07-14 00:18:26.506 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:26.533 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 27.4337ms
+2024-07-14 00:18:26.569 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-14 00:18:26.583 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 14.2832ms
+2024-07-14 00:18:26.597 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-14 00:18:26.597 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-14 00:18:26.605 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 8.1991ms
+2024-07-14 00:18:26.605 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 8.1239ms
+2024-07-14 00:18:28.118 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-14 00:18:28.614 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 496.6557ms
+2024-07-14 00:18:28.639 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-07-14 00:18:28.640 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-14 00:18:28.651 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 10.7376ms
+2024-07-14 00:18:28.654 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 15.1867ms
+2024-07-14 00:18:28.659 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:28.659 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:28.659 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-14 00:18:28.663 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.7513ms
+2024-07-14 00:18:28.667 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 8.4047ms
+2024-07-14 00:18:28.684 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.4367ms
+2024-07-14 00:18:37.877 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 262
+2024-07-14 00:18:39.713 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 262 - 302 0 - 1836.0857ms
+2024-07-14 00:18:39.847 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:18:39.850 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 3.9870ms
+2024-07-14 00:18:39.853 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:18:39.963 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 110.0998ms
+2024-07-14 00:18:40.000 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:40.006 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:40.010 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.8601ms
+2024-07-14 00:18:40.045 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 45.1299ms
+2024-07-14 00:18:42.917 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:18:42.928 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 403 0 - 11.8384ms
+2024-07-14 00:18:44.092 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:18:44.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 403 0 - 3.3732ms
+2024-07-14 00:18:52.300 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:18:52.365 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 65.6007ms
+2024-07-14 00:18:52.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:18:52.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:18:52.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:18:52.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:52.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.3371ms
+2024-07-14 00:18:52.428 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 23.8568ms
+2024-07-14 00:18:52.444 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 20.0918ms
+2024-07-14 00:18:52.446 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 23.9807ms
+2024-07-14 00:18:52.472 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:52.492 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.7394ms
+2024-07-14 00:18:55.506 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:18:55.522 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 15.9440ms
+2024-07-14 00:18:55.532 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:18:55.625 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 95.0706ms
+2024-07-14 00:18:55.651 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:18:55.661 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:18:55.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:18:55.663 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:55.665 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 14.2286ms
+2024-07-14 00:18:55.670 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 7.4343ms
+2024-07-14 00:18:55.670 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 7.9601ms
+2024-07-14 00:18:55.673 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 11.7582ms
+2024-07-14 00:18:55.688 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:55.702 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.6550ms
+2024-07-14 00:18:58.793 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-14 00:18:59.579 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 786.4707ms
+2024-07-14 00:18:59.603 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:18:59.631 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 28.9067ms
+2024-07-14 00:18:59.678 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:18:59.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:18:59.692 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 2.5629ms
+2024-07-14 00:18:59.704 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 26.0391ms
+2024-07-14 00:18:59.712 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-14 00:18:59.725 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 12.5883ms
+2024-07-14 00:18:59.737 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-14 00:18:59.737 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-14 00:18:59.750 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 13.1780ms
+2024-07-14 00:18:59.750 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 13.7146ms
+2024-07-14 00:19:01.682 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-14 00:19:01.740 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 58.3655ms
+2024-07-14 00:19:01.788 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - -
+2024-07-14 00:19:01.791 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-14 00:19:01.814 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 23.8776ms
+2024-07-14 00:19:01.820 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-14 00:19:01.822 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:01.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:01.825 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/NFA_logo.jpg - - - 200 119374 image/jpeg 37.3185ms
+2024-07-14 00:19:01.826 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.8482ms
+2024-07-14 00:19:01.839 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 19.1114ms
+2024-07-14 00:19:01.886 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 63.6834ms
+2024-07-14 00:19:09.633 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267
+2024-07-14 00:19:10.622 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 267 - 302 0 - 988.9590ms
+2024-07-14 00:19:10.630 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:19:10.642 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 11.7968ms
+2024-07-14 00:19:10.653 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:19:10.704 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 51.2369ms
+2024-07-14 00:19:10.735 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:10.752 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:10.758 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 6.8119ms
+2024-07-14 00:19:10.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.4922ms
+2024-07-14 00:19:13.830 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:19:13.880 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 200 - text/html 50.2095ms
+2024-07-14 00:19:13.940 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:13.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:13.955 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:13.955 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 15.9270ms
+2024-07-14 00:19:13.965 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 13.5612ms
+2024-07-14 00:19:13.966 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:13.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.0622ms
+2024-07-14 00:19:13.979 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 24.4831ms
+2024-07-14 00:19:13.982 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:14.002 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.6764ms
+2024-07-14 00:19:14.232 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:14.237 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 5.5464ms
+2024-07-14 00:19:16.244 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:19:16.263 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 18.9676ms
+2024-07-14 00:19:17.871 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/recurring - -
+2024-07-14 00:19:18.125 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/recurring - - - 200 - text/html 254.7508ms
+2024-07-14 00:19:18.161 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:18.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:18.168 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:18.170 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:18.174 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:18.193 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 21.0621ms
+2024-07-14 00:19:18.199 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 31.2303ms
+2024-07-14 00:19:18.203 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 41.8410ms
+2024-07-14 00:19:18.244 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 76.0464ms
+2024-07-14 00:19:18.260 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 89.3548ms
+2024-07-14 00:19:18.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:18.309 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.0408ms
+2024-07-14 00:19:20.411 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:20.420 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 10.0294ms
+2024-07-14 00:19:20.891 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/ - -
+2024-07-14 00:19:20.960 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/ - - - 200 - text/html 69.8624ms
+2024-07-14 00:19:20.993 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:21.013 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:21.016 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:21.018 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:21.018 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:21.022 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.7098ms
+2024-07-14 00:19:21.022 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 29.1872ms
+2024-07-14 00:19:21.034 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 20.3617ms
+2024-07-14 00:19:21.073 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 56.6932ms
+2024-07-14 00:19:21.080 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:21.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 13.6913ms
+2024-07-14 00:19:21.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 77.7559ms
+2024-07-14 00:19:23.181 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:19:23.199 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 19.3043ms
+2024-07-14 00:19:25.402 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:19:25.422 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 20.5129ms
+2024-07-14 00:19:26.496 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/ - -
+2024-07-14 00:19:26.541 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/ - - - 200 - text/html 45.0421ms
+2024-07-14 00:19:26.573 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:26.584 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:26.586 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:26.585 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:26.588 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:26.593 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 7.0328ms
+2024-07-14 00:19:26.599 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 25.7274ms
+2024-07-14 00:19:26.625 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 38.4554ms
+2024-07-14 00:19:26.657 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 72.7539ms
+2024-07-14 00:19:26.675 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:26.692 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 16.6717ms
+2024-07-14 00:19:26.694 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 106.0919ms
+2024-07-14 00:19:28.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/enqueued - -
+2024-07-14 00:19:28.634 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/enqueued - - - 200 - text/html 75.8390ms
+2024-07-14 00:19:28.677 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:28.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:28.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:28.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:28.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:28.737 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 43.3359ms
+2024-07-14 00:19:28.743 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 52.0053ms
+2024-07-14 00:19:28.749 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 71.8319ms
+2024-07-14 00:19:28.778 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 87.4559ms
+2024-07-14 00:19:28.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 92.3813ms
+2024-07-14 00:19:28.790 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:28.794 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 4.1332ms
+2024-07-14 00:19:30.022 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded - -
+2024-07-14 00:19:30.171 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded - - - 200 - text/html 149.5591ms
+2024-07-14 00:19:30.191 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:30.202 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:30.202 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:30.203 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:30.203 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:30.210 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.0484ms
+2024-07-14 00:19:30.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 28.3383ms
+2024-07-14 00:19:30.228 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 26.6473ms
+2024-07-14 00:19:30.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 79.2890ms
+2024-07-14 00:19:30.293 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 90.3017ms
+2024-07-14 00:19:30.300 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:30.304 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 3.9451ms
+2024-07-14 00:19:32.358 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:32.367 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 9.0928ms
+2024-07-14 00:19:34.389 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:34.396 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 7.8106ms
+2024-07-14 00:19:36.409 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:36.413 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 3.7589ms
+2024-07-14 00:19:38.433 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:38.441 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 8.1341ms
+2024-07-14 00:19:40.666 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:40.672 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 6.7913ms
+2024-07-14 00:19:41.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded?from=0&count=100 - -
+2024-07-14 00:19:41.143 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded?from=0&count=100 - - - 200 - text/html 49.6405ms
+2024-07-14 00:19:41.161 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:41.171 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:41.171 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:41.172 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:41.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:41.183 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.9033ms
+2024-07-14 00:19:41.185 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 23.0140ms
+2024-07-14 00:19:41.201 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 29.9897ms
+2024-07-14 00:19:41.263 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:41.269 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 99.1910ms
+2024-07-14 00:19:41.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 16.7708ms
+2024-07-14 00:19:41.284 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 112.8571ms
+2024-07-14 00:19:43.375 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:43.385 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 10.1440ms
+2024-07-14 00:19:45.547 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392
+2024-07-14 00:19:45.550 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 392 - 200 - application/json 3.0988ms
+2024-07-14 00:19:46.873 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/servers - -
+2024-07-14 00:19:46.964 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/servers - - - 200 - text/html 90.4596ms
+2024-07-14 00:19:47.019 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:47.026 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:47.026 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:47.028 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:19:47.029 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:47.037 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 18.0066ms
+2024-07-14 00:19:47.037 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 9.4314ms
+2024-07-14 00:19:47.047 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 21.2531ms
+2024-07-14 00:19:47.104 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:47.114 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 86.8427ms
+2024-07-14 00:19:47.124 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 19.9973ms
+2024-07-14 00:19:47.136 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 107.7524ms
+2024-07-14 00:19:49.204 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:49.209 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 5.8361ms
+2024-07-14 00:19:51.220 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:51.222 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 2.7467ms
+2024-07-14 00:19:53.230 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:53.233 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 3.0504ms
+2024-07-14 00:19:55.489 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:55.496 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 7.4777ms
+2024-07-14 00:19:57.688 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-14 00:19:57.697 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 8.8027ms
+2024-07-14 00:19:57.928 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded?from=0&count=100 - -
+2024-07-14 00:19:57.980 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded?from=0&count=100 - - - 200 - text/html 51.8483ms
+2024-07-14 00:19:58.017 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:58.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:58.027 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:58.030 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:58.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 22.0445ms
+2024-07-14 00:19:58.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 8.3223ms
+2024-07-14 00:19:58.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 27.7446ms
+2024-07-14 00:19:58.081 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 53.7533ms
+2024-07-14 00:19:58.084 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:58.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 9.9237ms
+2024-07-14 00:19:59.508 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded - -
+2024-07-14 00:19:59.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/succeeded - - - 200 - text/html 64.8735ms
+2024-07-14 00:19:59.589 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:19:59.602 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 13.9407ms
+2024-07-14 00:19:59.605 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:19:59.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:19:59.608 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:19:59.612 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.3888ms
+2024-07-14 00:19:59.624 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 18.9355ms
+2024-07-14 00:19:59.653 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 45.1800ms
+2024-07-14 00:19:59.653 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:19:59.664 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 11.4564ms
+2024-07-14 00:20:00.759 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/jobs/enqueued - -
+2024-07-14 00:20:00.787 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/jobs/enqueued - - - 200 - text/html 28.9776ms
+2024-07-14 00:20:00.827 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:20:00.839 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:20:00.841 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:20:00.841 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:00.857 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 15.1875ms
+2024-07-14 00:20:00.866 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 39.6773ms
+2024-07-14 00:20:00.878 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 39.6252ms
+2024-07-14 00:20:00.902 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 61.0975ms
+2024-07-14 00:20:00.917 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:20:00.928 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 11.6667ms
+2024-07-14 00:20:01.856 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/ - -
+2024-07-14 00:20:01.900 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/ - - - 200 - text/html 44.2559ms
+2024-07-14 00:20:01.931 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:20:01.945 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 14.5570ms
+2024-07-14 00:20:01.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:20:01.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:20:01.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:01.952 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.7532ms
+2024-07-14 00:20:01.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 24.9533ms
+2024-07-14 00:20:01.998 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:20:02.008 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 61.7859ms
+2024-07-14 00:20:02.019 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 21.4489ms
+2024-07-14 00:20:03.296 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/recurring - -
+2024-07-14 00:20:03.349 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/recurring - - - 200 - text/html 52.8320ms
+2024-07-14 00:20:03.382 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:20:03.384 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:20:03.384 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:20:03.385 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:03.389 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.5694ms
+2024-07-14 00:20:03.416 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 32.2395ms
+2024-07-14 00:20:03.417 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 34.9527ms
+2024-07-14 00:20:03.434 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 49.9579ms
+2024-07-14 00:20:03.450 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:20:03.459 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 9.4947ms
+2024-07-14 00:20:04.579 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire - -
+2024-07-14 00:20:04.642 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire - - - 200 - text/html 61.9533ms
+2024-07-14 00:20:04.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - -
+2024-07-14 00:20:04.704 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css181401446351797 - - - 200 - text/css 14.0245ms
+2024-07-14 00:20:04.704 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - -
+2024-07-14 00:20:04.706 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:04.706 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - -
+2024-07-14 00:20:04.710 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 3.5634ms
+2024-07-14 00:20:04.726 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/css-dark181401445115481 - - - 200 - text/css 20.8595ms
+2024-07-14 00:20:04.747 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-14 00:20:04.748 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/js181401877085737 - - - 200 - application/javascript 41.9426ms
+2024-07-14 00:20:04.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 10.0950ms
+2024-07-14 00:20:06.958 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-14 00:20:06.973 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 16.1515ms
+2024-07-14 00:20:07.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:20:07.229 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 15.6201ms
+2024-07-14 00:20:07.241 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-14 00:20:07.314 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 73.4876ms
+2024-07-14 00:20:07.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-14 00:20:07.366 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-14 00:20:07.366 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - -
+2024-07-14 00:20:07.369 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:07.384 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 17.9812ms
+2024-07-14 00:20:07.385 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 16.4904ms
+2024-07-14 00:20:07.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 48.4119ms
+2024-07-14 00:20:07.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=3gotD2tYWeAewzAt8fA-5ZSdKhWma9HXZ73EIWQYb24 - - - 200 37381 text/css 37.5766ms
+2024-07-14 00:20:07.415 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:20:07.462 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 47.5342ms
+2024-07-14 00:20:11.749 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-14 00:20:13.179 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 1430.6895ms
+2024-07-14 00:20:13.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-14 00:20:13.221 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 22.9220ms
+2024-07-14 00:20:13.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-14 00:20:13.293 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-14 00:20:13.310 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 17.2788ms
+2024-07-14 00:20:13.368 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 79.1818ms
+2024-07-14 00:20:13.371 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-14 00:20:13.393 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 21.8715ms
+2024-07-14 00:20:13.431 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-14 00:20:13.431 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-14 00:20:13.464 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 33.4144ms
+2024-07-14 00:20:13.464 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 33.5677ms

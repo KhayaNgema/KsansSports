@@ -1,6 +1,16 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
 
 <br />
+<div class="fixtures-search-create-container" style="margin-bottom: 10px;">
+    <div class="row">
+            <div class="create-button">
+                <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-create" style="white-space: nowrap;">
+                    <i class="fas fa-plus"></i> Create new
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="table-responsive">
     @if(Model.Any())
     {
