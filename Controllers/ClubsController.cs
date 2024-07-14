@@ -593,6 +593,7 @@ namespace MyField.Controllers
             }
 
             var club = await _context.Club.FindAsync(id);
+
             if (club == null)
             {
                 var message = $"Club with id {id} not found";

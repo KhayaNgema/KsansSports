@@ -109,6 +109,9 @@
                                     <a class="tab-item" href="@Url.Action("UpdateClubManager", "Users", new { userId = item.Id })">
                                         <i class="fas fa-user" style="color: blue;"></i> Profile
                                     </a>
+                                    <a class="tab-item" href="@Url.Action("EndClubManagerContract", "Users", new { userId = item.Id })">
+                                        <i class="fas fa-trash" style="color: red;"></i> End COntract
+                                    </a>
                                 }
                             </div>
                         </td>

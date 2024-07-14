@@ -11,6 +11,8 @@ using MyField.Models;
 using MyField.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using MyField.Interfaces;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 
 namespace MyField.Controllers
 {
@@ -38,6 +40,7 @@ namespace MyField.Controllers
                 .Include(p => p.Club)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
+                .OrderByDescending(p=> p.CreatedDateTime)
                 .ToListAsync();
 
             return PartialView("_PendingClubFinesPartial", _pendingFines);
@@ -50,6 +53,7 @@ namespace MyField.Controllers
                 .Include(p => p.Club)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
+                .OrderByDescending(p => p.CreatedDateTime)
                 .ToListAsync();
 
             return PartialView("_PaidClubFinesPartial", paidFines);
@@ -62,6 +66,7 @@ namespace MyField.Controllers
                 .Include(p => p.Club)
                 .Include(p => p.CreatedBy)
                 .Include(p => p.ModifiedBy)
+                .OrderByDescending(p => p.CreatedDateTime)
                 .ToListAsync();
 
             return PartialView("_OverdueClubFinesPartial", overdueFines);
@@ -383,102 +388,134 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+        public async Task<IActionResult> UpdateClubFine (int? fineId)
         {
-            if (id == null || _context.Fines == null)
-            {
-                return NotFound();
-            }
 
-            var fine = await _context.Fines.FindAsync(id);
-            if (fine == null)
+            var clubFine = await _context.Fines
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Include(e => e.Club)
+                .FirstOrDefaultAsync();
+
+            var club = clubFine.Club;
+
+
+            var viewModel = new UpdateClubFineViewModel
             {
-                return NotFound();
-            }
-            ViewData["ClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", fine.ClubId);
-            ViewData["CreatedById"] = new SelectList(_context.SportMember, "Id", "Id", fine.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.SportMember, "Id", "Id", fine.ModifiedById);
-            return View(fine);
+                FineId = fineId,
+                ClubName = club.ClubName,
+                RuleViolated = clubFine.RuleViolated,
+                FineDetails = clubFine.FineDetails,
+                FineAmount = clubFine.FineAmount,
+                FineDueDate = clubFine.FineDuDate
+            };
+
+            return View(viewModel);
         }
 
-        // POST: Fines/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FineId,FineDetails,ClubId,CreatedById,CreatedDateTime,ModifiedById,ModifiedDateTime,FineAmount,FineDuDate")] Fine fine)
+        public async Task<IActionResult> UpdateClubFine(int? fineId, UpdateClubFineViewModel viewModel)
         {
-            if (id != fine.FineId)
+            if (fineId == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            var user = await _userManager.GetUserAsync(User);
+
+            var existingClubFine = await _context.Fines
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == viewModel.FineId)
+                .Include(e => e.Club)
+                .FirstOrDefaultAsync();
+
+            if (ValidateClubUpdatedProperties(viewModel))
             {
-                try
-                {
-                    _context.Update(fine);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!FineExists(fine.FineId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+
+                existingClubFine.RuleViolated = viewModel.RuleViolated;
+                existingClubFine.FineDetails = viewModel.FineDetails;
+                existingClubFine.FineAmount = viewModel.FineAmount;
+                existingClubFine.FineDuDate = viewModel.FineDueDate;
+                existingClubFine.ModifiedById = user.Id;
+                existingClubFine.ModifiedDateTime = DateTime.Now;
+
+                _context.Update(existingClubFine);
+                await _context.SaveChangesAsync();
             }
-            ViewData["ClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", fine.ClubId);
-            ViewData["CreatedById"] = new SelectList(_context.SportMember, "Id", "Id", fine.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.SportMember, "Id", "Id", fine.ModifiedById);
-            return View(fine);
+
+            TempData["Message"] = $"You have successfully updated {existingClubFine.Club.ClubName} charges";
+
+            await _activityLogger.Log($"Updated {existingClubFine.Club.ClubName} fines", user.Id);
+            return RedirectToAction(nameof(ClubFines));
         }
 
-        // GET: Fines/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        private bool ValidateClubUpdatedProperties(UpdateClubFineViewModel viewModel)
         {
-            if (id == null || _context.Fines == null)
-            {
-                return NotFound();
-            }
-
-            var fine = await _context.Fines
-                .Include(f => f.Club)
-                .Include(f => f.CreatedBy)
-                .Include(f => f.ModifiedBy)
-                .FirstOrDefaultAsync(m => m.FineId == id);
-            if (fine == null)
-            {
-                return NotFound();
-            }
-
-            return View(fine);
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateProperty(viewModel.RuleViolated, new ValidationContext(viewModel, null, null) { MemberName = "RuleViolated" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineDetails, new ValidationContext(viewModel, null, null) { MemberName = "FineDetails" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineAmount, new ValidationContext(viewModel, null, null) { MemberName = "FineAmount" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineDueDate, new ValidationContext(viewModel, null, null) { MemberName = "FineDueDate" }, validationResults);
+            return validationResults.Count == 0;
         }
 
-        // POST: Fines/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+        public async Task<IActionResult> MarkOverDueClubFine (int? fineId)
         {
-            if (_context.Fines == null)
+            if(fineId == null)
             {
-                return Problem("Entity set 'Ksans_SportsDbContext.Fines'  is null.");
+                return NotFound();
             }
-            var fine = await _context.Fines.FindAsync(id);
-            if (fine != null)
-            {
-                _context.Fines.Remove(fine);
-            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var existingClubFine = await _context.Fines
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Include(e => e.Club)
+                .FirstOrDefaultAsync();
+
+            existingClubFine.PaymentStatus = PaymentStatus.Overdue;
+            existingClubFine.ModifiedById = user.Id;
+            existingClubFine.ModifiedDateTime = DateTime.Now;
+
+            _context.Update(existingClubFine);
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+
+            TempData["Message"] = $"You have successfully markerd {existingClubFine.Club.ClubName} charges as overdue payment";
+
+            await _activityLogger.Log($"Marked {existingClubFine.Club.ClubName} fines as overdue", user.Id);
+
+            return RedirectToAction(nameof(ClubFines));
         }
+
+        public async Task<IActionResult> DropClubFine (int? fineId)
+        {
+            if (fineId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var existingClubFine = await _context.Fines
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Include(e => e.Club)
+                .FirstOrDefaultAsync();
+
+            TempData["Message"] = $"You have deleted {existingClubFine.Club.ClubName} fines of {existingClubFine.RuleViolated}";
+
+            await _activityLogger.Log($"Dropped {existingClubFine.Club.ClubName} fines of {existingClubFine.RuleViolated}", user.Id);
+
+            _context.Remove(existingClubFine);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(ClubFines));
+        }
+
+
 
         private bool FineExists(int id)
         {

@@ -29,10 +29,19 @@
                     <td>@Html.DisplayFor(modelItem => item.FineAmount)</td>
                     <td>@Html.DisplayFor(modelItem => item.FineDuDate)</td>
                     <td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
-                    <td>
-                        <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.FineId"><i class="fa fa-info-circle"></i> More</a>
-                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.FineId"><i class="fa fa-ban"></i> Drop charges</a>
-                    </td>
+                        <td class="text-right">
+                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.FineId">
+                                Actions
+                            </button>
+                            <div class="action-tab" id="actionTab-@item.FineId" style="display: none;">
+                                <a class="tab-item" href="@Url.Action("ClubFineDetails", "Fines", new { fineId = item.FineId })">
+                                    <i class="fas fa-info-circle" style="color: blue;"></i> Details
+                                </a>
+                                <a class="tab-item" href="@Url.Action("DropClubFine", "Fines", new { fineId = item.FineId })">
+                                    <i class="fas fa-trash" style="color: red;"></i> Drop charges
+                                </a>
+                            </div>
+                        </td>
                 </tr>
             }
         </tbody>

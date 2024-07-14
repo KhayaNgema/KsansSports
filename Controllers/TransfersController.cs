@@ -929,7 +929,6 @@ namespace MyField.Controllers
 
 
 
-        [HttpPost]
         public async Task<IActionResult> AcceptPlayerTransfer(int transferId)
         {
 
@@ -973,8 +972,6 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(MyTransferRequestsTabs));
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RejectPlayerTransfer(int transferId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);

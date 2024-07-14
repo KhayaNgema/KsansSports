@@ -522,13 +522,6 @@ namespace MyField.Controllers
                 .Include(f => f.AwayTeam)
                 .FirstOrDefaultAsync(f => f.FixtureId == id);
 
-            var matchOfficial = await _context.MatchOfficials
-                .Where(m => m.FixtureId == id)
-                .Include(m => m.Refeere)
-                .Include(m => m.AssistantOne)
-                .Include(m => m.AssistantTwo)
-                .FirstOrDefaultAsync();
-
             if (fixture == null)
             {
                 return NotFound();
@@ -544,10 +537,6 @@ namespace MyField.Controllers
                 KickOffTime = fixture.KickOffTime,
                 Stadium = fixture.Location,
                 FixtureStatus = fixture.FixtureStatus,
-                RefereeId = matchOfficial.RefeereId,
-                AssistantOneId = matchOfficial.AssistantOneId,
-                AssistantTwoId = matchOfficial.AssistantTwoId
-
             };
 
                 ViewBag.Clubs = new SelectList(_context.Club, "ClubId", "ClubName");
@@ -589,14 +578,6 @@ namespace MyField.Controllers
 
                 try
                 {
-
-                    var existingOfficial = await _context.MatchOfficials
-                        .Where(e => e.FixtureId == id)
-                        .Include( e => e.Refeere)
-                        .Include(e => e.AssistantOne)
-                        .Include(e => e.AssistantTwo)
-                        .FirstOrDefaultAsync();
-
                     if (existingFixture == null)
                     {
                         return NotFound();
@@ -611,12 +592,16 @@ namespace MyField.Controllers
                     existingFixture.ModifiedDateTime = DateTime.Now;
                     existingFixture.ModifiedById = userId;
 
-                    existingOfficial.RefeereId = viewModel.RefereeId;
-                    existingOfficial.AssistantOneId = viewModel.AssistantOneId;
-                    existingOfficial.AssistantTwoId = viewModel.AssistantTwoId;
+                    var newOfficials = new MatchOfficials
+                    {
+                        FixtureId = existingFixture.FixtureId,
+                        RefeereId = viewModel.RefereeId,
+                        AssistantOneId = viewModel.AssistantOneId,
+                        AssistantTwoId = viewModel.AssistantTwoId,
+                    };
 
+                    _context.Add(newOfficials);
                     _context.Update(existingFixture);
-                    _context.Update(existingOfficial);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

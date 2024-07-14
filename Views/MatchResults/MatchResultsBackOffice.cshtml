@@ -65,7 +65,7 @@
                         <th>ModifiedBy</th>
                         <th>Modified DateTime</th>
                     }
-                    <th>Actions</th>
+@*                     <th>Actions</th> *@
                 </tr>
             </thead>
             <tbody>
@@ -94,7 +94,7 @@
                             <td>@Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)</td>
                             <td>@Html.DisplayFor(modelItem => item.ModifiedDateTime)</td>
                         }
-                        <td class="text-right">
+@*                         <td class="text-right">
                             <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ResultsId">
                                 Actions
                             </button>
@@ -106,7 +106,7 @@
                                     <i class="fas fa-trash" style="color: red;"></i> Delete
                                 </a>
                             </div>
-                        </td>
+                        </td> *@
                     </tr>
                 }
             </tbody>

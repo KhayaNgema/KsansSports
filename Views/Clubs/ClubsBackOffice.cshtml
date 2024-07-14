@@ -77,12 +77,26 @@
                     <th style="white-space: nowrap;">Manager</th>
                     <th style="white-space: nowrap;">Location</th>
                     <th style="white-space: nowrap;">Stadium</th>
-                    <th style="white-space: nowrap;">CreatedBy</th>
-                    <th style="white-space: nowrap;">CreatedDateTime</th>
-                    <th style="white-space: nowrap;">ModifiedBy</th>
-                    <th style="white-space: nowrap;">ModifiedDateTime</th>
+                    @if(User.IsInRole("Sport Administrator"))
+                    {
+                        <th style="white-space: nowrap;">CreatedBy</th>
+                        <th style="white-space: nowrap;">CreatedDateTime</th>
+                        <th style="white-space: nowrap;">ModifiedBy</th>
+                        <th style="white-space: nowrap;">ModifiedDateTime</th>
+                    }
+                    else
+                    {
+                        
+                    }
                     <th style="white-space: nowrap;">Season</th>
-                    <th style="white-space: nowrap;">Actions</th>
+                    @if (User.IsInRole("Sport Administrator"))
+                    {
+                        <th style="white-space: nowrap;">Actions</th>
+                    }
+                    else
+                    {
+                        
+                    }
                     <th style="white-space: nowrap;">More Info.</th>
                 </tr>
             </thead>
@@ -96,35 +110,43 @@
                             @Html.DisplayFor(modelItem => item.ClubName) (@Html.DisplayFor(modelItem => item.ClubAbbr))
                         </td>
                         <td class="column-max-width">
-                            @(item.ClubManager != null && item.ClubManager.ClubId == item.ClubId ? item.ClubManager.FirstName + " " + item.ClubManager.LastName : "No Manager")
+                            @(item.ClubManager != null && item.ClubManager.IsContractEnded == false && item.ClubManager.ClubId == item.ClubId ? item.ClubManager.FirstName + " " + item.ClubManager.LastName : "No Manager")
                         </td>
 
                         <td class="column-max-width">
                             @Html.DisplayFor(modelItem => item.ClubLocation)
                         </td>
                         <td class="column-max-width">Stadium</td>
-                        <td class="column-max-width">
-                            @Html.DisplayFor(modelItem => item.CreatedBy.FirstName) @Html.DisplayFor(modelItem => item.CreatedBy.LastName)
-                        </td>
-                        <td class="column-max-width">
-                            <div>
-                                <span class="fa fa-calendar-alt"></span> @item.CreatedDateTime.ToString(" dd MMM yyyy")
-                            </div>
-                            <div>
-                                <span class="fa fa-clock"></span> @item.CreatedDateTime.ToString(" HH:mm:ss")
-                            </div>
-                        </td>
-                        <td class="column-max-width">
-                            @Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)
-                        </td>
-                        <td class="column-max-width">
-                            <div>
-                                <span class="fa fa-calendar-alt"></span> @item.ModifiedDateTime.ToString(" dd MMM yyyy")
-                            </div>
-                            <div>
-                                <span class="fa fa-clock"></span> @item.ModifiedDateTime.ToString(" HH:mm:ss")
-                            </div>
-                        </td>
+                        @if(User.IsInRole("Sport Administrator"))
+                        {
+                            <td class="column-max-width">
+                                @Html.DisplayFor(modelItem => item.CreatedBy.FirstName) @Html.DisplayFor(modelItem => item.CreatedBy.LastName)
+                            </td>
+                            <td class="column-max-width">
+                                <div>
+                                    <span class="fa fa-calendar-alt"></span> @item.CreatedDateTime.ToString(" dd MMM yyyy")
+                                </div>
+                                <div>
+                                    <span class="fa fa-clock"></span> @item.CreatedDateTime.ToString(" HH:mm:ss")
+                                </div>
+                            </td>
+                            <td class="column-max-width">
+                                @Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)
+                            </td>
+                            <td class="column-max-width">
+                                <div>
+                                    <span class="fa fa-calendar-alt"></span> @item.ModifiedDateTime.ToString(" dd MMM yyyy")
+                                </div>
+                                <div>
+                                    <span class="fa fa-clock"></span> @item.ModifiedDateTime.ToString(" HH:mm:ss")
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+
+                        }
+                      
                         <td style="white-space: nowrap;">
                             @if (item.Status == ClubStatus.Active && item.IsSuspended == true)
                             {
@@ -147,28 +169,32 @@
                                 @Html.DisplayFor(modelItem => item.Status)
                             }
                         </td>
-                        <td class="text-right">
-                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
-                                Actions
-                            </button>
-                            <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
-                                    <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
-                                </a>
-                                <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-pen"  class="tab-item" style="color: blue;"></i> Update
-                                </a>
-                                <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
-                                </a>
-                                <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
-                                    <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
-                                </a>
-                                <a class="tab-item" href="@Url.Action("Delete", "Clubs", new { id = item.ClubId })" onclick="return confirm('Are you sure you want to delete this item?');">
-                                    <i class="fas fa-trash" style="color: red;"></i> Delete
-                                </a>
-                            </div>
-                        </td>
+                        @if (User.IsInRole("Sport Administrator"))
+                        {
+                            <td class="text-right">
+                                <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.ClubId">
+                                    Actions
+                                </button>
+                                <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
+                                    <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
+                                        <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
+                                    </a>
+                                    <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
+                                        <i class="fas fa-pen" class="tab-item" style="color: blue;"></i> Update
+                                    </a>
+                                    <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
+                                        <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
+                                    </a>
+                                    <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
+                                        <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
+                                    </a>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+
+                        }
                         <td style="white-space: nowrap;">
                             <a href="@Url.Action("Details", "Clubs", new { id = item.ClubId })" class="btn btn-outline-primary btn-sm">
                                 <i class="fas fa-info-circle" style="color: #2E5A88;"></i>

@@ -13,6 +13,7 @@ using MyField.Services;
 using Microsoft.AspNetCore.Identity;
 using MyField.Migrations;
 using System.ComponentModel.DataAnnotations;
+using MyField.Interfaces;
 
 namespace MyField.Controllers
 {
@@ -935,5 +936,66 @@ namespace MyField.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> EndClubManagerContract(string userId)
+        {
+            if(userId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null || !(user is ClubAdministrator clubAdministrator))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubManager = await _context.ClubManager
+                .Where(c => c.Id == userId && c.ClubId == clubAdministrator.ClubId)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new EndClubManagerContractViewModel
+            {
+                FullNames = $"{clubManager.FirstName} {clubManager.LastName}",
+                ProfilePicture = clubManager.ProfilePicture,
+                PhoneNumber = clubManager.PhoneNumber,
+                Email = clubManager.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EndClubManagerContract(string userId, EndClubManagerContractViewModel viewModel)
+        {
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null || !(user is ClubAdministrator clubAdministrator))
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            var clubManager = await _context.ClubManager
+                .Where(c => c.Id == userId && c.ClubId == clubAdministrator.ClubId)
+                .Include( c => c.Club)
+                .FirstOrDefaultAsync();
+
+            clubManager.IsActive = false;
+            clubManager.IsSuspended = true;
+            clubManager.IsContractEnded = true;
+
+            _context.Update(clubManager);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = $"You have ended {viewModel.FullNames}'s contract with {clubManager.Club.ClubName}.";
+            return RedirectToAction(nameof(MyClubManagers));
+        }
     }
 }

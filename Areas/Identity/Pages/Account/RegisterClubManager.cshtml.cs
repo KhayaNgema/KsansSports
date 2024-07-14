@@ -138,7 +138,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
                     IsActive = true,
-                    IsSuspended = false
+                    IsSuspended = false,
+                    IsContractEnded = false
                 };
 
                 var loggedInUser = await _userManager.GetUserAsync(User);

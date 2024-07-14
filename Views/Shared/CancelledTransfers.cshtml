@@ -26,9 +26,6 @@
                     <th>
                         Sale status
                     </th>
-                    <th>
-                        Actions
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,15 +47,6 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
-                        <td>
-                            <form method="post" asp-action="CancelPlayerTransfer" asp-route-transferId="@item.TransferId">
-                                <button type="submit" class="btn btn-sm btn-outline-danger">
-                                    <i class="fas fa-times-circle"></i>
-                                    Cancel Transfer
-                                </button>
-                            </form>
-                        </td>
-
                     </tr>
                 }
             </tbody>

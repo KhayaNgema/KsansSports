@@ -554,7 +554,7 @@ namespace MyField.Controllers
                 var lineupSubstitutesHolders = await _context.LineUpSubstitutesHolder.ToListAsync();
                 Console.WriteLine("lineupSubstitutesHolders: " + lineupSubstitutesHolders); // Log lineupSubstitutesHolders
 
-                // Create a new LineUp object
+              
                 var lineUp = new LineUp
                 {
                     ClubId = clubManager.ClubId,

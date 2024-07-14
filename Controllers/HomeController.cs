@@ -122,11 +122,20 @@ namespace MyField.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
+
                 var club = await _db.Club
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
 
-                return View("ClubManagerDashboard", club);
+                if(club.ClubManager.IsContractEnded)
+                {
+                    return View("Index");
+                }
+                else
+                {
+                    return View("ClubManagerDashboard", club);
+                }
+                
             }
             else if (roles.Contains("Club Administrator"))
             {

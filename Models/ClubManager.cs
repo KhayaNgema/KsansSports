@@ -8,5 +8,7 @@ namespace MyField.Models
         [Display(Name = "Club")]
         public int ClubId { get; set; }
         public virtual Club Club { get; set; }
+
+        public bool IsContractEnded { get; set; }
     }
 }
