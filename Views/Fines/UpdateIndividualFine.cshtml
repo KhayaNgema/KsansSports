@@ -1,23 +1,23 @@
-﻿@model MyField.ViewModels.UpdateClubFineViewModel
+﻿@model MyField.ViewModels.UpdateIndividualFineViewModel
 
 @{
-    ViewData["Title"] = "Update " + @Model.ClubName +" Fine";
+    ViewData["Title"] = "Update " + @Model.FullNames + " Fine";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 
 <br />
 @await Html.PartialAsync("_BackButton")
-<h4 style="text-align:center;">Update @Model.ClubName Fine</h4>
+<h4 style="text-align:center;">Update @Model.FullNames Fine</h4>
 <br />
 <div class="row fine-container">
     <div class="col-md-12">
-        <form asp-action="UpdateClubFine" method="post">
+        <form asp-action="UpdateIndividualFine">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating mb-3">
-                <input asp-for="ClubName" class="form-control border-bottom-only" placeholder="ClubName"></input>
+                <input asp-for="FullNames" class="form-control border-bottom-only" placeholder="FullNames"></input>
 
-                <label asp-for="ClubName" class="form-label">Club</label>
-                <span asp-validation-for="ClubName" class="text-danger"></span>
+                <label asp-for="FullNames" class="form-label">Full names</label>
+                <span asp-validation-for="FullNames" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="RuleViolated" class="form-control border-bottom-only" placeholder="RuleViolated"></input>
@@ -26,7 +26,7 @@
                 <span asp-validation-for="RuleViolated" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <textarea asp-for="FineDetails" class="form-control border-bottom-only" placeholder="FineDetails" style="min-height: 150px;" maxlength=" 300"></textarea>
+                <textarea asp-for="FineDetails" class="form-control border-bottom-only" placeholder="FineDetails" style="min-height: 150px;" maxlength="300"></textarea>
 
                 <label asp-for="FineDetails" class="form-label">Fine details</label>
                 <span asp-validation-for="FineDetails" class="text-danger"></span>

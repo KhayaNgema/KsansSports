@@ -516,6 +516,137 @@ namespace MyField.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateIndividualFine(int? fineId)
+        {
+
+            var individualFine = await _context.Fines
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Include(e => e.Offender)
+                .FirstOrDefaultAsync();
+
+            var offender = individualFine.Offender;
+
+
+            var viewModel = new UpdateIndividualFineViewModel
+            {
+                FineId = fineId,
+                FullNames = $"{offender.FirstName} {offender.LastName}",
+                RuleViolated = individualFine.RuleViolated,
+                FineDetails = individualFine.FineDetails,
+                FineAmount = individualFine.FineAmount,
+                FineDueDate = individualFine.FineDuDate
+            };
+
+            return View(viewModel);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateIndividualFine(int? fineId, UpdateIndividualFineViewModel viewModel)
+        {
+            if (fineId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var individualFine = await _context.Fines
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Include(e => e.Offender)
+                .FirstOrDefaultAsync();
+
+            if (ValidateIndividualUpdatedProperties(viewModel))
+            {
+
+                individualFine.RuleViolated = viewModel.RuleViolated;
+                individualFine.FineDetails = viewModel.FineDetails;
+                individualFine.FineAmount = viewModel.FineAmount;
+                individualFine.FineDuDate = viewModel.FineDueDate;
+                individualFine.ModifiedById = user.Id;
+                individualFine.ModifiedDateTime = DateTime.Now;
+
+                _context.Update(individualFine);
+                await _context.SaveChangesAsync();
+            }
+
+            TempData["Message"] = $"You have successfully updated {viewModel.FullNames} charges";
+
+            await _activityLogger.Log($"Updated {viewModel.FullNames} fines", user.Id);
+
+            return RedirectToAction(nameof(IndividualFines));
+        }
+
+        private bool ValidateIndividualUpdatedProperties(UpdateIndividualFineViewModel viewModel)
+        {
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateProperty(viewModel.RuleViolated, new ValidationContext(viewModel, null, null) { MemberName = "RuleViolated" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineDetails, new ValidationContext(viewModel, null, null) { MemberName = "FineDetails" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineAmount, new ValidationContext(viewModel, null, null) { MemberName = "FineAmount" }, validationResults);
+            Validator.TryValidateProperty(viewModel.FineDueDate, new ValidationContext(viewModel, null, null) { MemberName = "FineDueDate" }, validationResults);
+            return validationResults.Count == 0;
+        }
+
+
+        public async Task<IActionResult> MarkOverDueIndividualFine(int? fineId)
+        {
+            if (fineId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var individualFine = await _context.Fines
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Include(e => e.Offender)
+                .FirstOrDefaultAsync();
+
+            individualFine.PaymentStatus = PaymentStatus.Overdue;
+            individualFine.ModifiedById = user.Id;
+            individualFine.ModifiedDateTime = DateTime.Now;
+
+            _context.Update(individualFine);
+
+            await _context.SaveChangesAsync();
+
+
+            TempData["Message"] = $"You have successfully markerd {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} charges as overdue payment";
+
+            await _activityLogger.Log($"Marked {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines as overdue", user.Id);
+
+            return RedirectToAction(nameof(IndividualFines));
+        }
+
+        public async Task<IActionResult> DropIndividualFine(int? fineId)
+        {
+            if (fineId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var individualFine = await _context.Fines
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Include(e => e.Offender)
+                .FirstOrDefaultAsync();
+
+            TempData["Message"] = $"You have deleted {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines of {individualFine.RuleViolated}";
+
+            await _activityLogger.Log($"Dropped {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines of {individualFine.RuleViolated}", user.Id);
+
+            _context.Remove(individualFine);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(IndividualFines));
+        }
+
+
+
 
         private bool FineExists(int id)
         {

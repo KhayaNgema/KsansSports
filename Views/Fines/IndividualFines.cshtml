@@ -6,7 +6,7 @@
 }
 
 <br />
-@await Html.PartialAsync("_BackButton")
+@await Html.PartialAsync("_HomeButton")
 <h4 style="text-align:center;">Individuals Fines</h4>
 <br />
 @if(Model.Any())
@@ -33,10 +33,14 @@
                     <th>Offence</th>
                     <th>Amount</th>
                     <th>Due Date</th>
-                    <th>Created By</th>
-                    <th>Created Date Time</th>
-                    <th>Modified By</th>
-                    <th>Modified Date Time</th>
+                    @if(User.IsInRole("System Administrator"))
+                    {
+                        <th>Created By</th>
+                        <th>Created Date Time</th>
+                        <th>Modified By</th>
+                        <th>Modified Date Time</th>
+                    }
+
                     <th>Payment Status</th>
                     <th>Actions</th>
                 </tr>
@@ -53,10 +57,14 @@
                         <td>@Html.DisplayFor(modelItem => item.FineDetails)</td>
                         <td>@Html.DisplayFor(modelItem => item.FineAmount)</td>
                         <td>@Html.DisplayFor(modelItem => item.FineDuDate)</td>
-                        <td>@Html.DisplayFor(modelItem => item.CreatedBy.FirstName) @Html.DisplayFor(modelItem => item.CreatedBy.LastName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.CreatedDateTime)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ModifiedDateTime)</td>
+                        @if (User.IsInRole("System Administrator"))
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.CreatedBy.FirstName) @Html.DisplayFor(modelItem => item.CreatedBy.LastName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CreatedDateTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ModifiedDateTime)</td>
+                        }
+                       
                         <td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
                         <td class="text-right">
                             <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.FineId">
@@ -66,7 +74,7 @@
                                 <a class="tab-item" href="@Url.Action("UpdateIndividualFine", "Fines", new { fineId = item.FineId })">
                                     <i class="fas fa-pen" style="color: blue;"></i> Update
                                 </a>
-                                <a class="tab-item" href="@Url.Action("MarkOverDueIndividualFine ", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("MarkOverDueIndividualFine", "Fines", new { fineId = item.FineId })">
                                     <i class ="fas fa-clock" style="color: red;"></i> Mark overdue
                                 </a>
                                 <a class="tab-item" href="@Url.Action("DropIndividualFine", "Fines", new { fineId = item.FineId })">

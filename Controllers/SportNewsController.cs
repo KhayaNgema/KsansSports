@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -74,6 +75,7 @@ namespace MyField.Controllers
                 .Where(n => n.NewsStatus == NewsStatus.ToBeModified)
                 .Include( n=> n.AuthoredBy)
                 .Include(n => n.ModifiedBy)
+                .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return View(newsToBeModified);
@@ -87,6 +89,7 @@ namespace MyField.Controllers
                   .Include(s => s.AuthoredBy)
                   .Include(s => s.ModifiedBy)
                   .Include(s => s.PublishedBy)
+                  .OrderByDescending(n => n.PublishedDate)
                   .ToListAsync();
 
             return View(sportsNews);
@@ -100,6 +103,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.PublishedDate)
                 .ToListAsync();
 
             return PartialView("_PublishedSportNewsPartial",sportsNews);
@@ -118,6 +122,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return PartialView("_ApprovedSportNewsPartial", sportsNews);
@@ -133,6 +138,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                 .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return View(sportsNews);
@@ -146,6 +152,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return PartialView("_PendingSportNewsPartial",sportsNews);
@@ -158,6 +165,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return View(sportsNews);
@@ -170,6 +178,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.RejectedDateTime)
                 .ToListAsync();
 
             return PartialView("_RejectedSportNewsPartial",sportsNews);
@@ -182,6 +191,7 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                 .OrderByDescending(n => n.RejectedDateTime)
                 .ToListAsync();
 
             return View(sportsNews);
@@ -194,10 +204,12 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                 .OrderByDescending(n => n.ModifiedDateTime)
                 .ToListAsync();
 
             return View(sportsNews);
         }
+
 
         public async Task<IActionResult> Index()
         {
@@ -206,12 +218,14 @@ namespace MyField.Controllers
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
+                .OrderByDescending(n => n.PublishedDate)
                 .ToListAsync();
 
             return PartialView("_SportsNewsPartial", sportsNews);
         }
 
 
+        [Authorize]
         public async Task<IActionResult> SportNews()
         {
             var sportsNews = await _context.SportNew
@@ -315,9 +329,9 @@ namespace MyField.Controllers
                     _context.IndividualNewsReports.Add(newIndividualNews);
                     await _context.SaveChangesAsync();
 
-
+                    TempData["Message"] = $"You have successfully authored the sport news with heading {savedNews.NewsHeading}.";
                     await _activityLogger.Log($"Authored sport news with heading {savedNews.NewsHeading}", user.Id);
-                    return RedirectToAction(nameof(AwaitingApprovalSportNews));
+                    return RedirectToAction(nameof(SportNewsList));
                 }
                 return View(viewModel);
             }
@@ -337,99 +351,109 @@ namespace MyField.Controllers
 
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+        public async Task<IActionResult> ReEditNews(int? newsId)
         {
-            if (id == null || _context.SportNew == null)
+            if (newsId == null)
             {
                 return NotFound();
             }
 
-            var sportNews = await _context.SportNew.FindAsync(id);
-            if (sportNews == null)
+            var existingNews = await _context.SportNew
+                .Where(e => e.NewsId == newsId)
+                .FirstOrDefaultAsync();
+
+            if (existingNews == null)
             {
                 return NotFound();
             }
-            ViewData["AuthoredById"] = new SelectList(_context.Users, "Id", "Id", sportNews.AuthoredById);
-            ViewData["ModifiedById"] = new SelectList(_context.Users, "Id", "Id", sportNews.ModifiedById);
-            ViewData["PublishedById"] = new SelectList(_context.Users, "Id", "Id", sportNews.PublishedById);
-            return View(sportNews);
+
+            var viewModel = new ReEditNewsViewModel
+            {
+                NewsId = existingNews.NewsId,
+                NewsImage = existingNews.NewsImage,
+                NewsTitle = existingNews.NewsHeading,
+                NewsBody = existingNews.NewsBody
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NewsId,NewsHeading,PublishedDate,ModifiedDateTime,ModifiedById,AuthoredById,PublishedById,NewsBody,NewsImage")] SportNews sportNews)
+        public async Task<IActionResult> ReEditNews(int? newsId, ReEditNewsViewModel viewModel, IFormFile NewsImages)
         {
-            if (id != sportNews.NewsId)
+            if (newsId == null)
+            {
+                return NotFound();
+            }
+            var user = await _userManager.GetUserAsync(User);
+
+            var existingNews = await _context.SportNew
+                .Where(e => e.NewsId == viewModel.NewsId)
+                .FirstOrDefaultAsync();
+
+            if (existingNews == null)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (ValidateUpdatedProperties(viewModel))
             {
-                try
+                existingNews.NewsHeading = viewModel.NewsTitle;
+                existingNews.NewsBody = viewModel.NewsBody;
+                existingNews.NewsStatus = NewsStatus.Awaiting_Approval;
+
+                if (NewsImages != null && NewsImages.Length > 0)
                 {
-                    _context.Update(sportNews);
-                    await _context.SaveChangesAsync();
+                    var uploadedImagePath = await _fileUploadService.UploadFileAsync(NewsImages);
+                    existingNews.NewsImage = uploadedImagePath;
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!SportNewsExists(sportNews.NewsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    existingNews.NewsImage = viewModel.NewsImage;
                 }
-                return RedirectToAction(nameof(Index));
+
+                _context.Update(existingNews);
+                await _context.SaveChangesAsync();
             }
-            ViewData["AuthoredById"] = new SelectList(_context.Users, "Id", "Id", sportNews.AuthoredById);
-            ViewData["ModifiedById"] = new SelectList(_context.Users, "Id", "Id", sportNews.ModifiedById);
-            ViewData["PublishedById"] = new SelectList(_context.Users, "Id", "Id", sportNews.PublishedById);
-            return View(sportNews);
+
+            await _activityLogger.Log($"Updated sport news with heading {existingNews.NewsHeading}", user.Id);
+
+            if (existingNews.NewsStatus == NewsStatus.Awaiting_Approval)
+            {
+
+                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                return RedirectToAction(nameof(SportNewsList));
+            }
+            else if (existingNews.NewsStatus == NewsStatus.ToBeModified)
+            {
+
+                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                return RedirectToAction(nameof(ToBeModifiedSportNews));
+            }
+            else
+            {
+
+                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                return RedirectToAction(nameof(SportNewsList));
+            }
         }
 
-        public async Task<IActionResult> Delete(int? id)
+
+
+
+        private bool ValidateUpdatedProperties(ReEditNewsViewModel viewModel)
         {
-            if (id == null || _context.SportNew == null)
-            {
-                return NotFound();
-            }
-
-            var sportNews = await _context.SportNew
-                .Include(s => s.AuthoredBy)
-                .Include(s => s.ModifiedBy)
-                .Include(s => s.PublishedBy)
-                .FirstOrDefaultAsync(m => m.NewsId == id);
-            if (sportNews == null)
-            {
-                return NotFound();
-            }
-
-            return View(sportNews);
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateProperty(viewModel.NewsTitle, new ValidationContext(viewModel, null, null) { MemberName = "NewsTitle" }, validationResults);
+            Validator.TryValidateProperty(viewModel.NewsBody, new ValidationContext(viewModel, null, null) { MemberName = "NewsBody" }, validationResults);
+            return validationResults.Count == 0;
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.SportNew == null)
-            {
-                return Problem("Entity set 'Sports_ManagerDbContext.SportNew'  is null.");
-            }
-            var sportNews = await _context.SportNew.FindAsync(id);
-            if (sportNews != null)
-            {
-                _context.SportNew.Remove(sportNews);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool SportNewsExists(int id)
         {
+
             return (_context.SportNew?.Any(e => e.NewsId == id)).GetValueOrDefault();
         }
 
@@ -457,10 +481,12 @@ namespace MyField.Controllers
             overallNewsReports.PublishedNewsCount++;
 
             sportNews.NewsStatus = NewsStatus.Approved;
-            sportNews.PublishedDate = DateTime.UtcNow;
+            sportNews.PublishedDate = DateTime.Now;
             sportNews.PublishedById = userId;
 
             await _context.SaveChangesAsync();
+
+            TempData["Message"] = $"You have successfully approved the sport news with heading {sportNews.NewsHeading}.";
 
             await _activityLogger.Log($"Approved sportnews with heading {sportNews.NewsHeading}", user.Id);
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
@@ -484,14 +510,14 @@ namespace MyField.Controllers
 
 
             sportNews.NewsStatus = NewsStatus.ToBeModified;
-            sportNews.ModifiedDateTime = DateTime.UtcNow;
+            sportNews.ModifiedDateTime = DateTime.Now;
             sportNews.ModifiedById = userId;
 
             await _context.SaveChangesAsync();
 
             await _activityLogger.Log($"Sent news with heading {sportNews.NewsHeading} back to author for modification",  user.Id);
 
-
+            TempData["Message"] = $"You have successfully sent news back to the author for re-edit the sport news with heading {sportNews.NewsHeading}.";
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
         }
 
@@ -516,13 +542,34 @@ namespace MyField.Controllers
 
             overallNewsReports.RejectedNewsCount++;
             sportNews.NewsStatus = NewsStatus.Rejected;
-            sportNews.RejectedDateTime = DateTime.UtcNow;
+            sportNews.RejectedDateTime = DateTime.Now;
             sportNews.RejectedById = userId;   
 
             await _context.SaveChangesAsync();
-
+            TempData["Message"] = $"You have declined the sport news with heading {sportNews.NewsHeading}.";
             await _activityLogger.Log($"Declined sportnews with heading {sportNews.NewsHeading}", user.Id);
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
+        }
+
+        public async Task<IActionResult> DeleteSportNews(int? newsId)
+        {
+            if (newsId == null || _context.SportNew == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var sportNew = await _context.SportNew.FindAsync(newsId);
+
+            await _activityLogger.Log($"Deleted news with heading {sportNew.NewsHeading}", user.Id);
+
+            TempData["Message"] = $"You have deleted sport news with heading {sportNew.NewsHeading}.";
+
+            _context.Remove(sportNew);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(SportNewsList));
         }
 
     }

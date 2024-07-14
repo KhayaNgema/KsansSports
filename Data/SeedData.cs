@@ -17,7 +17,7 @@ public static class SeedData
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<UserBaseModel>>();
             var context = scope.ServiceProvider.GetRequiredService<Ksans_SportsDbContext>();
 
-            string[] roleNames = { "Club Administrator", "Club Manager", "Player", "Sport Administrator", "News Updator", "Sport Coordinator", "System Administrator", "Official", "News administrator", "Fans administrator", "Personnel administrator", "Sport manager" };
+            string[] roleNames = { "Club Administrator", "Club Manager", "Player", "Sport Administrator", "News Updator", "Sport Coordinator", "System Administrator", "Official", "News Administrator", "Fans Administrator", "Personnel Administrator", "Sport Manager" };
 
             foreach (var roleName in roleNames)
             {
@@ -161,15 +161,15 @@ public static class SeedData
                 }
             }
 
-            var newsAdmin = await userManager.FindByEmailAsync("sportnewsadmin@gmail.com");
+            var newsAdmin = await userManager.FindByEmailAsync("sportnewsadministrator@gmail.com");
             if (newsAdmin == null)
             {
                 var defaultUser = new SportsMember
                 {
                     FirstName = "Khayalethu",
                     LastName = "Msweli",
-                    UserName = "sportnewsadmin@gmail.com",
-                    Email = "sportnewsadmin@gmail.com",
+                    UserName = "sportnewsadministrator@gmail.com",
+                    Email = "sportnewsadministrator@gmail.com",
                     PhoneNumber = "0660278127",
                     DateOfBirth = DateTime.Now,
                     ProfilePicture = "khaya.jpg",
@@ -184,7 +184,7 @@ public static class SeedData
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(defaultUser, "News administrator");
+                    await userManager.AddToRoleAsync(defaultUser, "News Administrator");
                 }
             }
 
@@ -211,7 +211,7 @@ public static class SeedData
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(defaultUser, "Personnel administrator");
+                    await userManager.AddToRoleAsync(defaultUser, "Personnel Administrator");
                 }
             }
 
@@ -238,7 +238,7 @@ public static class SeedData
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(defaultUser, "Fans administrator");
+                    await userManager.AddToRoleAsync(defaultUser, "Fans Administrator");
                 }
             }
 
@@ -265,7 +265,7 @@ public static class SeedData
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(defaultUser, "Sport manager");
+                    await userManager.AddToRoleAsync(defaultUser, "Sport Manager");
                 }
             }
 

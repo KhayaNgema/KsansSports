@@ -1,4 +1,63 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using MyField.Data
+@inject SignInManager<UserBaseModel> SignInManager
+@inject UserManager<UserBaseModel> UserManager
+@inject Ksans_SportsDbContext _context
+@using MyField.Models;
+@using MyField.Services;
+@inject IWebHostEnvironment WebHostEnvironment
+@using Microsoft.EntityFrameworkCore
+
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+
+    var firstName = user.FirstName;
+    var lastName = user.LastName;
+
+    var userRole = _context.UserRoles
+    .Where(ur => ur.UserId == user.Id)
+    .Join(_context.Roles,
+          ur => ur.RoleId,
+          r => r.Id,
+          (ur, r) => r.Name)
+    .FirstOrDefault();
+
+    string club = null;
+
+    if (userRole == "Club Administrator")
+    {
+        var clubAdministrator = _context.ClubAdministrator
+        .Include(c => c.Club)
+        .Where(c => c.Id == user.Id)
+        .FirstOrDefault();
+        club = clubAdministrator?.Club?.ClubName;
+    }
+    else if (userRole == "Player")
+    {
+        var player = _context.Player
+        .Include(p => p.Club)
+        .Where(c => c.Id == user.Id)
+        .FirstOrDefault();
+        club = player?.Club?.ClubName;
+    }
+    else if (userRole == "Club Manager")
+    {
+        var clubManager = _context.ClubManager
+       .Include(p => p.Club)
+       .Where(c => c.Id == user.Id)
+       .FirstOrDefault();
+        club = clubManager?.Club?.ClubName;
+    }
+
+    var profilePhotoUrl = "";
+
+    if (User.Identity.IsAuthenticated && !string.IsNullOrEmpty(user.ProfilePicture))
+    {
+        profilePhotoUrl = $"~/{user.ProfilePicture}";
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,6 +157,19 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -164,6 +236,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -279,6 +363,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -350,6 +446,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@club @userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="Profile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -463,6 +571,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@club @userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -542,6 +662,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@club @userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -621,6 +753,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -700,10 +844,22 @@
                     </div>
                 </div>
             }
-            else if (User.IsInRole("News administrator"))
+            else if (User.IsInRole("News Administrator"))
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -779,10 +935,22 @@
                     </div>
                 </div>
             }
-            else if (User.IsInRole("Personnel administrator"))
+            else if (User.IsInRole("Personnel Administrator"))
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -896,6 +1064,18 @@
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -958,10 +1138,22 @@
                     </div>
                 </div>
             }
-            else if (User.IsInRole("Sport manager"))
+            else if (User.IsInRole("Sport Manager"))
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>
@@ -1073,10 +1265,22 @@
                     </div>
                 </div>
             }
-            else if (User.IsInRole("Fans administrator"))
+            else if (User.IsInRole("Fans Administrator"))
             {
                 <div id="wrapper">
                     <div id="sidebar-wrapper" style="overflow-y: auto; scrollbar-width: thin; scrollbar-color: transparent transparent;">
+                        <div style="padding: 30px; margin-top:0; background-color: #000325; color: white; position: sticky; top: 0; z-index: 1; text-align: center; object-fit:cover;">
+                            <img src="@Url.Content("~/" + user.ProfilePicture)" alt="Profile Photo" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto; object-fit:cover">
+                            <div style="margin-top: 10px;">
+
+                                <div style="font-size: 16px; font-weight: bold;">@firstName @lastName</div>
+
+                                <div style="font-size: 14px; color: #ccc;">@userRole</div>
+                            </div>
+                            <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
+                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                            </button>
+                        </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-home" style="color: white; margin-right: 5px;"></i>

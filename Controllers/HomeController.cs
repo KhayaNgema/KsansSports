@@ -175,19 +175,19 @@ namespace MyField.Controllers
             {
                 return View("SportAdministratorDashboard");
             }
-            else if (roles.Contains("News administrator"))
+            else if (roles.Contains("News Administrator"))
             {
                 return View("NewsAdministratorDashboard");
             }
-            else if (roles.Contains("Sport manager"))
+            else if (roles.Contains("Sport Manager"))
             {
                 return View("SportManagerDashboard");
             }
-            else if (roles.Contains("Fans administrator"))
+            else if (roles.Contains("Fans Administrator"))
             {
                 return View("FansAdministratorDashboard");
             }
-            else if (roles.Contains("Personnel administrator"))
+            else if (roles.Contains("Personnel Administrator"))
             {
                 return View("PersonnelAdministratorDashboard");
             }

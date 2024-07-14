@@ -33,6 +33,30 @@ namespace MyField.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Profile(string? userId)
+        {
+            if(userId == null)
+            {
+                return NotFound();
+            }
+
+            var userProfile = await _context.UserBaseModel
+                .Where(u => u.Id == userId)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new ProfileViewModel
+            {
+                Names = userProfile.FirstName,
+                LastName = userProfile.LastName,
+                Email = userProfile.Email,
+                Phone  = userProfile.PhoneNumber,
+                ProfilePicture = userProfile.ProfilePicture
+            };
+
+            return View(viewModel);
+        }
+
         public async Task<IActionResult> DivisionFans()
         {
             var divisionFans = await _context.Fans
@@ -47,7 +71,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var sportAdministrators = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(sportAdministrators);
@@ -59,7 +84,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var sportManagers = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(sportManagers);
@@ -71,7 +97,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var sportCoordinators = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                 u.IsDeleted == false)
                 .ToListAsync();
 
             return View(sportCoordinators);
@@ -83,7 +110,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var officials = await _context.Officials
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(officials);
@@ -95,7 +123,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var clubAdministrators = await _context.ClubAdministrator
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                 u.IsDeleted == false)
                 .Include( u => u.Club)
                 .ToListAsync();
 
@@ -108,7 +137,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var clubManagers = await _context.ClubManager
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .Include(u => u.Club)
                 .ToListAsync();
 
@@ -121,7 +151,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var divisionPlayers = await _context.Player
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .Include(u => u.Club)
                 .ToListAsync();
 
@@ -135,7 +166,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var newsAdministrators = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(newsAdministrators);
@@ -147,7 +179,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var newsUpdaters = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(newsUpdaters);
@@ -159,7 +192,8 @@ namespace MyField.Controllers
             var userIds = await _context.UserRoles.Where(ur => ur.RoleId == role.Id).Select(ur => ur.UserId).ToListAsync();
 
             var fansAdministrators = await _context.SportMember
-                .Where(u => userIds.Contains(u.Id))
+                .Where(u => userIds.Contains(u.Id) &&
+                u.IsDeleted == false)
                 .ToListAsync();
 
             return View(fansAdministrators);
@@ -185,7 +219,8 @@ namespace MyField.Controllers
             }
 
             var clubPlayers = await _context.Player
-                .Where(p => p.ClubId == clubAdministrator.ClubId)
+                .Where(p => p.ClubId == clubAdministrator.ClubId &&
+                p.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
 
@@ -205,7 +240,8 @@ namespace MyField.Controllers
             }
 
             var clubManagers = await _context.ClubManager
-                .Where(p => p.ClubId == clubAdministrator.ClubId)
+                .Where(p => p.ClubId == clubAdministrator.ClubId &&
+                p.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
 
@@ -217,6 +253,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> ClubPlayers()
         {
             var clubPlayers = await _context.Player
+                .Where(s => s.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
 
@@ -234,7 +271,8 @@ namespace MyField.Controllers
             }
 
             var clubAdministrators = await _context.ClubAdministrator
-                .Where(p => p.ClubId == clubAdministrator.ClubId)
+                .Where(p => p.ClubId == clubAdministrator.ClubId && 
+                p.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
 
@@ -551,9 +589,83 @@ namespace MyField.Controllers
 
         }
 
-        public async Task<IActionResult> delete(string? userId)
+        public async Task<IActionResult> Delete(string? userId)
         {
-            return View();
+            if(userId == null)
+            {
+                return NotFound();
+            }
+
+            var existingUser = await _context.UserBaseModel
+                .Where(e => e.Id == userId)
+                .FirstOrDefaultAsync();
+
+            var userRole = await _context.UserRoles
+                      .Where(ur => ur.UserId == userId)
+                      .Join(_context.Roles,
+                       ur => ur.RoleId,
+                       r => r.Id,
+                       (ur, r) => r.Name)
+                      .FirstOrDefaultAsync();
+
+
+
+            existingUser.IsDeleted = true;
+            existingUser.IsSuspended = true;
+            existingUser.IsActive = true;
+            existingUser.ModifiedBy = userId;
+            existingUser.ModifiedDateTime = DateTime.Now;
+
+
+            _context.Update(existingUser);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = $"You have deleted {existingUser.FirstName} {existingUser.LastName} and now they don't longer exist in this system.";
+
+            if (userRole == "ClubAdministrator")
+            {
+                return RedirectToAction(nameof(ClubAdministrators));
+            }
+            else if (userRole == "Player")
+            {
+                return RedirectToAction(nameof(DivisionPlayers));
+            }
+            else if (userRole == "Sport Administrator")
+            {
+                return RedirectToAction(nameof(SportAdministrators));
+            }
+            else if (userRole == "Sport manager")
+            {
+                return RedirectToAction(nameof(SportManagers));
+            }
+            else if (userRole == "Sport Coordinator")
+            {
+                return RedirectToAction(nameof(SportCoordinators));
+            }
+            else if (userRole == "Official")
+            {
+                return RedirectToAction(nameof(Officials));
+            }
+            else if (userRole == "Club Manager")
+            {
+                return RedirectToAction(nameof(ClubManagers));
+            }
+            else if (userRole == "News Administrator")
+            {
+                return RedirectToAction(nameof(NewsAdministrators));
+            }
+            else if (userRole == "News Updator")
+            {
+                return RedirectToAction(nameof(NewsUpdaters));
+            }
+            else if (userRole == "Fans Administrator")
+            {
+                return RedirectToAction(nameof(FansAdministrators));
+            }
+            else
+            {
+                return RedirectToAction(nameof(DivisionFans));
+            }
         }
 
         public async Task<IActionResult> ChangeUserRole(string? userId)

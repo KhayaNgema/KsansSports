@@ -49,16 +49,16 @@
                         Heading
                     </th>
                     <th>
-                        Modified DateTime
-                    </th>
-                    <th>
-                        ModifiedBy
-                    </th>
-                    <th>
                         AuthoredBy
                     </th>
                     <th>
                         Body
+                    </th>
+                    <th>
+                        Modified DateTime
+                    </th>
+                    <th>
+                        ModifiedBy
                     </th>
                     <th>
                         Status
@@ -75,18 +75,10 @@
 
                     <tr class="ellipsis">
                         <td>
-                            <div class="news-image-container" style="width:90px; height:90px;">
-                                <img src="~/@item.NewsImage" alt="News image" class="club-badge-image" style="height:100%; width:100%; object-fit:cover;" />
-                            </div>
+                            <img src="~/@item.NewsImage" alt="News Image" class="sport-news-image">
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NewsHeading)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.AuthoredBy.FirstName) @Html.DisplayFor(modelItem => item.AuthoredBy.LastName)
@@ -95,30 +87,25 @@
                             @Html.DisplayFor(modelItem => item.NewsBody)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ModifiedBy.FirstName) @Html.DisplayFor(modelItem => item.ModifiedBy.LastName)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.NewsStatus)
                         </td>
-                        <td style="white-space: nowrap;">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown">
-                                    Actions
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="@dropdownId">
-                                    <a class="dropdown-item" href="@Url.Action("ApproveNews", "SportNews", new { newsId = item.NewsId })">
-                                        <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Approve
-                                    </a>
-                                    <a class="dropdown-item" href="@Url.Action("Edit", "Clubs", new { id = item.NewsId })">
-                                        <i class="fas fa-pen" style="color: blue;"></i> Update
-                                    </a>
-                                    <a class="dropdown-item" href="@Url.Action("Suspend", "Clubs", new { id = item.NewsId})">
-                                        <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
-                                    </a>
-                                    <a class="dropdown-item" href="@Url.Action("Unsuspend", "Clubs", new { id = item.NewsId })">
-                                        <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
-                                    </a>
-                                    <a class="dropdown-item" href="@Url.Action("Delete", "Clubs", new { id = item.NewsId})" onclick="return confirm('Are you sure you want to delete this item?');">
-                                        <i class="fas fa-trash" style="color: red;"></i> Delete
-                                    </a>
-                                </div>
+                        <td class="text-right">
+                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.NewsId">
+                                Actions
+                            </button>
+                            <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
+                                <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = item.NewsId })">
+                                    <i class="fas fa-pen" style="color: blue"></i> Re-edit
+                                </a>
+                                <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
+                                    <i class="fa fa-trash" style="color: red;"></i> Delete
+                                </a>
                             </div>
                         </td>
                     </tr>

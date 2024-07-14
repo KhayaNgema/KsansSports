@@ -24,5 +24,7 @@ namespace MyField.Models
         public bool IsActive { get; set; }
 
         public bool IsSuspended { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

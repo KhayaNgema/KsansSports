@@ -17,6 +17,12 @@
                         Heading
                     </th>
                     <th>
+                        Body
+                    </th>
+                    <th>
+                        AuthoredBy
+                    </th>
+                    <th>
                         Published DateTime
                     </th>
                     <th>
@@ -26,13 +32,7 @@
                         ModifiedBy
                     </th>
                     <th>
-                        AuthoredBy
-                    </th>
-                    <th>
-                        PublishedBy
-                    </th>
-                    <th>
-                        Body
+                        RejectedBy
                     </th>
                     <th>
                         Status
@@ -47,12 +47,16 @@
                 {
                     <tr class="ellipsis">
                         <td>
-                            <div class="news-image-container" style="width:90px; height:90px;">
-                                <img src="~/@item.NewsImage " alt="News image" class="club-badge-image" style="height:100%; width:100%; object-fit:cover;" />
-                            </div>
+                            <img src="~/@item.NewsImage" alt="News Image" class="sport-news-image">
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NewsHeading)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AuthoredBy.FirstName)          @Html.DisplayFor(modelItem => item.AuthoredBy.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewsBody)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ModifiedDateTime)
@@ -65,12 +69,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.RejectedBy.FirstName)          @Html.DisplayFor(modelItem => item.RejectedBy.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AuthoredBy.FirstName)          @Html.DisplayFor(modelItem => item.AuthoredBy.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NewsBody)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NewsStatus)

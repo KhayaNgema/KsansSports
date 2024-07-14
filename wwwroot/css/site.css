@@ -250,7 +250,7 @@ body {
     border-bottom-left-radius: 0px;
     color: white;
     top: 0px;
-    padding-top: 07px;
+    padding-top: 0;
 }
 
 /*Side & nav bars sizes in small screens */
@@ -1751,6 +1751,45 @@ object-fit:cover;
         .whatsapp-button button i {
             margin-right: 10px;
         }
+
+.large-caret {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    cursor: pointer;
+    color: inherit;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+    .circle .caret {
+        transform: scaleX(2);
+    }
+
+.see-more-text {
+    margin-top: 5px;
+    font-size: 0.875rem;
+    color: #007bff;
+}
+
+.large-caret:hover .circle,
+.large-caret:hover .see-more-text {
+    color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+
 
 
 

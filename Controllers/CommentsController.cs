@@ -19,6 +19,12 @@ namespace MyField.Controllers
             _context = context;
         }
 
+
+        public async Task<IActionResult> LiveChats()
+        {
+            return View();
+        }
+
         // GET: Comments
         public async Task<IActionResult> Comments()
         {

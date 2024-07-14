@@ -959,17 +959,39 @@ namespace MyField.Controllers
 
 
             string message = $"You have successfully accepted player transfer for ";
-            if (transfer.Player != null && transfer.CustomerClub != null)
+
+
+            if(User.IsInRole("Personnel Administrator"))
             {
-                message += $"{transfer.Player.FirstName} {transfer.Player.LastName} with {transfer.CustomerClub.ClubName}!";
+                if (transfer.Player != null && transfer.CustomerClub != null)
+                {
+                    message += $"{transfer.Player.FirstName} {transfer.Player.LastName} with {transfer.CustomerClub.ClubName}!";
+                }
+                else
+                {
+                    message += "transfer!";
+                }
+
+                TempData["Message"] = message;
+                return RedirectToAction(nameof(PlayerTransfers));
             }
-            else
+            else if(User.IsInRole("Club Administrator"))
             {
-                message += "transfer!";
+                if (transfer.Player != null && transfer.CustomerClub != null)
+                {
+                    message += $"{transfer.Player.FirstName} {transfer.Player.LastName} with {transfer.CustomerClub.ClubName}!";
+                }
+                else
+                {
+                    message += "transfer!";
+                }
+
+
+                TempData["Message"] = message;
+                return RedirectToAction(nameof(MyTransferRequestsTabs));
             }
 
-            TempData["Message"] = message;
-            return RedirectToAction(nameof(MyTransferRequestsTabs));
+            return View();
         }
 
         public async Task<IActionResult> RejectPlayerTransfer(int transferId)
