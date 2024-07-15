@@ -35,6 +35,8 @@ namespace MyField.Services
         {
             var deviceInfo = await _deviceInfoService.GetDeviceInfo();
 
+            var user = await _userManager.FindByIdAsync(userId);
+
             _context.Add(deviceInfo);
             await _context.SaveChangesAsync();
 
@@ -44,6 +46,7 @@ namespace MyField.Services
                 Activity = activity,
                 Timestamp = DateTime.Now,
                 DeviceInfoId = deviceInfo.DeviceInfoId,
+                UserBaseModel= user
             };
 
             _context.ActivityLogs.Add(log);

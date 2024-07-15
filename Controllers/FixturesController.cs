@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -28,6 +29,55 @@ namespace MyField.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _activityLogger = activityLogger;
+        }
+
+
+        public async Task<IActionResult> MatchesToOfficiate()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+
+            var matchOfficials = await _context.MatchOfficials
+                .Where(m => m.RefeereId == user.Id ||
+                m.AssistantOneId == user.Id ||
+                m.AssistantTwoId == user.Id)
+                .Include(m => m.Fixture)
+                .Include(m => m.Fixture)
+                .ThenInclude(m => m.HomeTeam)
+                .Include(m => m.Fixture)
+                .ThenInclude(m => m.AwayTeam)
+                .FirstOrDefaultAsync();
+
+            var matchesToOfficiate = await _context.Fixture
+                .Where(m => m.FixtureId == matchOfficials.Fixture.FixtureId &&
+                m.FixtureStatus == FixtureStatus.Upcoming)
+                .ToListAsync();
+
+            return View(matchesToOfficiate);
+        }
+
+        public async Task<IActionResult> PreviouslyOfficiatedMatches()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+
+            var matchOfficials = await _context.MatchOfficials
+                .Where(m => m.RefeereId == user.Id ||
+                m.AssistantOneId == user.Id ||
+                m.AssistantTwoId == user.Id)
+                .Include(m => m.Fixture)
+                .Include(m => m.Fixture)
+                .ThenInclude(m => m.HomeTeam)
+                .Include(m => m.Fixture)
+                .ThenInclude(m => m.AwayTeam)
+                .FirstOrDefaultAsync();
+
+            var previouslyOfficiatedMacthes = await _context.Fixture
+                .Where(m => m.FixtureId == matchOfficials.Fixture.FixtureId &&
+                m.FixtureStatus == FixtureStatus.Ended)
+                .ToListAsync();
+
+            return View(previouslyOfficiatedMacthes);
         }
 
         public async Task<IActionResult> FixtureMatchOffcials(int fixtureId)
@@ -116,7 +166,7 @@ namespace MyField.Controllers
 
 
 
-        //GET : FixtureDetailsFans
+       [Authorize]
         public async Task<IActionResult> FixtureDetailsFans(int? FixtureId)
         {
             if (FixtureId == null)

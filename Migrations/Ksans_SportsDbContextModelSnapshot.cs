@@ -266,6 +266,41 @@ namespace MyField.Migrations
                     b.ToTable("ActivityLogs");
                 });
 
+            modelBuilder.Entity("MyField.Models.Announcement", b =>
+                {
+                    b.Property<int>("AnnouncementId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnnouncementId"));
+
+                    b.Property<string>("AnnouncementText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ModifiedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("AnnouncementId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("Announcements");
+                });
+
             modelBuilder.Entity("MyField.Models.Club", b =>
                 {
                     b.Property<int>("ClubId")
@@ -2525,6 +2560,25 @@ namespace MyField.Migrations
                     b.Navigation("DeviceInfo");
 
                     b.Navigation("UserBaseModel");
+                });
+
+            modelBuilder.Entity("MyField.Models.Announcement", b =>
+                {
+                    b.HasOne("MyField.Models.UserBaseModel", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.UserBaseModel", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("ModifiedBy");
                 });
 
             modelBuilder.Entity("MyField.Models.Club", b =>

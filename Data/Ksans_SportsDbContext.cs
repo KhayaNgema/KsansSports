@@ -80,8 +80,6 @@ namespace MyField.Data
                  .HasValue<MatchFormation_Archive>("MatchFormation_Archive");
 
 
-
-
             modelBuilder.Entity<Fixture>()
                 .HasIndex(f => f.KickOffDate);
         }
@@ -197,6 +195,8 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.PersonnelFinancialReport> PersonnelFinancialReports{ get; set; } = default!;
         public DbSet<MyField.Models.FansAccountsReport> FansAccountsReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.Announcement> Announcements { get; set; } = default!;
 
     }
 }

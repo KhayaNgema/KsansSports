@@ -1647,9 +1647,27 @@ object-fit:cover;
     position: relative;
 }
 
+.meetings-card {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.announcements-card {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
 @media (max-width: 576px) {
     .fines-card {
         max-height: 35vh;
+    }
+    .meetings-card {
+        max-height: 50vh;
+    }
+    .announcements-card {
+        max-height: 30vh;
     }
 }
 
@@ -1657,11 +1675,23 @@ object-fit:cover;
     .fines-card {
         max-height: 20vh;
     }
+    .meetings-card {
+        max-height: 30vh;
+    }
+    .announcements-card {
+        max-height: 35vh;
+    }
 }
 
 @media (min-width: 992px) {
     .fines-card {
         height: 50vh;
+    }
+    .meetings-card {
+        height: 55vh;
+    }
+    .announcements-card {
+        max-height: 40vh;
     }
 }
 

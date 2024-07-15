@@ -85,7 +85,7 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.Id" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("UpdateClubAdministrator", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("UserProfile", "Users", new { userId = item.Id })">
                                     <i class="fas fa-user" style="color: blue;"></i> Profile
                                 </a>
                                 <a class="tab-item" href="@Url.Action("Deactivate", "Users", new { userId = item.Id  })">

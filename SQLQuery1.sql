@@ -1,3 +1,7 @@
 ﻿
+SELECT FirstName, LastName FROM AspNetUsers WHERE Id IN (SELECT UserId FROM ActivityLogs)
 
-select * from [Ksans_Sports].[dbo].[Transfer]
+
+SELECT a.Activity, u.FirstName, u.LastName
+FROM ActivityLogs a
+JOIN AspNetUsers u ON a.UserId = u.Id

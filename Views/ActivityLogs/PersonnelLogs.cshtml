@@ -60,6 +60,7 @@
 <div id="errorMessage" style="display: none;"></div>
 
 <script>
+
     function loadTab(tabName) {
 
         $('.nav-link').removeClass('active');
@@ -75,7 +76,7 @@
             if (tabName === 'clubAdministratorLogs') {
                 url = '@Url.Action("ClubAdministratorsActivityLogs", "ActivityLogs")';
             } else if (tabName === 'clubManagersLogs') {
-                url = '@Url.Action("ManagersActivityLogs", "ActivityLogs")';
+                url = '@Url.Action("ClubManagersActivityLogs", "ActivityLogs")';
             }
             else if (tabName === 'newsAdministratorsLogs') {
                 url = '@Url.Action("NewsAdministratorsActivityLogs", "ActivityLogs")';

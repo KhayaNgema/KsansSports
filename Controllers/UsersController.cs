@@ -22,14 +22,96 @@ namespace MyField.Controllers
         public readonly Ksans_SportsDbContext _context;
         private readonly FileUploadService _fileUploadService;
         private readonly UserManager<UserBaseModel> _userManager;
+        private readonly IActivityLogger _activityLogger;
 
         public UsersController(Ksans_SportsDbContext context,
            FileUploadService fileUploadService,
-           UserManager<UserBaseModel> userManager)
+           UserManager<UserBaseModel> userManager,
+           IActivityLogger activityLogger)
         {
             _context = context;
             _fileUploadService = fileUploadService;
             _userManager = userManager;
+            _activityLogger = activityLogger;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UserProfile(string? userId)
+        {
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            var userProfile = await _context.UserBaseModel
+                .Where(u => u.Id == userId)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new ProfileViewModel
+            {
+                UserId = userId,
+                Names = userProfile.FirstName,
+                LastName = userProfile.LastName,
+                Email = userProfile.Email,
+                Phone = userProfile.PhoneNumber,
+                ProfilePicture = userProfile.ProfilePicture,
+                DateOfBirth = userProfile.DateOfBirth
+            };
+
+            var userRole = await _context.UserRoles
+                 .Where(ur => ur.UserId == userId)
+                 .Join(_context.Roles,
+                 ur => ur.RoleId,
+                 r => r.Id,
+                 (ur, r) => r.Name)
+                 .FirstOrDefaultAsync();
+
+            ViewBag.UserRole = userRole;
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PlayerProfile(string? userId)
+        {
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            var userProfile = await _context.Player
+                .Where(u => u.Id == userId)
+                .Include(u => u.Club)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new PlayerProfileViewModel
+            {
+                UserId = userProfile.Id,
+                Names = userProfile.FirstName,
+                LastName = userProfile.LastName,
+                Email = userProfile.Email,
+                Phone = userProfile.PhoneNumber,
+                ProfilePicture = userProfile.ProfilePicture,
+                JerseyNumber = userProfile.JerseyNumber,
+                Position = userProfile.Position,
+                DateOfBirth = userProfile.DateOfBirth,
+            };
+
+            var userRole = await _context.UserRoles
+                 .Where(ur => ur.UserId == userId)
+                 .Join(_context.Roles,
+                 ur => ur.RoleId,
+                 r => r.Id,
+                 (ur, r) => r.Name)
+                 .FirstOrDefaultAsync();
+
+            var club = userProfile.Club;
+
+            ViewBag.Club = club.ClubName;    
+
+            ViewBag.UserRole = userRole;
+
+            return View(viewModel);
         }
 
 
@@ -47,12 +129,41 @@ namespace MyField.Controllers
 
             var viewModel = new ProfileViewModel
             {
+                UserId = userId,
                 Names = userProfile.FirstName,
                 LastName = userProfile.LastName,
                 Email = userProfile.Email,
                 Phone  = userProfile.PhoneNumber,
-                ProfilePicture = userProfile.ProfilePicture
+                ProfilePicture = userProfile.ProfilePicture,
+                DateOfBirth = userProfile.DateOfBirth
             };
+
+            var userRole = await _context.UserRoles
+                 .Where(ur => ur.UserId == userId)
+                 .Join(_context.Roles,
+                 ur => ur.RoleId,
+                 r => r.Id,
+                 (ur, r) => r.Name)
+                 .FirstOrDefaultAsync();
+
+            if (userRole == "Club Administrator")
+            {
+                var clubAdministrator = _context.ClubAdministrator
+                .Include(c => c.Club)
+                .Where(c => c.Id == userId)
+                .FirstOrDefault();
+                ViewBag.Club = clubAdministrator?.Club?.ClubName;
+            }
+            else if (userRole == "Club Manager")
+            {
+                var clubManager = _context.ClubManager
+               .Include(p => p.Club)
+               .Where(c => c.Id == userId)
+               .FirstOrDefault();
+                ViewBag.Club = clubManager?.Club?.ClubName;
+            }
+
+            ViewBag.UserRole = userRole;
 
             return View(viewModel);
         }
@@ -282,6 +393,206 @@ namespace MyField.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> UpdateProfile(string? userId)
+        {
+            var logMessages = new List<string>();
+
+            if (userId == null || _context.UserBaseModel == null)
+            {
+                logMessages.Add($"UpdateClubManager GET request failed: id is null or ClubManager context is null");
+                TempData["LogMessages"] = logMessages;
+                return NotFound();
+            }
+
+            var userProfile = await _context.UserBaseModel.FindAsync(userId);
+
+            if (userProfile == null)
+            {
+                logMessages.Add($"ClubManager with id {userId} not found during GET request");
+                TempData["LogMessages"] = logMessages;
+                return NotFound();
+            }
+
+            var clubManagerViewModel = new UpdateProfileViewModel
+            {
+                Id = userProfile.Id,
+                FirstName = userProfile.FirstName,
+                LastName = userProfile.LastName,
+                PhoneNumber = userProfile.PhoneNumber,
+                ProfilePicture = userProfile.ProfilePicture,
+                Email = userProfile.Email,
+            };
+
+            TempData["LogMessages"] = logMessages;
+            return View(clubManagerViewModel);
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProfile(string userId, UpdateProfileViewModel viewModel, IFormFile ProfilePictureFile)
+        {
+            var logMessages = new List<string>();
+
+            if (userId != viewModel.Id)
+            {
+                logMessages.Add($"UpdateClubManager POST request failed: id mismatch: {userId} != {viewModel.Id}");
+                TempData["LogMessages"] = logMessages;
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var userProfile = await _context.UserBaseModel.FindAsync(userId);
+
+
+            var userRole = await _context.UserRoles
+                  .Where(ur => ur.UserId == viewModel.Id)
+                  .Join(_context.Roles,
+                   ur => ur.RoleId,
+                   r => r.Id,
+                   (ur, r) => r.Name)
+                  .FirstOrDefaultAsync();
+
+            if (ValidateProfileUpdatedProperties(viewModel))
+            {
+
+                try
+                {
+
+                    if (userProfile == null)
+                    {
+                        logMessages.Add($"ClubManager with id {userId} not found during POST request");
+                        TempData["LogMessages"] = logMessages;
+                        return NotFound();
+                    }
+
+                    userProfile.FirstName = viewModel.FirstName;
+                    userProfile.LastName = viewModel.LastName;
+                    userProfile.PhoneNumber = viewModel.PhoneNumber;
+                    userProfile.Email = viewModel.Email;
+                    userProfile.UserName = viewModel.Email;
+                    userProfile.NormalizedUserName = viewModel.Email;
+                    userProfile.NormalizedEmail = viewModel.Email;
+                    userProfile.ModifiedBy = user.Id;
+                    userProfile.ModifiedDateTime = DateTime.Now;
+
+                    if (ProfilePictureFile != null && ProfilePictureFile.Length > 0)
+                    {
+                        var uploadedImagePath = await _fileUploadService.UploadFileAsync(ProfilePictureFile);
+                        userProfile.ProfilePicture = uploadedImagePath;
+                    }
+
+                    _context.Update(userProfile);
+                    await _context.SaveChangesAsync();
+                    logMessages.Add($"ClubManager with id {userId} successfully updated");
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    logMessages.Add($"DbUpdateConcurrencyException occurred: {ex.Message}");
+                    TempData["LogMessages"] = logMessages;
+                    throw;
+                }
+
+                TempData["LogMessages"] = logMessages;
+
+                await _activityLogger.Log($"Updated {userProfile.FirstName} {userProfile.LastName} profile information", user.Id);
+
+                TempData["Message"] = $"{userProfile.FirstName} {userProfile.LastName}  information has been updated successfully.";
+
+                if (userRole == "Club Administrator")
+                {
+                    return RedirectToAction(nameof(ClubAdministrators));
+                }
+                else if (userRole == "Player")
+                {
+                    return RedirectToAction(nameof(DivisionPlayers));
+                }
+                else if (userRole == "Sport Administrator")
+                {
+                    return RedirectToAction(nameof(SportAdministrators));
+                }
+                else if (userRole == "Sport manager")
+                {
+                    return RedirectToAction(nameof(SportManagers));
+                }
+                else if (userRole == "Sport Coordinator")
+                {
+                    return RedirectToAction(nameof(SportCoordinators));
+                }
+                else if (userRole == "Official")
+                {
+                    return RedirectToAction(nameof(Officials));
+                }
+                else if (userRole == "Club Manager")
+                {
+                    return RedirectToAction(nameof(ClubManagers));
+                }
+                else if (userRole == "News Administrator")
+                {
+                    return RedirectToAction(nameof(NewsAdministrators));
+                }
+                else if (userRole == "News Updator")
+                {
+                    return RedirectToAction(nameof(NewsUpdaters));
+                }
+                else if (userRole == "Fans Administrator")
+                {
+                    return RedirectToAction(nameof(FansAdministrators));
+                }
+                else
+                {
+                    return RedirectToAction(nameof(DivisionFans));
+                }
+            }
+
+            logMessages.Add($"Model state invalid for ClubManager with id {userId}");
+
+            foreach (var state in ModelState)
+            {
+                foreach (var error in state.Value.Errors)
+                {
+                    var errorMessage = $"Error in {state.Key}: {error.ErrorMessage}";
+                    logMessages.Add(errorMessage);
+                }
+            }
+
+            viewModel.ProfilePicture = _context.ClubAdministrator.Find(userId)?.ProfilePicture;
+
+            TempData["LogMessages"] = logMessages;
+            viewModel.ProfilePicture = userProfile.ProfilePicture;
+            return View(viewModel);
+        }
+
+        private bool ClubAdministratorExists(string userId)
+        {
+            return _context.Player.Any(e => e.Id == userId);
+        }
+
+        private bool ValidateProfileUpdatedProperties(UpdateProfileViewModel viewModel)
+        {
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateProperty(viewModel.FirstName, new ValidationContext(viewModel, null, null) { MemberName = "FirstName" }, validationResults);
+            Validator.TryValidateProperty(viewModel.LastName, new ValidationContext(viewModel, null, null) { MemberName = "LastName" }, validationResults);
+            Validator.TryValidateProperty(viewModel.PhoneNumber, new ValidationContext(viewModel, null, null) { MemberName = "PhoneNumber" }, validationResults);
+            Validator.TryValidateProperty(viewModel.Email, new ValidationContext(viewModel, null, null) { MemberName = "Email" }, validationResults);
+            return validationResults.Count == 0;
+        }
+
+
+        public async Task<IActionResult> UpdateUserProfile(string? userId)
+        {
+            if (userId == null)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
+
         public async Task<IActionResult> Deactivate(string? userId)
         {
             if(userId == null)
@@ -310,9 +621,12 @@ namespace MyField.Controllers
 
             await _context.SaveChangesAsync();
 
+
+            await _activityLogger.Log($"Deactivated {user.FirstName} {user.LastName} profile.", user.Id);
+
             TempData["Message"] = $"You have deactivated {user.FirstName} {user.LastName} and they won't be able to use some system features until you activate them.";
 
-            if(userRole == "ClubAdministrator")
+            if(userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -387,9 +701,11 @@ namespace MyField.Controllers
 
             await _context.SaveChangesAsync();
 
+            await _activityLogger.Log($"Activated {user.FirstName} {user.LastName} profile.", user.Id);
+
             TempData["Message"] = $"You have successfully activated {user.FirstName} {user.LastName} and now they have access into this system features.";
 
-            if (userRole == "ClubAdministrator")
+            if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -463,9 +779,11 @@ namespace MyField.Controllers
 
             await _context.SaveChangesAsync();
 
+            await _activityLogger.Log($"Suspended {user.FirstName} {user.LastName} profile.", user.Id);
+
             TempData["Message"] = $"You have suspended {user.FirstName} {user.LastName} and they won't be able to use the entire system until you unsuspend them.";
 
-            if (userRole == "ClubAdministrator")
+            if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -540,9 +858,11 @@ namespace MyField.Controllers
 
             await _context.SaveChangesAsync();
 
+            await _activityLogger.Log($"Unsuspended {user.FirstName} {user.LastName} profile.", user.Id);
+
             TempData["Message"] = $"You have successfully unsuspended {user.FirstName} {user.LastName} and now they have access into features of this system.";
 
-            if (userRole == "ClubAdministrator")
+            if (userRole == "Club  Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -596,6 +916,8 @@ namespace MyField.Controllers
                 return NotFound();
             }
 
+            var user = await _userManager.GetUserAsync(User);
+
             var existingUser = await _context.UserBaseModel
                 .Where(e => e.Id == userId)
                 .FirstOrDefaultAsync();
@@ -613,16 +935,18 @@ namespace MyField.Controllers
             existingUser.IsDeleted = true;
             existingUser.IsSuspended = true;
             existingUser.IsActive = true;
-            existingUser.ModifiedBy = userId;
+            existingUser.ModifiedBy = user.Id;
             existingUser.ModifiedDateTime = DateTime.Now;
 
 
             _context.Update(existingUser);
             await _context.SaveChangesAsync();
 
+            await _activityLogger.Log($"Deleted {existingUser.FirstName} {existingUser.LastName} profile from the system.", user.Id);
+
             TempData["Message"] = $"You have deleted {existingUser.FirstName} {existingUser.LastName} and now they don't longer exist in this system.";
 
-            if (userRole == "ClubAdministrator")
+            if (userRole == "Club  Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -766,6 +1090,9 @@ namespace MyField.Controllers
                     throw;
                 }
 
+                await _activityLogger.Log($"Updated {clubManager.FirstName} {clubManager.LastName} profile.", user.Id);
+
+
                 TempData["Message"] = $"{clubManager.FirstName} {clubManager.LastName}  information has been updated successfully.";
                 return RedirectToAction(nameof(MyClubManagers));
             }
@@ -799,7 +1126,7 @@ namespace MyField.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateClubPlayer(string userId)
+        public async Task<IActionResult> UpdatePlayerProfile(string userId)
         {
             if (string.IsNullOrEmpty(userId))
             {
@@ -834,7 +1161,7 @@ namespace MyField.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateClubPlayer(string userId, UpdateClubPlayerViewModel viewModel)
+        public async Task<IActionResult> UpdatePlayerProfile(string userId, UpdateClubPlayerViewModel viewModel)
         {
             if (userId != viewModel.Id)
             {
@@ -874,6 +1201,9 @@ namespace MyField.Controllers
 
                     _context.Update(clubPlayer);
                     await _context.SaveChangesAsync();
+
+                    await _activityLogger.Log($"Updated {clubPlayer.FirstName} {clubPlayer.LastName} profile.", user.Id);
+
                     TempData["Message"] = $"{clubPlayer.FirstName} {clubPlayer.LastName}  information has been updated successfully.";
                     return RedirectToAction("MyClubPlayers");
                 }
@@ -1010,6 +1340,9 @@ namespace MyField.Controllers
                 }
 
                 TempData["LogMessages"] = logMessages;
+
+                await _activityLogger.Log($"Updated {clubAdministrator.FirstName} {clubAdministrator.LastName} profile.", user.Id);
+
                 TempData["Message"] = $"{clubAdministrator.FirstName} {clubAdministrator.LastName}  information has been updated successfully.";
                 return RedirectToAction(nameof(MyClubAdministrators));
             }
@@ -1030,11 +1363,6 @@ namespace MyField.Controllers
             TempData["LogMessages"] = logMessages;
             viewModel.ProfilePicture = clubAdministrator.ProfilePicture;
             return View(viewModel);
-        }
-
-        private bool ClubAdministratorExists(string userId)
-        {
-            return _context.Player.Any(e => e.Id == userId);
         }
 
         private bool ValidateUpdatedProperties(UpdateClubAdministratorViewModel viewModel)

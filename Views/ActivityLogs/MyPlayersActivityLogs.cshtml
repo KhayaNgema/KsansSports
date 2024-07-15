@@ -20,6 +20,7 @@
                 <tr style="color:white;background-color: #324260; white-space:nowrap;">
                     <th>First name</th>
                     <th>Last name</th>
+                    <th>Activity</th>
                     <th>Time Stamp</th>
                     <th>Device</th>
                     <th>Browser</th>
@@ -32,6 +33,7 @@
                     <tr class="ellipsis">
                         <td>@Html.DisplayFor(modelItem => item.UserBaseModel.FirstName)</td>
                         <td>@Html.DisplayFor(modelItem => item.UserBaseModel.LastName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Activity)</td>
                         <td>@Html.DisplayFor(modelItem => item.Timestamp)</td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DeviceInfo.DeviceName),

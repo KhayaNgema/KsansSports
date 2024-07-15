@@ -12,9 +12,9 @@
 </style>
 
 <br />
-@await Html.PartialAsync("_BackButton")
+@await Html.PartialAsync("_HomeButton")
 <br />
-<div class="d-flex justify-content-space-between">
+<div class="d-flex justify-content-center text-center">
     <div class="d-flex align-items-center">
         <img src="~/@Model.HomeTeam.ClubBadge" alt="@Model.HomeTeam.ClubName" class="club-badge-image" style="margin-right:20px;" />
         <div class="d-flex align-items-center"><h5>@Model.HomeTeam.ClubName</h5></div>
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-
+<p class="text-center" style="padding-top:5px;">@Model.KickOffDate.ToString("dd MMM yyyy"), @Model.KickOffTime.ToString("HH:mm") - @Model.Location</p>
 <br />
 
 <ul class="nav nav-tabs" id="clubTabs" role="tablist">

@@ -116,7 +116,7 @@
                             }
                             else if (User.IsInRole("Club Administrator"))
                             {
-                                <a class="tab-item" href="@Url.Action("UpdateClubPlayer", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("PlayerProfile", "Users", new { userId = item.Id })">
                                     <i class="fas fa-user" style="color: blue;"></i> Profile
                                 </a>
                             }

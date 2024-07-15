@@ -74,25 +74,25 @@ namespace MyField.Controllers
                     .Where(m => m.MeetingAttendees == MeetingAttendees.Officials
                              || m.MeetingAttendees == MeetingAttendees.Everyone);
             }
-            else if (User.IsInRole("News administrator"))
+            else if (User.IsInRole("News Administrator"))
             {
                 meetingsQuery = meetingsQuery
                     .Where(m => m.MeetingAttendees == MeetingAttendees.News_Administrators
                              || m.MeetingAttendees == MeetingAttendees.Everyone);
             }
-            else if (User.IsInRole("Fans administrator"))
+            else if (User.IsInRole("Fans Administrator"))
             {
                 meetingsQuery = meetingsQuery
                     .Where(m => m.MeetingAttendees == MeetingAttendees.Fans_Administrators
                              || m.MeetingAttendees == MeetingAttendees.Everyone);
             }
-            else if (User.IsInRole("Personnel administrator"))
+            else if (User.IsInRole("Personnel Administrator"))
             {
                 meetingsQuery = meetingsQuery
                     .Where(m => m.MeetingAttendees == MeetingAttendees.Personnel_Administrators
                              || m.MeetingAttendees == MeetingAttendees.Everyone);
             }
-            else if (User.IsInRole("Sport manager"))
+            else if (User.IsInRole("Sport Manager"))
             {
                 meetingsQuery = meetingsQuery
                     .Where(m => m.MeetingAttendees == MeetingAttendees.Sport_Managers

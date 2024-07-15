@@ -14,14 +14,14 @@ namespace MyField.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly Ksans_SportsDbContext _db;
+        private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
 
         public HomeController(ILogger<HomeController> logger, 
             Ksans_SportsDbContext db,
             UserManager<UserBaseModel> userManager)
         {
-            _db = db;
+            _context = db;
             _logger = logger;
             _userManager = userManager;
         }
@@ -51,11 +51,7 @@ namespace MyField.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            ViewBag.RejectedSportNews = await GetRejectedSportNewsCount();
-
-            ViewBag.ApprovedSportNews = await GetApprovedSportNewsCount();
-
-            ViewBag.PendingApprovalSportNews = await GetPendingApprovalSportNewsCount();
+            ViewBag.AnnouncementsCount = await GetAnnouncementsCount();
 
             var user = await _userManager.GetUserAsync(User);
 
@@ -93,7 +89,7 @@ namespace MyField.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
-                var club = await _db.Club
+                var club = await _context.Club
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
 
@@ -123,7 +119,7 @@ namespace MyField.Controllers
                 }
 
 
-                var club = await _db.Club
+                var club = await _context.Club
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
 
@@ -139,6 +135,8 @@ namespace MyField.Controllers
             }
             else if (roles.Contains("Club Administrator"))
             {
+
+
                
                 if (user == null)
                 {
@@ -161,9 +159,19 @@ namespace MyField.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
-                var club = await _db.Club
+                var club = await _context.Club
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
+
+                ViewBag.MyClubmanagersCount = await GetMyClubManagersCount();
+
+                ViewBag.MyClubPlayersCount = await GetMyClubPlayersCount();
+
+                ViewBag.MyClubFixturesCount = await GetMyClubFixturesCount();
+
+                ViewBag.MyClubTransferRequestsCount = await GetMyClubTransferRequestsCount();
+
+                ViewBag.CLubAdministratorsMeetingsCount = await GetClubAdministratorsMeetingsCount();
 
                 return View("ClubAdministratorDashboard", club);
             }
@@ -201,38 +209,130 @@ namespace MyField.Controllers
             }
         }
 
-        public async Task<int> GetApprovedSportNewsCount()
+        public async Task<int> GetMyClubManagersCount()
         {
-            int approvedNewsCount = await _db.SportNew
-                .Where(s => s.NewsStatus == NewsStatus.Approved)
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            if (user == null || !(user is ClubAdministrator clubAdministrator))
+            {
+                return 0;
+            }
+
+            int myClubmanagersCount = await _context.ClubManager
+                .Where(m => m.ClubId == clubAdministrator.ClubId)
                 .CountAsync();
 
-            return approvedNewsCount;
+                return myClubmanagersCount;
         }
 
-        public async Task<int> GetPendingApprovalSportNewsCount()
+        public async Task<int> GetMyClubPlayersCount()
         {
-            int awaitingApprovalNewsCount = await _db.SportNew
-                .Where(s => s.NewsStatus == NewsStatus.Awaiting_Approval)
+            var user = await _userManager.GetUserAsync(User);
+
+            var userId = user.Id;
+
+            if (user == null || !(user is ClubAdministrator clubAdministrator))
+            {
+                return 0;
+            }
+
+            int myPlayersCount = await _context.Player
+                .Where(m => m.ClubId == clubAdministrator.ClubId)
                 .CountAsync();
 
-            return awaitingApprovalNewsCount;
+            return myPlayersCount;
         }
 
-        public async Task<int> GetRejectedSportNewsCount()
+        public async Task<int> GetMyClubFixturesCount()
         {
-            int rejectedNewsCount = await _db.SportNew
-                .Where(s => s.NewsStatus == NewsStatus.Rejected)
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return 0 ;
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return 0;
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
+            {
+                return 0;
+            }
+
+
+            int myClubFixturesCount = await _context.Fixture
+                .Where(m => m.HomeTeam.ClubId == clubId ||
+                 m.AwayTeam.ClubId == clubId && 
+                 m.FixtureStatus == FixtureStatus.Upcoming ||
+                 m.FixtureStatus == FixtureStatus.Postponed ||
+                   m.FixtureStatus == FixtureStatus.Interrupted)
                 .CountAsync();
 
-            return rejectedNewsCount;
+            return myClubFixturesCount;
         }
 
 
+        public async Task<int> GetMyClubTransferRequestsCount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return 0;
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return 0;
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
+            {
+                return 0;
+            }
 
 
+            int myClubTransferRequestsCount = await _context.Transfer
+                .Where(m => m.CustomerClub.ClubId == clubId &&
+                m.Status == TransferStatus.Pending)
+                .CountAsync();
 
+            return myClubTransferRequestsCount;
+        }
 
+        public async Task<int> GetClubAdministratorsMeetingsCount()
+        {
+            var clubAdminsMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Club_Administrators)
+                .CountAsync (); 
+
+            return clubAdminsMeetings;
+        }
+
+        public async Task<int> GetAnnouncementsCount()
+        {
+            var announcementsCount = await _context.Announcements
+                .CountAsync ();
+
+            return announcementsCount;
+        }
 
 
         public IActionResult Privacy()

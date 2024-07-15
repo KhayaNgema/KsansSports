@@ -167,7 +167,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -245,7 +245,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -372,7 +372,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -580,7 +580,9 @@
                                 <div style="font-size: 14px; color: #ccc;">@club @userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="Profile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i>
+
+                </a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -671,7 +673,9 @@
                                 <div style="font-size: 14px; color: #ccc;">@club @userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="PlayerProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i>
+
+                </a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -762,7 +766,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -857,7 +861,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -948,7 +952,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -1073,7 +1077,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -1151,7 +1155,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">
@@ -1278,7 +1282,7 @@
                                 <div style="font-size: 14px; color: #ccc;">@userRole</div>
                             </div>
                             <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                                <a style="text-decoration: none;" asp-controller="Profile" asp-action="Index">Profile <i class="fa fa-arrow-right"></i></a>
+                                <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
                             </button>
                         </div>
                         <ul class="sidebar-nav" style="list-style: none; padding: 0;">

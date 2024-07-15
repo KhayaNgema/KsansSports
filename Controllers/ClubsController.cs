@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using MyField.Migrations;
 using System.ComponentModel.DataAnnotations;
 using MyField.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyField.Controllers
 {
@@ -199,7 +200,7 @@ namespace MyField.Controllers
 
 
 
-        // GET: Clubs/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Club == null)
@@ -325,6 +326,9 @@ namespace MyField.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = $"{existingClub.ClubName} has successfully rejoined the current league.";
+
+            await _activityLogger.Log($"Rejoined season {currentLeague.LeagueYears} on behalf of {existingClub.ClubName}", user.Id);
+
             return RedirectToAction("ClubsBackOffice");
         }
 
@@ -461,7 +465,11 @@ namespace MyField.Controllers
                 _context.Add(clubPerformanceReport);
                 _context.Add(clubTransferReport);
                 await _context.SaveChangesAsync();
+
                 TempData["Message"] = $"{viewModel.ClubName} has been added successfully.";
+
+                await _activityLogger.Log($"Created {viewModel.ClubName} during season {currentLeague.LeagueYears}", user.Id);
+
                 return RedirectToAction(nameof(ClubsBackOffice));
             }
 
@@ -546,6 +554,8 @@ namespace MyField.Controllers
 
             TempData["Message"] = $"You have successfully suspended {club.ClubName} and now they won't be able to access all features of the system.";
 
+            await _activityLogger.Log($"Suspended {club.ClubName}", user.Id);
+
             return RedirectToAction(nameof(ClubsBackOffice));
         }
 
@@ -572,7 +582,7 @@ namespace MyField.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Message"] = $"You have successfully unsuspended {club.ClubName} and now they will be able to access some system features due to te decision you have made.";
-
+            await _activityLogger.Log($"Unsuspended {club.ClubName}", user.Id);
             return RedirectToAction(nameof(ClubsBackOffice));
         }
 
@@ -672,8 +682,10 @@ namespace MyField.Controllers
                         throw;
                     }
                 }
-           
-                if(User.IsInRole("Club Administrator"))
+
+                await _activityLogger.Log($"Updated {club.ClubName}information", user.Id);
+
+                if (User.IsInRole("Club Administrator"))
                 {
                     TempData["Message"] = $"{club.ClubName} information has been updated successfully.";
                     return RedirectToAction(nameof(MyClub));

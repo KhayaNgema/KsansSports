@@ -35,15 +35,8 @@
                                 }
                             </p>
                             <p class="card-text">
-                                <strong>Kick Off:</strong>
                                 <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                    @item.KickOffTime.ToString("HH:mm")
-                                </span>
-                            </p>
-                            <p class="card-text">
-                                <strong>Location:</strong>
-                                <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                    @Html.DisplayFor(modelItem => item.Location)
+                                    @item.KickOffDate.ToString("ddd, dd/MM/yyy"), @item.KickOffTime.ToString("HH:mm") -  @Html.DisplayFor(modelItem => item.Location)
                                 </span>
                             </p>
 
