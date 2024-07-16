@@ -170,11 +170,18 @@ namespace MyField.Controllers
 
         public async Task<IActionResult> DivisionFans()
         {
-            var divisionFans = await _context.Fans
+            var userIdsWithRoles = await _context.UserRoles
+                .Select(ur => ur.UserId)
+                .Distinct()
                 .ToListAsync();
 
-            return View(divisionFans);
+            var usersWithNoRoles = await _context.UserBaseModel
+                .Where(u => !userIdsWithRoles.Contains(u.Id))
+                .ToListAsync();
+
+            return View(usersWithNoRoles);
         }
+
 
         public async Task<IActionResult> SportAdministrators()
         {

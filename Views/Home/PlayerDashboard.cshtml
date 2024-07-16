@@ -97,6 +97,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-calendar-alt"></i> Fixtures</h5>
                     <p class="card-text">Club fixtures are listed here</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.MyClubFixturesCount</h1>
                     <a asp-controller="Fixtures" asp-action="FixtureLineUpUpdate" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Fixtures</span>
                         <span class="arrow">&#10148;</span>
@@ -111,9 +112,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-futbol"></i> Match results</h5>
                     <p class="card-text">Match results are listed here</p>
-                    <h1 class="card-text text-center">
-                        <i class="fas fa-futbol"></i>
-                    </h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.MyClubMatchResultsCount</h1>
                     <a asp-controller="MatchResults" asp-action="MyMatchResults" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Results</span>
                         <span class="arrow">&#10148;</span>
@@ -126,7 +125,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-calendar-alt"></i> Meetings</h5>
                     <p class="card-text">Meetings will be listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.ClubMeetings</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.PlayersMeetingsCount</h1>
                     <a asp-controller="Meetings" asp-action="Meetings" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Meetings</span>
                         <span class="arrow">&#10148;</span>

@@ -36,25 +36,25 @@ namespace MyField.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
 
-
             var matchOfficials = await _context.MatchOfficials
                 .Where(m => m.RefeereId == user.Id ||
-                m.AssistantOneId == user.Id ||
-                m.AssistantTwoId == user.Id)
+                            m.AssistantOneId == user.Id ||
+                            m.AssistantTwoId == user.Id)
                 .Include(m => m.Fixture)
+                    .ThenInclude(f => f.HomeTeam)
                 .Include(m => m.Fixture)
-                .ThenInclude(m => m.HomeTeam)
-                .Include(m => m.Fixture)
-                .ThenInclude(m => m.AwayTeam)
-                .FirstOrDefaultAsync();
+                    .ThenInclude(f => f.AwayTeam)
+                .ToListAsync();
+
+            var fixtureIds = matchOfficials.Select(m => m.FixtureId).Distinct().ToList();
 
             var matchesToOfficiate = await _context.Fixture
-                .Where(m => m.FixtureId == matchOfficials.Fixture.FixtureId &&
-                m.FixtureStatus == FixtureStatus.Upcoming)
+                .Where(f => fixtureIds.Contains(f.FixtureId) && f.FixtureStatus == FixtureStatus.Upcoming)
                 .ToListAsync();
 
             return View(matchesToOfficiate);
         }
+
 
         public async Task<IActionResult> PreviouslyOfficiatedMatches()
         {

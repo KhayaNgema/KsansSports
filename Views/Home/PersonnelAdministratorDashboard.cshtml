@@ -72,7 +72,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Sport administrators</h5>
                     <p class="card-text">Sport administrators are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.SportAdministrators</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.SportAdminsCount</h1>
                     <a asp-controller="Users" asp-action="SportAdministrators" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Admins</span>
                         <span class="arrow">&#10148;</span>
@@ -85,7 +85,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Sport managers</h5>
                     <p class="card-text">Sport managers are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.SportManagers</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.SportManagersCount</h1>
                     <a asp-controller="Users" asp-action="SportManagers" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Managers</span>
                         <span class="arrow">&#10148;</span>
@@ -99,7 +99,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Sport coordinators</h5>
                     <p class="card-text"> Sport coordinators are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.SportCoordinators</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.SportCoordinatorsCount</h1>
                     <a asp-controller="Users" asp-action="SportCoordinators" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Coordinators</span>
                         <span class="arrow">&#10148;</span>
@@ -114,7 +114,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Officials</h5>
                     <p class="card-text"> Officials are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.Officials</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.OfficialsCount</h1>
                     <a asp-controller="Users" asp-action="Officials" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Officials</span>
                         <span class="arrow">&#10148;</span>
@@ -127,7 +127,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Club administrators</h5>
                     <p class="card-text"> Club administrators are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.ClubAdministrators</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.ClubAdminsCount</h1>
                     <a asp-controller="Users" asp-action="ClubAdministrators" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Admins</span>
                         <span class="arrow">&#10148;</span>
@@ -140,7 +140,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Club managers</h5>
                     <p class="card-text"> Club managers are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.ClubManagers</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.ClubManagersCount</h1>
                     <a asp-controller="Users" asp-action="ClubManagers" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Managers</span>
                         <span class="arrow">&#10148;</span>
@@ -155,6 +155,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Division players</h5>
                     <p class="card-text"> Division players are listed here</p>
+                    <h1 class="card-text text-center center-number">@ViewBag.DivisionPlayersCount</h1>
                     <a asp-controller="Users" asp-action="DivisionPlayers" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Players</span>
                         <span class="arrow">&#10148;</span>
@@ -167,7 +168,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> News administrators</h5>
                     <p class="card-text"> News administrators are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.NewsAdministrators</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.NewsAdminsCount</h1>
                     <a asp-controller="Users" asp-action="NewsAdministrators" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Admins</span>
                         <span class="arrow">&#10148;</span>
@@ -180,7 +181,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> News updaters</h5>
                     <p class="card-text"> News updaters are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.NewsUpdaters</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.NewsUpdatersCount</h1>
                     <a asp-controller="Users" asp-action="NewsUpdaters" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Updaters</span>
                         <span class="arrow">&#10148;</span>
@@ -195,7 +196,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-users"></i> Fans administrators</h5>
                     <p class="card-text"> Fasn administrators are listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.NewsUpdaters</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.FansAdminsCount</h1>
                     <a asp-controller="Users" asp-action="FansAdministrators" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Admins</span>
                         <span class="arrow">&#10148;</span>
@@ -208,7 +209,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-bullhorn"></i> Announcements</h5>
                     <p class="card-text">Announcements will be listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.SportMeetings</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.AnnouncementsCount</h1>
                     <a asp-controller="Announcements" asp-action="Announcements" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Announcements</span>
                         <span class="arrow">&#10148;</span>
@@ -221,7 +222,7 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title"><i class="fas fa-calendar-alt"></i> Meetings</h5>
                     <p class="card-text"> Meetings will be listed here</p>
-                    <h1 class="card-text text-center center-number">@ViewBag.Meetings</h1>
+                    <h1 class="card-text text-center center-number">@ViewBag.PersonnelAdminsMeetingsCount</h1>
                     <a asp-controller="Meetings" asp-action="Meetings" class="btn btn-primary mt-auto align-self-end styled-button">
                         <span>Meetings</span>
                         <span class="arrow">&#10148;</span>

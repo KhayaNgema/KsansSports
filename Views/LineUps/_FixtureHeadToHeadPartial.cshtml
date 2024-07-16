@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<MyField.Models.HeadTohead>
 
-
-<div class="club-stats h2h-table">
+@if(Model.Any())
+{
+    <div class="club-stats h2h-table">
     <table>
         <tr style="color:White;">
             <th style="width:80px;">Match Day</th>
@@ -52,3 +53,9 @@
         }
     </table>
 </div>
+}
+else
+{
+    <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are no head to head matches for these teams.</p>
+}
+>

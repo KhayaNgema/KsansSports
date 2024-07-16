@@ -10,6 +10,15 @@
 @await Html.PartialAsync("_HomeButton")
 <h4 class="text-center">To Be Modified Sport News</h4>
 <br />
+@if (TempData["Message"] != null)
+{
+    <div id="tempDataMessage" class="alert @(TempData["Message"].ToString().Contains("successfully") ? "alert-success" : "alert-danger")" role="alert">
+        @TempData["Message"]
+        <span class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </div>
+}
 <div class="table-responsive">
     @if (Model.Any())
     {
@@ -72,11 +81,8 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("ReEditSportNews", "SportNews", new {newsId = item.NewsId })">
+                                <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = item.NewsId })">
                                     <i class="fas fa-pen" style="color: blue"></i> Re-edit
-                                </a>
-                                <a class="tab-item" href="@Url.Action("ReSubmitSportNews", "SportNews", new { newsId = item.NewsId})">
-                                    <i class="fa fa-redo" style="color: green;"></i> Re-submit
                                 </a>
                                 <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
                                     <i class="fa fa-trash" style="color: red;"></i> Delete

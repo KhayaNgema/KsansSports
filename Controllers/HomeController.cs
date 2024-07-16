@@ -64,6 +64,14 @@ namespace MyField.Controllers
             }
             else if (roles.Contains("Sport Coordinator"))
             {
+                ViewBag.ClubsCount = await GetClubsCount();
+
+                ViewBag.FixturesCount = await GetFixturesCount();
+
+                ViewBag.MatchResultsCount = await GetMatchResultsCount();
+
+                ViewBag.SportCoordinatorsMeetingsCount = await GetSportCoordinatorsMeetingsCount();
+
                 return View("SportsCoordinatorDashboard");
             }
             else if (roles.Contains("Player"))
@@ -93,6 +101,10 @@ namespace MyField.Controllers
                     .Where(mo => mo.ClubId == clubId)
                     .FirstOrDefaultAsync();
 
+                ViewBag.MyClubFixturesCount = await GetMyClubFixturesCount();
+                ViewBag.MyClubMatchResultsCount = await GetMyClubMatchResultsCount();
+                ViewBag.PlayersMeetingsCount = await GetPlayersMeetingsCount();
+
                 return View("PlayerDashboard", club);
             }
             else if (roles.Contains("Club Manager"))
@@ -118,6 +130,9 @@ namespace MyField.Controllers
                     return RedirectToAction("Error", "Home");
                 }
 
+                ViewBag.MyClubFixturesCount = await GetMyClubFixturesCount();
+                ViewBag.MyClubMatchResultsCount = await GetMyClubMatchResultsCount();
+                ViewBag.ClubManagersMeetingsCount = await GetClubManagersMeetingsCount();
 
                 var club = await _context.Club
                     .Where(mo => mo.ClubId == clubId)
@@ -177,30 +192,104 @@ namespace MyField.Controllers
             }
             else if (roles.Contains("News Updator"))
             {
+
+                ViewBag.NewsUpdatersMeetingsCount = await GetNewsUpdaterMeetingsCount();
+
+                ViewBag.ApprovedNewsCount = await GetApprovedNewsCount();
+
+                ViewBag.PublishedNewsCount = await GetPublishedNewsCount();
+
+                ViewBag.ToBeModifiedNewsCount = await GetToBeModifiedCount();
+
                 return View("NewsUpdatorDashboard");
             }
             else if(roles.Contains("Sport Administrator"))
             {
+                ViewBag.ClubsCount = await GetClubsCount();
+
+                ViewBag.FixturesCount = await GetFixturesCount();
+
+                ViewBag.MatchResultsCount = await GetMatchResultsCount();
+
+                ViewBag.ClubFinesCount = await GetClubFinesCount();
+
+                ViewBag.SportAdminsMeetings = await GetSportAdminsMeetingsCount();
+
                 return View("SportAdministratorDashboard");
             }
             else if (roles.Contains("News Administrator"))
             {
+                ViewBag.NewsPendingApprovalCount = await GetNewsPendingApprovalCount();
+
+                ViewBag.ApprovedNewsCount = await GetApprovedNewsCount();
+
+                ViewBag.PublishedNewsCount = await GetPublishedNewsCount();
+
+                ViewBag.ToBeModifiedNewsCount = await GetToBeModifiedCount();
+
+                ViewBag.NewsAdminsMeetingsCount = await GetNewsAdminMeetingsCount();
+
                 return View("NewsAdministratorDashboard");
             }
             else if (roles.Contains("Sport Manager"))
             {
+                ViewBag.ClubsCount = await GetClubsCount();
+
+                ViewBag.FixturesCount = await GetFixturesCount();
+
+                ViewBag.MatchResultsCount = await GetMatchResultsCount();
+
+                ViewBag.ClubFinesCount = await GetClubFinesCount();
+
+                ViewBag.SportManagersMeetings = await GetSportManagersMeetingsCount();
+
+
                 return View("SportManagerDashboard");
             }
             else if (roles.Contains("Fans Administrator"))
             {
+                ViewBag.DivisionFansCount = await GetDivisionFansCount();
+
+                ViewBag.FansAdminsMeetingsCount = await GetFansAdminMeetingsCount();
+
+                ViewBag.FansSupportQueriesCount = await GetFansSupportQueriesCount();
+
                 return View("FansAdministratorDashboard");
             }
             else if (roles.Contains("Personnel Administrator"))
             {
+                ViewBag.SportAdminsCount = await GetSportAdminsCount();
+
+                ViewBag.SportManagersCount = await GetSportManagersCount();
+
+                ViewBag.SportCoordinatorsCount = await GetSportCoordinatorsCount();
+
+                ViewBag.OfficialsCount = await GetOfficialsCount();
+
+                ViewBag.ClubAdminsCount = await GetClubAdminsCount();
+
+                ViewBag.ClubManagersCount = await GetClubManagersCount();
+
+                ViewBag.DivisionPlayersCount = await GetDivisionPlayersCount();
+
+                ViewBag.NewsAdminsCount = await GetNewsAdminsCount();
+
+                ViewBag.NewsUpdatersCount = await GetNewsUpdatersCount();
+
+                ViewBag.FansAdminsCount = await GetFansAdminsCount();
+
+                ViewBag.PersonnelAdminsMeetingsCount = await GetPersonnelAdminsMeetingsCount();
+
                 return View("PersonnelAdministratorDashboard");
             }
             else if (roles.Contains("Official"))
             {
+                ViewBag.MatchesToOfficiateCount = await GetMatchesToOfficiateCount();
+
+                ViewBag.PreviouslyOfficiatedMatches = await PreviousylOfficiatedMatchesCount();
+
+                ViewBag.OfficialsMeetingsCount = await GetOfficialsMeetingsCount();
+
                 return View("OfficialsDashboard");
             }
             else
@@ -334,6 +423,490 @@ namespace MyField.Controllers
             return announcementsCount;
         }
 
+        public async Task<int> GetMyClubMatchResultsCount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return 0;
+            }
+
+            if (!(user is ClubAdministrator clubAdministrator) &&
+                !(user is ClubManager clubManager) &&
+                !(user is Player clubPlayer))
+            {
+                return 0;
+            }
+
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
+            {
+                return 0;
+            }
+
+
+            int myClubMatchResultsCount = await _context.MatchResult
+                .Where(m => m.HomeTeam.ClubId == clubId || 
+                m.AwayTeam.ClubId == clubId)
+                .CountAsync();
+
+            return myClubMatchResultsCount;
+        }
+
+        public async Task<int> GetClubManagersMeetingsCount()
+        {
+            var clubManagersMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Club_Managers)
+                .CountAsync();
+
+            return clubManagersMeetings;
+        }
+
+        public async Task<int> GetDivisionFansCount()
+        {
+            var userIdsWithRoles = await _context.UserRoles
+                .Select(ur => ur.UserId)
+                .Distinct()
+                .ToListAsync();
+
+            var fansCount = await _context.ActivityLogs
+                .Where(log => !userIdsWithRoles.Contains(log.UserId))
+                .Select(log => log.UserId)
+                .Distinct()
+                .CountAsync();
+
+            return fansCount;
+        }
+
+        public async Task<int> GetFansAdminMeetingsCount()
+        {
+            var fansAdminMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Fans_Administrators)
+                .CountAsync();
+
+            return fansAdminMeetings;
+        }
+
+        public async Task<int> GetFansSupportQueriesCount()
+        {
+            var fansSupportQueries = 0;
+
+            return fansSupportQueries;
+        }
+
+        public async Task<int> GetNewsPendingApprovalCount()
+        {
+            var newsPendingApproval = await _context.SportNew
+                .Where(n => n.NewsStatus == NewsStatus.Awaiting_Approval)
+                .CountAsync();
+
+            return newsPendingApproval;
+        }
+
+        public async Task<int> GetApprovedNewsCount()
+        {
+            var approvedNews = await _context.SportNew
+                .Where(n => n.NewsStatus == NewsStatus.Approved)
+                .CountAsync();
+
+            return approvedNews;
+        }
+
+        public async Task<int> GetPublishedNewsCount()
+        {
+            var publishedNewsCount = await _context.SportNew
+                .Where(n => n.NewsStatus == NewsStatus.Approved)
+                .CountAsync();
+
+            return publishedNewsCount;
+        }
+
+        public async Task<int> GetToBeModifiedCount()
+        {
+            var toBeModifiedNewsCount = await _context.SportNew
+                .Where(n => n.NewsStatus == NewsStatus.ToBeModified)
+                .CountAsync();
+
+            return toBeModifiedNewsCount;
+        }
+
+        public async Task<int> GetNewsAdminMeetingsCount()
+        {
+            var newsAdminMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.News_Administrators)
+                .CountAsync();
+
+            return newsAdminMeetings;
+        }
+
+        public async Task<int> GetNewsUpdaterMeetingsCount()
+        {
+            var newsUpdaterMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.News_Updaters)
+                .CountAsync();
+
+            return newsUpdaterMeetings;
+        }
+
+        public async Task<int> GetMatchesToOfficiateCount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var matchOfficials = await _context.MatchOfficials
+                .Where(m => m.RefeereId == user.Id ||
+                            m.AssistantOneId == user.Id ||
+                            m.AssistantTwoId == user.Id)
+                .Include(m => m.Fixture)
+                .ToListAsync();
+
+            var officiatedFixtureIds = matchOfficials.Select(m => m.FixtureId).Distinct().ToList();
+
+            var matchesToOfficiateCount = await _context.Fixture
+                .Where(m => officiatedFixtureIds.Contains(m.FixtureId) &&
+                            m.FixtureStatus == FixtureStatus.Upcoming)
+                .CountAsync();
+
+            return matchesToOfficiateCount;
+        }
+
+        public async Task<int> PreviousylOfficiatedMatchesCount()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var matchOfficials = await _context.MatchOfficials
+                .Where(m => m.RefeereId == user.Id ||
+                            m.AssistantOneId == user.Id ||
+                            m.AssistantTwoId == user.Id)
+                .Include(m => m.Fixture)
+                .ToListAsync();
+
+            var officiatedFixtureIds = matchOfficials.Select(m => m.FixtureId).Distinct().ToList();
+
+            var previoulsyOfficiatedMatchesCount = await _context.Fixture
+                .Where(m => officiatedFixtureIds.Contains(m.FixtureId) &&
+                            m.FixtureStatus == FixtureStatus.Ended)
+                .CountAsync();
+
+            return previoulsyOfficiatedMatchesCount;
+        }
+
+        public async Task<int> GetOfficialsMeetingsCount()
+        {
+            var officialsMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Officials)
+                .CountAsync();
+
+            return officialsMeetings;
+        }
+
+        public async Task<int> GetSportAdminsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Administrator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var sportAdminsCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return sportAdminsCount;
+        }
+
+        public async Task<int> GetSportManagersCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Manager");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var sportManagersCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return sportManagersCount;
+        }
+
+        public async Task<int> GetSportCoordinatorsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Coordinator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var sportCoordinatorsCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return sportCoordinatorsCount;
+        }
+
+
+        public async Task<int> GetOfficialsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Official");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var officialsCount = await _context.Officials
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return officialsCount;
+        }
+
+        public async Task<int> GetClubAdminsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club Administrator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var clubAdminsCount = await _context.ClubAdministrator
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return clubAdminsCount;
+        }
+
+        public async Task<int> GetClubManagersCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club Manager");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var clubManagersCount = await _context.ClubManager
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return clubManagersCount;
+        }
+
+        public async Task<int> GetDivisionPlayersCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Player");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var divisionPlayersCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return divisionPlayersCount;
+        }
+
+        public async Task<int> GetNewsAdminsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News Administrator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var newsAdminsCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return newsAdminsCount;
+        }
+
+        public async Task<int> GetNewsUpdatersCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News Updator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var newsUpdatersCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return newsUpdatersCount;
+        }
+
+        public async Task<int> GetFansAdminsCount()
+        {
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Fans Administrator");
+
+            if (role == null)
+            {
+                return 0;
+            }
+
+            var userIds = await _context.UserRoles
+                .Where(ur => ur.RoleId == role.Id)
+                .Select(ur => ur.UserId)
+                .ToListAsync();
+
+            var fansAdminsCount = await _context.SportMember
+                .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
+                .CountAsync();
+
+            return fansAdminsCount;
+        }
+
+        public async Task<int> GetPersonnelAdminsMeetingsCount()
+        {
+            var personnelAdminsMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Personnel_Administrators)
+                .CountAsync();
+
+            return personnelAdminsMeetings;
+        }
+
+
+        public async Task<int> GetPlayersMeetingsCount()
+        {
+            var playersMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Players)
+                .CountAsync();
+
+            return playersMeetings;
+        }
+
+        public async Task<int> GetClubsCount()
+        {
+            var clubCount = await _context.Club
+                .Where( c => c.IsActive == true &&
+                c.League.IsCurrent)
+                .CountAsync();
+
+            return clubCount;
+        }
+
+        public async Task<int> GetFixturesCount()
+        {
+            var fixturesCount = await _context.Fixture
+                .Where(f => f.League.IsCurrent)
+                .CountAsync();
+
+           return fixturesCount;
+        }
+
+        public async Task<int> GetMatchResultsCount()
+        {
+            var matchResultsCount = await _context.MatchResult
+                .Where(m => m.League.IsCurrent)
+                .CountAsync();
+
+
+            return matchResultsCount;
+        }
+
+        public async Task<int> GetClubFinesCount()
+        {
+            var clubFinesCount = await _context.Fines
+                .Where(c => c.Club != null &&
+                c.Offender == null &&
+                c.PaymentStatus == PaymentStatus.Pending)
+                .CountAsync();
+
+            return clubFinesCount;
+        }
+
+        public async Task<int> GetSportAdminsMeetingsCount()
+        {
+            var sportAdminsMeetings = await _context.Meeting
+                .CountAsync();
+
+            return sportAdminsMeetings;
+        }
+
+        public async Task<int> GetSportCoordinatorsMeetingsCount()
+        {
+            var sportCoordinatorsMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Sport_Coordinators)
+                .CountAsync();
+
+            return sportCoordinatorsMeetings;
+        }
+
+        public async Task<int> GetSportManagersMeetingsCount()
+        {
+            var sportManagersMeetings = await _context.Meeting
+                .Where(c => c.MeetingAttendees == MeetingAttendees.Everyone ||
+                c.MeetingAttendees == MeetingAttendees.Sport_Managers)
+                .CountAsync();
+
+            return sportManagersMeetings;
+        }
 
         public IActionResult Privacy()
         {

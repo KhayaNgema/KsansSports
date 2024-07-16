@@ -198,5 +198,7 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.Announcement> Announcements { get; set; } = default!;
 
+        public DbSet<MyField.Models.TermsAggreement> TermsAggreements { get; set; } = default!;
+
     }
 }

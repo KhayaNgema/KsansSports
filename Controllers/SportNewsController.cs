@@ -251,8 +251,15 @@ namespace MyField.Controllers
                 .Include(i => i.SportNews)
                 .FirstOrDefaultAsync();
 
-            overallNewsReports.NewsReadersCount++;
-            individualNewsReports.ReadersCount++;
+            if(User.IsInRole("News Administrator") || (User.IsInRole("News Updator")))
+            {
+
+            }
+            else
+            {
+                overallNewsReports.NewsReadersCount++;
+                individualNewsReports.ReadersCount++;
+            }
 
             await _context.SaveChangesAsync();
 
@@ -379,6 +386,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
         [HttpPost]
         public async Task<IActionResult> ReEditNews(int? newsId, ReEditNewsViewModel viewModel, IFormFile NewsImages)
         {
@@ -386,6 +394,7 @@ namespace MyField.Controllers
             {
                 return NotFound();
             }
+
             var user = await _userManager.GetUserAsync(User);
 
             var existingNews = await _context.SportNew
@@ -396,6 +405,8 @@ namespace MyField.Controllers
             {
                 return NotFound();
             }
+
+            var oldNewsStatus = existingNews.NewsStatus;
 
             if (ValidateUpdatedProperties(viewModel))
             {
@@ -412,32 +423,30 @@ namespace MyField.Controllers
                 {
                     existingNews.NewsImage = viewModel.NewsImage;
                 }
-
-                _context.Update(existingNews);
-                await _context.SaveChangesAsync();
             }
+
+            _context.Update(existingNews);
+            await _context.SaveChangesAsync();
 
             await _activityLogger.Log($"Updated sport news with heading {existingNews.NewsHeading}", user.Id);
 
-            if (existingNews.NewsStatus == NewsStatus.Awaiting_Approval)
+            if (oldNewsStatus == NewsStatus.Awaiting_Approval)
             {
-
                 TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
                 return RedirectToAction(nameof(SportNewsList));
             }
-            else if (existingNews.NewsStatus == NewsStatus.ToBeModified)
+            else if (oldNewsStatus == NewsStatus.ToBeModified)
             {
-
                 TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
                 return RedirectToAction(nameof(ToBeModifiedSportNews));
             }
             else
             {
-
                 TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
                 return RedirectToAction(nameof(SportNewsList));
             }
         }
+
 
 
 

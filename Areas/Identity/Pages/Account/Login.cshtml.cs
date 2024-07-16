@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using MyField.Models;
 using MyField.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyField.Areas.Identity.Pages.Account
 {
@@ -69,29 +70,18 @@ namespace MyField.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            [Display(Name = "Email or Phone")]
+            public string EmailOrPhone { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Display(Name = "Remember me?")]
             public bool RememberMe { get; set; }
         }
+
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -118,29 +108,34 @@ namespace MyField.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                var isEmail = new EmailAddressAttribute().IsValid(Input.EmailOrPhone);
+                var user = isEmail ?
+                           await _userManager.FindByEmailAsync(Input.EmailOrPhone) :
+                           await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == Input.EmailOrPhone);
 
-                    await _activityLogger.Log("Logged in", user.Id);
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
+                if (user != null)
                 {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                    if (result.Succeeded)
+                    {
+                        await _activityLogger.Log("Logged in", user.Id);
+                        return LocalRedirect(returnUrl);
+                    }
+                    if (result.RequiresTwoFactor)
+                    {
+                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+                    }
+                    if (result.IsLockedOut)
+                    {
+                        return RedirectToPage("./Lockout");
+                    }
                 }
-                if (result.IsLockedOut)
-                {
-                    return RedirectToPage("./Lockout");
-                }
-                else
-                {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return Page();
-                }
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
+
             return Page();
         }
+
     }
 }

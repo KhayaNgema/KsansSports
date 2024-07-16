@@ -8,6 +8,7 @@
 
 
         public string NewsImage { get; set; }
+
         public IFormFile NewsImages { get; set; }
 
         public string NewsBody { get; set; }
