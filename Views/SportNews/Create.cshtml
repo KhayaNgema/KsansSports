@@ -31,7 +31,7 @@
             </div>
 
             <div class="form-floating mb-3">
-                <input asp-for="NewsHeading" class="form-control border-bottom-only" placeholder="NewsHeading" />
+                <input asp-for="NewsHeading" class="form-control border-bottom-only" placeholder="NewsHeading" maxlength="70" />
                 <label asp-for="NewsHeading" class="form-label">News title</label>
                 <span asp-validation-for="NewsHeading" class="text-danger"></span>
             </div>

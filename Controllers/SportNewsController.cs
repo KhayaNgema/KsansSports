@@ -230,6 +230,7 @@ namespace MyField.Controllers
         {
             var sportsNews = await _context.SportNew
                 .Where(s => s.NewsStatus == NewsStatus.Approved)
+                .OrderByDescending(s => s.PublishedDate)
                 .ToListAsync();
 
             return View( sportsNews);

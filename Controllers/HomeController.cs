@@ -474,13 +474,12 @@ namespace MyField.Controllers
                 .Distinct()
                 .ToListAsync();
 
-            var fansCount = await _context.ActivityLogs
-                .Where(log => !userIdsWithRoles.Contains(log.UserId))
-                .Select(log => log.UserId)
-                .Distinct()
+            var usersWithoutRoles = await _context.Users
+                .Where(user => !userIdsWithRoles.Contains(user.Id))
+                .Select(user => user.Id)
                 .CountAsync();
 
-            return fansCount;
+            return usersWithoutRoles;
         }
 
         public async Task<int> GetFansAdminMeetingsCount()
