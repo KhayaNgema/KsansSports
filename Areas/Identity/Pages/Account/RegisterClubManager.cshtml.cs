@@ -139,7 +139,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedDateTime = DateTime.Now,
                     IsActive = true,
                     IsSuspended = false,
-                    IsContractEnded = false
+                    IsContractEnded = false,
+                    IsFirstTimeLogin = true
                 };
 
                 var loggedInUser = await _userManager.GetUserAsync(User);

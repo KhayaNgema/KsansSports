@@ -7,6 +7,7 @@ using MyField.Data;
 using MyField.Models;
 using System.Diagnostics;
 using MyField.ViewModels;
+using MyField.Services;
 
 
 namespace MyField.Controllers
@@ -16,21 +17,42 @@ namespace MyField.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
+        private readonly EmailService _emailService;
 
         public HomeController(ILogger<HomeController> logger, 
             Ksans_SportsDbContext db,
-            UserManager<UserBaseModel> userManager)
+            UserManager<UserBaseModel> userManager,
+            EmailService emailService)
+
         {
             _context = db;
             _logger = logger;
             _userManager = userManager;
+            _emailService = emailService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Dashboard");
+
+                var user = await _userManager.GetUserAsync(User);
+
+                var roles = await _userManager.GetRolesAsync(user);
+
+                if (user.IsFirstTimeLogin == true && roles.Any())
+                {
+                    user.IsFirstTimeLogin = false;
+                    _context.Update(user);
+                    await _context.SaveChangesAsync();
+
+                    return Redirect("/Identity/Account/Manage/ChangeFirstTimeLoginPassword");
+                }
+                else
+                {
+                    return RedirectToAction("Dashboard");
+                }
+
             }
             else
             {

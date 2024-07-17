@@ -12,26 +12,30 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyField.Data;
 using MyField.Models;
+using MyField.Services;
 
 namespace MyField.Areas.Identity.Pages.Account.Manage
 {
-    public class ChangePasswordModel : PageModel
+    public class ChangeFirstTimeLoginPasswordModel : PageModel
     {
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly SignInManager<UserBaseModel> _signInManager;
-        private readonly ILogger<ChangePasswordModel> _logger;
+        private readonly ILogger<ChangeFirstTimeLoginPasswordModel> _logger;
         private readonly Ksans_SportsDbContext _context;
+        private readonly EmailService _emailService;
 
-        public ChangePasswordModel(
+        public ChangeFirstTimeLoginPasswordModel(
             UserManager<UserBaseModel> userManager,
             SignInManager<UserBaseModel> signInManager,
-            ILogger<ChangePasswordModel> logger,
-            Ksans_SportsDbContext context)
+            ILogger<ChangeFirstTimeLoginPasswordModel> logger,
+            Ksans_SportsDbContext context,
+            EmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _context = context;
+            _emailService = emailService;
         }
 
         /// <summary>
@@ -85,7 +89,7 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             public string ConfirmPassword { get; set; }
         }
 
-        public async Task<IActionResult> OnGetAsync(string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -99,12 +103,10 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             {
                 return RedirectToPage("./SetPassword");
             }
-
-            ReturnUrl = returnUrl;
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +120,6 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
-
             if (!changePasswordResult.Succeeded)
             {
                 foreach (var error in changePasswordResult.Errors)
@@ -132,8 +133,21 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             _logger.LogInformation("User changed their password successfully.");
             StatusMessage = "Your password has been changed.";
 
-            return RedirectToPage("/Index");
-        }
+            string emailBody = $@"
+                    Hi {user.FirstName} {user.LastName},<br/><br/>
+                    Your temporal password has been changed successfully.  
+                    Please note that it has expired and you will be required to use your new password for aunthetication.<br/><br/>
+                    If you did not request this change, please contact our support team immediately.<br/><br>
+                    Kind regards,<br/>
+                    K&S Foundation Support Team
+            ";
 
+            await _emailService.SendEmailAsync(
+                user.Email,
+                "Temporal Password Changed Successful",
+                emailBody);
+
+            return RedirectToPage("/Account/Login");
+        }
     }
 }

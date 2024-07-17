@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using MyField.Models;
 using MyField.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using MyField.Data;
 
 namespace MyField.Areas.Identity.Pages.Account
 {
@@ -26,16 +27,22 @@ namespace MyField.Areas.Identity.Pages.Account
         private readonly ILogger<LoginModel> _logger;
         private readonly IActivityLogger _activityLogger;
         private readonly UserManager<UserBaseModel> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly Ksans_SportsDbContext _context;
 
         public LoginModel(SignInManager<UserBaseModel> signInManager, 
             ILogger<LoginModel> logger,
             IActivityLogger activityLogger,
-            UserManager<UserBaseModel> userManager)
+            UserManager<UserBaseModel> userManager,
+            RoleManager<IdentityRole> roleManager,
+            Ksans_SportsDbContext context)
         {
             _signInManager = signInManager;
             _logger = logger;
             _activityLogger = activityLogger;
             _userManager = userManager;
+            _roleManager = roleManager;
+            _context = context;
         }
 
         /// <summary>
@@ -92,7 +99,6 @@ namespace MyField.Areas.Identity.Pages.Account
 
             returnUrl ??= Url.Content("~/");
 
-            // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
@@ -119,21 +125,12 @@ namespace MyField.Areas.Identity.Pages.Account
 
                     if (result.Succeeded)
                     {
-                        await _activityLogger.Log("Logged in", user.Id);
-                        return LocalRedirect(returnUrl);
-                    }
-                    if (result.RequiresTwoFactor)
-                    {
-                        return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                    }
-                    if (result.IsLockedOut)
-                    {
-                        return RedirectToPage("./Lockout");
+
+                            await _activityLogger.Log("Logged in", user.Id);
+                            return LocalRedirect(returnUrl);
                     }
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
-
             return Page();
         }
 

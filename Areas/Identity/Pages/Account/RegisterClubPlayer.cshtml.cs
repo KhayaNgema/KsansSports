@@ -157,7 +157,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     Position = Input.Position,
                     MarketValue = Input.MarketValue,
                     IsActive = true,
-                    IsSuspended = false
+                    IsSuspended = false,
+                    IsFirstTimeLogin = true
                 };
 
                 var loggedInUser = await _userManager.GetUserAsync(User);

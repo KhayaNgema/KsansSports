@@ -143,7 +143,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedDateTime = DateTime.Now,
                     ClubId= Input.SelectedClubId,
                     IsActive = true,
-                    IsSuspended = false
+                    IsSuspended = false,
+                    IsFirstTimeLogin = true
                 };
 
                 if (Input.ProfilePicture != null && Input.ProfilePicture.Length > 0)

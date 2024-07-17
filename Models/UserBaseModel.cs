@@ -26,5 +26,7 @@ namespace MyField.Models
         public bool IsSuspended { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public bool IsFirstTimeLogin { get; set; }
     }
 }

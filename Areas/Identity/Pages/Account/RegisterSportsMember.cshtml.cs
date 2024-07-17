@@ -122,7 +122,7 @@ namespace MyField.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var user = new ClubManager
+                var user = new SportsMember
                 {
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
@@ -134,7 +134,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
                     IsActive = true,
-                    IsSuspended = false
+                    IsSuspended = false,
+                    IsFirstTimeLogin = true
                 };
 
                 if (Input.ProfilePicture != null && Input.ProfilePicture.Length > 0)
@@ -147,6 +148,7 @@ namespace MyField.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
                 string randomPassword = _passwordGenerator.GenerateRandomPassword();
+
                 var result = await _userManager.CreateAsync(user, randomPassword);
 
                 if (result.Succeeded)
@@ -198,7 +200,6 @@ namespace MyField.Areas.Identity.Pages.Account
                         .ToListAsync();
                         ViewData["Roles"] = roles;
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
 

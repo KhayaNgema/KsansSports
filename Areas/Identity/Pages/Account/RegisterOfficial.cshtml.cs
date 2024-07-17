@@ -135,7 +135,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     ModifiedBy = userId,
                     ModifiedDateTime = DateTime.Now,
                     IsActive = true,
-                    IsSuspended = false
+                    IsSuspended = false,
+                    IsFirstTimeLogin = true
                 };
 
 
@@ -200,7 +201,6 @@ namespace MyField.Areas.Identity.Pages.Account
                         .ToListAsync();
             ViewData["Roles"] = roles;
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
 
