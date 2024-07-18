@@ -1,4 +1,8 @@
-﻿@model MyField.ViewModels.ProfileViewModel
+﻿@using System.Security.Claims
+
+
+@model MyField.ViewModels.ProfileViewModel
+
 
 @{
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
@@ -22,6 +26,15 @@ else
     <div class="col-md-12">
 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (TempData["Message"] != null)
+        {
+            <div id="tempDataMessage" class="alert @(TempData["Message"].ToString().Contains("successfully") ? "alert-success" : "alert-danger")" role="alert">
+                @TempData["Message"]
+                <span class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </span>
+            </div>
+        }
         <div class="mb-3 text-center">
             <div class="profile-picture-container">
                 <img id="profile-image-preview" src="~/@Model.ProfilePicture" alt="Current Profile Picture" class="club-badge-image" />
@@ -54,7 +67,7 @@ else
                 @Model.DateOfBirth.ToString("dd MMM, yyy")
             </div>
         </div>
-        @if (User.IsInRole("Personnel Administrator"))
+        @if (!User.Claims.Any(c => c.Type == ClaimTypes.Role) || User.IsInRole("Personnel Administrator"))
         {
             <div class="row">
                 <div class="col-md-12">
@@ -97,6 +110,13 @@ else
                 console.log(message);
             });
         })();
+
+        setTimeout(function () {
+            var tempDataMessage = document.getElementById("tempDataMessage");
+            if (tempDataMessage) {
+                tempDataMessage.style.display = "none";
+            }
+        }, 5000);
     </script>
 }
 

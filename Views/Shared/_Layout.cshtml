@@ -62,6 +62,15 @@
         }
 
 
+        .tab-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
 
     </style>
 
@@ -110,28 +119,25 @@
         {
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="homeTabsNav">
                 <div class="container-fluid">
-                <div class="overflow-auto">
-                    <ul class="nav nav-tabs flex-nowrap">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="spotNewsTab" href="#sportnews" style="color: black; border-radius:0;">Sports News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="fixturesTab" href="#fixtures" style="color: black; border-radius:0;">Fixtures</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="standingsTab" href="#standings" style="color: black; border-radius:0;">Standings</a>
-                        </li>
-@*                         <li class="nav-item">
-                            <a class="nav-link" id="tournamentsTab" href="#tournaments" style="color: black; border-radius:0;">Tournaments</a>
-                        </li> *@
-                        <li class="nav-item">
-                            <a class="nav-link" id="matchresultsTab" href="#matchresults" style="color: black; border-radius:0;">Results</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="clubsTab" href="#clubs" style="color: black; border-radius:0;">Clubs</a>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="tab-container" style="overflow-x: auto; white-space: nowrap;">
+                        <ul class="nav nav-tabs" id="sportsTabs" role="tablist" style="display: flex; flex-wrap: nowrap;">
+                            <li class="nav-item">
+                                <button class="nav-link active" id="sportnews-tab" data-bs-toggle="tab" data-bs-target="#sportnews" type="button" role="tab" aria-controls="sportnews" aria-selected="true" onclick="loadTab('sportnews')">Sport news</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="fixtures-tab" data-bs-toggle="tab" data-bs-target="#fixtures" type="button" role="tab" aria-controls="fixtures" aria-selected="false" onclick="loadTab('fixtures')">Fixtures</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="standings-tab" data-bs-toggle="tab" data-bs-target="#standings" type="button" role="tab" aria-controls="standings" aria-selected="false" onclick="loadTab('standings')">Standings</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="matchresults-tab" data-bs-toggle="tab" data-bs-target="#matchresults" type="button" role="tab" aria-controls="matchresults" aria-selected="false" onclick="loadTab('matchresults')">Results</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" id="clubs-tab" data-bs-toggle="tab" data-bs-target="#clubs" type="button" role="tab" aria-controls="clubs" aria-selected="false" onclick="loadTab('clubs')">Clubs</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         }
@@ -167,33 +173,46 @@
         }
     });
 
-    // Function to close the previous page
-    function closePreviousPage() {
-        if (previousPage !== null) {
-            window.close(previousPage);
+    function loadTab(tabName) {
+
+        $('.nav-link').removeClass('active');
+
+        $('#' + tabName + '-tab').addClass('active');
+
+        $('.tab-pane').removeClass('show active');
+
+        $('#' + tabName).addClass('show active');
+
+        if ($('#' + tabName).html().trim() === '') {
+            var url;
+            if (tabName === 'sportnews') {
+                url = '@Url.Action("Index", "SportNews")';
+            } else if (tabName === 'fixtures') {
+                url = '@Url.Action("Index", "Fixtures")';
+            } else if (tabName === 'standings') {
+                url = '@Url.Action("Index", "Standings")';
+            } else if (tabName === 'matchresults') {
+                url = '@Url.Action("Index", "MatchResults")';
+            } else if (tabName === 'clubs') {
+                url = '@Url.Action("Index", "Clubs")';
+            }
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (data) {
+                    $('#' + tabName).html(data);
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error("Error:", errorThrown);
+                }
+            });
         }
     }
 
-    // Function to load tab content
-    function loadTabContent(target) {
-        $('.tab-content').hide();
-        $(target).show();
-
-        // Extract the controller name from the target URL
-        var controllerName = target.substring(1).split('/')[0];
-
-        // Adjust the URL construction based on the controller name
-        var partialViewUrl = '/' + controllerName;
-
-        $.get(partialViewUrl, function (data) {
-            $(target).html(data);
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            console.error("Error loading partial view:", errorThrown);
-        });
-    }
-
-    // Initial loading of default tab content
-    loadTabContent('#sportnews');
+    $(document).ready(function () {
+        loadTab('sportnews');
+    });
 
     // Handle clicks on navigation links
     $('.nav-link').click(function (e) {

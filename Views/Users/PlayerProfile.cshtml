@@ -1,4 +1,6 @@
-﻿@model MyField.ViewModels.PlayerProfileViewModel
+﻿@using System.Security.Claims
+
+@model MyField.ViewModels.PlayerProfileViewModel
 
 @{
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
@@ -83,11 +85,15 @@
                 </div>
             </div>
         }
-        else
+        else if(User.IsInRole("Player"))
         {
             <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by @ViewBag.Club, if you want to update it, please contact your club administrator. </i></p>
         }
-        </div>
+        else if (!User.Claims.Any(c => c.Type == ClaimTypes.Role))
+        {
+            
+        }
+    </div>
 </div>
 
 @section Scripts {

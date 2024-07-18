@@ -1915,5 +1915,60 @@ body {
 }
 
 
+/*/Privacy policy container*/
+
+.privacy-policy-container,
+.about-us-container,
+.contact-us-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+
+/*Players container*/
+
+.players-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+/*Club hover css*/
+
+.club-item {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+    .club-item:hover {
+        transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .club-item div {
+        transition: background-color 0.3s;
+    }
+
+
+
+    /*Player table css*/
+
+.player-row {
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+    .player-row:hover {
+        transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+.player-row {
+    cursor: pointer;
+}
+
 
 

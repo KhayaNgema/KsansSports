@@ -35,6 +35,17 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
+        public async Task<IActionResult> Players()
+        {
+            var players = await _context.Player
+                .Where(p => !p.IsDeleted) 
+                .Include(p => p.Club)
+                .ToListAsync();
+
+            return PartialView("_PlayersPartial", players);
+        }
+
+
         [HttpGet]
 
         public async Task<IActionResult> PasswordAndSecurity()
@@ -530,9 +541,18 @@ namespace MyField.Controllers
 
                 TempData["LogMessages"] = logMessages;
 
-                await _activityLogger.Log($"Updated {userProfile.FirstName} {userProfile.LastName} profile information", user.Id);
+                if(User.IsInRole("Personeel Administrator"))
+                {
+                    TempData["Message"] = $"{userProfile.FirstName} {userProfile.LastName}  information has been updated successfully.";
+                    await _activityLogger.Log($"Updated {userProfile.FirstName} {userProfile.LastName} profile information", user.Id);
+                }
+                else
+                {
+                    TempData["Message"] = $"Your profile information has been updated successfully.";
+                    await _activityLogger.Log($"Updated your profile information", user.Id);
+                }
 
-                TempData["Message"] = $"{userProfile.FirstName} {userProfile.LastName}  information has been updated successfully.";
+                
 
                 if (userRole == "Club Administrator")
                 {
@@ -574,9 +594,16 @@ namespace MyField.Controllers
                 {
                     return RedirectToAction(nameof(FansAdministrators));
                 }
-                else
+                else 
                 {
-                    return RedirectToAction(nameof(DivisionFans));
+                    if(User.IsInRole("Personnel Administrator"))
+                    {
+                        return RedirectToAction(nameof(DivisionFans));
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(UserProfile), new { userId = user.Id });
+                    }
                 }
             }
 
@@ -611,17 +638,6 @@ namespace MyField.Controllers
             Validator.TryValidateProperty(viewModel.PhoneNumber, new ValidationContext(viewModel, null, null) { MemberName = "PhoneNumber" }, validationResults);
             Validator.TryValidateProperty(viewModel.Email, new ValidationContext(viewModel, null, null) { MemberName = "Email" }, validationResults);
             return validationResults.Count == 0;
-        }
-
-
-        public async Task<IActionResult> UpdateUserProfile(string? userId)
-        {
-            if (userId == null)
-            {
-                return NotFound();
-            }
-
-            return View();
         }
 
 

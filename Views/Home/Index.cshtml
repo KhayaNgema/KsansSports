@@ -2,25 +2,32 @@
     ViewData["Title"] = "Home Page";
     if (User.Identity.IsAuthenticated)
     {
-        Layout = "~/Views/Shared/_PagesLayout.cshtml";
+        Layout = "~/Views/Shared/_FansPagesLayout.cshtml";
     }
     else
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
 }
+@if(User.Identity.IsAuthenticated)
+{
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="sportnews" role="tabpanel" aria-labelledby="sportnews-tab"></div>
+        <div class="tab-pane fade" id="fixtures" role="tabpanel" aria-labelledby="fixtures-tab"></div>
+        <div class="tab-pane fade" id="standings" role="tabpanel" aria-labelledby="standings-tab"></div>
+        <div class="tab-pane fade" id="matchresults" role="tabpanel" aria-labelledby="matchresults-tab"></div>
+        <div class="tab-pane fade" id="clubs" role="tabpanel" aria-labelledby="clubs-tab"></div>
+        <div class="tab-pane fade" id="players" role="tabpanel" aria-labelledby="players-tab"></div>
+    </div>
+}
+else
+{
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="sportnews" role="tabpanel" aria-labelledby="sportnews-tab"></div>
+        <div class="tab-pane fade" id="fixtures" role="tabpanel" aria-labelledby="fixtures-tab"></div>
+        <div class="tab-pane fade" id="standings" role="tabpanel" aria-labelledby="standings-tab"></div>
+        <div class="tab-pane fade" id="matchresults" role="tabpanel" aria-labelledby="matchresults-tab"></div>
+        <div class="tab-pane fade" id="clubs" role="tabpanel" aria-labelledby="clubs-tab"></div>
+    </div>
+}
 
-<div>
-    <div id="sportnews" class="tab-content active">
-    </div>
-    <div id="fixtures" class="tab-content">
-    </div>
-    <div id="standings" class="tab-content">
-    </div>
-    <div id="tournaments" class="tab-content">
-    </div>
-    <div id="matchresults" class="tab-content">
-    </div>
-    <div id="clubs" class="tab-content">
-    </div>
-</div>
