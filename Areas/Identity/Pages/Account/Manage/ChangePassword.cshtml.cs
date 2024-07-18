@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyField.Data;
+using MyField.Interfaces;
 using MyField.Models;
+using MyField.Services;
 
 namespace MyField.Areas.Identity.Pages.Account.Manage
 {
@@ -21,17 +23,24 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<UserBaseModel> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
         private readonly Ksans_SportsDbContext _context;
+        private readonly EmailService _emailService;
+        private readonly IActivityLogger _activityLogger;
+
 
         public ChangePasswordModel(
             UserManager<UserBaseModel> userManager,
             SignInManager<UserBaseModel> signInManager,
             ILogger<ChangePasswordModel> logger,
-            Ksans_SportsDbContext context)
+            Ksans_SportsDbContext context,
+            EmailService emailService,
+            IActivityLogger activityLogger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _context = context;
+            _emailService = emailService;
+            _activityLogger = activityLogger;
         }
 
         /// <summary>
@@ -62,7 +71,7 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             /// </summary>
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Old temporal password")]
+            [Display(Name = "Old password")]
             public string OldPassword { get; set; }
 
             /// <summary>
@@ -132,7 +141,25 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
             _logger.LogInformation("User changed their password successfully.");
             StatusMessage = "Your password has been changed.";
 
-            return RedirectToPage("/Index");
+            string emailBody = $@"
+                    Hi {user.FirstName} {user.LastName},<br/><br/>
+                    Your password has been changed successfully  
+                    and now you will be required to use your new password for aunthetication.<br/><br/>
+                    If you did not request this change, please contact our support team immediately.<br/><br>
+                    Kind regards,<br/>
+                    K&S Foundation Support Team
+            ";
+
+            await _emailService.SendEmailAsync(
+                user.Email,
+                "Password Changed Successful",
+                emailBody);
+
+            await _activityLogger.Log($"Changed password", user.Id);
+
+            TempData["Message"] = $"You have successfully changed your password";
+
+            return RedirectToAction("PasswordAndSecurity", "Users");
         }
 
     }

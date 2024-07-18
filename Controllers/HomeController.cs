@@ -929,7 +929,7 @@ namespace MyField.Controllers
             return sportManagersMeetings;
         }
 
-        public IActionResult Privacy()
+        public IActionResult PrivacyPolicy()
         {
             return View();
         }

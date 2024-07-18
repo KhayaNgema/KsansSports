@@ -90,9 +90,8 @@ namespace MyField.Areas.Identity.Pages.Account
             [Display(Name = "Date of birth")]
             public DateTime DateOfBirth { get; set; }
 
-            [Required]
             [Display(Name = "Profile picture")]
-            public IFormFile ProfilePicture { get; set; }
+            public IFormFile? ProfilePicture { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]

@@ -1836,6 +1836,83 @@ body {
         background-color: white;
     }
 
+.user-profile-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius:7px;
+    background-color: white;
+}
+
+.security-description-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+
+/*User account management css*/
+
+
+.user-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details {
+    margin-left: 10px;
+}
+
+.profile-label {
+    font-weight: bold;
+    margin: 0;
+}
+
+.profile-username {
+    margin: 0;
+}
+
+.profile-arrow {
+    font-size: 18px;
+    text-decoration: none;
+    color: grey;
+    display: inline-block;
+    text-align: center;
+}
+
+    .profile-arrow:hover {
+        color: #007bff;
+    }
+
+
+.fa-shield-alt {
+    color: black;
+    margin-right: 5px;
+}
+
+.fa-lock {
+    color: black;
+    margin-right: 5px;
+}
 
 
 

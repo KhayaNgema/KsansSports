@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyField.Data;
+using MyField.Interfaces;
 using MyField.Models;
 using MyField.Services;
 
@@ -23,19 +24,22 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
         private readonly ILogger<ChangeFirstTimeLoginPasswordModel> _logger;
         private readonly Ksans_SportsDbContext _context;
         private readonly EmailService _emailService;
+        private readonly IActivityLogger _activityLogger;
 
         public ChangeFirstTimeLoginPasswordModel(
             UserManager<UserBaseModel> userManager,
             SignInManager<UserBaseModel> signInManager,
             ILogger<ChangeFirstTimeLoginPasswordModel> logger,
             Ksans_SportsDbContext context,
-            EmailService emailService)
+            EmailService emailService,
+            IActivityLogger activityLogger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _context = context;
             _emailService = emailService;
+            _activityLogger = activityLogger;
         }
 
         /// <summary>
@@ -146,6 +150,8 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
                 user.Email,
                 "Temporal Password Changed Successful",
                 emailBody);
+
+            await _activityLogger.Log($"Changed temporal password at first time login", user.Id);
 
             return RedirectToPage("/Account/Login");
         }

@@ -14,19 +14,17 @@
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group text-center">
-                <div class="form-group text-center">
-                    <div class="mb-3">
-                        <div style="display: flex; justify-content: center; position: relative;">
-                            <div class="club-badge-container" style="border: 1px solid #ccc; padding: 0; border-radius: 5%; width: 150px; height: 150px; overflow: hidden; position: relative;">
-                                <i class="fa fa-club" id="club-badge-placeholder" style="font-size: 90px; color: #f0f0f0;"></i>
-                                <img id="club-badge-preview" alt="" class="club-badge-image" style="border-radius: 5%; width: 100%; height: 100%; object-fit: cover; display: none;" />
-                            </div>
-                            <label for="Input_ClubBadge" class="camera-icon" style="position: absolute; bottom: 0; margin: 10px; color: #000325; cursor: pointer; z-index: 1;  margin-top:5px;">
-                                <i class="fa fa-camera" style="font-size: 30px;"></i>
-                                <input asp-for="ClubBadges" id="Input_ClubBadge" class="form-control" type="file" onchange="previewClubBadge(event)" accept="image/*" style="display: none;" required />
-                                <input asp-for="ClubBadges" id="Input_ClubBadgeFileName" type="hidden" />
-                            </label>
+                <div class="mb-3">
+                    <div style="display: flex; justify-content: center; position: relative;">
+                        <div class="club-badge-container" style="border: 1px solid #ccc; padding: 0; border-radius: 5%; width: 150px; height: 150px; overflow: hidden; position: relative;">
+                            <i class="fa fa-club" id="club-badge-placeholder" style="font-size: 90px; color: #f0f0f0;"></i>
+                            <img id="club-badge-preview" alt="" class="club-badge-image" style="border-radius: 5%; width: 100%; height: 100%; object-fit: cover; display: none;" />
                         </div>
+                        <label for="Input_ClubBadge" class="camera-icon" style="position: absolute; bottom: 0; margin: 10px; color: #000325; cursor: pointer; z-index: 1;  margin-top:5px;">
+                            <i class="fa fa-camera" style="font-size: 30px;"></i>
+                            <input asp-for="ClubBadges" id="Input_ClubBadge" class="form-control" type="file" onchange="previewClubBadge(event)" accept="image/*" style="display: none;" />
+                            <input asp-for="ClubBadges" id="Input_ClubBadgeFileName" type="hidden" />
+                        </label>
                     </div>
                     <span asp-validation-for="ClubBadges" class="text-danger"></span>
                 </div>

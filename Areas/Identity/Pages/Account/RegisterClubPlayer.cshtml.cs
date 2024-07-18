@@ -92,9 +92,9 @@ namespace MyField.Areas.Identity.Pages.Account
             [Display(Name = "Profile picture")]
             public IFormFile ProfilePicture { get; set; }
 
-            [Required(ErrorMessage = "Player card is required.")]
+
             [Display(Name = "Player card")]
-            public IFormFile PlayerCard{ get; set; }
+            public IFormFile? PlayerCard{ get; set; }
 
             [Required]
             [Display(Name = "Phone number")]

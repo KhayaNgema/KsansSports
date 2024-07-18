@@ -7,6 +7,11 @@ namespace MyField.Models
 {
     public class Club
     {
+        public Club()
+        {
+            ClubBadge = "Images/default_club_image.jpg";
+        }
+
         [Display(Name = "Club Id")]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClubId { get; set; }
@@ -63,11 +68,6 @@ namespace MyField.Models
         public bool IsSuspended { get; set; }
 
         public ClubManager ClubManager { get; set; }
-
-        public Club()
-        {
-           
-        }
     }
 
     public enum ClubStatus

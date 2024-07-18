@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using MyField.Interfaces;
 using MyField.Models;
 using MyField.Services;
 
@@ -15,11 +16,15 @@ namespace MyField.Areas.Identity.Pages.Account
     {
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly EmailService _emailService;
+        private readonly IActivityLogger _activityLogger;
 
-        public ResetPasswordModel(UserManager<UserBaseModel> userManager, EmailService emailService)
+        public ResetPasswordModel(UserManager<UserBaseModel> userManager, 
+            EmailService emailService,
+            IActivityLogger activityLogger)
         {
             _userManager = userManager;
             _emailService = emailService;
+            _activityLogger = activityLogger;
         }
 
         [BindProperty]
@@ -92,6 +97,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     user.Email,
                     "Password Reset Successful",
                     emailBody);
+
+                await _activityLogger.Log($"Forgot and reset password", user.Id);
 
                 return RedirectToPage("./ResetPasswordConfirmation");
             }

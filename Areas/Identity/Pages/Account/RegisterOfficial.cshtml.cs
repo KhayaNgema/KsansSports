@@ -87,9 +87,9 @@ namespace MyField.Areas.Identity.Pages.Account
             [Display(Name = "Date of birth")]
             public DateTime DateOfBirth { get; set; }
 
-            [Required(ErrorMessage = "The Profile picture field is required.")]
+
             [Display(Name = "Profile picture")]
-            public IFormFile ProfilePicture { get; set; }
+            public IFormFile? ProfilePicture { get; set; }
 
             [Required]
             [Display(Name = "Phone number")]

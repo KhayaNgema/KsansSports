@@ -54,7 +54,7 @@ else
                 @Model.DateOfBirth.ToString("dd MMM, yyy")
             </div>
         </div>
-        @if (User.IsInRole("Personnel Administrator") || User.IsInRole("Fans Administrator"))
+        @if (User.IsInRole("Personnel Administrator"))
         {
             <div class="row">
                 <div class="col-md-12">

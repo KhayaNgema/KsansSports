@@ -22,7 +22,7 @@ namespace MyField.ViewModels
 
 
         [Display(Name = "Badge")]
-        public IFormFile ClubBadges { get; set; }
+        public IFormFile? ClubBadges { get; set; }
 
         public string ClubAbbr { get; set; }
     }

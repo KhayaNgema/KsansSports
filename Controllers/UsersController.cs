@@ -36,6 +36,31 @@ namespace MyField.Controllers
         }
 
         [HttpGet]
+
+        public async Task<IActionResult> PasswordAndSecurity()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var userRole = await _context.UserRoles
+                 .Where(ur => ur.UserId == user.Id)
+                 .Join(_context.Roles,
+                 ur => ur.RoleId,
+                 r => r.Id,
+                 (ur, r) => r.Name)
+                 .FirstOrDefaultAsync();
+
+            var viewModel = new PrivacyAndSecurityViewModel
+            {
+                UserRole = userRole,
+                UserId = user.Id,
+                ProfilePicture = user.ProfilePicture,
+                FullNames = $"{user.FirstName} {user.LastName}",
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> UserProfile(string? userId)
         {
             if (userId == null)
