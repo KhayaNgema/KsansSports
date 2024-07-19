@@ -1,0 +1,443 @@
+2024-07-19 22:37:54.511 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.519 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.520 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:54.521 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:37:55.246 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.315 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.318 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.320 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.321 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.322 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.324 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.325 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.326 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.327 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.328 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.329 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:37:55.394 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.580 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.581 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.582 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.594 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.595 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.596 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.596 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.597 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:37:55.623 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:37:55.629 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:37:55.633 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:37:55.638 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:37:55.702 +02:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: (localdb)\mssqllocaldb@Ksans_Sports'
+2024-07-19 22:37:55.702 +02:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-19 22:37:55.702 +02:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-19 22:37:55.721 +02:00 [INF] Server khaya-asuszenbo:23808:c1e9f497 successfully announced in 10.7767 ms
+2024-07-19 22:37:55.723 +02:00 [INF] Server khaya-asuszenbo:23808:c1e9f497 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-19 22:37:55.731 +02:00 [INF] Server khaya-asuszenbo:23808:c1e9f497 all the dispatchers started
+2024-07-19 22:37:55.961 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-19 22:37:55.971 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-19 22:37:55.979 +02:00 [INF] Executing ViewResult, running view Index.
+2024-07-19 22:37:56.065 +02:00 [INF] Executed ViewResult - view Index executed in 85.53ms.
+2024-07-19 22:37:56.069 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 97.2844ms
+2024-07-19 22:37:56.069 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-19 22:37:56.071 +02:00 [INF] HTTP GET / responded 200 in 109.8890 ms
+2024-07-19 22:37:56.094 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-19 22:37:56.094 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-19 22:37:56.094 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-19 22:37:56.138 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.SportNewsIndex (MyField)'
+2024-07-19 22:37:56.142 +02:00 [INF] Route matched with {action = "SportNewsIndex", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SportNewsIndex() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-19 22:37:56.156 +02:00 [INF] Executing PartialViewResult, running view NewsPartial.
+2024-07-19 22:37:56.157 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-19 22:37:56.159 +02:00 [INF] Executed PartialViewResult - view NewsPartial executed in 3.9274ms.
+2024-07-19 22:37:56.159 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.SportNewsIndex (MyField) in 17.1465ms
+2024-07-19 22:37:56.159 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.SportNewsIndex (MyField)'
+2024-07-19 22:37:56.159 +02:00 [INF] HTTP GET /SportNews/SportNewsIndex responded 200 in 21.7604 ms
+2024-07-19 22:37:56.172 +02:00 [INF] Sending file. Request path: '/Images/my_banner.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\my_banner.jpg'
+2024-07-19 22:37:56.175 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-19 22:37:56.180 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-19 22:37:56.322 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+ORDER BY [s].[PublishedDate] DESC
+2024-07-19 22:37:56.363 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-07-19 22:37:56.376 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 13.4091ms.
+2024-07-19 22:37:56.376 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 195.9111ms
+2024-07-19 22:37:56.376 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-19 22:37:56.376 +02:00 [INF] HTTP GET /SportNews/Index responded 200 in 200.5136 ms
+2024-07-19 22:37:56.381 +02:00 [INF] Sending file. Request path: '/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'
+2024-07-19 22:37:56.381 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b56c7336-5150-4580-b24b-afca39969ee6_News.webp'
+2024-07-19 22:37:56.382 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'
+2024-07-19 22:37:56.383 +02:00 [INF] Sending file. Request path: '/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'
+2024-07-19 22:37:56.383 +02:00 [INF] Sending file. Request path: '/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'
+2024-07-19 22:37:56.383 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'
+2024-07-19 22:37:58.038 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-07-19 22:37:58.045 +02:00 [INF] Route matched with {action = "Index", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.StandingsController (MyField).
+2024-07-19 22:37:58.087 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+ORDER BY [l].[CreatedDateTime] DESC
+2024-07-19 22:37:58.132 +02:00 [INF] Executing PartialViewResult, running view _StandingsPartial.
+2024-07-19 22:37:58.161 +02:00 [INF] Executed PartialViewResult - view _StandingsPartial executed in 30.244ms.
+2024-07-19 22:37:58.161 +02:00 [INF] Executed action MyField.Controllers.StandingsController.Index (MyField) in 116.2953ms
+2024-07-19 22:37:58.161 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.Index (MyField)'
+2024-07-19 22:37:58.161 +02:00 [INF] HTTP GET /Standings responded 200 in 123.0949 ms
+2024-07-19 22:37:58.165 +02:00 [INF] Executing endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-07-19 22:37:58.173 +02:00 [INF] Route matched with {action = "StandingsTable", controller = "Standings", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StandingsTable(System.Nullable`1[System.Int32]) on controller MyField.Controllers.StandingsController (MyField).
+2024-07-19 22:37:58.206 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__leagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[StandingId], [s].[ClubId], [s].[CreatedById], [s].[CreatedDateTime], [s].[Discriminator], [s].[Draw], [s].[GoalDifference], [s].[GoalsConceded], [s].[GoalsScored], [s].[Last5Games], [s].[LeagueId], [s].[Lose], [s].[MatchPlayed], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[Points], [s].[Position], [s].[Reason], [s].[Wins], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Standing] AS [s]
+INNER JOIN [Club] AS [c] ON [s].[ClubId] = [c].[ClubId]
+WHERE [s].[LeagueId] = @__leagueId_0
+ORDER BY [s].[Points] DESC, [s].[GoalDifference] DESC, [s].[MatchPlayed]
+2024-07-19 22:37:58.286 +02:00 [INF] Executing PartialViewResult, running view _StandingsTablePartial.
+2024-07-19 22:37:58.341 +02:00 [INF] Executed PartialViewResult - view _StandingsTablePartial executed in 56.0177ms.
+2024-07-19 22:37:58.341 +02:00 [INF] Executed action MyField.Controllers.StandingsController.StandingsTable (MyField) in 168.689ms
+2024-07-19 22:37:58.341 +02:00 [INF] Executed endpoint 'MyField.Controllers.StandingsController.StandingsTable (MyField)'
+2024-07-19 22:37:58.342 +02:00 [INF] HTTP GET /Standings/StandingsTable responded 200 in 176.1547 ms
+2024-07-19 22:37:58.349 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'
+2024-07-19 22:37:58.349 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-07-19 22:37:58.349 +02:00 [INF] Sending file. Request path: '/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png'
+2024-07-19 22:37:58.350 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'
+2024-07-19 22:37:58.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'
+2024-07-19 22:37:58.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'
+2024-07-19 22:37:58.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'
+2024-07-19 22:37:58.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-07-19 22:37:58.351 +02:00 [INF] Sending file. Request path: '/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg'
+2024-07-19 22:38:49.509 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-19 22:38:49.553 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-19 22:38:51.159 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-19 22:38:54.242 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-19 22:38:54.268 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-19 22:38:54.268 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-19 22:38:54.283 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-19 22:38:54.283 +02:00 [INF] Hosting environment: Development
+2024-07-19 22:38:54.283 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-19 22:38:54.400 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 22:38:54.624 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 22:38:54.624 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 22:38:54.625 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 22:38:54.625 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 22:38:54.626 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 225.8649ms
+2024-07-19 22:38:54.630 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.3311ms
+2024-07-19 22:38:54.637 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 13.6712ms
+2024-07-19 22:38:54.637 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 12.4148ms
+2024-07-19 22:38:54.637 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 11.9833ms
+2024-07-19 22:38:54.645 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 22:38:54.666 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.4014ms
+2024-07-19 22:38:54.681 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 22:38:54.698 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-19 22:38:54.699 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 0.9934ms
+2024-07-19 22:38:54.708 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 27.2910ms
+2024-07-19 22:38:54.712 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 22:38:54.722 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 22:38:54.724 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 2.1631ms
+2024-07-19 22:38:54.931 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 218.7637ms
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 22:38:54.932 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 22:38:54.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 1.0769ms
+2024-07-19 22:38:54.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 1.4226ms
+2024-07-19 22:38:54.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.7539ms
+2024-07-19 22:38:54.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 3.0306ms
+2024-07-19 22:38:54.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 3.2509ms
+2024-07-19 22:38:54.936 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 3.5914ms
+2024-07-19 22:38:58.908 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings - -
+2024-07-19 22:38:59.066 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings - - - 200 - text/html;+charset=utf-8 157.8031ms
+2024-07-19 22:38:59.070 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-19 22:38:59.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 244.8534ms
+2024-07-19 22:38:59.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 22:38:59.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 22:38:59.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:38:59.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 22:38:59.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 22:38:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 22:38:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 22:38:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:38:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 22:38:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 3.9226ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 4.0756ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 3.1806ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 3.2794ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 2.9575ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 2.9677ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 3.0667ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 3.0869ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 2.1472ms
+2024-07-19 22:38:59.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 2.4054ms
+2024-07-19 22:38:59.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 2.8159ms
+2024-07-19 22:38:59.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 5.0323ms
+2024-07-19 22:38:59.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 2.6089ms
+2024-07-19 22:38:59.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 4.0525ms
+2024-07-19 22:38:59.328 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 3.7090ms
+2024-07-19 22:38:59.329 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 6.8194ms
+2024-07-19 22:39:05.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - -
+2024-07-19 22:39:05.834 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - - - 200 - text/html;+charset=utf-8 10.8942ms
+2024-07-19 22:39:05.840 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/Index - -
+2024-07-19 22:39:06.101 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/Index - - - 200 - text/html;+charset=utf-8 261.7446ms
+2024-07-19 22:39:10.272 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 22:39:10.273 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 22:39:10.273 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 22:39:10.274 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8301ms
+2024-07-19 22:39:10.275 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 2.9093ms
+2024-07-19 22:39:10.276 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 4.4395ms
+2024-07-19 22:39:10.337 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 22:39:10.340 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.7396ms
+2024-07-19 22:39:54.249 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2073 - -
+2024-07-19 22:39:54.307 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2073 - - - 200 - text/html;+charset=utf-8 58.0445ms
+2024-07-19 22:39:54.316 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 22:39:54.316 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:39:54.316 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 22:39:54.317 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8985ms
+2024-07-19 22:39:54.317 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.4495ms
+2024-07-19 22:39:54.318 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.5889ms
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 22:39:54.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 22:39:54.319 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.4265ms
+2024-07-19 22:39:54.319 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.4617ms
+2024-07-19 22:39:54.320 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.7160ms
+2024-07-19 22:39:54.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 22:39:54.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 22:39:54.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 22:39:54.321 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 22:39:54.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 2.4604ms
+2024-07-19 22:39:54.321 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 22:39:54.321 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 22:39:54.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 4.1874ms
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 4.6736ms
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 3.9084ms
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 4.4295ms
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 3.9996ms
+2024-07-19 22:39:54.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 3.1116ms
+2024-07-19 22:39:54.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 8.0867ms
+2024-07-19 22:39:54.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 5.9685ms
+2024-07-19 22:39:54.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 8.2855ms
+2024-07-19 22:39:56.722 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2068 - -
+2024-07-19 22:39:56.733 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2068 - - - 200 - text/html;+charset=utf-8 11.9546ms
+2024-07-19 22:39:56.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:39:56.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:39:56.742 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.4071ms
+2024-07-19 22:39:56.743 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 2.2655ms
+2024-07-19 22:39:59.388 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2064 - -
+2024-07-19 22:39:59.396 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2064 - - - 200 - text/html;+charset=utf-8 8.2496ms
+2024-07-19 22:39:59.399 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:39:59.399 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:39:59.400 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8810ms
+2024-07-19 22:39:59.400 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.6908ms
+2024-07-19 22:40:03.469 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2053 - -
+2024-07-19 22:40:03.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2053 - - - 200 - text/html;+charset=utf-8 3.5608ms
+2024-07-19 22:40:07.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=1052 - -
+2024-07-19 22:40:07.206 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=1052 - - - 200 - text/html;+charset=utf-8 7.4258ms
+2024-07-19 22:40:07.209 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:40:07.210 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:40:07.210 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.6955ms
+2024-07-19 22:40:07.211 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.0679ms
+2024-07-19 22:40:11.038 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-19 22:40:11.081 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 43.5609ms
+2024-07-19 22:40:11.087 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 22:40:11.087 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 22:40:11.087 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8376ms
+2024-07-19 22:40:11.088 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 1.0811ms
+2024-07-19 22:40:11.088 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 22:40:11.088 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 22:40:11.089 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 0.7129ms
+2024-07-19 22:40:11.090 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.0446ms
+2024-07-19 22:40:11.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 22:40:11.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 22:40:11.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 22:40:11.092 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 1.1757ms
+2024-07-19 22:40:11.092 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 1.2707ms
+2024-07-19 22:40:11.092 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 1.2886ms
+2024-07-19 22:40:11.093 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 22:40:11.093 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 22:40:11.093 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 22:40:11.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 0.9728ms
+2024-07-19 22:40:11.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.0119ms
+2024-07-19 22:40:11.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.2659ms
+2024-07-19 22:40:11.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 22:40:11.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 22:40:11.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 22:40:11.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 22:40:11.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 22:40:11.095 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 22:40:11.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.0204ms
+2024-07-19 22:40:11.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.0840ms
+2024-07-19 22:40:11.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.1584ms
+2024-07-19 22:40:11.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.7523ms
+2024-07-19 22:40:11.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 0.6610ms
+2024-07-19 22:40:11.096 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.7369ms

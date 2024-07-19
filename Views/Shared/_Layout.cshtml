@@ -117,8 +117,8 @@
         }
         else
         {
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="homeTabsNav">
-                <div class="container-fluid">
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="homeTabsNav">
+                    <div class="container-fluid">
                     <div class="tab-container" style="overflow-x: auto; white-space: nowrap;">
                         <ul class="nav nav-tabs" id="sportsTabs" role="tablist" style="display: flex; flex-wrap: nowrap;">
                             <li class="nav-item">
@@ -144,7 +144,7 @@
 
     </header>
     <div id="page-content-wrapper" class="main-content">
-        <div class="container-fluid" style="padding-right:20px; padding-left:20px;">
+        <div class="container-fluid" style="padding-right:0; padding-left:0; margin-right:0!important;">
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
@@ -173,6 +173,23 @@
         }
     });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        function adjustBodyPadding() {
+            var loginNav = document.getElementById('loginNav');
+            var homeTabsNav = document.getElementById('homeTabsNav');
+
+            var loginNavHeight = loginNav ? loginNav.offsetHeight : 0;
+            var homeTabsNavHeight = homeTabsNav ? homeTabsNav.offsetHeight : 0;
+
+            var totalPadding = loginNavHeight + homeTabsNavHeight;
+            document.body.style.paddingTop = totalPadding + 'px';
+        }
+
+        adjustBodyPadding();
+
+        window.addEventListener('resize', adjustBodyPadding);
+    });
+
     function loadTab(tabName) {
 
         $('.nav-link').removeClass('active');
@@ -186,15 +203,15 @@
         if ($('#' + tabName).html().trim() === '') {
             var url;
             if (tabName === 'sportnews') {
-                url = '@Url.Action("Index", "SportNews")';
+                url = '@Url.Action("SportNewsIndex", "SportNews")';
             } else if (tabName === 'fixtures') {
-                url = '@Url.Action("Index", "Fixtures")';
+                url = '@Url.Action("LeagueFixtures", "Fixtures")';
             } else if (tabName === 'standings') {
                 url = '@Url.Action("Index", "Standings")';
             } else if (tabName === 'matchresults') {
-                url = '@Url.Action("Index", "MatchResults")';
+                url = '@Url.Action("LeagueResults", "MatchResults")';
             } else if (tabName === 'clubs') {
-                url = '@Url.Action("Index", "Clubs")';
+                url = '@Url.Action("LeagueClubs", "Clubs")';
             }
 
             $.ajax({

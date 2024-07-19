@@ -1,0 +1,36 @@
+﻿
+<div class="standingsHeader" style="background-image: url('/Images/my_banner.jpg'); color:white;">
+    <br />
+    <p class="text-center" style="font-size:36px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Players</p>
+    <br />
+    <div class="fixtures-search-create-container" style="margin-bottom: 10px;">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-6 col-lg-4 d-flex justify-content-between align-items-center">
+                <div class="search-bar" style="flex: 1; margin-right: 10px;">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search player..." style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+<div>
+    <div>
+        <div style="margin-bottom:10px;" id="playersContent"> </div>
+    </div>
+</div>
+
+<script>
+    function fetchPlayers() {
+        $.ajax({
+            url: '/Users/Players',
+            success: function (data) {
+                $('#playersContent').html(data);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        fetchPlayers();
+    });
+</script>

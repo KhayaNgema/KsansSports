@@ -35,6 +35,11 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
+        public async Task<IActionResult> AllDivisionPlayers()
+        {
+            return PartialView("DivisionPlayersPartial");
+        }
+
         public async Task<IActionResult> Players()
         {
             var players = await _context.Player

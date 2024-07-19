@@ -18,11 +18,18 @@
                 <div class="search-bar" style="flex: 1; margin-right: 10px;">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search club..." style="width: 100%;">
                 </div>
-                <div class="create-button">
-                    <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-create" style="white-space: nowrap;">
-                        <i class="fas fa-plus"></i> Create new
-                    </a>
-                </div>
+                @if(User.IsInRole("Sport Administrator"))
+                {
+                    <div class="create-button">
+                        <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-create" style="white-space: nowrap;">
+                            <i class="fas fa-plus"></i> Create new
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    
+                }
             </div>
         </div>
     </div>
@@ -179,11 +186,18 @@ else
 {
     <div class="d-flex justify-content-center align-items-center" style="height: 60vh; flex-direction: column;">
         <p class="text-center">There are no participating clubs yet.</p>
-        <div class="create-button">
-            <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-create" style="white-space: nowrap;">
-                <i class="fas fa-plus"></i> Create new
-            </a>
-        </div>
+        @if (User.IsInRole("Sport Administrator"))
+        {
+            <div class="create-button">
+                <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-create" style="white-space: nowrap;">
+                    <i class="fas fa-plus"></i> Create new
+                </a>
+            </div>
+        }
+        else
+        {
+
+        }
     </div>
 }
 

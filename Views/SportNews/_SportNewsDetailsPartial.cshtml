@@ -5,7 +5,15 @@
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 <br />
-@await Html.PartialAsync("_SportNewsButton")
+@if (User.IsInRole("News Updator") || User.IsInRole("News Administrator"))
+{
+    @await Html.PartialAsync("_BackButton")
+}
+else
+{
+    @await Html.PartialAsync("_SportNewsButton")
+}
+
 <br />
 <div class="col-md-12 col-sm-12 col-lg-12 sport-news-content">
     <h4 class="sport-news-heading">@Model.NewsHeading</h4>

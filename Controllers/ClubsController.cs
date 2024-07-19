@@ -36,6 +36,12 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
+
+        public async Task<IActionResult> LeagueClubs()
+        {
+            return PartialView("LeagueClubsPartial");
+        }
+
         public async Task<IActionResult> ClubPlayers(int clubId)
         {
             var clubPlayers = await _context.Player

@@ -1,13 +1,7 @@
 ﻿@model IEnumerable<MyField.Models.Fixture>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
 <br />
-<h4 class="text-center">KSANS SPORTS FIXTURES</h4>
-<br />
-<div class="fixtures-match-container">
+<div class="fixtures-match-container" style="width:100%; padding-right:10px; padding-left:10px;">
     @if(Model.Any())
     {
         <div class="row">

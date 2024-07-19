@@ -4,11 +4,9 @@
     ViewData["Title"] = "Back Office Match Results";
     DateTime currentDate = DateTime.MinValue;
 }
+<br />
 
-<br />
-<h4 class="text-center">Match Results</h4>
-<br />
-<div class="matchResultContainer">
+<div class="matchResultContainer" style="width:100%; padding-right:10px; padding-left:10px;">
     @if (Model.Any())
     {
         <div class="table-responsive">

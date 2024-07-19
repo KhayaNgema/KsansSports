@@ -1,24 +1,28 @@
 ﻿
 
-<br />
-<h4 class="text-center">STANDINGS</h4>
-<br />
-<div class="standingContainer" style="width:100%;">
-    <div class="search-bar">
-        <span style="float: left; margin-right: 10px; margin-top: 5px;">Season</span>
-        <select id="leagueSelect" onchange="onLeagueChange()" class="form-select" style="float: left;">
-            @if (ViewBag.Leagues != null)
-            {
-                foreach (var league in ViewBag.Leagues)
+<div class="standingsHeader" style="background-image: url('/Images/my_banner.jpg'); color:white;">
+    <br />
+    <p class="text-center" style="font-size:36px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Standings</p>
+    <br />
+    <div class="col-12">
+        <div class="search-bar" style="margin-bottom:50px; display: flex; align-items: center; justify-content: center; padding-bottom:50px;">
+            <span style="margin-right:10px;">Season</span>
+            <select id="leagueSelect" onchange="onLeagueChange()" class="form-select">
+                @if (ViewBag.Leagues != null)
                 {
-                    <option value="@league.LeagueId">@league.LeagueYears</option>
+                    foreach (var league in ViewBag.Leagues)
+                    {
+                        <option value="@league.LeagueId">@league.LeagueYears</option>
+                    }
                 }
-            }
-        </select>
-        <span class="caret" style="float: left;"></span>
+            </select>
+        </div>
     </div>
+</div>
+
+<div class="standingsContainer">
     <div>
-        <div style="margin-bottom:20px;" id="standingsTable"> </div>
+        <div style="margin-bottom:10px;" id="standingsTable"> </div>
     </div>
 </div>
 

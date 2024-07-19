@@ -3,9 +3,7 @@
 @{
     HashSet<string> displayedClubs = new HashSet<string>();
 }
-
-<br />
-<div id="standingsContainer" style="width:100%;">
+<div id="standingsContainer" style="width:100%; padding-right:10px; padding-left:10px;">
     <div class="table-responsive">
         @if (Model.Any())
         {
@@ -50,7 +48,7 @@
                     {
                         if (displayedClubs.Contains(item.Club.ClubName))
                         {
-                            continue; 
+                            continue;
                         }
 
                         displayedClubs.Add(item.Club.ClubName);
@@ -65,7 +63,8 @@
                             <td style="white-space: nowrap;">
                                 <span style="margin-right: 10px;">@position</span>
                                 <img src="~/@item.Club.ClubBadge" alt="@item.Club.ClubName" class="club-badge-image" style="max-width:35px; max-height:35px;" />
-                                @Html.DisplayFor(modelItem => item.Club.ClubName)
+                                <span class="full-club-name">@Html.DisplayFor(modelItem => item.Club.ClubName)</span>
+                                <span class="club-abbreviation">@Html.DisplayFor(modelItem => item.Club.ClubAbbr)</span>
                             </td>
 
                             <td>
@@ -127,7 +126,7 @@
         }
         else
         {
-            <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are currently no standings for this season </p>
+            <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are currently no standings for this season</p>
         }
 
     </div>

@@ -73,7 +73,7 @@
                             @Html.DisplayFor(modelItem => item.NewsStatus)
                         </td>
                         <td style="white-space: nowrap;">
-                            <a href="#" onclick="openSportNewsDetailsModal(@item.NewsId)">
+                            <a href="@Url.Action("Details", "SportNews", new { newsId = item.NewsId })">
                                 <i class="fas fa-info-circle" style="color: #2E5A88;"></i>
                             </a>
                         </td>

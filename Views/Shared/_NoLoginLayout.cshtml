@@ -173,6 +173,24 @@
         $("#homeTabsNav").toggleClass("shifted");
         $("#loginNav").toggleClass("shifted");
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        function adjustBodyPadding() {
+            var loginNav = document.getElementById('loginNav');
+            var homeTabsNav = document.getElementById('homeTabsNav');
+
+            var loginNavHeight = loginNav ? loginNav.offsetHeight : 0;
+            var homeTabsNavHeight = homeTabsNav ? homeTabsNav.offsetHeight : 0;
+
+            var totalPadding = loginNavHeight + homeTabsNavHeight;
+            document.body.style.paddingTop = totalPadding + 'px';
+        }
+
+        adjustBodyPadding();
+
+        window.addEventListener('resize', adjustBodyPadding);
+    });
+
 </script>
 
 @RenderSection("Scripts", required: false)

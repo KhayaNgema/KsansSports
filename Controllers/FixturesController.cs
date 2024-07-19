@@ -32,6 +32,12 @@ namespace MyField.Controllers
         }
 
 
+        public async Task<IActionResult> LeagueFixtures()
+        {
+            return PartialView("LeagueFixturesPartial");
+        }
+
+
         public async Task<IActionResult> MatchesToOfficiate()
         {
             var user = await _userManager.GetUserAsync(User);

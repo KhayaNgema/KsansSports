@@ -31,6 +31,13 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
+
+        public async Task<IActionResult> LeagueResults()
+        {
+            return PartialView("LeagueResultsPartial");
+        }
+
+
         // GET: MatchResults
         public async Task<IActionResult> MatchResultsBackOffice()
         {

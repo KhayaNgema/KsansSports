@@ -147,36 +147,42 @@ body {
 
     /*All nav bars styling*/ /*Layout page top nav bar for all layout pages*/
 
-    #loginNav {
-        background-color: #000325;
-        color: #2E5A88;
-        height: 60px;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-        width: 100%;
-        transition: margin-left 0.4s ease, padding-left 0.4s ease;
-        margin-left: 0;
-        padding-right: 0;
-    }
+#loginNav {
+    background-color: #000325;
+    color: #2E5A88;
+    height: 60px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    z-index: 1000;
+    transition: margin-left 0.4s ease, padding-left 0.4s ease;
+}
 
-    /*Landing page & Fans home page tabs top bar*/
+#homeTabsNav {
+    background-color: #d8d8d8;
+    color: black;
+    height: 43px;
+    border-radius: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right:0;
+    z-index: 999;
+    transition: margin-left 0.4s ease, padding-left 0.4s ease;
+}
 
-    #homeTabsNav {
-        background-color: #d8d8d8;
-        color: black;
-        height: 43px;
-        border-radius: 0;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-        width: 100%;
-        transition: margin-left 0.4s ease, padding-left 0.4s ease;
-        margin-left: 0;
-        padding-right: 0;
-    }
+
 
 
     /*Side & nav bars sizes in large screens */
@@ -188,6 +194,8 @@ body {
             transition: margin-left 0.4s ease, padding-left 0.4s ease; /* Add transition for both margin-left and padding-left */
             margin-left: 0;
             padding-right: 0;
+            margin-right: 0;
+            padding-left: 0;
         }
 
         #loginNav.shifted, #homeTabsNav.shifted {
@@ -216,6 +224,8 @@ body {
             transition: margin-left 0.4s ease, padding-left 0.4s ease; /* Add transition for both margin-left and padding-left */
             margin-left: 0;
             padding-right: 0;
+            margin-right: 0;
+            padding-left: 0;
         }
 
             #page-content-wrapper.shifted {
@@ -262,6 +272,8 @@ body {
             transition: margin-left 0.4s ease, padding-left 0.4s ease; /* Add transition for both margin-left and padding-left */
             margin-left: 0;
             padding-right: 0;
+            margin-right: 0;
+            padding-left: 0;
         }
 
         #loginNav.shifted, #homeTabsNav.shifted {
@@ -458,15 +470,6 @@ body {
             font-size: 10px;
         }
     }
-
-    /*Club standing css*/
-
-    #standingsContainer {
-        margin: 0 auto;
-        padding: 10px;
-        background-color: white;
-    }
-
 
 
     .club-list-Container {
@@ -1969,6 +1972,56 @@ body {
 .player-row {
     cursor: pointer;
 }
+
+/*All tables hover css*/
+
+.table tbody tr:hover {
+    background-color: #cff0f9;
+    cursor: pointer;
+}
+
+.table tbody tr.selected {
+    background-color: #c9eff5;
+}
+
+/*Standings tables*/
+
+.club-abbreviation {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .full-club-name {
+        display: inline;
+    }
+}
+
+@media (max-width: 767px) {
+    .full-club-name {
+        display: none;
+    }
+
+    .club-abbreviation {
+        display: inline;
+    }
+}
+
+
+.sportNewsContainer {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+
+.standingsContainer {
+    max-width: 1550px;
+    border-radius: 7px;
+    background-color: white;
+}
+
 
 
 

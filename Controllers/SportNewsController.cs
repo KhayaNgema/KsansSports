@@ -34,6 +34,10 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;   
         }
 
+        public async Task<IActionResult> SportNewsIndex()
+        {
+            return PartialView("NewsPartial");
+        }
 
         public async Task<IActionResult> NewsReview(int? newsId)
         {
