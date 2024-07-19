@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_NoLoginLayout.cshtml";
 }
 
+<style>
+    body {
+        background-image: url('/images/register_background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+
 <br />
 @await Html.PartialAsync("_BackButton")
 <h4 style="text-align:center;">Create a new account</h4>

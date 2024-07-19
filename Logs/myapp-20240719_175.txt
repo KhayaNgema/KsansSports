@@ -1,0 +1,880 @@
+2024-07-19 22:59:46.607 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.614 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.615 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:46.616 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-19 22:59:47.277 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.383 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.391 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.393 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.394 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.395 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.396 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.397 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.398 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.400 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.401 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.406 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-19 22:59:47.477 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.735 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.737 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.738 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.749 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.751 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.752 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.753 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.754 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-19 22:59:47.770 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:59:47.780 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:59:47.786 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:59:47.791 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-19 22:59:47.858 +02:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: (localdb)\mssqllocaldb@Ksans_Sports'
+2024-07-19 22:59:47.858 +02:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-19 22:59:47.858 +02:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-19 22:59:47.879 +02:00 [INF] Server khaya-asuszenbo:5432:e747ace4 successfully announced in 11.995 ms
+2024-07-19 22:59:47.881 +02:00 [INF] Server khaya-asuszenbo:5432:e747ace4 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-19 22:59:47.891 +02:00 [INF] Server khaya-asuszenbo:5432:e747ace4 all the dispatchers started
+2024-07-19 22:59:48.042 +02:00 [INF] Executing endpoint '/Account/Register'
+2024-07-19 22:59:48.063 +02:00 [INF] Route matched with {page = "/Account/Register", area = "Identity", action = "", controller = ""}. Executing page /Account/Register
+2024-07-19 22:59:48.096 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.RegisterModel.OnPostAsync - ModelState is "Invalid"
+2024-07-19 22:59:48.100 +02:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-07-19 22:59:48.239 +02:00 [INF] Executed page /Account/Register in 172.8926ms
+2024-07-19 22:59:48.240 +02:00 [INF] Executed endpoint '/Account/Register'
+2024-07-19 22:59:48.242 +02:00 [INF] HTTP POST /Identity/Account/Register responded 200 in 200.7471 ms
+2024-07-19 22:59:48.264 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-19 22:59:48.264 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2024-07-19 22:59:48.264 +02:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'C:\Users\khaya\.nuget\packages\microsoft.aspnetcore.identity.ui\7.0.17\staticwebassets\V5\lib\jquery-validation\dist\jquery.validate.js'
+2024-07-19 22:59:48.264 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-19 22:59:48.264 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-19 22:59:48.286 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-19 22:59:48.287 +02:00 [INF] Sending file. Request path: '/images/registar_image.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\registar_image.jpg'
+2024-07-19 22:59:48.296 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-19 22:59:48.359 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-19 22:59:48.454 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+ORDER BY [s].[PublishedDate] DESC
+2024-07-19 22:59:48.505 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-07-19 22:59:48.515 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 10.7302ms.
+2024-07-19 22:59:48.515 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 219.5631ms
+2024-07-19 22:59:48.515 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-19 22:59:48.515 +02:00 [INF] HTTP GET /sportnews responded 200 in 229.2393 ms
+2024-07-19 22:59:55.449 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-19 22:59:55.452 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-19 22:59:55.453 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-19 22:59:55.509 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2024-07-19 23:00:38.387 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-19 23:00:38.443 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-19 23:00:39.839 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-19 23:00:42.186 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-19 23:00:42.203 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-19 23:00:42.203 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-19 23:00:42.222 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-19 23:00:42.222 +02:00 [INF] Hosting environment: Development
+2024-07-19 23:00:42.222 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-19 23:00:42.366 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182
+2024-07-19 23:00:42.685 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 319.3688ms
+2024-07-19 23:00:42.686 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:00:42.689 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:00:42.689 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:00:42.689 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:00:42.689 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:00:42.690 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:00:42.694 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 4.4366ms
+2024-07-19 23:00:42.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 8.1913ms
+2024-07-19 23:00:42.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 7.8008ms
+2024-07-19 23:00:42.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 8.1124ms
+2024-07-19 23:00:42.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 12.1453ms
+2024-07-19 23:00:42.698 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 8.1414ms
+2024-07-19 23:00:42.705 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:00:42.714 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:00:42.719 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/register_background.jpg - -
+2024-07-19 23:00:42.721 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/register_background.jpg - - - 200 37671 image/jpeg 1.4250ms
+2024-07-19 23:00:42.728 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.5208ms
+2024-07-19 23:00:42.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-19 23:00:42.789 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 1.1375ms
+2024-07-19 23:00:42.940 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 225.7198ms
+2024-07-19 23:00:51.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:00:51.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:00:51.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:00:51.947 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2005ms
+2024-07-19 23:00:51.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 2.0867ms
+2024-07-19 23:00:51.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.3429ms
+2024-07-19 23:00:52.001 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:00:52.006 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 4.3836ms
+2024-07-19 23:00:57.679 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 23:00:57.728 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 48.3403ms
+2024-07-19 23:00:57.744 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:00:57.747 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.2604ms
+2024-07-19 23:00:57.751 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:00:57.751 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:00:57.752 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:00:57.752 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.4208ms
+2024-07-19 23:00:57.753 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.8227ms
+2024-07-19 23:00:57.753 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.7307ms
+2024-07-19 23:00:57.778 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:00:57.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8654ms
+2024-07-19 23:00:57.858 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:00:57.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.5166ms
+2024-07-19 23:00:58.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 23:00:58.049 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 13.4712ms
+2024-07-19 23:00:58.055 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 23:00:58.057 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 1.6859ms
+2024-07-19 23:00:58.063 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 23:00:58.095 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 31.2025ms
+2024-07-19 23:00:58.099 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 23:00:58.099 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 23:00:58.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 23:00:58.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 23:00:58.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 23:00:58.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 23:00:58.102 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.6451ms
+2024-07-19 23:00:58.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 6.2849ms
+2024-07-19 23:00:58.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 5.9413ms
+2024-07-19 23:00:58.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 5.8935ms
+2024-07-19 23:00:58.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 6.0289ms
+2024-07-19 23:00:58.106 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 6.1615ms
+2024-07-19 23:01:03.169 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-19 23:01:03.225 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 55.9527ms
+2024-07-19 23:01:03.242 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:03.244 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.9369ms
+2024-07-19 23:01:03.247 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:03.247 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:03.248 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.9281ms
+2024-07-19 23:01:03.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-19 23:01:03.248 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:03.249 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.6184ms
+2024-07-19 23:01:03.249 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4742ms
+2024-07-19 23:01:03.250 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 1.6823ms
+2024-07-19 23:01:03.265 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:03.265 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:03.266 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 0.8775ms
+2024-07-19 23:01:03.267 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.7597ms
+2024-07-19 23:01:03.269 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:03.270 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.6582ms
+2024-07-19 23:01:03.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:03.407 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.6965ms
+2024-07-19 23:01:03.421 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:03.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-19 23:01:03.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 1.8976ms
+2024-07-19 23:01:03.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 6.7830ms
+2024-07-19 23:01:05.308 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/Account/Register - -
+2024-07-19 23:01:05.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/Account/Register - - - 200 - text/html;+charset=utf-8 13.0603ms
+2024-07-19 23:01:05.334 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:05.336 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.2001ms
+2024-07-19 23:01:05.340 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:05.340 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:05.342 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.0923ms
+2024-07-19 23:01:05.342 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.1425ms
+2024-07-19 23:01:05.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:05.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:05.342 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1087ms
+2024-07-19 23:01:05.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:05.343 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 0.8215ms
+2024-07-19 23:01:05.343 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.5491ms
+2024-07-19 23:01:05.360 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:05.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.4938ms
+2024-07-19 23:01:05.419 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:05.423 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.9038ms
+2024-07-19 23:01:05.436 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:05.439 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/register_background.jpg - -
+2024-07-19 23:01:05.440 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/register_background.jpg - - - 200 37671 image/jpeg 1.0025ms
+2024-07-19 23:01:05.441 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 5.5010ms
+2024-07-19 23:01:06.626 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/Account/Login - -
+2024-07-19 23:01:06.640 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/Account/Login - - - 200 - text/html;+charset=utf-8 14.1040ms
+2024-07-19 23:01:06.653 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:06.655 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.4830ms
+2024-07-19 23:01:06.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:06.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:06.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-19 23:01:06.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:06.659 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.6006ms
+2024-07-19 23:01:06.659 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.9533ms
+2024-07-19 23:01:06.659 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.7091ms
+2024-07-19 23:01:06.660 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 2.3368ms
+2024-07-19 23:01:06.677 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:06.677 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:06.678 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 1.0096ms
+2024-07-19 23:01:06.679 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.7167ms
+2024-07-19 23:01:06.681 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:06.682 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.7187ms
+2024-07-19 23:01:06.732 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:06.734 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.6098ms
+2024-07-19 23:01:06.751 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:06.756 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-19 23:01:06.756 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 5.1461ms
+2024-07-19 23:01:06.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 1.5820ms
+2024-07-19 23:01:08.305 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 23:01:08.312 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 6.8383ms
+2024-07-19 23:01:08.330 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:08.333 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1935ms
+2024-07-19 23:01:08.333 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:08.333 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:08.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7260ms
+2024-07-19 23:01:08.335 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:08.335 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5452ms
+2024-07-19 23:01:08.336 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 2.8789ms
+2024-07-19 23:01:08.358 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:08.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 1.9790ms
+2024-07-19 23:01:08.401 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:08.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.1641ms
+2024-07-19 23:01:08.434 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 23:01:08.436 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 1.9055ms
+2024-07-19 23:01:08.449 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 23:01:08.450 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 23:01:08.451 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 1.4030ms
+2024-07-19 23:01:08.455 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 6.1441ms
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 23:01:08.479 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 23:01:08.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.9354ms
+2024-07-19 23:01:08.481 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 2.0498ms
+2024-07-19 23:01:08.485 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 5.9425ms
+2024-07-19 23:01:08.486 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 7.2347ms
+2024-07-19 23:01:08.487 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 7.6762ms
+2024-07-19 23:01:08.487 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 7.8163ms
+2024-07-19 23:01:10.331 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182
+2024-07-19 23:01:10.342 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 10.7237ms
+2024-07-19 23:01:10.358 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:10.359 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.4710ms
+2024-07-19 23:01:10.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:10.362 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:10.362 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:10.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 0.8524ms
+2024-07-19 23:01:10.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1934ms
+2024-07-19 23:01:10.363 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.8755ms
+2024-07-19 23:01:10.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:10.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:10.364 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 1.1517ms
+2024-07-19 23:01:10.364 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 1.2581ms
+2024-07-19 23:01:10.381 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:10.384 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.5291ms
+2024-07-19 23:01:10.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:10.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9660ms
+2024-07-19 23:01:10.465 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:10.467 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/register_background.jpg - -
+2024-07-19 23:01:10.468 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/register_background.jpg - - - 200 37671 image/jpeg 1.2375ms
+2024-07-19 23:01:10.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 5.3714ms
+2024-07-19 23:01:12.862 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182
+2024-07-19 23:01:12.867 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Register application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 5.0363ms
+2024-07-19 23:01:12.881 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:12.882 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.4568ms
+2024-07-19 23:01:12.886 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:12.887 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 0.9882ms
+2024-07-19 23:01:12.887 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:12.887 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:12.887 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2228ms
+2024-07-19 23:01:12.887 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.7194ms
+2024-07-19 23:01:12.889 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:12.889 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:12.890 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 1.2468ms
+2024-07-19 23:01:12.890 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 1.3110ms
+2024-07-19 23:01:12.910 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:12.912 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.3955ms
+2024-07-19 23:01:12.955 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:12.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.6843ms
+2024-07-19 23:01:12.972 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:12.975 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/register_background.jpg - -
+2024-07-19 23:01:12.976 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/register_background.jpg - - - 200 37671 image/jpeg 0.7022ms
+2024-07-19 23:01:12.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 10.3156ms
+2024-07-19 23:01:13.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-19 23:01:13.094 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 0.6065ms
+2024-07-19 23:01:14.031 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 23:01:14.036 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 4.3963ms
+2024-07-19 23:01:14.048 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:14.050 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7838ms
+2024-07-19 23:01:14.051 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:14.051 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:14.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.4243ms
+2024-07-19 23:01:14.053 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:14.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1384ms
+2024-07-19 23:01:14.053 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.8575ms
+2024-07-19 23:01:14.072 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:14.075 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.5729ms
+2024-07-19 23:01:14.129 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:14.132 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.7261ms
+2024-07-19 23:01:14.173 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 23:01:14.175 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 2.2849ms
+2024-07-19 23:01:14.182 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 23:01:14.185 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 23:01:14.188 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 2.9889ms
+2024-07-19 23:01:14.199 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 16.8281ms
+2024-07-19 23:01:14.211 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 23:01:14.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 1.7687ms
+2024-07-19 23:01:14.213 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 23:01:14.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 23:01:14.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 23:01:14.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 23:01:14.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 23:01:14.215 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 1.4720ms
+2024-07-19 23:01:14.216 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 2.4411ms
+2024-07-19 23:01:14.216 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 1.7884ms
+2024-07-19 23:01:14.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 17.0804ms
+2024-07-19 23:01:14.233 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 18.0139ms
+2024-07-19 23:01:17.241 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-19 23:01:17.249 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 7.3919ms
+2024-07-19 23:01:17.265 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:17.267 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7616ms
+2024-07-19 23:01:17.269 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:17.269 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:17.270 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-19 23:01:17.270 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:17.270 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.0047ms
+2024-07-19 23:01:17.270 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3689ms
+2024-07-19 23:01:17.271 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.5363ms
+2024-07-19 23:01:17.272 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 1.5809ms
+2024-07-19 23:01:17.292 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:17.292 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:01:17.293 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 0.7371ms
+2024-07-19 23:01:17.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.3947ms
+2024-07-19 23:01:17.296 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:01:17.296 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.4884ms
+2024-07-19 23:01:17.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:17.433 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.6021ms
+2024-07-19 23:01:17.448 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:01:17.451 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-19 23:01:17.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 2.2965ms
+2024-07-19 23:01:17.459 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 11.3924ms
+2024-07-19 23:01:19.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 23:01:19.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 3.5680ms
+2024-07-19 23:01:19.802 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:01:19.804 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.0685ms
+2024-07-19 23:01:19.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:01:19.807 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.0566ms
+2024-07-19 23:01:19.808 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:01:19.810 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.9185ms
+2024-07-19 23:01:19.810 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:01:19.810 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2138ms
+2024-07-19 23:01:19.828 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:01:19.831 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.8465ms
+2024-07-19 23:01:19.899 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:01:19.901 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.6412ms
+2024-07-19 23:01:19.963 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 23:01:19.964 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 0.9716ms
+2024-07-19 23:01:19.976 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 23:01:19.977 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 1.1004ms
+2024-07-19 23:01:19.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 23:01:19.984 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 3.7584ms
+2024-07-19 23:01:19.992 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 23:01:19.993 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 23:01:19.993 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 23:01:19.993 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 23:01:19.993 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 0.7414ms
+2024-07-19 23:01:19.994 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 1.2610ms
+2024-07-19 23:01:19.994 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 0.6130ms
+2024-07-19 23:01:19.994 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 23:01:19.994 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 23:01:19.995 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 1.3749ms
+2024-07-19 23:01:19.995 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 1.2828ms
+2024-07-19 23:01:19.995 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 1.3139ms
+2024-07-19 23:01:21.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - -
+2024-07-19 23:01:21.230 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - - - 200 - text/html;+charset=utf-8 15.0372ms
+2024-07-19 23:01:21.236 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/Index - -
+2024-07-19 23:01:21.608 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/Index - - - 200 - text/html;+charset=utf-8 372.6530ms
+2024-07-19 23:01:21.613 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:01:21.613 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:01:21.614 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:01:21.614 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:01:21.614 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 0.7859ms
+2024-07-19 23:01:21.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:01:21.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 0.9999ms
+2024-07-19 23:01:21.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:01:21.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.0942ms
+2024-07-19 23:01:21.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:01:21.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:01:21.615 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.5464ms
+2024-07-19 23:01:21.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:01:21.616 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.2203ms
+2024-07-19 23:01:21.616 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.1972ms
+2024-07-19 23:01:21.616 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 1.1928ms
+2024-07-19 23:01:21.616 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.2517ms
+2024-07-19 23:01:21.616 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.9231ms
+2024-07-19 23:01:21.617 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:01:21.617 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:01:21.618 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.8453ms
+2024-07-19 23:01:21.619 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 1.8790ms
+2024-07-19 23:01:21.620 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:01:21.620 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:01:21.620 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:01:21.620 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:01:21.620 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:01:21.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.9529ms
+2024-07-19 23:01:21.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.9667ms
+2024-07-19 23:01:21.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.1397ms
+2024-07-19 23:01:21.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.1789ms
+2024-07-19 23:01:21.621 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 1.2108ms
+2024-07-19 23:01:22.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings - -
+2024-07-19 23:01:22.145 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings - - - 200 - text/html;+charset=utf-8 51.0755ms
+2024-07-19 23:01:22.149 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-19 23:01:22.267 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 117.6988ms
+2024-07-19 23:01:22.272 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:01:22.272 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:01:22.273 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:01:22.273 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 0.9660ms
+2024-07-19 23:01:22.273 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8435ms
+2024-07-19 23:01:22.274 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 0.9618ms
+2024-07-19 23:01:22.276 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:01:22.276 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:01:22.277 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.8860ms
+2024-07-19 23:01:22.278 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.0083ms
+2024-07-19 23:01:22.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:01:22.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:01:22.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:01:22.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.7592ms
+2024-07-19 23:01:22.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.8504ms
+2024-07-19 23:01:22.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 0.8486ms
+2024-07-19 23:01:22.279 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:01:22.279 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:01:22.280 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 0.7550ms
+2024-07-19 23:01:22.280 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:01:22.280 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:01:22.280 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:01:22.280 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:01:22.280 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 0.9246ms
+2024-07-19 23:01:22.280 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:01:22.281 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:01:22.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 0.7438ms
+2024-07-19 23:01:22.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 0.8265ms
+2024-07-19 23:01:22.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 0.8700ms
+2024-07-19 23:01:22.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.0045ms
+2024-07-19 23:01:22.281 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.0016ms
+2024-07-19 23:01:22.282 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.5414ms
+2024-07-19 23:01:23.112 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - -
+2024-07-19 23:01:23.130 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - - - 200 - text/html;+charset=utf-8 17.5929ms
+2024-07-19 23:01:23.137 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/Index - -
+2024-07-19 23:01:23.316 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/Index - - - 200 - text/html;+charset=utf-8 179.7549ms
+2024-07-19 23:01:23.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:01:23.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:01:23.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:01:23.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:01:23.323 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:01:23.323 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.0725ms
+2024-07-19 23:01:23.323 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.6079ms
+2024-07-19 23:01:23.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.5708ms
+2024-07-19 23:01:23.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 0.9431ms
+2024-07-19 23:01:23.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:01:23.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:01:23.324 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.1973ms
+2024-07-19 23:01:23.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.7478ms
+2024-07-19 23:01:23.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.7627ms
+2024-07-19 23:01:23.325 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:01:23.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 0.6567ms
+2024-07-19 23:01:24.380 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - -
+2024-07-19 23:01:24.396 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - - - 200 - text/html;+charset=utf-8 15.5460ms
+2024-07-19 23:01:24.400 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/Index - -
+2024-07-19 23:01:24.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/Index - - - 200 - text/html;+charset=utf-8 41.2087ms
+2024-07-19 23:01:24.446 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:01:24.446 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:01:24.447 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 0.9521ms
+2024-07-19 23:01:24.447 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.0113ms
+2024-07-19 23:01:24.448 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:01:24.448 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:01:24.448 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8107ms
+2024-07-19 23:01:24.449 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.2005ms
+2024-07-19 23:01:24.451 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:01:24.451 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:01:24.451 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:01:24.453 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.8597ms
+2024-07-19 23:01:24.453 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:01:24.453 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:01:24.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 2.5938ms
+2024-07-19 23:01:24.454 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:01:24.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 3.4205ms
+2024-07-19 23:01:24.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.2957ms
+2024-07-19 23:01:24.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.7427ms
+2024-07-19 23:01:24.454 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.5601ms
+2024-07-19 23:01:24.455 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:01:24.455 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:01:24.455 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:01:24.456 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.9700ms
+2024-07-19 23:01:24.456 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 1.0603ms
+2024-07-19 23:01:24.456 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 1.0154ms
+2024-07-19 23:01:24.457 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:01:24.459 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:01:24.459 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:01:24.460 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.7261ms
+2024-07-19 23:01:24.460 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 1.7797ms
+2024-07-19 23:01:24.461 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 3.7811ms
+2024-07-19 23:02:36.442 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-19 23:02:36.450 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 7.6960ms
+2024-07-19 23:02:36.466 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:02:36.468 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6665ms
+2024-07-19 23:02:36.469 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:02:36.469 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:02:36.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 1.2655ms
+2024-07-19 23:02:36.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:02:36.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-19 23:02:36.471 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.8503ms
+2024-07-19 23:02:36.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.2058ms
+2024-07-19 23:02:36.473 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 2.4893ms
+2024-07-19 23:02:36.491 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-19 23:02:36.491 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:02:36.492 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 1.0496ms
+2024-07-19 23:02:36.494 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1080ms
+2024-07-19 23:02:36.495 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-19 23:02:36.496 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.6022ms
+2024-07-19 23:02:36.726 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:02:36.729 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.7105ms
+2024-07-19 23:02:37.057 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-19 23:02:37.059 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-19 23:02:37.061 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 2.0768ms
+2024-07-19 23:02:37.071 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 13.8971ms
+2024-07-19 23:02:48.602 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 266
+2024-07-19 23:02:51.109 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 266 - 302 0 - 2507.3565ms
+2024-07-19 23:02:51.114 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-19 23:02:51.160 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 45.9160ms
+2024-07-19 23:02:51.163 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-19 23:02:51.268 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 104.6429ms
+2024-07-19 23:02:51.286 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-19 23:02:51.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.7925ms
+2024-07-19 23:02:51.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - -
+2024-07-19 23:02:51.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - -
+2024-07-19 23:02:51.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-19 23:02:51.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d9b96249-66e0-43a1-aee9-30781852f8aa_hugo.jpeg - -
+2024-07-19 23:02:51.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=Obk-MSrbq84PGpe9Eq09IPj-h9lqJhC4IwK3BTmQqec - - - 200 3821 text/css 0.6760ms
+2024-07-19 23:02:51.291 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.4456ms
+2024-07-19 23:02:51.291 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=5-EGUv3PMWX6D-2Lnz-H31YFLfqsSI7nfMtGqtok8NY - - - 200 47418 text/css 1.2693ms
+2024-07-19 23:02:51.291 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d9b96249-66e0-43a1-aee9-30781852f8aa_hugo.jpeg - - - 200 5114 image/jpeg 0.7113ms
+2024-07-19 23:02:51.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-19 23:02:51.312 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.4217ms
+2024-07-19 23:02:51.384 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-19 23:02:51.387 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.7739ms
+2024-07-19 23:02:51.630 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-19 23:02:51.633 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 2.3831ms
+2024-07-19 23:02:51.639 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-19 23:02:51.641 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 1.7266ms
+2024-07-19 23:02:51.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-19 23:02:51.650 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 7.3215ms
+2024-07-19 23:02:51.657 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-19 23:02:51.658 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-19 23:02:51.659 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-19 23:02:51.660 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.4268ms
+2024-07-19 23:02:51.660 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-19 23:02:51.660 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-19 23:02:51.660 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-19 23:02:51.661 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 4.6226ms
+2024-07-19 23:02:51.662 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 3.1951ms
+2024-07-19 23:02:51.662 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 2.7396ms
+2024-07-19 23:02:51.664 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 4.4567ms
+2024-07-19 23:02:51.665 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 5.2148ms
+2024-07-19 23:02:52.866 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - -
+2024-07-19 23:02:52.869 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - - - 200 - text/html;+charset=utf-8 3.1008ms
+2024-07-19 23:02:52.880 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/Index - -
+2024-07-19 23:02:52.937 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/Index - - - 200 - text/html;+charset=utf-8 56.8585ms
+2024-07-19 23:02:52.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:02:52.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:02:52.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:02:52.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.2801ms
+2024-07-19 23:02:52.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.4286ms
+2024-07-19 23:02:52.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:02:52.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:02:52.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:02:52.949 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:02:52.950 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 1.0532ms
+2024-07-19 23:02:52.950 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 2.5367ms
+2024-07-19 23:02:52.950 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 0.9699ms
+2024-07-19 23:02:52.950 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.0165ms
+2024-07-19 23:02:52.951 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.8336ms
+2024-07-19 23:02:52.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:02:52.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:02:52.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:02:52.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:02:52.951 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:02:52.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:02:52.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:02:52.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:02:52.952 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:02:52.953 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 2.1528ms
+2024-07-19 23:02:52.953 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 1.6570ms
+2024-07-19 23:02:52.953 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.5351ms
+2024-07-19 23:02:52.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 3.2060ms
+2024-07-19 23:02:52.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 2.4801ms
+2024-07-19 23:02:52.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 2.6014ms
+2024-07-19 23:02:52.955 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 3.1882ms
+2024-07-19 23:02:52.955 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 3.2964ms
+2024-07-19 23:02:52.957 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 5.8370ms
+2024-07-19 23:02:54.099 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings - -
+2024-07-19 23:02:54.115 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings - - - 200 - text/html;+charset=utf-8 16.2814ms
+2024-07-19 23:02:54.126 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-19 23:02:54.199 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 73.1900ms
+2024-07-19 23:02:54.205 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:02:54.205 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:02:54.206 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.0628ms
+2024-07-19 23:02:54.207 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 1.2660ms
+2024-07-19 23:02:54.210 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:02:54.211 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:02:54.210 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:02:54.212 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.1708ms
+2024-07-19 23:02:54.212 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 1.1269ms
+2024-07-19 23:02:54.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:02:54.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:02:54.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.8886ms
+2024-07-19 23:02:54.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.8845ms
+2024-07-19 23:02:54.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.7168ms
+2024-07-19 23:02:54.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:02:54.214 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:02:54.215 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:02:54.215 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 1.0483ms
+2024-07-19 23:02:54.216 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.4129ms
+2024-07-19 23:02:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:02:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:02:54.216 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:02:54.217 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:02:54.217 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:02:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.0958ms
+2024-07-19 23:02:54.217 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 2.4748ms
+2024-07-19 23:02:54.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:02:54.218 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 2.0949ms
+2024-07-19 23:02:54.218 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.5917ms
+2024-07-19 23:02:54.218 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.5129ms
+2024-07-19 23:02:54.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.7972ms
+2024-07-19 23:02:54.219 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 2.0354ms
+2024-07-19 23:02:57.743 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - -
+2024-07-19 23:02:57.744 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - - - 200 - text/html;+charset=utf-8 1.8851ms
+2024-07-19 23:02:57.753 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/Index - -
+2024-07-19 23:02:57.776 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/Index - - - 200 - text/html;+charset=utf-8 23.2257ms
+2024-07-19 23:02:57.781 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:02:57.781 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:02:57.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:02:57.782 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.1625ms
+2024-07-19 23:02:57.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:02:57.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:02:57.782 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.7416ms
+2024-07-19 23:02:57.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.6759ms
+2024-07-19 23:02:57.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 0.7909ms
+2024-07-19 23:02:57.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.5450ms
+2024-07-19 23:02:57.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:02:57.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:02:57.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:02:57.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 1.0390ms
+2024-07-19 23:02:57.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.0319ms
+2024-07-19 23:02:57.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 1.0771ms
+2024-07-19 23:02:59.360 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - -
+2024-07-19 23:02:59.365 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - - - 200 - text/html;+charset=utf-8 5.2357ms
+2024-07-19 23:02:59.382 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/Index - -
+2024-07-19 23:02:59.406 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/Index - - - 200 - text/html;+charset=utf-8 23.6289ms
+2024-07-19 23:02:59.412 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-19 23:02:59.412 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-19 23:02:59.413 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.1679ms
+2024-07-19 23:02:59.413 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.1766ms
+2024-07-19 23:02:59.413 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-19 23:02:59.414 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.0519ms
+2024-07-19 23:02:59.418 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-19 23:02:59.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-19 23:02:59.422 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-19 23:02:59.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-19 23:02:59.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-19 23:02:59.423 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-19 23:02:59.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-19 23:02:59.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-19 23:02:59.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-19 23:02:59.425 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-19 23:02:59.425 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-19 23:02:59.425 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-19 23:02:59.426 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-19 23:02:59.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 4.2304ms
+2024-07-19 23:02:59.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 2.7468ms
+2024-07-19 23:02:59.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 3.6779ms
+2024-07-19 23:02:59.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 4.4711ms
+2024-07-19 23:02:59.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 3.0792ms
+2024-07-19 23:02:59.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 2.8181ms
+2024-07-19 23:02:59.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 2.8114ms
+2024-07-19 23:02:59.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 2.3339ms
+2024-07-19 23:02:59.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.4805ms
+2024-07-19 23:02:59.429 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 4.2012ms
+2024-07-19 23:02:59.429 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 6.1585ms
+2024-07-19 23:02:59.430 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 11.8399ms
+2024-07-19 23:02:59.431 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 6.6827ms
+2024-07-19 23:03:00.606 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/AllDivisionPlayers - -
+2024-07-19 23:03:00.632 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/AllDivisionPlayers - - - 200 - text/html;+charset=utf-8 25.7236ms
+2024-07-19 23:03:00.640 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Users/Players - -
+2024-07-19 23:03:00.769 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Users/Players - - - 200 - text/html;+charset=utf-8 129.7662ms
+2024-07-19 23:03:00.779 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/196a61bb-092e-4442-b639-20285d07baa5_Van_jik.webp - -
+2024-07-19 23:03:00.779 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - -
+2024-07-19 23:03:00.779 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - -
+2024-07-19 23:03:00.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/32592573-00b3-44b8-afec-2e28435d059d_Ronaldo.jpg - -
+2024-07-19 23:03:00.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/23439d94-8dd7-4ff8-8e70-5388d89d252c_Kroos.jpg - -
+2024-07-19 23:03:00.780 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - -
+2024-07-19 23:03:00.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/804a1ccf-3033-4973-82b3-66a8e1777900_Maguire.jpeg - - - 200 5746 image/jpeg 2.0767ms
+2024-07-19 23:03:00.781 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/505cfa09-6f27-4306-bfb2-25ec29e0fc20_mane.jpeg - - - 200 6924 image/jpeg 1.9042ms
+2024-07-19 23:03:00.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/59d530a3-aa26-4d9e-92a1-e7bbae63f50f_321517872_582548340296288_4633387136593122244_n.jpg - -
+2024-07-19 23:03:00.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - -
+2024-07-19 23:03:00.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - -
+2024-07-19 23:03:00.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a72feaf4-9f8e-46f5-a745-2cab713d9856_De Bruyne.jpeg - -
+2024-07-19 23:03:00.783 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - -
+2024-07-19 23:03:00.783 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/23992b5c-7e6e-4264-9fca-acc013ea1516_Virgil.jpeg - -
+2024-07-19 23:03:00.783 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/ec9436ce-b040-405f-878d-6b844dd880cc_Salah.jpeg - - - 200 7893 image/jpeg 2.8238ms
+2024-07-19 23:03:00.783 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - -
+2024-07-19 23:03:00.783 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - -
+2024-07-19 23:03:00.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - -
+2024-07-19 23:03:00.784 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - -
+2024-07-19 23:03:00.784 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7595f259-05ea-4443-bec9-92ea6dd630fc_rashford.jpeg - - - 200 5939 image/jpeg 2.3011ms
+2024-07-19 23:03:00.784 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/196a61bb-092e-4442-b639-20285d07baa5_Van_jik.webp - - - 200 81606 image/webp 5.3256ms
+2024-07-19 23:03:00.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a72feaf4-9f8e-46f5-a745-2cab713d9856_De Bruyne.jpeg - - - 200 6227 image/jpeg 2.0610ms
+2024-07-19 23:03:00.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/23992b5c-7e6e-4264-9fca-acc013ea1516_Virgil.jpeg - - - 200 6621 image/jpeg 2.6713ms
+2024-07-19 23:03:00.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fe6467e3-7d11-4218-bb06-d1f6830b2f5c_Mario.jpeg - - - 200 13429 image/jpeg 2.6765ms
+2024-07-19 23:03:00.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/3ee3f853-106a-4769-93b0-19328500342a_rashford.jpeg - - - 200 5939 image/jpeg 1.9522ms
+2024-07-19 23:03:00.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b679055a-4f14-4bcb-8da3-d35a3d82260f_Harry.jpeg - - - 200 5378 image/jpeg 2.0582ms
+2024-07-19 23:03:00.786 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/59d530a3-aa26-4d9e-92a1-e7bbae63f50f_321517872_582548340296288_4633387136593122244_n.jpg - - - 200 68304 image/jpeg 4.3733ms
+2024-07-19 23:03:00.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/23439d94-8dd7-4ff8-8e70-5388d89d252c_Kroos.jpg - - - 200 176605 image/jpeg 7.9742ms
+2024-07-19 23:03:00.789 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2c050f5e-5dc6-4e6d-a3ae-8b0695594dd8_367156172_253070104210166_634433630690747435_n.jpg - - - 200 165725 image/jpeg 6.9881ms
+2024-07-19 23:03:00.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/86e716f0-cbb2-4ed3-9ecb-b34afdadea72_Kroos.jpg - - - 200 176605 image/jpeg 7.4202ms
+2024-07-19 23:03:00.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/5b500736-8bfa-46bb-b39b-b641dab14b07_Ronaldo.jpg - - - 200 157796 image/jpeg 7.2092ms
+2024-07-19 23:03:00.791 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/32592573-00b3-44b8-afec-2e28435d059d_Ronaldo.jpg - - - 200 157796 image/jpeg 10.6569ms
