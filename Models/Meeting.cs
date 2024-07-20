@@ -38,6 +38,8 @@ namespace MyField.Models
         public virtual SportsMember ModifiedBy { get; set; }
 
         public MeetingAttendees MeetingAttendees { get; set; }
+
+        public MeetingStatus MeetingStatus { get; set; }
     }
 
 
@@ -78,5 +80,13 @@ namespace MyField.Models
 
         [Display(Name = "Players")]
         Players
+    }
+
+
+    public enum MeetingStatus
+    {
+        Upcoming,
+        Postponed,
+        Cancelled
     }
 }

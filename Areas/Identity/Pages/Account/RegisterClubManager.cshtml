@@ -7,6 +7,22 @@
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 
+<style>
+    body {
+        background-image: url('/images/register_background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .register-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+</style>
+
+
 <br />
 @await Html.PartialAsync("_BackButton")
 <h4 style="text-align:center;">Onboard a new club manager</h4>

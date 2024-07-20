@@ -51,6 +51,9 @@
                         <th>
                             Time
                         </th>
+                        <th>
+                            Status
+                        </th>
                         @if (User.IsInRole("Sport Administrator"))
                         {
                             <th>
@@ -82,6 +85,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.MeetingTime)
                             </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MeetingStatus)
+                            </td>
                             @if (User.IsInRole("Sport Administrator"))
                             {
                                 <td class="text-right">
@@ -89,13 +95,16 @@
                                         Actions
                                     </button>
                                     <div class="action-tab" id="actionTab-@item.MeetingId" style="display: none;">
-                                        <a class="tab-item" href="@Url.Action("UpdateMeeting", "Meetings", new { id = item.MeetingId })">
-                                            <i class="fas fa-pen" style="color: #28a745;"></i> Update
+                                        <a class="tab-item" href="@Url.Action("MeetingDetails", "Meetings", new { meetingId = item.MeetingId })">
+                                            <i class="fas fa-info-circle" style="color: #28a745;"></i> Details
                                         </a>
-                                        <a class="tab-item" href="@Url.Action("PostponeMeeting", "Meetings", new { id = item.MeetingId })">
-                                            <i class="fas fa-clock" style="color: blue;"></i> Postpone
+                                        <a class="tab-item" href="@Url.Action("UpdateMeeting", "Meetings", new { meetingId = item.MeetingId })">
+                                            <i class="fas fa-pen" style="color: blue;"></i> Update
                                         </a>
-                                        <a class="tab-item" href="@Url.Action("CancelMeeting", "Meetings", new { id = item.MeetingId })">
+                                        <a class="tab-item" href="@Url.Action("PostponeMeeting", "Meetings", new { meetingId = item.MeetingId })">
+                                            <i class="fas fa-clock" style="color: red;"></i> Postpone
+                                        </a>
+                                        <a class="tab-item" href="@Url.Action("CancelMeeting", "Meetings", new { meetingId = item.MeetingId })">
                                             <i class="fas fa-trash" style="color: red;"></i> Cancel
                                         </a>
                                     </div>
@@ -126,6 +135,7 @@
 
                             <div class="card-body" style="padding: 0.5rem;">
                                 <p style="margin: 0.3rem 0; font-size: 14px;"><strong>Attendees:</strong> @Html.DisplayFor(modelItem => item.MeetingAttendees)</p>
+                                <p style="margin: 0.3rem  0; font-size: 14px;"><strong>Status:</strong> @Html.DisplayFor(modelItem => item.MeetingStatus)</p>
                                 <p style="margin: 0.3rem  0; font-size: 14px;"><strong>Date:</strong> @Html.DisplayFor(modelItem => item.MeetingDate)</p>
                                 <p style="margin: 0.3rem  0; font-size: 14px;"><strong>Venue:</strong> @Html.DisplayFor(modelItem => item.Venue)</p>
                                 <p style="margin: 0.3rem  0; font-size: 14px;"><strong>Time:</strong> @Html.DisplayFor(modelItem => item.MeetingTime)</p>

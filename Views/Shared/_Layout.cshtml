@@ -15,70 +15,77 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
 
-    <style>
-        .navLinks {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-
-            .navLinks .nav-item {
-                margin-right: 10px;
-                padding: 0;
-            }
-
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-tabs .nav-link:focus,
-        .nav-tabs .nav-link.active,
-        .nav-tabs .nav-link:active {
-            background-color: #007bff !important;
-            color: white;
-        }
-
-        .nav-link.active {
-            color: white !important;
-        }
-
-        .overflow-auto {
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-            .overflow-auto::-webkit-scrollbar {
-                display: none;
-            }
-
-        .overflow-auto {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .nav-item {
-            bottom: 0 !important;
-        }
-
-
-        .tab-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tab-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-
-    </style>
 
 </head>
 
+<style>
+    /* Existing styles */
+
+    #menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #000325;
+        color: white;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+        #menu.show {
+            transform: translateY(0);
+        }
+
+        #menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            #menu ul li {
+                padding: 15px;
+                border-bottom: 1px solid #444;
+            }
+
+                #menu ul li a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                    #menu ul li a:hover {
+                        text-decoration: none;
+                    }
+
+    #menu-toggle {
+        cursor: pointer;
+    }
+
+    #menu-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999; 
+        display: none;
+    }
+</style>
 
 
 <body>
+    <div id="overlay" class="overlay"></div>
 
     <div id="loading-overlay">
         <div class="loading-container">
@@ -100,6 +107,9 @@
                     }
                     else
                     {
+                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none; margin-right: 10px;">
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
                         <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index" style="color:white;">Ksans-sports</a>
                     }
                 </div>
@@ -117,6 +127,7 @@
         }
         else
         {
+
                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="homeTabsNav">
                     <div class="container-fluid">
                     <div class="tab-container" style="overflow-x: auto; white-space: nowrap;">
@@ -140,6 +151,43 @@
                     </div>
                 </div>
             </nav>
+
+            <div id="menu" class="top-menu">
+                <div id="menu-close" onclick="toggleMenu()">&times;</div>
+                <ul class="sidebar-nav" style="list-style: none; padding: 0;">
+                    <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center;">
+                        <i class="fa fa-user-shield" style="color: white; margin-right: 5px;"></i>
+                        <a asp-controller="Home" asp-action="PrivacyPolicy" class="nav-link text-light">Privacy policy</a>
+                    </li>
+                    <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center;">
+                        <i class="fa fa-info-circle" style="color: white; margin-right: 5px;"></i>
+                        <a asp-controller="Home" asp-action="AboutUs" class="nav-link text-light">About us</a>
+                    </li>
+                    <li style="margin-top: 20px; margin-left: 30px; list-style-type: none;">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fa fa-user-cog" style="color: white; margin-right: 5px;"></i>
+                            <a href="#supportSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
+                                Support
+                                <i style="margin-left: 50px; margin-top: 1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                            </a>
+                        </div>
+                        <ul class="collapse list-unstyled collapsible-menu" id="supportSubmenu" style="margin-left: 35px;">
+                            <li style="margin-top: 10px; list-style-type: none;">
+                                <a href="https://www.facebook.com/groups/1059539181218342/" target="_blank" class="nav-link text-light">
+                                    <i class="fab fa-facebook" style="color: white; margin-right: 5px;"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center;">
+                        <i class="fa fa-envelope" style="color: white; margin-right: 5px;"></i>
+                        <a asp-controller="Home" asp-action="ContactUs" class="nav-link text-light">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+
         }
 
     </header>
@@ -155,23 +203,44 @@
     </a>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <script>
-    var baseUrl = window.location.href.split('#')[0];
-    var previousPage = null;
-    var loadingOverlay = $('#loading-overlay');
 
-    // Show loading overlay when navigation starts
-    $(document).on('click', 'a:not([href^="#"])', function () {
-        loadingOverlay.show();
+    $(document).ready(function () {
+
+        $(document).on('click', '.action-button', function () {
+            var id = $(this).data('id');
+            var $actionTab = $('#actionTab-' + id);
+            $('.action-tab').not($actionTab).hide();
+            $actionTab.toggle();
+        });
+
+        $(document).on('click', function (event) {
+            var $target = $(event.target);
+            if (!$target.closest('.action-tab').length && !$target.closest('.action-button').length) {
+                $('.action-tab').hide();
+            }
+        });
     });
 
-    // Hide loading overlay when navigation completes
-    $(document).on('readystatechange', function () {
-        if (document.readyState === 'complete') {
-            loadingOverlay.hide();
-        }
+    function toggleMenu() {
+        $('#menu').toggleClass('show');
+        $('#overlay').toggle(); 
+    }
+
+    $('#menu-toggle').on('click', function (e) {
+        e.preventDefault();
+        toggleMenu();
     });
+
+    $('#overlay').on('click', function () {
+        $('#menu').removeClass('show');
+        $(this).hide();
+    });
+
+
 
     document.addEventListener("DOMContentLoaded", function () {
         function adjustBodyPadding() {
@@ -189,6 +258,7 @@
 
         window.addEventListener('resize', adjustBodyPadding);
     });
+
 
     function loadTab(tabName) {
 
@@ -212,6 +282,8 @@
                 url = '@Url.Action("LeagueResults", "MatchResults")';
             } else if (tabName === 'clubs') {
                 url = '@Url.Action("LeagueClubs", "Clubs")';
+            } else if (tabName === 'players') {
+                url = '@Url.Action("AllDivisionPlayers", "Users")';
             }
 
             $.ajax({
@@ -231,37 +303,23 @@
         loadTab('sportnews');
     });
 
-    // Handle clicks on navigation links
-    $('.nav-link').click(function (e) {
-        e.preventDefault();
-        var target = $(this).attr('href');
 
-        // Close previous page
-        closePreviousPage();
 
-        // Load tab content
-        loadTabContent(target);
+    $(window).on('load', function () {
+        var loadingOverlay = $('#loading-overlay');
 
-        // Update active state of navigation links
-        $('.nav-link').removeClass('active');
-        $(this).addClass('active');
+        loadingOverlay.hide();
 
-        // Update URL
-        var newUrl = baseUrl + target;
-        window.history.pushState(null, '', newUrl);
-
-        // Store current page as previous page
-        previousPage = newUrl;
+        $('.loading-spinner').css('animation', 'none');
     });
 
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        $("#page-content-wrapper").toggleClass("shifted");
-        $("#homeTabsNav").toggleClass("shifted");
-        $("#loginNav").toggleClass("shifted");
+    $(document).on('click', 'a:not([href^="#"])', function () {
+        var loadingOverlay = $('#loading-overlay');
+
+        loadingOverlay.show();
     });
 </script>
 
 @RenderSection("Scripts", required: false)
+
 </html>

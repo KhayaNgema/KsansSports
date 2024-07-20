@@ -1,6 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Contact Us";
-    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+    @if (User.Identity.IsAuthenticated)
+    {
+        Layout = "~/Views/Shared/_PagesLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Read_LoginLayout.cshtml";
+    }
 }
 <br />
 @await Html.PartialAsync("_HomeButton")

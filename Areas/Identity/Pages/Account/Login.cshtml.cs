@@ -116,8 +116,8 @@ namespace MyField.Areas.Identity.Pages.Account
             {
                 var isEmail = new EmailAddressAttribute().IsValid(Input.EmailOrPhone);
                 var user = isEmail ?
-                           await _userManager.FindByEmailAsync(Input.EmailOrPhone) :
-                           await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == Input.EmailOrPhone);
+                            await _userManager.FindByEmailAsync(Input.EmailOrPhone) :
+                            await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == Input.EmailOrPhone);
 
                 if (user != null)
                 {
@@ -125,14 +125,23 @@ namespace MyField.Areas.Identity.Pages.Account
 
                     if (result.Succeeded)
                     {
-
-                            await _activityLogger.Log("Logged in", user.Id);
-                            return LocalRedirect(returnUrl);
+                        await _activityLogger.Log("Logged in", user.Id);
+                        return LocalRedirect(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Incorrect email or phone number or password..");
                     }
                 }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "User account does not exist in this system.");
+                }
             }
+
             return Page();
         }
+
 
     }
 }

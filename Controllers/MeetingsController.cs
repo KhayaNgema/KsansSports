@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -32,7 +33,9 @@ namespace MyField.Controllers
         {
             IQueryable<Meeting> meetingsQuery = _context.Meeting
                 .Include(m => m.CreatedBy)
-                .Include(m => m.ModifiedBy);
+                .Include(m => m.ModifiedBy)
+                .Where(m => m.MeetingStatus == MeetingStatus.Upcoming || 
+                m.MeetingStatus == MeetingStatus.Postponed);
 
             if (User.IsInRole("Sport Coordinator"))
             {
@@ -157,6 +160,7 @@ namespace MyField.Controllers
                     MeetingAttendees = viewModel.MeetingAttendes
                 };
 
+                newMeeting.MeetingStatus = MeetingStatus.Upcoming;
 
                 _context.Add(newMeeting);
                 await _context.SaveChangesAsync();
@@ -178,97 +182,177 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet]
+
+        public async Task<IActionResult> UpdateMeeting(int? meetingId)
         {
-            if (id == null || _context.Meeting == null)
+            if (meetingId == null)
             {
                 return NotFound();
             }
 
-            var meeting = await _context.Meeting.FindAsync(id);
-            if (meeting == null)
+            var existingMeeting = await _context.Meeting
+                .Where(e => e.MeetingId == meetingId)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new UpdateMeetingViewModel
             {
-                return NotFound();
-            }
-            ViewData["CreatedById"] = new SelectList(_context.SystemUsers, "Id", "Id", meeting.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.SystemUsers, "Id", "Id", meeting.ModifiedById);
-            return View(meeting);
+                MeetingTitle = existingMeeting.MeetingTitle,
+                MeetingDescription = existingMeeting.MeetingDescription,
+                AdditionalComments = existingMeeting.AdditionalComments,
+                MeetingDate = existingMeeting.MeetingDate,
+                MeetingTime = existingMeeting.MeetingTime,
+                Venue = existingMeeting.Venue,
+                MeetingAttendees = existingMeeting.MeetingAttendees
+            };
+
+            return View(viewModel);
         }
+
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MeetingId,MeetingTitle,MeetingDescription,Venue,MeetingDate,MeetingTime,AdditionalComments,CreatedDateTime,ModifiedDateTime,CreatedById,ModifiedById")] Meeting meeting)
+
+        public async Task<IActionResult> UpdateMeeting(int? meetingId, UpdateMeetingViewModel viewModel)
         {
-            if (id != meeting.MeetingId)
+            if(meetingId != viewModel.MeetingId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+
+            if(ValidateUpdatedProperties(viewModel))
             {
-                try
-                {
-                    _context.Update(meeting);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MeetingExists(meeting.MeetingId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                var user = await _userManager.GetUserAsync(User);
+
+
+                var existingMeeting = await _context.Meeting
+                     .Where(e => e.MeetingId == meetingId)
+                      .FirstOrDefaultAsync();
+
+
+                existingMeeting.MeetingTitle = viewModel.MeetingTitle;
+                existingMeeting.MeetingDescription = viewModel.MeetingDescription;
+                existingMeeting.Venue = viewModel.Venue;
+                existingMeeting.MeetingDate = viewModel.MeetingDate;
+                existingMeeting.MeetingTime = viewModel.MeetingTime;
+                existingMeeting.AdditionalComments = viewModel.AdditionalComments;
+                existingMeeting.ModifiedById = user.Id;
+                existingMeeting.ModifiedDateTime = user.ModifiedDateTime;
+
+
+                _context.Update(existingMeeting);
+                await _context.SaveChangesAsync();
+
+
+                TempData["Message"] = $"You have successfully updated a meeting with title {existingMeeting.MeetingTitle}";
+                await _activityLogger.Log($"Updated a meeting with title {existingMeeting.MeetingTitle}", user.Id);
+
+
+                return RedirectToAction(nameof(Meetings));
             }
-            ViewData["CreatedById"] = new SelectList(_context.SystemUsers, "Id", "Id", meeting.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.SystemUsers, "Id", "Id", meeting.ModifiedById);
-            return View(meeting);
+
+            return View(viewModel);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        private bool ValidateUpdatedProperties(UpdateMeetingViewModel viewModel)
         {
-            if (id == null || _context.Meeting == null)
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateProperty(viewModel.MeetingDate, new ValidationContext(viewModel, null, null) { MemberName = "MeetingDate" }, validationResults);
+            Validator.TryValidateProperty(viewModel.MeetingTitle, new ValidationContext(viewModel, null, null) { MemberName = "MeetingTitle" }, validationResults);
+            Validator.TryValidateProperty(viewModel.MeetingTime, new ValidationContext(viewModel, null, null) { MemberName = "MeetingTime" }, validationResults);
+            Validator.TryValidateProperty(viewModel.MeetingDescription, new ValidationContext(viewModel, null, null) { MemberName = "MeetingDescription" }, validationResults);
+            Validator.TryValidateProperty(viewModel.AdditionalComments, new ValidationContext(viewModel, null, null) { MemberName = "AdditionalComments" }, validationResults);
+            Validator.TryValidateProperty(viewModel.Venue, new ValidationContext(viewModel, null, null) { MemberName = "Venue" }, validationResults);
+            return validationResults.Count == 0;
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> MeetingDetails(int? meetingId)
+        {
+            if(meetingId == null)
             {
                 return NotFound();
             }
 
             var meeting = await _context.Meeting
-                .Include(m => m.CreatedBy)
-                .Include(m => m.ModifiedBy)
-                .FirstOrDefaultAsync(m => m.MeetingId == id);
-            if (meeting == null)
+                .Where(m => m.MeetingId == meetingId)
+                .FirstOrDefaultAsync();
+
+
+            var viewModel = new MeetingDetailsViewModel
+            {
+                MeetingAttendees = meeting.MeetingAttendees,
+                MeetingTitle = meeting.MeetingTitle,
+                MeetingDescription = meeting.MeetingDescription,
+                Venue = meeting.Venue,
+                MeetingDate = meeting.MeetingDate,
+                MeetingTime = meeting.MeetingTime,
+                AdditionalComments = meeting.AdditionalComments,
+                MeetingStatus = meeting.MeetingStatus,
+            };
+
+
+            return View(viewModel);
+        }
+
+
+        public async Task<IActionResult> PostponeMeeting(int? meetingId)
+        {
+
+            if (meetingId == null)
             {
                 return NotFound();
             }
 
-            return View(meeting);
-        }
+            var user = await _userManager.GetUserAsync(User);
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Meeting == null)
-            {
-                return Problem("Entity set 'Ksans_SportsDbContext.Meeting'  is null.");
-            }
-            var meeting = await _context.Meeting.FindAsync(id);
-            if (meeting != null)
-            {
-                _context.Meeting.Remove(meeting);
-            }
-            
+
+            var meeting = await  _context.Meeting
+                .Where(m => m.MeetingId == meetingId)
+                .FirstOrDefaultAsync();
+
+
+            meeting.MeetingStatus = MeetingStatus.Postponed;
+            meeting.ModifiedById = user.Id;
+            meeting.ModifiedDateTime = user.ModifiedDateTime;
+
+            _context.Update(meeting);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            TempData["Message"] = $"You have successfully postponed a meeting with title {meeting.MeetingTitle}";
+            await _activityLogger.Log($"Postponed a meeting with title {meeting.MeetingTitle}", user.Id);
+
+            return RedirectToAction(nameof(Meetings));
         }
 
-        private bool MeetingExists(int id)
+        public async Task<IActionResult> CancelMeeting(int? meetingId)
         {
-          return (_context.Meeting?.Any(e => e.MeetingId == id)).GetValueOrDefault();
+
+            if (meetingId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var meeting = await _context.Meeting
+                .Where(m => m.MeetingId == meetingId)
+                .FirstOrDefaultAsync();
+
+
+            meeting.MeetingStatus = MeetingStatus.Cancelled;
+            meeting.ModifiedById = user.Id;
+            meeting.ModifiedDateTime = user.ModifiedDateTime;
+
+            _context.Update(meeting);
+            await _context.SaveChangesAsync();
+
+
+            TempData["Message"] = $"You have cancelled a meeting with title {meeting.MeetingTitle}";
+            await _activityLogger.Log($"Cancelled a meeting with title {meeting.MeetingTitle}", user.Id);
+
+            return RedirectToAction(nameof(Meetings));
         }
     }
 }
