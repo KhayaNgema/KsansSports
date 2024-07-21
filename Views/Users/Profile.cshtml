@@ -49,22 +49,31 @@ else
                 <p class="form-control-static">@ViewBag.Club</p>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label><i class="fa fa-phone-alt"></i> Phone number:</label>
+        @if (User.IsInRole("Club Administrator") || User.IsInRole("Personnel Administrator") || User.IsInRole("Player") || User.IsInRole("News Administrator") || User.IsInRole("News Updator") || User.IsInRole("Club Manager"))
+        {
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label><i class="fa fa-phone-alt"></i> Phone number:</label>
+                </div>
+                <div class="col-6">
+                    <p class="form-control-static">@Model.Phone</p>
+                </div>
             </div>
-            <div class="col-6">
-                <p class="form-control-static">@Model.Phone</p>
+
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label><i class="fa fa-envelope"></i> Email address:</label>
+                </div>
+                <div class="col-6">
+                    <p class="form-control-static">@Model.Email</p>
+                </div>
             </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label><i class="fa fa-envelope"></i> Email address:</label>
-            </div>
-            <div class="col-6">
-                <p class="form-control-static">@Model.Email</p>
-            </div>
-        </div>
+        }
+        else
+        {
+          
+        }
+
         <div class="row mb-5">
             <div class="col-6">
                 <label><i class="fa fa-calendar-alt"></i> Date of Birth:</label>

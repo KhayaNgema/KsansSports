@@ -12,7 +12,7 @@
                 <h4>Manager</h4>
                 <dl class="dl-horizontal">
                     <dd>
-                        @if(Model.ClubManager != null && Model.ClubManager.FirstName != null && Model.ClubManager.LastName != null)
+                        @if(Model.ClubManager != null && Model.ClubManager.FirstName != null && Model.ClubManager.LastName != null && !Model.ClubManager.IsDeleted)
                         {
                             <span>@Html.DisplayFor(model => model.ClubManager.FirstName)</span> <span>@Html.DisplayFor(model => model.ClubManager.LastName)</span>
                         }

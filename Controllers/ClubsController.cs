@@ -36,8 +36,6 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
-
-        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> LeagueClubs()
         {
             return PartialView("LeagueClubsPartial");

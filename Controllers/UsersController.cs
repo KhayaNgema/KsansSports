@@ -606,7 +606,7 @@ namespace MyField.Controllers
                 else
                 {
                     TempData["Message"] = $"Your profile information has been updated successfully.";
-                    await _activityLogger.Log($"Updated your profile information", user.Id);
+                    await _activityLogger.Log($"Updated profile information", user.Id);
                 }
 
                 if (userRole == "Club Administrator")
@@ -1636,12 +1636,20 @@ namespace MyField.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
+           
+
             var clubManager = await _context.ClubManager
                 .Where(c => c.Id == userId && c.ClubId == clubAdministrator.ClubId)
                 .Include(c => c.Club)
                 .FirstOrDefaultAsync();
 
-            if (clubManager == null)
+/*            if (clubManager.IsContractEnded == true)
+            {
+                TempData["Message"] = $"There is no contract binding you and {clubManager.FirstName} {clubManager.LastName}.";
+                return RedirectToAction(nameof(MyClubManagers));
+            }*/
+
+                if (clubManager == null)
             {
                 return NotFound();
             }
@@ -1649,6 +1657,7 @@ namespace MyField.Controllers
             clubManager.IsActive = false;
             clubManager.IsSuspended = true;
             clubManager.IsContractEnded = true;
+            clubManager.IsDeleted = true;
 
             _context.Update(clubManager);
             await _context.SaveChangesAsync();

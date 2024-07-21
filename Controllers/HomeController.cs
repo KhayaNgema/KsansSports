@@ -396,7 +396,7 @@ namespace MyField.Controllers
             return myClubFixturesCount;
         }
 
-        [Authorize(Roles = ("Club Administrator"))]
+        [Authorize(Roles = "Club Administrator")]
         public async Task<int> GetMyClubTransferRequestsCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -424,7 +424,7 @@ namespace MyField.Controllers
 
 
             int myClubTransferRequestsCount = await _context.Transfer
-                .Where(m => m.CustomerClub.ClubId == clubId &&
+                .Where(m => m.SellerClub.ClubId == clubId &&
                 m.Status == TransferStatus.Pending)
                 .CountAsync();
 

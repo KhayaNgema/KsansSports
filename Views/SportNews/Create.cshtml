@@ -36,7 +36,7 @@
                 <span asp-validation-for="NewsHeading" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <textarea asp-for="NewsBody" class="form-control border-bottom-only" placeholder="NewsBody" style="min-height: 400px;"></textarea>
+                <textarea asp-for="NewsBody" class="form-control border-bottom-only" placeholder="NewsBody" style="min-height: 400px; white-space: pre-wrap;"></textarea>
                 <label asp-for="NewsBody" class="form-label">News body</label>
                 <span asp-validation-for="NewsBody" class="text-danger"></span>
             </div>

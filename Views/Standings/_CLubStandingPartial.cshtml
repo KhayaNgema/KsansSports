@@ -57,8 +57,9 @@
                         <tr data-club-id="@item.ClubId">
                             <td style="white-space: nowrap;">
                                 <span style="margin-right: 10px;">@position</span>
-                                <img src="~/@item.Club.ClubBadge " alt="@item.Club.ClubName" class="club-badge-image" />
-                                @Html.DisplayFor(modelItem => item.Club.ClubName)
+                                <img src="~/@item.Club.ClubBadge" alt="@item.Club.ClubName" class="club-badge-image" style="max-width:35px; max-height:35px;" />
+                                <span class="full-club-name">@Html.DisplayFor(modelItem => item.Club.ClubName)</span>
+                                <span class="club-abbreviation">@Html.DisplayFor(modelItem => item.Club.ClubAbbr)</span>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.MatchPlayed)
