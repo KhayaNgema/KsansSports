@@ -51,6 +51,7 @@
                     <th style="white-space: nowrap;">Name</th>
                     <th style="white-space: nowrap;">Manager</th>
                     <th style="white-space: nowrap;">Location</th>
+                    <th style="white-space: nowrap;">Email</th>
                     <th style="white-space: nowrap;">Stadium</th>
                     @if(User.IsInRole("Sport Administrator"))
                     {
@@ -90,6 +91,9 @@
 
                         <td class="column-max-width">
                             @Html.DisplayFor(modelItem => item.ClubLocation)
+                        </td>
+                        <td class="column-max-width">
+                            @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td class="column-max-width">Stadium</td>
                         @if(User.IsInRole("Sport Administrator"))

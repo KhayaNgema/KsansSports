@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -34,6 +35,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> CreateMatchFormation()
         {
             var matchFormation = await _context.Formations
@@ -46,39 +48,35 @@ namespace MyField.Controllers
             return PartialView("_CreateMatchFormationPartial", matchFormation);
         }
 
+
         public async Task<IActionResult> MatchFormationFind(int fixtureId)
         {
             try
             {
                 var user = await _userManager.GetUserAsync(User);
 
-                // Ensure user is authenticated and is a ClubManager
                 if (user == null || !(user is ClubManager clubManager))
                 {
                     return RedirectToAction("Error", "Home");
                 }
 
-                // Retrieve match formations for the specified fixture and club
                 var matchFormations = await _context.MatchFormation
                     .Where(mo => mo.FixtureId == fixtureId)
                     .Include(s => s.Fixture)
                     .Include(s => s.Formation)
                     .ToListAsync();
 
-                // Return the match formations as a partial view
                 return PartialView("_ClubFormationPartial", matchFormations);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error in MatchFormation action: " + ex.Message);
 
-                // Return a specific error response with details about the error
                 return StatusCode(500, "An error occurred while processing the request.");
             }
         }
 
-
-        // GET: Formations
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> Index()
         {
               return _context.Formations != null ? 
@@ -86,25 +84,8 @@ namespace MyField.Controllers
                           Problem("Entity set 'Ksans_SportsDbContext.Formations'  is null.");
         }
 
-        // GET: Formations/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Formations == null)
-            {
-                return NotFound();
-            }
 
-            var formation = await _context.Formations
-                .FirstOrDefaultAsync(m => m.FormationId == id);
-            if (formation == null)
-            {
-                return NotFound();
-            }
-
-            return View(formation);
-        }
-
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpGet]
         public IActionResult CreateMatchFormationFinal(int fixtureId, int formationId)
         {
@@ -118,6 +99,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         public async Task<IActionResult> CreateMatchFormationFinal(MatchFormationFinalViewModel viewModel)
         {

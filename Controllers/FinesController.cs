@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using MyField.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
+using MyField.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyField.Controllers
 {
@@ -21,18 +23,22 @@ namespace MyField.Controllers
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
 
         public FinesController(Ksans_SportsDbContext context,
               UserManager<UserBaseModel> userManager,
-              IActivityLogger activityLogger)
+              IActivityLogger activityLogger,
+              EmailService emailService)
         {
             _userManager = userManager;
             _context = context;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
 
+        [Authorize(Roles =("Sport Administrator"))]
         public async Task<IActionResult> _PendingClubFines()
         {
             var _pendingFines = await _context.Fines
@@ -46,6 +52,7 @@ namespace MyField.Controllers
             return PartialView("_PendingClubFinesPartial", _pendingFines);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PaidClubFines()
         {
             var paidFines = await _context.Fines
@@ -59,6 +66,7 @@ namespace MyField.Controllers
             return PartialView("_PaidClubFinesPartial", paidFines);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> OverdueClubFines()
         {
             var overdueFines = await _context.Fines
@@ -72,6 +80,7 @@ namespace MyField.Controllers
             return PartialView("_OverdueClubFinesPartial", overdueFines);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PendingClubFines ()
         {
             var pendingFines = await _context.Fines
@@ -84,11 +93,13 @@ namespace MyField.Controllers
             return View(pendingFines);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> ClubFines()
         {
             return View();
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> IndividualFines()
         {
             var ksans_SportsDbContext = _context.Fines
@@ -101,6 +112,7 @@ namespace MyField.Controllers
             return View(await ksans_SportsDbContext);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyPendingClubFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -119,6 +131,7 @@ namespace MyField.Controllers
             return PartialView("_MyPendingClubFinesPartial", myPendingClubFines);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyPaidClubFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -137,6 +150,7 @@ namespace MyField.Controllers
             return PartialView("_MyPaidClubFinesPartial", myPaidClubFines);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyOverDueClubFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -155,6 +169,7 @@ namespace MyField.Controllers
             return PartialView("_MyOverDueClubFinesPartial", myOverDueClubFines);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyClubFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -188,11 +203,13 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> MyIndividualFines()
         {
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> MyPendingFines()
         {
 
@@ -206,6 +223,7 @@ namespace MyField.Controllers
             return PartialView("_MyPendingFinesPartial", myFines);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyPaidFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -218,6 +236,7 @@ namespace MyField.Controllers
             return PartialView("_MyPaidFinesPartial", myFines);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyOverDueFines()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -231,6 +250,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> ClubFineDetails(int? id)
         {
             if (id == null || _context.Fines == null)
@@ -251,6 +271,7 @@ namespace MyField.Controllers
             return View(fine);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> IndividualFineDetails(int? id)
         {
             if (id == null || _context.Fines == null)
@@ -271,7 +292,7 @@ namespace MyField.Controllers
             return View(fine);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpGet]
         public async Task<IActionResult> CreateIndividualFine()
         {
@@ -285,6 +306,7 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpPost]
         public async Task<IActionResult> CreateIndividualFine(CreateIndividualFineViewModel viewModel)
         {
@@ -307,23 +329,59 @@ namespace MyField.Controllers
                     CreatedDateTime = DateTime.Now,
                     ModifiedById = userId,
                     ModifiedDateTime = DateTime.Now,
+                    PaymentStatus = PaymentStatus.Pending
                 };
 
-                personnelFinancialReport.ExpectedRepayableAmount = personnelFinancialReport.ExpectedRepayableAmount + viewModel.FineAmount;
-                personnelFinancialReport.RepayableFinesCount++;
-
-                newIndividualFine.PaymentStatus = PaymentStatus.Pending;
+                if (personnelFinancialReport != null)
+                {
+                    personnelFinancialReport.ExpectedRepayableAmount += viewModel.FineAmount;
+                    personnelFinancialReport.RepayableFinesCount++;
+                }
 
                 _context.Add(newIndividualFine);
                 await _context.SaveChangesAsync();
 
                 var newSavedFine = await _context.Fines
-                    .Where(mo => mo.Equals(newIndividualFine))
+                    .Where(f => f.OffenderId == newIndividualFine.OffenderId)
                     .Include(f => f.Offender)
                     .FirstOrDefaultAsync();
 
-                TempData["Message"] = $"You have successfully filed a fine/offence against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}. The offence is required to pay an amount of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate}.The email concerning this charge has been sent to the relevant individual.";
-                await _activityLogger.Log($"Charged {newSavedFine.Offender.FirstName} {newSavedFine.Offender.FirstName} R{newSavedFine.FineAmount} for {newSavedFine.RuleViolated}", user.Id);
+                if (newSavedFine?.Offender != null)
+                {
+                    string offenderEmailBody = $@"
+                Hi {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName},<br/><br/>
+                You have been fined for the following violation:<br/><br/>
+                Rule Violated: {newSavedFine.RuleViolated}<br/>
+                Fine Amount: {newSavedFine.FineAmount}<br/>
+                Due Date: {newSavedFine.FineDuDate.ToShortDateString()}<br/><br/>
+                Please ensure that you pay the fine by the due date. If you have any questions, contact our support team.<br/><br/>
+                Kind regards,<br/>
+                K&S Foundation Finance Team
+                ";
+
+                    await _emailService.SendEmailAsync(
+                        newSavedFine.Offender.Email,
+                        "Fine Notification",
+                        offenderEmailBody);
+                }
+
+                string userEmailBody = $@"
+            Hi {user.FirstName} {user.LastName},<br/><br/>
+            You have successfully filed a fine against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}.<br/><br/>
+            The offence requires a payment of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate.ToShortDateString()}.<br/><br/>
+            The email concerning this charge has been sent to the relevant individual.<br/><br/>
+            Kind regards,<br/>
+            K&S Foundation Finance Team
+                ";
+
+                await _emailService.SendEmailAsync(
+                    user.Email,
+                    "Fine Filed Successfully",
+                    userEmailBody);
+
+                TempData["Message"] = $"You have successfully filed a fine/offence against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}. The offence is required to pay an amount of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate}. The email concerning this charge has been sent to the relevant individual.";
+                await _activityLogger.Log($"Charged {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName} R{newSavedFine.FineAmount} for {newSavedFine.RuleViolated}", user.Id);
+
                 return RedirectToAction(nameof(IndividualFines));
             }
 
@@ -336,8 +394,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
-
+        [Authorize(Roles = ("Sport Administrator"))]
         public IActionResult CreateCLubFine()
         {
             ViewBag.Clubs = new SelectList(_context.Club, "ClubId", "ClubName");
@@ -345,6 +402,8 @@ namespace MyField.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCLubFine(CreateClubFineViewModel viewModel)
@@ -365,21 +424,45 @@ namespace MyField.Controllers
                     CreatedDateTime = DateTime.Now,
                     ModifiedById = userId,
                     ModifiedDateTime = DateTime.Now,
+                    PaymentStatus = PaymentStatus.Pending
                 };
-
-                newClubFine.PaymentStatus = PaymentStatus.Pending;
 
                 _context.Add(newClubFine);
                 await _context.SaveChangesAsync();
 
                 var newSavedFine = await _context.Fines
-                    .Where(mo => mo.Equals(newClubFine))
+                    .Where(f => f.ClubId == newClubFine.ClubId)
                     .Include(f => f.Club)
-                    .Include(f => f.Offender)
                     .FirstOrDefaultAsync();
+
+                if (newSavedFine?.Club != null)
+                {
+                    var clubEmail = newSavedFine.Club.Email; 
+                    var clubName = newSavedFine.Club.ClubName;
+                    var fineAmount = newSavedFine.FineAmount;
+                    var dueDate = newSavedFine.FineDuDate.ToShortDateString();
+
+                    string emailBody = $@"
+                Dear {clubName} club,<br/><br/>
+                You have been fined for the following violation:<br/><br/>
+                Rule Violated: {newSavedFine.RuleViolated}<br/>
+                Fine Details: {newSavedFine.FineDetails}<br/>
+                Fine Amount: {fineAmount}<br/>
+                Due Date: {dueDate}<br/><br/>
+                Please ensure that you pay the fine by the due date. If you have any questions, contact our support team.<br/><br/>
+                Kind regards,<br/>
+                K&S Foundation Finance Team
+                   ";
+
+                    await _emailService.SendEmailAsync(
+                        clubEmail,
+                        "Club Fine Notification",
+                        emailBody);
+                }
 
                 TempData["Message"] = $"You have successfully filed a fine/offence against {newSavedFine.Club.ClubName}. The club is required to pay an amount of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate}. The email concerning this charge has been sent to the relevant club.";
                 await _activityLogger.Log($"Charged {newSavedFine.Club.ClubName} R{newSavedFine.FineAmount} for {newSavedFine.RuleViolated}", user.Id);
+
                 return RedirectToAction(nameof(ClubFines));
             }
 
@@ -388,6 +471,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateClubFine (int? fineId)
         {
@@ -413,7 +497,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateClubFine(int? fineId, UpdateClubFineViewModel viewModel)
@@ -426,13 +510,17 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var existingClubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == viewModel.FineId)
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
+            if (existingClubFine == null)
+            {
+                return NotFound();
+            }
+
             if (ValidateClubUpdatedProperties(viewModel))
             {
-
                 existingClubFine.RuleViolated = viewModel.RuleViolated;
                 existingClubFine.FineDetails = viewModel.FineDetails;
                 existingClubFine.FineAmount = viewModel.FineAmount;
@@ -442,6 +530,28 @@ namespace MyField.Controllers
 
                 _context.Update(existingClubFine);
                 await _context.SaveChangesAsync();
+
+                var clubEmail = existingClubFine.Club.Email;
+                var clubName = existingClubFine.Club.ClubName;
+                var fineAmount = existingClubFine.FineAmount;
+                var dueDate = existingClubFine.FineDuDate.ToShortDateString();
+
+                string emailBody = $@"
+            Dear {clubName} club,<br/><br/>
+            Your fine details have been updated:<br/><br/>
+            Rule Violated: {existingClubFine.RuleViolated}<br/>
+            Fine Details: {existingClubFine.FineDetails}<br/>
+            Fine Amount: {fineAmount}<br/>
+            Due Date: {dueDate}<br/><br/>
+            Please review the updated fine details. If you have any questions, contact our support team.<br/><br/>
+            Kind regards,<br/>
+            K&S Foundation Finance Team
+                ";
+
+                await _emailService.SendEmailAsync(
+                    clubEmail,
+                    "Club Fine Updated Notification",
+                    emailBody);
             }
 
             TempData["Message"] = $"You have successfully updated {existingClubFine.Club.ClubName} charges";
@@ -449,6 +559,7 @@ namespace MyField.Controllers
             await _activityLogger.Log($"Updated {existingClubFine.Club.ClubName} fines", user.Id);
             return RedirectToAction(nameof(ClubFines));
         }
+
 
         private bool ValidateClubUpdatedProperties(UpdateClubFineViewModel viewModel)
         {
@@ -460,38 +571,8 @@ namespace MyField.Controllers
             return validationResults.Count == 0;
         }
 
-
-        public async Task<IActionResult> MarkOverDueClubFine (int? fineId)
-        {
-            if(fineId == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-
-            var existingClubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
-                .Include(e => e.Club)
-                .FirstOrDefaultAsync();
-
-            existingClubFine.PaymentStatus = PaymentStatus.Overdue;
-            existingClubFine.ModifiedById = user.Id;
-            existingClubFine.ModifiedDateTime = DateTime.Now;
-
-            _context.Update(existingClubFine);
-
-            await _context.SaveChangesAsync();
-
-
-            TempData["Message"] = $"You have successfully markerd {existingClubFine.Club.ClubName} charges as overdue payment";
-
-            await _activityLogger.Log($"Marked {existingClubFine.Club.ClubName} fines as overdue", user.Id);
-
-            return RedirectToAction(nameof(ClubFines));
-        }
-
-        public async Task<IActionResult> DropClubFine (int? fineId)
+        [Authorize(Roles = ("Sport Administrator"))]
+        public async Task<IActionResult> MarkOverDueClubFine(int? fineId)
         {
             if (fineId == null)
             {
@@ -505,6 +586,84 @@ namespace MyField.Controllers
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
+            if (existingClubFine == null)
+            {
+                return NotFound();
+            }
+
+            existingClubFine.PaymentStatus = PaymentStatus.Overdue;
+            existingClubFine.ModifiedById = user.Id;
+            existingClubFine.ModifiedDateTime = DateTime.Now;
+
+            _context.Update(existingClubFine);
+            await _context.SaveChangesAsync();
+
+            var clubEmail = existingClubFine.Club.Email; 
+            var clubName = existingClubFine.Club.ClubName;
+            var fineAmount = existingClubFine.FineAmount;
+            var dueDate = existingClubFine.FineDuDate.ToShortDateString();
+
+            string emailBody = $@"
+        Dear {clubName} club,<br/><br/>
+        This is to notify you that your fine has been marked as overdue:<br/><br/>
+        Rule Violated: {existingClubFine.RuleViolated}<br/>
+        Fine Details: {existingClubFine.FineDetails}<br/>
+        Fine Amount: {fineAmount}<br/>
+        Due Date: {dueDate}<br/><br/>
+        Please make the payment as soon as possible to avoid further actions.<br/><br/>
+        Kind regards,<br/>
+        K&S Foundation Finance Team
+            ";
+
+            await _emailService.SendEmailAsync(
+                clubEmail,
+                "Overdue Fine Notification",
+                emailBody);
+
+            TempData["Message"] = $"You have successfully marked {existingClubFine.Club.ClubName} charges as overdue payment";
+
+            await _activityLogger.Log($"Marked {existingClubFine.Club.ClubName} fines as overdue", user.Id);
+            return RedirectToAction(nameof(ClubFines));
+        }
+
+        [Authorize(Roles = ("Sport Administrator"))]
+        public async Task<IActionResult> DropClubFine(int? fineId)
+        {
+            if (fineId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var existingClubFine = await _context.Fines
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Include(e => e.Club)
+                .FirstOrDefaultAsync();
+
+            if (existingClubFine == null)
+            {
+                return NotFound();
+            }
+
+            var clubEmail = existingClubFine.Club.Email; 
+            var clubName = existingClubFine.Club.ClubName;
+            var ruleViolated = existingClubFine.RuleViolated;
+
+            string emailBody = $@"
+        Dear {clubName} club,<br/><br/>
+        We wanted to inform you that after full consideration, we have decided to drop your charges:<br/><br/>
+        Rule Violated: {ruleViolated}<br/><br/>
+        If you have any questions, please contact our support team.<br/><br/>
+        Kind regards,<br/>
+        K&S Foundation Support Team
+            ";
+
+            await _emailService.SendEmailAsync(
+                clubEmail,
+                "Fine Dropped Notification",
+                emailBody);
+
             TempData["Message"] = $"You have deleted {existingClubFine.Club.ClubName} fines of {existingClubFine.RuleViolated}";
 
             await _activityLogger.Log($"Dropped {existingClubFine.Club.ClubName} fines of {existingClubFine.RuleViolated}", user.Id);
@@ -515,7 +674,7 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(ClubFines));
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateIndividualFine(int? fineId)
         {
@@ -542,7 +701,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateIndividualFine(int? fineId, UpdateIndividualFineViewModel viewModel)
@@ -559,9 +718,13 @@ namespace MyField.Controllers
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
+            if (individualFine == null)
+            {
+                return NotFound();
+            }
+
             if (ValidateIndividualUpdatedProperties(viewModel))
             {
-
                 individualFine.RuleViolated = viewModel.RuleViolated;
                 individualFine.FineDetails = viewModel.FineDetails;
                 individualFine.FineAmount = viewModel.FineAmount;
@@ -571,6 +734,25 @@ namespace MyField.Controllers
 
                 _context.Update(individualFine);
                 await _context.SaveChangesAsync();
+
+                var offenderEmail = individualFine.Offender.Email; 
+                var offenderName = $"{individualFine.Offender.FirstName} {individualFine.Offender.LastName}";
+
+                string emailBody = $@"
+            Hi {offenderName},<br/><br/>
+            We wanted to inform you that your fine has been updated:<br/><br/>
+            Rule Violated: {individualFine.RuleViolated}<br/>
+            Fine Amount: {individualFine.FineAmount}<br/>
+            Due Date: {individualFine.FineDuDate.ToShortDateString()}<br/><br/>
+            If you have any questions, please contact our support team.<br/><br/>
+            Kind regards,<br/>
+            K&S Foundation Finance Team
+                ";
+
+                await _emailService.SendEmailAsync(
+                    offenderEmail,
+                    "Fine Updated Notification",
+                    emailBody);
             }
 
             TempData["Message"] = $"You have successfully updated {viewModel.FullNames} charges";
@@ -579,6 +761,7 @@ namespace MyField.Controllers
 
             return RedirectToAction(nameof(IndividualFines));
         }
+
 
         private bool ValidateIndividualUpdatedProperties(UpdateIndividualFineViewModel viewModel)
         {
@@ -590,7 +773,7 @@ namespace MyField.Controllers
             return validationResults.Count == 0;
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> MarkOverDueIndividualFine(int? fineId)
         {
             if (fineId == null)
@@ -605,22 +788,46 @@ namespace MyField.Controllers
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
+            if (individualFine == null)
+            {
+                return NotFound();
+            }
+
             individualFine.PaymentStatus = PaymentStatus.Overdue;
             individualFine.ModifiedById = user.Id;
             individualFine.ModifiedDateTime = DateTime.Now;
 
             _context.Update(individualFine);
-
             await _context.SaveChangesAsync();
 
+            var offenderEmail = individualFine.Offender.Email; 
+            var offenderName = $"{individualFine.Offender.FirstName} {individualFine.Offender.LastName}";
 
-            TempData["Message"] = $"You have successfully markerd {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} charges as overdue payment";
+            string emailBody = $@"
+        Hi {offenderName},<br/><br/>
+        We wanted to inform you that your fine has been marked as overdue:<br/><br/>
+        Rule Violated: {individualFine.RuleViolated}<br/>
+        Fine Amount: {individualFine.FineAmount}<br/>
+        Due Date: {individualFine.FineDuDate.ToShortDateString()}<br/><br/>
+        Please make the payment as soon as possible to avoid further actions.<br/><br/>
+        If you have any questions, please contact our support team.<br/><br/>
+        Kind regards,<br/>
+        K&S Foundation Finance Team
+            ";
 
-            await _activityLogger.Log($"Marked {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines as overdue", user.Id);
+            await _emailService.SendEmailAsync(
+                offenderEmail,
+                "Fine Overdue Notification",
+                emailBody);
+
+            TempData["Message"] = $"You have successfully marked {individualFine.Offender.FirstName} {individualFine.Offender.LastName}'s charges as overdue.";
+
+            await _activityLogger.Log($"Marked {individualFine.Offender.FirstName} {individualFine.Offender.LastName} fines as overdue", user.Id);
 
             return RedirectToAction(nameof(IndividualFines));
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> DropIndividualFine(int? fineId)
         {
             if (fineId == null)
@@ -635,17 +842,38 @@ namespace MyField.Controllers
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
-            TempData["Message"] = $"You have deleted {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines of {individualFine.RuleViolated}";
+            if (individualFine == null)
+            {
+                return NotFound();
+            }
 
-            await _activityLogger.Log($"Dropped {individualFine.Offender.FirstName}  {individualFine.Offender.LastName} fines of {individualFine.RuleViolated}", user.Id);
+            var offenderEmail = individualFine.Offender.Email;
+            var offenderName = $"{individualFine.Offender.FirstName} {individualFine.Offender.LastName}";
+
+            string emailBody = $@"
+        Hi {offenderName},<br/><br/>
+        We wanted to inform you that the fine against you has been dropped:<br/><br/>
+        Rule Violated: {individualFine.RuleViolated}<br/>
+        Fine Amount: {individualFine.FineAmount}<br/><br/>
+        If you have any questions, please contact our support team.<br/><br/>
+        Kind regards,<br/>
+        K&S Foundation Finance Team
+            ";
+
+            await _emailService.SendEmailAsync(
+                offenderEmail,
+                "Fine Dropped Notification",
+                emailBody);
+
+            TempData["Message"] = $"You have deleted {individualFine.Offender.FirstName} {individualFine.Offender.LastName}'s fine for {individualFine.RuleViolated}.";
+
+            await _activityLogger.Log($"Dropped {individualFine.Offender.FirstName} {individualFine.Offender.LastName}'s fine for {individualFine.RuleViolated}", user.Id);
 
             _context.Remove(individualFine);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(IndividualFines));
         }
-
-
 
 
         private bool FineExists(int id)

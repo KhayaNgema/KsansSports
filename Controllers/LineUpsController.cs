@@ -4,6 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Numerics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -31,7 +32,7 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
         }
 
-
+        [Authorize]
         public async Task<IActionResult> HeadToHead(int homeClubId, int awayClubId)
         {
             var headtoheadStats = await _context.HeadToHead
@@ -47,6 +48,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize]
         public IActionResult MatchLineUpsFans(int fixtureId)
         {
             var matchLineUps = _context.LineUpXI
@@ -57,6 +59,7 @@ namespace MyField.Controllers
             return PartialView("_MatchLineUpsFansPartial", matchLineUps);
         }
 
+        [Authorize]
         public async Task<IActionResult> HomeTeamLineUp(int fixtureId, int clubId)
         {
             var awayLineUp = await _context.LineUpXI
@@ -95,7 +98,7 @@ namespace MyField.Controllers
             return PartialView("_HomeTeamLineUp", awayLineUp);
         }
 
-
+        [Authorize]
         public async Task<IActionResult> AwayTeamLineUp(int fixtureId, int clubId)
         {
             var awayLineUp = await _context.LineUpXI
@@ -130,6 +133,7 @@ namespace MyField.Controllers
             return PartialView("_AwayTeamLineUp",awayLineUp );
         }
 
+        [Authorize]
         public async Task<IActionResult> HomeTeamSubstitutes(int fixtureId, int clubId)
         {
             var awayLineUp = await _context.LineUpSubstitutes
@@ -150,7 +154,7 @@ namespace MyField.Controllers
             return PartialView("_HomeTeamSubstitutes", awayLineUp);
         }
 
-
+        [Authorize]
         public async Task<IActionResult> AwayTeamSubstitutes(int fixtureId, int clubId)
         {
             var awayLineUp = await _context.LineUpSubstitutes
@@ -164,7 +168,7 @@ namespace MyField.Controllers
             return PartialView("_AwayTeamSubstitutes", awayLineUp);
         }
 
-
+        [Authorize]
         public async Task<IActionResult> LineUpXIFinal(int fixtureId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -184,6 +188,7 @@ namespace MyField.Controllers
             return PartialView("_MatchLineUpFinalPartial", matchXI);
         }
 
+        [Authorize]
         public async Task<IActionResult> LineUpSubstitutesFinal(int fixtureId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -203,12 +208,15 @@ namespace MyField.Controllers
             return PartialView("_MatchLineUpSubstitutesFinalPartial", matchSubsXI);
         }
 
+
+        [Authorize(Roles =("Club Manager"))]
         public IActionResult CreateMatchLineUp()
         {
             return PartialView("_CreateMatchLineUpPartial");
         }
 
 
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> PlayerMatchLineUp()
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -226,8 +234,7 @@ namespace MyField.Controllers
             return PartialView("_MatchLineUpClubPlayersPartial", players);
         }
 
-
-
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> MatchXIHolder(int fixtureId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -247,7 +254,7 @@ namespace MyField.Controllers
             return PartialView("_MatchXIHolderPartial", matchXI);
         }
 
-
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> MatchSubstitutes(int fixtureId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -257,9 +264,8 @@ namespace MyField.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            // Ensure that the FixtureId matches the parameter passed to the action
             var matchSubstitutes = await _context.LineUpSubstitutesHolder
-                .Where(mo => mo.FixtureId == fixtureId) // Filter by fixtureId
+                .Where(mo => mo.FixtureId == fixtureId)
                 .Include(s => s.Club)
                 .Include(s => s.Fixture)
                 .Include(s => s.ClubPlayer)
@@ -269,9 +275,7 @@ namespace MyField.Controllers
         }
 
 
-
-
-
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> ClubPlayers()
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
@@ -296,8 +300,7 @@ namespace MyField.Controllers
             }
         }
 
-
-        // GET: LineUps/Details/5
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.LineUp == null)
@@ -318,7 +321,9 @@ namespace MyField.Controllers
 
             return View(lineUp);
         }
-        // GET: CreateMatchLineUpXIHolder
+
+
+        [Authorize(Roles = ("Club Manager"))]
         public IActionResult CreateMatchLineUpXIHolder(int fixtureId, string playerId)
         {
             var newViewModel = new MatchLineUpXIHolderViewModel
@@ -330,7 +335,7 @@ namespace MyField.Controllers
             return View(newViewModel);
         }
 
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMatchLineUpXIHolder(MatchLineUpXIHolderViewModel viewModel)
@@ -413,10 +418,7 @@ namespace MyField.Controllers
             }
         }
 
-
-
-
-        // GET: CreateMatchLineUpSubstitutesHolder
+        [Authorize(Roles = ("Club Manager"))]
         public IActionResult CreateMatchLineUpSubstitutesHolder(int fixtureId, string playerId)
         {
             var newViewModel = new MatchLineUpSubstitutesViewModel
@@ -427,7 +429,7 @@ namespace MyField.Controllers
             return View(newViewModel);
         }
 
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMatchLineUpSubstitutesHolder(MatchLineUpSubstitutesViewModel viewModel)
@@ -512,7 +514,7 @@ namespace MyField.Controllers
 
 
 
-        // GET: CreateMatchLineUpSubstitutesHolder/
+        [Authorize(Roles = ("Club Manager"))]
         public IActionResult CreateMatchLineUpFinal(int fixtureId)
         {
             var viewModel = new  MatchLineUpFinalViewModel
@@ -544,15 +546,13 @@ namespace MyField.Controllers
 
                 if (string.IsNullOrEmpty(userId))
                 {
-                    // Handle the error, for example:
                     return Json(new { success = false, error = "User ID is null or empty" });
                 }
 
-                // Find lineupXIHolders and lineupSubstitutesHolders
                 var lineupXIHolders = await _context.LineUpXIHolder.ToListAsync();
-                Console.WriteLine("lineupXIHolders: " + lineupXIHolders); // Log lineupXIHolders
+                Console.WriteLine("lineupXIHolders: " + lineupXIHolders); 
                 var lineupSubstitutesHolders = await _context.LineUpSubstitutesHolder.ToListAsync();
-                Console.WriteLine("lineupSubstitutesHolders: " + lineupSubstitutesHolders); // Log lineupSubstitutesHolders
+                Console.WriteLine("lineupSubstitutesHolders: " + lineupSubstitutesHolders);
 
               
                 var lineUp = new LineUp
@@ -627,10 +627,7 @@ namespace MyField.Controllers
 
         }
 
-
-
-
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePlayerFromLineUpXIHolder(int fixtureId, string playerId)
@@ -669,7 +666,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeletePlayerFromLineUpSubstitutesHolder(int fixtureId, string playerId)
@@ -708,7 +705,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MovePlayerFromXItoSubstitutes(int fixtureId, string playerId, int clubId)
@@ -770,14 +767,13 @@ namespace MyField.Controllers
             }
         }
 
-
+        [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> MovePlayerFromSubstitutesToXI(int fixtureId, string playerId, int clubId)
         {
             try
             {
-                // Check if the maximum number of LineUpXIHolder entries has been reached
                 var count = await _context.LineUpXIHolder.CountAsync(l => l.FixtureId == fixtureId);
                 if (count >= 11)
                 {
@@ -834,9 +830,6 @@ namespace MyField.Controllers
                 return View("Error");
             }
         }
-
-
-
 
         private bool LineUpExists(int id)
         {

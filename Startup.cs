@@ -14,6 +14,7 @@ using MyField.Services;
 using Serilog;
 using System;
 using System.Globalization;
+using System.Security.Claims;
 using System.Threading;
 public class Startup
 {
@@ -27,6 +28,21 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AnyRole", policy =>
+                policy.RequireAssertion(context => context.User.Identity.IsAuthenticated &&
+                                                   context.User.Claims.Any(c => c.Type == ClaimTypes.Role)));
+        });
+
+        services.AddDistributedMemoryCache(); 
+        services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30); 
+            options.Cookie.HttpOnly = true; 
+            options.Cookie.IsEssential = true; 
+        });
 
         services.AddDbContext<Ksans_SportsDbContext>(options =>
             options.UseSqlServer(connectionString));
@@ -79,14 +95,26 @@ public class Startup
 
         services.AddLogging(loggingBuilder =>
         {
-            loggingBuilder.ClearProviders(); // Clear the default providers
-            loggingBuilder.AddSerilog(dispose: true); // Add Serilog
+            loggingBuilder.ClearProviders();
+            loggingBuilder.AddSerilog(dispose: true);
         });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        // Serilog configuration
+        app.UseSession();
+
+        app.Use(async (context, next) =>
+        {
+            context.Response.Cookies.Append("StrictlyNecessaryCookie", "Value", new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,   
+                SameSite = SameSiteMode.Strict  
+            });
+            await next.Invoke();
+        });
+
         Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs/myapp-.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();

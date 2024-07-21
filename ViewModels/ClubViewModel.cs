@@ -10,6 +10,11 @@ namespace MyField.ViewModels
         [Display(Name = "Club")]
         public string ClubName { get; set; }
 
+
+        [Required(ErrorMessage = "Club email is required")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Club area is required")]
         [Display(Name = "Home Area")]
         public string ClubLocation { get; set; }

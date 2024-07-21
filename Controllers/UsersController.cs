@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Identity;
 using MyField.Migrations;
 using System.ComponentModel.DataAnnotations;
 using MyField.Interfaces;
+using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyField.Controllers
 {
@@ -23,27 +25,33 @@ namespace MyField.Controllers
         private readonly FileUploadService _fileUploadService;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public UsersController(Ksans_SportsDbContext context,
            FileUploadService fileUploadService,
            UserManager<UserBaseModel> userManager,
-           IActivityLogger activityLogger)
+           IActivityLogger activityLogger,
+           EmailService emailService)
         {
             _context = context;
             _fileUploadService = fileUploadService;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
-        public async Task<IActionResult> AllDivisionPlayers()
+        [Authorize]
+        public async Task<IActionResult> AllDivisionManagers()
         {
-            return PartialView("DivisionPlayersPartial");
+            return PartialView("DivisionManagersPartial");
         }
 
+
+        [Authorize]
         public async Task<IActionResult> Players()
         {
             var players = await _context.Player
-                .Where(p => !p.IsDeleted) 
+                .Where(p => !p.IsDeleted)
                 .Include(p => p.Club)
                 .ToListAsync();
 
@@ -51,6 +59,26 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize]
+        public async Task<IActionResult> AllDivisionPlayers()
+        {
+            return PartialView("DivisionPlayersPartial");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Managers()
+        {
+            var managers = await _context.Club
+                .Where(p => p.ClubManager != null && !p.ClubManager.IsDeleted && !p.ClubManager.IsContractEnded)
+                .Include(p => p.ClubManager)
+                .ToListAsync();
+
+            return PartialView("_ManagersPartial", managers);
+        }
+
+
+
+        [Authorize]
         [HttpGet]
 
         public async Task<IActionResult> PasswordAndSecurity()
@@ -76,6 +104,8 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> UserProfile(string? userId)
         {
@@ -112,6 +142,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> PlayerProfile(string? userId)
         {
@@ -155,7 +186,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Profile(string? userId)
         {
@@ -209,6 +240,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<IActionResult> DivisionFans()
         {
             var userIdsWithRoles = await _context.UserRoles
@@ -223,7 +255,7 @@ namespace MyField.Controllers
             return View(usersWithNoRoles);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportAdministrators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Administrator");
@@ -237,6 +269,7 @@ namespace MyField.Controllers
             return View(sportAdministrators);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportManagers()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Manager");
@@ -250,6 +283,7 @@ namespace MyField.Controllers
             return View(sportManagers);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportCoordinators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Coordinator");
@@ -263,6 +297,7 @@ namespace MyField.Controllers
             return View(sportCoordinators);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> Officials()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Official");
@@ -276,6 +311,7 @@ namespace MyField.Controllers
             return View(officials);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ClubAdministrators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club administrator");
@@ -290,6 +326,7 @@ namespace MyField.Controllers
             return View(clubAdministrators);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ClubManagers()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club manager");
@@ -304,6 +341,7 @@ namespace MyField.Controllers
             return View(clubManagers);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> DivisionPlayers()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Player");
@@ -318,7 +356,7 @@ namespace MyField.Controllers
             return View(divisionPlayers);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> NewsAdministrators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News administrator");
@@ -332,6 +370,7 @@ namespace MyField.Controllers
             return View(newsAdministrators);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> NewsUpdaters()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News updator");
@@ -345,6 +384,7 @@ namespace MyField.Controllers
             return View(newsUpdaters);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> FansAdministrators()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Fans administrator");
@@ -358,7 +398,7 @@ namespace MyField.Controllers
             return View(fansAdministrators);
         }
 
-
+        [Authorize(Roles = ("System Administrator"))]
         public async Task<IActionResult> SystemUsers()
         {
             var systemUsers = await _context.Users
@@ -367,6 +407,7 @@ namespace MyField.Controllers
             return View(systemUsers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyClubPlayers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -388,6 +429,7 @@ namespace MyField.Controllers
             return View(clubPlayers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyClubManagers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -409,6 +451,7 @@ namespace MyField.Controllers
             return PartialView(clubManagers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> ClubPlayers()
         {
             var clubPlayers = await _context.Player
@@ -419,6 +462,7 @@ namespace MyField.Controllers
             return View(clubPlayers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyClubAdministrators()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -441,6 +485,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Club Administrator, Personnel Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateProfile(string? userId)
         {
@@ -478,7 +523,7 @@ namespace MyField.Controllers
 
 
 
-
+        [Authorize(Roles = ("Club Administrator, Personnel Administrator"))]
         [HttpPost]
         public async Task<IActionResult> UpdateProfile(string userId, UpdateProfileViewModel viewModel, IFormFile ProfilePictureFile)
         {
@@ -486,7 +531,7 @@ namespace MyField.Controllers
 
             if (userId != viewModel.Id)
             {
-                logMessages.Add($"UpdateClubManager POST request failed: id mismatch: {userId} != {viewModel.Id}");
+                logMessages.Add($"UpdateProfile POST request failed: id mismatch: {userId} != {viewModel.Id}");
                 TempData["LogMessages"] = logMessages;
                 return NotFound();
             }
@@ -495,24 +540,21 @@ namespace MyField.Controllers
 
             var userProfile = await _context.UserBaseModel.FindAsync(userId);
 
-
             var userRole = await _context.UserRoles
-                  .Where(ur => ur.UserId == viewModel.Id)
-                  .Join(_context.Roles,
-                   ur => ur.RoleId,
-                   r => r.Id,
-                   (ur, r) => r.Name)
-                  .FirstOrDefaultAsync();
+                .Where(ur => ur.UserId == viewModel.Id)
+                .Join(_context.Roles,
+                    ur => ur.RoleId,
+                    r => r.Id,
+                    (ur, r) => r.Name)
+                .FirstOrDefaultAsync();
 
             if (ValidateProfileUpdatedProperties(viewModel))
             {
-
                 try
                 {
-
                     if (userProfile == null)
                     {
-                        logMessages.Add($"ClubManager with id {userId} not found during POST request");
+                        logMessages.Add($"User with id {userId} not found during POST request");
                         TempData["LogMessages"] = logMessages;
                         return NotFound();
                     }
@@ -535,7 +577,17 @@ namespace MyField.Controllers
 
                     _context.Update(userProfile);
                     await _context.SaveChangesAsync();
-                    logMessages.Add($"ClubManager with id {userId} successfully updated");
+                    logMessages.Add($"User with id {userId} successfully updated");
+
+                    var subject = "Profile Update Notification";
+                    var emailBodyTemplate = $@"
+                Dear {viewModel.FirstName} {viewModel.LastName},<br/><br/>
+                Your profile information has been successfully updated.<br/><br/>
+                If you did not request this update or if you have any questions, please contact us immediately.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Management
+                    ";
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(viewModel.Email, subject, emailBodyTemplate));
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
@@ -546,9 +598,9 @@ namespace MyField.Controllers
 
                 TempData["LogMessages"] = logMessages;
 
-                if(User.IsInRole("Personeel Administrator"))
+                if (User.IsInRole("Personnel Administrator"))
                 {
-                    TempData["Message"] = $"{userProfile.FirstName} {userProfile.LastName}  information has been updated successfully.";
+                    TempData["Message"] = $"{userProfile.FirstName} {userProfile.LastName}'s information has been updated successfully.";
                     await _activityLogger.Log($"Updated {userProfile.FirstName} {userProfile.LastName} profile information", user.Id);
                 }
                 else
@@ -556,8 +608,6 @@ namespace MyField.Controllers
                     TempData["Message"] = $"Your profile information has been updated successfully.";
                     await _activityLogger.Log($"Updated your profile information", user.Id);
                 }
-
-                
 
                 if (userRole == "Club Administrator")
                 {
@@ -599,9 +649,9 @@ namespace MyField.Controllers
                 {
                     return RedirectToAction(nameof(FansAdministrators));
                 }
-                else 
+                else
                 {
-                    if(User.IsInRole("Personnel Administrator"))
+                    if (User.IsInRole("Personnel Administrator"))
                     {
                         return RedirectToAction(nameof(DivisionFans));
                     }
@@ -612,7 +662,7 @@ namespace MyField.Controllers
                 }
             }
 
-            logMessages.Add($"Model state invalid for ClubManager with id {userId}");
+            logMessages.Add($"Model state invalid for User with id {userId}");
 
             foreach (var state in ModelState)
             {
@@ -630,6 +680,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
         private bool ClubAdministratorExists(string userId)
         {
             return _context.Player.Any(e => e.Id == userId);
@@ -645,10 +696,10 @@ namespace MyField.Controllers
             return validationResults.Count == 0;
         }
 
-
+        [Authorize(Roles = ("Fans Administrator, Personnel Administrator"))]
         public async Task<IActionResult> Deactivate(string? userId)
         {
-            if(userId == null)
+            if (userId == null)
             {
                 return NotFound();
             }
@@ -659,6 +710,11 @@ namespace MyField.Controllers
                 .Where(u => u.Id == userId)
                 .FirstOrDefaultAsync();
 
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             var userRole = await _context.UserRoles
                 .Where(ur => ur.UserId == userId)
                 .Join(_context.Roles,
@@ -667,23 +723,32 @@ namespace MyField.Controllers
                       (ur, r) => r.Name)
                 .FirstOrDefaultAsync();
 
-
             user.IsActive = false;
             user.ModifiedBy = loggedInUser.Id;
             user.ModifiedDateTime = DateTime.Now;
 
             await _context.SaveChangesAsync();
 
-
             await _activityLogger.Log($"Deactivated {user.FirstName} {user.LastName} profile.", user.Id);
 
             TempData["Message"] = $"You have deactivated {user.FirstName} {user.LastName} and they won't be able to use some system features until you activate them.";
 
-            if(userRole == "Club Administrator")
+            var subject = "Account Deactivation Notification";
+            var emailBodyTemplate = $@"
+        Dear {user.FirstName} {user.LastName},<br/><br/>
+        Your account has been deactivated and you will not be able to use some system features until it is reactivated.<br/><br/>
+        If you believe this is a mistake or if you have any questions, please contact us immediately.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+            ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, subject, emailBodyTemplate));
+
+            if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
-            else if(userRole == "Player")
+            else if (userRole == "Player")
             {
                 return RedirectToAction(nameof(DivisionPlayers));
             }
@@ -723,9 +788,9 @@ namespace MyField.Controllers
             {
                 return RedirectToAction(nameof(DivisionFans));
             }
-
         }
 
+        [Authorize(Roles = ("Fans Administrator, Personnel Administrator"))]
         public async Task<IActionResult> Activate(string? userId)
         {
             if (userId == null)
@@ -739,6 +804,11 @@ namespace MyField.Controllers
                 .Where(u => u.Id == userId)
                 .FirstOrDefaultAsync();
 
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             var userRole = await _context.UserRoles
                 .Where(ur => ur.UserId == userId)
                 .Join(_context.Roles,
@@ -746,7 +816,6 @@ namespace MyField.Controllers
                       r => r.Id,
                       (ur, r) => r.Name)
                 .FirstOrDefaultAsync();
-
 
             user.IsActive = true;
             user.ModifiedBy = loggedInUser.Id;
@@ -756,7 +825,19 @@ namespace MyField.Controllers
 
             await _activityLogger.Log($"Activated {user.FirstName} {user.LastName} profile.", user.Id);
 
-            TempData["Message"] = $"You have successfully activated {user.FirstName} {user.LastName} and now they have access into this system features.";
+            TempData["Message"] = $"You have successfully activated {user.FirstName} {user.LastName} and now they have access to the system features.";
+
+            // Enqueue email task
+            var subject = "Account Activation Notification";
+            var emailBodyTemplate = $@"
+        Dear {user.FirstName} {user.LastName},<br/><br/>
+        Your account has been successfully activated, and you now have access to the system features.<br/><br/>
+        If you have any questions or need assistance, please contact us immediately.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, subject, emailBodyTemplate));
 
             if (userRole == "Club Administrator")
             {
@@ -802,20 +883,26 @@ namespace MyField.Controllers
             {
                 return RedirectToAction(nameof(DivisionFans));
             }
-
         }
 
+        [Authorize(Roles = ("Fans Administrator, Personnel Administrator"))]
         public async Task<IActionResult> Suspend(string? userId)
         {
             if (userId == null)
             {
                 return NotFound();
             }
+
             var loggedInUser = await _userManager.GetUserAsync(User);
 
             var user = await _context.UserBaseModel
                 .Where(u => u.Id == userId)
                 .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
 
             var userRole = await _context.UserRoles
                 .Where(ur => ur.UserId == userId)
@@ -824,7 +911,6 @@ namespace MyField.Controllers
                       r => r.Id,
                       (ur, r) => r.Name)
                 .FirstOrDefaultAsync();
-
 
             user.IsSuspended = true;
             user.ModifiedBy = loggedInUser.Id;
@@ -836,6 +922,18 @@ namespace MyField.Controllers
 
             TempData["Message"] = $"You have suspended {user.FirstName} {user.LastName} and they won't be able to use the entire system until you unsuspend them.";
 
+            // Enqueue email task
+            var subject = "Account Suspension Notification";
+            var emailBodyTemplate = $@"
+        Dear {user.FirstName} {user.LastName},<br/><br/>
+        Your account has been suspended and you will not be able to access the system features until further notice.<br/><br/>
+        If you believe this is a mistake or if you need assistance, please contact support immediately.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, subject, emailBodyTemplate));
+
             if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
@@ -880,21 +978,26 @@ namespace MyField.Controllers
             {
                 return RedirectToAction(nameof(DivisionFans));
             }
-
         }
 
+        [Authorize(Roles = ("Fans Administrator, Personnel Administrator"))]
         public async Task<IActionResult> Unsuspend(string? userId)
         {
             if (userId == null)
             {
                 return NotFound();
             }
-            var loggedInUser = await _userManager.GetUserAsync(User);
 
+            var loggedInUser = await _userManager.GetUserAsync(User);
 
             var user = await _context.UserBaseModel
                 .Where(u => u.Id == userId)
                 .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
 
             var userRole = await _context.UserRoles
                 .Where(ur => ur.UserId == userId)
@@ -904,7 +1007,6 @@ namespace MyField.Controllers
                       (ur, r) => r.Name)
                 .FirstOrDefaultAsync();
 
-
             user.IsSuspended = false;
             user.ModifiedBy = loggedInUser.Id;
             user.ModifiedDateTime = DateTime.Now;
@@ -913,9 +1015,21 @@ namespace MyField.Controllers
 
             await _activityLogger.Log($"Unsuspended {user.FirstName} {user.LastName} profile.", user.Id);
 
-            TempData["Message"] = $"You have successfully unsuspended {user.FirstName} {user.LastName} and now they have access into features of this system.";
+            TempData["Message"] = $"You have successfully unsuspended {user.FirstName} {user.LastName} and now they have access to the features of this system.";
 
-            if (userRole == "Club  Administrator")
+            // Enqueue email task
+            var subject = "Account Unsuspension Notification";
+            var emailBodyTemplate = $@"
+        Dear {user.FirstName} {user.LastName},<br/><br/>
+        Your account has been successfully unsuspended, and you now have access to the system features.<br/><br/>
+        If you have any questions or need further assistance, please contact support.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, subject, emailBodyTemplate));
+
+            if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -959,47 +1073,60 @@ namespace MyField.Controllers
             {
                 return RedirectToAction(nameof(DivisionFans));
             }
-
         }
 
+        [Authorize(Roles = ("Fans Administrator, Personnel Administrator"))]
         public async Task<IActionResult> Delete(string? userId)
         {
-            if(userId == null)
+            if (userId == null)
             {
                 return NotFound();
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var loggedInUser = await _userManager.GetUserAsync(User);
 
             var existingUser = await _context.UserBaseModel
                 .Where(e => e.Id == userId)
                 .FirstOrDefaultAsync();
 
+            if (existingUser == null)
+            {
+                return NotFound();
+            }
+
             var userRole = await _context.UserRoles
-                      .Where(ur => ur.UserId == userId)
-                      .Join(_context.Roles,
-                       ur => ur.RoleId,
-                       r => r.Id,
-                       (ur, r) => r.Name)
-                      .FirstOrDefaultAsync();
-
-
+                .Where(ur => ur.UserId == userId)
+                .Join(_context.Roles,
+                      ur => ur.RoleId,
+                      r => r.Id,
+                      (ur, r) => r.Name)
+                .FirstOrDefaultAsync();
 
             existingUser.IsDeleted = true;
             existingUser.IsSuspended = true;
-            existingUser.IsActive = true;
-            existingUser.ModifiedBy = user.Id;
+            existingUser.IsActive = false; 
+            existingUser.ModifiedBy = loggedInUser.Id;
             existingUser.ModifiedDateTime = DateTime.Now;
-
 
             _context.Update(existingUser);
             await _context.SaveChangesAsync();
 
-            await _activityLogger.Log($"Deleted {existingUser.FirstName} {existingUser.LastName} profile from the system.", user.Id);
+            await _activityLogger.Log($"Deleted {existingUser.FirstName} {existingUser.LastName} profile from the system.", loggedInUser.Id);
 
-            TempData["Message"] = $"You have deleted {existingUser.FirstName} {existingUser.LastName} and now they don't longer exist in this system.";
+            TempData["Message"] = $"You have deleted {existingUser.FirstName} {existingUser.LastName} and they no longer exist in this system.";
 
-            if (userRole == "Club  Administrator")
+            var subject = "Account Deletion Confirmation";
+            var emailBodyTemplate = $@"
+        Dear {existingUser.FirstName} {existingUser.LastName},<br/><br/>
+        We want to inform you that your account has been permanently deleted from our system. You will no longer have access to any of its features.<br/><br/>
+        If you believe this action was taken in error or if you have any questions, please contact our support team.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(existingUser.Email, subject, emailBodyTemplate));
+
+            if (userRole == "Club Administrator")
             {
                 return RedirectToAction(nameof(ClubAdministrators));
             }
@@ -1045,6 +1172,7 @@ namespace MyField.Controllers
             }
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ChangeUserRole(string? userId)
         {
             return View();
@@ -1052,7 +1180,7 @@ namespace MyField.Controllers
 
 
         /*Update all users methods*/
-
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateClubManager(string userId)
         {
@@ -1087,6 +1215,8 @@ namespace MyField.Controllers
             return View(clubManagerViewModel);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         public async Task<IActionResult> UpdateClubManager(string userId, UpdateClubManagerViewModel viewModel, IFormFile ProfilePictureFile)
         {
@@ -1105,10 +1235,8 @@ namespace MyField.Controllers
 
             if (ValidateUpdatedProperties(viewModel))
             {
-
                 try
                 {
-
                     if (clubManager == null)
                     {
                         logMessages.Add($"ClubManager with id {userId} not found during POST request");
@@ -1135,6 +1263,16 @@ namespace MyField.Controllers
                     _context.Update(clubManager);
                     await _context.SaveChangesAsync();
                     logMessages.Add($"ClubManager with id {userId} successfully updated");
+
+                    var subject = "Your Profile Has Been Updated";
+                    var emailBodyTemplate = $@"
+                Dear {clubManager.FirstName} {clubManager.LastName},<br/><br/>
+                Your profile information has been successfully updated. If you did not make this change, please contact our support team immediately.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Management
+            ";
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(clubManager.Email, subject, emailBodyTemplate));
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
@@ -1145,8 +1283,7 @@ namespace MyField.Controllers
 
                 await _activityLogger.Log($"Updated {clubManager.FirstName} {clubManager.LastName} profile.", user.Id);
 
-
-                TempData["Message"] = $"{clubManager.FirstName} {clubManager.LastName}  information has been updated successfully.";
+                TempData["Message"] = $"{clubManager.FirstName} {clubManager.LastName} information has been updated successfully.";
                 return RedirectToAction(nameof(MyClubManagers));
             }
 
@@ -1178,6 +1315,8 @@ namespace MyField.Controllers
             return validationResults.Count == 0;
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdatePlayerProfile(string userId)
         {
@@ -1212,6 +1351,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdatePlayerProfile(string userId, UpdateClubPlayerViewModel viewModel)
@@ -1244,7 +1384,7 @@ namespace MyField.Controllers
                     clubPlayer.NormalizedUserName = viewModel.Email;
                     clubPlayer.ModifiedBy = user.Id;
                     clubPlayer.ModifiedDateTime = DateTime.Now;
-                    clubPlayer.MarketValue =  viewModel.MarketValue;    
+                    clubPlayer.MarketValue = viewModel.MarketValue;
 
                     if (viewModel.ProfilePictureFile != null && viewModel.ProfilePictureFile.Length > 0)
                     {
@@ -1255,9 +1395,20 @@ namespace MyField.Controllers
                     _context.Update(clubPlayer);
                     await _context.SaveChangesAsync();
 
+                    // Notify the player via email in the background
+                    var subject = "Your Profile Has Been Updated";
+                    var emailBodyTemplate = $@"
+                Dear {clubPlayer.FirstName} {clubPlayer.LastName},<br/><br/>
+                Your profile information has been successfully updated. If you did not make this change, please contact our support team immediately.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Management
+            ";
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(clubPlayer.Email, subject, emailBodyTemplate));
+
                     await _activityLogger.Log($"Updated {clubPlayer.FirstName} {clubPlayer.LastName} profile.", user.Id);
 
-                    TempData["Message"] = $"{clubPlayer.FirstName} {clubPlayer.LastName}  information has been updated successfully.";
+                    TempData["Message"] = $"{clubPlayer.FirstName} {clubPlayer.LastName} information has been updated successfully.";
                     return RedirectToAction("MyClubPlayers");
                 }
                 catch (DbUpdateConcurrencyException)
@@ -1274,8 +1425,8 @@ namespace MyField.Controllers
             }
 
             ViewBag.Positions = Enum.GetValues(typeof(Position))
-                                     .Cast<Position>()
-                                     .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
+                                    .Cast<Position>()
+                                    .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
 
             return View(viewModel);
         }
@@ -1298,7 +1449,7 @@ namespace MyField.Controllers
             return _context.Player.Any(e => e.Id == userId);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateClubAdministrator(string? userId)
         {
@@ -1335,7 +1486,7 @@ namespace MyField.Controllers
 
 
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         [HttpPost]
         public async Task<IActionResult> UpdateClubAdministrator(string userId, UpdateClubAdministratorViewModel viewModel, IFormFile ProfilePictureFile)
         {
@@ -1343,7 +1494,7 @@ namespace MyField.Controllers
 
             if (userId != viewModel.Id)
             {
-                logMessages.Add($"UpdateClubManager POST request failed: id mismatch: {userId} != {viewModel.Id}");
+                logMessages.Add($"UpdateClubAdministrator POST request failed: id mismatch: {userId} != {viewModel.Id}");
                 TempData["LogMessages"] = logMessages;
                 return NotFound();
             }
@@ -1354,13 +1505,11 @@ namespace MyField.Controllers
 
             if (ValidateUpdatedProperties(viewModel))
             {
-
                 try
                 {
-
                     if (clubAdministrator == null)
                     {
-                        logMessages.Add($"ClubManager with id {userId} not found during POST request");
+                        logMessages.Add($"ClubAdministrator with id {userId} not found during POST request");
                         TempData["LogMessages"] = logMessages;
                         return NotFound();
                     }
@@ -1383,7 +1532,17 @@ namespace MyField.Controllers
 
                     _context.Update(clubAdministrator);
                     await _context.SaveChangesAsync();
-                    logMessages.Add($"ClubManager with id {userId} successfully updated");
+                    logMessages.Add($"ClubAdministrator with id {userId} successfully updated");
+
+                    var subject = "Your Profile Has Been Updated";
+                    var emailBodyTemplate = $@"
+                Dear {clubAdministrator.FirstName} {clubAdministrator.LastName},<br/><br/>
+                Your profile information has been successfully updated. If you did not make this change, please contact our support team immediately.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Management
+                    ";
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(clubAdministrator.Email, subject, emailBodyTemplate));
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
@@ -1393,14 +1552,13 @@ namespace MyField.Controllers
                 }
 
                 TempData["LogMessages"] = logMessages;
-
                 await _activityLogger.Log($"Updated {clubAdministrator.FirstName} {clubAdministrator.LastName} profile.", user.Id);
 
-                TempData["Message"] = $"{clubAdministrator.FirstName} {clubAdministrator.LastName}  information has been updated successfully.";
+                TempData["Message"] = $"{clubAdministrator.FirstName} {clubAdministrator.LastName} information has been updated successfully.";
                 return RedirectToAction(nameof(MyClubAdministrators));
             }
 
-            logMessages.Add($"Model state invalid for ClubManager with id {userId}");
+            logMessages.Add($"Model state invalid for ClubAdministrator with id {userId}");
 
             foreach (var state in ModelState)
             {
@@ -1418,6 +1576,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
         private bool ValidateUpdatedProperties(UpdateClubAdministratorViewModel viewModel)
         {
             var validationResults = new List<ValidationResult>();
@@ -1429,6 +1588,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> EndClubManagerContract(string userId)
         {
@@ -1459,6 +1619,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EndClubManagerContract(string userId, EndClubManagerContractViewModel viewModel)
@@ -1477,8 +1638,13 @@ namespace MyField.Controllers
 
             var clubManager = await _context.ClubManager
                 .Where(c => c.Id == userId && c.ClubId == clubAdministrator.ClubId)
-                .Include( c => c.Club)
+                .Include(c => c.Club)
                 .FirstOrDefaultAsync();
+
+            if (clubManager == null)
+            {
+                return NotFound();
+            }
 
             clubManager.IsActive = false;
             clubManager.IsSuspended = true;
@@ -1486,6 +1652,24 @@ namespace MyField.Controllers
 
             _context.Update(clubManager);
             await _context.SaveChangesAsync();
+
+            var subject = "Notification of Contract Termination";
+            var emailBodyTemplate = $@"
+        <html>
+        <body>
+            <p>Dear {clubManager.FirstName} {clubManager.LastName},</p>
+            <p>We hope this message finds you well.</p>
+            <p>We are writing to inform you that your contract with {clubManager.Club.ClubName} has been officially terminated, effective immediately. As of today, your association with the club has ended, and you will no longer have access to club resources or participate in club activities.</p>
+            <p>We appreciate the contributions you have made during your tenure and regret that this decision had to be made. If you have any questions regarding this termination or need clarification on any matter, please do not hesitate to contact our HR department at [HR Department Email] or [HR Department Phone Number].</p>
+            <p>Thank you for your understanding and cooperation.</p>
+            <p>Best regards,</p>
+            <p>The K&S Foundation Management Team</p>
+            <p><strong>Note:</strong> Please ensure you have returned all club property and settled any outstanding matters before your departure.</p>
+        </body>
+        </html>
+            ";
+
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(clubManager.Email, subject, emailBodyTemplate));
 
             TempData["Message"] = $"You have ended {viewModel.FullNames}'s contract with {clubManager.Club.ClubName}.";
             return RedirectToAction(nameof(MyClubManagers));

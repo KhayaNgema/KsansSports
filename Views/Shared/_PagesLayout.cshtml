@@ -71,15 +71,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
+        gtag('config', 'YOUR_TRACKING_ID');
+    </script>
 
 </head>
 
-
+<style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        display: none;
+        z-index: 9998;
+    }
+</style>
 
 <body>
     <header>
-
+        <div id="overlay" class="overlay"></div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm" id="loginNav">
             <div class="container-fluid d-flex align-items-center justify-content-between">
 
@@ -290,6 +309,10 @@
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-shield-alt" style="color: white; margin-right: 5px;"></i>
                                 <a asp-controller="Users" asp-action="PasswordAndSecurity" class="nav-link text-light">Account and security</a>
+                            </li>
+                            <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
+                                <i class="fa fa-key" style="color: white; margin-right: 5px;"></i>
+                                <a asp-controller="Leagues" asp-action="SecretCodes" class="nav-link text-light">Secret codes</a>
                             </li>
                             <li style="margin-top: 20px; margin-left: 30px; display: flex; align-items: center; list-style-type: none;">
                                 <i class="fa fa-user-cog" style="color: white; margin-right: 5px;"></i>
@@ -1511,12 +1534,70 @@
         <span class="rotate">Share Feedback</span>
     </a>
 
+    <div class="cookie-banner" style="display: none;">
+        <div class="cookie-content">
+            <span class="cookie-message">We use cookies to improve your experience on our website.<a class="cookie-link" href="/Home/PrivacyPolicy" id="manage-cookies">Learn more</a>/ <a class="cookie-link" href="/CookiePreferences/Index" id="manage-cookies">Manage Cookies</a></span>
+            <button class="cookie-button btn-sm" id="accept-cookies">Got it!</button>
+            <button class="cookie-button btn-sm" id="reject-cookies">Reject</button>
+        </div>
+    </div>
+
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 <script>
+
+    $(document).ready(function () {
+        if (!getCookie('cookieConsent')) {
+            $('.cookie-banner').show();
+            $('.overlay').show();
+            $('body').addClass('disable-interactions');
+        }
+
+        $('#accept-cookies').click(function () {
+            saveCookiePreferences(true);
+        });
+
+        $('#reject-cookies').click(function () {
+            saveCookiePreferences(false);
+        });
+
+        function saveCookiePreferences(isAccepted) {
+            document.cookie = "cookieConsent=" + isAccepted + "; path=/; max-age=" + (60 * 60 * 24 * 365) + ";";
+            localStorage.setItem('cookieConsent', isAccepted ? 'true' : 'false');
+
+            $.ajax({
+                url: '/CookiePreferences/SavePreferences',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    PerformanceCookies: isAccepted,
+                    FunctionalityCookies: isAccepted,
+                    TargetingCookies: isAccepted
+                }),
+                success: function (response) {
+                    if (response.success) {
+                        $('.cookie-banner').hide();
+                        $('.overlay').hide();
+                        $('body').removeClass('disable-interactions');
+                    } else {
+                        console.error('Error saving preferences');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                }
+            });
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+    });
 
     $(document).ready(function () {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,16 +23,19 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly FileUploadService _fileUploadService;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public SportNewsController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager, 
             FileUploadService fileUploadService,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _fileUploadService = fileUploadService;
-            _activityLogger = activityLogger;   
+            _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
         public async Task<IActionResult> SportNewsIndex()
@@ -39,6 +43,8 @@ namespace MyField.Controllers
             return PartialView("NewsPartial");
         }
 
+
+        [Authorize(Roles =("News Administrator"))]
         public async Task<IActionResult> NewsReview(int? newsId)
         {
             if (newsId == null || _context.SportNew == null)
@@ -73,6 +79,7 @@ namespace MyField.Controllers
             return View(sportNews);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> ToBeModifiedSportNews()
         {
             var newsToBeModified = await _context.SportNew
@@ -85,6 +92,7 @@ namespace MyField.Controllers
             return View(newsToBeModified);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task <IActionResult> PublishedSportNewsBackOffice()
         {
 
@@ -99,7 +107,7 @@ namespace MyField.Controllers
             return View(sportsNews);
         }
 
-
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> PublishedSportNews()
         {
             var sportsNews = await _context.SportNew
@@ -113,12 +121,13 @@ namespace MyField.Controllers
             return PartialView("_PublishedSportNewsPartial",sportsNews);
         }
 
-
+        [Authorize(Roles = ("News Updator"))]
         public async Task<IActionResult> SportNewsList()
         {
             return View();
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> ApprovedSportNewsAdmin()
         {
             var sportsNews = await _context.SportNew
@@ -132,9 +141,7 @@ namespace MyField.Controllers
             return PartialView("_ApprovedSportNewsPartial", sportsNews);
         }
 
-
-
-
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> ApprovedSportNews()
         {
             var sportsNews = await _context.SportNew
@@ -149,6 +156,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> AwaitingApprovalSportNewsAdmin()
         {
             var sportsNews = await _context.SportNew
@@ -162,6 +170,7 @@ namespace MyField.Controllers
             return PartialView("_PendingSportNewsPartial",sportsNews);
         }
 
+        [Authorize(Roles = ("News Administrator"))]
         public async Task<IActionResult> AwaitingApprovalSportNews()
         {
             var sportsNews = await _context.SportNew
@@ -175,6 +184,7 @@ namespace MyField.Controllers
             return View(sportsNews);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> RejectedSportNewsAdmin()
         {
             var sportsNews = await _context.SportNew
@@ -188,6 +198,7 @@ namespace MyField.Controllers
             return PartialView("_RejectedSportNewsPartial",sportsNews);
         }
 
+        [Authorize(Roles = ("News Administrator"))]
         public async Task<IActionResult> RejectedSportNews()
         {
             var sportsNews = await _context.SportNew
@@ -201,6 +212,7 @@ namespace MyField.Controllers
             return View(sportsNews);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> SportNewsBackOffice()
         {
             var sportsNews = await _context.SportNew
@@ -282,11 +294,14 @@ namespace MyField.Controllers
             return PartialView("_SportNewsDetailsPartial", sportNews);
         }
 
+
+        [Authorize(Roles = ("News Updator"))]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = ("News Updator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(SportNewsViewModel viewModel, IFormFile NewsImages)
@@ -296,7 +311,7 @@ namespace MyField.Controllers
                 if (ModelState.IsValid)
                 {
                     var overallNewsReports = await _context.OverallNewsReports
-                       .FirstOrDefaultAsync();
+                        .FirstOrDefaultAsync();
 
                     var user = await _userManager.GetUserAsync(User);
                     var userId = user.Id;
@@ -316,14 +331,11 @@ namespace MyField.Controllers
                     if (NewsImages != null && NewsImages.Length > 0)
                     {
                         var uploadedImagePath = await _fileUploadService.UploadFileAsync(NewsImages);
-
                         sportNews.NewsImage = uploadedImagePath;
                     }
 
-
                     overallNewsReports.AuthoredNewsCount++;
                     sportNews.NewsStatus = NewsStatus.Awaiting_Approval;
-
 
                     _context.SportNew.Add(sportNews);
                     await _context.SaveChangesAsync();
@@ -343,6 +355,27 @@ namespace MyField.Controllers
 
                     TempData["Message"] = $"You have successfully authored the sport news with heading {savedNews.NewsHeading}.";
                     await _activityLogger.Log($"Authored sport news with heading {savedNews.NewsHeading}", user.Id);
+
+                    // Email sending logic
+                    var newsAdminRoleName = "News Administrator";
+                    var subject = "Pending News Approval";
+                    var emailBodyTemplate = $@"
+                Dear {{0}},<br/><br/>
+                A new sport news item with the heading <b>{savedNews.NewsHeading}</b> is awaiting your approval.<br/><br/>
+                Please review and take the necessary action as soon as possible.<br/><br/>
+                If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Support Team
+                    ";
+
+                    var newsAdminUsers = await _userManager.GetUsersInRoleAsync(newsAdminRoleName);
+
+                    foreach (var adminUser in newsAdminUsers)
+                    {
+                        var personalizedEmailBody = string.Format(emailBodyTemplate, $"{adminUser.FirstName} {adminUser.LastName}");
+                        BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(adminUser.Email, subject, personalizedEmailBody));
+                    }
+
                     return RedirectToAction(nameof(SportNewsList));
                 }
                 return View(viewModel);
@@ -360,9 +393,9 @@ namespace MyField.Controllers
                     }
                 });
             }
-
         }
 
+        [Authorize(Roles = ("News Updator"))]
         [HttpGet]
         public async Task<IActionResult> ReEditNews(int? newsId)
         {
@@ -391,7 +424,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = ("News Updator"))]
         [HttpPost]
         public async Task<IActionResult> ReEditNews(int? newsId, ReEditNewsViewModel viewModel, IFormFile NewsImages)
         {
@@ -428,32 +461,50 @@ namespace MyField.Controllers
                 {
                     existingNews.NewsImage = viewModel.NewsImage;
                 }
+
+                _context.Update(existingNews);
+                await _context.SaveChangesAsync();
+
+                await _activityLogger.Log($"Re-edited sport news with heading {existingNews.NewsHeading}", user.Id);
+
+                var newsAdminRoleName = "News Administrator";
+                var subject = "News Re-Edited and Awaiting Approval";
+                var emailBodyTemplate = $@"
+            Dear {{0}},<br/><br/>
+            The news item with the heading <b>{existingNews.NewsHeading}</b> has been re-edited and is now awaiting your review and approval.<br/><br/>
+            Please review the updated news and take the necessary action.<br/><br/>
+            If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+            Regards,<br/>
+            K&S Foundation Support Team
+                ";
+
+                var newsAdminUsers = await _userManager.GetUsersInRoleAsync(newsAdminRoleName);
+
+                foreach (var adminUser in newsAdminUsers)
+                {
+                    var personalizedEmailBody = string.Format(emailBodyTemplate, $"{adminUser.FirstName} {adminUser.LastName}");
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(adminUser.Email, subject, personalizedEmailBody));
+                }
+
+                if (oldNewsStatus == NewsStatus.Awaiting_Approval)
+                {
+                    TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                    return RedirectToAction(nameof(SportNewsList));
+                }
+                else if (oldNewsStatus == NewsStatus.ToBeModified)
+                {
+                    TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                    return RedirectToAction(nameof(ToBeModifiedSportNews));
+                }
+                else
+                {
+                    TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
+                    return RedirectToAction(nameof(SportNewsList));
+                }
             }
 
-            _context.Update(existingNews);
-            await _context.SaveChangesAsync();
-
-            await _activityLogger.Log($"Updated sport news with heading {existingNews.NewsHeading}", user.Id);
-
-            if (oldNewsStatus == NewsStatus.Awaiting_Approval)
-            {
-                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
-                return RedirectToAction(nameof(SportNewsList));
-            }
-            else if (oldNewsStatus == NewsStatus.ToBeModified)
-            {
-                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
-                return RedirectToAction(nameof(ToBeModifiedSportNews));
-            }
-            else
-            {
-                TempData["Message"] = $"You have successfully updated the sport news with heading {existingNews.NewsHeading}.";
-                return RedirectToAction(nameof(SportNewsList));
-            }
+            return View(viewModel);
         }
-
-
-
 
 
         private bool ValidateUpdatedProperties(ReEditNewsViewModel viewModel)
@@ -471,7 +522,7 @@ namespace MyField.Controllers
             return (_context.SportNew?.Any(e => e.NewsId == id)).GetValueOrDefault();
         }
 
-        // GET: SportNews/Approve/5
+        [Authorize(Roles = ("News Administrator"))]
         public async Task<IActionResult> ApproveNews(int? newsId)
         {
             if (newsId == null || _context.SportNew == null)
@@ -506,6 +557,8 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
         }
 
+        [Authorize(Roles = ("News Administrator"))]
+        [HttpPost]
         public async Task<IActionResult> AskReEditNews(int? newsId)
         {
             if (newsId == null || _context.SportNew == null)
@@ -522,6 +575,11 @@ namespace MyField.Controllers
                 return NotFound();
             }
 
+            var author = await _userManager.FindByIdAsync(sportNews.AuthoredById);
+            if (author == null)
+            {
+                return NotFound();
+            }
 
             sportNews.NewsStatus = NewsStatus.ToBeModified;
             sportNews.ModifiedDateTime = DateTime.Now;
@@ -529,12 +587,26 @@ namespace MyField.Controllers
 
             await _context.SaveChangesAsync();
 
-            await _activityLogger.Log($"Sent news with heading {sportNews.NewsHeading} back to author for modification",  user.Id);
+            await _activityLogger.Log($"Sent news with heading {sportNews.NewsHeading} back to author for modification", user.Id);
 
-            TempData["Message"] = $"You have successfully sent news back to the author for re-edit the sport news with heading {sportNews.NewsHeading}.";
+
+            var subject = "Request for News Re-Editing";
+            var emailBodyTemplate = $@"
+        Dear {author.FirstName} {author.LastName},<br/><br/>
+        The news item with the heading <b>{sportNews.NewsHeading}</b> has been sent back for re-editing.<br/><br/>
+        Please make the necessary modifications and resubmit the news.<br/><br/>
+        If you have any questions or need further clarification, please contact us at support@ksfoundation.com.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Support Team
+            ";
+
+            await _emailService.SendEmailAsync(author.Email, subject, emailBodyTemplate);
+
+            TempData["Message"] = $"You have successfully sent the news back to the author for re-editing: {sportNews.NewsHeading}.";
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
         }
 
+        [Authorize(Roles = ("News Administrator"))]
         public async Task<IActionResult> DeclineNews(int? newsId)
         {
             if (newsId == null || _context.SportNew == null)
@@ -565,6 +637,7 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(AwaitingApprovalSportNews));
         }
 
+        [Authorize(Roles = ("News Updator"))]
         public async Task<IActionResult> DeleteSportNews(int? newsId)
         {
             if (newsId == null || _context.SportNew == null)

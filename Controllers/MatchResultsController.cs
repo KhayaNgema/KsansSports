@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using MyField.Data;
 using MyField.Interfaces;
 using MyField.Migrations;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
 
 namespace MyField.Controllers
@@ -21,14 +23,17 @@ namespace MyField.Controllers
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailServcie;
 
         public MatchResultsController(Ksans_SportsDbContext context,
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _emailServcie = emailService;
         }
 
 
@@ -37,8 +42,7 @@ namespace MyField.Controllers
             return PartialView("LeagueResultsPartial");
         }
 
-
-        // GET: MatchResults
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> MatchResultsBackOffice()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -66,7 +70,7 @@ namespace MyField.Controllers
         }
 
 
-        // GET: MatchResults
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> MatchResults()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -93,9 +97,7 @@ namespace MyField.Controllers
             return View(matchResults);
         }
 
-
-
-        // GET: MatchResults
+        [Authorize(Roles =("Club Administrator, Club Manager, Player"))]
         public async Task<IActionResult> MyMatchResults()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -140,8 +142,6 @@ namespace MyField.Controllers
             return View(matchResults);
         }
 
-
-
         public async Task<IActionResult> Index()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -163,6 +163,7 @@ namespace MyField.Controllers
             return PartialView("_MatchResultsPartial", matchResults);
         }
 
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> BackOfficeMatchResults()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -183,27 +184,7 @@ namespace MyField.Controllers
             return PartialView("_BackOfficeMatchResultsPartial", matchResults);
         }
 
-        // GET: MatchResults/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.MatchResult == null)
-            {
-                return NotFound();
-            }
-
-            var matchResults = await _context.MatchResult
-                .Include(m => m.CreatedBy)
-                .Include(m => m.ModifiedBy)
-                .FirstOrDefaultAsync(m => m.ResultsId == id);
-            if (matchResults == null)
-            {
-                return NotFound();
-            }
-
-            return View(matchResults);
-        }
-
-        // GET: MatchResults/Create
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public IActionResult Create(string homeClubName, string homeTeamBadge, string awayTeamBadge,  string awayClubName, int fixtureId, DateTime kickoffDate, DateTime kickoffTime, string location, int homeTeamId, int awayTeamId)
         {
             var viewModel = new MatchResultsViewModel
@@ -223,7 +204,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MatchResultsViewModel viewModel)
@@ -402,7 +383,6 @@ namespace MyField.Controllers
 
                     await _context.SaveChangesAsync();
 
-                    // Update fixture status
                     var fixtureToUpdate = await _context.Fixture.FindAsync(viewModel.FixtureId);
 
                     if (fixtureToUpdate != null)
@@ -479,7 +459,6 @@ namespace MyField.Controllers
 
             if (standing.Last5Games.Length > 5)
             {
-                // Remove the oldest outcome if the list exceeds 5 outcomes
                 standing.Last5Games = standing.Last5Games.Substring(1);
             }
         }
@@ -488,106 +467,9 @@ namespace MyField.Controllers
         {
             if (last5Games.Length >= 5)
             {
-                // Remove the oldest outcome if the list exceeds 5 outcomes
                 last5Games = last5Games.Substring(1);
             }
             return last5Games + outcome;
-        }
-
-
-
-        // GET: MatchResults/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.MatchResult == null)
-            {
-                return NotFound();
-            }
-
-            var matchResults = await _context.MatchResult.FindAsync(id);
-            if (matchResults == null)
-            {
-                return NotFound();
-            }
-            ViewData["CreatedById"] = new SelectList(_context.Users, "Id", "Id", matchResults.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.Users, "Id", "Id", matchResults.ModifiedById);
-            return View(matchResults);
-        }
-
-        // POST: MatchResults/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ResultsId,HomeTeam,AwayTeam,HomeTeamScore,AwayTeamScore,HomeTeamBadge,AwayTeamBadge,MatchDate,CreatedDateTime,ModifiedDateTime,CreatedById,ModifiedById")] MatchResults matchResults)
-        {
-            if (id != matchResults.ResultsId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(matchResults);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MatchResultsExists(matchResults.ResultsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["CreatedById"] = new SelectList(_context.Users, "Id", "Id", matchResults.CreatedById);
-            ViewData["ModifiedById"] = new SelectList(_context.Users, "Id", "Id", matchResults.ModifiedById);
-            return View(matchResults);
-        }
-
-        // GET: MatchResults/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.MatchResult == null)
-            {
-                return NotFound();
-            }
-
-            var matchResults = await _context.MatchResult
-                .Include(m => m.CreatedBy)
-                .Include(m => m.ModifiedBy)
-                .FirstOrDefaultAsync(m => m.ResultsId == id);
-            if (matchResults == null)
-            {
-                return NotFound();
-            }
-
-            return View(matchResults);
-        }
-
-        // POST: MatchResults/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.MatchResult == null)
-            {
-                return Problem("Entity set 'Sports_ManagerDbContext.MatchResult'  is null.");
-            }
-            var matchResults = await _context.MatchResult.FindAsync(id);
-            if (matchResults != null)
-            {
-                _context.MatchResult.Remove(matchResults);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool MatchResultsExists(int id)

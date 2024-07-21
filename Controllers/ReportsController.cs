@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -34,6 +35,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<IActionResult> FansAccountsReports()
         {
             var fansAccountsReports = await _context.FansAccountsReports
@@ -91,6 +93,7 @@ namespace MyField.Controllers
             return View(fansAccountsReports);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PersonnelFinancialReports()
         {
             var personnelFinancialReports = await _context.PersonnelFinancialReports.ToListAsync();
@@ -128,7 +131,7 @@ namespace MyField.Controllers
             return View(personnelFinancialReports);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PersonnelAccountsReports()
         {
             var personnelAccountsReports = await _context.PersonnelAccountsReports
@@ -193,11 +196,13 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> TestFeedback()
         {
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> TestFeedback(FeedbackViewModel viewModel)
@@ -221,6 +226,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> IndividualNewsReports()
         {
             var newsReports = await _context.IndividualNewsReports
@@ -230,6 +236,7 @@ namespace MyField.Controllers
             return View(newsReports);
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> NewsReports()
         {
             var newsReports = await _context.OverallNewsReports
@@ -238,6 +245,7 @@ namespace MyField.Controllers
             return View(newsReports);
         }
 
+        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
         public async Task<IActionResult> ClubPerformanceReports()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -316,8 +324,7 @@ namespace MyField.Controllers
             return View(clubPerformanceReports);
         }
 
-
-
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> ClubTransferReport()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -418,9 +425,7 @@ namespace MyField.Controllers
             return View(clubTransferReports);
         }
 
-
-
-
+        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
         public async Task<IActionResult> PlayerPerformance()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -450,6 +455,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> MatchReports()
         {
             var matchReport = await _context.MatchReports
@@ -516,6 +522,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> MatchResultsReports()
         {
             var matchResultsReport = await _context.MatchResultsReports
@@ -591,6 +598,7 @@ namespace MyField.Controllers
 
             return View(matchResultsReports);
         }
+
 
         public async Task<int> GetOverallFansAccountsCountAsync()
         {
@@ -724,6 +732,9 @@ namespace MyField.Controllers
                   .CountAsync();
         }
 
+
+
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> TransfersReports()
         {
             var transferReport = await _context.TransfersReports

@@ -5,9 +5,7 @@
 @inject UserManager<UserBaseModel> UserManager
 @inject Ksans_SportsDbContext _context
 
-
 @{
-
     var userRole = _context.UserRoles
         .Where(ur => ur.UserId == Model.UserId)
         .Join(_context.Roles,
@@ -15,7 +13,6 @@
          r => r.Id,
          (ur, r) => r.Name)
         .FirstOrDefault();
-
 
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
     ViewData["Title"] = "Profile";
@@ -25,7 +22,7 @@
 <br />
 @await Html.PartialAsync("_HomeButton")
 <br />
-@if(User.IsInRole("Personnel Administrator"))
+@if (User.IsInRole("Personnel Administrator"))
 {
     <h5 class="text-center">@Model.Names @Model.LastName Profile</h5>
 }
@@ -36,14 +33,13 @@ else
 <br />
 <div class="club-edit-container" style="overflow:hidden;">
     <div class="col-md-12">
-
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="mb-3 text-center">
             <div class="profile-picture-container">
                 <img id="profile-image-preview" src="~/@Model.ProfilePicture" alt="Current Profile Picture" class="club-badge-image" />
             </div>
         </div>
-        <h5 style="margin-top:4px; margin-bottom:10px; "class="text-center">@Model.Names @Model.LastName</h5>
+        <h5 style="margin-top:4px; margin-bottom:10px;" class="text-center">@Model.Names @Model.LastName</h5>
         <p class="text-center">@ViewBag.UserRole</p>
         <div class="row mb-3">
             <div class="col-6">
@@ -54,31 +50,30 @@ else
             </div>
         </div>
         <div class="row mb-3">
-        <div class="col-6">
+            <div class="col-6">
                 <label><i class="fa fa-phone-alt"></i> Phone number:</label>
-        </div>
+            </div>
             <div class="col-6">
                 <p class="form-control-static">@Model.Phone</p>
             </div>
         </div>
-
         <div class="row mb-3">
-        <div class="col-6">
+            <div class="col-6">
                 <label><i class="fa fa-envelope"></i> Email address:</label>
-        </div>
+            </div>
             <div class="col-6">
                 <p class="form-control-static">@Model.Email</p>
-            </div>    
+            </div>
         </div>
         <div class="row mb-5">
             <div class="col-6">
                 <label><i class="fa fa-calendar-alt"></i> Date of Birth:</label>
             </div>
             <div class="col-6">
-                @Model.DateOfBirth.ToString("dd MMM, yyy")
+                @Model.DateOfBirth.ToString("dd MMM, yyyy")
             </div>
         </div>
-       @if (User.IsInRole("Personnel Administrator"))
+        @if (User.IsInRole("Personnel Administrator"))
         {
             <div class="row">
                 <div class="col-md-12">
@@ -90,30 +85,33 @@ else
                 </div>
             </div>
         }
-        else if (userRole == "Club Manager")
+        else if (User.IsInRole("Club Administrator"))
         {
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group" style="display: flex; justify-content: flex-end;">
-                        <a href="@Url.Action("UpdateClubManager", new { userId = @Model.UserId })" class="btn btn-outline-primary">
-                            <i class="fa fa-pen"></i> Update
-                        </a>
+            if (userRole == "Club Manager")
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" style="display: flex; justify-content: flex-end;">
+                            <a href="@Url.Action("UpdateClubManager", new { userId = @Model.UserId })" class="btn btn-outline-primary">
+                                <i class="fa fa-pen"></i> Update
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-        else
-        {
-            if(User.IsInRole("Club Administrator"))
-            {
-                <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by K&S Foundation, if you want to update it, please contact your club administrator. </i></p>
             }
             else
             {
-                <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by @ViewBag.Club, if you want to update it, please contact your club administrator. </i></p>
+                <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by K&S Foundation, if you want to update it, please contact your club administrator. </i></p>
             }
         }
-        </div>
+        else if (User.IsInRole("Club Manager"))
+        {
+            <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by @ViewBag.Club, if you want to update it, please contact your club administrator. </i></p>
+        }
+        else{
+
+        }
+    </div>
 </div>
 
 @section Scripts {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using MyField.Data;
 using MyField.Interfaces;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
 
 namespace MyField.Controllers
@@ -19,16 +22,20 @@ namespace MyField.Controllers
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public StandingsController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager; 
             _activityLogger = activityLogger;
+            _emailService =  emailService;
         }
 
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> StandingsBackOffice()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -55,7 +62,7 @@ namespace MyField.Controllers
             return View(standings);
         }
 
-
+        [Authorize(Roles =("Sport Administrator"))]
         public async Task<IActionResult> Standings()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -106,7 +113,7 @@ namespace MyField.Controllers
             return PartialView("_StandingsTablePartial", standings);
         }
 
-        // GET: Standings
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> BackOfficeStandings()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -132,6 +139,8 @@ namespace MyField.Controllers
             return PartialView("_BackOfficeStandingsPartial", await standings.ToListAsync());
         }
 
+
+        [Authorize]
         public async Task<IActionResult> ClubStandings(int? clubId)
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -154,74 +163,7 @@ namespace MyField.Controllers
         }
 
 
-        // GET: Standings/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Standing == null)
-            {
-                return NotFound();
-            }
-
-            var standing = await _context.Standing
-                .Include(s => s.Club)
-                .FirstOrDefaultAsync(m => m.StandingId == id);
-            if (standing == null)
-            {
-                return NotFound();
-            }
-
-            return View(standing);
-        }
-
-        // GET: Standings/Create
-        public IActionResult Create()
-        {
-            ViewData["ClubId"] = new SelectList(_context.Club, "ClubId", "ClubName");
-            return View();
-        }
-
-        // POST: Standings/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(StandingsViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                            
-                var user = await _userManager.GetUserAsync(User);
-                var userId = user.Id;
-
-                Standing newStanding = new Standing
-                {
-                    Position = viewModel.Position,
-                    Draw = viewModel.Draw,
-                    Points = viewModel.Points,  
-                    MatchPlayed = viewModel.MatchPlayed,    
-                    ClubId = viewModel.ClubId,  
-                    GoalDifference = viewModel.GoalsScored - viewModel.GoalsConceded,  
-                    GoalsConceded = viewModel.GoalsConceded,    
-                    GoalsScored = viewModel.GoalsScored,    
-                    Lose=viewModel.Lose,    
-                    Wins=viewModel.Wins,  
-                    CreatedById = userId,
-                    ModifiedById = userId,
-                    CreatedDateTime = DateTime.Now,  
-                    ModifiedDateTime = DateTime.Now,    
-
-                };
-
-                _context.Add(newStanding);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ClubId"] = new SelectList(_context.Club, "ClubId", "ClubName", viewModel.ClubId);
-            return View(viewModel);
-        }
-
-
+        [Authorize(Roles =("Sport Administrator"))]
         public async Task<IActionResult> EditPoints(int? id)
         {
             var logMessages = new List<string>();
@@ -264,6 +206,8 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPoints(StandingPointsViewModel viewModel)
@@ -321,7 +265,6 @@ namespace MyField.Controllers
                 if (viewModel.GoalsToBeSubtracted != 0)
                 {
                     standing.GoalsConceded = standing.GoalsConceded + viewModel.GoalsToBeSubtracted;
-
                     standing.GoalsScored = standing.GoalsScored - viewModel.GoalsToBeSubtracted;
                 }
                 else if (viewModel.GoalsToBeAdded != 0)
@@ -339,72 +282,32 @@ namespace MyField.Controllers
                 TempData["LogMessages"] = logMessages;
 
                 await _activityLogger.Log($"Modified {standing.Club.ClubName} points from {originalPoints} to {standing.Points} and goals from {originalGoals} to {standing.GoalDifference}", user.Id);
+
+                var clubEmail = standing.Club.Email; 
+                var subject = "Standings Updated Notification";
+                var body = $@"
+            Dear {standing.Club.ClubName},<br/><br/>
+            Please note that your standings have been updated and your new standings are:<br/><br/>
+            Points: {standing.Points}<br/>
+            Goal Difference: {standing.GoalDifference}<br/><br/>
+            Reason for updating: {viewModel.Reason}.<br/><br/>
+            Please check the standings tables for updated standings.<br/><br/>
+            If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+            Regards,<br/>
+            K&S Foundation Management
+                ";
+
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(clubEmail, subject, body));
+
                 return RedirectToAction(nameof(Standings));
             }
-
-            foreach (var state in ModelState)
-            {
-                foreach (var error in state.Value.Errors)
-                {
-                    var errorMessage = $"Error in {state.Key}: {error.ErrorMessage}";
-                    Console.WriteLine(errorMessage);
-                    logMessages.Add(errorMessage);
-                }
-            }
-
-            ViewBag.ClubName = standing?.Club?.ClubName;
-            viewModel.ClubBadge = standing?.Club?.ClubBadge;
-            viewModel.Points = standing.Points;
-            viewModel.Goals = standing.GoalDifference;
-            TempData["LogMessages"] = logMessages;
 
             return View(viewModel);
         }
 
-
-
-
         private bool StandingExists(int id)
         {
             return _context.Standing.Any(e => e.StandingId == id);
-        }
-
-        // GET: Standings/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Standing == null)
-            {
-                return NotFound();
-            }
-
-            var standing = await _context.Standing
-                .Include(s => s.Club)
-                .FirstOrDefaultAsync(m => m.StandingId == id);
-            if (standing == null)
-            {
-                return NotFound();
-            }
-
-            return View(standing);
-        }
-
-        // POST: Standings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Standing == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Standing'  is null.");
-            }
-            var standing = await _context.Standing.FindAsync(id);
-            if (standing != null)
-            {
-                _context.Standing.Remove(standing);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
     }
 }

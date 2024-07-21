@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using MyField.Data;
 using MyField.Interfaces;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
 
 namespace MyField.Controllers
@@ -20,18 +22,44 @@ namespace MyField.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public LeaguesController(Ksans_SportsDbContext context,
             IMapper mapper,
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _mapper = mapper;
             _context = context;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
+
+        public async Task<IActionResult> LeagueCode()
+        {
+            var currentSeason = await _context.League
+                .Where(c => c.IsCurrent)
+                .FirstOrDefaultAsync();
+
+            return PartialView("_LeagueCodePartial", currentSeason);
+        }
+
+
+        [Authorize(Roles = ("Sport Administrator"))]
+        public async Task<IActionResult> ClubCodes()
+        {
+            var clubs = await _context.Club
+                .Where(c => c.League.IsCurrent)
+                .ToListAsync();
+
+            return PartialView("_ClubCodesPartial", clubs);
+        }
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> Leagues()
         {
             var leagues = _context.League
@@ -42,11 +70,19 @@ namespace MyField.Controllers
             return View(leagues);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
+        public async Task<IActionResult> SecretCodes()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public IActionResult StartLeague()
         {
             return View();
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> StartLeague(LeagueViewModel viewModel)
@@ -415,8 +451,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
-
+        [Authorize(Roles = ("Sport Administrator"))]
         private string GenerateLeagueCode()
         {
             var year = DateTime.Now.Year.ToString().Substring(2);

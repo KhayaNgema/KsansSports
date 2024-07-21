@@ -200,5 +200,7 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.TermsAggreement> TermsAggreements { get; set; } = default!;
 
+        public DbSet<MyField.Models.CookiePreferences> CookiePreferences { get; set; } = default!;
+
     }
 }

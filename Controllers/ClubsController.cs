@@ -37,11 +37,13 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> LeagueClubs()
         {
             return PartialView("LeagueClubsPartial");
         }
 
+        [Authorize]
         public async Task<IActionResult> ClubPlayers(int clubId)
         {
             var clubPlayers = await _context.Player
@@ -51,6 +53,7 @@ namespace MyField.Controllers
 
             return PartialView("_ClubPlayersPartial", clubPlayers);
         }
+
 
         public async Task<IActionResult> HeadToHead(int clubId)
         {
@@ -65,7 +68,7 @@ namespace MyField.Controllers
             return PartialView("_ClubStatsPartial", headToHead);
         }
 
-        // GET: MatchResults
+
         public async Task<IActionResult> Clubs()
         {
             var clubs = await _context.Club
@@ -93,7 +96,8 @@ namespace MyField.Controllers
             return View(clubs);
         }
 
-        // GET: ClubsBackOffice
+
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> ClubsBackOffice()
         {
             var clubs = await _context.Club
@@ -108,7 +112,7 @@ namespace MyField.Controllers
         }
 
 
-        // GET: MatchResults
+        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
         public async Task<IActionResult> MyClub()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -142,6 +146,7 @@ namespace MyField.Controllers
             return View(clubs);
         }
 
+        [Authorize]
         public async Task<IActionResult> ClubsBackOfficeUsers()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -176,6 +181,8 @@ namespace MyField.Controllers
             return PartialView("_ClubsPartial", clubs);
         }
 
+
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> BackOfficeClubs()
         {
             var clubs = await _context.Club
@@ -184,6 +191,7 @@ namespace MyField.Controllers
 
             return PartialView("_BackOfficeClubsPartial", clubs);
         }
+
 
         public async Task<IActionResult> ClubSummary(int? clubId)
         {
@@ -204,8 +212,6 @@ namespace MyField.Controllers
         }
 
 
-
-
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
@@ -224,6 +230,8 @@ namespace MyField.Controllers
             return View(club);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> RejoinSeason(int clubId)
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -338,11 +346,14 @@ namespace MyField.Controllers
             return RedirectToAction("ClubsBackOffice");
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public IActionResult Create()
         {
             return View();
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ClubViewModel viewModel, IFormFile ClubBadges)
@@ -392,6 +403,7 @@ namespace MyField.Controllers
                     Status = ClubStatus.Active,
                     IsActive = true,
                     ClubCode = GenerateClubCode(viewModel),
+                    Email = viewModel.Email
                 };
 
                 if (ClubBadges != null && ClubBadges.Length > 0)
@@ -500,7 +512,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> ClubManagerDetails(string id)
         {
             if (id == null || _context.Club == null)
@@ -518,6 +530,8 @@ namespace MyField.Controllers
             return View(clubManager);
         }
 
+
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> ClubPlayerDetails(string id)
         {
             if (id == null || _context.Club == null)
@@ -535,6 +549,8 @@ namespace MyField.Controllers
             return View(clubPlayer);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> SuspendClub(int id)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -565,6 +581,7 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(ClubsBackOffice));
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> UnsuspendClub(int id)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -593,8 +610,7 @@ namespace MyField.Controllers
         }
 
 
-
-        // GET: Club/Edit/5
+        [Authorize(Roles = ("Sport Administrator, Club Administrator"))]
         public async Task<IActionResult> Edit(int? id)
         {
             var logMessages = new List<string>();
@@ -623,6 +639,7 @@ namespace MyField.Controllers
             {
                 ClubId = club.ClubId,
                 ClubName = club.ClubName,
+                Email = club.Email,
                 ClubLocation = club.ClubLocation,
                 ClubAbbr = club.ClubAbbr,
                 ClubBadges = club.ClubBadge,
@@ -634,6 +651,8 @@ namespace MyField.Controllers
             return View(clubViewModel);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator, Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, UpdateClubViewModel viewModel, IFormFile ClubBadgeFile)
@@ -661,9 +680,12 @@ namespace MyField.Controllers
 
                     club.ClubAbbr = viewModel.ClubAbbr;
                     club.ClubName = viewModel.ClubName;
+                    club.Email = viewModel.Email;
                     club.ClubLocation = viewModel.ClubLocation;
                     club.ClubHistory = viewModel.ClubHistory;
                     club.ClubSummary = viewModel.ClubSummary;
+                    club.ModifiedById = user.Id;
+                    club.ModifiedDateTime = DateTime.Now;
 
                     if (ClubBadgeFile != null && ClubBadgeFile.Length > 0)
                     {
@@ -718,14 +740,11 @@ namespace MyField.Controllers
         {
             var validationResults = new List<ValidationResult>();
             Validator.TryValidateProperty(viewModel.ClubName, new ValidationContext(viewModel, null, null) { MemberName = "ClubName" }, validationResults);
+            Validator.TryValidateProperty(viewModel.Email, new ValidationContext(viewModel, null, null) { MemberName = "Email" }, validationResults);
             Validator.TryValidateProperty(viewModel.ClubLocation, new ValidationContext(viewModel, null, null) { MemberName = "ClubLocation" }, validationResults);
             Validator.TryValidateProperty(viewModel.ClubSummary, new ValidationContext(viewModel, null, null) { MemberName = "ClubSummary" }, validationResults);
             return validationResults.Count == 0;
         }
-
-
-
-
 
         private bool ClubExists(int id)
         {
@@ -733,7 +752,7 @@ namespace MyField.Controllers
         }
 
 
-        // GET: Clubs/Delete/5
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Club == null)
@@ -751,7 +770,7 @@ namespace MyField.Controllers
             return View(club);
         }
 
-        // POST: Clubs/Delete/5
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

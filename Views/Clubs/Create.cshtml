@@ -48,6 +48,13 @@
                 <span asp-validation-for="ClubLocation" class="text-danger"></span>
             </div>
 
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" class="form-control border-bottom-only" placeholder="" Email" />
+                    <label asp-for="Email" class="form-label">Club email address</label>
+                    <span asp-validation-for="Email" Email" class="text-danger"></span>
+                </div>
+
             <div class="form-floating mb-3">
                 <textarea asp-for="ClubHistory" class="form-control border-bottom-only" placeholder="ClubHistory" style="min-height: 150px;"></textarea>
                 <label asp-for="ClubHistory" class="form-label">Club history</label>

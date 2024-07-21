@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MyField.Data;
 using MyField.Interfaces;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
 
 namespace MyField.Controllers
@@ -19,16 +21,19 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public FixturesController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager,
             RoleManager<IdentityRole> roleManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
 
@@ -37,7 +42,7 @@ namespace MyField.Controllers
             return PartialView("LeagueFixturesPartial");
         }
 
-
+        [Authorize(Roles = ("Official"))]
         public async Task<IActionResult> MatchesToOfficiate()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -61,7 +66,7 @@ namespace MyField.Controllers
             return View(matchesToOfficiate);
         }
 
-
+        [Authorize(Roles = ("Official"))]
         public async Task<IActionResult> PreviouslyOfficiatedMatches()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -86,6 +91,7 @@ namespace MyField.Controllers
             return View(previouslyOfficiatedMacthes);
         }
 
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> FixtureMatchOffcials(int fixtureId)
         {
 
@@ -99,8 +105,7 @@ namespace MyField.Controllers
             return PartialView("_FixtureMatchOfficialsPartial", fixtureOfficials);
         }
 
-
-        // GET: FixturesBackOffice
+        [Authorize(Roles = ("Club Manager, Club Administrator, Player"))]
         public async Task<IActionResult> FixtureLineUpUpdate()
         {
             var user = await _userManager.Users
@@ -167,11 +172,6 @@ namespace MyField.Controllers
             return View(fixtures);
         }
 
-
-
-
-
-
        [Authorize]
         public async Task<IActionResult> FixtureDetailsFans(int? FixtureId)
         {
@@ -196,7 +196,7 @@ namespace MyField.Controllers
             return View(fixture);
         }
 
-
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> FixtureDetails(int id)
         {
             if (id == null)
@@ -220,6 +220,7 @@ namespace MyField.Controllers
             return View(fixture);
         }
 
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> FixtureDetailsBackOffice(int id)
         {
             if (id == null)
@@ -264,10 +265,7 @@ namespace MyField.Controllers
             return View(newfixture);
         }
 
-
-
-
-        // GET: FixturesBackOffice
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> FixturesBackOffice()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -300,7 +298,7 @@ namespace MyField.Controllers
             return View(fixtures);
         }
 
-        // GET: FixturesBackOffice
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> FixturesBackOfficeUsers()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -342,7 +340,7 @@ namespace MyField.Controllers
         }
 
 
-        // GET: Fixtures
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> Fixtures()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -364,7 +362,7 @@ namespace MyField.Controllers
             return View(upcomingFixtures);
         }
 
-        // GET: Fixtures/Index
+        
         public async Task<IActionResult> Index()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -405,6 +403,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> BackOfficeFixtures()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -446,32 +445,7 @@ namespace MyField.Controllers
         }
 
 
-
-        // GET: Fixtures/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fixture = await _context.Fixture
-                .Where(f => f.FixtureStatus == FixtureStatus.Upcoming ||
-                            f.FixtureStatus == FixtureStatus.Postponed ||
-                            f.FixtureStatus == FixtureStatus.Interrupted)
-                .Include(f => f.HomeTeam)
-                .Include(f => f.AwayTeam)
-                .FirstOrDefaultAsync(m => m.FixtureId == id);
-
-            if (fixture == null)
-            {
-                return NotFound();
-            }
-
-            return View(fixture);
-        }
-
-        // GET: Fixtures/Create
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> Create()
         {
             var officials = await _context.Officials.ToListAsync();
@@ -483,7 +457,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FixtureViewModel viewModel)
@@ -561,8 +535,7 @@ namespace MyField.Controllers
         }
 
 
-
-        // GET: Fixtures/Edit/5
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> ModifyFixture(int? id)
         {
             if (id == null)
@@ -611,8 +584,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
-        // POST: Fixtures/Edit/5
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModifyFixture(int id, ModifyFixtureViewModel viewModel)
@@ -693,20 +665,26 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> InterruptFixture(int id)
         {
             var user = await _userManager.GetUserAsync(User);
 
             var matchReport = await _context.MatchReports
-                 .Where(m => m.Season.IsCurrent)
-                 .Include(m => m.Season)
-                  .FirstOrDefaultAsync();
+                .Where(m => m.Season.IsCurrent)
+                .Include(m => m.Season)
+                .FirstOrDefaultAsync();
 
             var fixture = await _context.Fixture
                 .Where(f => f.FixtureId == id)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .FirstOrDefaultAsync();
+
+            if (fixture == null)
+            {
+                return NotFound();
+            }
 
             fixture.FixtureStatus = FixtureStatus.Interrupted;
             fixture.ModifiedDateTime = DateTime.Now;
@@ -715,15 +693,40 @@ namespace MyField.Controllers
             _context.Update(fixture);
 
             matchReport.InterruptedMatchesCount++;
-          
+
             await _context.SaveChangesAsync();
 
-            await _activityLogger.Log($"Interrupted a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName} ", user.Id);
+            var subject = "Fixture Interruption Notification";
+            var emailBodyTemplate = $@"
+        Hi {{0}},<br/><br/>
+        The fixture between {fixture.HomeTeam.ClubName} vs {fixture.AwayTeam.ClubName} has been interrupted.<br/><br/>
+        Fixture Details:<br/>
+        Date: {fixture.KickOffDate.ToShortDateString()}<br/>
+        Time: {fixture.KickOffTime.ToShortTimeString()}<br/>
+        Location: {fixture.Location}<br/><br/>
+        Please check the updated fixture schedule.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Team
+            ";
+
+            var users = _userManager.Users.ToList();
+
+            foreach (var currentUser in users)
+            {
+                var personalizedEmailBody = string.Format(emailBodyTemplate, $"{currentUser.FirstName} {currentUser.LastName}");
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(
+                    currentUser.Email,
+                    subject,
+                    personalizedEmailBody));
+            }
+
+            await _activityLogger.Log($"Interrupted a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}", user.Id);
             TempData["Message"] = $"You have successfully interrupted a match between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}";
 
             return RedirectToAction(nameof(FixturesBackOffice));
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PostponeFixture(int id)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -739,38 +742,55 @@ namespace MyField.Controllers
                 .Include(f => f.AwayTeam)
                 .FirstOrDefaultAsync();
 
+            if (fixture == null)
+            {
+                return NotFound();
+            }
+
             fixture.FixtureStatus = FixtureStatus.Postponed;
             fixture.ModifiedDateTime = DateTime.Now;
             fixture.ModifiedById = user.Id;
+
             _context.Update(fixture);
 
             matchReport.PostponedMatchesRate++;
 
             await _context.SaveChangesAsync();
 
-            await _activityLogger.Log($"Postponed a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName} ", user.Id);
 
-            TempData["Message"] = $"You have successfully posteponed a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}";
+            var subject = "Fixture Postponement Notification";
+            var emailBodyTemplate = $@"
+        Hi {{0}},<br/><br/>
+        The fixture between {fixture.HomeTeam.ClubName} vs {fixture.AwayTeam.ClubName} has been postponed.<br/><br/>
+        Fixture Details:<br/>
+        Date: {fixture.KickOffDate.ToShortDateString()}<br/>
+        Time: {fixture.KickOffTime.ToShortTimeString()}<br/>
+        Location: {fixture.Location}<br/><br/>
+        Please check the updated fixture schedule.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Support Team
+    ";
+
+
+            var users = _userManager.Users.ToList();
+
+            foreach (var currentUser in users)
+            {
+                var personalizedEmailBody = string.Format(emailBodyTemplate, $"{currentUser.FirstName} {currentUser.LastName}");
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(
+                    currentUser.Email,
+                    subject,
+                    personalizedEmailBody));
+            }
+
+            await _activityLogger.Log($"Postponed a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}", user.Id);
+            TempData["Message"] = $"You have successfully postponed a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}";
+
             return RedirectToAction(nameof(FixturesBackOffice));
         }
 
-/*        public async Task<IActionResult> Cancel(int id)
-        {
-            var fixture = await _context.Fixture
-                .Where(f => f.FixtureId == id)
-                .FirstOrDefaultAsync();
 
-            fixture.FixtureStatus = FixtureStatus.Ca;
-
-            _context.Update(fixture);
-            await _context.SaveChangesAsync();
-
-            return Ok();
-        }*/
-
-
-
-        // GET: Fixtures/Delete/5
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Fixture == null)
@@ -791,7 +811,7 @@ namespace MyField.Controllers
             return View(fixture);
         }
 
-        // POST: Fixtures/Delete/5
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

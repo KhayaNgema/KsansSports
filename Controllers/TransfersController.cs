@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using AutoMapper;
+using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,7 +14,9 @@ using MyField.Data;
 using MyField.Interfaces;
 using MyField.Migrations;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
+using NuGet.Packaging;
 
 
 namespace MyField.Controllers
@@ -23,18 +27,25 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IMapper _mapper;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public TransfersController(Ksans_SportsDbContext context,
             UserManager<UserBaseModel> userManager,
              IMapper mapper,
-             IActivityLogger activityLogger)
+             IActivityLogger activityLogger,
+             EmailService emailService,
+             RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _context = context;
             _mapper = mapper;
             _activityLogger = activityLogger;
+            _emailService = emailService;
+            _roleManager = roleManager;
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> TransferPeriod()
         {
             var transferPeriod = await _context.TransferPeriod
@@ -48,6 +59,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PlayerTransfers()
         {
 
@@ -62,6 +74,7 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PendingTransfers()
         {
             var pendingTrasfers = await _context.Transfer
@@ -79,6 +92,7 @@ namespace MyField.Controllers
             return PartialView("_PendingPlayerTransfersPartial", pendingTrasfers);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PaidTransfers()
         {
             var paidTrasfers = await _context.Transfer
@@ -96,6 +110,7 @@ namespace MyField.Controllers
             return PartialView("_PaidPlayerTransfersPartial", paidTrasfers);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> RejectedTransfers()
         {
             var rejectedTrasfers = await _context.Transfer
@@ -113,6 +128,7 @@ namespace MyField.Controllers
             return PartialView("_RejectedPlayerTransfersPartial", rejectedTrasfers);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> AcceptedTransfers()
         {
             var acceptedTrasfers = await _context.Transfer
@@ -130,11 +146,13 @@ namespace MyField.Controllers
             return PartialView("_AcceptedPlayerTransfersPartial", acceptedTrasfers);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> FindPlayerTransferMarket()
         {
             return View();
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyTransferRequestsTabs()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -168,6 +186,7 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyTransfersTabs()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -201,11 +220,7 @@ namespace MyField.Controllers
             return View();
         }
 
-        public async Task<IActionResult> TransferRequests()
-        {
-            return View();
-        }
-
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyPendingPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -243,6 +258,7 @@ namespace MyField.Controllers
             return PartialView("MyPendingTransfers", pendingTransfers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyAcceptedPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -282,6 +298,7 @@ namespace MyField.Controllers
             return PartialView("MyAcceptedTransfers", acceptedTransfers);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyRejectedPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -321,7 +338,7 @@ namespace MyField.Controllers
             return PartialView("MyRejectedTransfers", rejectedTransfers);
         }
 
-
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> PendingPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -360,6 +377,8 @@ namespace MyField.Controllers
             return PartialView("PendingTransfers", pendingTransfers);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> CancelledPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -398,6 +417,8 @@ namespace MyField.Controllers
             return PartialView("CancelledTransfers", pendingTransfers);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> AcceptedPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -456,6 +477,8 @@ namespace MyField.Controllers
             return PartialView("AcceptedTransfers", acceptedTransfers);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> RejectedPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -494,6 +517,8 @@ namespace MyField.Controllers
             return PartialView("RejectedTransfers", rejectedTransfers);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> CompletedPlayerTransfers()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -533,7 +558,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> TransferList()
         {
             var transferLists = await _context.Transfer
@@ -548,6 +573,8 @@ namespace MyField.Controllers
             return PartialView(transferLists);
         }
 
+
+        [Authorize]
         public async Task<IActionResult> TransferMarket()
         {
             var playerTransferMarket = await _context.PlayerTransferMarket
@@ -560,6 +587,8 @@ namespace MyField.Controllers
             return View(playerTransferMarket);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PlayerTransferMarket()
         {
             var playerTransferMarket = await _context.PlayerTransferMarket
@@ -572,7 +601,8 @@ namespace MyField.Controllers
             return PartialView("_PlayerTransferMarketPartial", playerTransferMarket);
         }
 
-
+        [Authorize(Roles = ("Sport Administrator"))]
+        [HttpPost]
         public async Task<IActionResult> OpenPlayerTransferPeriod(string seasonCode)
         {
             try
@@ -590,8 +620,6 @@ namespace MyField.Controllers
                     var transferReport = await _context.TransfersReports
                         .Where(t => t.Season.IsCurrent)
                         .FirstOrDefaultAsync();
-
-
 
                     var currentSeasonCode = currentSeason?.LeagueCode;
 
@@ -639,6 +667,34 @@ namespace MyField.Controllers
                         int transferMarketCount = await GetTransferMarketCountAsync();
                         transferReport.TransferMarketCount = transferMarketCount;
 
+                        var roleNames = new[] { "Club Administrator", "Club Manager" };
+                        var roleUsers = new List<UserBaseModel>();
+
+                        foreach (var roleName in roleNames)
+                        {
+                            var role = await _roleManager.FindByNameAsync(roleName);
+                            if (role != null)
+                            {
+                                var userIds = await _userManager.GetUsersInRoleAsync(roleName);
+                                roleUsers.AddRange(userIds);
+                            }
+                        }
+
+                        var subject = "Transfer Period Opened";
+                        var emailBodyTemplate = $@"
+                Dear Club Administrator/Manager,<br/><br/>
+                The player transfer period for season <b>{currentSeason.LeagueYears}</b> has been opened.<br/><br/>
+                Clubs can now start making player purchases.<br/><br/>
+                If you have any questions or need further assistance, please contact us at support@ksfoundation.com.<br/><br/>
+                Regards,<br/>
+                K&S Foundation Support Team
+                ";
+
+                        foreach (var roleUser in roleUsers.Distinct())
+                        {
+                            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(roleUser.Email, subject, emailBodyTemplate));
+                        }
+
                         TempData["Message"] = $"Transfer period for season {currentSeason.LeagueYears} has been opened successfully and clubs can now start making player purchases";
                         await _activityLogger.Log($"Opened player transfer period for season {currentSeason.LeagueYears}", user.Id);
                         return Ok();
@@ -670,11 +726,13 @@ namespace MyField.Controllers
             }
         }
 
+
         public async Task<int> GetTransferMarketCountAsync()
         {
             return await _context.PlayerTransferMarket.CountAsync();
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> ClosePlayerTransferPeriod(string seasonCode)
         {
             try
@@ -745,6 +803,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> InitiatePlayerTransfer(string playerId, int marketId, int clubId)
         {
@@ -811,6 +870,8 @@ namespace MyField.Controllers
             }
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> InitiatePlayerTransfer(InitiatePlayerTransferViewModel viewModel)
@@ -907,6 +968,52 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
                 }
 
+                var sellerClubAdmin = await _context.ClubAdministrator
+                    .Where(u => u.ClubId == viewModel.SellerClubId)
+                    .FirstOrDefaultAsync();
+
+                var sellerClub = await _context.Club
+                    .Where(c => c.ClubId == viewModel.SellerClubId)
+                    .FirstOrDefaultAsync();
+
+                if (sellerClubAdmin != null)
+                {
+                    var subject = "Player Transfer Request Notification";
+                    var emailBodyTemplate = $@"
+            Dear Club Administrator,<br/><br/>
+            A new transfer request has been initiated for the player <b>{viewModel.FirstName} {viewModel.LastName}</b>.<br/><br/>
+            <b>Transfer Details:</b><br/>
+            - Market Value: {viewModel.MarketValue:C}<br/>
+            - Position: {viewModel.Position}<br/>
+            - Club Name: {viewModel.ClubName}<br/><br/>
+            Please review the transfer request in your dashboard.<br/><br/>
+            If you have any questions or need further assistance, please contact us at support@knsfoundation.com.<br/><br/>
+            Regards,<br/>
+            K&S Foundation Management
+            ";
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(sellerClubAdmin.Email, subject, emailBodyTemplate));
+                }
+
+                if (sellerClub != null && !string.IsNullOrEmpty(sellerClub.Email))
+                {
+                    var clubEmailSubject = "New Player Transfer Request";
+                    var clubEmailBodyTemplate = $@"
+            Dear {sellerClub.ClubName} Management,<br/><br/>
+            A new transfer request has been initiated for the player <b>{viewModel.FirstName} {viewModel.LastName}</b>.<br/><br/>
+            <b>Transfer Details:</b><br/>
+            - Market Value: {viewModel.MarketValue:C}<br/>
+            - Position: {viewModel.Position}<br/>
+            - Club Name: {viewModel.ClubName}<br/><br/>
+            Please review the transfer request in your dashboard.<br/><br/>
+            If you have any questions or need further assistance, please contact us at support@knsfoundation.com.<br/><br/>
+            Regards,<br/>
+            K&S Foundation Management
+            ";
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(sellerClub.Email, clubEmailSubject, clubEmailBodyTemplate));
+                }
+
                 TempData["Message"] = $"You have successfully initiated communication with {viewModel.ClubName} for {viewModel.FirstName} {viewModel.LastName}'s transfer.";
                 return RedirectToAction(nameof(TransferMarket));
             }
@@ -926,19 +1033,16 @@ namespace MyField.Controllers
         }
 
 
-
-
-
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> AcceptPlayerTransfer(int transferId)
         {
-
             var loggedInUser = await _userManager.GetUserAsync(User);
 
             var transfer = await _context.Transfer
                 .Where(t => t.League.IsCurrent)
-               .Include(t => t.Player)
-               .Include(t => t.CustomerClub)
-               .FirstOrDefaultAsync(t => t.TransferId == transferId);
+                .Include(t => t.Player)
+                .Include(t => t.CustomerClub)
+                .FirstOrDefaultAsync(t => t.TransferId == transferId);
 
             if (transfer == null)
             {
@@ -947,21 +1051,49 @@ namespace MyField.Controllers
 
             if (loggedInUser != null)
             {
-
-            transfer.Status = TransferStatus.Accepted;
-            transfer.paymentTransferStatus = PaymentTransferStatus.Pending_Payment;
-            transfer.Approved_Declined_ById = loggedInUser.Id;
-            transfer.ModifiedDateTime = DateTime.Now; 
+                transfer.Status = TransferStatus.Accepted;
+                transfer.paymentTransferStatus = PaymentTransferStatus.Pending_Payment;
+                transfer.Approved_Declined_ById = loggedInUser.Id;
+                transfer.ModifiedDateTime = DateTime.Now;
             }
 
             _context.Update(transfer);
             await _context.SaveChangesAsync();
 
+            var customerClubAdmin = await _context.ClubAdministrator
+                .Where(ca => ca.ClubId == transfer.CustomerClubId)
+                .FirstOrDefaultAsync();
+
+            var customerClub = await _context.Club
+                .Where(c => c.ClubId == transfer.CustomerClubId)
+                .FirstOrDefaultAsync();
+
+            var subject = "Player Transfer Accepted Notification";
+            var emailBodyTemplate = $@"
+        Dear {transfer.CustomerClub?.ClubName} Management,<br/><br/>
+        The transfer request for player <b>{transfer.Player?.FirstName} {transfer.Player?.LastName}</b> has been accepted.<br/><br/>
+        <b>Transfer Details:</b><br/>
+        - Player: {transfer.Player?.FirstName} {transfer.Player?.LastName}<br/>
+        - Customer Club: {transfer.CustomerClub?.ClubName}<br/><br/>
+        Please proceed with the next steps as outlined in your dashboard.<br/><br/>
+        If you have any questions or need further assistance, please contact us at support@knsfoundation.com.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            if (customerClubAdmin != null && !string.IsNullOrEmpty(customerClubAdmin.Email))
+            {
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(customerClubAdmin.Email, subject, emailBodyTemplate));
+            }
+
+            if (customerClub != null && !string.IsNullOrEmpty(customerClub.Email))
+            {
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(customerClub.Email, subject, emailBodyTemplate));
+            }
 
             string message = $"You have successfully accepted player transfer for ";
 
-
-            if(User.IsInRole("Personnel Administrator"))
+            if (User.IsInRole("Personnel Administrator"))
             {
                 if (transfer.Player != null && transfer.CustomerClub != null)
                 {
@@ -975,7 +1107,7 @@ namespace MyField.Controllers
                 TempData["Message"] = message;
                 return RedirectToAction(nameof(PlayerTransfers));
             }
-            else if(User.IsInRole("Club Administrator"))
+            else if (User.IsInRole("Club Administrator"))
             {
                 if (transfer.Player != null && transfer.CustomerClub != null)
                 {
@@ -986,7 +1118,6 @@ namespace MyField.Controllers
                     message += "transfer!";
                 }
 
-
                 TempData["Message"] = message;
                 return RedirectToAction(nameof(MyTransferRequestsTabs));
             }
@@ -994,23 +1125,21 @@ namespace MyField.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> RejectPlayerTransfer(int transferId)
         {
             var loggedInUser = await _userManager.GetUserAsync(User);
 
             var transfer = await _context.Transfer
-              .Where(t => t.League.IsCurrent)
-              .Include(t => t.Player)
-              .Include(t => t.CustomerClub)
-              .Include(t => t.SellerClub)
-              .FirstOrDefaultAsync(t => t.TransferId == transferId);
-
-            var transferReport = await _context.TransfersReports
-               .Where(t => t.Season.IsCurrent)
-               .FirstOrDefaultAsync();
+                .Where(t => t.League.IsCurrent)
+                .Include(t => t.Player)
+                .Include(t => t.CustomerClub)
+                .Include(t => t.SellerClub)
+                .FirstOrDefaultAsync(t => t.TransferId == transferId);
 
             var sellerClubTransferReport = await _context.ClubTransferReports
-                .Where(c => c.ClubId == transfer.SellerClub.ClubId && 
+                .Where(c => c.ClubId == transfer.SellerClub.ClubId &&
                 c.League.IsCurrent)
                 .Include(c => c.Club)
                 .FirstOrDefaultAsync();
@@ -1026,7 +1155,6 @@ namespace MyField.Controllers
                 return NotFound();
             }
 
-
             if (loggedInUser != null)
             {
                 transfer.Approved_Declined_ById = loggedInUser.Id;
@@ -1040,6 +1168,37 @@ namespace MyField.Controllers
             _context.Update(transfer);
             await _context.SaveChangesAsync();
 
+            var customerClubAdmin = await _context.ClubAdministrator
+                .Where(ca => ca.ClubId == transfer.CustomerClub.ClubId)
+                .FirstOrDefaultAsync();
+
+            var sellerClubAdmin = await _context.ClubAdministrator
+                .Where(ca => ca.ClubId == transfer.SellerClub.ClubId)
+                .FirstOrDefaultAsync();
+
+            var subject = "Player Transfer Rejected Notification";
+            var emailBodyTemplate = $@"
+        Dear {transfer.CustomerClub?.ClubName} Management,<br/><br/>
+        The transfer request for player <b>{transfer.Player?.FirstName} {transfer.Player?.LastName}</b> has been rejected.<br/><br/>
+        <b>Transfer Details:</b><br/>
+        - Player: {transfer.Player?.FirstName} {transfer.Player?.LastName}<br/>
+        - Seller Club: {transfer.SellerClub?.ClubName}<br/>
+        - Customer Club: {transfer.CustomerClub?.ClubName}<br/><br/>
+        Please review the transfer details and contact us if you have any questions.<br/><br/>
+        If you need further assistance, please contact us at support@knsfoundation.com.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+    ";
+
+            if (customerClubAdmin != null && !string.IsNullOrEmpty(customerClubAdmin.Email))
+            {
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(customerClubAdmin.Email, subject, emailBodyTemplate));
+            }
+
+            if (sellerClubAdmin != null && !string.IsNullOrEmpty(sellerClubAdmin.Email))
+            {
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(sellerClubAdmin.Email, subject, emailBodyTemplate));
+            }
 
             string message = $"You have rejected player transfer communication for ";
 
@@ -1056,6 +1215,7 @@ namespace MyField.Controllers
             return RedirectToAction(nameof(MyTransferRequestsTabs));
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         public async Task<IActionResult> CancelPlayerTransfer(int transferId)
         {
@@ -1105,159 +1265,6 @@ namespace MyField.Controllers
         public async Task<IActionResult> PaymentPlayerTransfer()
         {
             return View();
-        }
-
-
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Transfer == null)
-            {
-                return NotFound();
-            }
-
-            var transfer = await _context.Transfer
-                .Include(t => t.Approved_Declined_By)
-                .Include(t => t.CreatedBy)
-                .Include(t => t.CustomerClub)
-                .Include(t => t.ModifiedBy)
-                .Include(t => t.Player)
-                .Include(t => t.SellerClub)
-                .FirstOrDefaultAsync(m => m.TransferId == id);
-            if (transfer == null)
-            {
-                return NotFound();
-            }
-
-            return View(transfer);
-        }
-
-        public IActionResult Create()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TransferId,PlayerId,CustomerClubId,SellerClubId,CreatedDateTime,ModifiedDateTime,CreatedById,ModifiedById,Approved_Declined_ById,Status")] Transfer transfer)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(transfer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(transfer);
-        }
-
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Transfer == null)
-            {
-                return NotFound();
-            }
-
-            var transfer = await _context.Transfer.FindAsync(id);
-            if (transfer == null)
-            {
-                return NotFound();
-            }
-            ViewData["Approved_Declined_ById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.Approved_Declined_ById);
-            ViewData["CreatedById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.CreatedById);
-            ViewData["CustomerClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", transfer.CustomerClubId);
-            ViewData["ModifiedById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.ModifiedById);
-            ViewData["PlayerId"] = new SelectList(_context.Player, "Id", "Id", transfer.PlayerId);
-            ViewData["SellerClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", transfer.SellerClubId);
-            return View(transfer);
-        }
-
-        // POST: Transfers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TransferId,PlayerId,CustomerClubId,SellerClubId,CreatedDateTime,ModifiedDateTime,CreatedById,ModifiedById,Approved_Declined_ById,Status")] Transfer transfer)
-        {
-            if (id != transfer.TransferId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(transfer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TransferExists(transfer.TransferId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Approved_Declined_ById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.Approved_Declined_ById);
-            ViewData["CreatedById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.CreatedById);
-            ViewData["CustomerClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", transfer.CustomerClubId);
-            ViewData["ModifiedById"] = new SelectList(_context.SystemUsers, "Id", "Id", transfer.ModifiedById);
-            ViewData["PlayerId"] = new SelectList(_context.Player, "Id", "Id", transfer.PlayerId);
-            ViewData["SellerClubId"] = new SelectList(_context.Club, "ClubId", "ClubLocation", transfer.SellerClubId);
-            return View(transfer);
-        }
-
-        // GET: Transfers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Transfer == null)
-            {
-                return NotFound();
-            }
-
-            var transfer = await _context.Transfer
-                .Include(t => t.Approved_Declined_By)
-                .Include(t => t.CreatedBy)
-                .Include(t => t.CustomerClub)
-                .Include(t => t.ModifiedBy)
-                .Include(t => t.Player)
-                .Include(t => t.SellerClub)
-                .FirstOrDefaultAsync(m => m.TransferId == id);
-            if (transfer == null)
-            {
-                return NotFound();
-            }
-
-            return View(transfer);
-        }
-
-        // POST: Transfers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Transfer == null)
-            {
-                return Problem("Entity set 'Ksans_SportsDbContext.Transfer'  is null.");
-            }
-            var transfer = await _context.Transfer.FindAsync(id);
-            if (transfer != null)
-            {
-                _context.Transfer.Remove(transfer);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool TransferExists(int id)
-        {
-            return (_context.Transfer?.Any(e => e.TransferId == id)).GetValueOrDefault();
         }
     }
 }

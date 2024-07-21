@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyField.Data;
@@ -14,16 +16,20 @@ namespace MyField.Controllers
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
-        public AnnouncementsController(Ksans_SportsDbContext context, 
+        public AnnouncementsController(Ksans_SportsDbContext context,
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            EmailService emailService)
         {
             _context = context;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
+        [Authorize]
         public async Task<IActionResult> Announcements()
         {
             var announcements = await _context.Announcements
@@ -34,16 +40,20 @@ namespace MyField.Controllers
             return View(announcements);
         }
 
+
+        [Authorize(Roles =("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> NewAnnouncement()
         {
             return View();
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         public async Task<IActionResult> NewAnnouncement(AnnouncementViewModel viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
 
@@ -59,20 +69,40 @@ namespace MyField.Controllers
                 _context.Announcements.Add(newAnnouncement);
                 await _context.SaveChangesAsync();
 
-                TempData["Message"] = $"You have successufully created a new announcement.";
-                await _activityLogger.Log($"Created a new announcement", user.Id);
+                var users = _userManager.Users.ToList();
+
+                string emailBodyTemplate = $@"
+                Hi {{0}},<br/><br/>
+                There is a new announcement: <br/><br/>
+                {viewModel.AnnouncementText}<br/><br/>
+                Kind regards,<br/>
+                K&S Foundation Support Team
+                ";
+
+                foreach (var currentUser in users)
+                {
+                    var personalizedEmailBody = string.Format(emailBodyTemplate, $"{currentUser.FirstName} {currentUser.LastName}");
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(
+                        currentUser.Email,
+                        "New Announcement",
+                        personalizedEmailBody));
+                }
+
+                TempData["Message"] = "You have successfully created a new announcement.";
+                await _activityLogger.Log("Created a new announcement", user.Id);
 
                 return RedirectToAction(nameof(Announcements));
             }
 
-            return View();
+            return View(viewModel); 
         }
 
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> UpdateAnnouncement(int announcementId)
         {
-            if(announcementId == null)
+            if (announcementId == null)
             {
                 return NotFound();
             }
@@ -90,6 +120,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         public async Task<IActionResult> UpdateAnnouncement(int announcementId, UpdateAnnouncementViewModel viewModel)
         {
@@ -117,5 +148,5 @@ namespace MyField.Controllers
 
             return RedirectToAction(nameof(Announcements));
         }
-    }
+    } 
 }

@@ -2085,3 +2085,90 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+
+/*Cookie banner css*/
+
+
+.cookie-banner {
+    font-family: Arial, sans-serif;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000325;
+    padding: 30px;
+    max-width: 600px;
+    width: calc(100% - 40px);
+    box-sizing: border-box;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cookie-message {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    flex: 1;
+}
+
+.cookie-button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+    .cookie-button:hover {
+        background-color: #e0c000;
+    }
+
+.btn-sm {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
+.cookie-link {
+    color: #fff;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+.cookie-prefs-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+
+.secret-codes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.codes-card {
+    padding: 20px;
+    border-radius: 7px;
+}

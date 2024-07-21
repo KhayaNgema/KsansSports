@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240721100548_AddCookiePreferences")]
+    partial class AddCookiePreferences
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -345,10 +348,6 @@ namespace MyField.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

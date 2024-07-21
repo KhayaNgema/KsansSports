@@ -20,6 +20,12 @@ namespace MyField.Models
         [Display(Name = "Club")]
         public string ClubName { get; set; }
 
+
+        [DataType(DataType.EmailAddress)]   
+        [Required(ErrorMessage = "Club email is required")]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Club area is required")]
         [Display(Name = "Home Area")]
         public string ClubLocation { get; set; }

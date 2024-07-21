@@ -8,6 +8,7 @@ using MyField.Models;
 using System.Diagnostics;
 using MyField.ViewModels;
 using MyField.Services;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace MyField.Controllers
@@ -320,6 +321,7 @@ namespace MyField.Controllers
             }
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<int> GetMyClubManagersCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -337,6 +339,7 @@ namespace MyField.Controllers
                 return myClubmanagersCount;
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<int> GetMyClubPlayersCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -355,6 +358,7 @@ namespace MyField.Controllers
             return myPlayersCount;
         }
 
+        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
         public async Task<int> GetMyClubFixturesCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -392,7 +396,7 @@ namespace MyField.Controllers
             return myClubFixturesCount;
         }
 
-
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<int> GetMyClubTransferRequestsCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -427,6 +431,7 @@ namespace MyField.Controllers
             return myClubTransferRequestsCount;
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<int> GetClubAdministratorsMeetingsCount()
         {
             var clubAdminsMeetings = await _context.Meeting
@@ -437,6 +442,7 @@ namespace MyField.Controllers
             return clubAdminsMeetings;
         }
 
+        [Authorize]
         public async Task<int> GetAnnouncementsCount()
         {
             var announcementsCount = await _context.Announcements
@@ -445,6 +451,7 @@ namespace MyField.Controllers
             return announcementsCount;
         }
 
+        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
         public async Task<int> GetMyClubMatchResultsCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -479,6 +486,7 @@ namespace MyField.Controllers
             return myClubMatchResultsCount;
         }
 
+        [Authorize(Roles = ("Club Manager"))]
         public async Task<int> GetClubManagersMeetingsCount()
         {
             var clubManagersMeetings = await _context.Meeting
@@ -489,6 +497,7 @@ namespace MyField.Controllers
             return clubManagersMeetings;
         }
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<int> GetDivisionFansCount()
         {
             var userIdsWithRoles = await _context.UserRoles
@@ -504,6 +513,7 @@ namespace MyField.Controllers
             return usersWithoutRoles;
         }
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<int> GetFansAdminMeetingsCount()
         {
             var fansAdminMeetings = await _context.Meeting
@@ -514,6 +524,7 @@ namespace MyField.Controllers
             return fansAdminMeetings;
         }
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<int> GetFansSupportQueriesCount()
         {
             var fansSupportQueries = 0;
@@ -521,6 +532,7 @@ namespace MyField.Controllers
             return fansSupportQueries;
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<int> GetNewsPendingApprovalCount()
         {
             var newsPendingApproval = await _context.SportNew
@@ -530,6 +542,7 @@ namespace MyField.Controllers
             return newsPendingApproval;
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<int> GetApprovedNewsCount()
         {
             var approvedNews = await _context.SportNew
@@ -539,6 +552,7 @@ namespace MyField.Controllers
             return approvedNews;
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<int> GetPublishedNewsCount()
         {
             var publishedNewsCount = await _context.SportNew
@@ -548,6 +562,7 @@ namespace MyField.Controllers
             return publishedNewsCount;
         }
 
+        [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<int> GetToBeModifiedCount()
         {
             var toBeModifiedNewsCount = await _context.SportNew
@@ -557,6 +572,7 @@ namespace MyField.Controllers
             return toBeModifiedNewsCount;
         }
 
+        [Authorize(Roles = ("News Administrator"))]
         public async Task<int> GetNewsAdminMeetingsCount()
         {
             var newsAdminMeetings = await _context.Meeting
@@ -567,6 +583,7 @@ namespace MyField.Controllers
             return newsAdminMeetings;
         }
 
+        [Authorize(Roles = ("News Updator"))]
         public async Task<int> GetNewsUpdaterMeetingsCount()
         {
             var newsUpdaterMeetings = await _context.Meeting
@@ -577,6 +594,7 @@ namespace MyField.Controllers
             return newsUpdaterMeetings;
         }
 
+        [Authorize(Roles = ("Official"))]
         public async Task<int> GetMatchesToOfficiateCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -598,6 +616,7 @@ namespace MyField.Controllers
             return matchesToOfficiateCount;
         }
 
+        [Authorize(Roles = ("Official"))]
         public async Task<int> PreviousylOfficiatedMatchesCount()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -619,6 +638,7 @@ namespace MyField.Controllers
             return previoulsyOfficiatedMatchesCount;
         }
 
+        [Authorize(Roles = ("Official"))]
         public async Task<int> GetOfficialsMeetingsCount()
         {
             var officialsMeetings = await _context.Meeting
@@ -629,6 +649,7 @@ namespace MyField.Controllers
             return officialsMeetings;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetSportAdminsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Administrator");
@@ -650,6 +671,7 @@ namespace MyField.Controllers
             return sportAdminsCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetSportManagersCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Manager");
@@ -671,6 +693,7 @@ namespace MyField.Controllers
             return sportManagersCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetSportCoordinatorsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Sport Coordinator");
@@ -692,7 +715,7 @@ namespace MyField.Controllers
             return sportCoordinatorsCount;
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetOfficialsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Official");
@@ -714,6 +737,7 @@ namespace MyField.Controllers
             return officialsCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetClubAdminsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club Administrator");
@@ -735,6 +759,7 @@ namespace MyField.Controllers
             return clubAdminsCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetClubManagersCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Club Manager");
@@ -756,6 +781,7 @@ namespace MyField.Controllers
             return clubManagersCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetDivisionPlayersCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Player");
@@ -777,6 +803,7 @@ namespace MyField.Controllers
             return divisionPlayersCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetNewsAdminsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News Administrator");
@@ -798,6 +825,7 @@ namespace MyField.Controllers
             return newsAdminsCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetNewsUpdatersCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "News Updator");
@@ -819,6 +847,7 @@ namespace MyField.Controllers
             return newsUpdatersCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetFansAdminsCount()
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Fans Administrator");
@@ -840,6 +869,7 @@ namespace MyField.Controllers
             return fansAdminsCount;
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<int> GetPersonnelAdminsMeetingsCount()
         {
             var personnelAdminsMeetings = await _context.Meeting
@@ -850,7 +880,7 @@ namespace MyField.Controllers
             return personnelAdminsMeetings;
         }
 
-
+        [Authorize(Roles = ("Player"))]
         public async Task<int> GetPlayersMeetingsCount()
         {
             var playersMeetings = await _context.Meeting
@@ -861,6 +891,7 @@ namespace MyField.Controllers
             return playersMeetings;
         }
 
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<int> GetClubsCount()
         {
             var clubCount = await _context.Club
@@ -871,6 +902,7 @@ namespace MyField.Controllers
             return clubCount;
         }
 
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<int> GetFixturesCount()
         {
             var fixturesCount = await _context.Fixture
@@ -880,6 +912,7 @@ namespace MyField.Controllers
            return fixturesCount;
         }
 
+        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<int> GetMatchResultsCount()
         {
             var matchResultsCount = await _context.MatchResult
@@ -890,6 +923,7 @@ namespace MyField.Controllers
             return matchResultsCount;
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<int> GetClubFinesCount()
         {
             var clubFinesCount = await _context.Fines
@@ -901,6 +935,7 @@ namespace MyField.Controllers
             return clubFinesCount;
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<int> GetSportAdminsMeetingsCount()
         {
             var sportAdminsMeetings = await _context.Meeting
@@ -909,6 +944,7 @@ namespace MyField.Controllers
             return sportAdminsMeetings;
         }
 
+        [Authorize(Roles = ("Sport Coordinator"))]
         public async Task<int> GetSportCoordinatorsMeetingsCount()
         {
             var sportCoordinatorsMeetings = await _context.Meeting
@@ -919,6 +955,7 @@ namespace MyField.Controllers
             return sportCoordinatorsMeetings;
         }
 
+        [Authorize(Roles = ("Sport Manager"))]
         public async Task<int> GetSportManagersMeetingsCount()
         {
             var sportManagersMeetings = await _context.Meeting
@@ -944,13 +981,19 @@ namespace MyField.Controllers
             return View();
         }
 
+
+        public IActionResult TermsAndConditions()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            // Retrieve error messages from TempData
+
             var errorMessages = TempData["Errors"] as List<string> ?? new List<string>();
 
-            // Pass error messages to the view
+
             var viewModel = new ErrorViewModel
             {
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,

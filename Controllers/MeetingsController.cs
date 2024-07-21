@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using MyField.Data;
 using MyField.Interfaces;
 using MyField.Models;
+using MyField.Services;
 using MyField.ViewModels;
+using NuGet.Packaging;
 
 namespace MyField.Controllers
 {
@@ -19,16 +23,20 @@ namespace MyField.Controllers
         private readonly Ksans_SportsDbContext _context;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly EmailService _emailService;
 
         public MeetingsController(Ksans_SportsDbContext context,
               UserManager<UserBaseModel> userManager,
-              IActivityLogger activityLogger)
+              IActivityLogger activityLogger,
+              EmailService emailService)
         {
             _userManager = userManager;
             _context = context;
             _activityLogger = activityLogger;
+            _emailService = emailService;
         }
 
+        [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> Meetings()
         {
             IQueryable<Meeting> meetingsQuery = _context.Meeting
@@ -108,25 +116,7 @@ namespace MyField.Controllers
         }
 
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Meeting == null)
-            {
-                return NotFound();
-            }
-
-            var meeting = await _context.Meeting
-                .Include(m => m.CreatedBy)
-                .Include(m => m.ModifiedBy)
-                .FirstOrDefaultAsync(m => m.MeetingId == id);
-            if (meeting == null)
-            {
-                return NotFound();
-            }
-
-            return View(meeting);
-        }
-
+        [Authorize(Roles =("Sport Administrator"))]
         public IActionResult Create()
         {
             ViewData["MeetingsAttendes"] = Enum.GetValues(typeof(MeetingAttendees))
@@ -136,6 +126,8 @@ namespace MyField.Controllers
             return View();
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(MeetingViewModel viewModel)
@@ -151,7 +143,7 @@ namespace MyField.Controllers
                     MeetingDescription = viewModel.MeetingDescription,
                     AdditionalComments = viewModel.AdditionalComments,
                     Venue = viewModel.Venue,
-                    MeetingDate = viewModel.MeetingDate,    
+                    MeetingDate = viewModel.MeetingDate,
                     MeetingTime = viewModel.MeetingTime,
                     CreatedById = userId,
                     CreatedDateTime = DateTime.Now,
@@ -164,14 +156,72 @@ namespace MyField.Controllers
 
                 _context.Add(newMeeting);
                 await _context.SaveChangesAsync();
-                await _activityLogger.Log($"", user.Id);
 
                 var savedMeeting = await _context.Meeting
-                    .Where( s => s.Equals(newMeeting))
+                    .Where(s => s.Equals(newMeeting))
                     .FirstOrDefaultAsync();
 
-                TempData["Message"] = $"You have successfully scheduled a meeting that will take place at {viewModel.Venue}. on {viewModel.MeetingDate} at {viewModel.MeetingTime}. You invited {viewModel.MeetingAttendes} to join the meeting.";
-                await _activityLogger.Log($"Scheduled a meeting that will take place as follows; Date:{savedMeeting.MeetingDate.ToString("ddd, dd MMM yyyy")}, Time:{savedMeeting.MeetingTime.ToString("HH:mm")}", user.Id);
+                TempData["Message"] = $"You have successfully scheduled a meeting that will take place at {viewModel.Venue} on {viewModel.MeetingDate} at {viewModel.MeetingTime}. You invited {viewModel.MeetingAttendes} to join the meeting.";
+
+                await _activityLogger.Log($"Scheduled a meeting that will take place as follows; Date: {savedMeeting.MeetingDate:ddd, dd MMM yyyy}, Time: {savedMeeting.MeetingTime:HH:mm}", user.Id);
+
+                var roleMapping = new Dictionary<MeetingAttendees, string>
+        {
+            { MeetingAttendees.Club_Administrators, "Club Administrator" },
+            { MeetingAttendees.Club_Managers, "Club Manager" },
+            { MeetingAttendees.Players, "Player" },
+            { MeetingAttendees.Sport_Administrators, "Sport Administrator" },
+            { MeetingAttendees.News_Updaters, "News Updator" },
+            { MeetingAttendees.Sport_Coordinators, "Sport Coordinator" },
+            { MeetingAttendees.Officials, "Official" },
+            { MeetingAttendees.News_Administrators, "News Administrator" },
+            { MeetingAttendees.Fans_Administrators, "Fans Administrator" },
+            { MeetingAttendees.Personnel_Administrators, "Personnel Administrator" },
+            { MeetingAttendees.Sport_Managers, "Sport Manager" }
+        };
+
+                var subject = "Meeting Scheduled Notification";
+                var emailBodyTemplate = $@"
+            Dear {{0}},<br/><br/>
+            A new meeting has been scheduled with the following details:<br/><br/>
+            Title: {viewModel.MeetingTitle}<br/>
+            Description: {viewModel.MeetingDescription}<br/>
+            Venue: {viewModel.Venue}<br/>
+            Date: {viewModel.MeetingDate:ddd, dd MMM yyyy}<br/>
+            Time: {viewModel.MeetingTime:HH:mm}<br/>
+            Additional Comments: {viewModel.AdditionalComments}<br/><br/>
+            Please make a note of this meeting in your calendar.<br/><br/>
+            If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+            Regards,<br/>
+            K&S Foundation Management
+                ";
+
+                var usersInRoles = new List<UserBaseModel>();
+
+                if (viewModel.MeetingAttendes == MeetingAttendees.Everyone)
+                {
+                    var allRoles = roleMapping.Values;
+                    foreach (var roleName in allRoles)
+                    {
+                        usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                    }
+                }
+                else
+                {
+                    if (roleMapping.TryGetValue(viewModel.MeetingAttendes, out var roleName))
+                    {
+                        usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                    }
+                }
+
+                var uniqueUsers = usersInRoles.Distinct().ToList();
+
+                foreach (var userInRole in uniqueUsers)
+                {
+                    var personalizedEmailBody = string.Format(emailBodyTemplate, $"{userInRole.FirstName} {userInRole.LastName}");
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(userInRole.Email, subject, personalizedEmailBody));
+                }
+
                 return RedirectToAction(nameof(Meetings));
             }
 
@@ -182,8 +232,8 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
-
         public async Task<IActionResult> UpdateMeeting(int? meetingId)
         {
             if (meetingId == null)
@@ -209,26 +259,26 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
-
         public async Task<IActionResult> UpdateMeeting(int? meetingId, UpdateMeetingViewModel viewModel)
         {
-            if(meetingId != viewModel.MeetingId)
+            if (meetingId != viewModel.MeetingId)
             {
                 return NotFound();
             }
 
-
-            if(ValidateUpdatedProperties(viewModel))
+            if (ValidateUpdatedProperties(viewModel))
             {
                 var user = await _userManager.GetUserAsync(User);
-
-
                 var existingMeeting = await _context.Meeting
-                     .Where(e => e.MeetingId == meetingId)
-                      .FirstOrDefaultAsync();
+                    .Where(e => e.MeetingId == meetingId)
+                    .FirstOrDefaultAsync();
 
+                if (existingMeeting == null)
+                {
+                    return NotFound();
+                }
 
                 existingMeeting.MeetingTitle = viewModel.MeetingTitle;
                 existingMeeting.MeetingDescription = viewModel.MeetingDescription;
@@ -237,22 +287,76 @@ namespace MyField.Controllers
                 existingMeeting.MeetingTime = viewModel.MeetingTime;
                 existingMeeting.AdditionalComments = viewModel.AdditionalComments;
                 existingMeeting.ModifiedById = user.Id;
-                existingMeeting.ModifiedDateTime = user.ModifiedDateTime;
-
+                existingMeeting.ModifiedDateTime = DateTime.Now; 
 
                 _context.Update(existingMeeting);
                 await _context.SaveChangesAsync();
 
-
                 TempData["Message"] = $"You have successfully updated a meeting with title {existingMeeting.MeetingTitle}";
                 await _activityLogger.Log($"Updated a meeting with title {existingMeeting.MeetingTitle}", user.Id);
 
+                var roleMapping = new Dictionary<MeetingAttendees, string>
+        {
+            { MeetingAttendees.Club_Administrators, "Club Administrator" },
+            { MeetingAttendees.Club_Managers, "Club Manager" },
+            { MeetingAttendees.Players, "Player" },
+            { MeetingAttendees.Sport_Administrators, "Sport Administrator" },
+            { MeetingAttendees.News_Updaters, "News Updator" },
+            { MeetingAttendees.Sport_Coordinators, "Sport Coordinator" },
+            { MeetingAttendees.Officials, "Official" },
+            { MeetingAttendees.News_Administrators, "News Administrator" },
+            { MeetingAttendees.Fans_Administrators, "Fans Administrator" },
+            { MeetingAttendees.Personnel_Administrators, "Personnel Administrator" },
+            { MeetingAttendees.Sport_Managers, "Sport Manager" }
+        };
+
+                var subject = "Meeting Updated Notification";
+                var emailBodyTemplate = $@"
+            Dear {{0}},<br/><br/>
+            A meeting has been updated with the following details:<br/><br/>
+            Title: {viewModel.MeetingTitle}<br/>
+            Description: {viewModel.MeetingDescription}<br/>
+            Venue: {viewModel.Venue}<br/>
+            Date: {viewModel.MeetingDate:ddd, dd MMM yyyy}<br/>
+            Time: {viewModel.MeetingTime:HH:mm}<br/>
+            Additional Comments: {viewModel.AdditionalComments}<br/><br/>
+            Please make a note of this update in your calendar.<br/><br/>
+            If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+            Regards,<br/>
+              K&S Foundation Management
+                ";
+
+                var usersInRoles = new List<UserBaseModel>();
+
+                if (viewModel.MeetingAttendees == MeetingAttendees.Everyone)
+                {
+                    foreach (var roleName in roleMapping.Values)
+                    {
+                        usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                    }
+                }
+                else
+                {
+                    if (roleMapping.TryGetValue(viewModel.MeetingAttendees, out var roleName))
+                    {
+                        usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                    }
+                }
+
+                var uniqueUsers = usersInRoles.Distinct().ToList();
+
+                foreach (var userInRole in uniqueUsers)
+                {
+                    var personalizedEmailBody = string.Format(emailBodyTemplate, $"{userInRole.FirstName} {userInRole.LastName}");
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(userInRole.Email, subject, personalizedEmailBody));
+                }
 
                 return RedirectToAction(nameof(Meetings));
             }
 
             return View(viewModel);
         }
+
 
         private bool ValidateUpdatedProperties(UpdateMeetingViewModel viewModel)
         {
@@ -266,7 +370,7 @@ namespace MyField.Controllers
             return validationResults.Count == 0;
         }
 
-
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> MeetingDetails(int? meetingId)
         {
@@ -296,39 +400,9 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PostponeMeeting(int? meetingId)
         {
-
-            if (meetingId == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-
-
-            var meeting = await  _context.Meeting
-                .Where(m => m.MeetingId == meetingId)
-                .FirstOrDefaultAsync();
-
-
-            meeting.MeetingStatus = MeetingStatus.Postponed;
-            meeting.ModifiedById = user.Id;
-            meeting.ModifiedDateTime = user.ModifiedDateTime;
-
-            _context.Update(meeting);
-            await _context.SaveChangesAsync();
-
-            TempData["Message"] = $"You have successfully postponed a meeting with title {meeting.MeetingTitle}";
-            await _activityLogger.Log($"Postponed a meeting with title {meeting.MeetingTitle}", user.Id);
-
-            return RedirectToAction(nameof(Meetings));
-        }
-
-        public async Task<IActionResult> CancelMeeting(int? meetingId)
-        {
-
             if (meetingId == null)
             {
                 return NotFound();
@@ -340,19 +414,156 @@ namespace MyField.Controllers
                 .Where(m => m.MeetingId == meetingId)
                 .FirstOrDefaultAsync();
 
+            if (meeting == null)
+            {
+                return NotFound();
+            }
 
-            meeting.MeetingStatus = MeetingStatus.Cancelled;
+            meeting.MeetingStatus = MeetingStatus.Postponed;
             meeting.ModifiedById = user.Id;
-            meeting.ModifiedDateTime = user.ModifiedDateTime;
+            meeting.ModifiedDateTime = DateTime.Now; 
 
             _context.Update(meeting);
             await _context.SaveChangesAsync();
 
+            TempData["Message"] = $"You have successfully postponed a meeting with title {meeting.MeetingTitle}";
+            await _activityLogger.Log($"Postponed a meeting with title {meeting.MeetingTitle}", user.Id);
+
+            var roleMapping = new Dictionary<MeetingAttendees, string>
+            {
+        { MeetingAttendees.Club_Administrators, "Club Administrator" },
+        { MeetingAttendees.Club_Managers, "Club Manager" },
+        { MeetingAttendees.Players, "Player" },
+        { MeetingAttendees.Sport_Administrators, "Sport Administrator" },
+        { MeetingAttendees.News_Updaters, "News Updator" },
+        { MeetingAttendees.Sport_Coordinators, "Sport Coordinator" },
+        { MeetingAttendees.Officials, "Official" },
+        { MeetingAttendees.News_Administrators, "News Administrator" },
+        { MeetingAttendees.Fans_Administrators, "Fans Administrator" },
+        { MeetingAttendees.Personnel_Administrators, "Personnel Administrator" },
+        { MeetingAttendees.Sport_Managers, "Sport Manager" }
+           };
+
+            var subject = "Meeting Postponed Notification";
+            var emailBodyTemplate = $@"
+        Dear {{0}},<br/><br/>
+        The meeting with the title {meeting.MeetingTitle} has been postponed.<br/><br/>
+        Please update your calendar accordingly.<br/><br/>
+        If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+        Regards,<br/>
+         K&S Foundation Management
+            ";
+
+
+            var usersInRoles = new List<UserBaseModel>();
+
+            if (meeting.MeetingAttendees == MeetingAttendees.Everyone)
+            {
+                foreach (var roleName in roleMapping.Values)
+                {
+                    usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                }
+            }
+            else
+            {
+                if (roleMapping.TryGetValue(meeting.MeetingAttendees, out var roleName))
+                {
+                    usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                }
+            }
+
+            var uniqueUsers = usersInRoles.Distinct().ToList();
+
+            foreach (var userInRole in uniqueUsers)
+            {
+                var personalizedEmailBody = string.Format(emailBodyTemplate, $"{userInRole.FirstName} {userInRole.LastName}");
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(userInRole.Email, subject, personalizedEmailBody));
+            }
+
+            return RedirectToAction(nameof(Meetings));
+        }
+
+        [Authorize(Roles = ("Sport Administrator"))]
+        public async Task<IActionResult> CancelMeeting(int? meetingId)
+        {
+            if (meetingId == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var meeting = await _context.Meeting
+                .Where(m => m.MeetingId == meetingId)
+                .FirstOrDefaultAsync();
+
+            if (meeting == null)
+            {
+                return NotFound();
+            }
+
+            meeting.MeetingStatus = MeetingStatus.Cancelled;
+            meeting.ModifiedById = user.Id;
+            meeting.ModifiedDateTime = DateTime.Now; 
+
+            _context.Update(meeting);
+            await _context.SaveChangesAsync();
 
             TempData["Message"] = $"You have cancelled a meeting with title {meeting.MeetingTitle}";
             await _activityLogger.Log($"Cancelled a meeting with title {meeting.MeetingTitle}", user.Id);
 
+            var roleMapping = new Dictionary<MeetingAttendees, string>
+           {
+        { MeetingAttendees.Club_Administrators, "Club Administrator" },
+        { MeetingAttendees.Club_Managers, "Club Manager" },
+        { MeetingAttendees.Players, "Player" },
+        { MeetingAttendees.Sport_Administrators, "Sport Administrator" },
+        { MeetingAttendees.News_Updaters, "News Updator" },
+        { MeetingAttendees.Sport_Coordinators, "Sport Coordinator" },
+        { MeetingAttendees.Officials, "Official" },
+        { MeetingAttendees.News_Administrators, "News Administrator" },
+        { MeetingAttendees.Fans_Administrators, "Fans Administrator" },
+        { MeetingAttendees.Personnel_Administrators, "Personnel Administrator" },
+        { MeetingAttendees.Sport_Managers, "Sport Manager" }
+        };
+
+            var subject = "Meeting Cancelled Notification";
+            var emailBodyTemplate = $@"
+        Dear {{0}},<br/><br/>
+        The meeting with the title {meeting.MeetingTitle} has been cancelled.<br/><br/>
+        Please disregard any previous notices about this meeting.<br/><br/>
+        If you have any questions, please contact us at support@ksfoundation.com.<br/><br/>
+        Regards,<br/>
+        K&S Foundation Management
+             ";
+
+            var usersInRoles = new List<UserBaseModel>();
+
+            if (meeting.MeetingAttendees == MeetingAttendees.Everyone)
+            {
+                foreach (var roleName in roleMapping.Values)
+                {
+                    usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                }
+            }
+            else
+            {
+                if (roleMapping.TryGetValue(meeting.MeetingAttendees, out var roleName))
+                {
+                    usersInRoles.AddRange(await _userManager.GetUsersInRoleAsync(roleName));
+                }
+            }
+
+            var uniqueUsers = usersInRoles.Distinct().ToList();
+
+            foreach (var userInRole in uniqueUsers)
+            {
+                var personalizedEmailBody = string.Format(emailBodyTemplate, $"{userInRole.FirstName} {userInRole.LastName}");
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(userInRole.Email, subject, personalizedEmailBody));
+            }
+
             return RedirectToAction(nameof(Meetings));
         }
+
     }
 }

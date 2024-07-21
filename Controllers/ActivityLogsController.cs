@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyField.Data;
@@ -20,6 +21,7 @@ namespace MyField.Controllers
             _userManager = userManager;
         }
 
+        [Authorize(Roles =("Club Administrator"))]
         public async Task<IActionResult> MyPlayersActivityLogs()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -60,6 +62,7 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize]
         public async Task<IActionResult> MyActivityLogs()
         {
             try
@@ -86,6 +89,7 @@ namespace MyField.Controllers
             }
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyManagersActivityLogs()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -123,12 +127,14 @@ namespace MyField.Controllers
             return View(managerLogs);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PersonnelLogs()
         {
             return View();
         }
 
 
+        [Authorize(Roles = ("Fans Administrator"))]
         public async Task<IActionResult> FansActivityLogs()
         {
             var fansActivityLogs = await _context.ActivityLogs
@@ -143,6 +149,7 @@ namespace MyField.Controllers
             return View(fansActivityLogs);
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ClubAdministratorsActivityLogs()
         {
             var clubAdministrators = await _context.ClubAdministrator
@@ -188,8 +195,7 @@ namespace MyField.Controllers
             return PartialView("_ClubAdministratorsActivityLogsPartial", allClubAdminLogs);
         }
 
-
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ClubManagersActivityLogs()
         {
             var clubManagers = await _context.ClubManager
@@ -239,7 +245,7 @@ namespace MyField.Controllers
             return PartialView("_ClubManagersActivityLogsPartial", allClubManagerLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> NewsAdministratorsActivityLogs()
         {
             var newsAdminRoleId = await _context.Roles
@@ -265,7 +271,7 @@ namespace MyField.Controllers
             return PartialView("_NewsAdministratorsActivityLogsPartial", newsAdminsActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportAdministratorsActivityLogs()
         {
             var sportAdminRoleId = await _context.Roles
@@ -291,12 +297,13 @@ namespace MyField.Controllers
             return PartialView("_SportAdministratorsActivityLogsPartial", sportAdminsActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> ManagersActivityLogs()
         {
             return View();
         }
 
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> PlayersActivityLogs()
         {
             var clubPlayers = await _context.Player
@@ -342,7 +349,7 @@ namespace MyField.Controllers
             return PartialView("_PlayerActivityLogsPartial", allClubPlayerLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> NewsUpdatersActivityLogs()
         {
             var newsUpdaterRoleId = await _context.Roles
@@ -368,7 +375,7 @@ namespace MyField.Controllers
             return PartialView("_NewsUpdatersActivityLogsPartial", newsUpdatersActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportCoordinatorsActivityLogs()
         {
             var sportCoordinatorRoleId = await _context.Roles
@@ -394,7 +401,7 @@ namespace MyField.Controllers
             return PartialView("_SportCoordinatorsActivityLogsPartial", sportCoordinatorsActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> OfficialsActivityLogs()
         {
             var officialRoleId = await _context.Roles
@@ -420,6 +427,7 @@ namespace MyField.Controllers
             return PartialView("_OfficialsActivityLogsPartial", officialsActivityLogs);
         }
 
+        [Authorize(Roles = ("System Administrator"))]
         public async Task<IActionResult> PersonnelAdministratorsActivityLogs()
         {
             var personnelAdminRoleId = await _context.Roles
@@ -445,7 +453,7 @@ namespace MyField.Controllers
             return PartialView("_PersonnelAdministratorsActivityLogsPartial", personnelAdminsActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> SportManagersActivityLogs()
         {
             var sportManagerRoleId = await _context.Roles
@@ -471,7 +479,7 @@ namespace MyField.Controllers
             return PartialView("_SportManagersActivityLogsPartial", sportManagersActivityLogs);
         }
 
-
+        [Authorize(Roles = ("Personnel Administrator"))]
         public async Task<IActionResult> FansAdministratorsActivityLogs()
         {
             var fansAdminRoleId = await _context.Roles

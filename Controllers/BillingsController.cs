@@ -13,6 +13,7 @@ using SelectPdf;
 using System.Numerics;
 using MyField.Migrations;
 using System.Security.Cryptography.Xml;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyField.Controllers
 {
@@ -47,6 +48,7 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;   
         }
 
+        [Authorize]
         public async Task<IActionResult> MyIndividualFineInvoicePreview(int invoiceId)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -68,6 +70,7 @@ namespace MyField.Controllers
             return PartialView("_MyIndividualFineInvoicePartial", invoice);
         }
 
+        [Authorize]
         public async Task<IActionResult> MyPlayerInvoicePDfPreview (int invoiceId)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -113,6 +116,7 @@ namespace MyField.Controllers
             return PartialView("_MyPlayerTransferInvoicePartial", invoice);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> MyClubFineInvoicePreview(int invoiceId)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -220,6 +224,7 @@ namespace MyField.Controllers
  */
 
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> IndividualFineInvoice()
         {
@@ -235,7 +240,7 @@ namespace MyField.Controllers
         }
 
 
-
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> ClubInvoice()
         {
@@ -287,8 +292,8 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
-
         public async Task<IActionResult> Transactions()
         {
             var payments = await _context.Payments
@@ -299,6 +304,8 @@ namespace MyField.Controllers
             return View(payments);
         }
 
+
+        [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> PaymentDetails(int? paymentId)
         {
             if (paymentId == null || _context.Payments == null)
@@ -328,6 +335,8 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> PayClubFIne(int fineId, int clubId)
         {
@@ -355,6 +364,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PayClubFIne(PayClubFineViewModel viewModel)
@@ -362,6 +372,7 @@ namespace MyField.Controllers
             return View();
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
         public async Task<IActionResult> PayPlayerTransfer(int transferId)
         {
@@ -402,6 +413,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> PayPlayerTransfer(PayPlayerTransferViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -482,6 +494,7 @@ namespace MyField.Controllers
             }
         }
 
+        [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> PayFastReturn(int paymentId, int transferId, decimal totalPrice)
         {
             try
@@ -622,7 +635,7 @@ namespace MyField.Controllers
             }
         }
 
-
+        [Authorize(Roles = ("Club Administrator"))]
         private string GeneratePayFastPaymentUrl(int paymentId, decimal amount, int transferId, string returnUrl, string cancelUrl)
         {
 
@@ -665,6 +678,7 @@ namespace MyField.Controllers
 
         /*Pay club and individual fines*/
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> PayFines(int fineId)
         {
@@ -691,6 +705,8 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PayFines(PayFineViewModel viewModel)
@@ -763,7 +779,7 @@ namespace MyField.Controllers
             }
         }
 
-
+        [Authorize]
         public async Task<IActionResult> PayFinePayFastReturn(int paymentId, int fineId, decimal totalPrice)
         {
             try
@@ -890,6 +906,7 @@ namespace MyField.Controllers
             }
         }
 
+        [Authorize]
         private string GeneratePayFineFastPaymentUrl(int paymentId, decimal amount, int fineId, string returnUrl, string cancelUrl)
         {
             var fine = _context.Fines
