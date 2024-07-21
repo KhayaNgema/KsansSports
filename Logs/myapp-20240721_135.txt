@@ -1,0 +1,537 @@
+2024-07-21 23:25:56.508 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.516 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.517 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.518 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.519 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.519 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.519 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.519 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:56.519 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-21 23:25:57.211 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.322 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.324 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.327 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.328 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.330 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.331 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.333 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.335 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.336 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.337 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.339 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-21 23:25:57.411 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.796 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.798 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.799 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.816 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.818 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.820 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.821 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.823 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-21 23:25:57.853 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-21 23:25:57.863 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-21 23:25:57.871 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-21 23:25:57.878 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-21 23:25:57.975 +02:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: (localdb)\mssqllocaldb@Ksans_Sports'
+2024-07-21 23:25:57.975 +02:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-21 23:25:57.975 +02:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-21 23:25:58.004 +02:00 [INF] Server khaya-asuszenbo:19876:3a63905b successfully announced in 15.4695 ms
+2024-07-21 23:25:58.008 +02:00 [INF] Server khaya-asuszenbo:19876:3a63905b is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-21 23:25:58.022 +02:00 [INF] Server khaya-asuszenbo:19876:3a63905b all the dispatchers started
+2024-07-21 23:25:58.658 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.SportNewsList (MyField)'
+2024-07-21 23:25:58.668 +02:00 [INF] Route matched with {action = "SportNewsList", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SportNewsList() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-21 23:25:58.681 +02:00 [INF] Executing ViewResult, running view SportNewsList.
+2024-07-21 23:25:58.817 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-21 23:25:58.855 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-21 23:25:59.101 +02:00 [INF] Executed ViewResult - view SportNewsList executed in 421.1439ms.
+2024-07-21 23:25:59.106 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.SportNewsList (MyField) in 437.1209ms
+2024-07-21 23:25:59.106 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.SportNewsList (MyField)'
+2024-07-21 23:25:59.108 +02:00 [INF] HTTP GET /SportNews/SportNewsList responded 200 in 451.0715 ms
+2024-07-21 23:25:59.162 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-21 23:25:59.162 +02:00 [INF] Sending file. Request path: '/UploadedFiles/43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg'
+2024-07-21 23:25:59.164 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-21 23:25:59.173 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-21 23:25:59.339 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2024-07-21 23:25:59.531 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.AwaitingApprovalSportNewsAdmin (MyField)'
+2024-07-21 23:25:59.538 +02:00 [INF] Route matched with {action = "AwaitingApprovalSportNewsAdmin", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AwaitingApprovalSportNewsAdmin() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-21 23:25:59.644 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 0
+ORDER BY [s].[ModifiedDateTime] DESC
+2024-07-21 23:25:59.650 +02:00 [INF] Executing PartialViewResult, running view _PendingSportNewsPartial.
+2024-07-21 23:25:59.657 +02:00 [INF] Executed PartialViewResult - view _PendingSportNewsPartial executed in 7.7187ms.
+2024-07-21 23:25:59.658 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.AwaitingApprovalSportNewsAdmin (MyField) in 119.3919ms
+2024-07-21 23:25:59.658 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.AwaitingApprovalSportNewsAdmin (MyField)'
+2024-07-21 23:25:59.658 +02:00 [INF] HTTP GET /SportNews/AwaitingApprovalSportNewsAdmin responded 200 in 127.0040 ms
+2024-07-21 23:25:59.903 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-21 23:26:03.566 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.PublishedSportNews (MyField)'
+2024-07-21 23:26:03.569 +02:00 [INF] Route matched with {action = "PublishedSportNews", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] PublishedSportNews() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-21 23:26:03.601 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+ORDER BY [s].[PublishedDate] DESC
+2024-07-21 23:26:03.651 +02:00 [INF] Executing PartialViewResult, running view _PublishedSportNewsPartial.
+2024-07-21 23:26:03.712 +02:00 [INF] Executed PartialViewResult - view _PublishedSportNewsPartial executed in 61.1158ms.
+2024-07-21 23:26:03.712 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.PublishedSportNews (MyField) in 142.7706ms
+2024-07-21 23:26:03.712 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.PublishedSportNews (MyField)'
+2024-07-21 23:26:03.712 +02:00 [INF] HTTP GET /SportNews/PublishedSportNews responded 200 in 146.0620 ms
+2024-07-21 23:26:03.720 +02:00 [INF] Sending file. Request path: '/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'
+2024-07-21 23:26:03.720 +02:00 [INF] Sending file. Request path: '/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'
+2024-07-21 23:26:03.721 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b56c7336-5150-4580-b24b-afca39969ee6_News.webp'
+2024-07-21 23:26:03.727 +02:00 [INF] Sending file. Request path: '/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'
+2024-07-21 23:26:03.728 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'
+2024-07-21 23:26:03.729 +02:00 [INF] Sending file. Request path: '/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'
+2024-07-21 23:26:03.730 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'
+2024-07-21 23:26:03.730 +02:00 [INF] Sending file. Request path: '/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'
+2024-07-21 23:26:03.730 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'
+2024-07-21 23:26:04.937 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.ApprovedSportNewsAdmin (MyField)'
+2024-07-21 23:26:04.941 +02:00 [INF] Route matched with {action = "ApprovedSportNewsAdmin", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ApprovedSportNewsAdmin() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-21 23:26:04.977 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+ORDER BY [s].[ModifiedDateTime] DESC
+2024-07-21 23:26:04.980 +02:00 [INF] Executing PartialViewResult, running view _ApprovedSportNewsPartial.
+2024-07-21 23:26:05.018 +02:00 [INF] Executed PartialViewResult - view _ApprovedSportNewsPartial executed in 39.1341ms.
+2024-07-21 23:26:05.018 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.ApprovedSportNewsAdmin (MyField) in 77.377ms
+2024-07-21 23:26:05.018 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.ApprovedSportNewsAdmin (MyField)'
+2024-07-21 23:26:05.018 +02:00 [INF] HTTP GET /SportNews/ApprovedSportNewsAdmin responded 200 in 81.8127 ms
+2024-07-21 23:26:05.027 +02:00 [INF] Sending file. Request path: '/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'
+2024-07-21 23:26:05.028 +02:00 [INF] Sending file. Request path: '/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'
+2024-07-21 23:26:05.028 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b56c7336-5150-4580-b24b-afca39969ee6_News.webp'
+2024-07-21 23:26:05.028 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'
+2024-07-21 23:26:05.029 +02:00 [INF] Sending file. Request path: '/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'
+2024-07-21 23:26:05.029 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg'
+2024-07-21 23:26:05.032 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp'
+2024-07-21 23:26:05.033 +02:00 [INF] Sending file. Request path: '/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg'
+2024-07-21 23:26:05.033 +02:00 [INF] Sending file. Request path: '/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg'
+2024-07-21 23:26:09.319 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.RejectedSportNewsAdmin (MyField)'
+2024-07-21 23:26:09.323 +02:00 [INF] Route matched with {action = "RejectedSportNewsAdmin", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RejectedSportNewsAdmin() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-21 23:26:09.360 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 2
+ORDER BY [s].[RejectedDateTime] DESC
+2024-07-21 23:26:09.362 +02:00 [INF] Executing PartialViewResult, running view _RejectedSportNewsPartial.
+2024-07-21 23:26:09.376 +02:00 [INF] Executed PartialViewResult - view _RejectedSportNewsPartial executed in 14.6298ms.
+2024-07-21 23:26:09.376 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.RejectedSportNewsAdmin (MyField) in 53.3ms
+2024-07-21 23:26:09.376 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.RejectedSportNewsAdmin (MyField)'
+2024-07-21 23:26:09.377 +02:00 [INF] HTTP GET /SportNews/RejectedSportNewsAdmin responded 200 in 57.7173 ms
+2024-07-21 23:26:09.383 +02:00 [INF] HTTP GET /UploadedFiles/531db8e9-5ca5-4fe9-9f90-dd247b31452c_Bellingham news.avif responded 404 in 0.0363 ms
+2024-07-21 23:30:58.025 +02:00 [INF] 1 servers were removed due to timeout
+2024-07-21 23:32:34.472 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-21 23:32:34.514 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-21 23:32:35.930 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-21 23:32:39.701 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-21 23:32:39.730 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-21 23:32:39.730 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-21 23:32:39.751 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-21 23:32:39.751 +02:00 [INF] Hosting environment: Development
+2024-07-21 23:32:39.751 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-21 23:32:40.795 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-21 23:32:41.873 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 1081.8561ms
+2024-07-21 23:32:41.892 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:32:41.894 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:32:41.903 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:32:41.907 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg - -
+2024-07-21 23:32:41.908 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:32:41.913 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.1366ms
+2024-07-21 23:32:41.913 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 9.4041ms
+2024-07-21 23:32:41.913 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 20.7385ms
+2024-07-21 23:32:41.920 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg - - - 200 7934 image/jpeg 12.9155ms
+2024-07-21 23:32:41.929 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 36.4600ms
+2024-07-21 23:32:41.993 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:32:42.077 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 83.9827ms
+2024-07-21 23:32:42.137 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:32:42.157 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 19.9577ms
+2024-07-21 23:32:42.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-21 23:32:42.708 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 17.5781ms
+2024-07-21 23:32:47.001 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsList - -
+2024-07-21 23:32:47.077 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsList - - - 200 - text/html;+charset=utf-8 75.7692ms
+2024-07-21 23:32:47.094 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:32:47.097 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 3.1355ms
+2024-07-21 23:32:47.098 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:32:47.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:32:47.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg - -
+2024-07-21 23:32:47.100 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:32:47.101 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 2.8037ms
+2024-07-21 23:32:47.101 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.6756ms
+2024-07-21 23:32:47.101 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/43d685cd-866f-418c-9609-f9e72502a6a8_download.jpeg - - - 200 7934 image/jpeg 1.5600ms
+2024-07-21 23:32:47.102 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 2.2254ms
+2024-07-21 23:32:47.125 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:32:47.129 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 4.2562ms
+2024-07-21 23:32:47.182 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:32:47.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.3010ms
+2024-07-21 23:32:47.266 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/AwaitingApprovalSportNewsAdmin - -
+2024-07-21 23:32:47.383 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/AwaitingApprovalSportNewsAdmin - - - 200 - text/html;+charset=utf-8 117.3643ms
+2024-07-21 23:32:49.026 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/PublishedSportNews - -
+2024-07-21 23:32:49.243 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/PublishedSportNews - - - 200 - text/html;+charset=utf-8 217.5262ms
+2024-07-21 23:32:49.256 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-21 23:32:49.257 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-21 23:32:49.258 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-21 23:32:49.258 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-21 23:32:49.259 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.5740ms
+2024-07-21 23:32:49.259 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 2.0928ms
+2024-07-21 23:32:49.263 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 7.2790ms
+2024-07-21 23:32:49.266 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 8.9127ms
+2024-07-21 23:32:49.267 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 10.1485ms
+2024-07-21 23:32:49.274 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 16.8643ms
+2024-07-21 23:32:49.274 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 16.5557ms
+2024-07-21 23:32:49.274 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 16.7324ms
+2024-07-21 23:32:49.285 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 26.5646ms
+2024-07-21 23:32:57.685 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/ApprovedSportNewsAdmin - -
+2024-07-21 23:32:57.778 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/ApprovedSportNewsAdmin - - - 200 - text/html;+charset=utf-8 92.1546ms
+2024-07-21 23:32:57.785 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-21 23:32:57.785 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-21 23:32:57.785 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-21 23:32:57.786 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-21 23:32:57.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-21 23:32:57.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-21 23:32:57.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - -
+2024-07-21 23:32:57.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 2.6257ms
+2024-07-21 23:32:57.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 2.6574ms
+2024-07-21 23:32:57.788 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - -
+2024-07-21 23:32:57.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 1.2599ms
+2024-07-21 23:32:57.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 2.9805ms
+2024-07-21 23:32:57.788 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 2.4927ms
+2024-07-21 23:32:57.789 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - -
+2024-07-21 23:32:57.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 2.9115ms
+2024-07-21 23:32:57.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f95935c4-481c-4b8c-89de-f3f7a39b8675_Ten hag news.webp - - - 200 79130 image/webp 2.0819ms
+2024-07-21 23:32:57.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/19ef51b4-cca5-4a01-a560-efaaa73e0ff0_Mpabbe news.jpg - - - 200 85034 image/jpeg 1.6628ms
+2024-07-21 23:32:57.790 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/2608e22d-7144-40b0-8222-4be0cbd05322_Chelsea.jpeg - - - 200 91091 image/jpeg 3.0773ms
+2024-07-21 23:33:03.322 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/RejectedSportNewsAdmin - -
+2024-07-21 23:33:03.384 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/RejectedSportNewsAdmin - - - 200 - text/html;+charset=utf-8 62.3745ms
+2024-07-21 23:33:11.798 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225
+2024-07-21 23:33:13.761 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Logout?returnUrl=%2F application/x-www-form-urlencoded 225 - 302 0 - 1962.3411ms
+2024-07-21 23:33:13.764 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-21 23:33:13.785 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 20.9248ms
+2024-07-21 23:33:13.802 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:33:13.803 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7013ms
+2024-07-21 23:33:13.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:33:13.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:33:13.807 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.8585ms
+2024-07-21 23:33:13.807 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.1549ms
+2024-07-21 23:33:13.807 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:33:13.808 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1490ms
+2024-07-21 23:33:13.827 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:33:13.829 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 2.6708ms
+2024-07-21 23:33:13.911 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:33:13.914 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.5568ms
+2024-07-21 23:33:13.967 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-21 23:33:13.973 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 6.2274ms
+2024-07-21 23:33:13.981 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-21 23:33:13.985 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 3.9599ms
+2024-07-21 23:33:13.997 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-21 23:33:14.041 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 43.5169ms
+2024-07-21 23:33:14.047 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-21 23:33:14.047 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-21 23:33:14.047 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-21 23:33:14.048 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-21 23:33:14.048 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-21 23:33:14.048 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-21 23:33:14.049 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.4900ms
+2024-07-21 23:33:14.051 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 3.2844ms
+2024-07-21 23:33:14.051 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 3.1732ms
+2024-07-21 23:33:14.051 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 3.6333ms
+2024-07-21 23:33:14.051 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 3.2060ms
+2024-07-21 23:33:14.051 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 3.7204ms
+2024-07-21 23:33:22.853 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=4036 - -
+2024-07-21 23:33:22.857 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=4036 - - - 302 0 - 3.5781ms
+2024-07-21 23:33:22.860 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D4036 - -
+2024-07-21 23:33:22.940 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D4036 - - - 200 - text/html;+charset=utf-8 79.7939ms
+2024-07-21 23:33:22.956 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:33:22.958 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.9979ms
+2024-07-21 23:33:22.961 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:33:22.961 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:33:22.962 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.0966ms
+2024-07-21 23:33:22.962 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-21 23:33:22.962 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:33:22.962 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.8633ms
+2024-07-21 23:33:22.962 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1652ms
+2024-07-21 23:33:22.967 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 4.4935ms
+2024-07-21 23:33:22.972 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-21 23:33:22.974 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 2.4769ms
+2024-07-21 23:33:22.984 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:33:22.986 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-21 23:33:22.988 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.7293ms
+2024-07-21 23:33:22.988 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 1.8441ms
+2024-07-21 23:33:23.120 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:33:23.123 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.8490ms
+2024-07-21 23:33:23.131 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-21 23:33:23.136 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 5.8980ms
+2024-07-21 23:33:23.393 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-21 23:33:23.411 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 17.8407ms
+2024-07-21 23:33:24.793 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-21 23:33:24.797 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 4.6156ms
+2024-07-21 23:33:24.816 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:33:24.818 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 2.1988ms
+2024-07-21 23:33:24.820 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:33:24.821 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 0.8556ms
+2024-07-21 23:33:24.821 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:33:24.822 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.6644ms
+2024-07-21 23:33:24.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:33:24.823 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2798ms
+2024-07-21 23:33:24.841 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:33:24.844 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.1206ms
+2024-07-21 23:33:25.265 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:33:25.269 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.7963ms
+2024-07-21 23:33:25.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-21 23:33:25.292 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 1.7902ms
+2024-07-21 23:33:25.305 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-21 23:33:25.307 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 1.6820ms
+2024-07-21 23:33:25.308 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-21 23:33:25.319 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 11.3423ms
+2024-07-21 23:33:25.325 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-21 23:33:25.325 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-21 23:33:25.325 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-21 23:33:25.326 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-21 23:33:25.326 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-21 23:33:25.326 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - -
+2024-07-21 23:33:25.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.0926ms
+2024-07-21 23:33:25.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 2.0222ms
+2024-07-21 23:33:25.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 2.2533ms
+2024-07-21 23:33:25.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 1.2561ms
+2024-07-21 23:33:25.327 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 1.5001ms
+2024-07-21 23:33:25.328 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7d4f6e6b-fbe2-4e11-9a1a-b1ca08a76f50_Jude.jpg - - - 200 130706 image/jpeg 1.9390ms
+2024-07-21 23:33:30.803 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=4036 - -
+2024-07-21 23:33:30.806 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Details?newsId=4036 - - - 302 0 - 2.5543ms
+2024-07-21 23:33:30.811 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D4036 - -
+2024-07-21 23:33:30.820 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/Account/Login?ReturnUrl=%2FSportNews%2FDetails%3FnewsId%3D4036 - - - 200 - text/html;+charset=utf-8 8.6538ms
+2024-07-21 23:33:30.836 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:33:30.837 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.5059ms
+2024-07-21 23:33:30.839 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:33:30.839 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:33:30.840 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-21 23:33:30.840 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-21 23:33:30.840 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2625ms
+2024-07-21 23:33:30.840 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.8673ms
+2024-07-21 23:33:30.840 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.0315ms
+2024-07-21 23:33:30.841 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 1.1488ms
+2024-07-21 23:33:30.848 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-21 23:33:30.849 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 0.8828ms
+2024-07-21 23:33:30.863 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:33:30.863 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-21 23:33:30.864 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 0.8514ms
+2024-07-21 23:33:30.866 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0042ms
+2024-07-21 23:33:30.930 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-21 23:33:30.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.1579ms
+2024-07-21 23:33:30.950 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-21 23:33:30.953 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-21 23:33:30.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 4.6180ms
+2024-07-21 23:33:30.955 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 1.8363ms
+2024-07-21 23:33:46.373 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-21 23:33:46.373 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-21 23:33:46.373 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-21 23:33:46.374 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.7926ms
+2024-07-21 23:33:46.374 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.4087ms
+2024-07-21 23:33:46.374 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.7743ms
+2024-07-21 23:33:46.438 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-21 23:33:46.441 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 3.0870ms

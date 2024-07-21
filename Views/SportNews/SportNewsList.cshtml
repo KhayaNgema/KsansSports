@@ -12,6 +12,7 @@
 
 <br />
 @await Html.PartialAsync("_HomeButton")
+<h4 class="text-center">My Sports News</h4>
 <br />
 
 
@@ -48,19 +49,14 @@
 
 <script>
     function loadTab(tabName) {
-        // Remove active class from all tabs
         $('.nav-link').removeClass('active');
 
-        // Add active class to the clicked tab
         $('#' + tabName + '-tab').addClass('active');
 
-        // Hide content of all tabs
         $('.tab-pane').removeClass('show active');
 
-        // Show content of the clicked tab
         $('#' + tabName).addClass('show active');
 
-        // Load content for the clicked tab if not already loaded
         if ($('#' + tabName).html().trim() === '') {
             var url;
             if (tabName === 'published') {

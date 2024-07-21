@@ -110,8 +110,12 @@ namespace MyField.Controllers
         [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> PublishedSportNews()
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
             var sportsNews = await _context.SportNew
-                 .Where(s => s.NewsStatus == NewsStatus.Approved)
+                 .Where(s => s.NewsStatus == NewsStatus.Approved && 
+                 s.AuthoredById == userId)
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
@@ -130,8 +134,12 @@ namespace MyField.Controllers
         [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> ApprovedSportNewsAdmin()
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
             var sportsNews = await _context.SportNew
-                 .Where(s => s.NewsStatus == NewsStatus.Approved)
+                 .Where(s => s.NewsStatus == NewsStatus.Approved && 
+                 s.AuthoredById == userId)
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
@@ -159,8 +167,12 @@ namespace MyField.Controllers
         [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> AwaitingApprovalSportNewsAdmin()
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
             var sportsNews = await _context.SportNew
-                 .Where(s => s.NewsStatus == NewsStatus.Awaiting_Approval)
+                 .Where(s => s.NewsStatus == NewsStatus.Awaiting_Approval && 
+                 s.AuthoredById == userId)
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
@@ -187,8 +199,12 @@ namespace MyField.Controllers
         [Authorize(Roles = ("News Administrator, News Updator"))]
         public async Task<IActionResult> RejectedSportNewsAdmin()
         {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
             var sportsNews = await _context.SportNew
-                 .Where(s => s.NewsStatus == NewsStatus.Rejected)
+                 .Where(s => s.NewsStatus == NewsStatus.Rejected && 
+                 s.AuthoredById == userId)
                 .Include(s => s.AuthoredBy)
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
