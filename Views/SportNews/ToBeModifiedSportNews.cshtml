@@ -32,23 +32,30 @@
                         Heading
                     </th>
                     <th>
-                        AuthoredBy
+                        Authored By
                     </th>  
                     <th>
-                        ModifiedBy
+                        Modified By
                     </th>
                     <th>
-                        Modified DateTime
-                    </th>
-                    <th>
-                        Body
+                        Modified Date
                     </th>
                     <th>
                         Status
                     </th>
                     <th>
-                        Actions
+                        Request
                     </th>
+                    @if(User.IsInRole("News Updator"))
+                    {
+                        <th>
+                            Actions
+                        </th>
+                    }
+                    else
+                    {
+                        
+                    }
                 </tr>
             </thead>
             <tbody>
@@ -71,24 +78,31 @@
                             @Html.DisplayFor(modelItem => item.ModifiedDateTime)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NewsBody)
-                        </td>
-                        <td>
                             @Html.DisplayFor(modelItem => item.NewsStatus)
                         </td>
-                        <td class="text-right">
-                            <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.NewsId">
-                                Actions
-                            </button>
-                            <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = item.NewsId })">
-                                    <i class="fas fa-pen" style="color: blue"></i> Re-edit
-                                </a>
-                                <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
-                                    <i class="fa fa-trash" style="color: red;"></i> Delete
-                                </a>
-                            </div>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReasonForReEdit)
                         </td>
+                        @if (User.IsInRole("News Updator"))
+                        {
+                            <td class="text-right">
+                                <button class="btn btn-primary btn-sm action-button" type="button" data-id="@item.NewsId">
+                                    Actions
+                                </button>
+                                <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
+                                    <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = item.NewsId })">
+                                        <i class="fas fa-pen" style="color: blue"></i> Re-edit
+                                    </a>
+                                    <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
+                                        <i class="fa fa-trash" style="color: red;"></i> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        }
+                        else
+                        {
+
+                        }
                     </tr>
                 }
             </tbody>

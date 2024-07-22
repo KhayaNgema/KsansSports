@@ -1,6 +1,6 @@
 ﻿namespace MyField.ViewModels
 {
-    public class ReEditNewsViewModel
+    public class AskForReEditNewsViewModel
     {
         public int? NewsId { get; set; }
 
@@ -13,6 +13,6 @@
 
         public string NewsBody { get; set; }
 
-        public string? ReasonForReEdit { get; set; }
+        public string ReasonForReEdit {  get; set; }
     }
 }

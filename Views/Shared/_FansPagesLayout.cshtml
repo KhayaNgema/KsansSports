@@ -4,10 +4,10 @@
 @inject UserManager<UserBaseModel> UserManager
 @inject Ksans_SportsDbContext _context
 @using MyField.Models;
-@using MyField.Services;
+@using MyField.Interfaces;
+@inject IEncryptionService EncryptionService
 @inject IWebHostEnvironment WebHostEnvironment
 @using Microsoft.EntityFrameworkCore
-
 
 @{
     var user = await UserManager.GetUserAsync(User);
@@ -16,37 +16,37 @@
     var lastName = user.LastName;
 
     var userRole = _context.UserRoles
-    .Where(ur => ur.UserId == user.Id)
-    .Join(_context.Roles,
-          ur => ur.RoleId,
-          r => r.Id,
-          (ur, r) => r.Name)
-    .FirstOrDefault();
+        .Where(ur => ur.UserId == user.Id)
+        .Join(_context.Roles,
+              ur => ur.RoleId,
+              r => r.Id,
+              (ur, r) => r.Name)
+        .FirstOrDefault();
 
     string club = null;
 
     if (userRole == "Club Administrator")
     {
         var clubAdministrator = _context.ClubAdministrator
-        .Include(c => c.Club)
-        .Where(c => c.Id == user.Id)
-        .FirstOrDefault();
+            .Include(c => c.Club)
+            .Where(c => c.Id == user.Id)
+            .FirstOrDefault();
         club = clubAdministrator?.Club?.ClubName;
     }
     else if (userRole == "Player")
     {
         var player = _context.Player
-        .Include(p => p.Club)
-        .Where(c => c.Id == user.Id)
-        .FirstOrDefault();
+            .Include(p => p.Club)
+            .Where(c => c.Id == user.Id)
+            .FirstOrDefault();
         club = player?.Club?.ClubName;
     }
     else if (userRole == "Club Manager")
     {
         var clubManager = _context.ClubManager
-       .Include(p => p.Club)
-       .Where(c => c.Id == user.Id)
-       .FirstOrDefault();
+            .Include(p => p.Club)
+            .Where(c => c.Id == user.Id)
+            .FirstOrDefault();
         club = clubManager?.Club?.ClubName;
     }
 
@@ -56,7 +56,11 @@
     {
         profilePhotoUrl = $"~/{user.ProfilePicture}";
     }
+
+    var encryptedUserId = EncryptionService.Encrypt(user.Id.ToString());
 }
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -164,7 +168,7 @@
 
                     </div>
                     <button style="background-color: transparent; border: 1px solid #007bff; color: #007bff; padding: 4px 9px; border-radius: 5px; font-size: 14px; cursor: pointer; margin-top: 10px;">
-                        <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@user.Id">Profile <i class="fa fa-arrow-right"></i></a>
+                        <a style="text-decoration: none;" asp-controller="Users" asp-action="UserProfile" asp-route-userId="@encryptedUserId">Profile <i class="fa fa-arrow-right"></i></a>
                     </button>
                 </div>
                 <div id="loading-spinner" style="display: none; text-align: center; margin-top: 20px;">

@@ -1,12 +1,15 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System;
+using System.Security.Cryptography;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        // Serilog configuration
+        GenerateAndDisplayAesKeys();
+
         Log.Logger = new LoggerConfiguration()
             .WriteTo.File("Logs/myapp-.txt", rollingInterval: RollingInterval.Day)
             .CreateLogger();
@@ -30,6 +33,25 @@ public class Program
             .UseSerilog()  // Use Serilog for logging
             .ConfigureWebHostDefaults(webBuilder =>
             {
-                webBuilder.UseStartup<Startup>();  // Use Startup class to configure the application
+                webBuilder.UseStartup<Startup>();
             });
+
+    private static void GenerateAndDisplayAesKeys()
+    {
+        using (Aes aes = Aes.Create())
+        {
+            aes.GenerateKey();
+            aes.GenerateIV();
+
+            string keyBase64 = Convert.ToBase64String(aes.Key);
+            string ivBase64 = Convert.ToBase64String(aes.IV);
+
+            // Write to file
+            System.IO.File.WriteAllText("aes-keys.txt", $"AES Key (Base64): {keyBase64}\nAES IV (Base64): {ivBase64}");
+
+            Console.WriteLine("AES Key (Base64): " + keyBase64);
+            Console.WriteLine("AES IV (Base64): " + ivBase64);
+        }
+    }
+
 }

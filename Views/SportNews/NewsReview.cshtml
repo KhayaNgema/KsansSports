@@ -37,9 +37,9 @@
             </form>
         </div>
         <div class="col-4">
-            <form asp-action="AskReEditNews" asp-route-newsId="@Model.NewsId" method="post">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-pen"></i> Re-edit</button>
-            </form>
+            <a href="@Url.Action("AskReEditNews", new { newsId = Model.NewsId })" class="btn btn-primary">
+                <i class="fa fa-pen"></i> Re-edit
+            </a>
         </div>
         <div class="col-4">
             <form asp-action="DeclineNews" asp-route-newsId="@Model.NewsId" method="post">

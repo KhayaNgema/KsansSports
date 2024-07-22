@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyField.Data;
+using MyField.Helpers;
 using MyField.Interfaces;
 using MyField.Models;
 using MyField.Services;
@@ -28,6 +29,20 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
+
+        var key = Configuration["AES_KEY"];
+        var iv = Configuration["AES_IV"];
+
+        // Convert from Base64 if needed
+        var keyBytes = Convert.FromBase64String(key);
+        var ivBytes = Convert.FromBase64String(iv);
+
+        // Register EncryptionConfiguration
+        services.AddSingleton(new EncryptionConfiguration { Key = keyBytes, Iv = ivBytes });
+
+        // Register EncryptionService
+        services.AddScoped<IEncryptionService, EncryptionService>();
 
         services.AddAuthorization(options =>
         {

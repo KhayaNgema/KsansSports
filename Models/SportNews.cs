@@ -49,7 +49,10 @@ namespace MyField.Models
         public string NewsImage { get; set; }
 
         [Display(Name = "Status")]
-        public NewsStatus NewsStatus { get; set; }  
+        public NewsStatus NewsStatus { get; set; } 
+        
+
+        public string? ReasonForReEdit { get; set; }
 
         public SportNews()
         {

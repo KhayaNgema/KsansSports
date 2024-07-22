@@ -1,0 +1,1019 @@
+2024-07-29 20:23:35.755 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:23:35.786 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ClaimType], [a].[ClaimValue], [a].[UserId]
+FROM [AspNetUserClaims] AS [a]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 20:23:35.792 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-07-29 20:23:35.797 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 20:23:35.808 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[ClaimType], [a].[ClaimValue]
+FROM [AspNetRoleClaims] AS [a]
+WHERE [a].[RoleId] = @__role_Id_0
+2024-07-29 20:23:35.815 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:35.815 +02:00 [INF] Route matched with {action = "FixturesBackOffice", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FixturesBackOffice() on controller MyField.Controllers.FixturesController (MyField).
+2024-07-29 20:23:35.822 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:35.872 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[Email], [c0].[IsActive], [c0].[IsSuspended], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[IsContractEnded], [t].[Player_ClubId], [t].[EndDate], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[IsContractEnded], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [Fixture] AS [f]
+INNER JOIN [League] AS [l] ON [f].[LeagueId] = [l].[LeagueId]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [f].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[IsContractEnded], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [f].[ModifiedById] = [t0].[Id]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) OR ([f].[FixtureStatus] = 3 AND [l].[IsCurrent] = CAST(1 AS bit))
+ORDER BY [f].[CreatedDateTime] DESC
+2024-07-29 20:23:35.878 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:35.880 +02:00 [INF] Executing ViewResult, running view FixturesBackOffice.
+2024-07-29 20:23:35.906 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 20:23:35.911 +02:00 [INF] Executed ViewResult - view FixturesBackOffice executed in 32.3657ms.
+2024-07-29 20:23:35.911 +02:00 [INF] Executed action MyField.Controllers.FixturesController.FixturesBackOffice (MyField) in 95.6368ms
+2024-07-29 20:23:35.911 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:35.911 +02:00 [INF] HTTP GET /Fixtures/FixturesBackOffice responded 200 in 95.9815 ms
+2024-07-29 20:23:35.928 +02:00 [INF] HTTP GET /khaya.jpg responded 404 in 0.0105 ms
+2024-07-29 20:23:36.364 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-29 20:23:39.929 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:39.929 +02:00 [INF] Route matched with {action = "FixturesBackOffice", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FixturesBackOffice() on controller MyField.Controllers.FixturesController (MyField).
+2024-07-29 20:23:39.931 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:39.932 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[Email], [c0].[IsActive], [c0].[IsSuspended], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[IsContractEnded], [t].[Player_ClubId], [t].[EndDate], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[IsContractEnded], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [Fixture] AS [f]
+INNER JOIN [League] AS [l] ON [f].[LeagueId] = [l].[LeagueId]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [f].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[IsContractEnded], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [f].[ModifiedById] = [t0].[Id]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) OR ([f].[FixtureStatus] = 3 AND [l].[IsCurrent] = CAST(1 AS bit))
+ORDER BY [f].[CreatedDateTime] DESC
+2024-07-29 20:23:39.934 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:39.934 +02:00 [INF] Executing ViewResult, running view FixturesBackOffice.
+2024-07-29 20:23:39.967 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:23:39.968 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 20:23:39.970 +02:00 [INF] Executed ViewResult - view FixturesBackOffice executed in 35.3022ms.
+2024-07-29 20:23:39.970 +02:00 [INF] Executed action MyField.Controllers.FixturesController.FixturesBackOffice (MyField) in 41.1106ms
+2024-07-29 20:23:39.970 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:39.970 +02:00 [INF] HTTP GET /Fixtures/FixturesBackOffice responded 200 in 41.3912 ms
+2024-07-29 20:23:39.986 +02:00 [INF] HTTP GET /khaya.jpg responded 404 in 0.0089 ms
+2024-07-29 20:23:40.113 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-29 20:23:41.998 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Club] AS [c]
+INNER JOIN [League] AS [l] ON [c].[LeagueId] = [l].[LeagueId]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:42.001 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__day_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime]
+FROM [Fixture] AS [f]
+WHERE [f].[KickOffDate] = @__day_Date_0
+2024-07-29 20:23:42.001 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:42.017 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 450), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (Size = 450), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int32), @p13='?' (Size = 450), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = DateTime2), @p19='?' (DbType = DateTime2), @p20='?' (DbType = Int32), @p21='?' (Size = 4000), @p22='?' (Size = 450), @p23='?' (DbType = DateTime2), @p24='?' (DbType = Int32), @p25='?' (Size = 450), @p26='?' (DbType = DateTime2), @p27='?' (Size = 4000), @p28='?' (DbType = Int32), @p29='?' (DbType = Int32), @p30='?' (DbType = DateTime2), @p31='?' (DbType = DateTime2), @p32='?' (DbType = Int32), @p33='?' (Size = 4000), @p34='?' (Size = 450), @p35='?' (DbType = DateTime2), @p36='?' (DbType = Int32), @p37='?' (Size = 450), @p38='?' (DbType = DateTime2), @p39='?' (Size = 4000), @p40='?' (DbType = Int32), @p41='?' (DbType = Int32), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (DbType = Int32), @p45='?' (Size = 4000), @p46='?' (Size = 450), @p47='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [Fixture] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, 0),
+(@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, 1),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, 2),
+(@p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, 3)) AS i ([AwayTeamId], [CreatedById], [CreatedDateTime], [Discriminator], [FixtureStatus], [HomeTeamId], [KickOffDate], [KickOffTime], [LeagueId], [Location], [ModifiedById], [ModifiedDateTime], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([AwayTeamId], [CreatedById], [CreatedDateTime], [Discriminator], [FixtureStatus], [HomeTeamId], [KickOffDate], [KickOffTime], [LeagueId], [Location], [ModifiedById], [ModifiedDateTime])
+VALUES (i.[AwayTeamId], i.[CreatedById], i.[CreatedDateTime], i.[Discriminator], i.[FixtureStatus], i.[HomeTeamId], i.[KickOffDate], i.[KickOffTime], i.[LeagueId], i.[Location], i.[ModifiedById], i.[ModifiedDateTime])
+OUTPUT INSERTED.[FixtureId], i._Position;
+2024-07-29 20:23:42.018 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__day_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime]
+FROM [Fixture] AS [f]
+WHERE [f].[KickOffDate] = @__day_Date_0
+2024-07-29 20:23:42.018 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:42.020 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 450), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (DbType = Int32), @p9='?' (Size = 4000), @p10='?' (Size = 450), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Int32), @p13='?' (Size = 450), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (DbType = DateTime2), @p19='?' (DbType = DateTime2), @p20='?' (DbType = Int32), @p21='?' (Size = 4000), @p22='?' (Size = 450), @p23='?' (DbType = DateTime2), @p24='?' (DbType = Int32), @p25='?' (Size = 450), @p26='?' (DbType = DateTime2), @p27='?' (Size = 4000), @p28='?' (DbType = Int32), @p29='?' (DbType = Int32), @p30='?' (DbType = DateTime2), @p31='?' (DbType = DateTime2), @p32='?' (DbType = Int32), @p33='?' (Size = 4000), @p34='?' (Size = 450), @p35='?' (DbType = DateTime2), @p36='?' (DbType = Int32), @p37='?' (Size = 450), @p38='?' (DbType = DateTime2), @p39='?' (Size = 4000), @p40='?' (DbType = Int32), @p41='?' (DbType = Int32), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (DbType = Int32), @p45='?' (Size = 4000), @p46='?' (Size = 450), @p47='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [Fixture] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, 0),
+(@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, 1),
+(@p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, 2),
+(@p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, 3)) AS i ([AwayTeamId], [CreatedById], [CreatedDateTime], [Discriminator], [FixtureStatus], [HomeTeamId], [KickOffDate], [KickOffTime], [LeagueId], [Location], [ModifiedById], [ModifiedDateTime], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([AwayTeamId], [CreatedById], [CreatedDateTime], [Discriminator], [FixtureStatus], [HomeTeamId], [KickOffDate], [KickOffTime], [LeagueId], [Location], [ModifiedById], [ModifiedDateTime])
+VALUES (i.[AwayTeamId], i.[CreatedById], i.[CreatedDateTime], i.[Discriminator], i.[FixtureStatus], i.[HomeTeamId], i.[KickOffDate], i.[KickOffTime], i.[LeagueId], i.[Location], i.[ModifiedById], i.[ModifiedDateTime])
+OUTPUT INSERTED.[FixtureId], i._Position;
+2024-07-29 20:23:50.482 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status]
+FROM [Club] AS [c]
+INNER JOIN [League] AS [l] ON [c].[LeagueId] = [l].[LeagueId]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:50.483 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__day_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime]
+FROM [Fixture] AS [f]
+WHERE [f].[KickOffDate] = @__day_Date_0
+2024-07-29 20:23:50.484 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:50.486 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__day_Date_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime]
+FROM [Fixture] AS [f]
+WHERE [f].[KickOffDate] = @__day_Date_0
+2024-07-29 20:23:50.487 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:53.875 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-29 20:23:53.876 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-29 20:23:53.878 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:23:53.879 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-07-29 20:23:53.879 +02:00 [INF] Executing RedirectResult, redirecting to /Home/Dashboard.
+2024-07-29 20:23:53.880 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 3.8387ms
+2024-07-29 20:23:53.880 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-29 20:23:53.880 +02:00 [INF] HTTP GET / responded 302 in 4.3587 ms
+2024-07-29 20:23:53.884 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-07-29 20:23:53.884 +02:00 [INF] Route matched with {action = "Dashboard", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Dashboard() on controller MyField.Controllers.HomeController (MyField).
+2024-07-29 20:23:53.886 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Announcements] AS [a]
+2024-07-29 20:23:53.887 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:23:53.888 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2024-07-29 20:23:53.891 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Club] AS [c]
+INNER JOIN [League] AS [l] ON [c].[LeagueId] = [l].[LeagueId]
+WHERE [c].[IsActive] = CAST(1 AS bit) AND [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:53.896 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Fixture] AS [f]
+INNER JOIN [League] AS [l] ON [f].[LeagueId] = [l].[LeagueId]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:53.899 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [MatchResult] AS [m]
+INNER JOIN [League] AS [l] ON [m].[LeagueId] = [l].[LeagueId]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:53.906 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Fines] AS [f]
+LEFT JOIN [Club] AS [c] ON [f].[ClubId] = [c].[ClubId]
+LEFT JOIN (
+    SELECT [a].[Id]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [f].[OffenderId] = [t].[Id]
+WHERE ([c].[ClubId] IS NOT NULL) AND ([t].[Id] IS NULL) AND [f].[PaymentStatus] = 0
+2024-07-29 20:23:53.908 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Meeting] AS [m]
+2024-07-29 20:23:53.909 +02:00 [INF] Executing ViewResult, running view SportAdministratorDashboard.
+2024-07-29 20:23:53.911 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 20:23:53.913 +02:00 [INF] Executed ViewResult - view SportAdministratorDashboard executed in 5.0428ms.
+2024-07-29 20:23:53.913 +02:00 [INF] Executed action MyField.Controllers.HomeController.Dashboard (MyField) in 28.6754ms
+2024-07-29 20:23:53.913 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Dashboard (MyField)'
+2024-07-29 20:23:53.913 +02:00 [INF] HTTP GET /Home/Dashboard responded 200 in 28.9096 ms
+2024-07-29 20:23:53.928 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-29 20:23:53.931 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net7.0\scopedcss\bundle\MyField.styles.css'
+2024-07-29 20:23:53.932 +02:00 [INF] HTTP GET /khaya.jpg responded 404 in 0.0108 ms
+2024-07-29 20:23:53.932 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-29 20:23:55.686 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:55.687 +02:00 [INF] Route matched with {action = "FixturesBackOffice", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] FixturesBackOffice() on controller MyField.Controllers.FixturesController (MyField).
+2024-07-29 20:23:55.688 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:55.689 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[Email], [c0].[IsActive], [c0].[IsSuspended], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t].[ClubId], [t].[ClubManager_ClubId], [t].[IsContractEnded], [t].[Player_ClubId], [t].[EndDate], [t].[IsContractSigned], [t].[JerseyNumber], [t].[MarketValue], [t].[PlayerCard], [t].[Position], [t].[StartDate], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t0].[ClubId], [t0].[ClubManager_ClubId], [t0].[IsContractEnded], [t0].[Player_ClubId], [t0].[EndDate], [t0].[IsContractSigned], [t0].[JerseyNumber], [t0].[MarketValue], [t0].[PlayerCard], [t0].[Position], [t0].[StartDate]
+FROM [Fixture] AS [f]
+INNER JOIN [League] AS [l] ON [f].[LeagueId] = [l].[LeagueId]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t] ON [f].[CreatedById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture], [a0].[ClubId], [a0].[ClubManager_ClubId], [a0].[IsContractEnded], [a0].[Player_ClubId], [a0].[EndDate], [a0].[IsContractSigned], [a0].[JerseyNumber], [a0].[MarketValue], [a0].[PlayerCard], [a0].[Position], [a0].[StartDate]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator')
+) AS [t0] ON [f].[ModifiedById] = [t0].[Id]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) OR ([f].[FixtureStatus] = 3 AND [l].[IsCurrent] = CAST(1 AS bit))
+ORDER BY [f].[CreatedDateTime] DESC
+2024-07-29 20:23:55.694 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:23:55.694 +02:00 [INF] Executing ViewResult, running view FixturesBackOffice.
+2024-07-29 20:23:55.738 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:23:55.739 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 20:23:55.741 +02:00 [INF] Executed ViewResult - view FixturesBackOffice executed in 46.2506ms.
+2024-07-29 20:23:55.741 +02:00 [INF] Executed action MyField.Controllers.FixturesController.FixturesBackOffice (MyField) in 54.1259ms
+2024-07-29 20:23:55.741 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.FixturesBackOffice (MyField)'
+2024-07-29 20:23:55.741 +02:00 [INF] HTTP GET /Fixtures/FixturesBackOffice responded 200 in 54.3511 ms
+2024-07-29 20:23:55.759 +02:00 [INF] HTTP GET /khaya.jpg responded 404 in 0.0079 ms
+2024-07-29 20:23:55.759 +02:00 [INF] Sending file. Request path: '/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg'
+2024-07-29 20:23:55.769 +02:00 [INF] Sending file. Request path: '/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg'
+2024-07-29 20:23:55.769 +02:00 [INF] Sending file. Request path: '/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg'
+2024-07-29 20:23:55.769 +02:00 [INF] Sending file. Request path: '/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg'
+2024-07-29 20:23:55.772 +02:00 [INF] Sending file. Request path: '/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png'
+2024-07-29 20:23:55.773 +02:00 [INF] Sending file. Request path: '/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg'
+2024-07-29 20:23:55.773 +02:00 [INF] Sending file. Request path: '/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg'
+2024-07-29 20:23:55.774 +02:00 [INF] Sending file. Request path: '/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg'
+2024-07-29 20:24:16.782 +02:00 [INF] Executing endpoint '/Account/Logout'
+2024-07-29 20:24:16.800 +02:00 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2024-07-29 20:24:16.830 +02:00 [INF] Executing handler method MyField.Areas.Identity.Pages.Account.LogoutModel.OnPost - ModelState is "Valid"
+2024-07-29 20:24:16.836 +02:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2024-07-29 20:24:16.837 +02:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-07-29 20:24:16.837 +02:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2024-07-29 20:24:16.838 +02:00 [INF] User logged out.
+2024-07-29 20:24:16.845 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 20:24:16.853 +02:00 [INF] Start processing HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-07-29 20:24:16.856 +02:00 [INF] Sending HTTP request GET https://api.useragent.app/parse?key=d7D8hb5seZHtlkTUIWFJXhrHKwvE5TsUlMEttMyNL8LdxGibCGxE0giihpaYnoum7oowRaWr&ua=Mozilla%2F5.0+(Windows+NT+10.0%3B+Win64%3B+x64)+AppleWebKit%2F537.36+(KHTML%2C+like+Gecko)+Chrome%2F126.0.0.0+Safari%2F537.36
+2024-07-29 20:24:17.996 +02:00 [INF] Received HTTP response headers after 1136.3175ms - 200
+2024-07-29 20:24:17.996 +02:00 [INF] End processing HTTP request after 1145.6675ms - 200
+2024-07-29 20:24:18.012 +02:00 [INF] Start processing HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-07-29 20:24:18.013 +02:00 [INF] Sending HTTP request GET https://api.ip2location.io/?key=B98F30EA4D6F54D5212B279C391A11B0&ip=::1
+2024-07-29 20:24:18.348 +02:00 [INF] Received HTTP response headers after 334.9953ms - 200
+2024-07-29 20:24:18.348 +02:00 [INF] End processing HTTP request after 335.4982ms - 200
+2024-07-29 20:24:18.423 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [DeviceInfo] ([Browser], [BrowserVersion], [City], [Country], [DeviceModel], [DeviceName], [IpAddress], [Latitude], [Longitude], [OSName], [OSVersion], [PostalCode], [Region])
+OUTPUT INSERTED.[DeviceInfoId]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12);
+2024-07-29 20:24:18.453 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (Size = 450), @p4='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [ActivityLogs] ([Activity], [DeviceInfoId], [Timestamp], [UserBaseModelId], [UserId])
+OUTPUT INSERTED.[ActivityLogId]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2024-07-29 20:24:18.459 +02:00 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-07-29 20:24:18.463 +02:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-07-29 20:24:18.463 +02:00 [INF] Executed page /Account/Logout in 1663.1871ms
+2024-07-29 20:24:18.463 +02:00 [INF] Executed endpoint '/Account/Logout'
+2024-07-29 20:24:18.463 +02:00 [INF] HTTP POST /Identity/Account/Logout responded 302 in 1680.7553 ms
+2024-07-29 20:24:18.468 +02:00 [INF] Executing endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-29 20:24:18.469 +02:00 [INF] Route matched with {action = "Index", controller = "Home", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.HomeController (MyField).
+2024-07-29 20:24:18.470 +02:00 [INF] Executing ViewResult, running view Index.
+2024-07-29 20:24:18.489 +02:00 [INF] Executed ViewResult - view Index executed in 19.9751ms.
+2024-07-29 20:24:18.489 +02:00 [INF] Executed action MyField.Controllers.HomeController.Index (MyField) in 20.5689ms
+2024-07-29 20:24:18.489 +02:00 [INF] Executed endpoint 'MyField.Controllers.HomeController.Index (MyField)'
+2024-07-29 20:24:18.489 +02:00 [INF] HTTP GET / responded 200 in 20.7778 ms
+2024-07-29 20:24:18.536 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.SportNewsIndex (MyField)'
+2024-07-29 20:24:18.539 +02:00 [INF] Route matched with {action = "SportNewsIndex", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SportNewsIndex() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-29 20:24:18.541 +02:00 [INF] Executing PartialViewResult, running view NewsPartial.
+2024-07-29 20:24:18.543 +02:00 [INF] Executed PartialViewResult - view NewsPartial executed in 2.4229ms.
+2024-07-29 20:24:18.543 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.SportNewsIndex (MyField) in 4.2419ms
+2024-07-29 20:24:18.543 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.SportNewsIndex (MyField)'
+2024-07-29 20:24:18.543 +02:00 [INF] HTTP GET /SportNews/SportNewsIndex responded 200 in 6.9437 ms
+2024-07-29 20:24:18.553 +02:00 [INF] Executing endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-29 20:24:18.555 +02:00 [INF] Route matched with {action = "Index", controller = "SportNews", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.SportNewsController (MyField).
+2024-07-29 20:24:18.565 +02:00 [INF] Sending file. Request path: '/Images/my_banner.jpg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\Images\my_banner.jpg'
+2024-07-29 20:24:18.589 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[NewsId], [s].[AuthoredById], [s].[ModifiedById], [s].[ModifiedDateTime], [s].[NewsBody], [s].[NewsHeading], [s].[NewsImage], [s].[NewsStatus], [s].[PublishedById], [s].[PublishedDate], [s].[ReasonForReEdit], [s].[RejectedById], [s].[RejectedDateTime], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture], [t0].[Id], [t0].[AccessFailedCount], [t0].[ConcurrencyStamp], [t0].[Email], [t0].[EmailConfirmed], [t0].[LockoutEnabled], [t0].[LockoutEnd], [t0].[NormalizedEmail], [t0].[NormalizedUserName], [t0].[PasswordHash], [t0].[PhoneNumber], [t0].[PhoneNumberConfirmed], [t0].[SecurityStamp], [t0].[TwoFactorEnabled], [t0].[UserName], [t0].[UserType], [t0].[CreatedBy], [t0].[CreatedDateTime], [t0].[DateOfBirth], [t0].[FirstName], [t0].[IsActive], [t0].[IsDeleted], [t0].[IsFirstTimeLogin], [t0].[IsSuspended], [t0].[LastName], [t0].[ModifiedBy], [t0].[ModifiedDateTime], [t0].[ProfilePicture], [t1].[Id], [t1].[AccessFailedCount], [t1].[ConcurrencyStamp], [t1].[Email], [t1].[EmailConfirmed], [t1].[LockoutEnabled], [t1].[LockoutEnd], [t1].[NormalizedEmail], [t1].[NormalizedUserName], [t1].[PasswordHash], [t1].[PhoneNumber], [t1].[PhoneNumberConfirmed], [t1].[SecurityStamp], [t1].[TwoFactorEnabled], [t1].[UserName], [t1].[UserType], [t1].[CreatedBy], [t1].[CreatedDateTime], [t1].[DateOfBirth], [t1].[FirstName], [t1].[IsActive], [t1].[IsDeleted], [t1].[IsFirstTimeLogin], [t1].[IsSuspended], [t1].[LastName], [t1].[ModifiedBy], [t1].[ModifiedDateTime], [t1].[ProfilePicture]
+FROM [SportNew] AS [s]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'SportsMember'
+) AS [t] ON [s].[AuthoredById] = [t].[Id]
+INNER JOIN (
+    SELECT [a0].[Id], [a0].[AccessFailedCount], [a0].[ConcurrencyStamp], [a0].[Email], [a0].[EmailConfirmed], [a0].[LockoutEnabled], [a0].[LockoutEnd], [a0].[NormalizedEmail], [a0].[NormalizedUserName], [a0].[PasswordHash], [a0].[PhoneNumber], [a0].[PhoneNumberConfirmed], [a0].[SecurityStamp], [a0].[TwoFactorEnabled], [a0].[UserName], [a0].[UserType], [a0].[CreatedBy], [a0].[CreatedDateTime], [a0].[DateOfBirth], [a0].[FirstName], [a0].[IsActive], [a0].[IsDeleted], [a0].[IsFirstTimeLogin], [a0].[IsSuspended], [a0].[LastName], [a0].[ModifiedBy], [a0].[ModifiedDateTime], [a0].[ProfilePicture]
+    FROM [AspNetUsers] AS [a0]
+    WHERE [a0].[UserType] = N'SportsMember'
+) AS [t0] ON [s].[ModifiedById] = [t0].[Id]
+INNER JOIN (
+    SELECT [a1].[Id], [a1].[AccessFailedCount], [a1].[ConcurrencyStamp], [a1].[Email], [a1].[EmailConfirmed], [a1].[LockoutEnabled], [a1].[LockoutEnd], [a1].[NormalizedEmail], [a1].[NormalizedUserName], [a1].[PasswordHash], [a1].[PhoneNumber], [a1].[PhoneNumberConfirmed], [a1].[SecurityStamp], [a1].[TwoFactorEnabled], [a1].[UserName], [a1].[UserType], [a1].[CreatedBy], [a1].[CreatedDateTime], [a1].[DateOfBirth], [a1].[FirstName], [a1].[IsActive], [a1].[IsDeleted], [a1].[IsFirstTimeLogin], [a1].[IsSuspended], [a1].[LastName], [a1].[ModifiedBy], [a1].[ModifiedDateTime], [a1].[ProfilePicture]
+    FROM [AspNetUsers] AS [a1]
+    WHERE [a1].[UserType] = N'SportsMember'
+) AS [t1] ON [s].[PublishedById] = [t1].[Id]
+WHERE [s].[NewsStatus] = 1
+ORDER BY [s].[PublishedDate] DESC
+2024-07-29 20:24:18.616 +02:00 [INF] Executing PartialViewResult, running view _SportsNewsPartial.
+2024-07-29 20:24:18.624 +02:00 [INF] Executed PartialViewResult - view _SportsNewsPartial executed in 8.9234ms.
+2024-07-29 20:24:18.625 +02:00 [INF] Executed action MyField.Controllers.SportNewsController.Index (MyField) in 69.1085ms
+2024-07-29 20:24:18.625 +02:00 [INF] Executed endpoint 'MyField.Controllers.SportNewsController.Index (MyField)'
+2024-07-29 20:24:18.625 +02:00 [INF] HTTP GET /SportNews/Index responded 200 in 72.0403 ms
+2024-07-29 20:24:18.633 +02:00 [INF] Sending file. Request path: '/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg'
+2024-07-29 20:24:18.633 +02:00 [INF] Sending file. Request path: '/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp'
+2024-07-29 20:24:18.633 +02:00 [INF] Sending file. Request path: '/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\b56c7336-5150-4580-b24b-afca39969ee6_News.webp'
+2024-07-29 20:24:18.634 +02:00 [INF] Sending file. Request path: '/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp'
+2024-07-29 20:24:18.634 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg'
+2024-07-29 20:24:18.634 +02:00 [INF] Sending file. Request path: '/UploadedFiles/9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp'
+2024-07-29 20:24:20.984 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.LeagueFixtures (MyField)'
+2024-07-29 20:24:20.987 +02:00 [INF] Route matched with {action = "LeagueFixtures", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LeagueFixtures() on controller MyField.Controllers.FixturesController (MyField).
+2024-07-29 20:24:20.988 +02:00 [INF] Executing PartialViewResult, running view LeagueFixturesPartial.
+2024-07-29 20:24:20.990 +02:00 [INF] Executed PartialViewResult - view LeagueFixturesPartial executed in 2.429ms.
+2024-07-29 20:24:20.990 +02:00 [INF] Executed action MyField.Controllers.FixturesController.LeagueFixtures (MyField) in 3.1182ms
+2024-07-29 20:24:20.990 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.LeagueFixtures (MyField)'
+2024-07-29 20:24:20.990 +02:00 [INF] HTTP GET /Fixtures/LeagueFixtures responded 200 in 6.8404 ms
+2024-07-29 20:24:20.997 +02:00 [INF] Executing endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-07-29 20:24:21.000 +02:00 [INF] Route matched with {action = "Index", controller = "Fixtures", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller MyField.Controllers.FixturesController (MyField).
+2024-07-29 20:24:21.005 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LeagueId], [l].[CreatedById], [l].[CreatedDateTime], [l].[IsCurrent], [l].[LeagueCode], [l].[LeagueYears], [l].[ModifiedById], [l].[ModifiedDateTime]
+FROM [League] AS [l]
+WHERE [l].[IsCurrent] = CAST(1 AS bit)
+2024-07-29 20:24:21.057 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__currentLeague_LeagueId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[Email], [c0].[IsActive], [c0].[IsSuspended], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status], [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId]
+FROM [Fixture] AS [f]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+LEFT JOIN [MatchOfficials] AS [m] ON [f].[FixtureId] = [m].[FixtureId]
+WHERE [f].[FixtureStatus] IN (0, 1, 2) AND [f].[LeagueId] = @__currentLeague_LeagueId_0
+ORDER BY [f].[FixtureId], [c].[ClubId], [c0].[ClubId]
+2024-07-29 20:24:21.080 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.083 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.084 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.085 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.085 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.086 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.086 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.087 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.088 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.088 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.089 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.090 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.090 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.091 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.092 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.094 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__fixture_FixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [m].[MatchOfficialsId], [m].[AssistantOneId], [m].[AssistantTwoId], [m].[FixtureId], [m].[RefeereId], [t].[Id], [t].[AccessFailedCount], [t].[ConcurrencyStamp], [t].[Email], [t].[EmailConfirmed], [t].[LockoutEnabled], [t].[LockoutEnd], [t].[NormalizedEmail], [t].[NormalizedUserName], [t].[PasswordHash], [t].[PhoneNumber], [t].[PhoneNumberConfirmed], [t].[SecurityStamp], [t].[TwoFactorEnabled], [t].[UserName], [t].[UserType], [t].[CreatedBy], [t].[CreatedDateTime], [t].[DateOfBirth], [t].[FirstName], [t].[IsActive], [t].[IsDeleted], [t].[IsFirstTimeLogin], [t].[IsSuspended], [t].[LastName], [t].[ModifiedBy], [t].[ModifiedDateTime], [t].[ProfilePicture]
+FROM [MatchOfficials] AS [m]
+INNER JOIN (
+    SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Officials'
+) AS [t] ON [m].[RefeereId] = [t].[Id]
+WHERE [m].[FixtureId] = @__fixture_FixtureId_0
+2024-07-29 20:24:21.095 +02:00 [INF] Executing PartialViewResult, running view _FixturesPartial.
+2024-07-29 20:24:21.121 +02:00 [INF] Executed PartialViewResult - view _FixturesPartial executed in 26.8804ms.
+2024-07-29 20:24:21.121 +02:00 [INF] Executed action MyField.Controllers.FixturesController.Index (MyField) in 121.577ms
+2024-07-29 20:24:21.121 +02:00 [INF] Executed endpoint 'MyField.Controllers.FixturesController.Index (MyField)'
+2024-07-29 20:24:21.121 +02:00 [INF] HTTP GET /Fixtures/Index responded 200 in 124.7963 ms
+2024-07-29 20:26:56.867 +02:00 [INF] 3 servers were removed due to timeout
+2024-07-29 20:29:54.462 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 20:29:54.502 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-29 20:29:55.875 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-29 20:29:58.616 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-29 20:29:58.640 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-29 20:29:58.640 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-29 20:29:58.658 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 20:29:58.659 +02:00 [INF] Hosting environment: Development
+2024-07-29 20:29:58.659 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-29 20:29:59.050 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-29 20:29:59.303 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 253.8938ms
+2024-07-29 20:29:59.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:29:59.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-29 20:29:59.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-29 20:29:59.310 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-29 20:29:59.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 5.4365ms
+2024-07-29 20:29:59.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 11.8468ms
+2024-07-29 20:29:59.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 11.8513ms
+2024-07-29 20:29:59.321 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 11.8858ms
+2024-07-29 20:29:59.324 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:29:59.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.0787ms
+2024-07-29 20:29:59.388 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-29 20:29:59.414 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 25.2715ms
+2024-07-29 20:29:59.420 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-29 20:29:59.434 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-29 20:29:59.437 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 2.8561ms
+2024-07-29 20:29:59.660 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 240.6195ms
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-29 20:29:59.662 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp - -
+2024-07-29 20:29:59.664 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.8267ms
+2024-07-29 20:29:59.666 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 4.3020ms
+2024-07-29 20:29:59.666 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 4.3202ms
+2024-07-29 20:29:59.667 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp - - - 200 68974 image/webp 4.5800ms
+2024-07-29 20:29:59.667 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 4.5692ms
+2024-07-29 20:29:59.667 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 5.0028ms
+2024-07-29 20:29:59.912 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:29:59.915 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 2.2915ms
+2024-07-29 20:30:01.582 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - -
+2024-07-29 20:30:01.594 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - - - 200 - text/html;+charset=utf-8 11.7895ms
+2024-07-29 20:30:01.598 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/Index - -
+2024-07-29 20:30:01.971 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/Index - - - 200 - text/html;+charset=utf-8 373.2951ms
+2024-07-29 20:30:01.977 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-29 20:30:01.977 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-29 20:30:01.978 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-29 20:30:01.978 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-29 20:30:01.978 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-29 20:30:01.978 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-29 20:30:01.978 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-29 20:30:01.979 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-29 20:30:01.979 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-29 20:30:01.979 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-29 20:30:01.979 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.8580ms
+2024-07-29 20:30:01.979 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.8248ms
+2024-07-29 20:30:01.979 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 1.5103ms
+2024-07-29 20:30:01.980 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.2049ms
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-29 20:30:01.980 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 3.4536ms
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 3.3082ms
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 2.4927ms
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 2.6395ms
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 2.6390ms
+2024-07-29 20:30:01.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 3.6621ms
+2024-07-29 20:30:01.985 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 6.3932ms
+2024-07-29 20:30:01.990 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 9.8005ms
+2024-07-29 20:30:01.994 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 13.3857ms
+2024-07-29 20:30:01.997 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 18.3627ms
+2024-07-29 20:30:01.998 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 19.3203ms
+2024-07-29 20:30:01.999 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 18.6517ms
+2024-07-29 20:30:02.775 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings - -
+2024-07-29 20:30:02.828 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings - - - 200 - text/html;+charset=utf-8 52.7886ms
+2024-07-29 20:30:02.833 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-29 20:30:02.972 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 139.4027ms
+2024-07-29 20:30:17.936 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-29 20:30:17.937 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-29 20:30:17.937 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-29 20:30:17.939 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 1.2186ms
+2024-07-29 20:30:17.939 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.7269ms
+2024-07-29 20:30:17.940 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 3.4955ms
+2024-07-29 20:30:18.015 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - -
+2024-07-29 20:30:18.024 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - - - 200 449111 text/plain 9.5137ms
+2024-07-29 20:30:44.359 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-29 20:30:44.371 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 200 - text/html;+charset=utf-8 11.4167ms
+2024-07-29 20:30:44.383 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-29 20:30:44.385 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6381ms
+2024-07-29 20:30:44.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-29 20:30:44.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-29 20:30:44.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:30:44.387 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.5703ms
+2024-07-29 20:30:44.387 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 1.7773ms
+2024-07-29 20:30:44.388 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 2.6495ms
+2024-07-29 20:30:44.403 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:30:44.414 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.6231ms
+2024-07-29 20:30:44.424 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - -
+2024-07-29 20:30:44.427 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/SportNewsIndex - - - 200 - text/html;+charset=utf-8 2.4942ms
+2024-07-29 20:30:44.434 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - -
+2024-07-29 20:30:44.436 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/my_banner.jpg - - - 200 124473 image/jpeg 2.0530ms
+2024-07-29 20:30:44.436 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/SportNews/Index - -
+2024-07-29 20:30:44.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/SportNews/Index - - - 200 - text/html;+charset=utf-8 6.2151ms
+2024-07-29 20:30:44.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp - -
+2024-07-29 20:30:44.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - -
+2024-07-29 20:30:44.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - -
+2024-07-29 20:30:44.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - -
+2024-07-29 20:30:44.447 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - -
+2024-07-29 20:30:44.448 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - -
+2024-07-29 20:30:44.448 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/a4bef348-480b-48d6-810c-7ff7b7813696_yamal.jpeg - - - 200 11139 image/jpeg 1.0385ms
+2024-07-29 20:30:44.449 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/fcf60f25-0498-471a-9650-37694fedf30c_Osihmen.webp - - - 200 31062 image/webp 1.4093ms
+2024-07-29 20:30:44.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d4d2af58-d323-41b9-bc98-c8a0e0fd8a81_Ten-hag.jpeg - - - 200 64596 image/jpeg 2.1916ms
+2024-07-29 20:30:44.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9224a868-2759-4dd5-a721-5f907000b7d4_Ronaldo news.webp - - - 200 68974 image/webp 2.5314ms
+2024-07-29 20:30:44.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/946dcdbe-1f3b-4328-afaf-18403171a54d_Halland news.webp - - - 200 60540 image/webp 2.2290ms
+2024-07-29 20:30:44.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b56c7336-5150-4580-b24b-afca39969ee6_News.webp - - - 200 30638 image/webp 1.6282ms
+2024-07-29 20:30:44.820 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:30:44.821 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 1.4152ms
+2024-07-29 20:30:46.547 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - -
+2024-07-29 20:30:46.549 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/LeagueFixtures - - - 200 - text/html;+charset=utf-8 1.9807ms
+2024-07-29 20:30:46.554 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/Index - -
+2024-07-29 20:30:46.558 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/Index - - - 200 - text/html;+charset=utf-8 4.7460ms
+2024-07-29 20:30:53.957 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings - -
+2024-07-29 20:30:53.965 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings - - - 200 - text/html;+charset=utf-8 7.1987ms
+2024-07-29 20:30:53.970 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - -
+2024-07-29 20:30:54.027 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Standings/StandingsTable?leagueId=2074 - - - 200 - text/html;+charset=utf-8 56.8197ms
+2024-07-29 20:30:54.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-29 20:30:54.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-29 20:30:54.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-29 20:30:54.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 1.8003ms
+2024-07-29 20:30:54.036 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.6748ms
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-29 20:30:54.036 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-29 20:30:54.037 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-29 20:30:54.037 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-29 20:30:54.037 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 2.9958ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 2.1203ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 2.1806ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 2.2163ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 2.5122ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.7134ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.7913ms
+2024-07-29 20:30:54.038 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.9949ms
+2024-07-29 20:30:54.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 1.7042ms
+2024-07-29 20:30:54.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 2.5077ms
+2024-07-29 20:30:54.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 2.5532ms
+2024-07-29 20:30:54.039 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 2.3903ms
+2024-07-29 20:30:54.040 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 3.1224ms
+2024-07-29 20:30:54.040 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 5.4062ms
+2024-07-29 20:30:55.022 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - -
+2024-07-29 20:30:55.029 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/LeagueResults - - - 200 - text/html;+charset=utf-8 7.8647ms
+2024-07-29 20:30:55.034 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MatchResults/Index - -
+2024-07-29 20:30:55.157 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MatchResults/Index - - - 200 - text/html;+charset=utf-8 122.9561ms
+2024-07-29 20:30:55.806 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - -
+2024-07-29 20:30:55.818 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/LeagueClubs - - - 200 - text/html;+charset=utf-8 11.9895ms
+2024-07-29 20:30:55.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Clubs/Index - -
+2024-07-29 20:30:55.867 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Clubs/Index - - - 200 - text/html;+charset=utf-8 44.1820ms
+2024-07-29 20:31:00.058 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182
+2024-07-29 20:31:00.171 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 182 - 200 - text/html;+charset=utf-8 113.0587ms
+2024-07-29 20:31:00.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - -
+2024-07-29 20:31:00.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:31:00.184 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:31:00.184 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2115ms
+2024-07-29 20:31:00.188 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Images/nfa_logo_lgo.png - - - 200 146839 image/png 4.7464ms
+2024-07-29 20:31:00.189 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.8372ms
+2024-07-29 20:31:00.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2024-07-29 20:31:00.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2024-07-29 20:31:00.190 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - -
+2024-07-29 20:31:00.191 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 200 19385 text/javascript 1.5109ms
+2024-07-29 20:31:00.192 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 200 51171 text/javascript 2.3969ms
+2024-07-29 20:31:00.196 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/images/nfa_cover.jpg - - - 200 235651 image/jpeg 5.6451ms
+2024-07-29 20:31:00.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/sportnews - -
+2024-07-29 20:31:00.225 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/sportnews - - - 200 - text/html;+charset=utf-8 12.5604ms
+2024-07-22 20:31:20.927 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 274
+2024-07-22 20:31:23.049 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Identity/Account/Login application/x-www-form-urlencoded 274 - 302 0 - 2121.9801ms
+2024-07-22 20:31:23.052 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-22 20:31:23.085 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 33.3752ms
+2024-07-22 20:31:23.088 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-22 20:31:23.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 315.1389ms
+2024-07-22 20:31:23.417 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-22 20:31:23.417 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:23.417 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:23.418 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2763ms
+2024-07-22 20:31:23.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 2.8004ms
+2024-07-22 20:31:23.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.0004ms
+2024-07-22 20:31:28.455 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire - -
+2024-07-22 20:31:28.562 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire - - - 200 - text/html 106.7541ms
+2024-07-22 20:31:28.568 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-22 20:31:28.568 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-22 20:31:28.568 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-22 20:31:28.575 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 7.0037ms
+2024-07-22 20:31:28.575 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 6.9661ms
+2024-07-22 20:31:28.576 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 7.5887ms
+2024-07-22 20:31:28.577 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:28.578 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1687ms
+2024-07-22 20:31:28.579 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:28.583 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.8274ms
+2024-07-22 20:31:28.711 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-22 20:31:28.713 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 1.6143ms
+2024-07-22 20:31:30.711 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:30.734 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 22.8584ms
+2024-07-22 20:31:32.748 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:32.753 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 4.9442ms
+2024-07-22 20:31:34.763 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:34.768 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 4.7061ms
+2024-07-22 20:31:36.780 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:36.787 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 6.3119ms
+2024-07-22 20:31:38.795 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:38.801 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 6.0360ms
+2024-07-22 20:31:40.816 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:40.821 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 5.4273ms
+2024-07-22 20:31:42.831 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:42.837 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 6.3089ms
+2024-07-22 20:31:44.848 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:44.853 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 5.5000ms
+2024-07-22 20:31:46.865 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-22 20:31:46.871 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 5.8528ms
+2024-07-22 20:31:48.373 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/recurring - -
+2024-07-22 20:31:48.426 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/recurring - - - 200 - text/html 52.4994ms
+2024-07-22 20:31:48.440 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-22 20:31:48.441 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-22 20:31:48.442 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-22 20:31:48.442 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:48.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 1.3180ms
+2024-07-22 20:31:48.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1803ms
+2024-07-22 20:31:48.442 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:48.442 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 0.7672ms
+2024-07-22 20:31:48.443 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 1.9494ms
+2024-07-22 20:31:48.445 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9275ms
+2024-07-22 20:31:48.471 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-22 20:31:48.472 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 0.8479ms
+2024-07-22 20:31:50.508 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-22 20:31:50.512 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 3.9691ms
+2024-07-22 20:31:50.815 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 28
+2024-07-22 20:31:50.979 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 28 - 204 - - 164.6356ms
+2024-07-22 20:31:50.987 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/recurring - -
+2024-07-22 20:31:50.998 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/recurring - - - 200 - text/html 10.5570ms
+2024-07-22 20:31:51.011 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-22 20:31:51.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-22 20:31:51.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-22 20:31:51.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:51.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:51.012 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3514ms
+2024-07-22 20:31:51.012 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 0.7993ms
+2024-07-22 20:31:51.013 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 1.8500ms
+2024-07-22 20:31:51.014 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 2.3411ms
+2024-07-22 20:31:51.015 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9972ms
+2024-07-22 20:31:51.030 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-22 20:31:51.031 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 1.4773ms
+2024-07-22 20:31:53.057 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-22 20:31:53.062 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 5.4777ms
+2024-07-22 20:31:54.756 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-22 20:31:54.765 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 9.3311ms
+2024-07-22 20:31:54.769 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-22 20:31:54.806 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 36.3755ms
+2024-07-22 20:31:54.819 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-22 20:31:54.821 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.6165ms
+2024-07-22 20:31:54.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-22 20:31:54.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-22 20:31:54.823 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:54.824 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-22 20:31:54.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1891ms
+2024-07-22 20:31:54.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.8680ms
+2024-07-22 20:31:54.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 1.0094ms
+2024-07-22 20:31:54.824 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.8117ms
+2024-07-22 20:31:54.836 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:54.838 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.6951ms
+2024-07-22 20:31:56.578 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-22 20:31:56.750 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 171.6145ms
+2024-07-22 20:31:56.760 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-22 20:31:56.760 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-22 20:31:56.760 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.6434ms
+2024-07-22 20:31:56.761 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 0.5252ms
+2024-07-22 20:31:56.769 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-22 20:31:56.769 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-22 20:31:56.769 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-22 20:31:56.770 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 0.8620ms
+2024-07-22 20:31:56.770 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 0.8506ms
+2024-07-22 20:31:56.770 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 0.9047ms
+2024-07-22 20:31:56.770 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-22 20:31:56.770 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-22 20:31:56.770 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-22 20:31:56.770 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.0914ms
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-22 20:31:56.771 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 0.7459ms
+2024-07-22 20:31:56.771 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.8065ms
+2024-07-22 20:31:56.771 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 0.8007ms
+2024-07-22 20:31:56.771 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-22 20:31:56.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.7239ms
+2024-07-22 20:31:56.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 1.1741ms
+2024-07-22 20:31:56.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.1131ms
+2024-07-22 20:31:56.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 0.9768ms
+2024-07-22 20:31:56.772 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 1.2502ms
+2024-07-22 20:31:56.773 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.6176ms
+2024-07-22 20:31:56.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-22 20:31:56.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-22 20:31:56.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-22 20:31:56.773 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 2.7622ms
+2024-07-22 20:31:56.773 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.6638ms
+2024-07-22 20:31:56.773 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.7974ms
+2024-07-22 20:31:56.776 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.1934ms
+2024-07-29 20:32:09.132 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-29 20:32:09.202 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 70.3923ms
+2024-07-29 20:32:09.213 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:09.213 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.6409ms
+2024-07-29 20:32:09.219 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:09.219 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:09.220 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2487ms
+2024-07-29 20:32:09.222 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9699ms
+2024-07-29 20:32:09.352 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:32:09.354 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 0.9943ms
+2024-07-29 20:32:11.832 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-29 20:32:11.874 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 42.3373ms
+2024-07-29 20:32:11.885 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:11.886 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.7810ms
+2024-07-29 20:32:11.891 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:11.891 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:11.891 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.2214ms
+2024-07-29 20:32:11.894 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9415ms
+2024-07-29 20:32:11.994 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:32:11.995 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 0.7761ms
+2024-07-29 20:32:12.183 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-29 20:32:12.223 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 40.4555ms
+2024-07-29 20:32:12.233 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:12.234 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.9758ms
+2024-07-29 20:32:12.239 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:12.239 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1717ms
+2024-07-29 20:32:12.239 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:12.242 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.1071ms
+2024-07-29 20:32:12.347 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:32:12.348 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 0.7615ms
+2024-07-29 20:32:12.473 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-29 20:32:12.508 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 35.2236ms
+2024-07-29 20:32:12.518 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:12.519 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.7102ms
+2024-07-29 20:32:12.524 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:12.524 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1479ms
+2024-07-29 20:32:12.623 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - -
+2024-07-29 20:32:12.624 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - - - 200 15406 image/x-icon 1.0305ms
+2024-07-29 20:32:17.234 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire - -
+2024-07-29 20:32:17.268 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire - - - 200 - text/html 34.0798ms
+2024-07-29 20:32:17.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-29 20:32:17.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-29 20:32:17.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-29 20:32:17.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 0.7765ms
+2024-07-29 20:32:17.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 1.2188ms
+2024-07-29 20:32:17.280 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 2.5680ms
+2024-07-29 20:32:17.283 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:17.284 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3090ms
+2024-07-29 20:32:17.286 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:17.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.6707ms
+2024-07-29 20:32:17.399 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-29 20:32:17.399 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 0.8848ms
+2024-07-29 20:32:19.400 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485
+2024-07-29 20:32:19.404 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 485 - 200 - application/json 3.7902ms
+2024-07-29 20:32:19.979 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/recurring - -
+2024-07-29 20:32:19.991 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/recurring - - - 200 - text/html 11.6441ms
+2024-07-29 20:32:20.004 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-29 20:32:20.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-29 20:32:20.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:20.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:20.005 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-29 20:32:20.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 1.4673ms
+2024-07-29 20:32:20.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.3934ms
+2024-07-29 20:32:20.005 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 0.6120ms
+2024-07-29 20:32:20.007 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 2.1596ms
+2024-07-29 20:32:20.008 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.4253ms
+2024-07-29 20:32:20.031 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-29 20:32:20.032 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 0.8605ms
+2024-07-29 20:32:22.069 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-29 20:32:22.072 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 2.6925ms
+2024-07-29 20:32:23.188 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 28
+2024-07-29 20:32:23.208 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/recurring/trigger application/x-www-form-urlencoded;+charset=UTF-8 28 - 204 - - 20.0460ms
+2024-07-29 20:32:23.229 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/recurring - -
+2024-07-29 20:32:23.287 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/recurring - - - 200 - text/html 58.5618ms
+2024-07-29 20:32:23.301 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - -
+2024-07-29 20:32:23.302 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css181402024441349 - - - 200 - text/css 1.0759ms
+2024-07-29 20:32:23.302 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - -
+2024-07-29 20:32:23.302 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - -
+2024-07-29 20:32:23.302 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:23.302 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:23.302 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1996ms
+2024-07-29 20:32:23.302 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/css-dark181401550558703 - - - 200 - text/css 0.6522ms
+2024-07-29 20:32:23.304 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/js18140939128551 - - - 200 - application/javascript 1.7585ms
+2024-07-29 20:32:23.305 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.1175ms
+2024-07-29 20:32:23.315 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - -
+2024-07-29 20:32:23.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Hangfire/fonts/glyphicons-halflings-regular/woff2 - - - 200 - font/woff2 0.6487ms
+2024-07-29 20:32:25.343 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167
+2024-07-29 20:32:25.345 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7102/Hangfire/stats application/x-www-form-urlencoded;+charset=UTF-8 167 - 200 - application/json 1.7881ms
+2024-07-29 20:32:25.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/ - -
+2024-07-29 20:32:25.358 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/ - - - 302 0 - 3.7808ms
+2024-07-29 20:32:25.361 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Home/Dashboard - -
+2024-07-29 20:32:25.390 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Home/Dashboard - - - 200 - text/html;+charset=utf-8 28.9008ms
+2024-07-29 20:32:25.402 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - -
+2024-07-29 20:32:25.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 162726 text/css 1.2660ms
+2024-07-29 20:32:25.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - -
+2024-07-29 20:32:25.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - -
+2024-07-29 20:32:25.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:25.404 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:25.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 0.1507ms
+2024-07-29 20:32:25.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - - - 200 5735 text/css 0.6403ms
+2024-07-29 20:32:25.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=Ki4xxxN7BttzKHom-V-2hIc9W0PnGAlCZFfqs-PXBvg - - - 200 49853 text/css 0.7739ms
+2024-07-29 20:32:25.405 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.5820ms
+2024-07-29 20:32:25.418 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:25.421 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.3557ms
+2024-07-29 20:32:27.864 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - -
+2024-07-29 20:32:27.923 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Fixtures/FixturesBackOffice - - - 200 - text/html;+charset=utf-8 59.3805ms
+2024-07-29 20:32:27.934 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/khaya.jpg - -
+2024-07-29 20:32:27.934 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - -
+2024-07-29 20:32:27.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/khaya.jpg - - - 404 0 - 0.6910ms
+2024-07-29 20:32:27.935 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - - - 200 5891 image/png 0.6952ms
+2024-07-29 20:32:27.943 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - -
+2024-07-29 20:32:27.943 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - -
+2024-07-29 20:32:27.943 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - -
+2024-07-29 20:32:27.944 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/1b949fcf-5866-4b64-91ec-2e15459ca23c_Brentford.png - - - 200 5160 image/png 0.8118ms
+2024-07-29 20:32:27.944 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e3122ea8-bc43-4225-96ab-bf0a5b1f4101_mancity.jpeg - - - 200 17285 image/jpeg 0.8405ms
+2024-07-29 20:32:27.945 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/85b20a5a-7ca1-41c1-a0d6-27ed151b6769_Fast X1.jpeg - - - 200 91594 image/jpeg 1.1579ms
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - -
+2024-07-29 20:32:27.946 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - -
+2024-07-29 20:32:27.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - -
+2024-07-29 20:32:27.947 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - -
+2024-07-29 20:32:27.947 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - - - 200 13750 application/javascript;+charset=utf-8 1.1248ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - - - 200 10679 image/jpeg 1.2573ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/73236ede-f965-4e16-beb5-2d193a91cc7a_Arsenal.jpeg - - - 200 6053 image/jpeg 1.3430ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - -
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/b7f4a14c-839d-4c4e-84c7-cfee134fb9d2_TP.png - - - 200 14459 image/png 1.4886ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - -
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/e68e0e36-44bb-40f9-8053-43eaefa4b80a_Liverpool badge.jpeg - - - 200 8088 image/jpeg 1.5866ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6b090366-7f0b-4b97-b511-3837e3ca8115_Blue Birds.jpeg - - - 200 8251 image/jpeg 0.9181ms
+2024-07-29 20:32:27.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - -
+2024-07-29 20:32:27.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - -
+2024-07-29 20:32:27.948 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - -
+2024-07-29 20:32:27.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/f0cc5730-b926-46ac-9f0b-8ff458af4720_Liverpool.jpeg - - - 200 8456 image/jpeg 1.5185ms
+2024-07-29 20:32:27.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/de6440f8-6949-4f74-bd39-cadfbc7f1c60_Man u.png - - - 200 9112 image/png 0.9101ms
+2024-07-29 20:32:27.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d953861b-c37c-4641-b586-8fa0684f9623_Norwich.png - - - 200 6914 image/png 0.8530ms
+2024-07-29 20:32:27.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - - - 200 13737 image/png 0.9063ms
+2024-07-29 20:32:27.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/7c4d1319-67ff-4f25-a6a6-96c999ab76da_Selesele.jpg - - - 200 46555 image/jpeg 2.5426ms
+2024-07-29 20:32:27.949 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/c18f1b2b-a7ce-4ba8-82fb-84c81ba4b00f_Brighton.jpg - - - 200 35510 image/jpeg 1.1580ms
+2024-07-29 20:32:27.950 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/bf3ebf6f-3cdf-4e96-a71a-28d511964778_Millwall.jpg - - - 200 194657 image/jpeg 3.0883ms
+2024-07-29 20:32:27.951 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 2.9166ms

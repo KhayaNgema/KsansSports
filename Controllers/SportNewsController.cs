@@ -434,7 +434,8 @@ namespace MyField.Controllers
                 NewsId = existingNews.NewsId,
                 NewsImage = existingNews.NewsImage,
                 NewsTitle = existingNews.NewsHeading,
-                NewsBody = existingNews.NewsBody
+                NewsBody = existingNews.NewsBody,
+                ReasonForReEdit = existingNews.ReasonForReEdit
             };
 
             return View(viewModel);
@@ -574,8 +575,33 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("News Administrator"))]
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> AskReEditNews(int? newsId)
+        {
+            if (newsId == null)
+            {
+                return NotFound();
+            }
+
+            var sportNews = await _context.SportNew
+                .Where(s => s.NewsId == newsId)
+                .Include( s => s.AuthoredBy)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new AskForReEditNewsViewModel
+            {
+                NewsId = sportNews.NewsId,
+                NewsTitle = sportNews.NewsHeading,
+                NewsImage = sportNews.NewsImage,
+                NewsBody = sportNews.NewsBody,
+            };
+
+            return View(viewModel);
+        }
+
+        [Authorize(Roles = ("News Administrator"))]
+        [HttpPost]
+        public async Task<IActionResult> AskReEditNews(int? newsId, AskForReEditNewsViewModel viewModel)
         {
             if (newsId == null || _context.SportNew == null)
             {
@@ -600,7 +626,9 @@ namespace MyField.Controllers
             sportNews.NewsStatus = NewsStatus.ToBeModified;
             sportNews.ModifiedDateTime = DateTime.Now;
             sportNews.ModifiedById = userId;
+            sportNews.ReasonForReEdit = viewModel.ReasonForReEdit;
 
+            _context.Update(sportNews);
             await _context.SaveChangesAsync();
 
             await _activityLogger.Log($"Sent news with heading {sportNews.NewsHeading} back to author for modification", user.Id);

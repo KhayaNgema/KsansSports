@@ -26,18 +26,21 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
+        private readonly IEncryptionService _encryptionService;
 
         public UsersController(Ksans_SportsDbContext context,
            FileUploadService fileUploadService,
            UserManager<UserBaseModel> userManager,
            IActivityLogger activityLogger,
-           EmailService emailService)
+           EmailService emailService,
+           IEncryptionService encryptionService)
         {
             _context = context;
             _fileUploadService = fileUploadService;
             _userManager = userManager;
             _activityLogger = activityLogger;
             _emailService = emailService;
+            _encryptionService = encryptionService;
         }
 
         [Authorize]
@@ -109,14 +112,31 @@ namespace MyField.Controllers
         [HttpGet]
         public async Task<IActionResult> UserProfile(string? userId)
         {
-            if (userId == null)
+            if (string.IsNullOrEmpty(userId))
             {
                 return NotFound();
             }
 
+            var encryptionService = HttpContext.RequestServices.GetRequiredService<IEncryptionService>();
+
+            string decryptedUserId;
+            try
+            {
+                decryptedUserId = encryptionService.Decrypt(userId);
+            }
+            catch
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
             var userProfile = await _context.UserBaseModel
-                .Where(u => u.Id == userId)
+                .Where(u => u.Id == decryptedUserId)
                 .FirstOrDefaultAsync();
+
+            if (userProfile == null)
+            {
+                return NotFound();
+            }
 
             var viewModel = new ProfileViewModel
             {
@@ -130,12 +150,12 @@ namespace MyField.Controllers
             };
 
             var userRole = await _context.UserRoles
-                 .Where(ur => ur.UserId == userId)
-                 .Join(_context.Roles,
-                 ur => ur.RoleId,
-                 r => r.Id,
-                 (ur, r) => r.Name)
-                 .FirstOrDefaultAsync();
+                .Where(ur => ur.UserId == decryptedUserId)
+                .Join(_context.Roles,
+                      ur => ur.RoleId,
+                      r => r.Id,
+                      (ur, r) => r.Name)
+                .FirstOrDefaultAsync();
 
             ViewBag.UserRole = userRole;
 
@@ -179,7 +199,7 @@ namespace MyField.Controllers
 
             var club = userProfile.Club;
 
-            ViewBag.Club = club.ClubName;    
+            ViewBag.Club = club.ClubName;
 
             ViewBag.UserRole = userRole;
 
@@ -190,7 +210,7 @@ namespace MyField.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile(string? userId)
         {
-            if(userId == null)
+            if (userId == null)
             {
                 return NotFound();
             }
@@ -205,7 +225,7 @@ namespace MyField.Controllers
                 Names = userProfile.FirstName,
                 LastName = userProfile.LastName,
                 Email = userProfile.Email,
-                Phone  = userProfile.PhoneNumber,
+                Phone = userProfile.PhoneNumber,
                 ProfilePicture = userProfile.ProfilePicture,
                 DateOfBirth = userProfile.DateOfBirth
             };
@@ -320,7 +340,7 @@ namespace MyField.Controllers
             var clubAdministrators = await _context.ClubAdministrator
                 .Where(u => userIds.Contains(u.Id) &&
                  u.IsDeleted == false)
-                .Include( u => u.Club)
+                .Include(u => u.Club)
                 .ToListAsync();
 
             return View(clubAdministrators);
@@ -474,7 +494,7 @@ namespace MyField.Controllers
             }
 
             var clubAdministrators = await _context.ClubAdministrator
-                .Where(p => p.ClubId == clubAdministrator.ClubId && 
+                .Where(p => p.ClubId == clubAdministrator.ClubId &&
                 p.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
@@ -484,32 +504,42 @@ namespace MyField.Controllers
             return View(clubAdministrators);
         }
 
-
-        [Authorize(Roles = ("Club Administrator, Personnel Administrator"))]
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> UpdateProfile(string? userId)
         {
-            var logMessages = new List<string>();
-
-            if (userId == null || _context.UserBaseModel == null)
+            if (string.IsNullOrEmpty(userId))
             {
-                logMessages.Add($"UpdateClubManager GET request failed: id is null or ClubManager context is null");
-                TempData["LogMessages"] = logMessages;
                 return NotFound();
             }
 
-            var userProfile = await _context.UserBaseModel.FindAsync(userId);
+            var encryptionService = HttpContext.RequestServices.GetRequiredService<IEncryptionService>();
+
+            string decryptedUserId;
+            try
+            {
+                decryptedUserId = encryptionService.Decrypt(userId);
+            }
+            catch
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            if (decryptedUserId == null || _context.UserBaseModel == null)
+            {
+                return NotFound();
+            }
+
+            var userProfile = await _context.UserBaseModel.FindAsync(decryptedUserId);
 
             if (userProfile == null)
             {
-                logMessages.Add($"ClubManager with id {userId} not found during GET request");
-                TempData["LogMessages"] = logMessages;
                 return NotFound();
             }
 
-            var clubManagerViewModel = new UpdateProfileViewModel
+            var profileViewModel = new UpdateProfileViewModel
             {
-                Id = userProfile.Id,
+                Id = userId,
                 FirstName = userProfile.FirstName,
                 LastName = userProfile.LastName,
                 PhoneNumber = userProfile.PhoneNumber,
@@ -517,31 +547,39 @@ namespace MyField.Controllers
                 Email = userProfile.Email,
             };
 
-            TempData["LogMessages"] = logMessages;
-            return View(clubManagerViewModel);
+            return View(profileViewModel);
         }
 
 
 
-        [Authorize(Roles = ("Club Administrator, Personnel Administrator"))]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> UpdateProfile(string userId, UpdateProfileViewModel viewModel, IFormFile ProfilePictureFile)
         {
             var logMessages = new List<string>();
 
-            if (userId != viewModel.Id)
+            var encryptionService = HttpContext.RequestServices.GetRequiredService<IEncryptionService>();
+
+            string decryptedUserId;
+
+            try
             {
-                logMessages.Add($"UpdateProfile POST request failed: id mismatch: {userId} != {viewModel.Id}");
+                decryptedUserId = encryptionService.Decrypt(viewModel.Id);
+            }
+            catch (Exception ex)
+            {
+                logMessages.Add($"Failed to decrypt user ID: {ex.Message}");
                 TempData["LogMessages"] = logMessages;
-                return NotFound();
+                return BadRequest("Invalid user ID.");
             }
 
             var user = await _userManager.GetUserAsync(User);
 
-            var userProfile = await _context.UserBaseModel.FindAsync(userId);
+
+            var userProfile = await _context.UserBaseModel.FindAsync(decryptedUserId);
 
             var userRole = await _context.UserRoles
-                .Where(ur => ur.UserId == viewModel.Id)
+                .Where(ur => ur.UserId == decryptedUserId)
                 .Join(_context.Roles,
                     ur => ur.RoleId,
                     r => r.Id,
@@ -554,7 +592,7 @@ namespace MyField.Controllers
                 {
                     if (userProfile == null)
                     {
-                        logMessages.Add($"User with id {userId} not found during POST request");
+                        logMessages.Add($"User with id {decryptedUserId} not found during POST request");
                         TempData["LogMessages"] = logMessages;
                         return NotFound();
                     }
@@ -577,7 +615,7 @@ namespace MyField.Controllers
 
                     _context.Update(userProfile);
                     await _context.SaveChangesAsync();
-                    logMessages.Add($"User with id {userId} successfully updated");
+                    logMessages.Add($"User with id {decryptedUserId} successfully updated");
 
                     var subject = "Profile Update Notification";
                     var emailBodyTemplate = $@"
@@ -586,7 +624,7 @@ namespace MyField.Controllers
                 If you did not request this update or if you have any questions, please contact us immediately.<br/><br/>
                 Regards,<br/>
                 K&S Foundation Management
-                    ";
+            ";
                     BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(viewModel.Email, subject, emailBodyTemplate));
                 }
                 catch (DbUpdateConcurrencyException ex)
@@ -657,12 +695,13 @@ namespace MyField.Controllers
                     }
                     else
                     {
-                        return RedirectToAction(nameof(UserProfile), new { userId = user.Id });
+                        var encryptedUserId = encryptionService.Encrypt(decryptedUserId);
+                        return RedirectToAction(nameof(UserProfile), new { userId = encryptedUserId });
                     }
                 }
             }
 
-            logMessages.Add($"Model state invalid for User with id {userId}");
+            logMessages.Add($"Model state invalid for User with id {decryptedUserId}");
 
             foreach (var state in ModelState)
             {
@@ -673,12 +712,14 @@ namespace MyField.Controllers
                 }
             }
 
-            viewModel.ProfilePicture = _context.ClubAdministrator.Find(userId)?.ProfilePicture;
+            viewModel.ProfilePicture = _context.ClubAdministrator.Find(decryptedUserId)?.ProfilePicture;
 
             TempData["LogMessages"] = logMessages;
             viewModel.ProfilePicture = userProfile.ProfilePicture;
             return View(viewModel);
         }
+
+
 
 
         private bool ClubAdministratorExists(string userId)

@@ -12,11 +12,13 @@ namespace MyField.Services
     {
         private readonly Ksans_SportsDbContext _context;
         private readonly HashSet<int> _scheduledClubsForWeekend;
+        private readonly HashSet<(int, int)> _previouslyScheduledPairs;
 
         public FixtureService(Ksans_SportsDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _scheduledClubsForWeekend = new HashSet<int>();
+            _previouslyScheduledPairs = new HashSet<(int, int)>();
         }
 
         public async Task ScheduleFixturesAsync()
@@ -34,19 +36,29 @@ namespace MyField.Services
             int daysUntilSaturday = ((int)DayOfWeek.Saturday - (int)today.DayOfWeek + 7) % 7;
             DateTime nextSaturday = today.AddDays(daysUntilSaturday);
 
+            await LoadPreviouslyScheduledPairs();
             await ScheduleFixturesForDay(nextSaturday, clubs);
             await ScheduleFixturesForDay(nextSaturday.AddDays(1), clubs);
         }
 
+        private async Task LoadPreviouslyScheduledPairs()
+        {
+            var previousFixtures = await _context.Fixture.ToListAsync();
+            foreach (var fixture in previousFixtures)
+            {
+                _previouslyScheduledPairs.Add((fixture.HomeTeamId, fixture.AwayTeamId));
+                _previouslyScheduledPairs.Add((fixture.AwayTeamId, fixture.HomeTeamId));
+            }
+        }
+
         private async Task ScheduleFixturesForDay(DateTime day, List<Club> clubs)
         {
-            int fixturesPerDay = 4;
-            TimeSpan startTime = new TimeSpan(9, 0, 0);
-            TimeSpan interval = new TimeSpan(2, 0, 0);
+            const int fixturesPerDay = 4;
+            TimeSpan startTime = new TimeSpan(9, 0, 0); 
+            TimeSpan interval = new TimeSpan(2, 0, 0); 
 
             var scheduledMatches = new HashSet<(int, int)>();
             var scheduledClubsForDay = new HashSet<int>();
-            var previouslyScheduledPairs = new HashSet<(int, int)>();
 
             var existingFixtures = await _context.Fixture
                 .Where(f => f.KickOffDate == day.Date)
@@ -60,8 +72,6 @@ namespace MyField.Services
                 scheduledClubsForDay.Add(fixture.AwayTeamId);
                 _scheduledClubsForWeekend.Add(fixture.HomeTeamId);
                 _scheduledClubsForWeekend.Add(fixture.AwayTeamId);
-                previouslyScheduledPairs.Add((fixture.HomeTeamId, fixture.AwayTeamId));
-                previouslyScheduledPairs.Add((fixture.AwayTeamId, fixture.HomeTeamId));
             }
 
             Random random = new Random();
@@ -76,11 +86,13 @@ namespace MyField.Services
                 throw new InvalidOperationException("No current season found.");
             }
 
+            int matchCount = 0;
+
             foreach (var homeTeam in clubs)
             {
-                if (scheduledClubsForDay.Count >= fixturesPerDay * 2)
+                if (matchCount >= fixturesPerDay)
                 {
-                    break;
+                    break; 
                 }
 
                 var availableAwayTeams = clubs.Where(awayTeam =>
@@ -89,57 +101,32 @@ namespace MyField.Services
                     !scheduledClubsForDay.Contains(awayTeam.ClubId) &&
                     !_scheduledClubsForWeekend.Contains(homeTeam.ClubId) &&
                     !_scheduledClubsForWeekend.Contains(awayTeam.ClubId) &&
-                    !previouslyScheduledPairs.Contains((homeTeam.ClubId, awayTeam.ClubId)) &&
-                    !previouslyScheduledPairs.Contains((awayTeam.ClubId, homeTeam.ClubId))
+                    !scheduledMatches.Contains((homeTeam.ClubId, awayTeam.ClubId)) &&
+                    !scheduledMatches.Contains((awayTeam.ClubId, homeTeam.ClubId)) &&
+                    !_previouslyScheduledPairs.Contains((homeTeam.ClubId, awayTeam.ClubId)) &&
+                    !_previouslyScheduledPairs.Contains((awayTeam.ClubId, homeTeam.ClubId))
                 ).ToList();
 
                 if (availableAwayTeams.Any())
                 {
                     var awayTeam = availableAwayTeams.First();
 
-                    var hasPlayedBefore = await _context.Fixture
-                        .AnyAsync(f =>
-                            (f.HomeTeamId == homeTeam.ClubId && f.AwayTeamId == awayTeam.ClubId) ||
-                            (f.HomeTeamId == awayTeam.ClubId && f.AwayTeamId == homeTeam.ClubId)
-                        );
+                    var kickOffTime = day.Date + startTime.Add(interval * matchCount);
 
-                    var kickOffTime = day.Date + startTime.Add(interval * (scheduledClubsForDay.Count / 2));
-
-                    Fixture newFixture;
-                    if (hasPlayedBefore)
+                    var newFixture = new Fixture
                     {
-                        newFixture = new Fixture
-                        {
-                            HomeTeamId = awayTeam.ClubId,
-                            AwayTeamId = homeTeam.ClubId,
-                            KickOffDate = kickOffTime.Date,
-                            KickOffTime = kickOffTime,
-                            Location = "Nkungwini Sports Ground",
-                            CreatedDateTime = DateTime.Now,
-                            ModifiedDateTime = DateTime.Now,
-                            CreatedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
-                            ModifiedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
-                            FixtureStatus = FixtureStatus.Upcoming,
-                            LeagueId = currentSeason.LeagueId
-                        };
-                    }
-                    else
-                    {
-                        newFixture = new Fixture
-                        {
-                            HomeTeamId = homeTeam.ClubId,
-                            AwayTeamId = awayTeam.ClubId,
-                            KickOffDate = kickOffTime.Date,
-                            KickOffTime = kickOffTime,
-                            Location = "Nkungwini Sports Ground",
-                            CreatedDateTime = DateTime.Now,
-                            ModifiedDateTime = DateTime.Now,
-                            CreatedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
-                            ModifiedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
-                            FixtureStatus = FixtureStatus.Upcoming,
-                            LeagueId = currentSeason.LeagueId
-                        };
-                    }
+                        HomeTeamId = homeTeam.ClubId,
+                        AwayTeamId = awayTeam.ClubId,
+                        KickOffDate = kickOffTime.Date,
+                        KickOffTime = kickOffTime,
+                        Location = "Nkungwini Sports Ground",
+                        CreatedDateTime = DateTime.Now,
+                        ModifiedDateTime = DateTime.Now,
+                        CreatedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
+                        ModifiedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
+                        FixtureStatus = FixtureStatus.Upcoming,
+                        LeagueId = currentSeason.LeagueId
+                    };
 
                     _context.Fixture.Add(newFixture);
                     scheduledMatches.Add((homeTeam.ClubId, awayTeam.ClubId));
@@ -148,8 +135,10 @@ namespace MyField.Services
                     scheduledClubsForDay.Add(awayTeam.ClubId);
                     _scheduledClubsForWeekend.Add(homeTeam.ClubId);
                     _scheduledClubsForWeekend.Add(awayTeam.ClubId);
-                    previouslyScheduledPairs.Add((homeTeam.ClubId, awayTeam.ClubId));
-                    previouslyScheduledPairs.Add((awayTeam.ClubId, homeTeam.ClubId));
+                    _previouslyScheduledPairs.Add((homeTeam.ClubId, awayTeam.ClubId));
+                    _previouslyScheduledPairs.Add((awayTeam.ClubId, homeTeam.ClubId));
+
+                    matchCount++;
                 }
             }
 
