@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240713105301_ChangeSchh")]
+    partial class ChangeSchh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1909,9 +1912,14 @@ namespace MyField.Migrations
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
+                    b.Property<int>("StandingId")
+                        .HasColumnType("int");
+
                     b.HasIndex("ClubId");
 
                     b.HasIndex("LeagueId");
+
+                    b.HasIndex("StandingId");
 
                     b.ToTable("Reports", t =>
                         {
@@ -3416,7 +3424,15 @@ namespace MyField.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MyField.Models.Standing", "ClubStanding")
+                        .WithMany()
+                        .HasForeignKey("StandingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Club");
+
+                    b.Navigation("ClubStanding");
 
                     b.Navigation("League");
                 });

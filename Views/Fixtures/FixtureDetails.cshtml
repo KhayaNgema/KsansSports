@@ -32,9 +32,6 @@
 
 <ul class="nav nav-tabs" id="clubTabs" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="officials-tab" data-bs-toggle="tab" data-bs-target="#officials" type="button" role="tab" aria-controls="officials" aria-selected="true" onclick="loadTab('officials', '@Model.FixtureId')">Match Officials</button>
-    </li>
-    <li class="nav-item" role="presentation">
         <button class="nav-link" id="lineup-tab" data-bs-toggle="tab" data-bs-target="#lineup" type="button" role="tab" aria-controls="lineup" aria-selected="false" onclick="loadTab('lineup', '@Model.FixtureId')">Line up</button>
     </li>
     <li class="nav-item" role="presentation">
@@ -44,7 +41,6 @@
 
 
 <div class="tab-content">
-    <div class="tab-pane fade show active" id="officials" role="tabpanel" aria-labelledby="officials-tab"></div>
     <div class="tab-pane fade" id="lineup" role="tabpanel" aria-labelledby="lineup-tab"></div>
     <div class="tab-pane fade" id="formation" role="tabpanel" aria-labelledby="formation-tab"></div>
 </div>
@@ -165,9 +161,7 @@
 
         if ($('#' + tabName).html().trim() === '') {
             var url;
-            if (tabName === 'officials') {
-                url = '@Url.Action("FixtureMatchOffcials", "Fixtures")';
-            } else if (tabName === 'lineup') {
+            if (tabName === 'lineup') {
                 url = '@Url.Action("CreateMatchLineUp", "LineUps")';
             } else if (tabName === 'formation') {
                 url = '@Url.Action("CreateMatchFormation", "Formations", new { fixtureId = "-1" })'.replace("-1", fixtureId);
@@ -196,8 +190,6 @@
 
 
         loadTab('lineup', fixtureId);
-
-        loadTab('officials', fixtureId);
 
         $.get('@Url.Action("CreateMatchLineUp", "LineUps")', { fixtureId: fixtureId }, function (data) {
             $('#lineup').html(data);

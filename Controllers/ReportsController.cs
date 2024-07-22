@@ -267,12 +267,11 @@ namespace MyField.Controllers
                 .Where(c => c.ClubId == clubId && c.League.IsCurrent)
                 .Include(c => c.League)
                 .Include(c => c.Club)
-                .Include(c => c.ClubStanding)
                 .ToListAsync();
 
             var overallMatchCount = await GetOverallMatchCountAsync();
 
-           
+
 
             foreach (var clubPerformanceReport in clubPerformanceReports)
             {

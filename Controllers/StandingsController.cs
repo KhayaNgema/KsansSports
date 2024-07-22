@@ -66,7 +66,7 @@ namespace MyField.Controllers
             }
 
             var standings= _context.Standing
-                .Where(s => s.LeagueId == currentLeague.LeagueId)
+                .Where(s => s.League.IsCurrent)
                 .Include(s => s.Club)
                 .OrderByDescending(s => s.Points)
                 .ThenByDescending(s => s.GoalDifference)

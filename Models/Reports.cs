@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyField.Models
 {
@@ -8,8 +8,6 @@ namespace MyField.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReportId { get; set; }
     }
-
-
     public class MatchReports : Reports
     {
         public int LeagueId { get; set; }
@@ -127,10 +125,6 @@ namespace MyField.Models
         public decimal GamesLoseRate { get; set; }
 
         public decimal GamesDrawRate { get; set; }
-
-        public int StandingId { get; set; }
-
-        public virtual Standing ClubStanding { get; set; }
     }
 
     public class ClubTransferReport : Reports
@@ -262,4 +256,5 @@ namespace MyField.Models
 
         public decimal SuspendedFansAccountsRate { get; set; }
     }
+
 }

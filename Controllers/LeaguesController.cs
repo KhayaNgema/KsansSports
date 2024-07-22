@@ -286,9 +286,8 @@ namespace MyField.Controllers
                         {
                             ClubId = c.ClubId,
                             LeagueId = c.LeagueId,
-                            StandingId = c.StandingId,
                             GamesToPlayCount = c.GamesToPlayCount,
-                            GamesPlayedCount = c.GamesPlayedCount,  
+                            GamesPlayedCount = c.GamesPlayedCount,
                             GamesNotPlayedCount = c.GamesNotPlayedCount,
                             GamesWinCount = c.GamesWinCount,
                             GamesLoseCount = c.GamesLoseCount,

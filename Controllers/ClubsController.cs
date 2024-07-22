@@ -304,7 +304,6 @@ namespace MyField.Controllers
             {
                 ClubId = existingClub.ClubId,
                 LeagueId = currentLeague.LeagueId,
-                StandingId = newStanding.StandingId,
                 GamesToPlayCount = 0,
                 GamesPlayedCount = 0,
                 GamesNotPlayedCount = 0,
@@ -315,7 +314,8 @@ namespace MyField.Controllers
                 GamesNotPlayedRate = 0,
                 GamesWinRate = 0,
                 GamesDrawRate = 0,
-                GamesLoseRate = 0
+                GamesLoseRate = 0,
+
             };
 
             matchResultsReport.ExpectedResultsCount++;
@@ -343,7 +343,7 @@ namespace MyField.Controllers
                 return RedirectToAction("ErrorPage", "Home", new { errorMessage = errorMessage });
             }
 
-            if (!User.IsInRole("System Administrator"))
+            if (!User.IsInRole("Sport Administrator"))
             {
                 string errorMessage = "Only a system administrator can add a club into this system";
                 return RedirectToAction("ErrorPage", "Home", new { errorMessage = errorMessage });
@@ -441,7 +441,7 @@ namespace MyField.Controllers
                 var clubPerformanceReport = new ClubPerformanceReport
                 {
                     LeagueId = currentLeague.LeagueId,
-                    StandingId = newStanding.StandingId,
+                    ClubId = newClub.ClubId,
                     GamesToPlayCount = 0,
                     GamesPlayedCount = 0,
                     GamesNotPlayedCount = 0,
@@ -452,7 +452,7 @@ namespace MyField.Controllers
                     GamesNotPlayedRate = 0,
                     GamesWinRate = 0,
                     GamesDrawRate = 0,
-                    GamesLoseRate =0
+                    GamesLoseRate = 0
                 };
 
                 matchResultsReport.ExpectedResultsCount++;
