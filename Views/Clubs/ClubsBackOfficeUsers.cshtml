@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Club>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "Clubs";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -14,13 +14,15 @@
         {
             @foreach (var item in Model)
             {
+                var encryptedClubId = encryptionService.Encrypt(item.ClubId);
+
                 <li style="margin-bottom:10px;">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <img src="~/@item.ClubBadge" alt="@item.ClubName" class="club-badge-image" style="margin-right:20px;" />
                             @Html.DisplayFor(modelItem => item.ClubName) (@Html.DisplayFor(modelItem => item.ClubAbbr))
                         </div>
-                        <a asp-action="Details" asp-route-id="@item.ClubId" class="btn btn-sm">
+                        <a asp-action="Details" asp-route-clubId="@encryptedClubId" class="btn btn-sm">
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>

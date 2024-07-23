@@ -1,6 +1,7 @@
 ﻿using MyField.Helpers;
 using MyField.Interfaces;
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -22,7 +23,7 @@ public class EncryptionService : IEncryptionService
 
             var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
 
-            using (var ms = new System.IO.MemoryStream())
+            using (var ms = new MemoryStream())
             {
                 using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
                 {
@@ -39,6 +40,11 @@ public class EncryptionService : IEncryptionService
 
     public string Decrypt(string cipherText)
     {
+        if (string.IsNullOrEmpty(cipherText))
+        {
+            throw new ArgumentException("Cipher text cannot be null or empty.", nameof(cipherText));
+        }
+
         using (Aes aes = Aes.Create())
         {
             aes.Key = _config.Key;
@@ -48,7 +54,7 @@ public class EncryptionService : IEncryptionService
 
             var cipherBytes = Convert.FromBase64String(cipherText);
 
-            using (var ms = new System.IO.MemoryStream(cipherBytes))
+            using (var ms = new MemoryStream(cipherBytes))
             {
                 using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
                 {
@@ -59,5 +65,18 @@ public class EncryptionService : IEncryptionService
                 }
             }
         }
+    }
+
+
+    public string Encrypt(int value)
+    {
+        string valueAsString = value.ToString();
+        return Encrypt(valueAsString);
+    }
+
+    public int DecryptToInt(string encryptedValue)
+    {
+        string decryptedString = Decrypt(encryptedValue);
+        return int.Parse(decryptedString);
     }
 }

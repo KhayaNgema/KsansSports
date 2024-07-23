@@ -27,6 +27,7 @@ namespace MyField.Controllers
         private readonly IViewRenderService _viewRenderService;
         private readonly EmailService _emailService;
         private readonly IActivityLogger _activityLogger;
+        private readonly IEncryptionService _encryptionService;
 
 
         public BillingsController(Ksans_SportsDbContext context,
@@ -36,7 +37,8 @@ namespace MyField.Controllers
             PdfService pdfService,
             IViewRenderService viewRenderService,
             EmailService emailService,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            IEncryptionService encryptionService)
         { 
             _emailService = emailService;
             _context = context;
@@ -45,7 +47,8 @@ namespace MyField.Controllers
             _deviceInfoService = deviceInfoService;
             _pdfService = pdfService;
             _viewRenderService = viewRenderService; 
-            _activityLogger = activityLogger;   
+            _activityLogger = activityLogger;  
+            _encryptionService = encryptionService;
         }
 
         [Authorize]
@@ -372,12 +375,16 @@ namespace MyField.Controllers
             return View();
         }
 
-        [Authorize(Roles = ("Club Administrator"))]
+
+
+        [Authorize(Roles = "Club Administrator")]
         [HttpGet]
-        public async Task<IActionResult> PayPlayerTransfer(int transferId)
+        public async Task<IActionResult> PayPlayerTransfer(string transferId)
         {
+            var decryptedTransferId = _encryptionService.DecryptToInt(transferId);
+
             var transfer = await _context.Transfer
-                .Where(mo => mo.TransferId == transferId)
+                .Where(mo => mo.TransferId == decryptedTransferId)
                 .Include(s => s.Player)
                 .Include(s => s.SellerClub)
                 .Include(s => s.CustomerClub)
@@ -391,7 +398,7 @@ namespace MyField.Controllers
 
             var viewModel = new PayPlayerTransferViewModel
             {
-                TransferId = transferId,
+                TransferId = decryptedTransferId,
                 PlayerId = transfer.Player.Id,
                 PlayerTransferMarketId = transfer.PlayerTransferMarketId,
                 SellerClubId = transfer.SellerClubId,
@@ -413,6 +420,7 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+
         [Authorize(Roles = ("Club Administrator"))]
         public async Task<IActionResult> PayPlayerTransfer(PayPlayerTransferViewModel viewModel)
         {
@@ -420,6 +428,8 @@ namespace MyField.Controllers
             {
                 return View(viewModel);
             }
+
+
 
             try
             {
@@ -463,14 +473,16 @@ namespace MyField.Controllers
                     return Json(new { success = false, message = "Player transfer not found." });
                 }
 
+                var encryptedTransferId = _encryptionService.Encrypt(viewModel.TransferId);
+
                 int paymentId = newPayment.PaymentId;
                 decimal totalPrice = viewModel.PlayerAmount;
-                int transferId = viewModel.TransferId;
-                var returnUrl = Url.Action("PayFastReturn", "Billings", new { paymentId, transferId, totalPrice }, Request.Scheme);
+                string transferId = encryptedTransferId;
+                var returnUrl = Url.Action("PayFastReturn", "Billings", new { paymentId, encryptedTransferId, totalPrice }, Request.Scheme);
                 returnUrl = HttpUtility.UrlEncode(returnUrl);
                 var cancelUrl = "https://newcafeteriabykhaya.azurewebsites.net";
 
-                string paymentUrl = GeneratePayFastPaymentUrl(paymentId, totalPrice, transferId, returnUrl, cancelUrl);
+                string paymentUrl = GeneratePayFastPaymentUrl(paymentId, totalPrice, encryptedTransferId, returnUrl, cancelUrl);
 
                 await _activityLogger.Log($"Initiated payment for {player.FirstName} {player.LastName} transfer.", user.Id);
 
@@ -495,7 +507,7 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Club Administrator"))]
-        public async Task<IActionResult> PayFastReturn(int paymentId, int transferId, decimal totalPrice)
+        public async Task<IActionResult> PayFastReturn(int paymentId, string encryptedTransferId, decimal totalPrice)
         {
             try
             {
@@ -507,8 +519,12 @@ namespace MyField.Controllers
                     return Json(new { success = false, message = "Payment not found." });
                 }
 
+               
+
+                var decryptedTransferId = _encryptionService.DecryptToInt(encryptedTransferId);
+
                 var playerTransfer = await _context.Transfer
-                    .Where(mo => mo.TransferId == transferId)
+                    .Where(mo => mo.TransferId == decryptedTransferId)
                     .Include(s => s.Player)
                     .Include(s => s.PlayerTransferMarket)
                     .Include(s => s.SellerClub)
@@ -533,8 +549,8 @@ namespace MyField.Controllers
 
                 if (playerTransfer == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Player transfer with TransferId: {transferId} not found.");
-                    return Json(new { success = false, message = $"Player transfer not found with TransferId: {transferId}" });
+                    System.Diagnostics.Debug.WriteLine($"Player transfer with TransferId: {decryptedTransferId} not found.");
+                    return Json(new { success = false, message = $"Player transfer not found with TransferId: {decryptedTransferId}" });
                 }
 
                 decimal roundedAmountPaid = Math.Round(payment.AmountPaid, 2);
@@ -636,7 +652,7 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Club Administrator"))]
-        private string GeneratePayFastPaymentUrl(int paymentId, decimal amount, int transferId, string returnUrl, string cancelUrl)
+        private string GeneratePayFastPaymentUrl(int paymentId, decimal amount, string encryptedTransferId, string returnUrl, string cancelUrl)
         {
 
 
@@ -646,7 +662,7 @@ namespace MyField.Controllers
             int amountInCents = (int)(amount * 100);
             string amountString = amount.ToString("0.00").Replace(',', '.');
 
-            string paymentUrl = $"https://sandbox.payfast.co.za/eng/process?merchant_id={merchantId}&merchant_key={merchantKey}&return_url={returnUrl}&cancel_url={cancelUrl}&amount={amountInCents}&item_name=Order+Payment&payment_id={paymentId}&transfer_id={transferId}&amount={amountString}";
+            string paymentUrl = $"https://sandbox.payfast.co.za/eng/process?merchant_id={merchantId}&merchant_key={merchantKey}&return_url={returnUrl}&cancel_url={cancelUrl}&amount={amountInCents}&item_name=Order+Payment&payment_id={paymentId}&transfer_id={encryptedTransferId}&amount={amountString}";
 
             return paymentUrl;
         }
@@ -680,10 +696,13 @@ namespace MyField.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> PayFines(int fineId)
+        public async Task<IActionResult> PayFines(string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
+
             var fine = await _context.Fines
-                .Where(mo => mo.FineId == fineId)   
+                .Where(mo => mo.FineId == decryptedFineId)   
                 .Include(f => f.Club)
                 .Include(f => f.Offender)
                 .FirstOrDefaultAsync();
@@ -695,7 +714,7 @@ namespace MyField.Controllers
 
             var viewModel = new PayFineViewModel
             {
-                FineId = fineId,    
+                FineId = decryptedFineId,    
                 FineDetails = fine.FineDetails,
                 FineAmount = fine.FineAmount,
                 FineDueDate = fine.FineDuDate,
@@ -750,15 +769,17 @@ namespace MyField.Controllers
                     return Json(new { success = false, message = "Fine not found." });
                 }
 
+                var encryptedFineId = _encryptionService.Encrypt(viewModel.FineId);
+                var encryptedPaymentId = _encryptionService.Encrypt(newPayment.PaymentId);
+
                 int paymentId = newPayment.PaymentId;
                 decimal totalPrice = viewModel.FineAmount;
-                int fineId = viewModel.FineId;
 
-                var returnUrl = Url.Action("PayFinePayFastReturn", "Billings", new { paymentId, fineId, totalPrice }, Request.Scheme);
+                var returnUrl = Url.Action("PayFinePayFastReturn", "Billings", new { encryptedPaymentId, encryptedFineId, totalPrice }, Request.Scheme);
                 returnUrl = HttpUtility.UrlEncode(returnUrl);
                 var cancelUrl = "https://newcafeteriabykhaya.azurewebsites.net";
 
-                string paymentUrl = GeneratePayFineFastPaymentUrl(paymentId, totalPrice, fineId, returnUrl, cancelUrl);
+                string paymentUrl = GeneratePayFineFastPaymentUrl(encryptedPaymentId, totalPrice, encryptedFineId, returnUrl, cancelUrl);
 
                 await _activityLogger.Log($"Initiated payment for {fine?.Offender?.FirstName} {fine?.Offender?.LastName} {fine?.Club?.ClubName} fine.", user.Id);
                 return Redirect(paymentUrl);
@@ -780,29 +801,33 @@ namespace MyField.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> PayFinePayFastReturn(int paymentId, int fineId, decimal totalPrice)
+        public async Task<IActionResult> PayFinePayFastReturn(string encryptedPaymentId, string encryptedFineId, decimal totalPrice)
         {
             try
             {
-                var payment = await _context.Payments.FirstOrDefaultAsync(p => p.PaymentId == paymentId);
+                var decryptedFineId = _encryptionService.DecryptToInt(encryptedFineId);
+                var decryptedPaymentId = _encryptionService.DecryptToInt(encryptedPaymentId);
+
+
+                var payment = await _context.Payments.FirstOrDefaultAsync(p => p.PaymentId == decryptedPaymentId);
                 if (payment == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Payment with PaymentId: {paymentId} not found.");
+                    System.Diagnostics.Debug.WriteLine($"Payment with PaymentId: {decryptedPaymentId} not found.");
                     return Json(new { success = false, message = "Payment not found." });
                 }
 
                 System.Diagnostics.Debug.WriteLine($"Payment found: {payment.PaymentId}, AmountPaid: {payment.AmountPaid}");
 
                 var fine = await _context.Fines
-                    .Where(mo => mo.FineId == fineId)
+                    .Where(mo => mo.FineId == decryptedFineId)
                     .Include(s => s.Club)
                     .Include(s => s.Offender)
                     .FirstOrDefaultAsync();
 
                 if (fine == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Player transfer with TransferId: {fineId} not found.");
-                    return Json(new { success = false, message = $"Player transfer not found with TransferId: {fineId}" });
+                    System.Diagnostics.Debug.WriteLine($"Player transfer with TransferId: {decryptedFineId} not found.");
+                    return Json(new { success = false, message = $"Player transfer not found with TransferId: {decryptedFineId}" });
                 }
 
                 System.Diagnostics.Debug.WriteLine($"Player transfer found: {fine.FineId}, PlayerId: {fine.OffenderId}");
@@ -872,7 +897,7 @@ namespace MyField.Controllers
                     CreatedById = userId,
                 };
 
-                newInvoice.InvoiceNumber = GenerateInvoiceNumber(paymentId);
+                newInvoice.InvoiceNumber = GenerateInvoiceNumber(decryptedPaymentId);
                 newInvoice.IsEmailed = true;
 
                 _context.Add(newInvoice);
@@ -907,10 +932,13 @@ namespace MyField.Controllers
         }
 
         [Authorize]
-        private string GeneratePayFineFastPaymentUrl(int paymentId, decimal amount, int fineId, string returnUrl, string cancelUrl)
+        private string GeneratePayFineFastPaymentUrl(string encryptedPaymentId, decimal amount, string encryptedFineId, string returnUrl, string cancelUrl)
         {
+
+            var decryptedFineId = _encryptionService.DecryptToInt(encryptedFineId);   
+
             var fine = _context.Fines
-                .Where(mo => mo.FineId == fineId)
+                .Where(mo => mo.FineId == decryptedFineId)
                 .Include(f => f.Offender)
                 .Include(f => f.Club)
                 .FirstOrDefault();
@@ -924,7 +952,7 @@ namespace MyField.Controllers
             // Replace unwanted characters such as \r\n with an empty string
             string fineDetails = fine?.FineDetails?.Replace("\r\n", "");
 
-            string paymentUrl = $"https://sandbox.payfast.co.za/eng/process?merchant_id={merchantId}&merchant_key={merchantKey}&return_url={returnUrl}&cancel_url={cancelUrl}&amount={amountInCents}&item_name={fine?.Offender?.FirstName} {fine?.Offender?.LastName} {fine?.Club?.ClubName} fine charges for offence:{fineDetails}&payment_id={paymentId}&fine_id={fineId}&amount={amountString}";
+            string paymentUrl = $"https://sandbox.payfast.co.za/eng/process?merchant_id={merchantId}&merchant_key={merchantKey}&return_url={returnUrl}&cancel_url={cancelUrl}&amount={amountInCents}&item_name={fine?.Offender?.FirstName} {fine?.Offender?.LastName} {fine?.Club?.ClubName} fine charges for offence:{fineDetails}&payment_id={encryptedPaymentId}&fine_id={encryptedFineId}&amount={amountString}";
 
             return paymentUrl;
         }

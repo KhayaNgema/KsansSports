@@ -15,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using MyField.Services;
 using Microsoft.AspNetCore.Authorization;
+using Hangfire;
 
 namespace MyField.Controllers
 {
@@ -24,17 +25,45 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
+        private readonly IEncryptionService _encryptionService;
 
 
         public FinesController(Ksans_SportsDbContext context,
               UserManager<UserBaseModel> userManager,
               IActivityLogger activityLogger,
-              EmailService emailService)
+              EmailService emailService,
+              IEncryptionService encryptionService)
         {
             _userManager = userManager;
             _context = context;
             _activityLogger = activityLogger;
             _emailService = emailService;
+            _encryptionService = encryptionService;
+        }
+
+        public async Task<IActionResult> Details (string fineId)
+        {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
+            if (decryptedFineId == null)
+            {
+                return NotFound();
+            }
+
+            var fine = await _context.Fines
+                .Where(f => f.FineId == decryptedFineId)
+                .FirstOrDefaultAsync();
+
+            var viewModel = new FineDetailsViewModel
+            {
+                FineId = decryptedFineId,
+                FineDetails = fine.FineDetails,
+                FineAmount = fine.FineAmount,
+                FineDueDate = fine.FineDuDate,
+                PaymentStatus = fine.PaymentStatus
+            };
+
+            return View(viewModel);
         }
 
 
@@ -52,7 +81,7 @@ namespace MyField.Controllers
             return PartialView("_PendingClubFinesPartial", _pendingFines);
         }
 
-        [Authorize(Roles = ("Sport Administrator"))]
+        [Authorize(Roles = "Sport Administrator")]
         public async Task<IActionResult> PaidClubFines()
         {
             var paidFines = await _context.Fines
@@ -65,6 +94,7 @@ namespace MyField.Controllers
 
             return PartialView("_PaidClubFinesPartial", paidFines);
         }
+
 
         [Authorize(Roles = ("Sport Administrator"))]
         public async Task<IActionResult> OverdueClubFines()
@@ -349,35 +379,31 @@ namespace MyField.Controllers
                 if (newSavedFine?.Offender != null)
                 {
                     string offenderEmailBody = $@"
-                Hi {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName},<br/><br/>
-                You have been fined for the following violation:<br/><br/>
-                Rule Violated: {newSavedFine.RuleViolated}<br/>
-                Fine Amount: {newSavedFine.FineAmount}<br/>
-                Due Date: {newSavedFine.FineDuDate.ToShortDateString()}<br/><br/>
-                Please ensure that you pay the fine by the due date. If you have any questions, contact our support team.<br/><br/>
-                Kind regards,<br/>
-                K&S Foundation Finance Team
-                ";
+            Hi {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName},<br/><br/>
+            You have been fined for the following violation:<br/><br/>
+            Rule Violated: {newSavedFine.RuleViolated}<br/>
+            Fine Amount: {newSavedFine.FineAmount}<br/>
+            Due Date: {newSavedFine.FineDuDate.ToShortDateString()}<br/><br/>
+            Please ensure that you pay the fine by the due date. If you have any questions, contact our support team.<br/><br/>
+            Kind regards,<br/>
+            K&S Foundation Finance Team
+            ";
 
-                    await _emailService.SendEmailAsync(
-                        newSavedFine.Offender.Email,
-                        "Fine Notification",
-                        offenderEmailBody);
+                    BackgroundJob.Enqueue<EmailService>(service =>
+                        service.SendEmailAsync(newSavedFine.Offender.Email, "Fine Notification", offenderEmailBody));
                 }
 
                 string userEmailBody = $@"
-            Hi {user.FirstName} {user.LastName},<br/><br/>
-            You have successfully filed a fine against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}.<br/><br/>
-            The offence requires a payment of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate.ToShortDateString()}.<br/><br/>
-            The email concerning this charge has been sent to the relevant individual.<br/><br/>
-            Kind regards,<br/>
-            K&S Foundation Finance Team
-                ";
+        Hi {user.FirstName} {user.LastName},<br/><br/>
+        You have successfully filed a fine against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}.<br/><br/>
+        The offence requires a payment of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate.ToShortDateString()}.<br/><br/>
+        The email concerning this charge has been sent to the relevant individual.<br/><br/>
+        Kind regards,<br/>
+        K&S Foundation Finance Team
+        ";
 
-                await _emailService.SendEmailAsync(
-                    user.Email,
-                    "Fine Filed Successfully",
-                    userEmailBody);
+                BackgroundJob.Enqueue<EmailService>(service =>
+                    service.SendEmailAsync(user.Email, "Fine Filed Successfully", userEmailBody));
 
                 TempData["Message"] = $"You have successfully filed a fine/offence against {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName}. The offence is required to pay an amount of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate}. The email concerning this charge has been sent to the relevant individual.";
                 await _activityLogger.Log($"Charged {newSavedFine.Offender.FirstName} {newSavedFine.Offender.LastName} R{newSavedFine.FineAmount} for {newSavedFine.RuleViolated}", user.Id);
@@ -393,6 +419,7 @@ namespace MyField.Controllers
 
             return View(viewModel);
         }
+
 
         [Authorize(Roles = ("Sport Administrator"))]
         public IActionResult CreateCLubFine()
@@ -454,10 +481,8 @@ namespace MyField.Controllers
                 K&S Foundation Finance Team
                    ";
 
-                    await _emailService.SendEmailAsync(
-                        clubEmail,
-                        "Club Fine Notification",
-                        emailBody);
+                    BackgroundJob.Enqueue<EmailService>(service =>
+                        service.SendEmailAsync(clubEmail, "Fine Notification", emailBody));
                 }
 
                 TempData["Message"] = $"You have successfully filed a fine/offence against {newSavedFine.Club.ClubName}. The club is required to pay an amount of {newSavedFine.FineAmount} before {newSavedFine.FineDuDate}. The email concerning this charge has been sent to the relevant club.";
@@ -473,11 +498,12 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
-        public async Task<IActionResult> UpdateClubFine (int? fineId)
+        public async Task<IActionResult> UpdateClubFine (string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
 
             var clubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == decryptedFineId)
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
@@ -486,7 +512,7 @@ namespace MyField.Controllers
 
             var viewModel = new UpdateClubFineViewModel
             {
-                FineId = fineId,
+                FineId = decryptedFineId,
                 ClubName = club.ClubName,
                 RuleViolated = clubFine.RuleViolated,
                 FineDetails = clubFine.FineDetails,
@@ -500,9 +526,9 @@ namespace MyField.Controllers
         [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateClubFine(int? fineId, UpdateClubFineViewModel viewModel)
+        public async Task<IActionResult> UpdateClubFine(UpdateClubFineViewModel viewModel)
         {
-            if (fineId == null)
+            if (viewModel.FineId == null)
             {
                 return NotFound();
             }
@@ -510,7 +536,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var existingClubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == viewModel.FineId)
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
@@ -572,8 +598,10 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> MarkOverDueClubFine(int? fineId)
+        public async Task<IActionResult> MarkOverDueClubFine(string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
             if (fineId == null)
             {
                 return NotFound();
@@ -582,7 +610,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var existingClubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == decryptedFineId)
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
@@ -627,8 +655,10 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> DropClubFine(int? fineId)
+        public async Task<IActionResult> DropClubFine(string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
             if (fineId == null)
             {
                 return NotFound();
@@ -637,7 +667,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var existingClubFine = await _context.Fines
-                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == fineId)
+                .Where(e => e.ClubId != null && e.OffenderId == null && e.FineId == decryptedFineId)
                 .Include(e => e.Club)
                 .FirstOrDefaultAsync();
 
@@ -676,11 +706,13 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("Personnel Administrator"))]
         [HttpGet]
-        public async Task<IActionResult> UpdateIndividualFine(int? fineId)
+        public async Task<IActionResult> UpdateIndividualFine(string fineId)
         {
 
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
             var individualFine = await _context.Fines
-                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == decryptedFineId)
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
@@ -689,7 +721,7 @@ namespace MyField.Controllers
 
             var viewModel = new UpdateIndividualFineViewModel
             {
-                FineId = fineId,
+                FineId = decryptedFineId,
                 FullNames = $"{offender.FirstName} {offender.LastName}",
                 RuleViolated = individualFine.RuleViolated,
                 FineDetails = individualFine.FineDetails,
@@ -704,9 +736,11 @@ namespace MyField.Controllers
         [Authorize(Roles = ("Personnel Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateIndividualFine(int? fineId, UpdateIndividualFineViewModel viewModel)
+        public async Task<IActionResult> UpdateIndividualFine(UpdateIndividualFineViewModel viewModel)
         {
-            if (fineId == null)
+
+
+            if (viewModel.FineId == null)
             {
                 return NotFound();
             }
@@ -714,7 +748,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var individualFine = await _context.Fines
-                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == viewModel.FineId)
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
@@ -774,8 +808,10 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Personnel Administrator"))]
-        public async Task<IActionResult> MarkOverDueIndividualFine(int? fineId)
+        public async Task<IActionResult> MarkOverDueIndividualFine(string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
             if (fineId == null)
             {
                 return NotFound();
@@ -784,7 +820,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var individualFine = await _context.Fines
-                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == decryptedFineId)
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 
@@ -828,8 +864,10 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Personnel Administrator"))]
-        public async Task<IActionResult> DropIndividualFine(int? fineId)
+        public async Task<IActionResult> DropIndividualFine(string fineId)
         {
+            var decryptedFineId = _encryptionService.DecryptToInt(fineId);
+
             if (fineId == null)
             {
                 return NotFound();
@@ -838,7 +876,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
 
             var individualFine = await _context.Fines
-                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == fineId)
+                .Where(e => e.ClubId == null && e.OffenderId != null && e.FineId == decryptedFineId)
                 .Include(e => e.Offender)
                 .FirstOrDefaultAsync();
 

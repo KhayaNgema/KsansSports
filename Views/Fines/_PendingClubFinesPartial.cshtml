@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 <br />
 @if (Model.Any())
 {
@@ -28,6 +28,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedFineId = encryptionService.Encrypt(item.FineId);
+
                     <tr class="ellipsis">
                         <td style="white-space: nowrap;">
                             <img src="~/@item.Club.ClubBadge" alt="@item.Club.ClubName" class="club-badge-image" />
@@ -43,13 +45,13 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.FineId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("UpdateClubFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("UpdateClubFine", "Fines", new { fineId = encryptedFineId })">
                                     <i class="fas fa-pen" style="color: blue;"></i> Update
                                 </a>
-                                <a class="tab-item" href="@Url.Action("MarkOverDueClubFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("MarkOverDueClubFine", "Fines", new { fineId = encryptedFineId })">
                                     <i class="fas fa-clock" style="color: red;"></i> Mark overdue
                                 </a>
-                                <a class="tab-item" href="@Url.Action("DropClubFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("DropClubFine", "Fines", new { fineId = encryptedFineId})">
                                     <i class="fas fa-trash" style="color: red;"></i> Drop charges
                                 </a>
                             </div>

@@ -24,16 +24,19 @@ namespace MyField.Controllers
         private readonly FileUploadService _fileUploadService;
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
+        private readonly IEncryptionService _encryptionService;
 
         public ClubsController(Ksans_SportsDbContext context, 
             FileUploadService fileUploadService, 
             UserManager<UserBaseModel> userManager,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            IEncryptionService encryptionService)
         {
             _context = context;
             _fileUploadService = fileUploadService;
             _userManager = userManager;
             _activityLogger = activityLogger;
+            _encryptionService = encryptionService;
         }
 
         public async Task<IActionResult> LeagueClubs()
@@ -211,15 +214,17 @@ namespace MyField.Controllers
 
 
         [Authorize]
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string clubId)
         {
-            if (id == null || _context.Club == null)
+            var decryptedClubId = _encryptionService.DecryptToInt(clubId);
+
+            if (decryptedClubId == null || _context.Club == null)
             {
                 return NotFound();
             }
 
             var club = await _context.Club
-                .FirstOrDefaultAsync(m => m.ClubId == id);
+                .FirstOrDefaultAsync(m => m.ClubId == decryptedClubId);
             if (club == null)
             {
                 return NotFound();
@@ -230,9 +235,11 @@ namespace MyField.Controllers
 
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> RejoinSeason(int clubId)
+        public async Task<IActionResult> RejoinSeason(string clubId)
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+            var decryptedClubId = _encryptionService.DecryptToInt(clubId);
 
             if (currentLeague == null)
             {
@@ -240,7 +247,7 @@ namespace MyField.Controllers
                 return View();
             }
 
-            var existingClub = await _context.Club.FindAsync(clubId);
+            var existingClub = await _context.Club.FindAsync(decryptedClubId);
 
             if (existingClub == null)
             {
@@ -549,12 +556,14 @@ namespace MyField.Controllers
 
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> SuspendClub(int id)
+        public async Task<IActionResult> SuspendClub(string clubId)
         {
             var user = await _userManager.GetUserAsync(User);
 
+            var decryptedClubId = _encryptionService.DecryptToInt(clubId);
+
             var club = await _context.Club
-                .Where( c => c.ClubId == id)
+                .Where( c => c.ClubId == decryptedClubId)
                 .FirstOrDefaultAsync(); 
 
             if (club.IsSuspended == true)
@@ -580,12 +589,14 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> UnsuspendClub(int id)
+        public async Task<IActionResult> UnsuspendClub(string clubId)
         {
             var user = await _userManager.GetUserAsync(User);
 
+            var decryptedClubId = _encryptionService.DecryptToInt(clubId);
+
             var club = await _context.Club
-                .Where(c => c.ClubId == id)
+                .Where(c => c.ClubId == decryptedClubId)
                 .FirstOrDefaultAsync();
 
             if (club.IsSuspended == false)
@@ -609,11 +620,13 @@ namespace MyField.Controllers
 
 
         [Authorize(Roles = ("Sport Administrator, Club Administrator"))]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string clubId)
         {
             var logMessages = new List<string>();
 
-            if (id == null || _context.Club == null)
+            var decryptedClubId = _encryptionService.DecryptToInt(clubId);
+
+            if (decryptedClubId == null || _context.Club == null)
             {
                 var message = $"Edit called with null id or Club context is null";
                 Console.WriteLine(message);
@@ -622,11 +635,11 @@ namespace MyField.Controllers
                 return NotFound();
             }
 
-            var club = await _context.Club.FindAsync(id);
+            var club = await _context.Club.FindAsync(decryptedClubId);
 
             if (club == null)
             {
-                var message = $"Club with id {id} not found";
+                var message = $"Club with id {decryptedClubId} not found";
                 Console.WriteLine(message);
                 logMessages.Add(message);
                 TempData["LogMessages"] = logMessages;
@@ -635,7 +648,7 @@ namespace MyField.Controllers
 
             var clubViewModel = new UpdateClubViewModel
             {
-                ClubId = club.ClubId,
+                ClubId = decryptedClubId,
                 ClubName = club.ClubName,
                 Email = club.Email,
                 ClubLocation = club.ClubLocation,
@@ -653,20 +666,20 @@ namespace MyField.Controllers
         [Authorize(Roles = ("Sport Administrator, Club Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, UpdateClubViewModel viewModel, IFormFile ClubBadgeFile)
+        public async Task<IActionResult> Edit(UpdateClubViewModel viewModel, IFormFile ClubBadgeFile)
         {
             var logMessages = new List<string>();
 
             var user = await _userManager.GetUserAsync(User);
 
-            if (id != viewModel.ClubId)
+            if (viewModel.ClubId == null)
             {
                 return NotFound();
             }
 
             if (ValidateUpdatedProperties(viewModel))
             {
-                var club = await _context.Club.FindAsync(id);
+                var club = await _context.Club.FindAsync(viewModel.ClubId);
 
                 try
                 {
@@ -729,7 +742,7 @@ namespace MyField.Controllers
                 
             }
 
-            var existingClub = await _context.Club.FindAsync(id);
+            var existingClub = await _context.Club.FindAsync(viewModel.ClubId);
             viewModel.ClubBadges = existingClub.ClubBadge;
             return View(viewModel);
         }

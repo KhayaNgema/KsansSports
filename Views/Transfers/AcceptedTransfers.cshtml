@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Transfer>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 <br />
 @if (Model.Any())
@@ -34,6 +34,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedTransferId = encryptionService.Encrypt(item.TransferId.ToString());
+
                     <tr style="white-space:nowrap;">
                         <td>
                             <img src="~/@item.Player.ProfilePicture" alt="@item.Player.FirstName" class="club-badge-image" style="border-radius: 50%; width: 50px; height: 50px;" />
@@ -51,9 +53,7 @@
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
                         <td>
-
-                            <a href="@Url.Action("PayPlayerTransfer", "Billings",
-                                        new { transferId = item.TransferId})" class="btn btn-outline-success btn-sm">
+                            <a href="@Url.Action("PayPlayerTransfer", "Billings", new { transferId = encryptedTransferId })" class="btn btn-outline-success btn-sm">
                                 <i class="fas fa-money-bill-wave "></i>
                                 Pay @item.Player.MarketValue
                             </a>
@@ -72,8 +72,6 @@ else
 {
     <p class="text-center" style="margin-top: 20vh; margin-bottom: 20vh;">There are no accepted player transfers for this club </p>
 }
-
-
 
 <script>
     function filterTransfers() {

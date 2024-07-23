@@ -44,7 +44,6 @@
             </div>
         </div>
 
-
         <div style="border-top: 1px solid #ccc; margin: 5px 0;"></div>
         <div class="card-body">
             <form asp-controller="Billings" asp-action="PayPlayerTransfer" method="post">
@@ -87,27 +86,24 @@
                             <label>Market value:<strong>ZAR @Model?.PlayerAmount</strong></label>
                         </div>
 
-
                         <div class="mb-3">
                             <label>Status: <strong> <i class="fas fa-question-circle"></i>@Model?.PaymentStatus</strong></label>
                         </div>
                     </div>
 
-
-                    <input type="hidden" asp-for="TransferId" />
-                    <input type="hidden" asp-for="CustomerClubId" />
-                    <input type="hidden" asp-for="FirstName" />
-                    <input type="hidden" asp-for="LastName" />
-                    <input type="hidden" asp-for="Position" />
-                    <input type="hidden" asp-for="JerseyNumber" />
-                    <input type="hidden" asp-for="PlayerAmount" />
-                    <input type="hidden" asp-for="PlayerTransferMarketId" />
-                    <input type="hidden" asp-for="PlayerId" />
-                    <input type="hidden" asp-for="SellerClubId" />
-                    <input type="hidden" asp-for="SellerClubBadge" />
-                    <input type="hidden" asp-for="BuyerClubBadge" />
-                    <input type="hidden" asp-for="ProfilePicture" />
-
+                    <input type="hidden" asp-for="TransferId" value="@Model?.TransferId" />
+                    <input type="hidden" asp-for="CustomerClubId" value="@Model?.CustomerClubId" />
+                    <input type="hidden" asp-for="FirstName" value="@Model?.FirstName" />
+                    <input type="hidden" asp-for="LastName" value="@Model?.LastName" />
+                    <input type="hidden" asp-for="Position" value="@Model?.Position" />
+                    <input type="hidden" asp-for="JerseyNumber" value="@Model?.JerseyNumber" />
+                    <input type="hidden" asp-for="PlayerAmount" value="@Model?.PlayerAmount" />
+                    <input type="hidden" asp-for="PlayerTransferMarketId" value="@Model?.PlayerTransferMarketId" />
+                    <input type="hidden" asp-for="PlayerId" value="@Model?.PlayerId" />
+                    <input type="hidden" asp-for="SellerClubId" value="@Model?.SellerClubId" />
+                    <input type="hidden" asp-for="SellerClubBadge" value="@Model?.SellerClubBadge" />
+                    <input type="hidden" asp-for="BuyerClubBadge" value="@Model?.BuyerClubBadge" />
+                    <input type="hidden" asp-for="ProfilePicture" value="@Model?.ProfilePicture" />
 
                     <div class="text-end">
                         <button type="submit" class="btn btn-success">Proceed <i class="fa fa-money-bill-wave"></i></button>

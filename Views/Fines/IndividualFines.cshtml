@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "NFA Individual Fines";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -48,6 +48,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedFineId = encryptionService.Encrypt(item.FineId);
+
                     <tr class="ellipsis">
                         <td>
                             <img src="~/@item.Offender.ProfilePicture" alt="@item.Offender.FirstName" class="club-badge-image" style="border-radius: 50%; width: 50px; height: 50px;" />
@@ -71,13 +73,13 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.FineId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("UpdateIndividualFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("UpdateIndividualFine", "Fines", new { fineId = encryptedFineId })">
                                     <i class="fas fa-pen" style="color: blue;"></i> Update
                                 </a>
-                                <a class="tab-item" href="@Url.Action("MarkOverDueIndividualFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("MarkOverDueIndividualFine", "Fines", new { fineId = encryptedFineId  })">
                                     <i class ="fas fa-clock" style="color: red;"></i> Mark overdue
                                 </a>
-                                <a class="tab-item" href="@Url.Action("DropIndividualFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("DropIndividualFine", "Fines", new { fineId = encryptedFineId  })">
                                     <i class="fas fa-trash" style="color: red;"></i> Drop charges
                                 </a>
                             </div>

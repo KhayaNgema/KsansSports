@@ -32,14 +32,15 @@
                 <label><strong>Due Date:</strong> @Model.FineDueDate </label>
             </div>
 
-                        <input type="hidden" asp-for="FineId" />
-                        <input type="hidden" asp-for="FineAmount" />
-                        <input type="hidden" asp-for="FineDetails" />
-                        <input type="hidden" asp-for="FineDueDate" />
-                        <input type="hidden" asp-for="PaymentStatus" />
+                   
+                        <input type="hidden" asp-for="@Model.FineAmount" />
+                        <input type="hidden" asp-for="@Model.FineDetails" />
+                        <input type="hidden" asp-for="@Model.FineDueDate" />
+                        <input type="hidden" asp-for="@Model.PaymentStatus" />
 
 
             <div class="text-end">
+                            <input type="hidden" asp-for="FineId" value="@Model?.FineId" />
                 <button type="submit" class="btn btn-success">Proceed <i class="fa fa-money-bill-wave"></i></button>
             </div>
           </div>

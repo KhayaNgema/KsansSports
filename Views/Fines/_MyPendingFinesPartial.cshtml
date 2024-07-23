@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 <br />
 
@@ -8,6 +9,9 @@
         <div class="row">
             @foreach (var item in Model)
             {
+                var encryptedFineId = encryptionService.Encrypt(item.FineId.ToString());
+
+
                 <div class="col-sm-12 col-md-12 col-lg-4 mb-3">
                     <div class="card shadow-sm fines-card fines-card-@item.FineId">
                         <div class="card-header d-flex" style="background-color: #324260; color: white; padding: 0.5rem;">
@@ -20,7 +24,7 @@
                             <p style="margin: 0.25rem 0; font-size: 14px;"><strong>Due Date:</strong> @Html.DisplayFor(modelItem => item.FineDuDate)</p>
                             <p style="margin: 0.25rem 0; font-size: 14px;"><strong>Payment Status:</strong> @Html.DisplayFor(modelItem => item.PaymentStatus)</p>
                             <div style="position: absolute; bottom: 10px; right: 10px; display: flex; justify-content: flex-end;">
-                                <a href="@Url.Action("PayFines", "Billings", new { fineId = item.FineId })" class="btn btn-outline-success btn-sm" style="margin-right: 0.5rem;">
+                                <a href="@Url.Action("PayFines", "Billings", new { fineId = encryptedFineId })" class="btn btn-outline-success btn-sm" style="margin-right: 0.5rem;">
                                     <i class="fas fa-money-bill-wave"></i> Pay @item.FineAmount
                                 </a>
                             </div>

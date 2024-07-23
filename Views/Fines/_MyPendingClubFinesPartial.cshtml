@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 <br />
 
 @if (Model.Any())
@@ -17,6 +18,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedFineId = encryptionService.Encrypt(item.FineId.ToString());
+
                     <tr class="ellipsis">
                         <td>@Html.DisplayFor(modelItem => item.FineDetails)</td>
                         <td>@Html.DisplayFor(modelItem => item.FineAmount)</td>
@@ -24,11 +27,11 @@
                         <td>@Html.DisplayFor(modelItem => item.PaymentStatus)</td>
                         <td>
                             <a href="@Url.Action("PayFines", "Billings",
-                                        new { fineId = item.FineId})" class="btn btn-outline-success btn-sm">
+                                        new { fineId = encryptedFineId})" class="btn btn-outline-success btn-sm">
                                 <i class="fas fa-money-bill-wave "></i>
                                 Pay @item.FineAmount
                             </a>
-                            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.FineId"><i class="fa fa-info-circle"></i> Details</a>
+                            <a class="btn btn-outline-primary" asp-controller="Fines" asp-action="Details" asp-route-fineId="@encryptedFineId"><i class="fa fa-info-circle"></i> Details</a>
                         </td>
                     </tr>
                 }

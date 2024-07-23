@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Club>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 @{
     ViewData["Title"] = "Clubs";
@@ -80,6 +81,8 @@
                 @foreach (var item in Model.DistinctBy(club => club.ClubId))
                 {
                     var dropdownId = "dropdownMenuButton" + item.ClubId;
+                    var encryptedClubId = encryptionService.Encrypt(@item.ClubId);
+
                     <tr>
                         <td class="column-max-width">
                             <img src="~/@item.ClubBadge" alt="@item.ClubName" class="club-badge-image" style="margin-right: 20px;" />
@@ -155,16 +158,16 @@
                                     Actions
                                 </button>
                                 <div class="action-tab" id="actionTab-@item.ClubId" style="display: none;">
-                                    <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = item.ClubId })">
+                                    <a class="tab-item" href="@Url.Action("RejoinSeason", "Clubs", new { clubId = encryptedClubId })">
                                         <i class="fas fa-sign-in-alt" style="color: #28a745;"></i> Rejoin
                                     </a>
-                                    <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { id = item.ClubId })">
+                                    <a class="tab-item" href="@Url.Action("Edit", "Clubs", new { clubId = encryptedClubId })">
                                         <i class="fas fa-pen" class="tab-item" style="color: blue;"></i> Update
                                     </a>
-                                    <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { id = item.ClubId })">
+                                    <a class="tab-item" href="@Url.Action("SuspendClub", "Clubs", new { clubId = encryptedClubId  })">
                                         <i class="fas fa-ban" style="color: #dc3545;"></i> Suspend
                                     </a>
-                                    <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { id = item.ClubId })">
+                                    <a class="tab-item" href="@Url.Action("UnsuspendClub", "Clubs", new { clubId = encryptedClubId })">
                                         <i class="fas fa-check-circle" style="color: #ffc107;"></i> Unsuspend
                                     </a>
                                 </div>
@@ -175,7 +178,7 @@
 
                         }
                         <td style="white-space: nowrap;">
-                            <a href="@Url.Action("Details", "Clubs", new { id = item.ClubId })" class="btn btn-outline-primary btn-sm">
+                            <a href="@Url.Action("Details", "Clubs", new { clubId = encryptedClubId })" class="btn btn-outline-primary btn-sm">
                                 <i class="fas fa-info-circle" style="color: #2E5A88;"></i>
                                 Details
                             </a>
