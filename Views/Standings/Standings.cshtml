@@ -1,5 +1,6 @@
 ﻿
 @model IEnumerable<MyField.Models.Standing>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 @{
     ViewData["Title"] = "Index";
@@ -64,6 +65,9 @@
                     }
                     @foreach (var item in Model)
                     {
+                        var encryptedStandingsId = encryptionService.Encrypt(item.StandingId);
+
+
                         @if (!string.IsNullOrEmpty(item.Reason))
                         {
                             <tr>
@@ -101,7 +105,7 @@
                                 @Html.DisplayFor(modelItem => item.Points)
                             </td>
                             <td style="white-space: nowrap;">
-                                <a asp-controller="Standings" asp-action="EditPoints" class="btn btn-outline-primary" asp-route-id="@item.StandingId">
+                                <a asp-controller="Standings" asp-action="EditPoints" class="btn btn-outline-primary" asp-route-standingId="@encryptedStandingsId ">
                                     <i class="fa fa-pen"></i> Update
                                 </a>
                             </td>

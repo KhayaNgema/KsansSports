@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.SportNews>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 @{
     ViewData["Title"] = "Sport News";
@@ -25,6 +26,8 @@
 <div class="row justify-content-center">
     @foreach (var item in Model)
     {
+        var ecryptedNewsId = encryptionService.Encrypt(item.NewsId);
+
         <div class="col-lg-4 col-md-12 col-sm-12 mb-4">
             <div class="card">
 
@@ -38,7 +41,7 @@
                         @if (item.NewsBody.Length > 100)
                         {
                             @item.NewsBody.Substring(0, 100) <text>...</text>
-                            <a href="@Url.Action("Details", "SportNews", new { newsId = item.NewsId })">Read More</a>
+                            <a href="@Url.Action("Details", "SportNews", new { newsId = ecryptedNewsId })">Read More</a>
                         }
                         else
                         {

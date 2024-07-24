@@ -1,8 +1,10 @@
 ﻿@model MyField.Models.SportNews
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
+
+    var encryptedNewsId = encryptionService.Encrypt(Model.NewsId);
 }
 <br />
 @await Html.PartialAsync("_HomeButton")
@@ -32,17 +34,17 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <form asp-action="ApproveNews" asp-route-newsId="@Model.NewsId" method="post">
+            <form asp-action="ApproveNews" asp-route-newsId="@encryptedNewsId" method="post">
                 <button type="submit" class="btn btn-success"><i class="fa fa-check-circle"></i> Approve</button>
             </form>
         </div>
         <div class="col-4">
-            <a href="@Url.Action("AskReEditNews", new { newsId = Model.NewsId })" class="btn btn-primary">
+            <a href="@Url.Action("AskReEditNews", new { newsId = encryptedNewsId  })" class="btn btn-primary">
                 <i class="fa fa-pen"></i> Re-edit
             </a>
         </div>
         <div class="col-4">
-            <form asp-action="DeclineNews" asp-route-newsId="@Model.NewsId" method="post">
+            <form asp-action="DeclineNews" asp-route-newsId="@encryptedNewsId" method="post">
                 <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"></i> Decline</button>
             </form>
         </div>

@@ -23,16 +23,19 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
+        private readonly IEncryptionService _encryptionService;
 
         public StandingsController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager,
             IActivityLogger activityLogger,
-            EmailService emailService)
+            EmailService emailService,
+            IEncryptionService encryptionService)
         {
             _context = context;
             _userManager = userManager; 
             _activityLogger = activityLogger;
             _emailService =  emailService;
+            _encryptionService = encryptionService;
         }
 
         [Authorize(Policy = "AnyRole")]
@@ -164,11 +167,13 @@ namespace MyField.Controllers
 
 
         [Authorize(Roles =("Sport Administrator"))]
-        public async Task<IActionResult> EditPoints(int? id)
+        public async Task<IActionResult> EditPoints(string standingId)
         {
             var logMessages = new List<string>();
 
-            if (id == null)
+            var decryptedStandingId = _encryptionService.DecryptToInt(standingId);
+
+            if (decryptedStandingId == null)
             {
                 var message = "EditPoints called with null id";
                 Console.WriteLine(message);
@@ -179,11 +184,11 @@ namespace MyField.Controllers
 
             var standing = await _context.Standing
                                         .Include(s => s.Club)
-                                        .FirstOrDefaultAsync(s => s.StandingId == id);
+                                        .FirstOrDefaultAsync(s => s.StandingId == decryptedStandingId);
 
             if (standing == null)
             {
-                var message = $"Standing with id {id} not found";
+                var message = $"Standing with id {decryptedStandingId} not found";
                 Console.WriteLine(message);
                 logMessages.Add(message);
                 TempData["LogMessages"] = logMessages;
@@ -192,7 +197,7 @@ namespace MyField.Controllers
 
             var viewModel = new StandingPointsViewModel
             {
-                StandingId = standing.StandingId,
+                StandingId = decryptedStandingId,
                 Points = standing.Points,
                 Goals = standing.GoalDifference,
                 ClubName = standing.Club?.ClubName,

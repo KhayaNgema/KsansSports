@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<MyField.Models.SportNews>
+@inject MyField.Interfaces.IEncryptionService encryptionService
+
 
 @{
     ViewData["Title"] = "To Be Modified Sport News";
@@ -61,6 +63,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedNewsId = encryptionService.Encrypt(item.NewsId);
+
                     <tr class="ellipsis">
                         <td>
                             <img src="~/@item.NewsImage" alt="News Image" class="sport-news-image">
@@ -90,10 +94,10 @@
                                     Actions
                                 </button>
                                 <div class="action-tab" id="actionTab-@item.NewsId" style="display: none;">
-                                    <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = item.NewsId })">
+                                    <a class="tab-item" href="@Url.Action("ReEditNews", "SportNews", new {newsId = encryptedNewsId })">
                                         <i class="fas fa-pen" style="color: blue"></i> Re-edit
                                     </a>
-                                    <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = item.NewsId})">
+                                    <a class="tab-item" href="@Url.Action("DeleteSportNews", "SportNews", new { newsId = encryptedNewsId })">
                                         <i class="fa fa-trash" style="color: red;"></i> Delete
                                     </a>
                                 </div>

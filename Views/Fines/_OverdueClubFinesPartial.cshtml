@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fine>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 <br />
 <div class="table-responsive">
@@ -19,6 +20,8 @@
         <tbody>
             @foreach (var item in Model)
             {
+                    var encryptedFineId = encryptionService.Encrypt(item.FineId);
+
                 <tr class="ellipsis">
                     <td style="white-space: nowrap;">
                         <img src="~/@item.Club.ClubBadge" alt="@item.Club.ClubName" class="club-badge-image" />
@@ -34,10 +37,10 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.FineId" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("ClubFineDetails", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("Details", "Fines", new { fineId = encryptedFineId })">
                                     <i class="fas fa-info-circle" style="color: blue;"></i> Details
                                 </a>
-                                <a class="tab-item" href="@Url.Action("DropClubFine", "Fines", new { fineId = item.FineId })">
+                                <a class="tab-item" href="@Url.Action("DropClubFine", "Fines", new {  fineId = encryptedFineId })">
                                     <i class="fas fa-trash" style="color: red;"></i> Drop charges
                                 </a>
                             </div>

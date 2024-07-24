@@ -41,7 +41,7 @@ namespace MyField.Controllers
             _encryptionService = encryptionService;
         }
 
-        public async Task<IActionResult> Details (string fineId)
+        public async Task<IActionResult> Details(string fineId)
         {
             var decryptedFineId = _encryptionService.DecryptToInt(fineId);
 
@@ -84,15 +84,13 @@ namespace MyField.Controllers
         [Authorize(Roles = "Sport Administrator")]
         public async Task<IActionResult> PaidClubFines()
         {
-            var paidFines = await _context.Fines
+            var _paidFines = await _context.Fines
                 .Where(p => p.PaymentStatus == PaymentStatus.Paid && p.Club != null)
                 .Include(p => p.Club)
-                .Include(p => p.CreatedBy)
-                .Include(p => p.ModifiedBy)
                 .OrderByDescending(p => p.CreatedDateTime)
                 .ToListAsync();
 
-            return PartialView("_PaidClubFinesPartial", paidFines);
+            return PartialView("_PaidClubFinesPartial", _paidFines);
         }
 
 

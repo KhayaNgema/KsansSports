@@ -1,11 +1,13 @@
 ﻿@using System.Security.Claims
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @model MyField.ViewModels.PlayerProfileViewModel
 
 @{
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
+
+    var encryptedUserId = encryptionService.Encrypt(Model.UserId);
 }
 
 <br />
@@ -86,7 +88,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group" style="display: flex; justify-content: flex-end;">
-                        <a href="@Url.Action("UpdatePlayerProfile", new { userId = @Model.UserId })" class="btn btn-outline-primary">
+                        <a href="@Url.Action("UpdatePlayerProfile", new { userId = encryptedUserId  })" class="btn btn-outline-primary">
                             <i class="fa fa-pen"></i> Update
                         </a>
                     </div>

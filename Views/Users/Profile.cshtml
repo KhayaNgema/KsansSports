@@ -4,7 +4,7 @@
 @inject SignInManager<UserBaseModel> SignInManager
 @inject UserManager<UserBaseModel> UserManager
 @inject Ksans_SportsDbContext _context
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     var userRole = _context.UserRoles
         .Where(ur => ur.UserId == Model.UserId)
@@ -17,6 +17,8 @@
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
+    var encryptedUserId = encryptionService.Encrypt(Model.UserId);
+
 }
 
 <br />
@@ -84,15 +86,22 @@ else
         </div>
         @if (User.IsInRole("Personnel Administrator"))
         {
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group" style="display: flex; justify-content: flex-end;">
-                        <a href="@Url.Action("UpdateProfile", new { userId = @Model.UserId })" class="btn btn-outline-primary">
-                            <i class="fa fa-pen"></i> Update
-                        </a>
+            if(userRole == "Club Administrator")
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group" style="display: flex; justify-content: flex-end;">
+                            <a href="@Url.Action("UpdateClubAdministrator", new { userId = encryptedUserId  })" class="btn btn-outline-primary">
+                                <i class="fa fa-pen"></i> Update
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                
+            }
         }
         else if (User.IsInRole("Club Administrator"))
         {
@@ -101,7 +110,7 @@ else
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" style="display: flex; justify-content: flex-end;">
-                            <a href="@Url.Action("UpdateClubManager", new { userId = @Model.UserId })" class="btn btn-outline-primary">
+                            <a href="@Url.Action("UpdateClubManager", new { userId = encryptedUserId  })" class="btn btn-outline-primary">
                                 <i class="fa fa-pen"></i> Update
                             </a>
                         </div>

@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group" style="display: flex; justify-content: flex-end;">
-                        <input type="hidden" asp-for="NewsId" />
+                        <input type="hidden" asp-for="NewsId" value="@Model?.NewsId" />
                         <input type="submit" value="Save" class="btn btn-success" style="padding: 10px; margin-bottom: 10px;" />
                     </div>
                 </div>

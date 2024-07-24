@@ -24,18 +24,21 @@ namespace MyField.Controllers
         private readonly FileUploadService _fileUploadService;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
+        private readonly IEncryptionService _encryptionService;
 
         public SportNewsController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager, 
             FileUploadService fileUploadService,
             IActivityLogger activityLogger,
-            EmailService emailService)
+            EmailService emailService,
+            IEncryptionService encryptionService)
         {
             _context = context;
             _userManager = userManager;
             _fileUploadService = fileUploadService;
             _activityLogger = activityLogger;
             _emailService = emailService;
+            _encryptionService = encryptionService;
         }
 
         public async Task<IActionResult> SportNewsIndex()
@@ -45,8 +48,10 @@ namespace MyField.Controllers
 
 
         [Authorize(Roles =("News Administrator"))]
-        public async Task<IActionResult> NewsReview(int? newsId)
+        public async Task<IActionResult> NewsReview(string newsId)
         {
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
             if (newsId == null || _context.SportNew == null)
             {
                 return NotFound();
@@ -56,7 +61,7 @@ namespace MyField.Controllers
                 .FirstOrDefaultAsync();
 
             var individualNewsReports = await _context.IndividualNewsReports
-                .Where(i => i.SportNewsId == newsId)
+                .Where(i => i.SportNewsId == decryptedNewsId)
                 .Include(i => i.SportNews)
                 .FirstOrDefaultAsync();
 
@@ -70,7 +75,7 @@ namespace MyField.Controllers
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
                 .Include(s => s.RejectedBy)
-                .FirstOrDefaultAsync(m => m.NewsId == newsId);
+                .FirstOrDefaultAsync(m => m.NewsId == decryptedNewsId);
             if (sportNews == null)
             {
                 return NotFound();
@@ -269,8 +274,11 @@ namespace MyField.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Details(int? newsId)
+        public async Task<IActionResult> Details(string newsId)
         {
+
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
             if (newsId == null || _context.SportNew == null)
             {
                 return NotFound();
@@ -280,7 +288,7 @@ namespace MyField.Controllers
                 .FirstOrDefaultAsync();
 
             var individualNewsReports = await _context.IndividualNewsReports
-                .Where(i => i.SportNewsId == newsId)
+                .Where(i => i.SportNewsId == decryptedNewsId)
                 .Include(i => i.SportNews)
                 .FirstOrDefaultAsync();
 
@@ -301,7 +309,7 @@ namespace MyField.Controllers
                 .Include(s => s.ModifiedBy)
                 .Include(s => s.PublishedBy)
                 .Include(s => s.RejectedBy)
-                .FirstOrDefaultAsync(m => m.NewsId == newsId);
+                .FirstOrDefaultAsync(m => m.NewsId == decryptedNewsId);
             if (sportNews == null)
             {
                 return NotFound();
@@ -413,15 +421,17 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("News Updator"))]
         [HttpGet]
-        public async Task<IActionResult> ReEditNews(int? newsId)
+        public async Task<IActionResult> ReEditNews(string newsId)
         {
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
             if (newsId == null)
             {
                 return NotFound();
             }
 
             var existingNews = await _context.SportNew
-                .Where(e => e.NewsId == newsId)
+                .Where(e => e.NewsId == decryptedNewsId)
                 .FirstOrDefaultAsync();
 
             if (existingNews == null)
@@ -431,7 +441,7 @@ namespace MyField.Controllers
 
             var viewModel = new ReEditNewsViewModel
             {
-                NewsId = existingNews.NewsId,
+                NewsId = decryptedNewsId,
                 NewsImage = existingNews.NewsImage,
                 NewsTitle = existingNews.NewsHeading,
                 NewsBody = existingNews.NewsBody,
@@ -443,9 +453,9 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("News Updator"))]
         [HttpPost]
-        public async Task<IActionResult> ReEditNews(int? newsId, ReEditNewsViewModel viewModel, IFormFile NewsImages)
+        public async Task<IActionResult> ReEditNews(ReEditNewsViewModel viewModel, IFormFile NewsImages)
         {
-            if (newsId == null)
+            if (viewModel.NewsId == null)
             {
                 return NotFound();
             }
@@ -540,9 +550,12 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("News Administrator"))]
-        public async Task<IActionResult> ApproveNews(int? newsId)
+        public async Task<IActionResult> ApproveNews(string newsId)
         {
-            if (newsId == null || _context.SportNew == null)
+
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
+            if (decryptedNewsId == null || _context.SportNew == null)
             {
                 return NotFound();
             }
@@ -553,7 +566,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var sportNews = await _context.SportNew.FindAsync(newsId);
+            var sportNews = await _context.SportNew.FindAsync(decryptedNewsId);
             if (sportNews == null)
             {
                 return NotFound();
@@ -576,21 +589,24 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("News Administrator"))]
         [HttpGet]
-        public async Task<IActionResult> AskReEditNews(int? newsId)
+        public async Task<IActionResult> AskReEditNews(string newsId)
         {
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
+
             if (newsId == null)
             {
                 return NotFound();
             }
 
             var sportNews = await _context.SportNew
-                .Where(s => s.NewsId == newsId)
+                .Where(s => s.NewsId == decryptedNewsId)
                 .Include( s => s.AuthoredBy)
                 .FirstOrDefaultAsync();
 
             var viewModel = new AskForReEditNewsViewModel
             {
-                NewsId = sportNews.NewsId,
+                NewsId = decryptedNewsId,
                 NewsTitle = sportNews.NewsHeading,
                 NewsImage = sportNews.NewsImage,
                 NewsBody = sportNews.NewsBody,
@@ -601,9 +617,10 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("News Administrator"))]
         [HttpPost]
-        public async Task<IActionResult> AskReEditNews(int? newsId, AskForReEditNewsViewModel viewModel)
+        public async Task<IActionResult> AskReEditNews(AskForReEditNewsViewModel viewModel)
         {
-            if (newsId == null || _context.SportNew == null)
+
+            if (viewModel.NewsId == null || _context.SportNew == null)
             {
                 return NotFound();
             }
@@ -611,7 +628,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var sportNews = await _context.SportNew.FindAsync(newsId);
+            var sportNews = await _context.SportNew.FindAsync(viewModel.NewsId);
             if (sportNews == null)
             {
                 return NotFound();
@@ -651,9 +668,12 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("News Administrator"))]
-        public async Task<IActionResult> DeclineNews(int? newsId)
+        public async Task<IActionResult> DeclineNews(string newsId)
         {
-            if (newsId == null || _context.SportNew == null)
+
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
+            if (decryptedNewsId == null || _context.SportNew == null)
             {
                 return NotFound();
             }
@@ -664,7 +684,7 @@ namespace MyField.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var sportNews = await _context.SportNew.FindAsync(newsId);
+            var sportNews = await _context.SportNew.FindAsync(decryptedNewsId);
             if (sportNews == null)
             {
                 return NotFound();
@@ -682,8 +702,10 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("News Updator"))]
-        public async Task<IActionResult> DeleteSportNews(int? newsId)
+        public async Task<IActionResult> DeleteSportNews(string newsId)
         {
+            var decryptedNewsId = _encryptionService.DecryptToInt(newsId);
+
             if (newsId == null || _context.SportNew == null)
             {
                 return NotFound();
@@ -691,7 +713,7 @@ namespace MyField.Controllers
 
             var user = await _userManager.GetUserAsync(User);
 
-            var sportNew = await _context.SportNew.FindAsync(newsId);
+            var sportNew = await _context.SportNew.FindAsync(decryptedNewsId);
 
             await _activityLogger.Log($"Deleted news with heading {sportNew.NewsHeading}", user.Id);
 

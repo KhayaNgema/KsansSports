@@ -29,13 +29,15 @@ namespace MyField.Controllers
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IEncryptionService _encryptionService;
 
         public TransfersController(Ksans_SportsDbContext context,
             UserManager<UserBaseModel> userManager,
              IMapper mapper,
              IActivityLogger activityLogger,
              EmailService emailService,
-             RoleManager<IdentityRole> roleManager)
+             RoleManager<IdentityRole> roleManager,
+             IEncryptionService encryptionService)
         {
             _userManager = userManager;
             _context = context;
@@ -43,6 +45,7 @@ namespace MyField.Controllers
             _activityLogger = activityLogger;
             _emailService = emailService;
             _roleManager = roleManager;
+            _encryptionService = encryptionService;
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
@@ -805,16 +808,21 @@ namespace MyField.Controllers
 
         [Authorize(Roles = ("Club Administrator"))]
         [HttpGet]
-        public async Task<IActionResult> InitiatePlayerTransfer(string playerId, int marketId, int clubId)
+        public async Task<IActionResult> InitiatePlayerTransfer(string playerId, string marketId, string clubId)
         {
             try
             {
+                var decryptedPlayerId = _encryptionService.Decrypt(playerId);
+                var decryptedClubId = _encryptionService.DecryptToInt(clubId);
+                var decryptedMarketId = _encryptionService.DecryptToInt(marketId);
+
+
                 var player = await _context.Player
-                    .Where(mo => mo.Id == playerId)
+                    .Where(mo => mo.Id == decryptedPlayerId)
                     .FirstOrDefaultAsync();
 
                 var playerClub = await _context.Club
-                    .Where(mo => mo.ClubId == clubId)
+                    .Where(mo => mo.ClubId == decryptedClubId)
                     .FirstOrDefaultAsync();
 
 
@@ -825,7 +833,7 @@ namespace MyField.Controllers
                 }
 
                 var transferMarket = await _context.PlayerTransferMarket
-                    .Where(mo => mo.PlayerTransferMarketId == marketId &&
+                    .Where(mo => mo.PlayerTransferMarketId == decryptedMarketId &&
                     mo.League.IsCurrent)
                     .FirstOrDefaultAsync();
 
@@ -844,9 +852,9 @@ namespace MyField.Controllers
                 var viewModel = new InitiatePlayerTransferViewModel
                 {
                     LeagueId = transferMarket.LeagueId,
-                    MarketId = transferMarket.PlayerTransferMarketId,
-                    PlayerId = playerId,
-                    SellerClubId = clubId,
+                    MarketId = decryptedMarketId,
+                    PlayerId = decryptedPlayerId,
+                    SellerClubId = decryptedClubId,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
                     Position = player.Position,

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.SportsMember>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "Sport Coordinators";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -59,6 +59,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var encryptedUserId = encryptionService.Encrypt(item.Id);
+
                     <tr style="max-width: 400px;">
                         <td>
                             <img src="~/@item.ProfilePicture" alt="@item.FirstName" class="club-badge-image" style="border-radius: 50%; width: 50px; height: 50px;" />
@@ -94,22 +96,22 @@
                                 Actions
                             </button>
                             <div class="action-tab" id="actionTab-@item.Id" style="display: none;">
-                                <a class="tab-item" href="@Url.Action("UserProfile", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("UserProfile", "Users", new { userId = encryptedUserId  })">
                                     <i class="fas fa-user" style="color: blue;"></i> Profile
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Deactivate", "Users", new { userId = item.Id  })">
+                                <a class="tab-item" href="@Url.Action("Deactivate", "Users", new { userId = encryptedUserId  })">
                                     <i class="fas fa-pause" style="color: red;"></i> Deactivate
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Activate", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("Activate", "Users", new { userId = encryptedUserId  })">
                                     <i class="fas fa-check-circle" style="color: green;"></i> Activate
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Suspend", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("Suspend", "Users", new { userId = encryptedUserId })">
                                     <i class="fas fa-ban" style="color: red;"></i> Suspend
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Unsuspend", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("Unsuspend", "Users", new { userId = encryptedUserId  })">
                                     <i class="fas fa-check-circle" style="color: green;"></i> Unsuspend
                                 </a>
-                                <a class="tab-item" href="@Url.Action("Delete", "Users", new { userId = item.Id })">
+                                <a class="tab-item" href="@Url.Action("Delete", "Users", new {userId = encryptedUserId })">
                                     <i class="fas fa-trash" style="color: red;"></i> Delete
                                 </a>
                             </div>

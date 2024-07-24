@@ -7,7 +7,9 @@
 }
 
 <br />
-@await Html.PartialAsync("_BackButton")
+<div>
+    @await Html.PartialAsync("_BackButton")
+</div>
 <h4 style="text-align:center;">Fine Details</h4>
 <br />
 
@@ -38,21 +40,27 @@
                         <label><strong>Due Date:</strong> @Model.FineDueDate.ToShortDateString()</label>
                     </div>
 
-                    @if(Model.PaymentStatus == PaymentStatus.Overdue || Model.PaymentStatus == PaymentStatus.Pending)
+                    @if (Model.PaymentStatus == PaymentStatus.Overdue || Model.PaymentStatus == PaymentStatus.Pending)
                     {
-                        <div class="d-flex justify-content-end">
-                            <a href="@Url.Action("PayFines", "Billings", new { fineId = encryptedFineId })" class="btn btn-outline-success btn-sm">
-                                <i class="fas fa-money-bill-wave"></i>
-                                Pay @Model.FineAmount
-                            </a>
-                        </div>
+                        @if (User.IsInRole("Club Administrator"))
+                        {
+                            <div class="d-flex justify-content-end">
+                                <a href="@Url.Action("PayFines", "Billings", new { fineId = encryptedFineId })" class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Pay @Model.FineAmount
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
                         <div class="mb-3">
                             <label><strong>Payment status:</strong> @Model.PaymentStatus</label>
                         </div>
-
                     }
                 </div>
             </div>

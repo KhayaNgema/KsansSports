@@ -70,13 +70,13 @@
                 <input type="hidden" asp-for="Position" />
                 <input type="hidden" asp-for="JerseyNumber" />
                 <input type="hidden" asp-for="MarketValue" />
-                <input type="hidden" asp-for="MarketId" />
-                <input type="hidden" asp-for="PlayerId" />
-                <input type="hidden" asp-for="SellerClubId" />
                 <input type="hidden" asp-for="ClubName" />
                 <input type="hidden" asp-for="LeagueId" />
 
                 <div class="text-end">
+                        <input type="hidden" asp-for="PlayerId" value="@Model?.PlayerId" />
+                        <input type="hidden" asp-for="SellerClubId" value="@Model?.SellerClubId" />
+                        <input type="hidden" asp-for="MarketId" value="@Model?.MarketId" />
                         <button type="submit" class="btn btn-success">Start Transfer<i class="fa fa-paper-plane"></i></button>
                 </div>
             </form>

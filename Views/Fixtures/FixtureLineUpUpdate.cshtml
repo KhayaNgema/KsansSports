@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fixture>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = ViewBag.CLubName +" Fixtures";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -19,6 +19,8 @@
 
             @foreach (var item in group)
             {
+                var encryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
+
                 <div class="col-12 mb-4">
                     <div class="card h-100 d-flex flex-column justify-content-center position-relative">
                         <div class="card-body text-center">
@@ -57,7 +59,7 @@
                         {
                             <div class="card-footer">
                                 <div class="d-flex justify-content-end">
-                                    <a class="btn btn sm btn-outline-primary" asp-action="FixtureDetails" asp-route-id="@item.FixtureId" class="btn btn-sm">
+                                    <a class="btn btn sm btn-outline-primary" asp-action="FixtureDetails" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                 </div>

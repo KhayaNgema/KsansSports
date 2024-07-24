@@ -22,18 +22,21 @@ namespace MyField.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailService;
+        private readonly IEncryptionService _encryptionService;
 
         public FixturesController(Ksans_SportsDbContext context, 
             UserManager<UserBaseModel> userManager,
             RoleManager<IdentityRole> roleManager,
             IActivityLogger activityLogger,
-            EmailService emailService)
+            EmailService emailService,
+            IEncryptionService encryptionService)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
             _activityLogger = activityLogger;
             _emailService = emailService;
+            _encryptionService = encryptionService;
         }
 
 
@@ -173,9 +176,11 @@ namespace MyField.Controllers
         }
 
        [Authorize]
-        public async Task<IActionResult> FixtureDetailsFans(int? FixtureId)
+        public async Task<IActionResult> FixtureDetailsFans(string fixtureId)
         {
-            if (FixtureId == null)
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
+            if (decryptedFixtureId == null)
             {
                 return NotFound();
             }
@@ -186,7 +191,7 @@ namespace MyField.Controllers
                             f.FixtureStatus == FixtureStatus.Interrupted)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
-                .FirstOrDefaultAsync(m => m.FixtureId == FixtureId);
+                .FirstOrDefaultAsync(m => m.FixtureId == decryptedFixtureId);
 
             if (fixture == null)
             {
@@ -197,9 +202,11 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Club Manager"))]
-        public async Task<IActionResult> FixtureDetails(int id)
+        public async Task<IActionResult> FixtureDetails(string fixtureId)
         {
-            if (id == null)
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
+            if (decryptedFixtureId == null)
             {
                 return NotFound();
             }
@@ -210,7 +217,7 @@ namespace MyField.Controllers
                             f.FixtureStatus == FixtureStatus.Interrupted)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
-                .FirstOrDefaultAsync(m => m.FixtureId == id);
+                .FirstOrDefaultAsync(m => m.FixtureId == decryptedFixtureId);
 
             if (fixture == null)
             {
@@ -535,10 +542,12 @@ namespace MyField.Controllers
         }
 
 
-        [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> ModifyFixture(int? id)
+        [Authorize(Roles = ("Sport Coordinator"))]
+        public async Task<IActionResult> ModifyFixture(string fixtureId)
         {
-            if (id == null)
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
+            if (decryptedFixtureId == null)
             {
                 return NotFound();
             }
@@ -549,7 +558,7 @@ namespace MyField.Controllers
                             f.FixtureStatus == FixtureStatus.Interrupted)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
-                .FirstOrDefaultAsync(f => f.FixtureId == id);
+                .FirstOrDefaultAsync(f => f.FixtureId == decryptedFixtureId);
 
             if (fixture == null)
             {
@@ -559,7 +568,7 @@ namespace MyField.Controllers
             var viewModel = new ModifyFixtureViewModel
             {
 
-                FixtureId = fixture.FixtureId,
+                FixtureId = decryptedFixtureId,
                 HomeTeamId = fixture.HomeTeamId,
                 AwayTeamId = fixture.AwayTeamId,
                 KickOffDate = fixture.KickOffDate,
@@ -584,12 +593,12 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = ("Sport Administrator"))]
+        [Authorize(Roles = ("Sport Coordinator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModifyFixture(int id, ModifyFixtureViewModel viewModel)
+        public async Task<IActionResult> ModifyFixture(ModifyFixtureViewModel viewModel)
         {
-            if (id != viewModel.FixtureId)
+            if (viewModel.FixtureId == null)
             {
                 return NotFound();
             }
@@ -602,7 +611,7 @@ namespace MyField.Controllers
                 var existingFixture = await _context.Fixture
                     .Include(f => f.HomeTeam)
                     .Include(f => f.AwayTeam)
-                    .FirstOrDefaultAsync(f => f.FixtureId == id);
+                    .FirstOrDefaultAsync(f => f.FixtureId == viewModel.FixtureId);
 
                 try
                 {
@@ -666,7 +675,7 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> InterruptFixture(int id)
+        public async Task<IActionResult> InterruptFixture(string fixtureId)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -675,8 +684,10 @@ namespace MyField.Controllers
                 .Include(m => m.Season)
                 .FirstOrDefaultAsync();
 
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
             var fixture = await _context.Fixture
-                .Where(f => f.FixtureId == id)
+                .Where(f => f.FixtureId == decryptedFixtureId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .FirstOrDefaultAsync();
@@ -727,7 +738,7 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> PostponeFixture(int id)
+        public async Task<IActionResult> PostponeFixture(string fixtureId)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -736,8 +747,10 @@ namespace MyField.Controllers
                 .Include(m => m.Season)
                 .FirstOrDefaultAsync();
 
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
             var fixture = await _context.Fixture
-                .Where(f => f.FixtureId == id)
+                .Where(f => f.FixtureId == decryptedFixtureId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .FirstOrDefaultAsync();
@@ -790,46 +803,30 @@ namespace MyField.Controllers
         }
 
 
-        [Authorize(Roles = ("Sport Administrator"))]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeleteFixture(string fixtureId)
         {
-            if (id == null || _context.Fixture == null)
+            var user = await _userManager.GetUserAsync(User);
+
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+
+            if(decryptedFixtureId == null)
             {
                 return NotFound();
             }
 
             var fixture = await _context.Fixture
+                .Where(f => f.FixtureId == decryptedFixtureId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
-                .FirstOrDefaultAsync(m => m.FixtureId == id);
+                .FirstOrDefaultAsync();
 
-            if (fixture == null)
-            {
-                return NotFound();
-            }
+            await _activityLogger.Log($"Deleted a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}", user.Id);
+            TempData["Message"] = $"You have deleted a fixture between {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}";
 
-            return View(fixture);
-        }
+            _context.Remove(fixture);
+            await _context.SaveChangesAsync();
 
-        [Authorize(Roles = ("Sport Administrator"))]
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Fixture == null)
-            {
-                return Problem("Entity set 'ApplicationDbContext.Fixture' is null.");
-            }
-
-            var fixture = await _context.Fixture.FindAsync(id);
-
-            if (fixture != null)
-            {
-                _context.Fixture.Remove(fixture);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(FixturesBackOffice));
         }
 
         private bool FixtureExists(int id)

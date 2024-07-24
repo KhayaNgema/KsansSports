@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<MyField.Models.PlayerTransferMarket>
+@inject MyField.Interfaces.IEncryptionService encryptionService
+
 
 @{
     ViewData["Title"] = "NFA League Player Transfer Market";
@@ -30,6 +32,10 @@
         {
             @foreach (var item in Model)
             {
+                var encryptedMarketId = encryptionService.Encrypt(item.PlayerTransferMarketId);
+                var encryptedPlayerId = encryptionService.Encrypt(item.PlayerId);
+                var encryptedClubId = encryptionService.Encrypt(item.Club.ClubId);
+
                 <div class="col-sm-12 col-md-6 col-lg-3 mb-3 player-card"
                      data-club="@item.Club.ClubName"
                      data-player="@item.Player.FirstName @item.Player.LastName"
@@ -62,9 +68,9 @@
                                             R @Html.DisplayFor(modelItem => item.Player.MarketValue)
                                         </p>
                                         <a href="@Url.Action("InitiatePlayerTransfer", "Transfers", 
-                                        new { playerId = item.Player.Id, 
-                                            marketId = item.PlayerTransferMarketId, 
-                                            clubId = item.Club.ClubId })" class="btn btn-primary btn-sm">Sign<i class="fa fa-shopping-cart"></i> </a>
+                                        new { playerId = encryptedPlayerId, 
+                                            marketId = encryptedMarketId,
+                                            clubId = encryptedClubId })" class="btn btn-primary btn-sm">Sign<i class="fa fa-shopping-cart"></i> </a>
                                     </div>
                                 </div>
                             </div>

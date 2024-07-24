@@ -1,13 +1,12 @@
 ﻿@using System.Security.Claims
-
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @model MyField.ViewModels.ProfileViewModel
-
 
 @{
     var logMessages = TempData["LogMessages"] as List<string> ?? new List<string>();
     ViewData["Title"] = "Profile";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
+    var encryptedUserId = encryptionService.Encrypt(Model.UserId);
 }
 
 <br />
@@ -24,7 +23,6 @@ else
 <br />
 <div class="club-edit-container" style="overflow:hidden;">
     <div class="col-md-12">
-
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @if (TempData["Message"] != null)
         {
@@ -40,7 +38,7 @@ else
                 <img id="profile-image-preview" src="~/@Model.ProfilePicture" alt="Current Profile Picture" class="club-badge-image" />
             </div>
         </div>
-        <h5 style="margin-top:4px; margin-bottom:10px; " class="text-center">@Model.Names @Model.LastName</h5>
+        <h5 style="margin-top:4px; margin-bottom:10px;" class="text-center">@Model.Names @Model.LastName</h5>
         <p class="text-center">@ViewBag.UserRole</p>
         <div class="row mb-3">
             <div class="col-6">
@@ -50,7 +48,6 @@ else
                 <p class="form-control-static">@Model.Phone</p>
             </div>
         </div>
-
         <div class="row mb-3">
             <div class="col-6">
                 <label><i class="fa fa-envelope"></i> Email address:</label>
@@ -72,7 +69,7 @@ else
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group" style="display: flex; justify-content: flex-end;">
-                        <a href="@Url.Action("UpdateProfile", new { userId = @Model.UserId })" class="btn btn-outline-primary">
+                        <a href="@Url.Action("UpdateProfile", new { userId = encryptedUserId })" class="btn btn-outline-primary">
                             <i class="fa fa-pen"></i> Update
                         </a>
                     </div>
@@ -83,7 +80,7 @@ else
         {
             <p class="text-center" style="font-family:Arial;"><i class="fa fa-lock"> This profile is managed by K&S Foundation, if you want to update it, please contact your system administrator. </i></p>
         }
-        </div>
+    </div>
 </div>
 
 @section Scripts {
