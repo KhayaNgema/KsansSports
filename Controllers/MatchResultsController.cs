@@ -24,16 +24,19 @@ namespace MyField.Controllers
         private readonly UserManager<UserBaseModel> _userManager;
         private readonly IActivityLogger _activityLogger;
         private readonly EmailService _emailServcie;
+        private readonly IEncryptionService _encryptionService;
 
         public MatchResultsController(Ksans_SportsDbContext context,
             UserManager<UserBaseModel> userManager,
             IActivityLogger activityLogger,
-            EmailService emailService)
+            EmailService emailService,
+            IEncryptionService encryptionService)
         {
             _context = context;
             _userManager = userManager;
             _activityLogger = activityLogger;
             _emailServcie = emailService;
+            _encryptionService = encryptionService;
         }
 
 
@@ -185,13 +188,17 @@ namespace MyField.Controllers
         }
 
         [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
-        public IActionResult Create(string homeClubName, string homeTeamBadge, string awayTeamBadge,  string awayClubName, int fixtureId, DateTime kickoffDate, DateTime kickoffTime, string location, int homeTeamId, int awayTeamId)
+        public IActionResult Create(string homeClubName, string homeTeamBadge, string awayTeamBadge,  string awayClubName, string fixtureId, DateTime kickoffDate, DateTime kickoffTime, string location, string homeTeamId, string awayTeamId)
         {
+            var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
+            var decryptedHomeTeamId = _encryptionService.DecryptToInt(homeTeamId);
+            var decryptedAwayTeamId = _encryptionService.DecryptToInt(awayTeamId);
+
             var viewModel = new MatchResultsViewModel
             {
-                HomeTeamId = homeTeamId,
-                AwayTeamId = awayTeamId,
-                FixtureId = fixtureId,
+                HomeTeamId = decryptedHomeTeamId,
+                AwayTeamId = decryptedAwayTeamId,
+                FixtureId = decryptedFixtureId,
                 MatchDate = kickoffDate,
                 MatchTime = kickoffTime,
                 Location = location,

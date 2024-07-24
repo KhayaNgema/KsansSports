@@ -20,12 +20,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group hidden">
-                <label asp-for="FixtureId" class="control-label">FixtureId</label>
-                <input type="text" asp-for="FixtureId" class="form-control" readonly />
-            </div>
-
-
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-6 text-center">
@@ -60,10 +54,6 @@
             </div>
 
             <div class="form-group hidden">
-                <label asp-for="HomeTeamId" class="control-label">Home Team</label>
-                <input type="text" asp-for="HomeTeamId" class="form-control" readonly />
-            </div>
-            <div class="form-group hidden">
                 <label asp-for="HomeTeam" class="control-label">Home Team</label>
                 <input type="text" asp-for="HomeTeam" class="form-control" readonly/>
             </div>
@@ -76,10 +66,6 @@
                 <input type="text" asp-for="HomeTeamBadge" class="form-control" readonly />
             </div>
 
-            <div class="form-group hidden">
-                <label asp-for="AwayTeamId" class="control-label">Away Team</label>
-                <input type="text" asp-for="AwayTeamId" class="form-control" readonly />
-            </div>
 
             <div class="form-group hidden">
                 <label asp-for="AwayTeam" class="control-label">Away Team</label>
@@ -107,6 +93,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group" style="display: flex; justify-content: flex-end;">
+                        <input type="hidden" asp-for="FixtureId" value="@Model?.FixtureId" />
+                        <input type="hidden" asp-for="HomeTeamId" value="@Model?.HomeTeamId" />
+                        <input type="hidden" asp-for="AwayTeamId" value="@Model?.AwayTeamId" />
                 <input type="submit" value="Update" class="btn btn-success" />
                     </div>
                 </div>

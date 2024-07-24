@@ -333,7 +333,9 @@ namespace MyField.Controllers
             }
 
             int myClubmanagersCount = await _context.ClubManager
-                .Where(m => m.ClubId == clubAdministrator.ClubId)
+                .Where(m => m.ClubId == clubAdministrator.ClubId && 
+                !m.IsContractEnded && 
+                !m.IsDeleted)
                 .CountAsync();
 
                 return myClubmanagersCount;

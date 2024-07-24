@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Fixture>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -20,6 +20,10 @@
                 <table class="table table-borderless">
                     @foreach (var item in Model)
                     {
+                        var ecryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
+                        var encryptedHomeTeamId = encryptionService.Encrypt(item.HomeTeamId);
+                        var encryptedAwayTeamId = encryptionService.Encrypt(item.AwayTeamId);
+
                         <tr>
                             <td class="align-middle text-center">
                                 @if (item.HomeTeam != null)
@@ -44,14 +48,14 @@
                                 <a asp-controller="MatchResults" asp-action="Create"
                                    asp-route-homeClubName="@item.HomeTeam.ClubName"
                                    asp-route-awayClubName="@item.AwayTeam.ClubName"
-                                   asp-route-fixtureId="@item.FixtureId"
+                                   asp-route-fixtureId="@ecryptedFixtureId"
                                    asp-route-kickoffDate="@item.KickOffDate"
                                    asp-route-kickoffTime="@item.KickOffTime"
                                    asp-route-homeTeamBadge="@item.HomeTeam.ClubBadge"
                                    asp-route-awayTeamBadge="@item.AwayTeam.ClubBadge"
                                    asp-route-location="@item.Location"
-                                   asp-route-homeTeamId="@item.HomeTeamId"
-                                   asp-route-awayTeamId="@item.AwayTeamId"
+                                   asp-route-homeTeamId="@encryptedHomeTeamId"
+                                   asp-route-awayTeamId="@encryptedAwayTeamId"
                                    class="btn btn-outline-success"
                                    style="text-decoration: none;">
                                     <i class="fas fa-futbol"></i> Update Score
