@@ -360,7 +360,7 @@ namespace MyField.Controllers
         [Authorize(Roles = ("Sport Administrator"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ClubViewModel viewModel, IFormFile ClubBadges)
+        public async Task<IActionResult> Create(ClubViewModel viewModel, IFormFile? ClubBadges)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -382,9 +382,9 @@ namespace MyField.Controllers
                 var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
 
                 var matchResultsReport = await _context.MatchResultsReports
-                     .Where(m => m.Season.IsCurrent)
-                     .Include(m => m.Season)
-                     .FirstOrDefaultAsync();
+                    .Where(m => m.Season.IsCurrent)
+                    .Include(m => m.Season)
+                    .FirstOrDefaultAsync();
 
                 if (currentLeague == null)
                 {
@@ -407,13 +407,13 @@ namespace MyField.Controllers
                     Status = ClubStatus.Active,
                     IsActive = true,
                     ClubCode = GenerateClubCode(viewModel),
-                    Email = viewModel.Email
+                    Email = viewModel.Email,
+                    ClubBadge = "Images/placeholder_club_badge.jpg"
                 };
 
                 if (ClubBadges != null && ClubBadges.Length > 0)
                 {
                     var uploadedImagePath = await _fileUploadService.UploadFileAsync(ClubBadges);
-
                     newClub.ClubBadge = uploadedImagePath;
                 }
 
@@ -497,6 +497,7 @@ namespace MyField.Controllers
 
             return View(viewModel);
         }
+
 
 
         private string GenerateClubCode(ClubViewModel viewModel)

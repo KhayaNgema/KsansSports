@@ -39,6 +39,7 @@
                             </label>
                         </div>
                     </div>
+                    <small id="profilePictureHelp" class="form-text text-muted text-center" style="display: block; text-align: center; margin-top: 10px;">Upload a profile picture (optional).</small>
                 </div>
                 <input asp-for="Input.ProfilePicture" class="form-control" type="file" onchange="previewProfilePicture(event)" accept="image/*" style="display: none;" />
                 <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>

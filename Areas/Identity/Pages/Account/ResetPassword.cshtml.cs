@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -93,10 +94,7 @@ namespace MyField.Areas.Identity.Pages.Account
                     Kind regards,<br/>
                     K&S Foundation Support Team";
 
-                await _emailService.SendEmailAsync(
-                    user.Email,
-                    "Password Reset Successful",
-                    emailBody);
+                BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Password reset sccessful", emailBody));
 
                 await _activityLogger.Log($"Forgot and reset password", user.Id);
 

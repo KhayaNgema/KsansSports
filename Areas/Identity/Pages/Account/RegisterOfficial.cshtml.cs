@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -177,7 +178,7 @@ namespace MyField.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
                     string accountCreationEmailBody = $"Hello {user.FirstName},<br><br>";
@@ -187,13 +188,14 @@ namespace MyField.Areas.Identity.Pages.Account
                     accountCreationEmailBody += $"Please note that we have sent you two emails, including this one. You need to open the other email to confirm your email address before you can log into the system.<br><br>";
                     accountCreationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, "Welcome to Sport Rise", accountCreationEmailBody);
+
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Welcome to Sport Rise", accountCreationEmailBody));
 
                     string emailConfirmationEmailBody = $"Hello {user.FirstName},<br><br>";
                     emailConfirmationEmailBody += $"Please confirm your email by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>";
                     emailConfirmationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody);
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody));
 
                     await _activityLogger.Log($"Added {Input.FirstName} {Input.LastName} as a match official", userId);
 

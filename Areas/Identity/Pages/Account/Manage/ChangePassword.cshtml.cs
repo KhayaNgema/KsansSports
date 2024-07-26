@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -150,10 +151,7 @@ namespace MyField.Areas.Identity.Pages.Account.Manage
                     K&S Foundation Support Team
             ";
 
-            await _emailService.SendEmailAsync(
-                user.Email,
-                "Password Changed Successful",
-                emailBody);
+            BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Password change successful", emailBody));
 
             await _activityLogger.Log($"Changed password", user.Id);
 

@@ -9,7 +9,7 @@ namespace MyField.Models
     {
         public Club()
         {
-            ClubBadge = "Images/default_club_image.jpg";
+            ClubBadge = "Images/placeholder_club_badge.jpg";
         }
 
         [Display(Name = "Club Id")]
@@ -20,8 +20,7 @@ namespace MyField.Models
         [Display(Name = "Club")]
         public string ClubName { get; set; }
 
-
-        [DataType(DataType.EmailAddress)]   
+        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Club email is required")]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -31,7 +30,7 @@ namespace MyField.Models
         public string ClubLocation { get; set; }
 
         [Display(Name = "Badge")]
-        public string? ClubBadge { get; set; }
+        public string? ClubBadge { get; set; } 
 
         [Display(Name = "ClubHistory")]
         public string? ClubHistory { get; set; }
@@ -61,14 +60,13 @@ namespace MyField.Models
         [ForeignKey("LeagueId")]
         public virtual League League { get; set; }
 
-        public string ClubCode { get; set; }    
+        public string ClubCode { get; set; }
 
         public bool IsActive { get; set; }
 
         public ClubStatus Status { get; set; }
 
         [ForeignKey("ClubManagerId")]
-
         public string? ClubManagerId { get; set; }
 
         public bool IsSuspended { get; set; }

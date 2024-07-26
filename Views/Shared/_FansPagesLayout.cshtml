@@ -111,7 +111,9 @@
                 <div class="d-flex align-items-center">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none; margin-right: 10px;">&#9776;</a>
+                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none; margin-right: 10px;">
+                            <i class="fa fa-chevron-right chevron-rotate"></i>
+                        </a>
 
                     }
                     else
@@ -196,7 +198,7 @@
                             <i class="fa fa-user-cog" style="color: white; margin-right: 5px;"></i>
                             <a href="#supportSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link text-light d-flex align-items-center">
                                 Support
-                                <i style="margin-left: 50px; margin-top: 1px;" class="fa fa-caret-down ml-2 caret-rotate collapsed"></i>
+                                <i style="margin-left: 50px; margin-top: 1px;" class="fa fa-chevron-down ml-2 caret-rotate collapsed"></i>
                             </a>
                         </div>
                         <ul class="collapse list-unstyled collapsible-menu" id="supportSubmenu" style="margin-left: 35px;">
@@ -417,6 +419,9 @@
         $("#page-content-wrapper").toggleClass("shifted");
         $("#homeTabsNav").toggleClass("shifted");
         $("#loginNav").toggleClass("shifted");
+
+
+        $(".chevron-rotate").toggleClass("rotate-left");
     });
 
     $('.collapsible-menu').on('show.bs.collapse', function () {
@@ -424,6 +429,8 @@
     }).on('hide.bs.collapse', function () {
         $(this).prev().find('.caret-rotate').addClass('collapsed');
     });
+
+
 </script>
 
 @RenderSection("Scripts", required: false)

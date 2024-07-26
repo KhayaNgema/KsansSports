@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -36,7 +37,7 @@ namespace MyField.Areas.Identity.Pages.Account
         private readonly RandomPasswordGeneratorService _passwordGenerator;
         private readonly IEmailSender _emailSender;
         private readonly EmailService _emailService;
-        private readonly Ksans_SportsDbContext _db;
+        private readonly Ksans_SportsDbContext _context;
         private readonly IActivityLogger _activityLogger;   
 
         public RegisterClubManagerModel(
@@ -62,7 +63,7 @@ namespace MyField.Areas.Identity.Pages.Account
             _roleManager = roleManager;
             _passwordGenerator = passwordGenerator;
             _emailService = emailService;
-            _db = db;
+            _context = db;
             _activityLogger = activityLogger;
         }
 
@@ -108,7 +109,7 @@ namespace MyField.Areas.Identity.Pages.Account
 
 
             var roles = await _roleManager.Roles.Select(r => new SelectListItem { Value = r.Name, Text = r.Name }).ToListAsync();
-            var clubs = await _db.Club.ToListAsync();
+            var clubs = await _context.Club.ToListAsync();
 
             ViewData["Clubs"] = clubs.Select(c => new SelectListItem { Value = c.ClubId.ToString(), Text = c.ClubName });
 
@@ -160,7 +161,10 @@ namespace MyField.Areas.Identity.Pages.Account
 
                 var loggedInUser = await _userManager.GetUserAsync(User);
 
-                var clubAdmin = loggedInUser as ClubAdministrator;
+                var clubAdmin = await _context.ClubAdministrator
+                    .Where(c => c.Id == loggedInUser.Id)
+                    .Include(c => c.Club)
+                    .FirstOrDefaultAsync();
 
 
                 if (clubAdmin != null)
@@ -197,27 +201,26 @@ namespace MyField.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
                     string accountCreationEmailBody = $"Hello {user.FirstName},<br><br>";
-                    accountCreationEmailBody += $"Welcome to {user.ClubId}!<br><br>";
-                    accountCreationEmailBody += $"You have been successfully added as {user.ClubId} club manager. Below are your login credentials:<br><br>";
+                    accountCreationEmailBody += $"Welcome to {user.Club.ClubName}!<br><br>";
+                    accountCreationEmailBody += $"You have been successfully added as {user.Club.ClubName} club manager. Below are your login credentials:<br><br>";
                     accountCreationEmailBody += $"Email: {user.Email}<br>";
                     accountCreationEmailBody += $"Password: {randomPassword}<br><br>";
                     accountCreationEmailBody += $"Please note that we have sent you two emails, including this one. You need to open the other email to confirm your email address before you can log into the system.<br><br>";
                     accountCreationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, $"Welcome to {user.ClubId} ", accountCreationEmailBody);
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", accountCreationEmailBody));
 
                     string emailConfirmationEmailBody = $"Hello {user.FirstName},<br><br>";
                     emailConfirmationEmailBody += $"Please confirm your email by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>";
                     emailConfirmationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody);
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody));
 
                     await _activityLogger.Log($"Added {Input.FirstName} {Input.LastName} as {clubAdmin.Club.ClubName} manager", userId);
-
 
                     TempData["Message"] = $"{user.FirstName} {user.LastName}  has been successfully added as your new club manager";
                     return RedirectToAction("MyClubManagers", "Users");
@@ -233,7 +236,7 @@ namespace MyField.Areas.Identity.Pages.Account
                         .ToListAsync();
             ViewData["Roles"] = roles;
 
-            var clubs = await _db.Club.ToListAsync();
+            var clubs = await _context.Club.ToListAsync();
             ViewData["Clubs"] = clubs.Select(c => new SelectListItem { Value = c.ClubId.ToString(), Text = c.ClubName });
 
             // If we got this far, something failed, redisplay form

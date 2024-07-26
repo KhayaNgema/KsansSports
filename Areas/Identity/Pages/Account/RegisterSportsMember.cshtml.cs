@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MyField.Data;
 using MyField.Interfaces;
 using MyField.Models;
 using MyField.Services;
@@ -36,6 +38,7 @@ namespace MyField.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly EmailService _emailService;
         private readonly IActivityLogger _activityLogger;
+        private readonly Ksans_SportsDbContext _context;
 
         public RegisterSportsMemberModel(
             UserManager<UserBaseModel> userManager,
@@ -47,7 +50,8 @@ namespace MyField.Areas.Identity.Pages.Account
             RoleManager<IdentityRole> roleManager,
             RandomPasswordGeneratorService passwordGenerator,
             EmailService emailService,
-            IActivityLogger activityLogger)
+            IActivityLogger activityLogger,
+            Ksans_SportsDbContext context)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -60,6 +64,7 @@ namespace MyField.Areas.Identity.Pages.Account
             _passwordGenerator = passwordGenerator;
             _emailService = emailService;
             _activityLogger = activityLogger;
+            _context = context; 
         }
 
         [BindProperty]
@@ -174,7 +179,7 @@ namespace MyField.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = user.Id, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
                     string accountCreationEmailBody = $"Hello {user.FirstName},<br><br>";
@@ -184,7 +189,8 @@ namespace MyField.Areas.Identity.Pages.Account
                     accountCreationEmailBody += $"Please note that we have sent you two emails, including this one. You need to open the other email to confirm your email address before you can log into the system.<br><br>";
                     accountCreationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, "Welcome to Sport Rise", accountCreationEmailBody);
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Welcome to Sport Rise", accountCreationEmailBody));
+
 
                     string emailConfirmationEmailBody = $"Hello {user.FirstName},<br><br>";
                     emailConfirmationEmailBody += $"Please confirm your email by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>";
@@ -192,17 +198,52 @@ namespace MyField.Areas.Identity.Pages.Account
 
                     await _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody);
 
-
+                    BackgroundJob.Enqueue(() => _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody));
+      
                     await _activityLogger.Log($"Added {user.FirstName} {user.LastName} as a {Input.Role}", userId);
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+
+                    var userRole = await _context.UserRoles
+                        .Where(ur => ur.UserId == user.Id)
+                        .Join(_context.Roles,
+                         ur => ur.RoleId,
+                         r => r.Id,
+                         (ur, r) => r.Name)
+                        .FirstOrDefaultAsync();
+
+                    TempData["Message"] = $"{Input.FirstName} {Input.LastName}  has been successfully added as a new {Input.Role}";
+
+                    if (userRole == "Club Administrator")
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToAction("ClubAdministrators", "Users");
                     }
-                    else
+                    else if (userRole == "Sport Administrator")
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        return RedirectToAction("SportAdministrators", "Users");
+                    }
+                    else if (userRole == "Sport Manager")
+                    {
+                        return RedirectToAction("SportManagers", "Users");
+                    }
+                    else if (userRole == "Sport Coordinator")
+                    {
+                        return RedirectToAction("SportCoordinators", "Users");
+                    }
+                    else if (userRole == "Official")
+                    {
+                        return RedirectToAction("Officials", "Users");
+                    }
+                    else if (userRole == "News Administrator")
+                    {
+                        return RedirectToAction("NewsAdministrators", "Users");
+                    }
+                    else if (userRole == "News Updator")
+                    {
+                        return RedirectToAction("NewsUpdaters", "Users");
+                    }
+                    else if (userRole == "Fans Administrator")
+                    {
+                        return RedirectToAction("FansAdministrators", "Users");
                     }
                 }
                 foreach (var error in result.Errors)

@@ -133,7 +133,11 @@ namespace MyField.Areas.Identity.Pages.Account
                     {
                         ModelState.AddModelError(string.Empty, "Your account has been deactivated. Please contact your system administrator.");
                     }
-                    else
+                    else if(!user.EmailConfirmed)
+                    {
+                        ModelState.AddModelError(string.Empty, "Your email address is not verified. Please verify it and try again.");
+                    }
+                    else if(user.IsFirstTimeLogin || !user.IsFirstTimeLogin)
                     {
                         var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
 
