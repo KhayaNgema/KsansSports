@@ -28,11 +28,13 @@
                                 @if (item.HomeTeam != null && item.AwayTeam != null)
                                 {
                                     <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                        @Html.DisplayFor(modelItem => item.HomeTeam.ClubName)
+                                        <span class="club-name-full">@Html.DisplayFor(modelItem => item.HomeTeam.ClubName)</span>
+                                        <span class="club-name-abbr">@Html.DisplayFor(modelItem => item.HomeTeam.ClubAbbr)</span>
                                         <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image" />
                                         <span class="font-weight-bold">&nbsp;VS&nbsp;</span>
                                         <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image" />
-                                        @Html.DisplayFor(modelItem => item.AwayTeam.ClubName)
+                                        <span class="club-name-full">@Html.DisplayFor(modelItem => item.AwayTeam.ClubName)</span>
+                                        <span class="club-name-abbr">@Html.DisplayFor(modelItem => item.AwayTeam.ClubAbbr)</span>
                                     </span>
                                 }
                             </p>

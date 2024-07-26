@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MyField.Data;
 using MyField.Interfaces;
@@ -33,6 +34,7 @@ namespace MyField.Areas.Identity.Pages.Account
         private readonly FileUploadService _fileUploadService;
         private readonly IActivityLogger _activityLogger;
         private readonly Ksans_SportsDbContext _context;
+        private readonly EmailService _emailService;
 
         public RegisterModel(
             UserManager<UserBaseModel> userManager,
@@ -42,7 +44,8 @@ namespace MyField.Areas.Identity.Pages.Account
             IEmailSender emailSender,
             FileUploadService fileUploadService,
             IActivityLogger activityLogger,
-            Ksans_SportsDbContext context)
+            Ksans_SportsDbContext context,
+            EmailService emailService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -53,6 +56,7 @@ namespace MyField.Areas.Identity.Pages.Account
             _fileUploadService = fileUploadService;
             _activityLogger = activityLogger;
             _context = context;
+            _emailService = emailService;
         }
 
         [BindProperty]
@@ -118,13 +122,25 @@ namespace MyField.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-
                 if (!Input.AcceptTerms)
                 {
                     ModelState.AddModelError("Input.AcceptTerms", "You must accept our terms and conditions to continue with registration.");
                     return Page();
                 }
 
+                var existingUserByPhoneNumber = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == Input.PhoneNumber);
+                if (existingUserByPhoneNumber != null)
+                {
+                    ModelState.AddModelError("Input.PhoneNumber", "An account with this phone number already exists.");
+                    return Page();
+                }
+
+                var existingUserByEmail = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == Input.Email);
+                if (existingUserByEmail != null)
+                {
+                    ModelState.AddModelError("Input.Email", "An account with this email address already exists.");
+                    return Page();
+                }
 
                 var user = new Fan
                 {
@@ -157,8 +173,15 @@ namespace MyField.Areas.Identity.Pages.Account
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                        values: new { area = "Identity", userId = userId, code = code },
                         protocol: Request.Scheme);
+
+                    var emailConfirmationBody = $"Hello {user.FirstName},<br><br>" +
+                        "Thank you for registering. Please confirm your email address by " +
+                        $"<a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>" +
+                        "Thank you!";
+
+                    await _emailService.SendEmailAsync(user.Email, "Confirm your email", emailConfirmationBody);
 
                     var newAggrement = new TermsAggreement
                     {
@@ -171,18 +194,7 @@ namespace MyField.Areas.Identity.Pages.Account
                     _context.Add(newAggrement);
                     await _context.SaveChangesAsync();
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
+                    return RedirectToAction("AccountCreatedSuccessfully", "Home");
                 }
 
                 foreach (var error in result.Errors)
@@ -192,6 +204,8 @@ namespace MyField.Areas.Identity.Pages.Account
             }
             return Page();
         }
+
+
 
         private IUserEmailStore<UserBaseModel> GetEmailStore()
         {

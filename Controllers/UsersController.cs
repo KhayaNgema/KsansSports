@@ -11,7 +11,6 @@ using MyField.Models;
 using MyField.ViewModels;
 using MyField.Services;
 using Microsoft.AspNetCore.Identity;
-using MyField.Migrations;
 using System.ComponentModel.DataAnnotations;
 using MyField.Interfaces;
 using Hangfire;

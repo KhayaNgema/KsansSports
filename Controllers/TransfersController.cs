@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MyField.Data;
 using MyField.Interfaces;
-using MyField.Migrations;
 using MyField.Models;
 using MyField.Services;
 using MyField.ViewModels;

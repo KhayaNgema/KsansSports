@@ -122,8 +122,8 @@ namespace MyField.Services
                         Location = "Nkungwini Sports Ground",
                         CreatedDateTime = DateTime.Now,
                         ModifiedDateTime = DateTime.Now,
-                        CreatedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
-                        ModifiedById = "485ebf7a-68a9-4416-a32a-78435ed8ba0d",
+                        CreatedById = "ddfc5eee-93b6-4728-916f-e0db8a5e4e9d",
+                        ModifiedById = "ddfc5eee-93b6-4728-916f-e0db8a5e4e9d",
                         FixtureStatus = FixtureStatus.Upcoming,
                         LeagueId = currentSeason.LeagueId
                     };

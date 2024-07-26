@@ -983,6 +983,11 @@ namespace MyField.Controllers
             return View();
         }
 
+        public IActionResult AccountCreatedSuccessfully()
+        {
+            return View();
+        }
+
 
         public IActionResult TermsAndConditions()
         {

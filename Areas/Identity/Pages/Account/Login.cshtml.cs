@@ -30,7 +30,7 @@ namespace MyField.Areas.Identity.Pages.Account
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly Ksans_SportsDbContext _context;
 
-        public LoginModel(SignInManager<UserBaseModel> signInManager, 
+        public LoginModel(SignInManager<UserBaseModel> signInManager,
             ILogger<LoginModel> logger,
             IActivityLogger activityLogger,
             UserManager<UserBaseModel> userManager,
@@ -121,16 +121,31 @@ namespace MyField.Areas.Identity.Pages.Account
 
                 if (user != null)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-
-                    if (result.Succeeded)
+                    if (user.IsDeleted)
                     {
-                        await _activityLogger.Log("Logged in", user.Id);
-                        return LocalRedirect(returnUrl);
+                        ModelState.AddModelError(string.Empty, "You don't have access to this system.");
+                    }
+                    else if (user.IsSuspended)
+                    {
+                        ModelState.AddModelError(string.Empty, "Your account has been suspended. Please contact your system administrator.");
+                    }
+                    else if (!user.IsActive)
+                    {
+                        ModelState.AddModelError(string.Empty, "Your account has been deactivated. Please contact your system administrator.");
                     }
                     else
                     {
-                        ModelState.AddModelError(string.Empty, "Incorrect email or phone number or password..");
+                        var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                        if (result.Succeeded)
+                        {
+                            await _activityLogger.Log("Logged in", user.Id);
+                            return LocalRedirect(returnUrl);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError(string.Empty, "Incorrect email or phone number or password.");
+                        }
                     }
                 }
                 else
@@ -141,7 +156,6 @@ namespace MyField.Areas.Identity.Pages.Account
 
             return Page();
         }
-
 
     }
 }

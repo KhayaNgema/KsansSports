@@ -28,68 +28,69 @@
 </head>
 
 <style>
-    /* Existing styles */
 
-    #menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 250px;
-        height: 100%;
-        background: #000325;
-        color: white;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 1000;
-    }
+    
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: #000325;
+    color: white;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
 
-        #menu.show {
-            transform: translateY(0);
-        }
 
-        #menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+#menu.show {
+    transform: translateY(0);
+}
 
-            #menu ul li {
-                padding: 15px;
-                border-bottom: 1px solid #444;
-            }
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-                #menu ul li a {
-                    color: white;
-                    text-decoration: none;
-                }
+#menu ul li {
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
 
-                    #menu ul li a:hover {
-                        text-decoration: none;
-                    }
+#menu ul li a {
+    color: white;
+    text-decoration: none;
+}
 
-    #menu-toggle {
-        cursor: pointer;
-    }
+#menu ul li a:hover {
+    text-decoration: none;
+}
 
-    #menu-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 24px;
-        color: white;
-        cursor: pointer;
-    }
+#menu-toggle {
+    cursor: pointer;
+}
 
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        z-index: 999; 
-        display: none;
-    }
+#menu-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    display: none;
+}
 </style>
 
 
@@ -116,7 +117,7 @@
                     }
                     else
                     {
-                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none; margin-right: 10px;">
+                        <a href="#menu-toggle" id="menu-toggle" style="font-size: 26px; color: white; text-decoration: none;">
                             <i class="fa fa-chevron-down"></i>
                         </a>
                         <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index" style="color:white;">Ksans-sports</a>

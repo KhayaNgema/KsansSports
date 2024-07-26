@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyField.Data;
 using MyField.Interfaces;
-using MyField.Migrations;
 using MyField.Models;
 using MyField.Services;
 using MyField.ViewModels;
@@ -196,7 +195,6 @@ namespace MyField.Controllers
             return View();
         }
 
-        [Authorize(Roles = ("Sport Administrator"))]
         [HttpGet]
         public async Task<IActionResult> TestFeedback()
         {

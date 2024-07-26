@@ -34,14 +34,11 @@ public class Startup
         var key = Configuration["AES_KEY"];
         var iv = Configuration["AES_IV"];
 
-        // Convert from Base64 if needed
         var keyBytes = Convert.FromBase64String(key);
         var ivBytes = Convert.FromBase64String(iv);
 
-        // Register EncryptionConfiguration
         services.AddSingleton(new EncryptionConfiguration { Key = keyBytes, Iv = ivBytes });
 
-        // Register EncryptionService
         services.AddScoped<IEncryptionService, EncryptionService>();
 
         services.AddAuthorization(options =>
@@ -51,12 +48,12 @@ public class Startup
                                                    context.User.Claims.Any(c => c.Type == ClaimTypes.Role)));
         });
 
-        services.AddDistributedMemoryCache(); 
+        services.AddDistributedMemoryCache();
         services.AddSession(options =>
         {
-            options.IdleTimeout = TimeSpan.FromMinutes(30); 
-            options.Cookie.HttpOnly = true; 
-            options.Cookie.IsEssential = true; 
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
         });
 
         services.AddDbContext<Ksans_SportsDbContext>(options =>
@@ -92,7 +89,6 @@ public class Startup
         services.AddHttpClient();
 
         services.AddScoped<FixtureService>();
-
         services.AddHangfire(config => config
             .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
             .UseSimpleAssemblyNameTypeSerializer()
@@ -103,7 +99,9 @@ public class Startup
                 SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
                 QueuePollInterval = TimeSpan.Zero,
                 UseRecommendedIsolationLevel = true,
-                DisableGlobalLocks = true
+                DisableGlobalLocks = true,
+                UsePageLocksOnDequeue = true,
+                SchemaName = "hangfire"
             }));
 
         services.AddHangfireServer();
@@ -117,6 +115,12 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+
         app.UseSession();
 
         app.Use(async (context, next) =>
@@ -124,8 +128,8 @@ public class Startup
             context.Response.Cookies.Append("StrictlyNecessaryCookie", "Value", new CookieOptions
             {
                 HttpOnly = true,
-                Secure = true,   
-                SameSite = SameSiteMode.Strict  
+                Secure = true,
+                SameSite = SameSiteMode.Strict
             });
             await next.Invoke();
         });
@@ -172,7 +176,6 @@ public class Startup
             endpoints.MapRazorPages();
         });
 
-        // Create roles and default user if they don't exist
         app.ApplicationServices.CreateRolesAndDefaultUser().Wait();
     }
 

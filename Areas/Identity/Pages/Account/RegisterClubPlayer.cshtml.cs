@@ -141,6 +141,20 @@ namespace MyField.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                var existingUserByPhoneNumber = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == Input.PhoneNumber);
+                if (existingUserByPhoneNumber != null)
+                {
+                    ModelState.AddModelError("Input.PhoneNumber", "An account with this phone number already exists.");
+                    return Page();
+                }
+
+                var existingUserByEmail = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == Input.Email);
+                if (existingUserByEmail != null)
+                {
+                    ModelState.AddModelError("Input.Email", "An account with this email address already exists.");
+                    return Page();
+                }
+
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var user = new Player
                 {
@@ -212,17 +226,21 @@ namespace MyField.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    string emailBody = $"Hello {user.FirstName},<br><br>";
-                    emailBody += $"Your account has been successfully created. Below are your login credentials:<br><br>";
-                    emailBody += $"Email: {user.Email}<br>";
-                    emailBody += $"Password: {randomPassword}<br><br>";
-                    emailBody += $"Please confirm your email by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>";
-                    emailBody += $"Thank you!";
+                    string accountCreationEmailBody = $"Hello {user.FirstName},<br><br>";
+                    accountCreationEmailBody += $"Welcome to {user.ClubId}!<br><br>";
+                    accountCreationEmailBody += $"You have been successfully added as {user.ClubId} player. Below are your login credentials:<br><br>";
+                    accountCreationEmailBody += $"Email: {user.Email}<br>";
+                    accountCreationEmailBody += $"Password: {randomPassword}<br><br>";
+                    accountCreationEmailBody += $"Please note that we have sent you two emails, including this one. You need to open the other email to confirm your email address before you can log into the system.<br><br>";
+                    accountCreationEmailBody += $"Thank you!";
 
-                    await _emailService.SendEmailAsync(user.Email, "Welcome to Ksans Sport", emailBody);
+                    await _emailService.SendEmailAsync(user.Email, $"Welcome to {user.ClubId} ", accountCreationEmailBody);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    string emailConfirmationEmailBody = $"Hello {user.FirstName},<br><br>";
+                    emailConfirmationEmailBody += $"Please confirm your email by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.<br><br>";
+                    emailConfirmationEmailBody += $"Thank you!";
+
+                    await _emailService.SendEmailAsync(user.Email, "Confirm Your Email Address", emailConfirmationEmailBody);
 
                     var club = await _context.Club
                         .Where(c => c.ClubId == clubAdmin.ClubId)

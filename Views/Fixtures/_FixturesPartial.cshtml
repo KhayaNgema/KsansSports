@@ -2,12 +2,12 @@
 @inject MyField.Interfaces.IEncryptionService encryptionService
 <br />
 <div class="fixtures-match-container" style="width:100%; padding-right:10px; padding-left:10px;">
-    @if(Model.Any())
+    @if (Model.Any())
     {
         <div class="row">
             @foreach (var group in Model.OrderBy(item => item.KickOffDate).GroupBy(item => item.KickOffDate))
             {
-                <div class="col-12 mb-2">
+                <div class="col-12 mb-2 mt-2">
                     <h5 class="text-center date-background">@group.Key.ToString("dddd, MMMM d, yyyy")</h5>
                 </div>
 
@@ -15,24 +15,26 @@
                 {
                     var encryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
 
-                    <div class="col-12 mb-2">
+                    <div class="col-12 mb-3">
                         <div class="card h-100 d-flex flex-column justify-content-center position-relative">
                             <div class="card-body text-center">
                                 <p class="card-text">
                                     @if (item.HomeTeam != null && item.AwayTeam != null)
                                     {
                                         <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                            @Html.DisplayFor(modelItem => item.HomeTeam.ClubName)
+                                            <span class="club-name-full">@Html.DisplayFor(modelItem => item.HomeTeam.ClubName)</span>
+                                            <span class="club-name-abbr">@Html.DisplayFor(modelItem => item.HomeTeam.ClubAbbr)</span>
                                             <img src="~/@item.HomeTeam.ClubBadge" alt="@item.HomeTeam.ClubName" class="club-badge-image" />
                                             <span class="font-weight-bold">&nbsp;VS&nbsp;</span>
                                             <img src="~/@item.AwayTeam.ClubBadge" alt="@item.AwayTeam.ClubName" class="club-badge-image" />
-                                            @Html.DisplayFor(modelItem => item.AwayTeam.ClubName)
+                                            <span class="club-name-full">@Html.DisplayFor(modelItem => item.AwayTeam.ClubName)</span>
+                                            <span class="club-name-abbr">@Html.DisplayFor(modelItem => item.AwayTeam.ClubAbbr)</span>
                                         </span>
                                     }
                                 </p>
                                 <p class="card-text">
                                     <span class="@((item.FixtureStatus == FixtureStatus.Postponed) ? "text-decoration-line-through" : "")">
-                                        @item.KickOffDate.ToString("ddd, dd/MM/yyy"), @item.KickOffTime.ToString("HH:mm") -  @Html.DisplayFor(modelItem => item.Location)
+                                        @item.KickOffDate.ToString("ddd, dd/MM/yyyy"), @item.KickOffTime.ToString("HH:mm") -  @Html.DisplayFor(modelItem => item.Location)
                                     </span>
                                 </p>
                                 @if (item.FixtureStatus == FixtureStatus.Postponed)
