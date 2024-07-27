@@ -1,0 +1,779 @@
+﻿@model MyField.ViewModels.StartLiveViewModel
+
+@{
+    ViewData["Title"] = "Live match";
+    Layout = "~/Views/Shared/_PagesLayout.cshtml";
+}
+
+<style>
+    .tab-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        background-color: white;
+        transition: background-color 0.3s;
+    }
+
+    .tab:hover {
+        background-color: #000325;
+        color: white;
+    }
+
+    .tab.active {
+        background-color: #000325;
+        color: white;
+    }
+
+    .tab-content {
+        display: none;
+        padding: 20px;
+        border-top: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .yellow-card {
+        color: yellow;
+        font-size: 16px;
+        transform: rotate(15deg); 
+    }
+
+    .red-card {
+        color: red;
+        font-size: 16px;
+        transform: rotate(15deg);
+    }
+
+
+    .penalty{
+        color:fuchsia;
+        font-size:16px;
+    }
+
+   
+
+</style>
+
+<br />
+@await Html.PartialAsync("_BackButton")
+<br />
+<div class="container live-match-container" style="margin-top:10px;">
+    <div class="row justify-content-center mb-4">
+        <div class="col-8 text-center">
+            <p class="text-center mb-1">@Model.FixturedClubs</p>
+            <p class="text-center mb-1">@Model.KickOffTime.ToString("HH:mm"), @Model.KickOffDate.ToString("ddd, dd MMM yyyy")</p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-4">
+            <img src="~/@Model.HomeTeamBadge" alt="Home Team Badge" class="club-badge-image-live" />
+            <p>@Model.HomeTeamName</p>
+            <input type="hidden" id="homeTeamId" value="@Model.HomeTeamId" />
+        </div>
+        <div class="col-4">
+            <div>
+                <p style="font-size:16px;">@Model.LiveTime</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center">
+                <h2 class="mb-0" style="margin-right:5px; font-size:28px;">
+                    @Model.HomeTeamScore
+                </h2>
+                <p class="mx-1 mb-0" style="font-size:24px;">-</p>
+                <h2 class="mb-2" style="margin-left:5px; font-size:28px;">
+                    @Model.AwayTeamScore
+                </h2>
+            </div>
+            <div>
+                @if(Model.IsLive == true)
+                {
+                    <text>Live</text>
+                }
+                else if(Model.IsHalfTime == true)
+                {
+                    <text>Half-time</text>
+                }
+                else if(Model.IsEnded == true)
+                {
+                    <text>Full-time</text>
+                }
+                else
+                {
+                    <text>Not started</text>
+                }
+            </div>
+        </div>
+        <div class="col-4">
+            <img src="~/@Model.AwayTeamBadge" alt="Away Team Badge" class="club-badge-image-live" />
+            <p>@Model.AwayTeamName</p>
+            <input type="hidden" id="awayTeamId" value="@Model.AwayTeamId" />
+        </div>
+    </div>
+    @if(User.IsInRole("Sport Coordinator"))
+    {
+        <hr />
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-start-live-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    Start match <i class="fa fa-play" style="margin-left: 8px;"></i>
+                </button>
+            </div>
+            <div class="col-4"></div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button" class="open-goal-home-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#1e7e34';"
+                        onmouseout="this.style.backgroundColor='#28a745';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-futbol" style="margin-right: 8px;"></i> Goal H
+                </button>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-goal-away-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+                "
+                        onmouseover="this.style.backgroundColor='#1e7e34';"
+                        onmouseout="this.style.backgroundColor='#28a745';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-futbol" style="margin-right: 8px;"></i> Goal A
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button"  class="open-yellow-home-modal-button"  style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ffc107;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#e0a800';"
+                        onmouseout="this.style.backgroundColor='#ffc107';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-square" style="margin-right: 8px;"></i> Yellow H
+                </button>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-yellow-away-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ffc107;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#e0a800';"
+                        onmouseout="this.style.backgroundColor='#ffc107';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-square" style="margin-right: 8px;"></i> Yellow A
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button" class="open-sub-home-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-exchange-alt" style="margin-right: 8px;"></i> Sub H
+                </button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="open-halftime-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    HalfTime <i class="fa fa-pause" style="margin-left: 8px;"></i>
+                </button>
+            </div>
+            <div class="col-4">
+                <button type="button" class="open-sub-away-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-exchange-alt" style="margin-right: 8px;"></i> Sub A
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button" class="open-red-home-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#c82333';"
+                        onmouseout="this.style.backgroundColor='#dc3545';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-square" style="margin-right: 8px;"></i> Red H
+                </button>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-red-away-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#c82333';"
+                        onmouseout="this.style.backgroundColor='#dc3545';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-square" style="margin-right: 8px;"></i> Red A
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button" class="open-pen-home-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;"
+                        onmouseover="this.style.backgroundColor='#7a1f7a';"
+                        onmouseout="this.style.backgroundColor='purple';"
+                        onmousedown="this.style.backgroundColor='#4b004b';"
+                        onmouseup="this.style.backgroundColor='purple'; this.style.boxShadow='';">
+                    <i class="fa fa-futbol penalty" style="margin-right: 8px;"></i> Penalty H
+                </button>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-pen-away-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: purple;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;"
+                        onmouseover="this.style.backgroundColor='#7a1f7a';"
+                        onmouseout="this.style.backgroundColor='purple';"
+                        onmousedown="this.style.backgroundColor='#4b004b';"
+                        onmouseup="this.style.backgroundColor='purple'; this.style.boxShadow='';">
+                    <i class="fa fa-futbol penalty" style="margin-right: 8px;"></i> Penalty A
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-12">
+                <button type="button" class="open-addtime-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    Add time
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-12">
+                <button type="button" class="open-fulltime-modal-button" style="
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#0056b3';"
+                        onmouseout="this.style.backgroundColor='#007bff';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    Full time
+                </button>
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <div class="col-12 tab-container">
+            <div class="tab active" onclick="handleTabClick(event, 'overview')">Overview</div>
+            <div class="tab" onclick="handleTabClick(event, 'h2h')">H2H</div>
+        </div>
+        <div id="overview" class="tab-content active">
+            <p>Overview content goes here.</p>
+        </div>
+        <div id="h2h" class="tab-content">
+        </div>
+    }
+
+
+    <div id="startLiveModal" class="start-live-modal">
+        <div class="start-live-modal-content">
+            <span class="close">&times;</span>
+            <p>Start Live Modal Content</p>
+        </div>
+    </div>
+
+
+    <div id="goalHomeModal" class="goal-home-modal">
+        <div class="goal-home-modal-content">
+            <span class="close">&times;</span>
+            <p>Goal Home Modal Content</p>
+        </div>
+    </div>
+
+    <div id="goalAwayModal" class="goal-home-modal">
+        <div class="goal-away-modal-content">
+            <span class="close">&times;</span>
+            <p>Goal Away Modal Content</p>
+        </div>
+    </div>
+    <div id="yellowHomeModal" class="yellow-home-modal">
+        <div class="yellow-home-modal-content">
+            <span class="close">&times;</span>
+            <p>Yellow Home Modal Content</p>
+        </div>
+    </div>
+    <div id="yellowAwayModal" class="yellow-away-modal">
+        <div class="yellow-away-modal-content">
+            <span class="close">&times;</span>
+            <p>Yellow Away Modal Content</p>
+        </div>
+    </div>
+
+    <div id="subHomeModal" class="sub-home-modal">
+        <div class="sub-home-modal-content">
+            <span class="close">&times;</span>
+            <p>Sub home Modal Content</p>
+        </div>
+    </div>
+
+    <div id="subAwayModal" class="sub-away-modal">
+        <div class="sub-away-modal-content">
+            <span class="close">&times;</span>
+            <p>Sub Away Modal Content</p>
+        </div>
+    </div>
+
+
+    <div id="redHomeModal" class="red-home-modal">
+        <div class="red-home-modal-content">
+            <span class="close">&times;</span>
+            <p>Red home Modal Content</p>
+        </div>
+    </div>
+
+    <div id="redAwayModal" class="red-away-modal">
+        <div class="red-away-modal-content">
+            <span class="close">&times;</span>
+            <p>Red Away Modal Content</p>
+        </div>
+    </div>
+
+    <div id="penHomeModal" class="pen-home-modal">
+        <div class="pen-home-modal-content">
+            <span class="close">&times;</span>
+            <p>Pen home Modal Content</p>
+        </div>
+    </div>
+
+    <div id="penAwayModal" class="pen-away-modal">
+        <div class="pen-away-modal-content">
+            <span class="close">&times;</span>
+            <p>Pen Away Modal Content</p>
+        </div>
+    </div>
+
+    <div id="halftimeModal" class="halftime-modal">
+        <div class="halftime-modal-content">
+            <span class="close">&times;</span>
+            <p>Half time Modal Content</p>
+        </div>
+    </div>
+
+    <div id="fulltimeModal" class="fulltime-modal">
+        <div class="fulltime-modal-content">
+            <span class="close">&times;</span>
+            <p>Full time Modal Content</p>
+        </div>
+    </div>
+
+
+    <div id="addtimeModal" class="addtime-modal">
+        <div class="addtime-modal-content">
+            <span class="close">&times;</span>
+            <p>Add time Modal Content</p>
+        </div>
+    </div>
+
+</div>
+<script>
+    function handleTabClick(event, tabId) {
+        var i, tabcontent, tablinks;
+        var homeTeamId = document.getElementById("homeTeamId").value;
+        var awayTeamId = document.getElementById("awayTeamId").value;
+        var fixtureId = '@Model.FixtureId';
+
+        // Hide all tab contents
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].classList.remove("active");
+        }
+
+        // Remove active class from all tabs
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+
+        // Show the selected tab content
+        document.getElementById(tabId).classList.add("active");
+        event.currentTarget.classList.add("active");
+
+        // Load content if it's not already loaded
+        if ($('#' + tabId).html().trim() === '') {
+            var url;
+            if (tabId === 'overview') {
+                url = '@Url.Action("MatchLineUpsFans", "LineUps")';
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        fixtureId: fixtureId,
+                        homeTeamId: homeTeamId,
+                        awayTeamId: awayTeamId
+                    },
+                    success: function (data) {
+                        $('#' + tabId).html(data);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error("Error:", errorThrown);
+                    }
+                });
+            } else if (tabId === 'h2h') {
+                url = '@Url.Action("HeadToHead", "LineUps")';
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        homeClubId: homeTeamId,
+                        awayClubId: awayTeamId,
+                        fixtureId: fixtureId
+                    },
+                    success: function (data) {
+                        $('#' + tabId).html(data);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error("Error:", errorThrown);
+                    }
+                });
+            }
+        }
+    }
+
+    var startLiveModal = document.getElementById('startLiveModal');
+    var goalHomeModal = document.getElementById('goalHomeModal');
+    var goalAwayModal = document.getElementById('goalAwayModal');
+    var yellowHomeModal = document.getElementById('yellowHomeModal');
+    var yellowAwayModal = document.getElementById('yellowAwayModal');
+    var subHomeModal = document.getElementById('subHomeModal');
+    var subAwayModal = document.getElementById('subAwayModal');
+    var redHomeModal = document.getElementById('redHomeModal');
+    var redAwayModal = document.getElementById('redAwayModal');
+    var penHomeModal = document.getElementById('penHomeModal');
+    var penAwayModal = document.getElementById('penAwayModal');
+    var halftimeModal = document.getElementById('halftimeModal');
+    var fulltimeModal = document.getElementById('fulltimeModal');
+    var addtimeModal = document.getElementById('addtimeModal');
+
+    var openStartLiveModalButton = document.querySelector('.open-start-live-modal-button');
+    var openGoalHomeModalButton = document.querySelector('.open-goal-home-modal-button');
+    var openGoalAwayModalButton = document.querySelector('.open-goal-away-modal-button');
+    var openYellowHomeModalButton = document.querySelector('.open-yellow-home-modal-button');
+    var openYellowAwayModalButton = document.querySelector('.open-yellow-away-modal-button');
+    var openSubHomeModalButton = document.querySelector('.open-sub-home-modal-button');
+    var openSubAwayModalButton = document.querySelector('.open-sub-away-modal-button');
+    var openRedHomeModalButton = document.querySelector('.open-red-home-modal-button');
+    var openRedAwayModalButton = document.querySelector('.open-red-away-modal-button');
+    var openPenHomeModalButton = document.querySelector('.open-pen-home-modal-button');
+    var openPenAwayModalButton = document.querySelector('.open-pen-away-modal-button');
+    var openHalftimeModalButton = document.querySelector('.open-halftime-modal-button');
+    var openFulltimeModalButton = document.querySelector('.open-fulltime-modal-button');
+    var openAddtimeModalButton = document.querySelector('.open-addtime-modal-button');
+
+    var closeButtons = document.querySelectorAll('.close');
+
+    openStartLiveModalButton.onclick = function () {
+        startLiveModal.style.display = 'block';
+    }
+
+    openGoalHomeModalButton.onclick = function () {
+        goalHomeModal.style.display = 'block';
+    }
+
+    openGoalAwayModalButton.onclick = function () {
+        goalAwayModal.style.display = 'block';
+    }
+
+    openYellowHomeModalButton.onclick = function () {
+        yellowHomeModal.style.display = 'block';
+    }
+
+
+    openYellowAwayModalButton.onclick = function () {
+        yellowAwayModal.style.display = 'block';
+    }
+
+     openSubHomeModalButton.onclick = function () {
+        subHomeModal.style.display = 'block';
+    }
+
+    openSubAwayModalButton.onclick = function () {
+        subAwayModal.style.display = 'block';
+    }
+
+    openRedHomeModalButton.onclick = function () {
+        redHomeModal.style.display = 'block';
+    }
+
+    openRedAwayModalButton.onclick = function () {
+        redAwayModal.style.display = 'block';
+    }
+
+    openPenHomeModalButton.onclick = function () {
+        penHomeModal.style.display = 'block';
+    }
+
+    openPenAwayModalButton.onclick = function () {
+        penAwayModal.style.display = 'block';
+    }
+
+    openHalftimeModalButton.onclick = function () {
+        halftimeModal.style.display = 'block';
+    }
+
+    openFulltimeModalButton.onclick = function () {
+        fulltimeModal.style.display = 'block';
+    }
+
+    openAddtimeModalButton.onclick = function () {
+        addtimeModal.style.display = 'block';
+    }
+
+
+    closeButtons.forEach(function (btn) {
+        btn.onclick = function () {
+            startLiveModal.style.display = 'none';
+            goalHomeModal.style.display = 'none';
+            goalAwayModal.style.display = 'none';
+            yellowHomeModal.style.display = 'none';
+            yellowAwayModal.style.display = 'none';
+            subHomeModal.style.display = 'none';
+            subAwayModal.style.display = 'none';
+            redHomeModal.style.display = 'none';
+            redAwayModal.style.display = 'none';
+            penHomeModal.style.display = 'none';
+            penAwayModal.style.display = 'none';
+            halftimeModal.style.display = 'none';
+            fulltimeModal.style.display = 'none';
+            addtimeModal.style.display = 'none';
+        }
+    });
+
+    window.onclick = function (event) {
+        if (event.target === startLiveModal) {
+            startLiveModal.style.display = 'none';
+        }
+        if (event.target === goalHomeModal) {
+            goalHomeModal.style.display = 'none';
+        }
+        if (event.target === goalAwayModal) {
+            goalAwayModal.style.display = 'none';
+        }
+        if (event.target === goalAwayModal) {
+            yellowHomeModal.style.display = 'none';
+        }
+        if (event.target === yellowAwayModal) {
+            yellowAwayModal.style.display = 'none';
+        }
+
+         if (event.target === subHomeModal) {
+            subHomeModal.style.display = 'none';
+        }
+
+        if (event.target === subAwayModal) {
+            subAwayModal.style.display = 'none';
+        }
+
+        if (event.target === redHomeModal) {
+            redHomeModal.style.display = 'none';
+        }
+
+        if (event.target === subAwayModal) {
+            redAwayModal.style.display = 'none';
+        }
+
+        if (event.target === penHomeModal) {
+            penHomeModal.style.display = 'none';
+        }
+
+        if (event.target === penAwayModal) {
+            penAwayModal.style.display = 'none';
+        }
+
+        if (event.target === halftimeModal) {
+            halftimeModal.style.display = 'none';
+        }
+
+        if (event.target === fulltimeModal) {
+            fulltimeModal.style.display = 'none';
+        }
+
+        if (event.target === addtimeModal) {
+            addtimeModal.style.display = 'none';
+        }
+    }
+
+</script>
+
+
+

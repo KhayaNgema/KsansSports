@@ -1070,6 +1070,138 @@ namespace MyField.Migrations
                     b.ToTable("LineUpXIHolder");
                 });
 
+            modelBuilder.Entity("MyField.Models.Live", b =>
+                {
+                    b.Property<int>("LiveId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LiveId"));
+
+                    b.Property<string>("AwayTeamScore")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FixtureId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HomeTeamScore")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ISEnded")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsHalfTime")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LiveTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LiveId");
+
+                    b.ToTable("Live");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveAssist", b =>
+                {
+                    b.Property<int>("AssistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AssistId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AssistId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("LiveAssists");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveAssistHolder", b =>
+                {
+                    b.Property<int>("AssistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AssistId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AssistId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("LiveAssistHolders");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveGoal", b =>
+                {
+                    b.Property<int>("GoalsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoalsId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GoalsId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("LiveGoals");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
+                {
+                    b.Property<int>("GoalsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoalsId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("GoalsId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("LiveGoalHolders");
+                });
+
             modelBuilder.Entity("MyField.Models.Maintainance", b =>
                 {
                     b.Property<int>("MaintainanceId")
@@ -1375,6 +1507,24 @@ namespace MyField.Migrations
                     b.ToTable("Payments");
                 });
 
+            modelBuilder.Entity("MyField.Models.Penalty", b =>
+                {
+                    b.Property<int>("PenaltyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PenaltyId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PenaltyId");
+
+                    b.HasIndex("LiveId");
+
+                    b.ToTable("Penalties");
+                });
+
             modelBuilder.Entity("MyField.Models.PlayerTransferMarket", b =>
                 {
                     b.Property<int>("PlayerTransferMarketId")
@@ -1429,6 +1579,30 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("BaseType");
 
                     b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("MyField.Models.RedCard", b =>
+                {
+                    b.Property<int>("RedCardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RedCardId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("RedCardId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("RedCards");
                 });
 
             modelBuilder.Entity("MyField.Models.Reports", b =>
@@ -1883,6 +2057,30 @@ namespace MyField.Migrations
                     b.HasIndex("UserBaseModelId");
 
                     b.ToTable("Warnings");
+                });
+
+            modelBuilder.Entity("MyField.Models.YellowCard", b =>
+                {
+                    b.Property<int>("YellowCardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("YellowCardId"));
+
+                    b.Property<int>("LiveId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("YellowCardId");
+
+                    b.HasIndex("LiveId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("YellowCards");
                 });
 
             modelBuilder.Entity("MyField.Models.UserBaseModel", b =>
@@ -3093,6 +3291,82 @@ namespace MyField.Migrations
                     b.Navigation("ModifiedBy");
                 });
 
+            modelBuilder.Entity("MyField.Models.LiveAssist", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveAssistHolder", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveGoal", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("MyField.Models.Maintainance", b =>
                 {
                     b.HasOne("MyField.Models.UserBaseModel", "CreatedBy")
@@ -3283,6 +3557,17 @@ namespace MyField.Migrations
                     b.Navigation("PaymentMadeByClub");
                 });
 
+            modelBuilder.Entity("MyField.Models.Penalty", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+                });
+
             modelBuilder.Entity("MyField.Models.PlayerTransferMarket", b =>
                 {
                     b.HasOne("MyField.Models.Club", "Club")
@@ -3314,6 +3599,25 @@ namespace MyField.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("League");
+
+                    b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("MyField.Models.RedCard", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
 
                     b.Navigation("Player");
                 });
@@ -3535,6 +3839,25 @@ namespace MyField.Migrations
                     b.Navigation("ModifiedBy");
 
                     b.Navigation("UserBaseModel");
+                });
+
+            modelBuilder.Entity("MyField.Models.YellowCard", b =>
+                {
+                    b.HasOne("MyField.Models.Live", "Live")
+                        .WithMany()
+                        .HasForeignKey("LiveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MyField.Models.Player", "Player")
+                        .WithMany()
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Live");
+
+                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("MyField.Models.ClubPerformanceReport", b =>

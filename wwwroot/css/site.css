@@ -2369,3 +2369,166 @@ body {
 }
 
 
+
+/*Live match css*/
+
+.live-match-container {
+    max-width: 700px;
+    margin: 150px auto 20px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.club-badge-image-live {
+    height: 70px;
+    width: 80px;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+@media (min-width: 768px) {
+    .club-badge-image-live {
+        height: 70px;
+        width: 80px;
+        mix-blend-mode: multiply;
+    }
+}
+
+@media (min-width: 992px) {
+    .club-badge-image-live {
+        height: 70px;
+        width: 80px;
+        mix-blend-mode: multiply;
+    }
+}
+
+/*Start match modal box css*/
+
+.start-live-modal,
+.goal-away-modal,
+.goal-home-modal,
+.yellow-home-modal,
+.yellow-away-modal,
+.sub-home-modal,
+.sub-away-modal,
+.red-home-modal,
+.red-away-modal,
+.pen-home-modal,
+.pen-away-modal,
+.halftime-modal,
+.fulltime-modal,
+.addtime-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.start-live-modal-content,
+.goal-away-modal-content,
+.goal-home-modal-content,
+.yellow-home-modal-content,
+.yellow-away-modal-content,
+.sub-home-modal-content,
+.sub-away-modal-content,
+.red-home-modal-content,
+.red-away-modal-content,
+.pen-home-modal-content,
+.pen-away-modal-content,
+.halftime-modal-content,
+.fulltime-modal-content,
+.addtime-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.open-start-live-modal-button,
+.open-goal-away-modal-button,
+.open-goal-home-modal-button,
+.open-yellow-home-modal-button,
+.open-yellow-away-modal-button,
+.open-sub-home-modal-button,
+.open-sub-away-modal-button,
+.open-red-home-modal-button,
+.open-red-away-modal-button,
+.open-pen-home-modal-button,
+.open-pen-away-modal-button,
+.open-halftime-modal-button,
+.open-fulltime-modal-button,
+.open-addtime-modal-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+    .open-start-live-modal-button:hover,
+    .open-goal-away-modal-button :hover,
+    .open-goal-home-modal-button :hover,
+    .open-yellow-home-modal-button :hover,
+    .open-yellow-away-modal-button :hover,
+    .open-sub-home-modal-button :hover,
+    .open-sub-away-modal-button :hover,
+    .open-red-home-modal-button :hover,
+    .open-red-away-modal-button :hover,
+    .open-pen-home-modal-button :hover,
+    .open-pen-away-modal-button :hover,
+    .open-halftime-modal-button :hover,
+    .open-fulltime-modal-button :hover,
+    .open-addtime-modal-button :hover {
+        background-color: #0056b3;
+    }
+
+    .open-start-live-modal-button:active,
+    .open-goal-away-modal-button :active,
+    .open-goal-home-modal-button :active,
+    .open-yellow-home-modal-button :active,
+    .open-yellow-away-modal-button :active,
+    .open-sub-home-modal-button :active,
+    .open-sub-away-modal-button :active,
+    .open-red-home-modal-button :active,
+    .open-red-away-modal-button :active,
+    .open-pen-home-modal-button :active,
+    .open-pen-away-modal-button :active,
+    .open-halftime-modal-button :active,
+    .open-fulltime-modal-button :active,
+    .open-addtime-modal-button :active {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+ 

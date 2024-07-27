@@ -45,20 +45,11 @@
                                 }
                             </td>
                             <td class="align-middle text-right">
-                                <a asp-controller="MatchResults" asp-action="Create"
-                                   asp-route-homeClubName="@item.HomeTeam.ClubName"
-                                   asp-route-awayClubName="@item.AwayTeam.ClubName"
+                                <a asp-controller="Lives" asp-action="StartLive"
                                    asp-route-fixtureId="@ecryptedFixtureId"
-                                   asp-route-kickoffDate="@item.KickOffDate"
-                                   asp-route-kickoffTime="@item.KickOffTime"
-                                   asp-route-homeTeamBadge="@item.HomeTeam.ClubBadge"
-                                   asp-route-awayTeamBadge="@item.AwayTeam.ClubBadge"
-                                   asp-route-location="@item.Location"
-                                   asp-route-homeTeamId="@encryptedHomeTeamId"
-                                   asp-route-awayTeamId="@encryptedAwayTeamId"
                                    class="btn btn-outline-success"
                                    style="text-decoration: none;">
-                                    <i class="fas fa-futbol"></i> Update Score
+                                    <i class="fas fa-futbol"></i> Start live
                                 </a>
                             </td>
                         </tr>

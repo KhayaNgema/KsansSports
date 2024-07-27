@@ -202,5 +202,21 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.CookiePreferences> CookiePreferences { get; set; } = default!;
 
+        public DbSet<MyField.Models.Live> Live { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveGoal> LiveGoals { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveAssist> LiveAssists { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveGoalHolder> LiveGoalHolders { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveAssistHolder> LiveAssistHolders { get; set; } = default!;
+
+        public DbSet<MyField.Models.YellowCard> YellowCards { get; set; } = default!;
+
+        public DbSet<MyField.Models.RedCard> RedCards { get; set; } = default!;
+
+        public DbSet<MyField.Models.Penalty> Penalties { get; set; } = default!;
+
     }
 }
