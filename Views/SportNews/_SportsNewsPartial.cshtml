@@ -17,7 +17,7 @@
 @if(Model.Any())
 {
     <div class="col-12">
-        <div class="row justify-content-center" style="padding-right:10px; padding-left:10px;">
+        <div class="row justify-content-center">
             @foreach (var item in Model.Take(6))
             {
                 var encryptedNewsId = encryptionService.Encrypt(item.NewsId);
