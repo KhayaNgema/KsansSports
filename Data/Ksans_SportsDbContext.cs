@@ -218,5 +218,9 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.Penalty> Penalties { get; set; } = default!;
 
+        public DbSet<MyField.Models.TopScore> TopScores { get; set; } = default!;
+
+        public DbSet<MyField.Models.TopAssist> TopAssists { get; set; } = default!;
+
     }
 }

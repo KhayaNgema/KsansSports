@@ -171,3 +171,36 @@ WHERE [a].[UserId] = @__user_Id_0
 2024-07-27 22:19:58.141 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
 2024-07-27 22:19:58.845 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
 2024-07-27 22:24:57.307 +02:00 [INF] 2 servers were removed due to timeout
+2024-07-27 22:36:42.658 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-27 22:36:42.720 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-27 22:36:44.237 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-27 22:36:46.872 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-27 22:36:46.896 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-27 22:36:46.896 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-27 22:36:46.912 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-27 22:36:46.912 +02:00 [INF] Hosting environment: Development
+2024-07-27 22:36:46.912 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-27 22:36:47.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/StartLive?fixtureId=w5WFNTBlvn5R5K%2FODOAI9g%3D%3D - null null
+2024-07-27 22:36:47.091 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2024-07-27 22:36:47.128 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - 200 449111 text/plain 35.3446ms
+2024-07-27 22:36:47.737 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2024-07-27 22:36:47.737 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - null null
+2024-07-27 22:36:47.737 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=fxaYcZjw1IFp4uOsx5p-ckd6nzMTCIIKKAxbVOLU_mE - null null
+2024-07-27 22:36:47.739 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - 200 5735 text/css 1.9236ms
+2024-07-27 22:36:47.739 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=fxaYcZjw1IFp4uOsx5p-ckd6nzMTCIIKKAxbVOLU_mE - 200 56649 text/css 2.3698ms
+2024-07-27 22:36:47.740 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - 200 162726 text/css 3.2664ms
+2024-07-27 22:36:47.741 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/StartLive?fixtureId=w5WFNTBlvn5R5K%2FODOAI9g%3D%3D - 200 null text/html; charset=utf-8 651.1652ms
+2024-07-27 22:36:47.749 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/61b4a185-c889-428c-a26c-296bd138a788_yamal.jpeg - null null
+2024-07-27 22:36:47.749 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - null null
+2024-07-27 22:36:47.751 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/45df9f2e-8d29-49e3-90c1-48825e631d9c_Newcastle.jpg - 200 10679 image/jpeg 1.638ms
+2024-07-27 22:36:47.751 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/61b4a185-c889-428c-a26c-296bd138a788_yamal.jpeg - 200 11139 image/jpeg 1.6525ms
+2024-07-27 22:36:47.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - null null
+2024-07-27 22:36:47.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-27 22:36:47.773 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2024-07-27 22:36:47.775 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/9bc85f4a-cdc2-4f82-99ba-7007f2edecf3_Chelsea.png - 200 13737 image/png 1.3583ms
+2024-07-27 22:36:47.777 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 3.6396ms
+2024-07-27 22:36:47.780 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - 200 449111 text/plain 6.9852ms
+2024-07-27 22:36:48.161 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - null null
+2024-07-27 22:36:48.182 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.4408ms
+2024-07-27 22:36:48.540 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - null null
+2024-07-27 22:36:48.541 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - 200 15406 image/x-icon 1.8363ms
