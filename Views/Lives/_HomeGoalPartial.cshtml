@@ -1,5 +1,49 @@
-﻿
+﻿@model MyField.ViewModels.HomeGoalCombinedViewModel
 
-<div>
-    <p>Goal home</p>
-</div>
+<form id="homeGoalForm" method="post">
+    @Html.AntiForgeryToken() <!-- CSRF token -->
+
+    <div class="form-group row">
+        <label for="goalScoredBy" class="col-sm-3 col-form-label">Goal scored by:</label>
+        <div class="col-sm-9">
+            <select id="goalScoredBy" name="goalScoredBy" class="form-control">
+                <option value="">Select Player</option>
+                @if (Model?.Players != null && Model.Players.Any())
+                {
+                    foreach (var player in Model.Players)
+                    {
+                        <option value="@player.PlayerId">
+                            @player.FullName (@player.JerseyNumber)
+                        </option>
+                    }
+                }
+                else
+                {
+                    <option value="">No players available</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row mt-3">
+        <label for="assistedBy" class="col-sm-3 col-form-label">Assisted by:</label>
+        <div class="col-sm-9">
+            <select id="assistedBy" name="assistedBy" class="form-control">
+                <option value="">Select Player</option>
+                @if (Model?.Players != null && Model.Players.Any())
+                {
+                    foreach (var player in Model.Players)
+                    {
+                        <option value="@player.PlayerId">
+                            @player.FullName (@player.JerseyNumber)
+                        </option>
+                    }
+                }
+                else
+                {
+                    <option value="">No players available</option>
+                }
+            </select>
+        </div>
+    </div>
+</form>

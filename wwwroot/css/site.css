@@ -2416,7 +2416,8 @@ body {
 .pen-away-modal,
 .halftime-modal,
 .fulltime-modal,
-.addtime-modal {
+.addtime-modal,
+.resume-halftime-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -2442,7 +2443,8 @@ body {
 .pen-away-modal-content,
 .halftime-modal-content,
 .fulltime-modal-content,
-.addtime-modal-content {
+.addtime-modal-content,
+.resume-halftime-modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -2483,7 +2485,8 @@ body {
 .open-pen-away-modal-button,
 .open-halftime-modal-button,
 .open-fulltime-modal-button,
-.open-addtime-modal-button {
+.open-addtime-modal-button,
+.open-resume-halftime-modal-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -2509,7 +2512,8 @@ body {
     .open-pen-away-modal-button :hover,
     .open-halftime-modal-button :hover,
     .open-fulltime-modal-button :hover,
-    .open-addtime-modal-button :hover {
+    .open-addtime-modal-button :hover,
+    .open-resume-halftime-modal-button :hover {
         background-color: #0056b3;
     }
 
@@ -2526,7 +2530,8 @@ body {
     .open-pen-away-modal-button :active,
     .open-halftime-modal-button :active,
     .open-fulltime-modal-button :active,
-    .open-addtime-modal-button :active {
+    .open-addtime-modal-button :active,
+    .open-resume-halftime-modal-button :active {
         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 

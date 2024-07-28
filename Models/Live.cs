@@ -23,6 +23,8 @@ namespace MyField.Models
         public bool IsHalfTime { get; set; }
 
         public bool ISEnded { get; set; }
+
+        public bool WentToHalfTime { get; set; }
     }
 
     public class LiveGoal
@@ -95,6 +97,8 @@ namespace MyField.Models
         public string PlayerId { get; set; }
 
         public virtual Player Player { get; set; }
+
+        public string ScoredTime { get; set; }
     }
 
     public class LiveAssistHolder
