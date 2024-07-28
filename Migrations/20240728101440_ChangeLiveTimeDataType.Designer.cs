@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240728101440_ChangeLiveTimeDataType")]
+    partial class ChangeLiveTimeDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1100,8 +1103,6 @@ namespace MyField.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("LiveId");
-
-                    b.HasIndex("FixtureId");
 
                     b.ToTable("Live");
                 });
@@ -3343,17 +3344,6 @@ namespace MyField.Migrations
                     b.Navigation("Fixture");
 
                     b.Navigation("ModifiedBy");
-                });
-
-            modelBuilder.Entity("MyField.Models.Live", b =>
-                {
-                    b.HasOne("MyField.Models.Fixture", "Fixture")
-                        .WithMany()
-                        .HasForeignKey("FixtureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Fixture");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveAssist", b =>

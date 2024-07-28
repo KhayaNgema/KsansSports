@@ -1,5 +1,5 @@
 ﻿@model MyField.ViewModels.StartLiveViewModel
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 @{
     ViewData["Title"] = "Live match";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
@@ -60,7 +60,28 @@
         font-size:16px;
     }
 
-   
+    .flicker {
+        display: inline-block;
+    }
+
+    #customMessage {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
 
 </style>
 
@@ -82,7 +103,12 @@
         </div>
         <div class="col-4">
             <div>
-                <p style="font-size:16px;">@Model.LiveTime</p>
+                <div id="liveStatus">
+                    Not started
+                </div>
+                <p id="liveTime" style="font-size:16px; display: none;">
+                    0<span id="flickerSymbol" class="flicker">'</span>
+                </p>
             </div>
             <div class="d-flex justify-content-center align-items-center">
                 <h2 class="mb-0" style="margin-right:5px; font-size:28px;">
@@ -93,24 +119,8 @@
                     @Model.AwayTeamScore
                 </h2>
             </div>
-            <div>
-                @if(Model.IsLive == true)
-                {
-                    <text>Live</text>
-                }
-                else if(Model.IsHalfTime == true)
-                {
-                    <text>Half-time</text>
-                }
-                else if(Model.IsEnded == true)
-                {
-                    <text>Full-time</text>
-                }
-                else
-                {
-                    <text>Not started</text>
-                }
-            </div>
+
+            <input asp-for="FixtureId" type="hidden" id="fixtureId" value="@Model.FixtureId" />
         </div>
         <div class="col-4">
             <img src="~/@Model.AwayTeamBadge" alt="Away Team Badge" class="club-badge-image-live" />
@@ -121,6 +131,13 @@
     @if(User.IsInRole("Sport Coordinator"))
     {
         <hr />
+        <div id="tempDataMessage" class="alert" role="alert" style="display: none;">
+            <span id="tempDataMessageContent"></span>
+            <span class="close" aria-label="Close" onclick="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+            </span>
+        </div>
+
         <div class="row justify-content-center" style="margin-bottom: 30px;">
             <div class="col-4"></div>
             <div class="col-4">
@@ -449,48 +466,53 @@
     <div id="startLiveModal" class="start-live-modal">
         <div class="start-live-modal-content">
             <span class="close">&times;</span>
-            <p>Start Live Modal Content</p>
+            <p>Are you sure you want to start a live match?</p>
+            <button id="confirmStartLive" class="confirm-button">Yes</button>
+            <button id="cancelStartLive" class="cancel-button">No</button>
         </div>
     </div>
 
+    <form id="antiForgeryForm" method="post" action="/Lives/StartMatch">
+        @Html.AntiForgeryToken()
+    </form>
 
     <div id="goalHomeModal" class="goal-home-modal">
         <div class="goal-home-modal-content">
             <span class="close">&times;</span>
-            <p>Goal Home Modal Content</p>
+            @await Html.PartialAsync("_HomeGoalPartial")
         </div>
     </div>
 
     <div id="goalAwayModal" class="goal-home-modal">
         <div class="goal-away-modal-content">
             <span class="close">&times;</span>
-            <p>Goal Away Modal Content</p>
+            @await Html.PartialAsync("_AwayGoalPartial")
         </div>
     </div>
     <div id="yellowHomeModal" class="yellow-home-modal">
         <div class="yellow-home-modal-content">
             <span class="close">&times;</span>
-            <p>Yellow Home Modal Content</p>
+            @await Html.PartialAsync("_HomeYellowPartial")
         </div>
     </div>
     <div id="yellowAwayModal" class="yellow-away-modal">
         <div class="yellow-away-modal-content">
             <span class="close">&times;</span>
-            <p>Yellow Away Modal Content</p>
+            @await Html.PartialAsync("_AwayYellowPartial")
         </div>
     </div>
 
     <div id="subHomeModal" class="sub-home-modal">
         <div class="sub-home-modal-content">
             <span class="close">&times;</span>
-            <p>Sub home Modal Content</p>
+            @await Html.PartialAsync("_HomeSubPartial")
         </div>
     </div>
 
     <div id="subAwayModal" class="sub-away-modal">
         <div class="sub-away-modal-content">
             <span class="close">&times;</span>
-            <p>Sub Away Modal Content</p>
+            @await Html.PartialAsync("_AwaySubPartial")
         </div>
     </div>
 
@@ -498,42 +520,42 @@
     <div id="redHomeModal" class="red-home-modal">
         <div class="red-home-modal-content">
             <span class="close">&times;</span>
-            <p>Red home Modal Content</p>
+            @await Html.PartialAsync("_HomeRedPartial")
         </div>
     </div>
 
     <div id="redAwayModal" class="red-away-modal">
         <div class="red-away-modal-content">
             <span class="close">&times;</span>
-            <p>Red Away Modal Content</p>
+            @await Html.PartialAsync("_AwayRedPartial")
         </div>
     </div>
 
     <div id="penHomeModal" class="pen-home-modal">
         <div class="pen-home-modal-content">
             <span class="close">&times;</span>
-            <p>Pen home Modal Content</p>
+            @await Html.PartialAsync("_HomePenaltyPartial")
         </div>
     </div>
 
     <div id="penAwayModal" class="pen-away-modal">
         <div class="pen-away-modal-content">
             <span class="close">&times;</span>
-            <p>Pen Away Modal Content</p>
+            @await Html.PartialAsync("_AwayPenaltyPartial")
         </div>
     </div>
 
     <div id="halftimeModal" class="halftime-modal">
         <div class="halftime-modal-content">
             <span class="close">&times;</span>
-            <p>Half time Modal Content</p>
+            @await Html.PartialAsync("_HalfTimePartial")
         </div>
     </div>
 
     <div id="fulltimeModal" class="fulltime-modal">
         <div class="fulltime-modal-content">
             <span class="close">&times;</span>
-            <p>Full time Modal Content</p>
+            @await Html.PartialAsync("_FullTimePartial")
         </div>
     </div>
 
@@ -541,9 +563,12 @@
     <div id="addtimeModal" class="addtime-modal">
         <div class="addtime-modal-content">
             <span class="close">&times;</span>
-            <p>Add time Modal Content</p>
+            @await Html.PartialAsync("_AddTimePartial")
         </div>
     </div>
+
+
+    
 
 </div>
 <script>
@@ -773,6 +798,183 @@
         }
     }
 
+
+    /*Start live match javascript */
+
+    function startLiveMatch() {
+        var fixtureId = $('#fixtureId').val();
+        if (!fixtureId) {
+            console.error("FixtureId is not set correctly.");
+            return;
+        }
+
+        var viewModel = {
+            FixtureId: fixtureId,
+            HomeTeamScore: 0,
+            AwayTeamScore: 0,
+            LiveTime: 0,
+            HomeTeamName: '@Model.HomeTeamName',
+            AwayTeamName: '@Model.AwayTeamName',
+            HomeTeamBadge: '@Model.HomeTeamBadge',
+            AwayTeamBadge: '@Model.AwayTeamBadge',
+            FixturedClubs: '@Model.FixturedClubs'
+        };
+
+        $.ajax({
+            url: '/Lives/StartMatch',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(viewModel),
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function (response) {
+                if (response.success) {
+                    displayMessage(response.message, 'alert-success');
+                    console.log(response.message); // Log the success message
+
+                    closeModal(); // Hide the modal box on success
+
+                    // Start updating live match status
+                    setInterval(function () {
+                        updateLiveMatchStatus(fixtureId);
+                    }, 60000); // Update every 60 seconds
+                } else {
+                    displayMessage(response.message, 'alert-danger');
+                }
+            },
+            error: function (xhr, status, error) {
+                closeModal();
+                displayMessage('Match already started!', 'alert-danger');
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function closeModal() {
+        $('#startLiveModal').hide();
+    }
+
+    function displayMessage(message, alertClass) {
+        var messageDiv = $('#tempDataMessage');
+        var messageContent = $('#tempDataMessageContent');
+
+        messageContent.text(message);
+        messageDiv.removeClass('alert-success alert-danger').addClass(alertClass);
+        messageDiv.show();
+    }
+
+    function closeAlert() {
+        $('#tempDataMessage').hide();
+    }
+
+    document.getElementById("confirmStartLive").onclick = function () {
+        startLiveMatch();
+    }
+
+    document.getElementById("cancelStartLive").onclick = function () {
+        closeModal();
+    }
+    function displayMessage(message, alertClass) {
+        var messageDiv = $('#tempDataMessage');
+        var messageContent = $('#tempDataMessageContent');
+
+        messageContent.text(message);
+        messageDiv.removeClass('alert-success alert-danger').addClass(alertClass);
+        messageDiv.show();
+
+        setTimeout(function () {
+            closeAlert();
+        }, 5000);
+    }
+
+
+
+    function updateLiveMatchStatus(fixtureId) {
+        if (fixtureId) {
+            console.log("Fetching live match status for fixtureId:", fixtureId);
+            $.ajax({
+                url: `/Lives/GetLiveMatchStatus?fixtureId=${fixtureId}`,
+                type: 'GET',
+                success: function (data) {
+                    if (data) {
+                        var liveTimeElement = $('#liveTime');
+                        var liveStatusElement = $('#liveStatus');
+
+                        if (liveTimeElement.length && liveStatusElement.length) {
+                            var liveTime = data.LiveTime || data.liveTime;
+                            var isLive = data.IsLive || data.isLive;
+                            var isHalfTime = data.IsHalfTime || data.isHalfTime;
+                            var isEnded = data.IsEnded || data.isEnded;
+
+                            $('#liveTime').html(liveTime + "<span id='flickerSymbol' class='flicker'>'</span>");
+
+                            var statusText = '';
+                            if (isLive) {
+                                liveTimeElement.show(); 
+                            } else if (isHalfTime) {
+                                statusText = 'Half-time';
+                                liveTimeElement.hide(); 
+                            } else if (isEnded) {
+                                statusText = 'Full-time';
+                                liveTimeElement.hide(); 
+                            } else {
+                                statusText = 'Not started';
+                                liveTimeElement.hide(); 
+                            }
+
+                            liveStatusElement.text(statusText);
+
+                            console.log("Updated liveTime:", liveTimeElement.text());
+                            console.log("Updated liveStatus:", liveStatusElement.text());
+
+                        } else {
+                            console.error("HTML elements #liveTime or #liveStatus not found.");
+                        }
+                    } else {
+                        console.error('No data returned from server.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                    console.error('Response Text:', xhr.responseText);
+                }
+            });
+        } else {
+            console.error("Invalid fixtureId:", fixtureId);
+        }
+    }
+
+    $(document).ready(function () {
+        var fixtureId = $('#fixtureId').val();
+        console.log("Document ready with fixtureId:", fixtureId); // Log the initial fixtureId
+        if (fixtureId) {
+            updateLiveMatchStatus(fixtureId);
+            setInterval(function () {
+                updateLiveMatchStatus(fixtureId);
+            }, 60000); // Update every 60 seconds
+        } else {
+            console.error("FixtureId on document ready is not set.");
+        }
+
+        $(document).ready(function () {
+            var fixtureId = $('#fixtureId').val();
+            console.log("Document ready with fixtureId:", fixtureId); // Log the initial fixtureId
+            if (fixtureId) {
+                updateLiveMatchStatus(fixtureId);
+                setInterval(function () {
+                    updateLiveMatchStatus(fixtureId);
+                }, 60000); // Update every 60 seconds
+            } else {
+                console.error("FixtureId on document ready is not set.");
+            }
+
+            setInterval(function () {
+                $('#flickerSymbol').toggle();
+            }, 1000); // Toggle visibility every second
+
+        });
+    });
 </script>
 
 

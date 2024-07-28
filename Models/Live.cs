@@ -10,11 +10,13 @@ namespace MyField.Models
 
         public int FixtureId { get; set; }
 
-        public string LiveTime { get; set; }
+        public virtual Fixture Fixture { get; set; }
+
+        public int LiveTime { get; set; }
 
         public int HomeTeamScore { get; set; }
 
-        public string AwayTeamScore { get; set; }
+        public int AwayTeamScore { get; set; }
 
         public bool IsLive { get; set; }
 

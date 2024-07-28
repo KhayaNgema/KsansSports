@@ -2,6 +2,7 @@
 {
     public class StartLiveViewModel
     {
+        public int LiveId { get; set; }
         public int FixtureId { get; set; }
         public string FixturedClubs { get; set; }
 
@@ -25,7 +26,7 @@
 
         public string AwayTeamBadge { get; set;}
 
-        public string LiveTime { get; set; }
+        public int LiveTime { get; set; }
 
         public bool IsLive { get; set; }
 

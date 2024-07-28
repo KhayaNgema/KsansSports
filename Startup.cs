@@ -87,6 +87,7 @@ public class Startup
         services.AddScoped<IPaymentService, PayFastPaymentService>();
         services.AddHttpClient<DeviceInfoService>();
         services.AddHttpClient();
+        services.AddScoped<LiveTimeService>();
 
         services.AddScoped<FixtureService>();
         services.AddHangfire(config => config
