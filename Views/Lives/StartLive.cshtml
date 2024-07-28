@@ -1240,24 +1240,29 @@
     }
 
     document.getElementById("confirmEndMatch").onclick = function () {
-        var fixtureId = $('#fixtureId').val(); 
+        var fixtureId = $('#fixtureId').val();
         if (!fixtureId) {
             console.error("FixtureId is not set correctly.");
             return;
         }
 
         $.ajax({
-            url: '/Lives/EndMatch',
+            url: '/MatchResults/Create',
             type: 'POST',
             data: { fixtureId: fixtureId },
             headers: {
                 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
             },
             success: function (response) {
-                console.log("Match ended for fixtureId: " + fixtureId);
-                displayMessage("Match successfully ended", "alert-success");
-                closeFulltimeModal();
-                updateLiveMatchStatus(fixtureId);
+                if (response.success) {
+                    console.log("Match ended for fixtureId: " + fixtureId);
+                    displayMessage("Match successfully ended", "alert-success");
+                    closeFulltimeModal();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    displayMessage("Failed to end match: " + response.message, "alert-danger");
+                    closeFulltimeModal();
+                }
             },
             error: function (xhr, status, error) {
                 displayMessage("Match already ended!", "alert-danger");
@@ -1266,6 +1271,7 @@
             }
         });
     };
+
 
 </script>
 

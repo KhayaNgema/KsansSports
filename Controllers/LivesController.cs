@@ -244,7 +244,7 @@ namespace MyField.Controllers
         }
 
 
-        [HttpPost]
+/*        [HttpPost]
         public async Task<IActionResult> EndMatch(int fixtureId, StartLiveViewModel viewModel)
         {
             var liveMatch = await _context.Live
@@ -272,7 +272,7 @@ namespace MyField.Controllers
             RecurringJob.RemoveIfExists($"update-live-time-{liveMatch.LiveId}");
 
             return Ok();
-        }
+        }*/
 
 
         [HttpGet]
