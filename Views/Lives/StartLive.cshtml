@@ -83,6 +83,10 @@
         color: #721c24;
     }
 
+    .penalty{
+        color: green;
+    }
+
 </style>
 
 <br />
@@ -115,8 +119,8 @@
                     0
                 </h2>
                 <p class="mx-1 mb-0" style="font-size:24px;">-</p>
-                <h2 class="mb-2" style="margin-left:5px; font-size:28px;">
-                    @Model.StartLiveViewModel.AwayTeamScore
+                <h2 id="awayTeamScore" class="mb-0" style="margin-left:5px; font-size:28px;">
+                    0
                 </h2>
             </div>
 
@@ -495,7 +499,16 @@
     <div id="goalHomeModal" class="goal-home-modal">
 
         <div class="goal-home-modal-content">
-            <span class="close">&times;</span>
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol" style="color:blue;"></i> Goal @Model.HomeGoalCombinedViewModel.HomeTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
             @if (Model?.HomeGoalCombinedViewModel != null)
             {
                 @await Html.PartialAsync("_HomeGoalPartial", Model.HomeGoalCombinedViewModel)
@@ -504,7 +517,6 @@
             {
                 <p>No data available</p>
             }
-            <!-- Submit Button within Modal -->
             <div class="form-group rotate-left mt-3">
                 <button type="button" id="submitHomeGoal" class="btn btn-primary" style="float: right;">Post</button>
             </div>
@@ -513,22 +525,84 @@
 
 
 
-    <div id="goalAwayModal" class="goal-home-modal">
+    <div id="goalAwayModal" class="goal-away-modal">
+
         <div class="goal-away-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AwayGoalPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol" style="color: blue;"></i> Goal @Model.AwayGoalCombinedViewModel.AwayTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwayGoalCombinedViewModel != null)
+            {
+                @await Html.PartialAsync("_AwayGoalPartial", Model.AwayGoalCombinedViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwayGoal" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
+
     <div id="yellowHomeModal" class="yellow-home-modal">
+
         <div class="yellow-home-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_HomeYellowPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-square yellow-card"></i> Yellow card @Model.HomeYellowViewModel.HomeTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.HomeYellowViewModel != null)
+            {
+                @await Html.PartialAsync("_HomeYellowPartial", Model.HomeYellowViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitHomeYellow" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
+
     <div id="yellowAwayModal" class="yellow-away-modal">
+
         <div class="yellow-away-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AwayYellowPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-square yellow-card"></i> Yellow card @Model.AwayYellowViewModel.AwayTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwayYellowViewModel != null)
+            {
+                @await Html.PartialAsync("_AwayYellowPartial", Model.AwayYellowViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwayYellow" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
@@ -546,32 +620,113 @@
         </div>
     </div>
 
-
     <div id="redHomeModal" class="red-home-modal">
+
         <div class="red-home-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_HomeRedPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-square red-card"></i> Red card @Model.HomeRedViewModel.HomeTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.HomeRedViewModel != null)
+            {
+                @await Html.PartialAsync("_HomeRedPartial", Model.HomeRedViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitHomeRed" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
+
     <div id="redAwayModal" class="red-away-modal">
+
         <div class="red-away-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AwayRedPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-square red-card"></i> Red card @Model.AwayRedViewModel.AwayTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwayRedViewModel != null)
+            {
+                @await Html.PartialAsync("_AwayRedPartial", Model.AwayRedViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwayRed" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
     <div id="penHomeModal" class="pen-home-modal">
+
         <div class="pen-home-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_HomePenaltyPartial")
+            <div class="row align-items-center">
+                <div class="col-10">`
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol penalty"></i> Penalty @Model.HomePenaltyViewModel.HomeTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.HomePenaltyViewModel != null)
+            {
+                @await Html.PartialAsync("_HomePenaltyPartial", Model.HomePenaltyViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitHomePenalty" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
+
     <div id="penAwayModal" class="pen-away-modal">
+
         <div class="pen-away-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AwayPenaltyPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol penalty"></i> Penalty @Model.AwayPenaltyViewModel.AwayTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwayPenaltyViewModel != null)
+            {
+                @await Html.PartialAsync("_AwayPenaltyPartial", Model.AwayPenaltyViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwayPenalty" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
@@ -622,18 +777,16 @@
 
     function submitHomeGoal() {
         var fixtureId = $('#fixtureId').val();
-        var goalScoredBy = $('#goalScoredBy').val();
-        var assistedBy = $('#assistedBy').val();
-        var scoredTime = $('#liveTime').text().trim(); // Retrieve the value from the hidden element
+        var goalScoredBy = $('#homeGoalScoredBy').val();
+        var assistedBy = $('#homeAssistedBy').val();
+        var scoredTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        // Debugging outputs
         console.log('Fixture ID:', fixtureId);
         console.log('Goal Scored By:', goalScoredBy);
         console.log('Assisted By:', assistedBy);
         console.log('Scored Time:', scoredTime);
 
-        // Validate input
         if (!fixtureId || !goalScoredBy || !scoredTime) {
             alert('Please fill in all required fields.');
             return;
@@ -652,7 +805,7 @@
             success: function (response) {
                 console.log('Success:', response);
                 if (response.success) {
-                    displayMessage("Goal recorded successfully", "alert-success");
+                    displayMessage("Home goal recorded successfully", "alert-success");
                     $('#goalHomeModal').hide();
                     updateLiveMatchStatus(fixtureId);
                 } else {
@@ -671,15 +824,415 @@
 
     $(document).ready(function () {
         $('#submitHomeGoal').on('click', function (event) {
-            event.preventDefault(); // Prevent default form submission
-            submitHomeGoal(); // Call the function to submit form data
+            event.preventDefault(); 
+            submitHomeGoal();
         });
 
-        // Close the modal when clicking the close button
+
         $('.goal-home-modal .close').on('click', function () {
             $('#goalHomeModal').hide();
         });
     });
+
+
+    function submitAwayGoal() {
+        var fixtureId = $('#fixtureId').val();
+        var goalScoredBy = $('#awayGoalScoredBy').val();
+        var assistedBy = $('#awayAssistedBy').val();
+        var scoredTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Goal Scored By:', goalScoredBy);
+        console.log('Assisted By:', assistedBy);
+        console.log('Scored Time:', scoredTime);
+
+        if (!fixtureId || !goalScoredBy || !scoredTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwayGoal',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                goalScoredBy: goalScoredBy,
+                assistedBy: assistedBy,
+                scoredTime: scoredTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Away goal recorded successfully", "alert-success");
+                    $('#goalAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+
+
+
+    $(document).ready(function () {
+        $('#submitAwayGoal').on('click', function (event) {
+            event.preventDefault();
+            submitAwayGoal();
+        });
+
+
+        $('.goal-away-modal .close').on('click', function () {
+            $('#goalAwayModal').hide();
+        });
+    });
+
+
+    function submitHomeYellowCard() {
+        var fixtureId = $('#fixtureId').val();
+        var yellowCommitedBy = $('#homeYellowCommitedBy').val();
+        var cardTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', yellowCommitedBy);
+        console.log('card Time:', cardTime);
+
+        if (!fixtureId || !yellowCommitedBy || !cardTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/HomeYellow',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: yellowCommitedBy,
+                cardTime: cardTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Home yellow card recorded successfully", "alert-success");
+                    $('#yellowHomeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+
+
+
+    $(document).ready(function () {
+        $('#submitHomeYellow').on('click', function (event) {
+            event.preventDefault();
+            submitHomeYellowCard();
+        });
+
+
+        $('.yellow-home-modal .close').on('click', function () {
+            $('#yellowHomeModal').hide();
+        });
+    });
+
+
+    function submitAwayYellowCard() {
+        var fixtureId = $('#fixtureId').val();
+        var yellowCommitedBy = $('#awayYellowCommitedBy').val();
+        var cardTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', yellowCommitedBy);
+        console.log('card Time:', cardTime);
+
+        if (!fixtureId || !yellowCommitedBy || !cardTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwayYellow',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: yellowCommitedBy,
+                cardTime: cardTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Away yellow card recorded successfully", "alert-success");
+                    $('#yellowAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitAwayYellow').on('click', function (event) {
+            event.preventDefault();
+            submitAwayYellowCard();
+        });
+
+
+        $('.yellow-away-modal .close').on('click', function () {
+            $('#yellowAwayModal').hide();
+        });
+    });
+
+    function submitHomeRedCard() {
+        var fixtureId = $('#fixtureId').val();
+        var redCommitedBy = $('#homeRedCommitedBy').val();
+        var cardTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', redCommitedBy);
+        console.log('card Time:', cardTime);
+
+        if (!fixtureId || !redCommitedBy || !cardTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/HomeRed',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: redCommitedBy,
+                cardTime: cardTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Home red card recorded successfully", "alert-success");
+                    $('#redHomeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+
+
+
+    $(document).ready(function () {
+        $('#submitHomeRed').on('click', function (event) {
+            event.preventDefault();
+            submitHomeRedCard();
+        });
+
+
+        $('.red-home-modal .close').on('click', function () {
+            $('#redHomeModal').hide();
+        });
+    });
+
+
+    function submitAwayRedCard() {
+        var fixtureId = $('#fixtureId').val();
+        var redCommitedBy = $('#awayRedCommitedBy').val();
+        var cardTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', redCommitedBy);
+        console.log('card Time:', cardTime);
+
+        if (!fixtureId || !redCommitedBy || !cardTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwayRed',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: redCommitedBy,
+                cardTime: cardTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Away red card recorded successfully", "alert-success");
+                    $('#redAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+        $('#submitAwayRed').on('click', function (event) {
+            event.preventDefault();
+            submitAwayRedCard();
+        });
+
+
+        $('.red-away-modal .close').on('click', function () {
+            $('#redAwayModal').hide();
+        });
+    });
+
+
+    function submitHomePenalty() {
+        var fixtureId = $('#fixtureId').val();
+        var penaltyCommitedBy = $('#homePenaltyCommitedBy').val();
+        var penaltyTime = $('#liveTime').text().trim();
+        var penaltyType = $('#homePenaltyType').val();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', penaltyCommitedBy);
+        console.log('Penalty Time:', penaltyTime);
+        console.log('Penalty Type:', penaltyType);
+
+        if (!fixtureId || !penaltyCommitedBy || !penaltyTime || !penaltyType) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/HomePenalty',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: penaltyCommitedBy,
+                penaltyTime: penaltyTime,
+                penaltyType: penaltyType
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Home penalty card recorded successfully", "alert-success");
+                    $('#penHomeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record penalty: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitHomePenalty').on('click', function (event) {
+            event.preventDefault();
+            submitHomePenalty();
+        });
+
+
+        $('.pen-home-modal .close').on('click', function () {
+            $('#penHomeModal').hide();
+        });
+    });
+
+
+    function submitAwayPenalty() {
+        var fixtureId = $('#fixtureId').val();
+        var penaltyCommitedBy = $('#awayPenaltyCommitedBy').val();
+        var penaltyTime = $('#liveTime').text().trim();
+        var penaltyType = $('#awayPenaltyType').val();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Commited By:', penaltyCommitedBy);
+        console.log('Penalty Time:', penaltyTime);
+        console.log('Penalty Type:', penaltyType);
+
+        if (!fixtureId || !penaltyCommitedBy || !penaltyTime || !penaltyType) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwayPenalty',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                commitedBy: penaltyCommitedBy,
+                penaltyTime: penaltyTime,
+                penaltyType: penaltyType
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Away penalty card recorded successfully", "alert-success");
+                    $('#penAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record penalty: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitAwayPenalty').on('click', function (event) {
+            event.preventDefault();
+            submitAwayPenalty();
+        });
+
+
+        $('.pen-away-modal .close').on('click', function () {
+            $('#penAwayModal').hide();
+        });
+    });
+
+
+
+
 
 
     function handleTabClick(event, tabId) {
@@ -1022,7 +1575,8 @@
                         var liveStatusElement = $('#liveStatus');
                         var halfTimeButton = $('#halfTimeButton');
                         var resumeButton = $('#resumeButton');
-                        var homeTeamScoreElement = $('#homeTeamScore'); // Ensure unique variable name
+                        var homeTeamScoreElement = $('#homeTeamScore');
+                        var awayTeamScoreElement = $('#awayTeamScore');
 
                         if (liveTimeElement.length && liveStatusElement.length) {
                             var liveTime = data.LiveTime || data.liveTime;
@@ -1030,7 +1584,8 @@
                             var isHalfTime = data.IsHalfTime || data.isHalfTime;
                             var isEnded = data.IsEnded || data.isEnded;
                             var wentToHalfTime = data.WentToHalfTime || data.wentToHalfTime;
-                            var homeTeamScore = data.HomeTeamScore || data.homeTeamScore; // Consistent data field name
+                            var homeTeamScore = data.HomeTeamScore || data.homeTeamScore;
+                            var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
 
                             var displayTime = liveTime;
 
@@ -1043,7 +1598,11 @@
                             liveTimeElement.html(displayTime + "<span id='flickerSymbol' class='flicker'>'</span>");
 
                             if (homeTeamScoreElement.length) {
-                                homeTeamScoreElement.text(homeTeamScore); // Set the score
+                                homeTeamScoreElement.text(homeTeamScore); 
+                            }
+
+                            if (awayTeamScoreElement.length) {
+                                awayTeamScoreElement.text(awayTeamScore);
                             }
 
                             var statusText = '';

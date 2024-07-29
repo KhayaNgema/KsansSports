@@ -178,7 +178,7 @@ namespace MyField.Controllers
             }
 
             var matchXI = await _context.LineUpXI
-                .Where(mo => mo.FixtureId == fixtureId)
+                .Where(mo => mo.FixtureId == fixtureId && mo.ClubId == clubManager.ClubId)
                 .Include(s => s.Club)
                 .Include(s => s.Fixture)
                 .Include(s => s.ClubPlayer)
@@ -198,7 +198,7 @@ namespace MyField.Controllers
             }
 
             var matchSubsXI = await _context.LineUpSubstitutes
-                .Where(mo => mo.FixtureId == fixtureId)
+                .Where(mo => mo.FixtureId == fixtureId && mo.ClubId == clubManager.ClubId)
                 .Include(s => s.Club)
                 .Include(s => s.Fixture)
                 .Include(s => s.ClubPlayer)
@@ -244,7 +244,7 @@ namespace MyField.Controllers
             }
 
             var matchXI = await _context.LineUpXIHolder
-                .Where(mo => mo.FixtureId == fixtureId)
+                .Where(mo => mo.FixtureId == fixtureId && mo.ClubId == clubManager.ClubId)
                 .Include(s => s.Club)
                 .Include(s => s.Fixture)
                 .Include(s => s.ClubPlayer)
@@ -264,7 +264,7 @@ namespace MyField.Controllers
             }
 
             var matchSubstitutes = await _context.LineUpSubstitutesHolder
-                .Where(mo => mo.FixtureId == fixtureId)
+                .Where(mo => mo.FixtureId == fixtureId && mo.ClubId == clubManager.ClubId)
                 .Include(s => s.Club)
                 .Include(s => s.Fixture)
                 .Include(s => s.ClubPlayer)

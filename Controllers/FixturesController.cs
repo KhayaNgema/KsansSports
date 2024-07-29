@@ -536,7 +536,6 @@ namespace MyField.Controllers
 
             ViewBag.Officials = new SelectList(officials.Select(o => new { UserId = o.Id, FullName = o.FirstName + " " + o.LastName }), "UserId", "FullName");
 
-
             ViewBag.Clubs = new SelectList(await _context.Club.Where(mo => mo.League.IsCurrent).ToListAsync(), "ClubId", "ClubName");
             return View(viewModel);
         }

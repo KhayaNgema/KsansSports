@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240729103423_AddSubsandLiveCardsHolders")]
+    partial class AddSubsandLiveCardsHolders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1217,10 +1220,6 @@ namespace MyField.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RedCardId"));
 
-                    b.Property<string>("CardTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1244,10 +1243,6 @@ namespace MyField.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("YellowCardId"));
-
-                    b.Property<string>("CardTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
@@ -1581,22 +1576,9 @@ namespace MyField.Migrations
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PenaltyTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PlayerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.HasKey("PenaltyId");
 
                     b.HasIndex("LiveId");
-
-                    b.HasIndex("PlayerId");
 
                     b.ToTable("Penalties");
                 });
@@ -1664,10 +1646,6 @@ namespace MyField.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RedCardId"));
-
-                    b.Property<string>("CardTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
@@ -1870,13 +1848,13 @@ namespace MyField.Migrations
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
+                    b.Property<string>("LiveTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("OutPlayerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("SubTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SubstituteId");
 
@@ -2234,10 +2212,6 @@ namespace MyField.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("YellowCardId"));
-
-                    b.Property<string>("CardTime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
@@ -3786,15 +3760,7 @@ namespace MyField.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyField.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Live");
-
-                    b.Navigation("Player");
                 });
 
             modelBuilder.Entity("MyField.Models.PlayerTransferMarket", b =>

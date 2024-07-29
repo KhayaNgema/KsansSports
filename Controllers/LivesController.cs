@@ -1,6 +1,7 @@
 ﻿using Hangfire;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.DependencyInjection;
@@ -71,8 +72,7 @@ namespace MyField.Controllers
                 AwayTeamScore = 0
             };
 
-            // Fetch players or relevant data
-            var players = await _context.Player
+            var homePlayers = await _context.Player
                 .Where(p => p.ClubId == fixture.HomeTeamId)
                 .Select(p => new
                 {
@@ -82,20 +82,148 @@ namespace MyField.Controllers
                 })
                 .ToListAsync();
 
+
+
+            var awayPlayers = await _context.Player
+               .Where(p => p.ClubId == fixture.AwayTeamId)
+               .Select(p => new
+               {
+               PlayerId = p.Id,
+               FullName = $"{p.FirstName} {p.LastName}",
+               JerseyNumber = p.JerseyNumber
+               })
+               .ToListAsync();
+
             var homeGoalCombinedViewModel = new HomeGoalCombinedViewModel
             {
-                Players = players.Select(p => new
+                Players = homePlayers.Select(p => new
                 {
                     p.PlayerId,
                     p.FullName,
                     p.JerseyNumber
-                }).ToList()
+                }).ToList(),
+
+                HomeTeam = fixture.HomeTeam.ClubName
+            };
+
+            var awayGoalCombinedViewModel = new AwayGoalCombinedViewModel
+            {
+                Players = awayPlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                AwayTeam = fixture.AwayTeam.ClubName
+            };
+
+            var homeYellowViewModel = new HomeYellowViewModel
+            {
+                Players = homePlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                HomeTeam = fixture.HomeTeam.ClubName
+            };
+
+            var awayYellowViewModel = new AwayYellowViewModel
+            {
+                Players = awayPlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                AwayTeam = fixture.AwayTeam.ClubName
+            };
+
+
+            var homeRedViewModel = new HomeRedViewModel
+            {
+                Players = homePlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                HomeTeam = fixture.HomeTeam.ClubName
+            };
+
+            var awayRedViewModel = new AwayRedViewModel
+            {
+                Players = awayPlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                AwayTeam = fixture.AwayTeam.ClubName
+            };
+
+
+            var penaltyTypes = Enum.GetValues(typeof(PenaltyType))
+                  .Cast<PenaltyType>()
+                  .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
+                  .ToList();
+
+            var homePenaltyViewModel = new HomePenaltyViewModel
+            {
+                Players = awayPlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                HomeTeam = fixture.HomeTeam.ClubName,
+
+                PenaltyTypes = penaltyTypes
+            };
+
+            var awayPenaltyViewModel = new AwayPenaltyViewModel
+            {
+                Players = homePlayers.Select(p => new
+                {
+                    p.PlayerId,
+                    p.FullName,
+                    p.JerseyNumber
+                }).ToList(),
+
+                FixtureId = fixture.FixtureId,
+
+                AwayTeam = fixture.AwayTeam.ClubName,
+
+                PenaltyTypes = penaltyTypes
             };
 
             var combinedViewModel = new CombinedStartLiveViewModel
             {
                 StartLiveViewModel = startLiveViewModel,
-                HomeGoalCombinedViewModel = homeGoalCombinedViewModel
+                HomeGoalCombinedViewModel = homeGoalCombinedViewModel,
+                AwayGoalCombinedViewModel = awayGoalCombinedViewModel,
+                HomeYellowViewModel = homeYellowViewModel,
+                AwayYellowViewModel = awayYellowViewModel,
+                HomeRedViewModel = homeRedViewModel,
+                AwayRedViewModel = awayRedViewModel,
+                HomePenaltyViewModel = homePenaltyViewModel,
+                AwayPenaltyViewModel = awayPenaltyViewModel
             };
 
             return View(combinedViewModel);
@@ -187,7 +315,8 @@ namespace MyField.Controllers
                 IsHalfTime = liveMatch.IsHalfTime,
                 IsEnded = liveMatch.ISEnded,
                 WentToHalfTime = liveMatch.WentToHalfTime,
-                HomeTeamScore = liveMatch.HomeTeamScore  
+                HomeTeamScore = liveMatch.HomeTeamScore,
+                AwayTeamScore = liveMatch.AwayTeamScore
             };
 
             return Ok(response);
@@ -243,98 +372,11 @@ namespace MyField.Controllers
             return NotFound("Live match not found.");
         }
 
-
-/*        [HttpPost]
-        public async Task<IActionResult> EndMatch(int fixtureId, StartLiveViewModel viewModel)
-        {
-            var liveMatch = await _context.Live
-                .Where(l => l.FixtureId == fixtureId)
-                .FirstOrDefaultAsync();
-
-            if (liveMatch == null)
-            {
-                return NotFound("Live match not found.");
-            }
-
-            if (liveMatch.ISEnded)
-            {
-                return View(viewModel);
-            }
-
-            liveMatch.IsLive = false;
-            liveMatch.IsHalfTime = false;
-            liveMatch.ISEnded = true;
-            liveMatch.LiveTime = 90;
-
-            _context.Update(liveMatch);
-            await _context.SaveChangesAsync();
-
-            RecurringJob.RemoveIfExists($"update-live-time-{liveMatch.LiveId}");
-
-            return Ok();
-        }*/
-
-
         [HttpGet]
-        public async Task<IActionResult> HomeGoal(int fixtureId)
+        public async Task<IActionResult> HomeGoal()
         {
-            var fixture = await _context.Fixture
-                .Where(f => f.FixtureId == fixtureId)
-                .Include(f => f.HomeTeam)
-                .FirstOrDefaultAsync();
-
-            var liveMatch = await _context.Live
-                .Where(l => l.FixtureId == fixtureId)
-                .FirstOrDefaultAsync();
-
-            if (fixture == null)
-            {
-                return NotFound("Fixture not found.");
-            }
-
-            var homeLineUp = await _context.LineUp
-                .Where(l => l.FixtureId == fixtureId && l.ClubId == fixture.HomeTeam.ClubId)
-                .Include(l => l.LineUpXI)
-                .ThenInclude(l => l.ClubPlayer)
-                .Include(l => l.LineUpSubstitutes)
-                .ThenInclude(l => l.ClubPlayer)
-                .ToListAsync();
-
-            var players = homeLineUp
-                .SelectMany(l => l.LineUpXI.Select(xi => new
-                {
-                    xi.PlayerId,
-                    FullName = $"{xi.ClubPlayer.FirstName} {xi.ClubPlayer.LastName}",
-                    xi.ClubPlayer.JerseyNumber
-                }))
-                .Concat(homeLineUp
-                    .SelectMany(l => l.LineUpSubstitutes.Select(sub => new
-                    {
-                        sub.PlayerId,
-                        FullName = $"{sub.ClubPlayer.FirstName} {sub.ClubPlayer.LastName}",
-                        sub.ClubPlayer.JerseyNumber
-                    })))
-                .ToList();
-
-            var viewModel = new HomeGoalCombinedViewModel
-            {
-                HomeGoalViewModel = new HomeGoalViewModel
-                {
-                    LiveId = liveMatch?.LiveId ?? 0
-                },
-                Players = players,
-                FixtureId = fixtureId
-               
-            };
-
-            ViewBag.HomeTeam = fixture.HomeTeam.ClubName;
-
-            return PartialView("_HomeGoalPartial", viewModel);
+            return PartialView("_HomeGoalPartial");
         }
-
-
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -393,143 +435,434 @@ namespace MyField.Controllers
 
 
 
-        /* [HttpGet]
-         public async Task<IActionResult> AwayGoal()
-         {
-             return PartialView("_AwayGoalPartial");
-         }
+        [HttpGet]
+        public async Task<IActionResult> AwayGoal()
+        {
+           
+            return PartialView("_AwayGoalPartial");
+        }
 
-         [HttpPost]
-         public async Task<IActionResult> AwayGoal()
-         {
-             return Ok();
-         }
+        [HttpPost]
+        public async Task<IActionResult> AwayGoal(int fixtureId, string goalScoredBy, string assistedBy, string scoredTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
 
-         [HttpGet]
-         public async Task<IActionResult> HomeYellow()
-         {
-             return PartialView("_HomeYellowPartial");
-         }
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
 
-         [HttpPost]
-         public async Task<IActionResult> HomeYellow()
-         {
-             return Ok();
-         }
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
 
+                if (!liveMatch.IsLive)
+                {
 
-         [HttpGet]
-         public async Task<IActionResult> AwayYellow()
-         {
-             return PartialView("_AwayYellowPartial");
-         }
+                    return View(viewModel);
+                }
 
-         [HttpPost]
-         public async Task<IActionResult> AwayYellow()
-         {
-             return Ok();
-         }
+                liveMatch.AwayTeamScore++;
 
+                var newGoal = new LiveGoalHolder
+                {
+                    PlayerId = goalScoredBy,
+                    LiveId = liveMatch.LiveId,
+                    ScoredTime = scoredTime,
+                };
 
-         [HttpGet]
-         public async Task<IActionResult> HomeSub()
-         {
-             return PartialView("_HomeSubPartial");
-         }
+                var newAssist = new LiveAssistHolder
+                {
+                    PlayerId = assistedBy,
+                    LiveId = liveMatch.LiveId,
+                };
 
-         [HttpPost]
-         public async Task<IActionResult> HomeSub()
-         {
-             return Ok();
-         }
+                _context.Add(newGoal);
+                _context.Add(newAssist);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
 
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
 
-         [HttpGet]
-         public async Task<IActionResult> AwaySub()
-         {
-             return PartialView("_AwaySubPartial");
-         }
+        [HttpGet]
+        public async Task<IActionResult> HomeYellow()
+        {
+            return PartialView("_HomeYellowPartial");
+        }
 
-         [HttpPost]
-         public async Task<IActionResult> AwaySub()
-         {
-             return Ok();
-         }
+        [HttpPost]
+        public async Task<IActionResult> HomeYellow(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
 
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
 
-         [HttpGet]
-         public async Task<IActionResult> HomeRed()
-         {
-             return PartialView("_HomeRedPartial");
-         }
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
 
-         [HttpPost]
-         public async Task<IActionResult> HomeRed()
-         {
-             return Ok();
-         }
+                if (!liveMatch.IsLive)
+                {
 
+                    return View(viewModel);
+                }
 
-         [HttpGet]
-         public async Task<IActionResult> AwayRed()
-         {
-             return PartialView("_AwayRedPartial");
-         }
+                var newYellowCard = new LiveYellowCardHolder
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    CardTime  = cardTime
+                };
 
-         [HttpPost]
-         public async Task<IActionResult> AwayRed()
-         {
-             return Ok();
-         }
+                _context.Add(newYellowCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
 
-         [HttpGet]
-         public async Task<IActionResult> HomePenalty()
-         {
-             return PartialView("_HomePenaltyPartial");
-         }
-
-         [HttpPost]
-         public async Task<IActionResult> HomePenalty()
-         {
-             return Ok();
-         }
-
-
-         [HttpGet]
-         public async Task<IActionResult> AwayPenalty()
-         {
-             return PartialView("_AwayPenaltyPartial");
-         }
-
-         [HttpPost]
-         public async Task<IActionResult> AwayPenalty()
-         {
-             return Ok();
-         }
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
 
 
-         [HttpGet]
-         public async Task<IActionResult> FullTime()
-         {
-             return PartialView("_FullTimePartial");
-         }
+        [HttpGet]
+        public async Task<IActionResult> AwayYellow()
+        {
+            return PartialView("_AwayYellowPartial");
+        }
 
-         [HttpPost]
-         public async Task<IActionResult> FullTime()
-         {
-             return Ok();
-         }
+        [HttpPost]
+        public async Task<IActionResult> AwayYellow(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
 
-         [HttpGet]
-         public async Task<IActionResult> AddTime()
-         {
-             return PartialView("_AddTimePartial");
-         }
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
 
-         [HttpPost]
-         public async Task<IActionResult> AddTime()
-         {
-             return Ok();
-         }*/
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newYellowCard = new LiveYellowCardHolder
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    CardTime = cardTime
+                };
+
+                _context.Add(newYellowCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> HomeRed()
+        {
+            return PartialView("_HomeRedPartial");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> HomeRed(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newRedCard = new LiveRedCardHolder
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    CardTime = cardTime
+                };
+
+                _context.Add(newRedCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> AwayRed()
+        {
+            return PartialView("_AwayRedPartial");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AwayRed(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newRedCard = new LiveRedCardHolder
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    CardTime = cardTime
+                };
+
+                _context.Add(newRedCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> HomePenalty()
+        {
+            ViewData["PenaltyTypes"] = Enum.GetValues(typeof(PenaltyType))
+                 .Cast<PenaltyType>()
+                 .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
+
+            return PartialView("_HomePenaltyPartial");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> HomePenalty(int fixtureId, string commitedBy, string penaltyTime, PenaltyType penaltyType, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newRedCard = new Penalty
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    PenaltyTime = penaltyTime,
+                    Type = penaltyType
+                };
+
+                _context.Add(newRedCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> AwayPenalty()
+        {
+            ViewData["PenaltyTypes"] = Enum.GetValues(typeof(PenaltyType))
+                .Cast<PenaltyType>()
+                 .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() });
+
+            return PartialView("_AwayPenaltyPartial");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AwayPenalty(int fixtureId, string commitedBy, string penaltyTime, PenaltyType penaltyType, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .FirstOrDefaultAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newRedCard = new Penalty
+                {
+                    PlayerId = commitedBy,
+                    LiveId = liveMatch.LiveId,
+                    PenaltyTime = penaltyTime,
+                    Type = penaltyType
+                };
+
+                _context.Add(newRedCard);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+        /*        [HttpGet]
+                public async Task<IActionResult> HomeSub()
+                {
+                    return PartialView("_HomeSubPartial");
+                }
+
+                [HttpPost]
+                public async Task<IActionResult> HomeSub()
+                {
+                    return Ok();
+                }
+
+
+                [HttpGet]
+                public async Task<IActionResult> AwaySub()
+                {
+                    return PartialView("_AwaySubPartial");
+                }
+
+                [HttpPost]
+                public async Task<IActionResult> AwaySub()
+                {
+                    return Ok();
+                }
+
+
+                [HttpGet]
+                public async Task<IActionResult> AwayPenalty()
+                {
+                    return PartialView("_AwayPenaltyPartial");
+                }
+
+                [HttpPost]
+                public async Task<IActionResult> AwayPenalty()
+                {
+                    return Ok();
+                }
+
+
+                [HttpGet]
+                public async Task<IActionResult> FullTime()
+                {
+                    return PartialView("_FullTimePartial");
+                }
+
+                [HttpPost]
+                public async Task<IActionResult> FullTime()
+                {
+                    return Ok();
+                }
+
+                [HttpGet]
+                public async Task<IActionResult> AddTime()
+                {
+                    return PartialView("_AddTimePartial");
+                }
+
+                [HttpPost]
+                public async Task<IActionResult> AddTime()
+                {
+                    return Ok();
+                }*/
     }
 }

@@ -2,14 +2,14 @@
 
 namespace MyField.ViewModels
 {
-    public class HomeGoalCombinedViewModel
+    public class AwayGoalCombinedViewModel
     {
-        public AwayGoalViewModel HomeGoalViewModel { get; set; }
+        public AwayGoalViewModel AwayGoalViewModel { get; set; }
         public IEnumerable<dynamic> Players { get; set; }
 
         public int FixtureId { get; set; }
 
-        public string HomeTeam {  get; set; }   
+        public string AwayTeam {  get; set; }
     }
 
 }

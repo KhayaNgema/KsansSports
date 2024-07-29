@@ -222,5 +222,11 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.TopAssist> TopAssists { get; set; } = default!;
 
+        public DbSet<MyField.Models.Substitute> Substitutes { get; set; } = default!;
+
+
+        public DbSet<MyField.Models.LiveRedCardHolder> LiveRedCardHolders { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveYellowCardHolder> LiveYellowCardHolders { get; set; } = default!;
     }
 }
