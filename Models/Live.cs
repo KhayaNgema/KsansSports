@@ -25,6 +25,9 @@ namespace MyField.Models
         public bool ISEnded { get; set; }
 
         public bool WentToHalfTime { get; set; }
+
+
+        public int? AddedTime { get; set; }
     }
 
     public class LiveGoal

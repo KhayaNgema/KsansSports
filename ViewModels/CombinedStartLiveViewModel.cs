@@ -18,6 +18,12 @@
         public AwayPenaltyViewModel AwayPenaltyViewModel { get; set; }
 
         public HomePenaltyViewModel HomePenaltyViewModel { get; set; }
+
+        public AwaySubViewModel AwaySubViewModel { get; set; }
+
+        public HomeSubViewModel HomeSubViewModel { get; set; }
+
+        public int AddedTime { get; set; }
     }
 }
 

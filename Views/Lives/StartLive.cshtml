@@ -606,17 +606,61 @@
         </div>
     </div>
 
+
     <div id="subHomeModal" class="sub-home-modal">
+
         <div class="sub-home-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_HomeSubPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    `
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        Substitute @Model.HomeSubViewModel.HomeTeam  <i class="fa fa-exchange-alt" style="color:green;"></i>
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.HomePenaltyViewModel != null)
+            {
+                @await Html.PartialAsync("_HomeSubPartial", Model.HomeSubViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitHomeSub" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
+
     <div id="subAwayModal" class="sub-away-modal">
+
         <div class="sub-away-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AwaySubPartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    `
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        Substitute @Model.AwaySubViewModel.AwayTeam  <i class="fa fa-exchange-alt" style="color:green;"></i>
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwaySubViewModel != null)
+            {
+                @await Html.PartialAsync("_AwaySubPartial", Model.AwaySubViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwaySub" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
 
@@ -758,17 +802,25 @@
         </div>
     </div>
 
-
     <div id="addtimeModal" class="addtime-modal">
+
         <div class="addtime-modal-content">
-            <span class="close">&times;</span>
-            @await Html.PartialAsync("_AddTimePartial")
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-clock"></i> Add match time
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+                @await Html.PartialAsync("_AddTimePartial")
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAddedTime" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
         </div>
     </div>
-
-
-    
-
 </div>
 
 
@@ -1231,7 +1283,169 @@
     });
 
 
+    function submitHomeSub() {
+        var fixtureId = $('#fixtureId').val();
+        var outPlayer = $('#outHomePlayer').val();
+        var inPlayer = $('#inHomePlayer').val();
+        var subTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
 
+        console.log('Fixture ID:', fixtureId);
+        console.log('Out player:', outPlayer);
+        console.log('In Player:', inPlayer);
+        console.log('Sub Time:', subTime);
+
+        if (!fixtureId || !outPlayer || !inPlayer || !subTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/HomeSub',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                inPlayer: inPlayer,
+                outPlayer: outPlayer,
+                subTime: subTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Home substitute recorded successfully", "alert-success");
+                    $('#subHomeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record sub: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitHomeSub').on('click', function (event) {
+            event.preventDefault();
+            submitHomeSub();
+        });
+
+
+        $('.sub-home-modal .close').on('click', function () {
+            $('#subHomeModal').hide();
+        });
+    });
+
+
+    function submitAwaySub() {
+        var fixtureId = $('#fixtureId').val();
+        var outPlayer = $('#outAwayPlayer').val();
+        var inPlayer = $('#inAwayPlayer').val();
+        var subTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Out player:', outPlayer);
+        console.log('In Player:', inPlayer);
+        console.log('Sub Time:', subTime);
+
+        if (!fixtureId || !outPlayer || !inPlayer || !subTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwaySub',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                inPlayer: inPlayer,
+                outPlayer: outPlayer,
+                subTime: subTime
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Away substitute recorded successfully", "alert-success");
+                    $('#subAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record sub: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitAwaySub').on('click', function (event) {
+            event.preventDefault();
+            submitAwaySub();
+        });
+
+
+        $('.sub-away-modal .close').on('click', function () {
+            $('#subAwayModal').hide();
+        });
+    });
+
+
+    function submitAddedTime() {
+        var fixtureId = $('#fixtureId').val();
+        var addedTime = $('#addedTime').val();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Added time:', addedTime);
+
+
+        if (!fixtureId || !addedTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AddTime',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                addedTime: addedTime,
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Time added successfully", "alert-success");
+                    $('#addtimeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to add time: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitAddedTime').on('click', function (event) {
+            event.preventDefault();
+            submitAddedTime();
+        });
+
+        $('.addtime-modal .close').on('click', function () {
+            $('#addtimeModal').hide();
+        });
+    });
 
 
 
