@@ -40,6 +40,12 @@ namespace MyField.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> MatchOverview(int fixtureId)
+        {
+            return PartialView("_OverviewPartial");
+        }
+
+        [HttpGet]
         public async Task<IActionResult> StartLive(string fixtureId)
         {
             var decryptedFixtureId = _encryptionService.DecryptToInt(fixtureId);
@@ -301,6 +307,17 @@ namespace MyField.Controllers
                 AwayTeam = fixture.AwayTeam.ClubName,
             };
 
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var userRole = await _context.UserRoles
+                 .Where(ur => ur.UserId == user.Id)
+                 .Join(_context.Roles,
+                 ur => ur.RoleId,
+                 r => r.Id,
+                 (ur, r) => r.Name)
+                .FirstOrDefaultAsync();
+
             var combinedViewModel = new CombinedStartLiveViewModel
             {
                 StartLiveViewModel = startLiveViewModel,
@@ -314,7 +331,8 @@ namespace MyField.Controllers
                 AwayPenaltyViewModel = awayPenaltyViewModel,
                 HomeSubViewModel = homeSubViewModel,
                 AwaySubViewModel = awaySubViewModel,
-                AddedTime = 0
+                AddedTime = 0,
+                UserRole = userRole,
             };
 
             return View(combinedViewModel);
@@ -408,7 +426,7 @@ namespace MyField.Controllers
                 WentToHalfTime = liveMatch.WentToHalfTime,
                 HomeTeamScore = liveMatch.HomeTeamScore,
                 AwayTeamScore = liveMatch.AwayTeamScore,
-                AddTime = liveMatch.AddedTime
+                AddTime = liveMatch.AddedTime,
             };
 
             return Ok(response);
@@ -430,6 +448,7 @@ namespace MyField.Controllers
                 liveMatch.ISEnded = false;
                 liveMatch.LiveTime = 45;
                 liveMatch.WentToHalfTime = true;
+                liveMatch.AddedTime = 0;
 
                 _context.Update(liveMatch);
                 await _context.SaveChangesAsync();

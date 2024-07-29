@@ -1,0 +1,994 @@
+2024-07-29 23:48:55.061 +02:00 [WRN] No store type was specified for the decimal property 'GamesDrawRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.069 +02:00 [WRN] No store type was specified for the decimal property 'GamesLoseRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.069 +02:00 [WRN] No store type was specified for the decimal property 'GamesNotPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'GamesPlayedRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'GamesWinRate' on entity type 'ClubPerformanceReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'IncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'NotActionedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'OutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'RejectedIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'RejectedOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullIncomingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfullOutgoingTransferRate' on entity type 'ClubTransferReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'ActiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'InactiveFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedFansAccountsRate' on entity type 'FansAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'FineAmount' on entity type 'Fine'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'FixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'InterruptedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'PlayedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'PostponedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'UnfixturedMatchesRate' on entity type 'MatchReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'DrawingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'LosingRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'ReleasedResultsRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'UnreleasedMatchesRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'WinningRate' on entity type 'MatchResultsReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'ApprovedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'PublishedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'RejectedNewsRate' on entity type 'OverallNewsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'AmountPaid' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'ActiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'InactiveAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.070 +02:00 [WRN] No store type was specified for the decimal property 'SuspendedAccountsRate' on entity type 'PersonnelAccountsReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'ExpectedRepayableAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'OverdueFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'PaidFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'PendingFinesRate' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'TotalPaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'TotalUnpaidAmount' on entity type 'PersonnelFinancialReport'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'MarketValue' on entity type 'Player'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'SellingPrice' on entity type 'PlayerTransferMarket'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'AssociationCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'ClubsCut' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'NotStartedTransferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'SuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'TranferAmount' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.071 +02:00 [WRN] No store type was specified for the decimal property 'UnsuccessfulTranferRate' on entity type 'TransfersReports'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2024-07-29 23:48:55.690 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.745 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.746 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.747 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.748 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.750 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.751 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.752 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.753 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.754 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.755 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.756 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2024-07-29 23:48:55.806 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[NormalizedEmail] = @__normalizedEmail_0
+2024-07-29 23:48:55.974 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'OverallNewsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-29 23:48:55.980 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-29 23:48:55.985 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'PersonnelFinancialReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-29 23:48:55.990 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Reports] AS [r]
+        WHERE [r].[Discriminator] = N'FansAccountsReport') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2024-07-29 23:48:56.079 +02:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: (localdb)\mssqllocaldb@Ksans_Sports'
+2024-07-29 23:48:56.079 +02:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:00.
+2024-07-29 23:48:56.079 +02:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2024-07-29 23:48:56.102 +02:00 [INF] Server khaya-asuszenbo:12792:7a9c9def successfully announced in 10.353 ms
+2024-07-29 23:48:56.104 +02:00 [INF] Server khaya-asuszenbo:12792:7a9c9def is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, SqlServerHeartbeatProcess, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2024-07-29 23:48:56.109 +02:00 [INF] 3 servers were removed due to timeout
+2024-07-29 23:48:56.113 +02:00 [INF] Server khaya-asuszenbo:12792:7a9c9def all the dispatchers started
+2024-07-29 23:48:56.278 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.StartLive (MyField)'
+2024-07-29 23:48:56.289 +02:00 [INF] Route matched with {action = "StartLive", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] StartLive(System.String) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:48:56.418 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__decryptedFixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [f].[FixtureId], [f].[AwayTeamId], [f].[CreatedById], [f].[CreatedDateTime], [f].[Discriminator], [f].[FixtureStatus], [f].[HomeTeamId], [f].[KickOffDate], [f].[KickOffTime], [f].[LeagueId], [f].[Location], [f].[ModifiedById], [f].[ModifiedDateTime], [c].[ClubId], [c].[ClubAbbr], [c].[ClubBadge], [c].[ClubCode], [c].[ClubHistory], [c].[ClubLocation], [c].[ClubManagerId], [c].[ClubName], [c].[ClubSummary], [c].[CreatedById], [c].[CreatedDateTime], [c].[Discriminator], [c].[Email], [c].[IsActive], [c].[IsSuspended], [c].[LeagueId], [c].[ModifiedById], [c].[ModifiedDateTime], [c].[Status], [c0].[ClubId], [c0].[ClubAbbr], [c0].[ClubBadge], [c0].[ClubCode], [c0].[ClubHistory], [c0].[ClubLocation], [c0].[ClubManagerId], [c0].[ClubName], [c0].[ClubSummary], [c0].[CreatedById], [c0].[CreatedDateTime], [c0].[Discriminator], [c0].[Email], [c0].[IsActive], [c0].[IsSuspended], [c0].[LeagueId], [c0].[ModifiedById], [c0].[ModifiedDateTime], [c0].[Status]
+FROM [Fixture] AS [f]
+INNER JOIN [Club] AS [c] ON [f].[HomeTeamId] = [c].[ClubId]
+INNER JOIN [Club] AS [c0] ON [f].[AwayTeamId] = [c0].[ClubId]
+WHERE [f].[FixtureId] = @__decryptedFixtureId_0
+2024-07-29 23:48:56.522 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__fixture_HomeTeamId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] = N'Player' AND [a].[Player_ClubId] = @__fixture_HomeTeamId_0
+2024-07-29 23:48:56.528 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__fixture_AwayTeamId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] = N'Player' AND [a].[Player_ClubId] = @__fixture_AwayTeamId_0
+2024-07-29 23:48:56.541 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__decryptedFixtureId_0='?' (DbType = Int32), @__fixture_HomeTeam_ClubId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[FirstName], [t].[LastName], [t].[JerseyNumber]
+FROM [LineUpXI] AS [l]
+INNER JOIN (
+    SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Player'
+) AS [t] ON [l].[PlayerId] = [t].[Id]
+WHERE [l].[FixtureId] = @__decryptedFixtureId_0 AND [l].[ClubId] = @__fixture_HomeTeam_ClubId_1
+2024-07-29 23:48:56.550 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__decryptedFixtureId_0='?' (DbType = Int32), @__fixture_HomeTeam_ClubId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[FirstName], [t].[LastName], [t].[JerseyNumber]
+FROM [LineUpSubstitutes] AS [l]
+INNER JOIN (
+    SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Player'
+) AS [t] ON [l].[PlayerId] = [t].[Id]
+WHERE [l].[FixtureId] = @__decryptedFixtureId_0 AND [l].[ClubId] = @__fixture_HomeTeam_ClubId_1
+2024-07-29 23:48:56.557 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__decryptedFixtureId_0='?' (DbType = Int32), @__fixture_AwayTeam_ClubId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[FirstName], [t].[LastName], [t].[JerseyNumber]
+FROM [LineUpXI] AS [l]
+INNER JOIN (
+    SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Player'
+) AS [t] ON [l].[PlayerId] = [t].[Id]
+WHERE [l].[FixtureId] = @__decryptedFixtureId_0 AND [l].[ClubId] = @__fixture_AwayTeam_ClubId_1
+2024-07-29 23:48:56.564 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__decryptedFixtureId_0='?' (DbType = Int32), @__fixture_AwayTeam_ClubId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[FirstName], [t].[LastName], [t].[JerseyNumber]
+FROM [LineUpSubstitutes] AS [l]
+INNER JOIN (
+    SELECT [a].[Id], [a].[FirstName], [a].[LastName], [a].[JerseyNumber]
+    FROM [AspNetUsers] AS [a]
+    WHERE [a].[UserType] = N'Player'
+) AS [t] ON [l].[PlayerId] = [t].[Id]
+WHERE [l].[FixtureId] = @__decryptedFixtureId_0 AND [l].[ClubId] = @__fixture_AwayTeam_ClubId_1
+2024-07-29 23:48:56.590 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[UserType], [a].[CreatedBy], [a].[CreatedDateTime], [a].[DateOfBirth], [a].[FirstName], [a].[IsActive], [a].[IsDeleted], [a].[IsFirstTimeLogin], [a].[IsSuspended], [a].[LastName], [a].[ModifiedBy], [a].[ModifiedDateTime], [a].[ProfilePicture], [a].[ClubId], [a].[ClubManager_ClubId], [a].[IsContractEnded], [a].[Player_ClubId], [a].[EndDate], [a].[IsContractSigned], [a].[JerseyNumber], [a].[MarketValue], [a].[PlayerCard], [a].[Position], [a].[StartDate]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[UserType] IN (N'UserBaseModel', N'ClubAdministrator', N'ClubManager', N'Fan', N'Officials', N'Player', N'SportsMember', N'SystemAdministrator') AND [a].[Id] = @__p_0
+2024-07-29 23:48:56.605 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 23:48:56.612 +02:00 [INF] Executing ViewResult, running view StartLive.
+2024-07-29 23:48:56.870 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__user_Id_0
+2024-07-29 23:48:57.069 +02:00 [INF] Executed ViewResult - view StartLive executed in 456.6256ms.
+2024-07-29 23:48:57.072 +02:00 [INF] Executed action MyField.Controllers.LivesController.StartLive (MyField) in 782.4584ms
+2024-07-29 23:48:57.073 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.StartLive (MyField)'
+2024-07-29 23:48:57.075 +02:00 [INF] HTTP GET /Lives/StartLive responded 200 in 796.5575 ms
+2024-07-29 23:48:57.098 +02:00 [INF] Sending file. Request path: '/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png'
+2024-07-29 23:48:57.098 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\css\site.css'
+2024-07-29 23:48:57.098 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2024-07-29 23:48:57.099 +02:00 [INF] Sending file. Request path: '/MyField.styles.css'. Physical path: 'C:\Users\khaya\source\repos\MyField\obj\Debug\net8.0\scopedcss\bundle\MyField.styles.css'
+2024-07-29 23:48:57.099 +02:00 [INF] Sending file. Request path: '/UploadedFiles/6c534222-ee6c-48fd-9a83-a9e5bf101b65_hg.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\6c534222-ee6c-48fd-9a83-a9e5bf101b65_hg.jpeg'
+2024-07-29 23:48:57.105 +02:00 [INF] Sending file. Request path: '/UploadedFiles/922183c2-363e-4d42-90d7-2883646b4d96_d2ffc165-fd9e-4630-a2b0-a3ba927f0a08_Fast X1.jpeg'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\UploadedFiles\922183c2-363e-4d42-90d7-2883646b4d96_d2ffc165-fd9e-4630-a2b0-a3ba927f0a08_Fast X1.jpeg'
+2024-07-29 23:48:57.342 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.MatchOverview (MyField)'
+2024-07-29 23:48:57.347 +02:00 [INF] Route matched with {action = "MatchOverview", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] MatchOverview(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:48:57.351 +02:00 [INF] Executing PartialViewResult, running view _OverviewPartial.
+2024-07-29 23:48:57.354 +02:00 [INF] Executed PartialViewResult - view _OverviewPartial executed in 2.8749ms.
+2024-07-29 23:48:57.354 +02:00 [INF] Executed action MyField.Controllers.LivesController.MatchOverview (MyField) in 6.7019ms
+2024-07-29 23:48:57.354 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.MatchOverview (MyField)'
+2024-07-29 23:48:57.354 +02:00 [INF] HTTP GET /Lives/MatchOverview responded 200 in 12.5566 ms
+2024-07-29 23:48:57.356 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:57.356 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:57.361 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:57.361 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:48:57.361 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:48:57.365 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:48:57.381 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:48:57.382 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:48:57.403 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:48:57.403 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:48:57.419 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 57.6874ms
+2024-07-29 23:48:57.419 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 57.8732ms
+2024-07-29 23:48:57.419 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:57.419 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:57.419 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 62.8744 ms
+2024-07-29 23:48:57.419 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 62.8641 ms
+2024-07-29 23:48:57.701 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\favicon.ico'
+2024-07-29 23:48:58.394 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:48:58.395 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:48:58.395 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 1030.5316ms
+2024-07-29 23:48:58.395 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:48:58.395 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 1034.2867 ms
+2024-07-29 23:49:01.333 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css.map'. Physical path: 'C:\Users\khaya\source\repos\MyField\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map'
+2024-07-29 23:49:11.448 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.448 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.449 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.450 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.450 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.462 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.467 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.472 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.479 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.487 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.494 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.499 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.504 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.507 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.511 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.516 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.519 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.521 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.523 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.524 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.525 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.526 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.526 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.528 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.530 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.531 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:11.619 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Live] SET [AddedTime] = @p0, [AwayTeamScore] = @p1, [FixtureId] = @p2, [HomeTeamScore] = @p3, [ISEnded] = @p4, [IsHalfTime] = @p5, [IsLive] = @p6, [LiveTime] = @p7, [WentToHalfTime] = @p8
+OUTPUT 1
+WHERE [LiveId] = @p9;
+2024-07-29 23:49:12.434 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:49:57.366 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.366 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.366 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.366 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:49:57.366 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:49:57.366 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:49:57.371 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:49:57.371 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:49:57.371 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:49:57.372 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:49:57.372 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:49:57.372 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:49:57.372 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 6.1468ms
+2024-07-29 23:49:57.372 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 6.2297ms
+2024-07-29 23:49:57.372 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.372 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 6.121ms
+2024-07-29 23:49:57.372 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.373 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:49:57.372 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 6.5834 ms
+2024-07-29 23:49:57.373 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 6.6768 ms
+2024-07-29 23:49:57.373 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 6.6606 ms
+2024-07-29 23:50:11.616 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.616 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.628 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.632 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.637 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.642 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.647 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.652 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.657 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.663 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.669 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.673 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.679 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.684 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.689 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.695 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.700 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.705 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.710 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.715 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.720 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.721 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Live] SET [AddedTime] = @p0, [AwayTeamScore] = @p1, [FixtureId] = @p2, [HomeTeamScore] = @p3, [ISEnded] = @p4, [IsHalfTime] = @p5, [IsLive] = @p6, [LiveTime] = @p7, [WentToHalfTime] = @p8
+OUTPUT 1
+WHERE [LiveId] = @p9;
+2024-07-29 23:50:11.726 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.731 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.736 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.740 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:11.746 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:12.636 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:50:57.368 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.368 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.368 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:50:57.368 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:50:57.370 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.370 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:50:57.373 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:50:57.373 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:50:57.373 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:50:57.373 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:50:57.373 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:50:57.373 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:50:57.373 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 5.2221ms
+2024-07-29 23:50:57.373 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 5.1469ms
+2024-07-29 23:50:57.373 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 3.3072ms
+2024-07-29 23:50:57.374 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.373 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.374 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 5.6530 ms
+2024-07-29 23:50:57.374 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 5.5914 ms
+2024-07-29 23:50:57.374 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:50:57.374 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 3.6309 ms
+2024-07-29 23:51:11.866 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.872 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.894 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.897 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.905 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.915 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.924 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.933 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.941 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.950 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.959 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.968 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.977 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.986 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:11.995 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.003 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.011 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.019 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.026 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.034 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.041 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.046 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Live] SET [AddedTime] = @p0, [AwayTeamScore] = @p1, [FixtureId] = @p2, [HomeTeamScore] = @p3, [ISEnded] = @p4, [IsHalfTime] = @p5, [IsLive] = @p6, [LiveTime] = @p7, [WentToHalfTime] = @p8
+OUTPUT 1
+WHERE [LiveId] = @p9;
+2024-07-29 23:51:12.053 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.061 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.068 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.077 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.085 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:12.096 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:51:58.291 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.292 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:51:58.292 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.292 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.292 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:51:58.292 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:51:58.303 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:51:58.303 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:51:58.303 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:51:58.304 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:51:58.304 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:51:58.304 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:51:58.304 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 12.0623ms
+2024-07-29 23:51:58.304 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 12.4474ms
+2024-07-29 23:51:58.304 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 11.9486ms
+2024-07-29 23:51:58.305 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.305 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.305 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 13.2007 ms
+2024-07-29 23:51:58.305 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:51:58.305 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 13.9298 ms
+2024-07-29 23:51:58.305 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 13.2644 ms
+2024-07-29 23:52:12.082 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.085 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.092 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.099 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.104 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.111 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.116 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.121 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.126 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.132 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.137 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.142 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.147 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.152 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.155 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.159 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.164 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.168 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.171 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.175 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.179 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.183 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.184 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Live] SET [AddedTime] = @p0, [AwayTeamScore] = @p1, [FixtureId] = @p2, [HomeTeamScore] = @p3, [ISEnded] = @p4, [IsHalfTime] = @p5, [IsLive] = @p6, [LiveTime] = @p7, [WentToHalfTime] = @p8
+OUTPUT 1
+WHERE [LiveId] = @p9;
+2024-07-29 23:52:12.187 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.191 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.195 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.199 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:12.202 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:52:58.281 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:52:58.282 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:52:58.285 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:52:58.286 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:52:58.286 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 4.5052ms
+2024-07-29 23:52:58.286 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:52:58.286 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 4.8269 ms
+2024-07-29 23:53:02.284 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:53:02.284 +02:00 [INF] Executing endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:53:02.284 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:53:02.284 +02:00 [INF] Route matched with {action = "GetLiveMatchStatus", controller = "Lives", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetLiveMatchStatus(Int32) on controller MyField.Controllers.LivesController (MyField).
+2024-07-29 23:53:02.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:53:02.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__fixtureId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[FixtureId] = @__fixtureId_0
+2024-07-29 23:53:02.286 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:53:02.286 +02:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType23`8[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-07-29 23:53:02.286 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 1.8187ms
+2024-07-29 23:53:02.286 +02:00 [INF] Executed action MyField.Controllers.LivesController.GetLiveMatchStatus (MyField) in 1.8449ms
+2024-07-29 23:53:02.286 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:53:02.286 +02:00 [INF] Executed endpoint 'MyField.Controllers.LivesController.GetLiveMatchStatus (MyField)'
+2024-07-29 23:53:02.286 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 2.0905 ms
+2024-07-29 23:53:02.286 +02:00 [INF] HTTP GET /Lives/GetLiveMatchStatus responded 200 in 2.1017 ms
+2024-07-29 23:53:12.265 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.266 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.271 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.275 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.279 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.283 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.286 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.291 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.295 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.298 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.302 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.305 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.309 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.312 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.316 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.320 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.324 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.330 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.333 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.344 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.347 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.351 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.352 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p9='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = Int32), @p8='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Live] SET [AddedTime] = @p0, [AwayTeamScore] = @p1, [FixtureId] = @p2, [HomeTeamScore] = @p3, [ISEnded] = @p4, [IsHalfTime] = @p5, [IsLive] = @p6, [LiveTime] = @p7, [WentToHalfTime] = @p8
+OUTPUT 1
+WHERE [LiveId] = @p9;
+2024-07-29 23:53:12.355 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.359 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.364 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.367 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:12.371 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[LiveId], [l].[AddedTime], [l].[AwayTeamScore], [l].[FixtureId], [l].[HomeTeamScore], [l].[ISEnded], [l].[IsHalfTime], [l].[IsLive], [l].[LiveTime], [l].[WentToHalfTime]
+FROM [Live] AS [l]
+WHERE [l].[LiveId] = @__p_0
+2024-07-29 23:53:36.748 +02:00 [INF] User profile is available. Using 'C:\Users\khaya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-07-29 23:53:36.788 +02:00 [INF] Start installing Hangfire SQL objects...
+2024-07-29 23:53:38.121 +02:00 [INF] Hangfire SQL objects installed.
+2024-07-29 23:53:41.411 +02:00 [WRN] The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert.
+2024-07-29 23:53:41.436 +02:00 [INF] Now listening on: https://localhost:7102
+2024-07-29 23:53:41.436 +02:00 [INF] Now listening on: http://localhost:5020
+2024-07-29 23:53:41.451 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-07-29 23:53:41.451 +02:00 [INF] Hosting environment: Development
+2024-07-29 23:53:41.451 +02:00 [INF] Content root path: C:\Users\khaya\source\repos\MyField
+2024-07-29 23:53:42.518 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/StartLive?fixtureId=aHBnCn4YHI%2BzVHC7eLs17A%3D%3D - null null
+2024-07-29 23:53:43.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/StartLive?fixtureId=aHBnCn4YHI%2BzVHC7eLs17A%3D%3D - 200 null text/html; charset=utf-8 827.8271ms
+2024-07-29 23:53:43.350 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2024-07-29 23:53:43.354 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/css/site.css?v=MfydHkL4SCIQRzG2ROnKBaPiJwUqOn_c-_lMQdbWtMU - null null
+2024-07-29 23:53:43.354 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - null null
+2024-07-29 23:53:43.354 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/6c534222-ee6c-48fd-9a83-a9e5bf101b65_hg.jpeg - null null
+2024-07-29 23:53:43.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - null null
+2024-07-29 23:53:43.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/6c534222-ee6c-48fd-9a83-a9e5bf101b65_hg.jpeg - 200 13791 image/jpeg 6.1299ms
+2024-07-29 23:53:43.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/MyField.styles.css?v=hOfjOBJIInygVOEQeoWVWkPhjwvTUH1XZ6FKmBleswo - 200 5735 text/css 6.4321ms
+2024-07-29 23:53:43.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/d7172e8c-b338-4b5e-8029-42f06b20c44f_Club_Badge.png - 200 5891 image/png 5.2807ms
+2024-07-29 23:53:43.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/css/site.css?v=MfydHkL4SCIQRzG2ROnKBaPiJwUqOn_c-_lMQdbWtMU - 200 56823 text/css 6.6161ms
+2024-07-29 23:53:43.361 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css - 200 162726 text/css 10.8682ms
+2024-07-29 23:53:43.365 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - null null
+2024-07-29 23:53:43.366 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/UploadedFiles/922183c2-363e-4d42-90d7-2883646b4d96_d2ffc165-fd9e-4630-a2b0-a3ba927f0a08_Fast X1.jpeg - null null
+2024-07-29 23:53:43.367 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/UploadedFiles/922183c2-363e-4d42-90d7-2883646b4d96_d2ffc165-fd9e-4630-a2b0-a3ba927f0a08_Fast X1.jpeg - 200 91594 image/jpeg 1.5983ms
+2024-07-29 23:53:43.368 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 2.7261ms
+2024-07-29 23:53:43.536 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/_vs/browserLink - null null
+2024-07-29 23:53:43.559 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.1118ms
+2024-07-29 23:53:43.645 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/MatchOverview?fixtureId=9075 - null null
+2024-07-29 23:53:43.655 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:53:43.659 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:53:43.667 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/MatchOverview?fixtureId=9075 - 200 null text/html; charset=utf-8 22.1366ms
+2024-07-29 23:53:43.671 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:53:43.730 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 75.3348ms
+2024-07-29 23:53:43.730 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 71.0935ms
+2024-07-29 23:53:44.253 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/favicon.ico - null null
+2024-07-29 23:53:44.254 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/favicon.ico - 200 15406 image/x-icon 1.2514ms
+2024-07-29 23:53:44.699 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 1028.0068ms
+2024-07-29 23:53:51.537 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - null null
+2024-07-29 23:53:51.542 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/lib/bootstrap/dist/css/bootstrap.min.css.map - 200 449111 text/plain 4.863ms
+2024-07-29 23:54:44.284 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:54:44.284 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:54:44.286 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - null null
+2024-07-29 23:54:44.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 6.3553ms
+2024-07-29 23:54:44.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 6.0987ms
+2024-07-29 23:54:44.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7102/Lives/GetLiveMatchStatus?fixtureId=9075 - 200 null application/json; charset=utf-8 4.5465ms

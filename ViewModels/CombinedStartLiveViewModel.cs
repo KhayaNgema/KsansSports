@@ -24,6 +24,8 @@
         public HomeSubViewModel HomeSubViewModel { get; set; }
 
         public int AddedTime { get; set; }
+
+        public string UserRole { get; set; }
     }
 }
 

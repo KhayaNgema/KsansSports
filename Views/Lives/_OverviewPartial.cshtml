@@ -1,0 +1,173 @@
+﻿<style>
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    .col-5, .col-2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .vertical-line {
+        border-left: 5px solid green;
+        height: 0;
+        transition: height 1s linear;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .half-time-label {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        color: green;
+        padding: 5px 10px;
+        border: 1px solid green;
+        border-radius: 3px;
+        z-index: 1;
+        display: none; /* Initially hidden until updated */
+        width: 80px;
+        text-align: center;
+    }
+
+    .half-time-text {
+        font-size: 16px; /* Adjust as needed */
+        font-weight: bold;
+        margin-bottom: 5px; /* Space between "HT" and scores */
+    }
+
+    .scores {
+        font-size: 16px; /* Adjust as needed */
+        font-weight: bold;
+    }
+
+    .time-marker {
+        position: absolute;
+        padding:5px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        color: green;
+        font-size: 12px;
+        text-align: center;
+        line-height: 40px; /* Center text vertically */
+        border: 2px solid green; /* Green border */
+        border-radius: 4px; /* Optional: Rounded corners for a softer look */
+    }
+</style>
+
+
+
+
+<div class="row match-overview-container">
+    <div class="col-5">
+        home events
+    </div>
+    <div class="col-2">
+        <div class="vertical-line">
+            <div class="half-time-label" style="display: none;">
+                <div class="half-time-text">HT</div>
+                <div class="scores">0-0</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        away events
+    </div>
+</div>
+<script>
+    var maxHeight = 0; // Track the maximum height reached
+    var halftimeDisplayed = false; // Flag to track if halftime label has been displayed
+
+    function updateVerticalLine(fixtureId) {
+        if (fixtureId) {
+            console.log("Fetching live match status for fixtureId:", fixtureId);
+            $.ajax({
+                url: `/Lives/GetLiveMatchStatus?fixtureId=${fixtureId}`,
+                type: 'GET',
+                success: function (data) {
+                    if (data) {
+                        var liveTime = data.LiveTime || data.liveTime;
+                        var isLive = data.IsLive || data.isLive;
+                        var isHalfTime = data.IsHalfTime || data.isHalfTime;
+                        var homeTeamScore = data.HomeTeamScore || data.homeTeamScore;
+                        var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
+                        var wentToHalfTime = data.WentToHalfTime || data.wentToHalfTime;
+
+                        console.log("Live Time:", liveTime);
+                        console.log("Live Status:", isLive);
+                        console.log("Half-Time Status:", isHalfTime);
+                        console.log("Went To Half-Time:", wentToHalfTime);
+                        console.log("Server response data:", data);
+
+                        var height = 0;
+                        if (isLive || isHalfTime) {
+                            height = liveTime * 40; // Adjust this multiplier to control height scaling
+                        }
+
+                        // Check if height exceeds the maximum height
+                        if (height > maxHeight) {
+                            maxHeight = height;
+                        }
+
+                        // Update the vertical line height
+                        $('.vertical-line').css('height', maxHeight + 'px');
+
+                        // Calculate the position for the halftime label
+                        if (wentToHalfTime || isHalfTime) {
+                            var halftimeTime = 45; // Time in minutes when halftime occurs
+                            var halftimePosition = maxHeight - (halftimeTime * 40); // Convert minutes to pixels
+
+                            $('.half-time-label').css('top', halftimePosition + 'px');
+                            $('.half-time-label').show();
+                            $('.half-time-label .scores').text(homeTeamScore + '-' + awayTeamScore);
+                            halftimeDisplayed = true; // Ensure the label remains displayed
+                        } else {
+                            $('.half-time-label').hide();
+                        }
+
+                        // Update markers every 15 minutes
+                        updateMarkers(maxHeight);
+
+                        console.log("Updated vertical line height:", maxHeight + 'px');
+                    } else {
+                        console.error('No data returned from server.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                    console.error('Response Text:', xhr.responseText);
+                }
+            });
+        } else {
+            console.error("Invalid fixtureId:", fixtureId);
+        }
+    }
+
+    function updateMarkers(maxHeight) {
+        // Remove existing markers
+        $('.time-marker').remove();
+
+        // Markers for 15, 30, 45, 60, 75, and 90 minutes
+        var intervals = [15, 30, 45, 60, 75, 90];
+        intervals.forEach(function (minute) {
+            var markerHeight = maxHeight - (minute * 40); // Convert minutes to pixels
+
+            // Create and append a new marker
+            var marker = $('<div class="time-marker">').text(minute + ' min');
+            marker.css('top', markerHeight + 'px');
+            $('.vertical-line').append(marker);
+        });
+    }
+
+    // Example usage
+    var fixtureId = 9075;
+    updateVerticalLine(fixtureId);
+
+    // Set an interval to update every minute
+    setInterval(function () {
+        updateVerticalLine(fixtureId);
+    }, 60000); // 60000 milliseconds = 1 minute
+</script>
