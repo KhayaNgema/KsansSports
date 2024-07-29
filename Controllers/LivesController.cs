@@ -407,7 +407,8 @@ namespace MyField.Controllers
                 IsEnded = liveMatch.ISEnded,
                 WentToHalfTime = liveMatch.WentToHalfTime,
                 HomeTeamScore = liveMatch.HomeTeamScore,
-                AwayTeamScore = liveMatch.AwayTeamScore
+                AwayTeamScore = liveMatch.AwayTeamScore,
+                AddTime = liveMatch.AddedTime
             };
 
             return Ok(response);

@@ -107,11 +107,10 @@
         </div>
         <div class="col-4">
             <div>
-                <div id="liveStatus">
-                    Not started
-                </div>
+                <div id="liveStatus">Not started</div>
                 <p id="liveTime" style="font-size:16px; display: none;">
                     0<span id="flickerSymbol" class="flicker">'</span>
+                    (<span id="timeAdded" style="font-size:16px; display: none;"></span>)
                 </p>
             </div>
             <div class="d-flex justify-content-center align-items-center">
@@ -1787,10 +1786,9 @@
                     if (data) {
                         var liveTimeElement = $('#liveTime');
                         var liveStatusElement = $('#liveStatus');
-                        var halfTimeButton = $('#halfTimeButton');
-                        var resumeButton = $('#resumeButton');
                         var homeTeamScoreElement = $('#homeTeamScore');
                         var awayTeamScoreElement = $('#awayTeamScore');
+                        var addedTimeElement = $('#timeAdded');
 
                         if (liveTimeElement.length && liveStatusElement.length) {
                             var liveTime = data.LiveTime || data.liveTime;
@@ -1800,19 +1798,32 @@
                             var wentToHalfTime = data.WentToHalfTime || data.wentToHalfTime;
                             var homeTeamScore = data.HomeTeamScore || data.homeTeamScore;
                             var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
+                            var addedTime = data.AddTime || data.addTime;
+
+                            console.log("Live Time:", liveTime);
+                            console.log("Added Time:", addedTime);
+                            console.log("Server response data:", data);
 
                             var displayTime = liveTime;
-
                             if (!wentToHalfTime && liveTime > 45) {
                                 displayTime = "45+" + (liveTime - 45);
                             } else if (liveTime > 90) {
                                 displayTime = "90+" + (liveTime - 90);
                             }
 
-                            liveTimeElement.html(displayTime + "<span id='flickerSymbol' class='flicker'>'</span>");
+                            // Update liveTime and addedTime
+                            var liveTimeHtml = displayTime + "<span id='flickerSymbol' class='flicker'>'</span>";
+                            if (addedTime > 0) {
+                                liveTimeHtml += " (<span id='timeAdded' style='font-size:16px;'>" + addedTime + "</span>)";
+                            } else {
+                                liveTimeHtml += " <span id='timeAdded' style='font-size:16px; display: none;'></span>";
+                            }
+
+                            liveTimeElement.html(liveTimeHtml);
+                            liveTimeElement.show();
 
                             if (homeTeamScoreElement.length) {
-                                homeTeamScoreElement.text(homeTeamScore); 
+                                homeTeamScoreElement.text(homeTeamScore);
                             }
 
                             if (awayTeamScoreElement.length) {
@@ -1821,31 +1832,20 @@
 
                             var statusText = '';
                             if (isLive) {
-                                liveTimeElement.show();
-                                halfTimeButton.show();
-                                resumeButton.hide();
                             } else if (isHalfTime) {
                                 statusText = 'Half-time';
-                                liveTimeElement.hide();
-                                halfTimeButton.hide();
-                                resumeButton.show();
                             } else if (isEnded) {
                                 statusText = 'Full-time';
-                                liveTimeElement.hide();
-                                halfTimeButton.hide();
-                                resumeButton.hide();
                             } else {
                                 statusText = 'Not started';
-                                liveTimeElement.hide();
-                                halfTimeButton.show();
-                                resumeButton.hide();
                             }
 
                             liveStatusElement.text(statusText);
 
-                            console.log("Updated liveTime:", liveTimeElement.text());
+                            console.log("Updated liveTime HTML:", liveTimeElement.html());
                             console.log("Updated liveStatus:", liveStatusElement.text());
-                            console.log("Updated homeTeamScore:", homeTeamScoreElement.text()); 
+                            console.log("Updated homeTeamScore:", homeTeamScoreElement.text());
+                            console.log("Updated addedTime:", addedTimeElement.text());
 
                         } else {
                             console.error("HTML elements #liveTime or #liveStatus not found.");
@@ -1863,6 +1863,7 @@
             console.error("Invalid fixtureId:", fixtureId);
         }
     }
+
 
 
 
