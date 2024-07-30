@@ -391,7 +391,6 @@ namespace MyField.Controllers
                 .Where(m => m.HomeTeam.ClubId == clubId ||
                  m.AwayTeam.ClubId == clubId && 
                  m.FixtureStatus == FixtureStatus.Upcoming ||
-                 m.FixtureStatus == FixtureStatus.Postponed ||
                    m.FixtureStatus == FixtureStatus.Interrupted)
                 .CountAsync();
 
@@ -798,7 +797,7 @@ namespace MyField.Controllers
                 .Select(ur => ur.UserId)
                 .ToListAsync();
 
-            var divisionPlayersCount = await _context.SportMember
+            var divisionPlayersCount = await _context.Player
                 .Where(u => userIds.Contains(u.Id) && u.IsDeleted == false)
                 .CountAsync();
 

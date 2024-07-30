@@ -423,7 +423,7 @@ namespace MyField.Controllers
             return View(clubTransferReports);
         }
 
-        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
+        [Authorize(Roles = "Club Administrator, Club Manager, Player")]
         public async Task<IActionResult> PlayerPerformance()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -433,28 +433,34 @@ namespace MyField.Controllers
                 return RedirectToAction("Error", "Home");
             }
 
-            if (!(user is ClubAdministrator clubAdministrator) &&
-                !(user is ClubManager clubManager) &&
-                !(user is Player clubPlayer))
+            var clubId = (user as ClubAdministrator)?.ClubId ??
+                         (user as ClubManager)?.ClubId ??
+                         (user as Player)?.ClubId;
+
+            if (clubId == null)
             {
                 return RedirectToAction("Error", "Home");
             }
 
-            var clubId = (user as ClubAdministrator)?.ClubId ??
-                     (user as ClubManager)?.ClubId ??
-                     (user as Player)?.ClubId;
+            var club = await _context.Club.FirstOrDefaultAsync(mo => mo.ClubId == clubId);
 
-            var clubs = await _context.Club
-                          .FirstOrDefaultAsync(mo => mo.ClubId == clubId);
+            if (club == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
 
             var myPlayersPerformanceReports = await _context.PlayerPerformanceReports
-                .Where(p => p.Player.ClubId == clubId)
-                .FirstOrDefaultAsync();
+                .Where(p => p.Player.ClubId == clubId
+                        && p.League.IsCurrent
+                        && !p.Player.IsDeleted)
+                .Include(m => m.Player)
+                .ToListAsync();
 
-            ViewBag.ClubName = clubs?.ClubName;
+            ViewBag.ClubName = club.ClubName;
 
             return View(myPlayersPerformanceReports);
         }
+
 
         public async Task<IActionResult> TopScores()
         {

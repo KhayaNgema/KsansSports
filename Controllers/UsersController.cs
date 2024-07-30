@@ -444,7 +444,7 @@ namespace MyField.Controllers
 
             var clubPlayers = await _context.Player
                 .Where(p => p.ClubId == clubAdministrator.ClubId &&
-                p.IsDeleted == false)
+                 p.IsDeleted == false)
                 .Include(s => s.Club)
                 .ToListAsync();
 

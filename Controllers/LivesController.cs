@@ -504,6 +504,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
 
@@ -532,7 +533,8 @@ namespace MyField.Controllers
                 var newAssist = new LiveAssistHolder
                 {
                     PlayerId = assistedBy,
-                    LiveId = liveMatch.LiveId,
+                    LeagueId = liveMatch.LeagueId,
+                    LiveId = liveMatch.LiveId
                 };
 
                 _context.Add(newGoal);
@@ -569,6 +571,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -597,6 +600,7 @@ namespace MyField.Controllers
                 {
                     PlayerId = assistedBy,
                     LiveId = liveMatch.LiveId,
+                    LeagueId = liveMatch.LeagueId,
                 };
 
                 _context.Add(newGoal);
@@ -628,6 +632,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -679,6 +684,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -730,6 +736,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -781,6 +788,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -832,6 +840,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -884,6 +893,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 if (liveMatch == null)
@@ -935,6 +945,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 var playerPerformanceReport = await _context.PlayerPerformanceReports
@@ -997,6 +1008,7 @@ namespace MyField.Controllers
 
                 var liveMatch = await _context.Live
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
                 var playerPerformanceReport = await _context.PlayerPerformanceReports

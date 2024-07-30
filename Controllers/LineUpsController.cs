@@ -582,17 +582,20 @@ namespace MyField.Controllers
                     }).ToList()
                 };
 
-                foreach(var player in lineupXIHolders)
+                foreach (var player in lineupXIHolders)
                 {
                     var playerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where(p => p.PlayerId == player.PlayerId)
-                        .FirstOrDefaultAsync();
+                        .FirstOrDefaultAsync(p => p.PlayerId == player.PlayerId);
 
-                    playerPerformanceReport.AppearancesCount++;
-
-                    _context.Update(playerPerformanceReport);
-                    await _context.SaveChangesAsync();
+                    if (playerPerformanceReport != null)
+                    {
+                        playerPerformanceReport.AppearancesCount++;
+                        _context.Update(playerPerformanceReport);
+                    }
                 }
+
+                await _context.SaveChangesAsync();
+
 
                 _context.Add(lineUp);
                 await _context.SaveChangesAsync();

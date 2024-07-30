@@ -87,556 +87,573 @@ namespace MyField.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> StartLeague(LeagueViewModel viewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var user = await _userManager.GetUserAsync(User);
-                var userId = user.Id;
-
-                var oldLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
-
-                var oldTransferPeriod = await _context.TransferPeriod.FirstOrDefaultAsync(l => l.IsCurrent);
-
-                if (oldLeague != null && oldLeague.LeagueCode != viewModel.OldLeagueCode)
+                if (ModelState.IsValid)
                 {
-                    TempData["Message"] = "League code does not match the league you are trying to end.";
-                    return View(viewModel);
-                }
+                    var user = await _userManager.GetUserAsync(User);
+                    var userId = user.Id;
 
-                if(oldTransferPeriod != null)
-                {
-                    await _activityLogger.Log($"Ended season {oldLeague.LeagueYears}", user.Id);
-                    oldTransferPeriod.IsCurrent = false;
-                    _context.Update(oldLeague);
-                    await _context.SaveChangesAsync();
-                }
+                    var oldLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
 
-                if (oldLeague != null)
-                {
-                    oldLeague.IsCurrent = false;
-                    _context.Update(oldLeague);
-                    await _context.SaveChangesAsync();
+                    var oldTransferPeriod = await _context.TransferPeriod.FirstOrDefaultAsync(l => l.IsCurrent);
 
-                    var oldStandings = await _context.Standing.Where(s => s.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldMatchResults = await _context.MatchResult.Where(m => m.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldFixtures = await _context.Fixture.Where(f => f.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldClubs = await _context.Club.Where(c => c.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldMatchFormations= await _context.MatchFormation.ToListAsync();
-                    var oldMatchReports = await _context.MatchReports.Where( m => m.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldMatchResultsReports = await _context.MatchResultsReports.Where(r => r.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldTransfersReports = await _context.TransfersReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldClubTransfersReports = await _context.ClubTransferReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldClubPerformanceReports = await _context.ClubPerformanceReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldPlayerPerformanceReports = await _context.PlayerPerformanceReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldLives = await _context.Live.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldTopScores = await _context.TopScores.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldTopAssists = await _context.TopAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldPenalties = await _context.Penalties.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldLiveGoals = await _context.LiveGoals.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldLiveAssists = await _context.LiveAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldSubstitutes = await _context.Substitutes.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldYellowCards = await _context.YellowCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                    var oldRedCards = await _context.RedCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-
-                    foreach (var s in oldStandings)
+                    if (oldLeague != null && oldLeague.LeagueCode != viewModel.OldLeagueCode)
                     {
-                        var archivedStanding = new Standings_Archive
-                        {
-                            ClubId = s.ClubId,
-                            Position = s.Position,
-                            MatchPlayed = s.MatchPlayed,
-                            Points = s.Points,
-                            Wins = s.Wins,
-                            Lose = s.Lose,
-                            GoalsScored = s.GoalsScored,
-                            GoalsConceded = s.GoalsConceded,
-                            GoalDifference = s.GoalDifference,
-                            Draw = s.Draw,
-                            CreatedDateTime = s.CreatedDateTime,
-                            ModifiedDateTime = s.ModifiedDateTime,
-                            CreatedById = s.CreatedById,
-                            ModifiedById = s.ModifiedById,
-                            Last5Games = s.Last5Games,
-                            LeagueId = s.LeagueId
-                        };
-                        _context.Standings_Archive.Add(archivedStanding);
+                        TempData["Message"] = "League code does not match the league you are trying to end.";
+                        return View(viewModel);
+                    }
+
+                    if (oldTransferPeriod != null)
+                    {
+                        await _activityLogger.Log($"Ended season {oldLeague.LeagueYears}", user.Id);
+                        oldTransferPeriod.IsCurrent = false;
+                        _context.Update(oldLeague);
                         await _context.SaveChangesAsync();
                     }
 
-                    foreach (var m in oldMatchResults)
+                    if (oldLeague != null)
                     {
-                        var archivedMatchResult = new MatchResults_Archive
-                        {
-                            FixtureId = m.FixtureId,
-                            AwayTeamId = m.AwayTeamId,
-                            HomeTeamId = m.HomeTeamId,
-                            HomeTeamScore = m.HomeTeamScore,
-                            AwayTeamScore = m.AwayTeamScore,
-                            MatchDate = m.MatchDate,
-                            CreatedDateTime = m.CreatedDateTime,
-                            ModifiedDateTime = m.ModifiedDateTime,
-                            CreatedById = m.CreatedById,
-                            ModifiedById = m.ModifiedById,
-                            Location = m.Location,
-                            LeagueId = m.LeagueId
-                        };
-                        _context.MatchResults_Archive.Add(archivedMatchResult);
+                        oldLeague.IsCurrent = false;
+                        _context.Update(oldLeague);
                         await _context.SaveChangesAsync();
-                    }
 
-                    if (oldMatchFormations != null)
-                    {
-                        foreach (var m in oldMatchFormations)
+                        var oldStandings = await _context.Standing.Where(s => s.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldMatchResults = await _context.MatchResult.Where(m => m.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldFixtures = await _context.Fixture.Where(f => f.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldClubs = await _context.Club.Where(c => c.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldMatchFormations = await _context.MatchFormation.ToListAsync();
+                        var oldMatchReports = await _context.MatchReports.Where(m => m.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldMatchResultsReports = await _context.MatchResultsReports.Where(r => r.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldTransfersReports = await _context.TransfersReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldClubTransfersReports = await _context.ClubTransferReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldClubPerformanceReports = await _context.ClubPerformanceReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldPlayerPerformanceReports = await _context.PlayerPerformanceReports.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldLives = await _context.Live.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldTopScores = await _context.TopScores.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldTopAssists = await _context.TopAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldPenalties = await _context.Penalties.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldLiveGoals = await _context.LiveGoals.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldLiveAssists = await _context.LiveAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldSubstitutes = await _context.Substitutes.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldYellowCards = await _context.YellowCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldRedCards = await _context.RedCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+
+                        foreach (var s in oldStandings)
                         {
-                            var archivedMatchFormation = new MatchFormation_Archive
+                            var archivedStanding = new Standings_Archive
                             {
-                                ClubId = m.ClubId,
-                                FormationId = m.FormationId,
-                                FixtureId = m.FixtureId,
-                                CreatedDateTime = m.CreatedDateTime,
-                                CreatedById = m.CreatedById,
-                                ModifiedDateTime = m.ModifiedDateTime,
-                                ModifiedById = m.ModifiedById,
+                                ClubId = s.ClubId,
+                                Position = s.Position,
+                                MatchPlayed = s.MatchPlayed,
+                                Points = s.Points,
+                                Wins = s.Wins,
+                                Lose = s.Lose,
+                                GoalsScored = s.GoalsScored,
+                                GoalsConceded = s.GoalsConceded,
+                                GoalDifference = s.GoalDifference,
+                                Draw = s.Draw,
+                                CreatedDateTime = s.CreatedDateTime,
+                                ModifiedDateTime = s.ModifiedDateTime,
+                                CreatedById = s.CreatedById,
+                                ModifiedById = s.ModifiedById,
+                                Last5Games = s.Last5Games,
+                                LeagueId = s.LeagueId
                             };
-                            _context.MatchFormation_Archive.Add(archivedMatchFormation);
+                            _context.Standings_Archive.Add(archivedStanding);
                             await _context.SaveChangesAsync();
                         }
-                    }
 
-                    foreach (var f in oldFixtures)
-                    {
-                        var archivedFixture = new Fixtures_Archive
+                        foreach (var m in oldMatchResults)
                         {
-                            HomeTeamId = f.HomeTeamId,
-                            AwayTeamId = f.AwayTeamId,
-                            KickOffDate = f.KickOffDate,
-                            KickOffTime = f.KickOffTime,
-                            Location = f.Location,
-                            CreatedDateTime = f.CreatedDateTime,
-                            ModifiedDateTime = f.ModifiedDateTime,
-                            CreatedById = f.CreatedById,
-                            ModifiedById = f.ModifiedById,
-                            FixtureStatus = f.FixtureStatus,
-                            LeagueId = f.LeagueId
-                        };
-                        _context.Fixtures_Archive.Add(archivedFixture);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var c in oldClubs)
-                    {
-                        var existingClub = await _context.Club.FindAsync(c.ClubId);
-
-                        if (existingClub != null)
-                        {
-                            existingClub.IsActive = false;
-                            existingClub.Status = ClubStatus.Previous_Season;
-
-                            _context.Update(existingClub);
+                            var archivedMatchResult = new MatchResults_Archive
+                            {
+                                FixtureId = m.FixtureId,
+                                AwayTeamId = m.AwayTeamId,
+                                HomeTeamId = m.HomeTeamId,
+                                HomeTeamScore = m.HomeTeamScore,
+                                AwayTeamScore = m.AwayTeamScore,
+                                MatchDate = m.MatchDate,
+                                CreatedDateTime = m.CreatedDateTime,
+                                ModifiedDateTime = m.ModifiedDateTime,
+                                CreatedById = m.CreatedById,
+                                ModifiedById = m.ModifiedById,
+                                Location = m.Location,
+                                LeagueId = m.LeagueId
+                            };
+                            _context.MatchResults_Archive.Add(archivedMatchResult);
                             await _context.SaveChangesAsync();
                         }
-                    }
 
-                    foreach (var m in oldMatchReports)
-                    {
-                        var archivedMatchReports = new MatchReports_Archive
+                        if (oldMatchFormations != null)
                         {
-                            LeagueId = m.LeagueId,
-                            MatchesToBePlayedCount = m.MatchesToBePlayedCount,
-                            PlayedMatchesCounts = m.PlayedMatchesCounts,
-                            InterruptedMatchesCount = m.InterruptedMatchesCount,
-                            PostponedMatchesCount = m.PostponedMatchesCount,
-                            FixturedMatchesCount = m.FixturedMatchesCount,
-                            FixturedMatchesRate = m.FixturedMatchesRate,
-                            UnfixturedMatchesRate = m.UnfixturedMatchesRate,
-                            InterruptedMatchesRate = m.InterruptedMatchesRate,
-                            PlayedMatchesRate = m.PlayedMatchesRate,    
-                            PostponedMatchesRate = m.PostponedMatchesRate,  
-                            UnreleasedFixturesCount = m.UnreleasedFixturesCount
-                        };
+                            foreach (var m in oldMatchFormations)
+                            {
+                                var archivedMatchFormation = new MatchFormation_Archive
+                                {
+                                    ClubId = m.ClubId,
+                                    FormationId = m.FormationId,
+                                    FixtureId = m.FixtureId,
+                                    CreatedDateTime = m.CreatedDateTime,
+                                    CreatedById = m.CreatedById,
+                                    ModifiedDateTime = m.ModifiedDateTime,
+                                    ModifiedById = m.ModifiedById,
+                                };
+                                _context.MatchFormation_Archive.Add(archivedMatchFormation);
+                                await _context.SaveChangesAsync();
+                            }
+                        }
 
-                        _context.MatchReportsArchive.Add(archivedMatchReports);
+                        foreach (var f in oldFixtures)
+                        {
+                            var archivedFixture = new Fixtures_Archive
+                            {
+                                HomeTeamId = f.HomeTeamId,
+                                AwayTeamId = f.AwayTeamId,
+                                KickOffDate = f.KickOffDate,
+                                KickOffTime = f.KickOffTime,
+                                Location = f.Location,
+                                CreatedDateTime = f.CreatedDateTime,
+                                ModifiedDateTime = f.ModifiedDateTime,
+                                CreatedById = f.CreatedById,
+                                ModifiedById = f.ModifiedById,
+                                FixtureStatus = f.FixtureStatus,
+                                LeagueId = f.LeagueId
+                            };
+                            _context.Fixtures_Archive.Add(archivedFixture);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var c in oldClubs)
+                        {
+                            var existingClub = await _context.Club.FindAsync(c.ClubId);
+
+                            if (existingClub != null)
+                            {
+                                existingClub.IsActive = false;
+                                existingClub.Status = ClubStatus.Previous_Season;
+
+                                _context.Update(existingClub);
+                                await _context.SaveChangesAsync();
+                            }
+                        }
+
+                        foreach (var m in oldMatchReports)
+                        {
+                            var archivedMatchReports = new MatchReports_Archive
+                            {
+                                LeagueId = m.LeagueId,
+                                MatchesToBePlayedCount = m.MatchesToBePlayedCount,
+                                PlayedMatchesCounts = m.PlayedMatchesCounts,
+                                InterruptedMatchesCount = m.InterruptedMatchesCount,
+                                PostponedMatchesCount = m.PostponedMatchesCount,
+                                FixturedMatchesCount = m.FixturedMatchesCount,
+                                FixturedMatchesRate = m.FixturedMatchesRate,
+                                UnfixturedMatchesRate = m.UnfixturedMatchesRate,
+                                InterruptedMatchesRate = m.InterruptedMatchesRate,
+                                PlayedMatchesRate = m.PlayedMatchesRate,
+                                PostponedMatchesRate = m.PostponedMatchesRate,
+                                UnreleasedFixturesCount = m.UnreleasedFixturesCount
+                            };
+
+                            _context.MatchReportsArchive.Add(archivedMatchReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var r in oldMatchResultsReports)
+                        {
+                            var archivedMatchResultsReports = new MatchResultsReports_Archive
+                            {
+                                LeagueId = r.LeagueId,
+                                ExpectedResultsCount = r.ExpectedResultsCount,
+                                ReleasedResultsCount = r.ReleasedResultsCount,
+                                WinsCount = r.WinsCount,
+                                LosesCount = r.LosesCount,
+                                DrawsCount = r.DrawsCount,
+                                ReleasedResultsRate = r.ReleasedResultsRate,
+                                UnreleasedMatchesRate = r.UnreleasedMatchesRate,
+                                WinningRate = r.WinningRate,
+                                LosingRate = r.LosingRate,
+                                DrawingRate = r.DrawingRate,
+                                UnreleasedResultsCount = r.UnreleasedResultsCount
+                            };
+
+                            _context.MatchResultsReports_Archive.Add(archivedMatchResultsReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var t in oldTransfersReports)
+                        {
+                            var archivedTransfersReports = new TransfersReports_Archive
+                            {
+                                LeagueId = t.LeagueId,
+                                TransferPeriodId = t.TransferPeriodId,
+                                TransferMarketCount = t.TransferMarketCount,
+                                PurchasedPlayersCount = t.PurchasedPlayersCount,
+                                DeclinedTransfersCount = t.DeclinedTransfersCount,
+                                TranferAmount = t.TranferAmount,
+                                ClubsCut = t.ClubsCut,
+                                AssociationCut = t.AssociationCut,
+                                SuccessfulTranferRate = t.SuccessfulTranferRate,
+                                UnsuccessfulTranferRate = t.UnsuccessfulTranferRate,
+                                NotStartedTransferRate = t.NotStartedTransferRate,
+                            };
+
+                            _context.TransfersReports_Archive.Add(archivedTransfersReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var c in oldClubTransfersReports)
+                        {
+                            var archivedClubTransfersReports = new ClubTransferReports_Archive
+                            {
+                                ClubId = c.ClubId,
+                                LeagueId = c.LeagueId,
+                                OverallTransfersCount = c.OverallTransfersCount,
+                                IncomingTransfersCount = c.IncomingTransfersCount,
+                                OutgoingTransfersCount = c.OutgoingTransfersCount,
+                                SuccessfulIncomingTransfersCount = c.SuccessfulIncomingTransfersCount,
+                                SuccessfulOutgoingTransfersCount = c.SuccessfulOutgoingTransfersCount,
+                                RejectedIncomingTransfersCount = c.RejectedIncomingTransfersCount,
+                                RejectedOutgoingTransfersCount = c.RejectedOutgoingTransfersCount,
+                                IncomingTransferRate = c.IncomingTransferRate,
+                                OutgoingTransferRate = c.OutgoingTransferRate,
+                                SuccessfullIncomingTransferRate = c.SuccessfullIncomingTransferRate,
+                                SuccessfullOutgoingTransferRate = c.SuccessfullOutgoingTransferRate,
+                                RejectedIncomingTransferRate = c.RejectedIncomingTransferRate,
+                                RejectedOutgoingTransferRate = c.RejectedOutgoingTransferRate
+                            };
+
+                            _context.ClubTransferReports_Archive.Add(archivedClubTransfersReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var c in oldPlayerPerformanceReports)
+                        {
+                            var archivedPlayerPerformanceReports = new PlayerPerformanceReports_Archive
+                            {
+                                PlayerId = c.PlayerId,
+                                LeagueId = c.LeagueId,
+                                AppearancesCount = c.AppearancesCount,
+                                GoalsScoredCount = c.GoalsScoredCount,
+                                AssistsCount = c.AssistsCount,
+                                YellowCardCount = c.YellowCardCount,
+                                RedCardCount = c.RedCardCount
+                            };
+
+                            _context.PlayerPerformanceReports_Archives.Add(archivedPlayerPerformanceReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var c in oldClubPerformanceReports)
+                        {
+                            var archivedClubPerformanceReports = new ClubPerformanceReports_Archive
+                            {
+                                ClubId = c.ClubId,
+                                LeagueId = c.LeagueId,
+                                GamesToPlayCount = c.GamesToPlayCount,
+                                GamesPlayedCount = c.GamesPlayedCount,
+                                GamesNotPlayedCount = c.GamesNotPlayedCount,
+                                GamesWinCount = c.GamesWinCount,
+                                GamesLoseCount = c.GamesLoseCount,
+                                GamesDrawCount = c.GamesDrawCount,
+                                GamesPlayedRate = c.GamesPlayedRate,
+                                GamesNotPlayedRate = c.GamesNotPlayedRate,
+                                GamesWinRate = c.GamesWinRate,
+                                GamesLoseRate = c.GamesLoseRate,
+                                GamesDrawRate = c.GamesDrawRate
+                            };
+
+                            _context.ClubPerformanceReports_Archive.Add(archivedClubPerformanceReports);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var l in oldLives)
+                        {
+                            var archivedLives = new Live_Archive
+                            {
+                                LeagueId = l.LeagueId,
+                                FixtureId = l.FixtureId,
+                                HomeTeamScore = l.HomeTeamScore,
+                                AwayTeamScore = l.AwayTeamScore,
+                                AddedTime = l.AddedTime,
+                                ISEnded = l.ISEnded,
+                                IsHalfTime = l.IsHalfTime,
+                                IsLive = l.IsLive,
+                                LiveTime = l.LiveTime,
+                                WentToHalfTime = l.WentToHalfTime
+                            };
+
+                            _context.Live_Archives.Add(archivedLives);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var l in oldTopScores)
+                        {
+                            var archivedTopScores = new TopScores_Archive
+                            {
+                                LeagueId = l.LeagueId,
+                                PlayerId = l.PlayerId,
+                                NumberOfGoals = l.NumberOfGoals,
+                            };
+
+                            _context.TopScores_Archives.Add(archivedTopScores);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var l in oldTopAssists)
+                        {
+                            var archivedTopAssists = new TopAssists_Archive
+                            {
+                                LeagueId = l.LeagueId,
+                                PlayerId = l.PlayerId,
+                                NumberOfAssists = l.NumberOfAssists,
+                            };
+
+                            _context.TopAssists_Archives.Add(archivedTopAssists);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var p in oldPenalties)
+                        {
+                            var archivedPenalties = new Penalty_Archive
+                            {
+                                LeagueId = p.LeagueId,
+                                LiveId = p.LiveId,
+                                PenaltyTime = p.PenaltyTime,
+                                PlayerId = p.PlayerId,
+                            };
+
+                            _context.Penalty_Archives.Add(archivedPenalties);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var g in oldLiveGoals)
+                        {
+                            var archivedLiveGoals = new LiveGoals_Archive
+                            {
+                                LeagueId = g.LeagueId,
+                                PlayerId = g.PlayerId,
+                                LiveId = g.LiveId
+                            };
+
+                            _context.LiveGoals_Archives.Add(archivedLiveGoals);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var a in oldLiveAssists)
+                        {
+                            var archivedLiveAssists = new LiveAssists_Archive
+                            {
+                                LeagueId = a.LeagueId,
+                                LiveId = a.LiveId,
+                                PlayerId = a.PlayerId
+                            };
+
+                            _context.LiveAssists_Archives.Add(archivedLiveAssists);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var s in oldSubstitutes)
+                        {
+                            var archivedSubstitutes = new Substitute_Archive
+                            {
+                                LiveId = s.LiveId,
+                                InPlayerId = s.InPlayerId,
+                                OutPlayerId = s.OutPlayerId,
+                                LeagueId = s.LeagueId,
+                                SubTime = s.SubTime
+                            };
+
+                            _context.Substitute_Archives.Add(archivedSubstitutes);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var y in oldYellowCards)
+                        {
+                            var archivedYellowCards = new LiveYellowCard_Archive
+                            {
+                                LeagueId = y.LeagueId,
+                                CardTime = y.CardTime,
+                                LiveId = y.LiveId,
+                                PlayerId = y.PlayerId,
+                            };
+
+                            _context.YellowCard_Archives.Add(archivedYellowCards);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var r in oldRedCards)
+                        {
+                            var archivedRedCards = new LiveRedCard_Archive
+                            {
+                                LeagueId = r.LeagueId,
+                                CardTime = r.CardTime,
+                                LiveId = r.LiveId,
+                                PlayerId = r.PlayerId,
+                            };
+
+                            _context.LiveRedCard_Archives.Add(archivedRedCards);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        _context.YellowCards.RemoveRange(oldYellowCards);
+                        _context.RedCards.RemoveRange(oldRedCards);
+                        _context.Substitutes.RemoveRange(oldSubstitutes);
+                        _context.LiveGoals.RemoveRange(oldLiveGoals);
+                        _context.LiveGoals.RemoveRange(oldLiveGoals);
+                        _context.Penalties.RemoveRange(oldPenalties);
+                        _context.TopScores.RemoveRange(oldTopScores);
+                        _context.TopAssists.RemoveRange(oldTopAssists);
+                        _context.PlayerPerformanceReports.RemoveRange(oldPlayerPerformanceReports);
+                        _context.Live.RemoveRange(oldLives);
+                        _context.ClubPerformanceReports.RemoveRange(oldClubPerformanceReports);
+                        _context.ClubTransferReports.RemoveRange(oldClubTransfersReports);
+                        _context.MatchReports.RemoveRange(oldMatchReports);
+                        _context.MatchResultsReports.RemoveRange(oldMatchResultsReports);
+                        _context.TransfersReports.RemoveRange(oldTransfersReports);
+                        _context.MatchFormation.RemoveRange(oldMatchFormations);
+                        _context.Standing.RemoveRange(oldStandings);
+                        _context.MatchResult.RemoveRange(oldMatchResults);
+                        _context.Fixture.RemoveRange(oldFixtures);
+
                         await _context.SaveChangesAsync();
                     }
 
-                    foreach (var r in oldMatchResultsReports)
+                    var newLeague = new League
                     {
-                        var archivedMatchResultsReports = new MatchResultsReports_Archive
-                        {
-                            LeagueId = r.LeagueId,
-                            ExpectedResultsCount = r.ExpectedResultsCount,
-                            ReleasedResultsCount = r.ReleasedResultsCount,
-                            WinsCount = r.WinsCount,
-                            LosesCount= r.LosesCount,
-                            DrawsCount = r.DrawsCount,
-                            ReleasedResultsRate = r.ReleasedResultsRate,    
-                            UnreleasedMatchesRate = r.UnreleasedMatchesRate,
-                            WinningRate = r.WinningRate,
-                            LosingRate = r.LosingRate,
-                            DrawingRate = r.DrawingRate,
-                            UnreleasedResultsCount = r.UnreleasedResultsCount
-                        };
-
-                        _context.MatchResultsReports_Archive.Add(archivedMatchResultsReports);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var t in oldTransfersReports)
-                    {
-                        var archivedTransfersReports = new TransfersReports_Archive
-                        {
-                            LeagueId = t.LeagueId,
-                            TransferPeriodId = t.TransferPeriodId,
-                            TransferMarketCount = t.TransferMarketCount,
-                            PurchasedPlayersCount = t.PurchasedPlayersCount,
-                            DeclinedTransfersCount = t.DeclinedTransfersCount,
-                            TranferAmount = t.TranferAmount,
-                            ClubsCut = t.ClubsCut,
-                            AssociationCut = t.AssociationCut,
-                            SuccessfulTranferRate = t.SuccessfulTranferRate,
-                            UnsuccessfulTranferRate = t.UnsuccessfulTranferRate,
-                            NotStartedTransferRate = t.NotStartedTransferRate,
-                        };
-
-                        _context.TransfersReports_Archive.Add(archivedTransfersReports);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var c in oldClubTransfersReports)
-                    {
-                        var archivedClubTransfersReports = new ClubTransferReports_Archive
-                        {
-                            ClubId = c.ClubId,
-                            LeagueId = c.LeagueId,
-                            OverallTransfersCount = c.OverallTransfersCount,
-                            IncomingTransfersCount = c.IncomingTransfersCount,
-                            OutgoingTransfersCount = c.OutgoingTransfersCount,
-                            SuccessfulIncomingTransfersCount = c.SuccessfulIncomingTransfersCount,
-                            SuccessfulOutgoingTransfersCount = c.SuccessfulOutgoingTransfersCount,
-                            RejectedIncomingTransfersCount = c.RejectedIncomingTransfersCount,
-                            RejectedOutgoingTransfersCount = c.RejectedOutgoingTransfersCount,
-                            IncomingTransferRate = c.IncomingTransferRate,
-                            OutgoingTransferRate = c.OutgoingTransferRate,
-                            SuccessfullIncomingTransferRate = c.SuccessfullIncomingTransferRate,
-                            SuccessfullOutgoingTransferRate = c.SuccessfullOutgoingTransferRate,
-                            RejectedIncomingTransferRate = c.RejectedIncomingTransferRate,
-                            RejectedOutgoingTransferRate = c.RejectedOutgoingTransferRate
-                        };
-
-                        _context.ClubTransferReports_Archive.Add(archivedClubTransfersReports);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var c in oldPlayerPerformanceReports)
-                    {
-                        var archivedPlayerPerformanceReports = new PlayerPerformanceReports_Archive
-                        {
-                            PlayerId = c.PlayerId,
-                            LeagueId = c.LeagueId,
-                            AppearancesCount = c.AppearancesCount,
-                            GoalsScoredCount = c.GoalsScoredCount,
-                            AssistsCount = c.AssistsCount,
-                            YellowCardCount = c.YellowCardCount,
-                            RedCardCount = c.RedCardCount
-                        };
-
-                        _context.PlayerPerformanceReports_Archives.Add(archivedPlayerPerformanceReports);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var c in oldClubPerformanceReports)
-                    {
-                        var archivedClubPerformanceReports = new ClubPerformanceReports_Archive
-                        {
-                            ClubId = c.ClubId,
-                            LeagueId = c.LeagueId,
-                            GamesToPlayCount = c.GamesToPlayCount,
-                            GamesPlayedCount = c.GamesPlayedCount,
-                            GamesNotPlayedCount = c.GamesNotPlayedCount,
-                            GamesWinCount = c.GamesWinCount,
-                            GamesLoseCount = c.GamesLoseCount,
-                            GamesDrawCount = c.GamesDrawCount,
-                            GamesPlayedRate = c.GamesPlayedRate,
-                            GamesNotPlayedRate = c.GamesNotPlayedRate,
-                            GamesWinRate = c.GamesWinRate,
-                            GamesLoseRate = c.GamesLoseRate,
-                            GamesDrawRate = c.GamesDrawRate
-                        };
-
-                        _context.ClubPerformanceReports_Archive.Add(archivedClubPerformanceReports);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var l in oldLives)
-                    {
-                        var archivedLives = new Live_Archive
-                        {
-                            LeagueId = l.LeagueId,
-                            FixtureId = l.FixtureId,
-                            HomeTeamScore = l.HomeTeamScore,
-                            AwayTeamScore = l.AwayTeamScore,
-                            AddedTime = l.AddedTime,
-                            ISEnded = l.ISEnded,
-                            IsHalfTime = l.IsHalfTime,
-                            IsLive = l.IsLive,
-                            LiveTime = l.LiveTime,
-                            WentToHalfTime = l.WentToHalfTime
-                        };
-
-                        _context.Live_Archives.Add(archivedLives);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var l in oldTopScores)
-                    {
-                        var archivedTopScores = new TopScores_Archive
-                        {
-                            LeagueId = l.LeagueId,
-                            PlayerId = l.PlayerId,
-                            NumberOfGoals = l.NumberOfGoals,
-                        };
-
-                        _context.TopScores_Archives.Add(archivedTopScores);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var l in oldTopAssists)
-                    {
-                        var archivedTopAssists = new TopAssists_Archive
-                        {
-                            LeagueId = l.LeagueId,
-                            PlayerId = l.PlayerId,
-                            NumberOfAssists = l.NumberOfAssists,
-                        };
-
-                        _context.TopAssists_Archives.Add(archivedTopAssists);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var p in oldPenalties)
-                    {
-                        var archivedPenalties = new Penalty_Archive
-                        {
-                            LeagueId = p.LeagueId,
-                            LiveId = p.LiveId,
-                            PenaltyTime = p.PenaltyTime,
-                            PlayerId = p.PlayerId,
-                        };
-
-                        _context.Penalty_Archives.Add(archivedPenalties);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var g in oldLiveGoals)
-                    {
-                        var archivedLiveGoals = new LiveGoals_Archive
-                        {
-                            LeagueId = g.LeagueId,
-                            PlayerId= g.PlayerId,
-                            LiveId= g.LiveId
-                        };
-
-                        _context.LiveGoals_Archives.Add(archivedLiveGoals);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var a in oldLiveAssists)
-                    {
-                        var archivedLiveAssists = new LiveAssists_Archive
-                        {
-                            LeagueId = a.LeagueId,
-                            LiveId = a.LiveId,
-                            PlayerId = a.PlayerId
-                        };
-
-                        _context.LiveAssists_Archives.Add(archivedLiveAssists);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var s in oldSubstitutes)
-                    {
-                        var archivedSubstitutes = new Substitute_Archive
-                        {
-                            LiveId = s.LiveId,
-                            InPlayerId = s.InPlayerId,
-                            OutPlayerId = s.OutPlayerId,
-                            LeagueId = s.LeagueId,
-                            SubTime = s.SubTime
-                        };
-
-                        _context.Substitute_Archives.Add(archivedSubstitutes);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var y in oldYellowCards)
-                    {
-                        var archivedYellowCards = new LiveYellowCard_Archive
-                        {
-                            LeagueId = y.LeagueId,
-                            CardTime = y.CardTime,
-                            LiveId = y.LiveId,
-                            PlayerId = y.PlayerId,
-                        };
-
-                        _context.YellowCard_Archives.Add(archivedYellowCards);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    foreach (var r in oldRedCards)
-                    {
-                        var archivedRedCards = new LiveRedCard_Archive
-                        {
-                            LeagueId = r.LeagueId,
-                            CardTime = r.CardTime,
-                            LiveId = r.LiveId,
-                            PlayerId = r.PlayerId,
-                        };
-
-                        _context.LiveRedCard_Archives.Add(archivedRedCards);
-                        await _context.SaveChangesAsync();
-                    }
-
-                    _context.YellowCards.RemoveRange(oldYellowCards);
-                    _context.RedCards.RemoveRange(oldRedCards);
-                    _context.Substitutes.RemoveRange(oldSubstitutes);
-                    _context.LiveGoals.RemoveRange(oldLiveGoals);
-                    _context.LiveGoals.RemoveRange(oldLiveGoals);
-                    _context.Penalties.RemoveRange(oldPenalties);
-                    _context.TopScores.RemoveRange(oldTopScores);
-                    _context.TopAssists.RemoveRange(oldTopAssists);
-                    _context.PlayerPerformanceReports.RemoveRange(oldPlayerPerformanceReports);
-                    _context.Live.RemoveRange(oldLives);
-                    _context.ClubPerformanceReports.RemoveRange(oldClubPerformanceReports);
-                    _context.ClubTransferReports.RemoveRange(oldClubTransfersReports);
-                    _context.MatchReports.RemoveRange(oldMatchReports);
-                    _context.MatchResultsReports.RemoveRange(oldMatchResultsReports);
-                    _context.TransfersReports.RemoveRange(oldTransfersReports);
-                    _context.MatchFormation.RemoveRange(oldMatchFormations);
-                    _context.Standing.RemoveRange(oldStandings);
-                    _context.MatchResult.RemoveRange(oldMatchResults);
-                    _context.Fixture.RemoveRange(oldFixtures);
-
-                    await _context.SaveChangesAsync();
-                }
-
-                var newLeague = new League
-                {
-                    LeagueYears = viewModel.LeagueYears,
-                    CreatedById = userId,
-                    CreatedDateTime = DateTime.Now,
-                    ModifiedById = userId,
-                    ModifiedDateTime = DateTime.Now,
-                    IsCurrent = true,
-                    LeagueCode = GenerateLeagueCode()
-                };
-
-                _context.Add(newLeague);
-                await _context.SaveChangesAsync();
-
-                var newSeason = await _context.League
-                       .Where(n => n.Equals(newLeague)).FirstOrDefaultAsync();
-
-                var transferPeriod = new TransferPeriod
-                {
-                    LeagueId = newSeason.LeagueId,
-                    PeriodOpenCount = 0,
-                    IsOpened = false,
-                    CreatedDateTime = DateTime.Now,
-                    CreatedById = user.Id,
-                    ModifiedDateTime = DateTime.Now,
-                    ModifiedById = user.Id,
-                    IsCurrent = true
-                };
-
-                _context.Add(transferPeriod);
-                await _context.SaveChangesAsync();
-
-
-                var matchReports = new MatchReports
-                {
-                    LeagueId = newSeason.LeagueId,
-                    MatchesToBePlayedCount = 0,
-                    FixturedMatchesCount = 0,
-                    UnreleasedFixturesCount = 0,
-                    InterruptedMatchesCount = 0,
-                    FixturedMatchesRate = 0,
-                    UnfixturedMatchesRate = 0,
-                    PlayedMatchesRate = 0,
-                    InterruptedMatchesRate = 0,
-                    PostponedMatchesRate = 0,
-                    PlayedMatchesCounts = 0,
-                    PostponedMatchesCount = 0,
-                };
-
-                _context.Add(matchReports);
-                await _context.SaveChangesAsync();
-
-                var newTransferReports = new TransfersReports
-                {
-                    LeagueId = newSeason.LeagueId,
-                    TransferMarketCount = 0,
-                    PurchasedPlayersCount = 0,
-                    DeclinedTransfersCount = 0,
-                    TransferPeriodId = transferPeriod.TransferPeriodId,
-                    TranferAmount = 0,
-                    AssociationCut = 0,
-                    ClubsCut = 0,
-                    SuccessfulTranferRate = 0,
-                    UnsuccessfulTranferRate = 0,
-                    NotStartedTransferRate = 0
-                };
-
-                _context.Add(newTransferReports);
-                await _context.SaveChangesAsync();
-
-                var newMatchResultsReports = new MatchResultsReports
-                {
-                    LeagueId = newSeason.LeagueId,
-                    ExpectedResultsCount = 0,
-                    ReleasedResultsCount = 0,
-                    UnreleasedResultsCount = 0,
-                    WinsCount = 0,
-                    LosesCount = 0,
-                    DrawsCount = 0,
-                    ReleasedResultsRate = 0,
-                    UnreleasedMatchesRate = 0,
-                    WinningRate = 0,
-                    LosingRate = 0,
-                    DrawingRate = 0,
-                };
-
-                _context.Add(newMatchResultsReports);
-                await _context.SaveChangesAsync();
-
-                var allPlayers = await _context.Player
-                    .Where(a => !a.IsDeleted && a.IsActive)
-                    .ToListAsync();
-
-                foreach (var p in allPlayers)
-                {
-                    var newPlayerPerformanceReport = new PlayerPerformanceReport
-                    {
-                        LeagueId = newSeason.LeagueId,
-                        PlayerId = p.Id,
-                        AppearancesCount = 0,
-                        GoalsScoredCount = 0,
-                        AssistsCount = 0,
-                        YellowCardCount = 0,
-                        RedCardCount = 0
+                        LeagueYears = viewModel.LeagueYears,
+                        CreatedById = userId,
+                        CreatedDateTime = DateTime.Now,
+                        ModifiedById = userId,
+                        ModifiedDateTime = DateTime.Now,
+                        IsCurrent = true,
+                        LeagueCode = GenerateLeagueCode()
                     };
 
-                    _context.PlayerPerformanceReports.Add(newPlayerPerformanceReport);
+                    _context.Add(newLeague);
                     await _context.SaveChangesAsync();
+
+                    var newSeason = await _context.League
+                           .Where(n => n.Equals(newLeague)).FirstOrDefaultAsync();
+
+                    var transferPeriod = new TransferPeriod
+                    {
+                        LeagueId = newSeason.LeagueId,
+                        PeriodOpenCount = 0,
+                        IsOpened = false,
+                        CreatedDateTime = DateTime.Now,
+                        CreatedById = user.Id,
+                        ModifiedDateTime = DateTime.Now,
+                        ModifiedById = user.Id,
+                        IsCurrent = true
+                    };
+
+                    _context.Add(transferPeriod);
+                    await _context.SaveChangesAsync();
+
+
+                    var matchReports = new MatchReports
+                    {
+                        LeagueId = newSeason.LeagueId,
+                        MatchesToBePlayedCount = 0,
+                        FixturedMatchesCount = 0,
+                        UnreleasedFixturesCount = 0,
+                        InterruptedMatchesCount = 0,
+                        FixturedMatchesRate = 0,
+                        UnfixturedMatchesRate = 0,
+                        PlayedMatchesRate = 0,
+                        InterruptedMatchesRate = 0,
+                        PostponedMatchesRate = 0,
+                        PlayedMatchesCounts = 0,
+                        PostponedMatchesCount = 0,
+                    };
+
+                    _context.Add(matchReports);
+                    await _context.SaveChangesAsync();
+
+                    var newTransferReports = new TransfersReports
+                    {
+                        LeagueId = newSeason.LeagueId,
+                        TransferMarketCount = 0,
+                        PurchasedPlayersCount = 0,
+                        DeclinedTransfersCount = 0,
+                        TransferPeriodId = transferPeriod.TransferPeriodId,
+                        TranferAmount = 0,
+                        AssociationCut = 0,
+                        ClubsCut = 0,
+                        SuccessfulTranferRate = 0,
+                        UnsuccessfulTranferRate = 0,
+                        NotStartedTransferRate = 0
+                    };
+
+                    _context.Add(newTransferReports);
+                    await _context.SaveChangesAsync();
+
+                    var newMatchResultsReports = new MatchResultsReports
+                    {
+                        LeagueId = newSeason.LeagueId,
+                        ExpectedResultsCount = 0,
+                        ReleasedResultsCount = 0,
+                        UnreleasedResultsCount = 0,
+                        WinsCount = 0,
+                        LosesCount = 0,
+                        DrawsCount = 0,
+                        ReleasedResultsRate = 0,
+                        UnreleasedMatchesRate = 0,
+                        WinningRate = 0,
+                        LosingRate = 0,
+                        DrawingRate = 0,
+                    };
+
+                    _context.Add(newMatchResultsReports);
+                    await _context.SaveChangesAsync();
+
+                    var allPlayers = await _context.Player
+                        .Where(a => !a.IsDeleted)
+                        .ToListAsync();
+
+                    var newPlayerPerformanceReports = new List<PlayerPerformanceReport>();
+
+                    foreach (var p in allPlayers)
+                    {
+                        var newPlayerPerformanceReport = new PlayerPerformanceReport
+                        {
+                            LeagueId = newSeason.LeagueId,
+                            PlayerId = p.Id,
+                            AppearancesCount = 0,
+                            GoalsScoredCount = 0,
+                            AssistsCount = 0,
+                            YellowCardCount = 0,
+                            RedCardCount = 0
+                        };
+
+                        newPlayerPerformanceReports.Add(newPlayerPerformanceReport);
+                    }
+
+                    _context.PlayerPerformanceReports.AddRange(newPlayerPerformanceReports);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Message"] = $"{newLeague.LeagueYears} has been started successfully and all running data will be related to it. This league will be referred to as the current league.";
+
+                    await _activityLogger.Log($"Started season {newSeason.LeagueYears}", user.Id);
+                    return RedirectToAction(nameof(Leagues));
                 }
-
-                _context.Add(newMatchResultsReports);
-                await _context.SaveChangesAsync();
-
-
-                TempData["Message"] = $"{newLeague.LeagueYears} has been started successfully and all running data will be related to it. This league will be referred to as the current league.";
-
-                await _activityLogger.Log($"Started season {newSeason.LeagueYears}", user.Id);
-                return RedirectToAction(nameof(Leagues));
             }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Failed to redirect to payfast: " + ex.Message,
+                    errorDetails = new
+                    {
+                        InnerException = ex.InnerException?.Message,
+                        StackTrace = ex.StackTrace
+                    }
+                });
+            }
+           
             return View(viewModel);
         }
 
