@@ -23,6 +23,8 @@
 
         public HomeSubViewModel HomeSubViewModel { get; set; }
 
+        public OverviewViewModel OverviewViewModel { get; set; }
+
         public int AddedTime { get; set; }
 
         public string UserRole { get; set; }

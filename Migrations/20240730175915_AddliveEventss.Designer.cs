@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240730175915_AddliveEventss")]
+    partial class AddliveEventss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -555,9 +558,6 @@ namespace MyField.Migrations
 
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("RecordedTime")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("EventId");
 
@@ -2155,18 +2155,24 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Event");
 
+                    b.Property<string>("ScoreById")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("ScoredById")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ScoredTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ScoredById");
+                    b.HasIndex("ScoreById");
 
                     b.ToTable("LiveEvents", t =>
                         {
+                            t.Property("ScoreById")
+                                .HasColumnName("LiveGoalHolder_ScoreById");
+
                             t.Property("ScoredTime")
                                 .HasColumnName("LiveGoalHolder_ScoredTime");
                         });
@@ -4145,13 +4151,11 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
                 {
-                    b.HasOne("MyField.Models.Player", "ScoredBy")
+                    b.HasOne("MyField.Models.Player", "ScoreBy")
                         .WithMany()
-                        .HasForeignKey("ScoredById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ScoreById");
 
-                    b.Navigation("ScoredBy");
+                    b.Navigation("ScoreBy");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>

@@ -251,5 +251,7 @@ namespace MyField.Data
         public DbSet<MyField.Models.TopAssists_Archive> TopAssists_Archives { get; set; } = default!;
 
         public DbSet<MyField.Models.TopScores_Archive> TopScores_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.Event> LiveEvents { get; set; } = default!;
     }
 }

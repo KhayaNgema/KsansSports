@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240730171638_ChangeToOneBaseModel")]
+    partial class ChangeToOneBaseModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -535,41 +538,6 @@ namespace MyField.Migrations
                     b.HasKey("DeviceInfoId");
 
                     b.ToTable("DeviceInfo");
-                });
-
-            modelBuilder.Entity("MyField.Models.Event", b =>
-                {
-                    b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"));
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(34)
-                        .HasColumnType("nvarchar(34)");
-
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LiveId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("RecordedTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("EventId");
-
-                    b.HasIndex("LeagueId");
-
-                    b.HasIndex("LiveId");
-
-                    b.ToTable("LiveEvents");
-
-                    b.HasDiscriminator().HasValue("Event");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MyField.Models.Fine", b =>
@@ -1121,8 +1089,8 @@ namespace MyField.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
+                        .HasMaxLength(34)
+                        .HasColumnType("nvarchar(34)");
 
                     b.Property<int>("FixtureId")
                         .HasColumnType("int");
@@ -2102,9 +2070,16 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("Clubs_Archive");
                 });
 
+            modelBuilder.Entity("MyField.Models.Fixtures_Archive", b =>
+                {
+                    b.HasBaseType("MyField.Models.Fixture");
+
+                    b.HasDiscriminator().HasValue("Fixtures_Archive");
+                });
+
             modelBuilder.Entity("MyField.Models.LiveAssist", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("AssistedById")
                         .IsRequired()
@@ -2117,7 +2092,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveAssistHolder", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("AssistedById")
                         .IsRequired()
@@ -2125,7 +2100,7 @@ namespace MyField.Migrations
 
                     b.HasIndex("AssistedById");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
                             t.Property("AssistedById")
                                 .HasColumnName("LiveAssistHolder_AssistedById");
@@ -2136,7 +2111,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoal", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("ScoreById")
                         .IsRequired()
@@ -2153,20 +2128,26 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
+
+                    b.Property<string>("ScoreById")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScoredById")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ScoredTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ScoredById");
+                    b.HasIndex("ScoreById");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
+                            t.Property("ScoreById")
+                                .HasColumnName("LiveGoalHolder_ScoreById");
+
                             t.Property("ScoredTime")
                                 .HasColumnName("LiveGoalHolder_ScoredTime");
                         });
@@ -2176,7 +2157,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("RedCardTime")
                         .IsRequired()
@@ -2193,7 +2174,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveYellowCardHolder", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("YellowCardTime")
                         .IsRequired()
@@ -2208,9 +2189,16 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("LiveYellowCardHolder");
                 });
 
+            modelBuilder.Entity("MyField.Models.Live_Archive", b =>
+                {
+                    b.HasBaseType("MyField.Models.Live");
+
+                    b.HasDiscriminator().HasValue("Live_Archive");
+                });
+
             modelBuilder.Entity("MyField.Models.Penalty", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("PenaltyTime")
                         .IsRequired()
@@ -2230,7 +2218,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.RedCard", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("RedCardTime")
                         .IsRequired()
@@ -2242,7 +2230,7 @@ namespace MyField.Migrations
 
                     b.HasIndex("RedCommitedById");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
                             t.Property("RedCardTime")
                                 .HasColumnName("RedCardTime1");
@@ -2256,7 +2244,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.Substitute", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("InPlayerId")
                         .IsRequired()
@@ -2279,7 +2267,7 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.YellowCard", b =>
                 {
-                    b.HasBaseType("MyField.Models.Event");
+                    b.HasBaseType("MyField.Models.Live");
 
                     b.Property<string>("YellowCardTime")
                         .IsRequired()
@@ -2291,7 +2279,7 @@ namespace MyField.Migrations
 
                     b.HasIndex("YellowCommitedById");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
                             t.Property("YellowCardTime")
                                 .HasColumnName("YellowCardTime1");
@@ -2301,20 +2289,6 @@ namespace MyField.Migrations
                         });
 
                     b.HasDiscriminator().HasValue("YellowCard");
-                });
-
-            modelBuilder.Entity("MyField.Models.Fixtures_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.Fixture");
-
-                    b.HasDiscriminator().HasValue("Fixtures_Archive");
-                });
-
-            modelBuilder.Entity("MyField.Models.Live_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.Live");
-
-                    b.HasDiscriminator().HasValue("Live_Archive");
                 });
 
             modelBuilder.Entity("MyField.Models.MatchFormation_Archive", b =>
@@ -2947,7 +2921,7 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.RedCard");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
                             t.Property("RedCardTime")
                                 .HasColumnName("RedCardTime1");
@@ -2970,7 +2944,7 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.YellowCard");
 
-                    b.ToTable("LiveEvents", t =>
+                    b.ToTable("Live", t =>
                         {
                             t.Property("YellowCardTime")
                                 .HasColumnName("YellowCardTime1");
@@ -3205,25 +3179,6 @@ namespace MyField.Migrations
                         .HasForeignKey("CommentById");
 
                     b.Navigation("CommentBy");
-                });
-
-            modelBuilder.Entity("MyField.Models.Event", b =>
-                {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyField.Models.Live", "Live")
-                        .WithMany()
-                        .HasForeignKey("LiveId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("League");
-
-                    b.Navigation("Live");
                 });
 
             modelBuilder.Entity("MyField.Models.Fine", b =>
@@ -4145,13 +4100,11 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
                 {
-                    b.HasOne("MyField.Models.Player", "ScoredBy")
+                    b.HasOne("MyField.Models.Player", "ScoreBy")
                         .WithMany()
-                        .HasForeignKey("ScoredById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ScoreById");
 
-                    b.Navigation("ScoredBy");
+                    b.Navigation("ScoreBy");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>

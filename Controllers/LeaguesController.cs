@@ -433,7 +433,7 @@ namespace MyField.Controllers
                             var archivedLiveGoals = new LiveGoals_Archive
                             {
                                 LeagueId = g.LeagueId,
-                                PlayerId = g.PlayerId,
+                                ScoreById = g.ScoreById,
                                 LiveId = g.LiveId
                             };
 
@@ -447,7 +447,7 @@ namespace MyField.Controllers
                             {
                                 LeagueId = a.LeagueId,
                                 LiveId = a.LiveId,
-                                PlayerId = a.PlayerId
+                                AssistedById = a.AssistedById
                             };
 
                             _context.LiveAssists_Archives.Add(archivedLiveAssists);
@@ -474,9 +474,9 @@ namespace MyField.Controllers
                             var archivedYellowCards = new LiveYellowCard_Archive
                             {
                                 LeagueId = y.LeagueId,
-                                CardTime = y.CardTime,
+                                YellowCardTime = y.YellowCommitedById,
                                 LiveId = y.LiveId,
-                                PlayerId = y.PlayerId,
+                                YellowCommitedById = y.YellowCommitedById,
                             };
 
                             _context.YellowCard_Archives.Add(archivedYellowCards);
@@ -488,9 +488,9 @@ namespace MyField.Controllers
                             var archivedRedCards = new LiveRedCard_Archive
                             {
                                 LeagueId = r.LeagueId,
-                                CardTime = r.CardTime,
+                                RedCardTime = r.RedCardTime,
                                 LiveId = r.LiveId,
-                                PlayerId = r.PlayerId,
+                                RedCommitedById= r.RedCommitedById,
                             };
 
                             _context.LiveRedCard_Archives.Add(archivedRedCards);

@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyField.Models
 {
+
+
+
     public class Live
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -33,85 +36,59 @@ namespace MyField.Models
         public int? AddedTime { get; set; }
     }
 
-    public class LiveGoal
+    public class Event
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GoalsId { get; set; }
-        public int LiveId { get; set; }
-        public virtual Live Live { get; set; }
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
-    }
-
-    public class LiveAssist
-    {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AssistId { get; set; }
+        public int EventId { get; set; }
 
         public int LiveId { get; set; }
 
         public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
-    }
-
-    public class YellowCard
-    {
-        public int YellowCardId { get; set; }
-
-        public int LiveId { get; set; }
-
-        public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public string CardTime { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
-    }
-
-    public class RedCard
-    {
-        public int RedCardId { get; set; }
-
-        public int LiveId { get; set; }
-
-        public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-        public string CardTime { get; set; }
 
         public int LeagueId { get; set; }
 
         public virtual League League { get; set; }
 
+        public DateTime RecordedTime { get; set; }
     }
 
-    public class Penalty
+
+    public class LiveGoal : Event
     {
-        public int PenaltyId { get; set; }
+        public string ScoreById { get; set; }
 
-        public int LiveId { get; set; }
+        public virtual Player ScoreBy { get; set; }
 
-        public virtual Live Live { get; set; }
+        public string ScoredTime { get; set; }
+    }
 
+    public class LiveAssist : Event
+    {
+        public string AssistedById { get; set; }
+
+        public virtual Player AssistedBy { get; set; }
+    }
+
+    public class YellowCard : Event
+    {
+        public string YellowCommitedById { get; set; }
+
+        public virtual Player YellowCommitedBy{ get; set; }
+
+        public string YellowCardTime { get; set; }
+    }
+
+    public class RedCard  : Event
+    {
+        public string RedCommitedById { get; set; }
+
+        public virtual Player RedCommitedBy { get; set; }
+        public string RedCardTime { get; set; }
+
+    }
+
+    public class Penalty : Event
+    {
         public string PenaltyTime { get; set; }
 
         public string PlayerId { get; set; }
@@ -119,10 +96,6 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public PenaltyType Type { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
     }
 
     public enum PenaltyType
@@ -144,15 +117,8 @@ namespace MyField.Models
     }
 
 
-    public class Substitute
+    public class Substitute : Event
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SubstituteId { get; set; }
-
-        public int LiveId { get; set; }
-
-        public virtual Live Live { get; set; }
-
         public string OutPlayerId { get; set; }
 
         public virtual Player OutPlayer { get; set; }
@@ -162,86 +128,41 @@ namespace MyField.Models
         public virtual Player InPlayer { get; set;}
 
         public string SubTime { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
     }
 
-    public class LiveGoalHolder
+    public class LiveGoalHolder : Event
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GoalsId { get; set; }
-        public int LiveId { get; set; }
-        public virtual Live Live { get; set; }
-        public string PlayerId { get; set; }
+        public string ScoredById { get; set; }
 
-        public virtual Player Player { get; set; }
+        public virtual Player ScoredBy { get; set; }
 
         public string ScoredTime { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
     }
 
-    public class LiveAssistHolder
+    public class LiveAssistHolder : Event
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AssistId { get; set; }
 
-        public int LiveId { get; set; }
+        public string AssistedById { get; set; }
 
-        public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
+        public virtual Player AssistedBy { get; set; }
     }
 
 
-    public class LiveYellowCardHolder
+    public class LiveYellowCardHolder : Event
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int YellowCardId { get; set; }
+        public string YellowCommitedById { get; set; }
 
-        public int LiveId { get; set; }
+        public virtual Player YellowCommitedBy { get; set; }
 
-        public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public string CardTime { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
+        public string YellowCardTime { get; set; }
     }
 
-    public class LiveRedCardHolder
+    public class LiveRedCardHolder : Event  
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RedCardId { get; set; }
+        public string RedCommitedById { get; set; }
 
-        public int LiveId { get; set; }
+        public virtual Player RedCommitedBy { get; set; }
 
-        public virtual Live Live { get; set; }
-
-        public string PlayerId { get; set; }
-
-        public virtual Player Player { get; set; }
-
-        public string CardTime { get; set; }
-
-        public int LeagueId { get; set; }
-
-        public virtual League League { get; set; }
+        public string RedCardTime { get; set; }
     }
 }
