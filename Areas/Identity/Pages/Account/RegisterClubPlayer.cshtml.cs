@@ -250,6 +250,19 @@ namespace MyField.Areas.Identity.Pages.Account
                         .Where(c => c.ClubId == clubAdmin.ClubId)
                         .FirstOrDefaultAsync();
 
+                    var newPlayerPerfomanceReport = new PlayerPerformanceReport
+                    {
+                        PlayerId = user.Id,
+                        AppearancesCount = 0,
+                        GoalsScoredCount = 0,
+                        AssistsCount = 0,
+                        YellowCardCount = 0,
+                        RedCardCount = 0
+                    };
+
+                    _context.Add(newPlayerPerfomanceReport);
+                    await _context.SaveChangesAsync();
+
                     await _activityLogger.Log($"Added {Input.FirstName} {Input.LastName} as {club?.ClubName} new player ", userId);
                         
                     TempData["Message"] = $"{user.FirstName} {user.LastName}  has been successfully added as your new player";

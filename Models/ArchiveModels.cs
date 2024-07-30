@@ -50,4 +50,54 @@
     {
 
     }
+
+    public class PlayerPerformanceReports_Archive : PlayerPerformanceReport
+    {
+
+    }
+
+    public class Live_Archive : Live
+    {
+
+    }
+
+    public class LiveGoals_Archive : LiveGoal
+    {
+
+    }
+
+    public class LiveAssists_Archive  :  LiveAssist
+    { 
+
+    }
+
+    public class LiveYellowCard_Archive : YellowCard
+    {
+
+    }
+
+    public class LiveRedCard_Archive : RedCard
+    {
+
+    }
+
+    public class Penalty_Archive : Penalty
+    {
+
+    }
+
+    public class Substitute_Archive : Substitute
+    {
+
+    }
+
+    public class TopScores_Archive : TopScore
+    {
+
+    }
+
+    public class TopAssists_Archive : TopAssist
+    {
+
+    }
 }

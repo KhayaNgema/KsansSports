@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240730094939_AddAcrhivesssssss")]
+    partial class AddAcrhivesssssss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1104,9 +1107,6 @@ namespace MyField.Migrations
                     b.Property<bool>("IsLive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveTime")
                         .HasColumnType("int");
 
@@ -1116,8 +1116,6 @@ namespace MyField.Migrations
                     b.HasKey("LiveId");
 
                     b.HasIndex("FixtureId");
-
-                    b.HasIndex("LeagueId");
 
                     b.ToTable("Live");
 
@@ -1139,9 +1137,6 @@ namespace MyField.Migrations
                         .HasMaxLength(21)
                         .HasColumnType("nvarchar(21)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1150,8 +1145,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AssistId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1172,9 +1165,6 @@ namespace MyField.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AssistId"));
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1183,8 +1173,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("AssistId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1206,9 +1194,6 @@ namespace MyField.Migrations
                         .HasMaxLength(21)
                         .HasColumnType("nvarchar(21)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1217,8 +1202,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("GoalsId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1239,9 +1222,6 @@ namespace MyField.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GoalsId"));
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1254,8 +1234,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GoalsId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1276,9 +1254,6 @@ namespace MyField.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1287,8 +1262,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("RedCardId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1309,9 +1282,6 @@ namespace MyField.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1320,8 +1290,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("YellowCardId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1648,9 +1616,6 @@ namespace MyField.Migrations
                         .HasMaxLength(21)
                         .HasColumnType("nvarchar(21)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1666,8 +1631,6 @@ namespace MyField.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("PenaltyId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1753,9 +1716,6 @@ namespace MyField.Migrations
                         .HasMaxLength(21)
                         .HasColumnType("nvarchar(21)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1764,8 +1724,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("RedCardId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -1965,9 +1923,6 @@ namespace MyField.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -1982,8 +1937,6 @@ namespace MyField.Migrations
                     b.HasKey("SubstituteId");
 
                     b.HasIndex("InPlayerId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -2351,9 +2304,6 @@ namespace MyField.Migrations
                         .HasMaxLength(34)
                         .HasColumnType("nvarchar(34)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<int>("LiveId")
                         .HasColumnType("int");
 
@@ -2362,8 +2312,6 @@ namespace MyField.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("YellowCardId");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("LiveId");
 
@@ -2765,12 +2713,6 @@ namespace MyField.Migrations
 
                     b.HasIndex("LeagueId");
 
-                    b.ToTable("Reports", t =>
-                        {
-                            t.Property("LeagueId")
-                                .HasColumnName("MatchResultsReports_LeagueId");
-                        });
-
                     b.HasDiscriminator().HasValue("MatchResultsReports");
                 });
 
@@ -2883,9 +2825,6 @@ namespace MyField.Migrations
                     b.Property<int>("GoalsScoredCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PlayerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -2895,8 +2834,6 @@ namespace MyField.Migrations
 
                     b.Property<int>("YellowCardCount")
                         .HasColumnType("int");
-
-                    b.HasIndex("LeagueId");
 
                     b.HasIndex("PlayerId");
 
@@ -3122,12 +3059,6 @@ namespace MyField.Migrations
             modelBuilder.Entity("MyField.Models.MatchResultsReports_Archive", b =>
                 {
                     b.HasBaseType("MyField.Models.MatchResultsReports");
-
-                    b.ToTable("Reports", t =>
-                        {
-                            t.Property("LeagueId")
-                                .HasColumnName("MatchResultsReports_LeagueId");
-                        });
 
                     b.HasDiscriminator().HasValue("MatchResultsReports_Archive");
                 });
@@ -3693,25 +3624,11 @@ namespace MyField.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Fixture");
-
-                    b.Navigation("League");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveAssist", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3723,8 +3640,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -3733,12 +3648,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveAssistHolder", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3750,8 +3659,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -3760,12 +3667,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoal", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3777,8 +3678,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -3787,12 +3686,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3804,8 +3697,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -3814,12 +3705,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3831,8 +3716,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -3841,12 +3724,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveYellowCardHolder", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -3858,8 +3735,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -4058,12 +3933,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.Penalty", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -4075,8 +3944,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -4120,12 +3987,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.RedCard", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -4137,8 +3998,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -4223,12 +4082,6 @@ namespace MyField.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -4242,8 +4095,6 @@ namespace MyField.Migrations
                         .IsRequired();
 
                     b.Navigation("InPlayer");
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -4439,12 +4290,6 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.YellowCard", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Live", "Live")
                         .WithMany()
                         .HasForeignKey("LiveId")
@@ -4456,8 +4301,6 @@ namespace MyField.Migrations
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Live");
 
@@ -4537,19 +4380,11 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.PlayerPerformanceReport", b =>
                 {
-                    b.HasOne("MyField.Models.League", "League")
-                        .WithMany()
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Player", "Player")
                         .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("League");
 
                     b.Navigation("Player");
                 });

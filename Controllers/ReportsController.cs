@@ -447,7 +447,37 @@ namespace MyField.Controllers
             var clubs = await _context.Club
                           .FirstOrDefaultAsync(mo => mo.ClubId == clubId);
 
+            var myPlayersPerformanceReports = await _context.PlayerPerformanceReports
+                .Where(p => p.Player.ClubId == clubId)
+                .FirstOrDefaultAsync();
+
             ViewBag.ClubName = clubs?.ClubName;
+
+            return View(myPlayersPerformanceReports);
+        }
+
+        public async Task<IActionResult> TopScores()
+        {
+            var topScores = await _context.TopScores
+                .Where(t => t.League.IsCurrent)
+                .ToListAsync();
+
+            return View(topScores);
+        }
+
+        public async Task<IActionResult> TopAssists()
+        {
+            var topAssists = await _context.TopScores
+               .Where(t => t.League.IsCurrent)
+               .ToListAsync();
+
+            return View(topAssists);
+        }
+
+        public async Task<IActionResult> OverallPlayerStats()
+        {
+/*            var overallPlayerStats = await _context.PlayerPerformanceReports
+                .Where( o => o.)*/
 
             return View();
         }

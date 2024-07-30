@@ -42,21 +42,8 @@
         font-size: 16px; /* Adjust as needed */
         font-weight: bold;
     }
-
-    .time-marker {
-        position: absolute;
-        padding:5px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: white;
-        color: green;
-        font-size: 12px;
-        text-align: center;
-        line-height: 40px; /* Center text vertically */
-        border: 2px solid green; /* Green border */
-        border-radius: 4px; /* Optional: Rounded corners for a softer look */
-    }
 </style>
+
 
 
 
@@ -117,8 +104,9 @@
 
                         // Calculate the position for the halftime label
                         if (wentToHalfTime || isHalfTime) {
+                            // Assume halftime happens at 45 minutes (adjust if necessary)
                             var halftimeTime = 45; // Time in minutes when halftime occurs
-                            var halftimePosition = maxHeight - (halftimeTime * 40); // Convert minutes to pixels
+                            var halftimePosition = maxHeight - (halftimeTime * 40); // Convert minutes to pixels (adjust multiplier if needed)
 
                             $('.half-time-label').css('top', halftimePosition + 'px');
                             $('.half-time-label').show();
@@ -127,9 +115,6 @@
                         } else {
                             $('.half-time-label').hide();
                         }
-
-                        // Update markers every 15 minutes
-                        updateMarkers(maxHeight);
 
                         console.log("Updated vertical line height:", maxHeight + 'px');
                     } else {
@@ -144,22 +129,6 @@
         } else {
             console.error("Invalid fixtureId:", fixtureId);
         }
-    }
-
-    function updateMarkers(maxHeight) {
-        // Remove existing markers
-        $('.time-marker').remove();
-
-        // Markers for 15, 30, 45, 60, 75, and 90 minutes
-        var intervals = [15, 30, 45, 60, 75, 90];
-        intervals.forEach(function (minute) {
-            var markerHeight = maxHeight - (minute * 40); // Convert minutes to pixels
-
-            // Create and append a new marker
-            var marker = $('<div class="time-marker">').text(minute + ' min');
-            marker.css('top', markerHeight + 'px');
-            $('.vertical-line').append(marker);
-        });
     }
 
     // Example usage

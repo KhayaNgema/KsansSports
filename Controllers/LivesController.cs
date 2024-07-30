@@ -353,6 +353,10 @@ namespace MyField.Controllers
                 .Where(lm => lm.FixtureId == viewModel.FixtureId)
                 .FirstOrDefaultAsync();
 
+            var currentSeason = await _context.League
+                .Where(c => c.IsCurrent)
+                .FirstOrDefaultAsync();
+
             if (existingLiveMatch != null)
             {
                 if (existingLiveMatch.ISEnded)
@@ -368,6 +372,7 @@ namespace MyField.Controllers
             var newLive = new Live
             {
                 FixtureId = viewModel.FixtureId,
+                LeagueId = currentSeason.LeagueId,
                 HomeTeamScore = viewModel.HomeTeamScore,
                 AwayTeamScore = viewModel.AwayTeamScore,
                 ISEnded = false,
@@ -501,6 +506,7 @@ namespace MyField.Controllers
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
                     .FirstOrDefaultAsync();
 
+
                 if (liveMatch == null)
                 {
                     Console.WriteLine("Live match not found.");
@@ -517,6 +523,7 @@ namespace MyField.Controllers
 
                 var newGoal = new LiveGoalHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = goalScoredBy,
                     LiveId = liveMatch.LiveId,
                     ScoredTime = scoredTime,
@@ -537,7 +544,7 @@ namespace MyField.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}"); // Log the exception message
+                Console.WriteLine($"Error: {ex.Message}");
                 return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
             }
         }
@@ -580,6 +587,7 @@ namespace MyField.Controllers
 
                 var newGoal = new LiveGoalHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = goalScoredBy,
                     LiveId = liveMatch.LiveId,
                     ScoredTime = scoredTime,
@@ -636,6 +644,7 @@ namespace MyField.Controllers
 
                 var newYellowCard = new LiveYellowCardHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     CardTime  = cardTime
@@ -686,6 +695,7 @@ namespace MyField.Controllers
 
                 var newYellowCard = new LiveYellowCardHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     CardTime = cardTime
@@ -736,6 +746,7 @@ namespace MyField.Controllers
 
                 var newRedCard = new LiveRedCardHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     CardTime = cardTime
@@ -786,6 +797,7 @@ namespace MyField.Controllers
 
                 var newRedCard = new LiveRedCardHolder
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     CardTime = cardTime
@@ -836,6 +848,7 @@ namespace MyField.Controllers
 
                 var newPenalty = new Penalty
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     PenaltyTime = penaltyTime,
@@ -887,6 +900,7 @@ namespace MyField.Controllers
 
                 var newPenalty = new Penalty
                 {
+                    LeagueId = liveMatch.LeagueId,
                     PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     PenaltyTime = penaltyTime,
@@ -923,6 +937,16 @@ namespace MyField.Controllers
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
                     .FirstOrDefaultAsync();
 
+                var playerPerformanceReport = await _context.PlayerPerformanceReports
+                    .Where(p => p.PlayerId == inPlayer)
+                    .FirstOrDefaultAsync();
+
+                playerPerformanceReport.AppearancesCount++;
+
+                _context.Update(playerPerformanceReport);
+                await _context.SaveChangesAsync();
+
+
                 if (liveMatch == null)
                 {
                     Console.WriteLine("Live match not found.");
@@ -937,6 +961,7 @@ namespace MyField.Controllers
 
                 var newSub = new Substitute
                 {
+                    LeagueId = liveMatch.LeagueId,
                     InPlayerId = inPlayer,
                     LiveId = liveMatch.LiveId,
                     OutPlayerId = outPlayer,
@@ -974,6 +999,15 @@ namespace MyField.Controllers
                     .Where(l => l.FixtureId == fixtureId && l.IsLive)
                     .FirstOrDefaultAsync();
 
+                var playerPerformanceReport = await _context.PlayerPerformanceReports
+                    .Where(p => p.PlayerId == inPlayer)
+                    .FirstOrDefaultAsync();
+
+                playerPerformanceReport.AppearancesCount++;
+
+                _context.Update(playerPerformanceReport);
+                await _context.SaveChangesAsync();
+
                 if (liveMatch == null)
                 {
                     Console.WriteLine("Live match not found.");
@@ -988,6 +1022,7 @@ namespace MyField.Controllers
 
                 var newSub = new Substitute
                 {
+                    LeagueId = liveMatch.LeagueId,
                     InPlayerId = inPlayer,
                     LiveId = liveMatch.LiveId,
                     OutPlayerId = outPlayer,

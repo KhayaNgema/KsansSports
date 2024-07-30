@@ -228,5 +228,28 @@ namespace MyField.Data
         public DbSet<MyField.Models.LiveRedCardHolder> LiveRedCardHolders { get; set; } = default!;
 
         public DbSet<MyField.Models.LiveYellowCardHolder> LiveYellowCardHolders { get; set; } = default!;
+
+        public DbSet<MyField.Models.PlayerPerformanceReport> PlayerPerformanceReports { get; set; } = default!;
+
+        public DbSet<MyField.Models.PlayerPerformanceReports_Archive> PlayerPerformanceReports_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.Live_Archive> Live_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveAssists_Archive> LiveAssists_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveGoals_Archive> LiveGoals_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveYellowCard_Archive> YellowCard_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveRedCard_Archive> LiveRedCard_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.Penalty_Archive> Penalty_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.Substitute_Archive> Substitute_Archives { get; set; } = default!;
+
+
+        public DbSet<MyField.Models.TopAssists_Archive> TopAssists_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.TopScores_Archive> TopScores_Archives { get; set; } = default!;
     }
 }

@@ -257,4 +257,24 @@ namespace MyField.Models
         public decimal SuspendedFansAccountsRate { get; set; }
     }
 
+    public class PlayerPerformanceReport : Reports
+    {
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+        public string PlayerId { get; set; }
+
+        public virtual Player Player { get; set; }
+
+        public int AppearancesCount { get; set; }
+
+        public int GoalsScoredCount { get; set; }
+
+        public int AssistsCount { get; set; }
+
+        public int YellowCardCount { get; set; }
+
+        public int RedCardCount { get; set; }
+    }
+
 }

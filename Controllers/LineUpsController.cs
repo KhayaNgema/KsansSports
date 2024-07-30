@@ -91,9 +91,6 @@ namespace MyField.Controllers
                 ViewBag.ClubFormation = "Formation not found";
             }
 
-
-
-
             return PartialView("_HomeTeamLineUp", awayLineUp);
         }
 
@@ -585,6 +582,17 @@ namespace MyField.Controllers
                     }).ToList()
                 };
 
+                foreach(var player in lineupXIHolders)
+                {
+                    var playerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(p => p.PlayerId == player.PlayerId)
+                        .FirstOrDefaultAsync();
+
+                    playerPerformanceReport.AppearancesCount++;
+
+                    _context.Update(playerPerformanceReport);
+                    await _context.SaveChangesAsync();
+                }
 
                 _context.Add(lineUp);
                 await _context.SaveChangesAsync();

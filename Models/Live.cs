@@ -12,6 +12,10 @@ namespace MyField.Models
 
         public virtual Fixture Fixture { get; set; }
 
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+
         public int LiveTime { get; set; }
 
         public int HomeTeamScore { get; set; }
@@ -26,7 +30,6 @@ namespace MyField.Models
 
         public bool WentToHalfTime { get; set; }
 
-
         public int? AddedTime { get; set; }
     }
 
@@ -39,6 +42,10 @@ namespace MyField.Models
         public string PlayerId { get; set; }
 
         public virtual Player Player { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public class LiveAssist
@@ -53,6 +60,10 @@ namespace MyField.Models
         public string PlayerId { get; set; }
 
         public virtual Player Player { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public class YellowCard
@@ -68,6 +79,10 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public string CardTime { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public class RedCard
@@ -82,6 +97,10 @@ namespace MyField.Models
 
         public virtual Player Player { get; set; }
         public string CardTime { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
 
     }
 
@@ -100,6 +119,10 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public PenaltyType Type { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public enum PenaltyType
@@ -139,8 +162,11 @@ namespace MyField.Models
         public virtual Player InPlayer { get; set;}
 
         public string SubTime { get; set; }
-    }
 
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
+    }
 
     public class LiveGoalHolder
     {
@@ -153,6 +179,10 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public string ScoredTime { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public class LiveAssistHolder
@@ -167,6 +197,11 @@ namespace MyField.Models
         public string PlayerId { get; set; }
 
         public virtual Player Player { get; set; }
+
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
 
@@ -184,6 +219,10 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public string CardTime { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 
     public class LiveRedCardHolder
@@ -200,5 +239,9 @@ namespace MyField.Models
         public virtual Player Player { get; set; }
 
         public string CardTime { get; set; }
+
+        public int LeagueId { get; set; }
+
+        public virtual League League { get; set; }
     }
 }
