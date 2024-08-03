@@ -1,4 +1,6 @@
-﻿namespace MyField.ViewModels
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace MyField.ViewModels
 {
     public class HomeYellowViewModel
     {
@@ -7,5 +9,7 @@
         public IEnumerable<dynamic> Players { get; set; }
 
         public string HomeTeam { get; set; }
+
+        public List<SelectListItem> YellowCardTypes { get; set; }
     }
 }

@@ -42,7 +42,12 @@ namespace MyField.Controllers
         [HttpGet]
         public async Task<IActionResult> MatchOverview(int fixtureId)
         {
-            return PartialView("_OverviewPartial");
+            var overviewViewModel = new OverviewViewModel
+            {
+                FixtureId = fixtureId
+            };
+
+            return PartialView("_OverviewPartial", overviewViewModel);
         }
 
         [HttpGet]
@@ -167,6 +172,21 @@ namespace MyField.Controllers
                 HomeTeam = fixture.HomeTeam.ClubName
             };
 
+            var penaltyTypes = Enum.GetValues(typeof(PenaltyType))
+                 .Cast<PenaltyType>()
+                 .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
+                 .ToList();
+
+            var yellowCardTypes = Enum.GetValues(typeof(YellowCardReason))
+                  .Cast<YellowCardReason>()
+                  .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
+                  .ToList();
+
+            var redCardTypes = Enum.GetValues(typeof(RedCardReason))
+                .Cast<RedCardReason>()
+                .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
+                .ToList();
+
             var awayGoalCombinedViewModel = new AwayGoalCombinedViewModel
             {
                 Players = awayPlayers.Select(p => new
@@ -190,7 +210,9 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                HomeTeam = fixture.HomeTeam.ClubName
+                HomeTeam = fixture.HomeTeam.ClubName,
+
+                YellowCardTypes = yellowCardTypes
             };
 
             var awayYellowViewModel = new AwayYellowViewModel
@@ -204,7 +226,9 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                AwayTeam = fixture.AwayTeam.ClubName
+                AwayTeam = fixture.AwayTeam.ClubName,
+
+                YellowCardTypes = yellowCardTypes
             };
 
 
@@ -219,7 +243,9 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                HomeTeam = fixture.HomeTeam.ClubName
+                HomeTeam = fixture.HomeTeam.ClubName,
+
+                RedCardTypes = redCardTypes
             };
 
             var awayRedViewModel = new AwayRedViewModel
@@ -233,18 +259,14 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                AwayTeam = fixture.AwayTeam.ClubName
+                AwayTeam = fixture.AwayTeam.ClubName,
+
+                RedCardTypes = redCardTypes
             };
-
-
-            var penaltyTypes = Enum.GetValues(typeof(PenaltyType))
-                  .Cast<PenaltyType>()
-                  .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
-                  .ToList();
 
             var homePenaltyViewModel = new HomePenaltyViewModel
             {
-                Players = awayPlayers.Select(p => new
+                Players = homePlayers.Select(p => new
                 {
                     p.PlayerId,
                     p.FullName,
@@ -260,7 +282,7 @@ namespace MyField.Controllers
 
             var awayPenaltyViewModel = new AwayPenaltyViewModel
             {
-                Players = homePlayers.Select(p => new
+                Players = awayPlayers.Select(p => new
                 {
                     p.PlayerId,
                     p.FullName,
@@ -546,20 +568,11 @@ namespace MyField.Controllers
                     ScoredById= goalScoredBy,
                     LiveId = liveMatch.LiveId,
                     ScoredTime = scoredTime,
-                    RecordedTime = DateTime.Now
-                };
-
-                var newAssist = new LiveAssistHolder
-                {
+                    RecordedTime = DateTime.Now,
                     AssistedById = assistedBy,
-                    LeagueId = liveMatch.LeagueId,
-                    LiveId = liveMatch.LiveId,
-                    RecordedTime = DateTime.Now
-
                 };
 
                 _context.Add(newGoal);
-                _context.Add(newAssist);
                 _context.Update(liveMatch);
                 await _context.SaveChangesAsync();
 
@@ -615,19 +628,11 @@ namespace MyField.Controllers
                     ScoredById = goalScoredBy,
                     LiveId = liveMatch.LiveId,
                     ScoredTime = scoredTime,
-                    RecordedTime = DateTime.Now
-                };
-
-                var newAssist = new LiveAssistHolder
-                {
-                    AssistedById = assistedBy,
-                    LiveId = liveMatch.LiveId,
-                    LeagueId = liveMatch.LeagueId,
-                    RecordedTime = DateTime.Now
+                    RecordedTime = DateTime.Now,
+                    AssistedById = assistedBy
                 };
 
                 _context.Add(newGoal);
-                _context.Add(newAssist);
                 _context.Update(liveMatch);
                 await _context.SaveChangesAsync();
 
@@ -647,7 +652,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HomeYellow(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> HomeYellow(int fixtureId, string commitedBy, string cardTime, YellowCardReason yellowCardReason, StartLiveViewModel viewModel)
         {
             try
             {
@@ -676,7 +681,8 @@ namespace MyField.Controllers
                     YellowCommitedById = commitedBy,
                     LiveId = liveMatch.LiveId,
                     YellowCardTime  = cardTime,
-                    RecordedTime = DateTime.Now
+                    RecordedTime = DateTime.Now,
+                    YellowCardReason = yellowCardReason
                 };
 
                 _context.Add(newYellowCard);
@@ -700,7 +706,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AwayYellow(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> AwayYellow(int fixtureId, string commitedBy, YellowCardReason yellowCardReason, string cardTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -729,7 +735,8 @@ namespace MyField.Controllers
                     YellowCommitedById = commitedBy,
                     LiveId = liveMatch.LiveId,
                     YellowCardTime = cardTime,
-                    RecordedTime = DateTime.Now
+                    RecordedTime = DateTime.Now,
+                    YellowCardReason = yellowCardReason
                 };
 
                 _context.Add(newYellowCard);
@@ -753,7 +760,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HomeRed(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> HomeRed(int fixtureId, string commitedBy,RedCardReason redCardReason ,string cardTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -791,7 +798,8 @@ namespace MyField.Controllers
                     RedCommitedById = commitedBy,
                     LiveId = liveMatch.LiveId,
                     RedCardTime = cardTime,
-                    RecordedTime = DateTime.Now
+                    RecordedTime = DateTime.Now,
+                    RedCardReason = redCardReason
                 };
 
                 _context.Add(newRedCard);
@@ -815,7 +823,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AwayRed(int fixtureId, string commitedBy, string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> AwayRed(int fixtureId, string commitedBy, RedCardReason redCardReason , string cardTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -852,7 +860,8 @@ namespace MyField.Controllers
                     RedCommitedById = commitedBy,
                     LiveId = liveMatch.LiveId,
                     RedCardTime = cardTime,
-                    RecordedTime = DateTime.Now
+                    RecordedTime = DateTime.Now,
+                    RedCardReason = redCardReason
                 };
 
                 _context.Add(newRedCard);
@@ -1158,6 +1167,11 @@ namespace MyField.Controllers
                 .Include(h => h.HomeTeam)
                 .FirstOrDefaultAsync();
 
+            if (homeTeam == null)
+            {
+                return NotFound("Fixture not found.");
+            }
+
             var liveMatch = await _context.Live
                 .Where(l => l.FixtureId == fixtureId && l.IsLive)
                 .FirstOrDefaultAsync();
@@ -1168,9 +1182,10 @@ namespace MyField.Controllers
             }
 
             var liveGoals = await _context.LiveGoalHolders
-                .Where(g => g.LiveId == liveMatch.LiveId && 
+                .Where(g => g.LiveId == liveMatch.LiveId &&
                 g.ScoredBy.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(g => g.ScoredBy)
+                .Include(g => g.AssistedBy)
                 .Select(g => new
                 {
                     ScoreBy = g.ScoredBy != null
@@ -1178,56 +1193,59 @@ namespace MyField.Controllers
                         : "Unknown",
                     ScoredTime = g.ScoredTime,
                     RecordedTime = g.RecordedTime,
+                    Assist = g.AssistedBy != null
+                        ? $"{g.AssistedBy.FirstName[0]} . {g.AssistedBy.LastName}"
+                        : "Unknown"
                 })
                 .OrderByDescending(g => g.RecordedTime)
                 .ToListAsync();
 
-            var liveAssists = await _context.LiveAssistHolders
-                .Where(a => a.LiveId == liveMatch.LiveId 
-                && a.AssistedBy.ClubId == homeTeam.HomeTeam.ClubId)
-                .Include(a => a.AssistedBy)
-                .Select(a => new
-                {
-                    AssistedBy = a.AssistedBy != null
-                        ? $"{a.AssistedBy.FirstName[0]}. {a.AssistedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = a.RecordedTime,
-                })
-                .OrderByDescending(a => a.RecordedTime) 
-                .ToListAsync();
-
             var yellowCards = await _context.LiveYellowCardHolders
-                .Where(y => y.LiveId == liveMatch.LiveId && 
+                .Where(y => y.LiveId == liveMatch.LiveId &&
                 y.YellowCommitedBy.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(y => y.YellowCommitedBy)
-                .Select(y => new
-                {
-                    IssuedTime = y.YellowCardTime,
-                    IssuedTo = y.YellowCommitedBy != null
-                        ? $"{y.YellowCommitedBy.FirstName[0]}. {y.YellowCommitedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = y.RecordedTime,
-                })
-                .OrderByDescending(y => y.RecordedTime) 
-                .ToListAsync();
+                .ToListAsync(); // Fetch data without Enum.GetName
+
+            // Process yellowCards in-memory
+            var processedYellowCards = yellowCards.Select(y => new
+            {
+                IssuedTime = y.YellowCardTime,
+                IssuedTo = y.YellowCommitedBy != null
+                    ? $"{y.YellowCommitedBy.FirstName[0]}. {y.YellowCommitedBy.LastName}"
+                    : "Unknown",
+                RecordedTime = y.RecordedTime,
+                YellowCardReason = y.YellowCardReason != null
+                    ? Enum.GetName(typeof(YellowCardReason), y.YellowCardReason)
+                    : "Unknown"
+            })
+            .OrderByDescending(y => y.RecordedTime)
+            .ToList();
 
             var redCards = await _context.LiveRedCardHolders
-                .Where(r => r.LiveId == liveMatch.LiveId && 
+                .Where(r => r.LiveId == liveMatch.LiveId &&
                 r.RedCommitedBy.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(r => r.RedCommitedBy)
-                .Select(r => new
-                {
-                    IssuedTime = r.RedCardTime,
-                    IssuedTo = r.RedCommitedBy != null
-                        ? $"{r.RedCommitedBy.FirstName[0]}. {r.RedCommitedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = r.RecordedTime,
-                })
-                .OrderByDescending(r => r.RecordedTime) 
-                .ToListAsync();
+                .ToListAsync(); 
+
+
+            var processedRedCards = redCards.Select(r => new
+            {
+                IssuedTime = r.RedCardTime,
+                IssuedTo = r.RedCommitedBy != null
+                    ? $"{r.RedCommitedBy.FirstName[0]}. {r.RedCommitedBy.LastName}"
+                    : "Unknown",
+                RecordedTime = r.RecordedTime,
+                RedCardReason = r.RedCardReason != null
+                    ? Enum.GetName(typeof(RedCardReason), r.RedCardReason)
+                    : "Unknown",
+            })
+            .OrderByDescending(r => r.RecordedTime)
+            .ToList();
+
+
 
             var penalties = await _context.Penalties
-                .Where(p => p.LiveId == liveMatch.LiveId && 
+                .Where(p => p.LiveId == liveMatch.LiveId &&
                 p.Player.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(p => p.Player)
                 .Select(p => new
@@ -1236,14 +1254,14 @@ namespace MyField.Controllers
                     TakenBy = p.Player != null
                         ? $"{p.Player.FirstName[0]}. {p.Player.LastName}"
                         : "Unknown",
-                    PenaltyType = p.Type,
                     RecordedTime = p.RecordedTime,
                 })
-                .OrderByDescending(p => p.RecordedTime) 
+                .OrderByDescending(p => p.RecordedTime)
                 .ToListAsync();
 
+
             var substitutes = await _context.Substitutes
-                .Where(s => s.LiveId == liveMatch.LiveId && 
+                .Where(s => s.LiveId == liveMatch.LiveId &&
                  s.InPlayer.ClubId == homeTeam.HomeTeam.ClubId &&
                  s.OutPlayer.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(s => s.InPlayer)
@@ -1259,22 +1277,20 @@ namespace MyField.Controllers
                     SubstitutionTime = s.SubTime,
                     RecordedTime = s.RecordedTime,
                 })
-                .OrderByDescending(s => s.RecordedTime) 
+                .OrderByDescending(s => s.RecordedTime)
                 .ToListAsync();
 
             var events = new
             {
                 liveGoals,
-                liveAssists,
-                yellowCards,
-                redCards,
+                yellowCards = processedYellowCards,
+                redCards = processedRedCards,
                 penalties,
                 substitutes
             };
 
             return Ok(events);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> GetAwayEvents(int fixtureId)
@@ -1283,6 +1299,11 @@ namespace MyField.Controllers
                 .Where(h => h.FixtureId == fixtureId && h.League.IsCurrent)
                 .Include(h => h.AwayTeam)
                 .FirstOrDefaultAsync();
+
+            if (awayTeam == null)
+            {
+                return NotFound("Fixture not found.");
+            }
 
             var liveMatch = await _context.Live
                 .Where(l => l.FixtureId == fixtureId && l.IsLive)
@@ -1297,6 +1318,7 @@ namespace MyField.Controllers
                 .Where(g => g.LiveId == liveMatch.LiveId &&
                 g.ScoredBy.ClubId == awayTeam.AwayTeam.ClubId)
                 .Include(g => g.ScoredBy)
+                 .Include(g => g.AssistedBy)
                 .Select(g => new
                 {
                     ScoreBy = g.ScoredBy != null
@@ -1304,53 +1326,52 @@ namespace MyField.Controllers
                         : "Unknown",
                     ScoredTime = g.ScoredTime,
                     RecordedTime = g.RecordedTime,
+                    Assist = g.AssistedBy != null
+                        ? $"{g.AssistedBy.FirstName[0]} . {g.AssistedBy.LastName}"
+                        : "Unknown"
                 })
                 .OrderByDescending(g => g.RecordedTime)
-                .ToListAsync();
-
-            var liveAssists = await _context.LiveAssistHolders
-                .Where(a => a.LiveId == liveMatch.LiveId
-                && a.AssistedBy.ClubId == awayTeam.AwayTeam.ClubId)
-                .Include(a => a.AssistedBy)
-                .Select(a => new
-                {
-                    AssistedBy = a.AssistedBy != null
-                        ? $"{a.AssistedBy.FirstName[0]}. {a.AssistedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = a.RecordedTime,
-                })
-                .OrderByDescending(a => a.RecordedTime)
                 .ToListAsync();
 
             var yellowCards = await _context.LiveYellowCardHolders
                 .Where(y => y.LiveId == liveMatch.LiveId &&
                 y.YellowCommitedBy.ClubId == awayTeam.AwayTeam.ClubId)
                 .Include(y => y.YellowCommitedBy)
-                .Select(y => new
-                {
-                    IssuedTime = y.YellowCardTime,
-                    IssuedTo = y.YellowCommitedBy != null
-                        ? $"{y.YellowCommitedBy.FirstName[0]}. {y.YellowCommitedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = y.RecordedTime,
-                })
-                .OrderByDescending(y => y.RecordedTime)
-                .ToListAsync();
+                .ToListAsync(); 
+
+            var processedYellowCards = yellowCards.Select(y => new
+            {
+                IssuedTime = y.YellowCardTime,
+                IssuedTo = y.YellowCommitedBy != null
+                    ? $"{y.YellowCommitedBy.FirstName[0]}. {y.YellowCommitedBy.LastName}"
+                    : "Unknown",
+                RecordedTime = y.RecordedTime,
+                YellowCardReason = y.YellowCardReason != null
+                    ? Enum.GetName(typeof(YellowCardReason), y.YellowCardReason)
+                    : "Unknown"
+            })
+            .OrderByDescending(y => y.RecordedTime)
+            .ToList();
 
             var redCards = await _context.LiveRedCardHolders
                 .Where(r => r.LiveId == liveMatch.LiveId &&
                 r.RedCommitedBy.ClubId == awayTeam.AwayTeam.ClubId)
                 .Include(r => r.RedCommitedBy)
-                .Select(r => new
-                {
-                    IssuedTime = r.RedCardTime,
-                    IssuedTo = r.RedCommitedBy != null
-                        ? $"{r.RedCommitedBy.FirstName[0]}. {r.RedCommitedBy.LastName}"
-                        : "Unknown",
-                    RecordedTime = r.RecordedTime,
-                })
-                .OrderByDescending(r => r.RecordedTime)
                 .ToListAsync();
+
+            var processedRedCards = redCards.Select(r => new
+            {
+                IssuedTime = r.RedCardTime,
+                IssuedTo = r.RedCommitedBy != null
+                    ? $"{r.RedCommitedBy.FirstName[0]}. {r.RedCommitedBy.LastName}"
+                    : "Unknown",
+                RecordedTime = r.RecordedTime,
+                RedCardReason = r.RedCardReason != null
+                    ? Enum.GetName(typeof(RedCardReason), r.RedCardReason)
+                    : "Unknown",
+            })
+            .OrderByDescending(r => r.RecordedTime)
+            .ToList();
 
             var penalties = await _context.Penalties
                 .Where(p => p.LiveId == liveMatch.LiveId &&
@@ -1391,15 +1412,16 @@ namespace MyField.Controllers
             var events = new
             {
                 liveGoals,
-                liveAssists,
-                yellowCards,
-                redCards,
+                yellowCards = processedYellowCards,
+                redCards = processedRedCards,
                 penalties,
                 substitutes
             };
 
             return Ok(events);
         }
+
+
     }
 
 

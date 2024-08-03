@@ -66,11 +66,6 @@
 
     }
 
-    public class LiveAssists_Archive  :  LiveAssist
-    { 
-
-    }
-
     public class LiveYellowCard_Archive : YellowCard
     {
 

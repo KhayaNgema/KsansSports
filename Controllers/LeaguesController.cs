@@ -134,7 +134,6 @@ namespace MyField.Controllers
                         var oldTopAssists = await _context.TopAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldPenalties = await _context.Penalties.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldLiveGoals = await _context.LiveGoals.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                        var oldLiveAssists = await _context.LiveAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldSubstitutes = await _context.Substitutes.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldYellowCards = await _context.YellowCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldRedCards = await _context.RedCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
@@ -441,18 +440,7 @@ namespace MyField.Controllers
                             await _context.SaveChangesAsync();
                         }
 
-                        foreach (var a in oldLiveAssists)
-                        {
-                            var archivedLiveAssists = new LiveAssists_Archive
-                            {
-                                LeagueId = a.LeagueId,
-                                LiveId = a.LiveId,
-                                AssistedById = a.AssistedById
-                            };
-
-                            _context.LiveAssists_Archives.Add(archivedLiveAssists);
-                            await _context.SaveChangesAsync();
-                        }
+                      
 
                         foreach (var s in oldSubstitutes)
                         {
@@ -504,7 +492,6 @@ namespace MyField.Controllers
                         _context.LiveGoals.RemoveRange(oldLiveGoals);
                         _context.Penalties.RemoveRange(oldPenalties);
                         _context.TopScores.RemoveRange(oldTopScores);
-                        _context.TopAssists.RemoveRange(oldTopAssists);
                         _context.PlayerPerformanceReports.RemoveRange(oldPlayerPerformanceReports);
                         _context.Live.RemoveRange(oldLives);
                         _context.ClubPerformanceReports.RemoveRange(oldClubPerformanceReports);

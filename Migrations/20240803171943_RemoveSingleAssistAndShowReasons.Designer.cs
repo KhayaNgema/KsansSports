@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240803171943_RemoveSingleAssistAndShowReasons")]
+    partial class RemoveSingleAssistAndShowReasons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2226,8 +2229,9 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Event");
 
-                    b.Property<int>("RedCardReason")
-                        .HasColumnType("int");
+                    b.Property<string>("RedCardReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RedCardTime")
                         .IsRequired()
@@ -2281,8 +2285,9 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Event");
 
-                    b.Property<int>("YellowCardReason")
-                        .HasColumnType("int");
+                    b.Property<string>("YellowCardReason")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("YellowCardTime")
                         .IsRequired()

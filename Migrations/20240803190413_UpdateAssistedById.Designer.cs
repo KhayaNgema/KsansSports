@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240803190413_UpdateAssistedById")]
+    partial class UpdateAssistedById
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2109,10 +2112,6 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Event");
 
-                    b.Property<string>("AssistedById")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ScoreById")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -2120,8 +2119,6 @@ namespace MyField.Migrations
                     b.Property<string>("ScoredTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.HasIndex("AssistedById");
 
                     b.HasIndex("ScoreById");
 
@@ -2132,10 +2129,6 @@ namespace MyField.Migrations
                 {
                     b.HasBaseType("MyField.Models.Event");
 
-                    b.Property<string>("AssistedById")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ScoredById")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -2144,15 +2137,10 @@ namespace MyField.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AssistedById");
-
                     b.HasIndex("ScoredById");
 
                     b.ToTable("LiveEvents", t =>
                         {
-                            t.Property("AssistedById")
-                                .HasColumnName("LiveGoalHolder_AssistedById");
-
                             t.Property("ScoredTime")
                                 .HasColumnName("LiveGoalHolder_ScoredTime");
                         });
@@ -4123,38 +4111,22 @@ namespace MyField.Migrations
 
             modelBuilder.Entity("MyField.Models.LiveGoal", b =>
                 {
-                    b.HasOne("MyField.Models.Player", "AssistedBy")
-                        .WithMany()
-                        .HasForeignKey("AssistedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Player", "ScoreBy")
                         .WithMany()
                         .HasForeignKey("ScoreById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AssistedBy");
-
                     b.Navigation("ScoreBy");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveGoalHolder", b =>
                 {
-                    b.HasOne("MyField.Models.Player", "AssistedBy")
-                        .WithMany()
-                        .HasForeignKey("AssistedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MyField.Models.Player", "ScoredBy")
                         .WithMany()
                         .HasForeignKey("ScoredById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AssistedBy");
 
                     b.Navigation("ScoredBy");
                 });

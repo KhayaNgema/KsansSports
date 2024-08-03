@@ -82,6 +82,20 @@ namespace MyField.Data
 
             modelBuilder.Entity<Fixture>()
                 .HasIndex(f => f.KickOffDate);
+
+            modelBuilder.Entity<LiveYellowCardHolder>()
+                .Property(e => e.YellowCardReason)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (YellowCardReason)Enum.Parse(typeof(YellowCardReason), v)
+                );
+
+            modelBuilder.Entity<LiveRedCardHolder>()
+                .Property(e => e.RedCardReason)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (RedCardReason)Enum.Parse(typeof(RedCardReason), v)
+                );
         }
 
         public DbSet<MyField.Models.Club> Club { get; set; } = default!;
@@ -206,11 +220,7 @@ namespace MyField.Data
 
         public DbSet<MyField.Models.LiveGoal> LiveGoals { get; set; } = default!;
 
-        public DbSet<MyField.Models.LiveAssist> LiveAssists { get; set; } = default!;
-
         public DbSet<MyField.Models.LiveGoalHolder> LiveGoalHolders { get; set; } = default!;
-
-        public DbSet<MyField.Models.LiveAssistHolder> LiveAssistHolders { get; set; } = default!;
 
         public DbSet<MyField.Models.YellowCard> YellowCards { get; set; } = default!;
 
@@ -234,8 +244,6 @@ namespace MyField.Data
         public DbSet<MyField.Models.PlayerPerformanceReports_Archive> PlayerPerformanceReports_Archives { get; set; } = default!;
 
         public DbSet<MyField.Models.Live_Archive> Live_Archives { get; set; } = default!;
-
-        public DbSet<MyField.Models.LiveAssists_Archive> LiveAssists_Archives { get; set; } = default!;
 
         public DbSet<MyField.Models.LiveGoals_Archive> LiveGoals_Archives { get; set; } = default!;
 

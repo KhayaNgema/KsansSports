@@ -421,24 +421,6 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
                 }
 
-                var liveAssists = await _context.LiveAssistHolders
-                      .Where(l => l.LiveId == liveMatch.LiveId)
-                      .ToListAsync();
-
-                foreach(var liveAssist in liveAssists)
-                {
-                    var newAssist = new LiveAssist
-                    {
-                        LiveId = liveAssist.LiveId,
-                        AssistedById = liveAssist.AssistedById,
-                        LeagueId = liveAssist.LeagueId,
-                        RecordedTime = liveAssist.RecordedTime
-                    };
-
-                    _context.Add(liveAssist);
-                    await _context.SaveChangesAsync();
-                }
-
                 var liveYellowCards = await _context.LiveYellowCardHolders
                      .Where(l => l.LiveId == liveMatch.LiveId)
                      .ToListAsync();
@@ -494,21 +476,6 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
                 }
 
-                foreach (var goalAssist in liveAssists)
-                {
-                    var assistedPlayer = await _context.Player
-                        .Where(s => s.Id == goalAssist.AssistedById)
-                        .FirstOrDefaultAsync();
-
-                    var AssistedPlayerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where(sp => sp.PlayerId == assistedPlayer.Id)
-                        .FirstOrDefaultAsync();
-
-                    AssistedPlayerPerformanceReport.AssistsCount++;
-
-                    _context.Update(AssistedPlayerPerformanceReport);
-                    await _context.SaveChangesAsync();
-                }
 
                 foreach (var yellowCard in liveYellowCards)
                 {

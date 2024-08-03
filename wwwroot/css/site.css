@@ -2540,20 +2540,34 @@ body {
     color: red;
     font-size: 16px;
     transform: rotate(15deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
-
-
-.penalty {
-    color: fuchsia;
-    font-size: 16px;
-}
-
 
 .yellow-card {
     color: yellow;
     font-size: 16px;
     transform: rotate(15deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+
+
+.penalty {
+    color: green;
+    font-size: 16px;
+}
+
+.goal {
+    color: blue;
+    font-size: 16px;
+}
+
+.own-goal {
+    color: red;
+    font-size: 16px;
+}
+
+
 
 
  

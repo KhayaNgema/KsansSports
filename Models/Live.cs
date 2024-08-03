@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
 
 namespace MyField.Models
 {
@@ -62,10 +64,7 @@ namespace MyField.Models
         public virtual Player ScoreBy { get; set; }
 
         public string ScoredTime { get; set; }
-    }
 
-    public class LiveAssist : Event
-    {
         public string AssistedById { get; set; }
 
         public virtual Player AssistedBy { get; set; }
@@ -78,6 +77,8 @@ namespace MyField.Models
         public virtual Player YellowCommitedBy{ get; set; }
 
         public string YellowCardTime { get; set; }
+
+        public YellowCardReason YellowCardReason { get; set; }
     }
 
     public class RedCard  : Event
@@ -86,6 +87,8 @@ namespace MyField.Models
 
         public virtual Player RedCommitedBy { get; set; }
         public string RedCardTime { get; set; }
+
+        public RedCardReason RedCardReason { get; set; }
 
     }
 
@@ -139,16 +142,12 @@ namespace MyField.Models
         public virtual Player ScoredBy { get; set; }
 
         public string ScoredTime { get; set; }
-    }
 
-    public class LiveAssistHolder : Event
-    {
 
         public string AssistedById { get; set; }
 
         public virtual Player AssistedBy { get; set; }
     }
-
 
     public class LiveYellowCardHolder : Event
     {
@@ -157,7 +156,31 @@ namespace MyField.Models
         public virtual Player YellowCommitedBy { get; set; }
 
         public string YellowCardTime { get; set; }
+
+        public YellowCardReason YellowCardReason { get; set; }
     }
+
+    public enum YellowCardReason
+    {
+        [Display(Name = "Delay Restart")]
+        Delay_Restart,
+
+        [Display(Name = "Dissent")]
+        Dissent,
+
+        [Display(Name = "Unauthorized Entry")]
+        Unauthorized_Entry,
+
+        [Display(Name = "Distance Violation")]
+        Distance_Violation,
+
+        [Display(Name = "Persistent Offenses")]
+        Persistent_Offenses,
+
+        [Display(Name = "Unsporting Behavior")]
+        Unsporting_Behavior,
+    }
+
 
     public class LiveRedCardHolder : Event  
     {
@@ -166,5 +189,63 @@ namespace MyField.Models
         public virtual Player RedCommitedBy { get; set; }
 
         public string RedCardTime { get; set; }
+
+        public RedCardReason RedCardReason { get; set; }
     }
+
+    public enum RedCardReason
+    {
+        [Description("Handball Denial")]
+        Handball_Denial,
+
+        [Description("Foul Denial")]
+        Foul_Denial,
+
+        [Description("Serious Foul Play")]
+        Serious_Foul_Play,
+
+        [Description("Biting or Spitting")]
+        Biting_Spitting,
+
+        [Description("Violent Conduct")]
+        Violent_Conduct,
+
+        [Description("Offensive Language")]
+        Offensive_Language,
+
+        [Description("Second Yellow Card")]
+        Second_Yellow
+    }
+
+    public static class EnumExtensions
+    {
+        public static string GetDisplayName(this Enum value)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            var attribute = (DisplayAttribute)fieldInfo.GetCustomAttribute(typeof(DisplayAttribute));
+            return attribute == null ? value.ToString() : attribute.Name;
+        }
+
+        public static string GetDescription(this Enum value)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
+            return attribute == null ? value.ToString() : attribute.Description;
+        }
+
+        public static string GetPenaltyTypeDisplayName(this PenaltyType penaltyType)
+        {
+            var fieldInfo = penaltyType.GetType().GetField(penaltyType.ToString());
+            var attribute = (DisplayAttribute)fieldInfo.GetCustomAttribute(typeof(DisplayAttribute));
+            return attribute == null ? penaltyType.ToString() : attribute.Name;
+        }
+
+        public static string GetPenaltyTypeDescription(this PenaltyType penaltyType)
+        {
+            var fieldInfo = penaltyType.GetType().GetField(penaltyType.ToString());
+            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
+            return attribute == null ? penaltyType.ToString() : attribute.Description;
+        }
+    }
+
 }
