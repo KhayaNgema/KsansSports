@@ -16,7 +16,8 @@
         border-left: 5px solid green;
         height: 0;
         transition: height 1s linear;
-        margin: 0 auto;
+        margin: 0; /* No margin */
+        padding: 0; /* No padding */
         position: relative;
     }
 
@@ -30,96 +31,166 @@
         border: 1px solid green;
         border-radius: 3px;
         z-index: 1;
-        display: none; /* Initially hidden until updated */
+        display: none;
         width: 80px;
         text-align: center;
     }
 
     .half-time-text {
-        font-size: 16px; /* Adjust as needed */
+        font-size: 16px;
         font-weight: bold;
-        margin-bottom: 5px; /* Space between "HT" and scores */
+        margin-bottom: 5px;
     }
 
     .scores {
-        font-size: 16px; /* Adjust as needed */
+        font-size: 16px;
         font-weight: bold;
     }
 
+    .event-container {
+        position: relative;
+        height: calc(100% - 10px); /* Adjust for 5px margin on top and bottom */
+        margin: 5px 0; /* 5px top and bottom margin */
+        padding: 0; /* No padding */
+    }
+
+    #home-events-container, #away-events-container {
+        position: relative;
+        width: 300px;
+        height: auto;
+        overflow: auto;
+        margin: 5px 0; /* 5px top and bottom margin */
+        padding: 0; /* No padding */
+        top: 0;
+    }
+
+    .event-item {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        position: absolute;
+    }
 
 </style>
 
 
 <input asp-for="@Model.FixtureId" type="hidden" id="fixtureId" value="@Model..FixtureId" />
 
-<div class="col-5">
-    <div id="events-container"></div>
-</div>
 <div class="row match-overview-container">
+    <div class="col-5" style="padding:10px;">
+        <div id="home-events-container" class="event-container" style="margin-bottom:5px;"></div>
+    </div>
+
     <div class="col-2">
         <div class="vertical-line">
             <div class="half-time-label" style="display: none;">
                 <div class="half-time-text">HT</div>
-                <div class="scores">0-0</div>
+                <div id="halftime-scores" class="halftime-scores"></div>
             </div>
         </div>
     </div>
-    <div class="col-5">
-        away events
+
+    <div class="col-5" style="padding:10px;">
+        <div id="away-events-container" class="event-container" style="margin-bottom:5px;"></div>
     </div>
 </div>
 
+
 <script>
-    var maxHeight = 0; 
+    var maxHeight = 0;
     var halftimeDisplayed = false;
 
-    function fetchEvents(fixtureId) {
+    $(document).ready(function () {
+        var fixtureId = $('#fixtureId').val();
+        fetchHomeEvents(fixtureId);
+        fetchAwayEvents(fixtureId);
+        updateVerticalLine(fixtureId);
+
+        // Update every second
+        setInterval(function () {
+            updateVerticalLine(fixtureId);
+        }, 1000);
+
+        // Observe changes to the vertical line's height
+        observeVerticalLineHeight();
+
+        positionEventItems();
+    });
+
+    function fetchHomeEvents(fixtureId) {
         if (fixtureId) {
-            console.log("Fetching events for fixtureId:", fixtureId);
+            console.log("Fetching home events for fixtureId:", fixtureId);
 
             $.ajax({
-                url: `/Lives/GetEvents?fixtureId=${fixtureId}`,
+                url: `/Lives/GetHomeEvents?fixtureId=${fixtureId}`,
                 type: 'GET',
                 success: function (data) {
-                    console.log("Data fetched successfully:", data);
+                    console.log("Home data fetched successfully:", data);
 
-                    $('#events-container').empty();
+                    $('#home-events-container').empty();
 
-                    // Combine all events into a single array
                     let allEvents = [];
                     Object.keys(data).forEach(eventType => {
                         if (data[eventType] && Array.isArray(data[eventType])) {
                             data[eventType].forEach(event => {
-                                // Add eventType for identification
-                                allEvents.push({ ...event, _eventType: eventType });
+                                let formattedEvent = { ...event, _eventType: eventType };
+                                if (eventType === 'liveGoals') {
+                                    formattedEvent.scoredTime = event.scoredTime;
+                                } else if (eventType === 'liveAssists') {
+                                    formattedEvent.scoredTime = event.recordedTime;
+                                    formattedEvent.assistedBy = event.assistedBy;
+                                } else if (eventType === 'penalties') {
+                                    formattedEvent.scoredTime = event.penaltyTime;
+                                    formattedEvent.scoreBy = event.takenBy;
+                                } else if (eventType === 'redCards' || eventType === 'yellowCards') {
+                                    formattedEvent.scoredTime = event.issuedTime;
+                                    formattedEvent.scoreBy = event.issuedTo;
+                                } else if (eventType === 'substitutes') {
+                                    formattedEvent.scoredTime = event.substitutionTime;
+                                    formattedEvent.scoreBy = `<i class="fa fa-arrow-up" style="font-size:12px; color:green;"> </i> ${event.playerIn}<br\> <i class="fa fa-arrow-down" style="font-size:12px; color:red;"> </i> ${event.playerOut}`;
+                                }
+                                allEvents.push(formattedEvent);
                             });
                         }
                     });
 
-                    // Check the raw events before sorting
-                    console.log("Raw events:", allEvents);
+                    console.log("Processed home events:", allEvents);
 
-                    // Sort events by RecordedTime in ascending order
-                    allEvents.sort((a, b) => {
-                        const timeA = new Date(a.RecordedTime).getTime();
-                        const timeB = new Date(b.RecordedTime).getTime();
-                        return timeA - timeB; // Ascending order
-                    });
-
-                    // Check the sorted events
-                    console.log("Sorted events:", allEvents);
-
-                    // Append sorted events to the container
+                    // Update home events container
                     allEvents.forEach(event => {
-                        let eventHtml = '<div class="event-item">';
-                        Object.keys(event).forEach(key => {
-                            if (key !== '_eventType') { // Exclude _eventType from display
-                                eventHtml += `<p><strong>${key}:</strong> ${event[key] || 'N/A'}</p>`;
-                            }
-                        });
+                        let eventTime = parseInt(event.scoredTime.replace("'", ""), 10); // Convert scoredTime to minutes
+                        let position = (90 - eventTime) * 30; // Reverse position to stack new events at the top
+
+                        // Create an event container
+                        let eventHtml = `<div class="event-item" style="position: absolute; left: 0; top: ${position}px;">`;
+
+                        switch (event._eventType) {
+                            case 'liveGoals':
+                                eventHtml += `<p><strong>Goal:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'} - Assisted By: ${event.assistedBy || 'N/A'}</p>`;
+                                break;
+                            case 'liveAssists':
+                                eventHtml += `<p><strong>Assist:</strong> Assisted By: ${event.assistedBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'penalties':
+                                eventHtml += `<p><strong>Penalty:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'redCards':
+                                eventHtml += `<p><strong>Red Card:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'yellowCards':
+                                eventHtml += `<p><strong>Yellow Card:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'substitutes':
+                                eventHtml += `<p><strong>Substitute:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            default:
+                                eventHtml += `<p> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                        }
+
                         eventHtml += '</div>';
 
-                        $('#events-container').append(eventHtml);
+                        $('#home-events-container').append(eventHtml);
                     });
                 },
                 error: function (xhr, status, error) {
@@ -132,17 +203,91 @@
         }
     }
 
+    function fetchAwayEvents(fixtureId) {
+        if (fixtureId) {
+            console.log("Fetching away events for fixtureId:", fixtureId);
 
-    $(document).ready(function () {
-        var fixtureId = $('#fixtureId').val();
-        fetchEvents(fixtureId);
-        updateVerticalLine(fixtureId);
+            $.ajax({
+                url: `/Lives/GetAwayEvents?fixtureId=${fixtureId}`,
+                type: 'GET',
+                success: function (data) {
+                    console.log("Away data fetched successfully:", data);
 
-        setInterval(function () {
-            updateVerticalLine(fixtureId);
-        }, 60000); // Update every 60 seconds
-    });
+                    $('#away-events-container').empty();
 
+                    let allEvents = [];
+                    Object.keys(data).forEach(eventType => {
+                        if (data[eventType] && Array.isArray(data[eventType])) {
+                            data[eventType].forEach(event => {
+                                let formattedEvent = { ...event, _eventType: eventType };
+                                if (eventType === 'liveGoals') {
+                                    formattedEvent.scoredTime = event.scoredTime;
+                                } else if (eventType === 'liveAssists') {
+                                    formattedEvent.scoredTime = event.recordedTime;
+                                    formattedEvent.assistedBy = event.assistedBy;
+                                } else if (eventType === 'penalties') {
+                                    formattedEvent.scoredTime = event.penaltyTime;
+                                    formattedEvent.scoreBy = event.takenBy;
+                                } else if (eventType === 'redCards' || eventType === 'yellowCards') {
+                                    formattedEvent.scoredTime = event.issuedTime;
+                                    formattedEvent.scoreBy = event.issuedTo;
+                                } else if (eventType === 'substitutes') {
+                                    formattedEvent.scoredTime = event.substitutionTime;
+                                    formattedEvent.scoreBy = `${event.playerIn} (In) / ${event.playerOut} (Out)`;
+                                }
+                                allEvents.push(formattedEvent);
+                            });
+                        }
+                    });
+
+                    console.log("Processed away events:", allEvents);
+
+                    // Update away events container
+                    allEvents.forEach(event => {
+                        let eventTime = parseInt(event.scoredTime.replace("'", ""), 10); // Convert scoredTime to minutes
+                        let position = (90 - eventTime) * 30; // Reverse position to stack new events at the top
+
+                        // Create an event container
+                        let eventHtml = `<div class="event-item" style="position: absolute; left: 0; top: ${position}px;">`;
+
+                        switch (event._eventType) {
+                            case 'liveGoals':
+                                eventHtml += `<p><i class ="fa fa-futbol goal"></i> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'} - Assisted By: ${event.assistedBy || 'N/A'}</p>`;
+                                break;
+                            case 'liveAssists':
+                                eventHtml += `<p><strong>Assist:</strong> Assisted By: ${event.assistedBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'penalties':
+                                eventHtml += `<p><i class ="fa fa-futbol penalty"></i>${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'redCards':
+                                eventHtml += `<p><i class ="fa fa-square redCard"></i> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'yellowCards':
+                                eventHtml += `<p><i class ="fa fa-square yellowCard"></i> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            case 'substitutes':
+                                eventHtml += `<p><strong>Substitute:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                            default:
+                                eventHtml += `<p><strong>${event._eventType}:</strong> ${event.scoreBy || 'N/A'} - ${event.scoredTime || 'N/A'}</p>`;
+                                break;
+                        }
+
+                        eventHtml += '</div>';
+
+                        $('#away-events-container').append(eventHtml);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error:', error);
+                    console.error('Response Text:', xhr.responseText);
+                }
+            });
+        } else {
+            console.error("Invalid fixtureId:", fixtureId);
+        }
+    }
     function updateVerticalLine(fixtureId) {
         if (fixtureId) {
             console.log("Fetching live match status for fixtureId:", fixtureId);
@@ -154,9 +299,9 @@
                         var liveTime = data.LiveTime || data.liveTime;
                         var isLive = data.IsLive || data.isLive;
                         var isHalfTime = data.IsHalfTime || data.isHalfTime;
+                        var wentToHalfTime = data.WentToHalfTime || data.wentToHalfTime;
                         var homeTeamScore = data.HomeTeamScore || data.homeTeamScore;
                         var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
-                        var wentToHalfTime = data.WentToHalfTime || data.wentToHalfTime;
 
                         console.log("Live Time:", liveTime);
                         console.log("Live Status:", isLive);
@@ -164,34 +309,33 @@
                         console.log("Went To Half-Time:", wentToHalfTime);
                         console.log("Server response data:", data);
 
-                        var height = 0;
-                        if (isLive || isHalfTime) {
-                            height = liveTime * 40;
-                        }
+                        // Calculate the height of the vertical line based on live time
+                        var currentHeight = isLive || isHalfTime ? liveTime * 30 : 0;
 
-                        // Check if height exceeds the maximum height
-                        if (height > maxHeight) {
-                            maxHeight = height;
-                        }
+                        // Update the vertical line height directly
+                        $('.vertical-line').css('height', currentHeight + 'px');
 
-                        // Update the vertical line height
-                        $('.vertical-line').css('height', maxHeight + 'px');
+                        // Update the height of the event containers
+                        $('#home-events-container').css({
+                            'height': currentHeight + 'px'
+                        });
+                        $('#away-events-container').css({
+                            'height': currentHeight + 'px'
+                        });
 
                         // Calculate the position for the halftime label
                         if (wentToHalfTime || isHalfTime) {
-                            // Assume halftime happens at 45 minutes (adjust if necessary)
                             var halftimeTime = 45; // Time in minutes when halftime occurs
-                            var halftimePosition = maxHeight - (halftimeTime * 40); // Convert minutes to pixels (adjust multiplier if needed)
+                            var halftimePosition = currentHeight - (halftimeTime * 30); // Convert minutes to pixels
 
                             $('.half-time-label').css('top', halftimePosition + 'px');
                             $('.half-time-label').show();
                             $('.half-time-label .scores').text(homeTeamScore + '-' + awayTeamScore);
-                            halftimeDisplayed = true; 
                         } else {
                             $('.half-time-label').hide();
                         }
 
-                        console.log("Updated vertical line height:", maxHeight + 'px');
+                        console.log("Updated vertical line height:", currentHeight + 'px');
                     } else {
                         console.error('No data returned from server.');
                     }
@@ -207,10 +351,36 @@
     }
 
 
-    var fixtureId = $('#fixtureId').val();
-    updateVerticalLine(fixtureId);
 
-    setInterval(function () {
-        updateVerticalLine(fixtureId);
-    }, 60000); 
+
+    function positionEventItems() {
+        $('.event-item').each(function () {
+            let $this = $(this);
+            let top = parseInt($this.css('top'), 10);
+
+            // Adjust the positioning based on the updated container height
+            if (!isNaN(top)) {
+                let containerHeight = $this.closest('.event-container').height();
+                let adjustedTop = Math.min(top, containerHeight - $this.outerHeight());
+                $this.css('top', adjustedTop + 'px');
+            }
+        });
+    }
+
+    function observeVerticalLineHeight() {
+        let observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.attributeName === 'style') {
+                    let height = $('.vertical-line').height();
+                    $('#home-events-container').height(height);
+                    $('#away-events-container').height(height);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.vertical-line'), { attributes: true });
+    }
+
+
+
 </script>

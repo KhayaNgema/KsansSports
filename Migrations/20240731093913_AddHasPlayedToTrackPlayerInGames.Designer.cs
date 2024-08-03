@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240731093913_AddHasPlayedToTrackPlayerInGames")]
+    partial class AddHasPlayedToTrackPlayerInGames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2885,9 +2888,6 @@ namespace MyField.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsContractSigned")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsOnPitch")
                         .HasColumnType("bit");
 
                     b.Property<int>("JerseyNumber")

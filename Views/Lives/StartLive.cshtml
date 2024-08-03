@@ -10,7 +10,9 @@
     .tab-container {
         display: flex;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-bottm: 0;
+
     }
 
     .tab {
@@ -35,31 +37,16 @@
 
     .tab-content {
         display: none;
-        padding: 20px;
+        margin-bottom:0;
         border-top: none;
+        margin-top:10px;
     }
 
     .tab-content.active {
         display: block;
     }
 
-    .yellow-card {
-        color: yellow;
-        font-size: 16px;
-        transform: rotate(15deg); 
-    }
 
-    .red-card {
-        color: red;
-        font-size: 16px;
-        transform: rotate(15deg);
-    }
-
-
-    .penalty{
-        color:fuchsia;
-        font-size:16px;
-    }
 
     .flicker {
         display: inline-block;
@@ -1843,6 +1830,7 @@
                         var homeTeamScoreElement = $('#homeTeamScore');
                         var awayTeamScoreElement = $('#awayTeamScore');
                         var addedTimeElement = $('#timeAdded');
+                        var halfTimeScoreElement = $('#halftime-scores');
 
                         if (liveTimeElement.length && liveStatusElement.length) {
                             var liveTime = data.LiveTime || data.liveTime;
@@ -1853,10 +1841,12 @@
                             var homeTeamScore = data.HomeTeamScore || data.homeTeamScore;
                             var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
                             var addedTime = data.AddTime || data.addTime;
+                            var halfTimeScore = data.HalfTimeScore || data.halfTimeScore;
 
                             console.log("Live Time:", liveTime);
                             console.log("Added Time:", addedTime);
                             console.log("Server response data:", data);
+                            console.log("Halftime score:", halfTimeScore);
 
                             var displayTime = liveTime;
                             if (!wentToHalfTime && liveTime > 45) {
@@ -1920,6 +1910,10 @@
 
                             if (awayTeamScoreElement.length) {
                                 awayTeamScoreElement.text(awayTeamScore);
+                            }
+
+                            if (wentToHalfTime){
+                                halfTimeScoreElement.text(halfTimeScore)
                             }
 
                             console.log("Updated liveTime HTML:", liveTimeElement.html());

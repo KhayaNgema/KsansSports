@@ -19,7 +19,11 @@ namespace MyField.Models
         public int ClubId { get; set; }
         public virtual Club Club { get; set; }
 
-        public Position Position { get; set; }    
+        public Position Position { get; set; }  
+        
+        public bool HasPlayed { get; set; }
+
+        public bool IsOnPitch { get; set; }
     }
 
     public enum Position

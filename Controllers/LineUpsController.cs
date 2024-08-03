@@ -545,9 +545,15 @@ namespace MyField.Controllers
                     return Json(new { success = false, error = "User ID is null or empty" });
                 }
 
-                var lineupXIHolders = await _context.LineUpXIHolder.ToListAsync();
+                var lineupXIHolders = await _context.LineUpXIHolder
+                    .Include(l => l.ClubPlayer)
+                    .ToListAsync();
+                    
+
                 Console.WriteLine("lineupXIHolders: " + lineupXIHolders); 
-                var lineupSubstitutesHolders = await _context.LineUpSubstitutesHolder.ToListAsync();
+                var lineupSubstitutesHolders = await _context.LineUpSubstitutesHolder
+                    .Include(l => l.ClubPlayer)
+                    .ToListAsync();
                 Console.WriteLine("lineupSubstitutesHolders: " + lineupSubstitutesHolders);
 
               
@@ -592,6 +598,21 @@ namespace MyField.Controllers
                         playerPerformanceReport.AppearancesCount++;
                         _context.Update(playerPerformanceReport);
                     }
+
+                    player.ClubPlayer.HasPlayed = true;
+                    player.ClubPlayer.IsOnPitch = true;
+
+                    _context.Update(player);
+                    await _context.SaveChangesAsync();
+                }
+
+                foreach (var player in lineupSubstitutesHolders)
+                {
+                    player.ClubPlayer.HasPlayed = false;
+                    player.ClubPlayer.IsOnPitch = false;
+
+                    _context.Update(player);
+                    await _context.SaveChangesAsync();
                 }
 
                 await _context.SaveChangesAsync();

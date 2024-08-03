@@ -34,6 +34,8 @@ namespace MyField.Models
         public bool WentToHalfTime { get; set; }
 
         public int? AddedTime { get; set; }
+
+        public string? HalfTimeScore { get; set; }
     }
 
     public class Event

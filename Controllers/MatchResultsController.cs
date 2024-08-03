@@ -402,7 +402,160 @@ namespace MyField.Controllers
                         await _context.SaveChangesAsync();
                     }
 
-                    TempData["Message"] = $"You have successfully uploaded results for a match between {savedMatchResults.HomeTeam.ClubName} and {savedMatchResults.AwayTeam.ClubName}";
+                var liveGoals = await _context.LiveGoalHolders
+                     .Where(l => l.LiveId == liveMatch.LiveId)
+                     .ToListAsync();
+
+                foreach (var liveGoal in liveGoals)
+                {
+                    var newGoal = new LiveGoal
+                    {
+                        LiveId = liveGoal.LiveId,
+                        LeagueId = liveGoal.LeagueId,
+                        ScoreById = liveGoal.ScoredById,
+                        ScoredTime = liveGoal.ScoredTime,
+                        RecordedTime = liveGoal.RecordedTime
+                    };
+
+                    _context.Add(liveGoal);
+                    await _context.SaveChangesAsync();
+                }
+
+                var liveAssists = await _context.LiveAssistHolders
+                      .Where(l => l.LiveId == liveMatch.LiveId)
+                      .ToListAsync();
+
+                foreach(var liveAssist in liveAssists)
+                {
+                    var newAssist = new LiveAssist
+                    {
+                        LiveId = liveAssist.LiveId,
+                        AssistedById = liveAssist.AssistedById,
+                        LeagueId = liveAssist.LeagueId,
+                        RecordedTime = liveAssist.RecordedTime
+                    };
+
+                    _context.Add(liveAssist);
+                    await _context.SaveChangesAsync();
+                }
+
+                var liveYellowCards = await _context.LiveYellowCardHolders
+                     .Where(l => l.LiveId == liveMatch.LiveId)
+                     .ToListAsync();
+
+                foreach(var yellowCard in liveYellowCards)
+                {
+                    var newYellowCard = new YellowCard
+                    {
+                        LiveId = yellowCard.LiveId,
+                        LeagueId = yellowCard.LeagueId,
+                        YellowCommitedById = yellowCard.YellowCommitedById,
+                        RecordedTime = yellowCard.RecordedTime,
+                        YellowCardTime = yellowCard.YellowCardTime
+                    };
+
+                    _context.Add(newYellowCard);
+                    await _context.SaveChangesAsync();
+                }
+
+
+                var liveRedCards = await _context.LiveRedCardHolders
+                     .Where(l => l.LiveId == liveMatch.LiveId)
+                      .ToListAsync();
+
+                foreach (var redCard in liveRedCards)
+                {
+                    var newRedCard = new RedCard
+                    {
+                        LiveId = redCard.LiveId,
+                        LeagueId = redCard.LeagueId,
+                        RedCommitedById = redCard.RedCommitedById,
+                        RecordedTime = redCard.RecordedTime,
+                        RedCardTime = redCard.RedCardTime
+                    };
+
+                    _context.Add(newRedCard);
+                    await _context.SaveChangesAsync();
+                }
+
+                foreach (var goalScorer in liveGoals)
+                {
+                    var scoredPlayer = await _context.Player
+                        .Where(s => s.Id == goalScorer.ScoredById)
+                        .FirstOrDefaultAsync();
+
+                    var scoredPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == scoredPlayer.Id)
+                        .FirstOrDefaultAsync();
+
+                    scoredPlayerPerformanceReport.GoalsScoredCount++;
+
+                    _context.Update(scoredPlayerPerformanceReport);
+                    await _context.SaveChangesAsync();
+                }
+
+                foreach (var goalAssist in liveAssists)
+                {
+                    var assistedPlayer = await _context.Player
+                        .Where(s => s.Id == goalAssist.AssistedById)
+                        .FirstOrDefaultAsync();
+
+                    var AssistedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == assistedPlayer.Id)
+                        .FirstOrDefaultAsync();
+
+                    AssistedPlayerPerformanceReport.AssistsCount++;
+
+                    _context.Update(AssistedPlayerPerformanceReport);
+                    await _context.SaveChangesAsync();
+                }
+
+                foreach (var yellowCard in liveYellowCards)
+                {
+                    var issuedPlayer = await _context.Player
+                        .Where(s => s.Id == yellowCard.YellowCommitedById)
+                        .FirstOrDefaultAsync();
+
+                    var yellowCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == issuedPlayer.Id)
+                        .FirstOrDefaultAsync();
+
+                    yellowCardIssuedPlayerPerformanceReport.YellowCardCount++;
+
+                    _context.Update(yellowCardIssuedPlayerPerformanceReport);
+                    await _context.SaveChangesAsync();
+                }
+
+                foreach (var redCard in liveRedCards)
+                {
+                    var issuedPlayer = await _context.Player
+                        .Where(s => s.Id == redCard.RedCommitedById)
+                        .FirstOrDefaultAsync();
+
+                    var redCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == issuedPlayer.Id)
+                        .FirstOrDefaultAsync();
+
+                    redCardIssuedPlayerPerformanceReport.RedCardCount++;
+
+                    _context.Update(redCardIssuedPlayerPerformanceReport);
+                    await _context.SaveChangesAsync();
+                }
+
+                var matchPlayers = await _context.Player
+                    .Where(p => p.ClubId == fixture.HomeTeamId || p.ClubId == fixture.AwayTeamId)
+                    .ToListAsync();
+
+                foreach(var player in matchPlayers)
+                {
+                    player.HasPlayed = false;
+                    player.IsOnPitch = false;
+
+                    _context.Update(player);
+                    await _context.SaveChangesAsync();
+                }
+
+                TempData["Message"] = $"You have successfully uploaded results for a match between {savedMatchResults.HomeTeam.ClubName} and {savedMatchResults.AwayTeam.ClubName}";
 
                     return Json(new { success = true, message = "Match successfully ended." });
             }
