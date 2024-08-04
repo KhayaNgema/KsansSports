@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyField.Data;
 
@@ -11,9 +12,11 @@ using MyField.Data;
 namespace MyField.Migrations
 {
     [DbContext(typeof(Ksans_SportsDbContext))]
-    partial class Ksans_SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240804130708_AddrecTimeHalfTime")]
+    partial class AddrecTimeHalfTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -884,11 +887,6 @@ namespace MyField.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
-
                     b.Property<int>("FixtureId")
                         .HasColumnType("int");
 
@@ -910,10 +908,6 @@ namespace MyField.Migrations
                     b.HasIndex("ModifiedById");
 
                     b.ToTable("LineUp");
-
-                    b.HasDiscriminator().HasValue("LineUp");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MyField.Models.LineUpSubstitutes", b =>
@@ -933,11 +927,6 @@ namespace MyField.Migrations
 
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(34)
-                        .HasColumnType("nvarchar(34)");
 
                     b.Property<int>("FixtureId")
                         .HasColumnType("int");
@@ -971,10 +960,6 @@ namespace MyField.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("LineUpSubstitutes");
-
-                    b.HasDiscriminator().HasValue("LineUpSubstitutes");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MyField.Models.LineUpSubstitutesHolder", b =>
@@ -1042,11 +1027,6 @@ namespace MyField.Migrations
                     b.Property<DateTime>("CreatedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
-
                     b.Property<int>("FixtureId")
                         .HasColumnType("int");
 
@@ -1079,10 +1059,6 @@ namespace MyField.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("LineUpXI");
-
-                    b.HasDiscriminator().HasValue("LineUpXI");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("MyField.Models.LineUpXIHolder", b =>
@@ -2344,27 +2320,6 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.Fixture");
 
                     b.HasDiscriminator().HasValue("Fixtures_Archive");
-                });
-
-            modelBuilder.Entity("MyField.Models.LineUps_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.LineUp");
-
-                    b.HasDiscriminator().HasValue("LineUps_Archive");
-                });
-
-            modelBuilder.Entity("MyField.Models.LineUpSubstitutes_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.LineUpSubstitutes");
-
-                    b.HasDiscriminator().HasValue("LineUpSubstitutes_Archive");
-                });
-
-            modelBuilder.Entity("MyField.Models.LineUpXI_Archive", b =>
-                {
-                    b.HasBaseType("MyField.Models.LineUpXI");
-
-                    b.HasDiscriminator().HasValue("LineUpXI_Archive");
                 });
 
             modelBuilder.Entity("MyField.Models.Live_Archive", b =>

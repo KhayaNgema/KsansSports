@@ -33,6 +33,65 @@ namespace MyField.Controllers
             _roleManager = roleManager;
         }
 
+        [Authorize]
+        public async Task<IActionResult> TopScores()
+        {
+            var topScores = await _context.TopScores
+                .Where(t => t.League.IsCurrent)
+                .Include(t => t.Player)
+                .Include(t => t.Player)
+                .ThenInclude(t => t.Club)
+                .OrderByDescending(t => t.NumberOfGoals) 
+                .ToListAsync();
+
+
+            return PartialView("_TopScoresPartial", topScores);
+        }
+
+
+        [Authorize]
+        public async Task<IActionResult> TopAssists()
+        {
+
+            var topAssists = await _context.TopAssists
+                 .Where(t => t.League.IsCurrent)
+                 .Include(t => t.Player)
+                  .Include(t => t.Player)
+                  .ThenInclude(t => t.Club)
+                 .OrderByDescending(t => t.NumberOfAssists)
+                 .ToListAsync();
+
+            return PartialView("_TopAssistsPartial", topAssists);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> TopScoresBackOffice()
+        {
+            var topScores = await _context.TopScores
+                .Where(t => t.League.IsCurrent)
+                .Include(t => t.Player)
+                .Include(t => t.Player)
+                .ThenInclude(t => t.Club)
+                .OrderByDescending(t => t.NumberOfGoals)
+                .ToListAsync();
+
+            return View(topScores);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> TopAssistsBackOffice()
+        {
+            var topAssists = await _context.TopAssists
+                .Where(t => t.League.IsCurrent)
+                .Include(t => t.Player)
+                .Include(t => t.Player)
+                .ThenInclude(t => t.Club)
+                .OrderByDescending(t => t.NumberOfAssists)
+                .ToListAsync();
+
+            return View(topAssists);
+        }
+
 
         [Authorize(Roles = ("Fans Administrator"))]
         public async Task<IActionResult> FansAccountsReports()
@@ -461,24 +520,6 @@ namespace MyField.Controllers
             return View(myPlayersPerformanceReports);
         }
 
-
-        public async Task<IActionResult> TopScores()
-        {
-            var topScores = await _context.TopScores
-                .Where(t => t.League.IsCurrent)
-                .ToListAsync();
-
-            return View(topScores);
-        }
-
-        public async Task<IActionResult> TopAssists()
-        {
-            var topAssists = await _context.TopScores
-               .Where(t => t.League.IsCurrent)
-               .ToListAsync();
-
-            return View(topAssists);
-        }
 
         public async Task<IActionResult> OverallPlayerStats()
         {

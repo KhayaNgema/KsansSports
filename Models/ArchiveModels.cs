@@ -95,4 +95,19 @@
     {
 
     }
+
+    public class LineUps_Archive : LineUp
+    {
+
+    }
+
+    public class LineUpXI_Archive : LineUpXI
+    {
+
+    }
+
+    public class LineUpSubstitutes_Archive : LineUpSubstitutes
+    {
+
+    }
 }

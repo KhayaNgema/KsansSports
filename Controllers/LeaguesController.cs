@@ -137,6 +137,9 @@ namespace MyField.Controllers
                         var oldSubstitutes = await _context.Substitutes.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldYellowCards = await _context.YellowCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldRedCards = await _context.RedCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
+                        var oldLineUps = await _context.LineUp.Where(t => t.Fixture.League.IsCurrent).Include(t => t.Fixture).ToListAsync();
+                        var oldLineUpXI = await _context.LineUpXI.Where(t => t.Fixture.League.IsCurrent).Include(t => t.ClubPlayer).Include(t => t.Fixture).ToListAsync();
+                        var oldLineUpSubs = await _context.LineUpSubstitutes.Where(t => t.Fixture.League.IsCurrent).Include(t => t.ClubPlayer).Include(t => t.Fixture).ToListAsync();
 
                         foreach (var s in oldStandings)
                         {
@@ -202,6 +205,59 @@ namespace MyField.Controllers
                                 await _context.SaveChangesAsync();
                             }
                         }
+
+                        foreach (var s in oldLineUps)
+                        {
+                            var archivedLineUpArchives = new LineUps_Archive
+                            {
+                                FixtureId = s.FixtureId,
+                                CreatedDateTime = s.CreatedDateTime,
+                                ModifiedDateTime = s.CreatedDateTime,
+                                LineUpSubstitutes = s.LineUpSubstitutes,
+                                ClubId = s.ClubId,
+                                CreatedById = s.CreatedById,
+                                LineUpXI = s.LineUpXI,
+                                ModifiedById = s.ModifiedById
+                            };
+
+                            _context.LineUps_Archives.Add(archivedLineUpArchives);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var s in oldLineUpXI)
+                        {
+                            var archivedLineUpXI = new LineUpXI_Archive
+                            {
+                                FixtureId = s.FixtureId,
+                                CreatedDateTime = s.CreatedDateTime,
+                                ModifiedDateTime = s.CreatedDateTime,
+                                ClubId = s.ClubId,
+                                CreatedById = s.CreatedById,
+                                ModifiedById = s.ModifiedById,
+                                PlayerId = s.ClubPlayer.Id
+                            };
+
+                            _context.LineUpXI_Archives.Add(archivedLineUpXI);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        foreach (var s in oldLineUpSubs)
+                        {
+                            var archivedLineUpSubs = new LineUpSubstitutes_Archive
+                            {
+                                FixtureId = s.FixtureId,
+                                CreatedDateTime = s.CreatedDateTime,
+                                ModifiedDateTime = s.CreatedDateTime,
+                                ClubId = s.ClubId,
+                                CreatedById = s.CreatedById,
+                                ModifiedById = s.ModifiedById,
+                                PlayerId = s.ClubPlayer.Id
+                            };
+
+                            _context.LineUpSubstitutes_Archives.Add(archivedLineUpSubs);
+                            await _context.SaveChangesAsync();
+                        }
+
 
                         foreach (var f in oldFixtures)
                         {
@@ -440,7 +496,6 @@ namespace MyField.Controllers
                             await _context.SaveChangesAsync();
                         }
 
-                      
 
                         foreach (var s in oldSubstitutes)
                         {
@@ -602,6 +657,10 @@ namespace MyField.Controllers
 
                     var newPlayerPerformanceReports = new List<PlayerPerformanceReport>();
 
+                    var newPlayerScores = new List<TopScore>();
+
+                    var newPlayerAssists = new List<TopAssist>();
+
                     foreach (var p in allPlayers)
                     {
                         var newPlayerPerformanceReport = new PlayerPerformanceReport
@@ -616,9 +675,31 @@ namespace MyField.Controllers
                         };
 
                         newPlayerPerformanceReports.Add(newPlayerPerformanceReport);
+
+                        var newPlayerScore = new TopScore
+                        {
+                            PlayerId = p.Id,
+                            LeagueId = newLeague.LeagueId,
+                            NumberOfGoals = 0,
+                        };
+
+                        newPlayerScores.Add(newPlayerScore);
+
+                        var newPlayerAssist = new TopAssist
+                        {
+                            PlayerId = p.Id,
+                            LeagueId = newLeague.LeagueId,
+                            NumberOfAssists = 0,
+                        };
+
+                        newPlayerAssists.Add(newPlayerAssist);
                     }
 
+                    
+
                     _context.PlayerPerformanceReports.AddRange(newPlayerPerformanceReports);
+                    _context.TopScores.AddRange(newPlayerScores);
+                    _context.TopAssists.AddRange(newPlayerAssists);
                     await _context.SaveChangesAsync();
 
                     TempData["Message"] = $"{newLeague.LeagueYears} has been started successfully and all running data will be related to it. This league will be referred to as the current league.";

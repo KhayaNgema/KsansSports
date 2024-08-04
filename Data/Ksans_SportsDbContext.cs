@@ -261,5 +261,11 @@ namespace MyField.Data
         public DbSet<MyField.Models.TopScores_Archive> TopScores_Archives { get; set; } = default!;
 
         public DbSet<MyField.Models.Event> LiveEvents { get; set; } = default!;
+
+        public DbSet<MyField.Models.LineUps_Archive> LineUps_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LineUpXI_Archive> LineUpXI_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LineUpSubstitutes_Archive> LineUpSubstitutes_Archives { get; set; } = default!;
     }
 }

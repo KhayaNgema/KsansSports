@@ -470,7 +470,8 @@ namespace MyField.Controllers
                 HomeTeamScore = liveMatch.HomeTeamScore,
                 AwayTeamScore = liveMatch.AwayTeamScore,
                 AddTime = liveMatch.AddedTime,
-                HalfTimeScore = liveMatch.HalfTimeScore
+                HalfTimeScore = liveMatch.HalfTimeScore,
+                RecordedTime = liveMatch.RecordedTime
             };
 
             return Ok(response);
@@ -494,6 +495,7 @@ namespace MyField.Controllers
                 liveMatch.WentToHalfTime = true;
                 liveMatch.AddedTime = 0;
                 liveMatch.HalfTimeScore = $"{liveMatch.HomeTeamScore} - {liveMatch.AwayTeamScore}";
+                liveMatch.RecordedTime = DateTime.Now;
 
                 _context.Update(liveMatch);
                 await _context.SaveChangesAsync();
@@ -1173,7 +1175,7 @@ namespace MyField.Controllers
             }
 
             var liveMatch = await _context.Live
-                .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                .Where(l => l.FixtureId == fixtureId)
                 .FirstOrDefaultAsync();
 
             if (liveMatch == null)
@@ -1306,7 +1308,7 @@ namespace MyField.Controllers
             }
 
             var liveMatch = await _context.Live
-                .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                .Where(l => l.FixtureId == fixtureId)
                 .FirstOrDefaultAsync();
 
             if (liveMatch == null)

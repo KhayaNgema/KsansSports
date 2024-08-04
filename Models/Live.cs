@@ -38,6 +38,8 @@ namespace MyField.Models
         public int? AddedTime { get; set; }
 
         public string? HalfTimeScore { get; set; }
+
+        public DateTime? RecordedTime { get; set; }
     }
 
     public class Event

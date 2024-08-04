@@ -190,221 +190,168 @@ namespace MyField.Controllers
         [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
 
 
-        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
+        [Authorize(Roles = "Sport Administrator, Sport Coordinator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int fixtureId, StartLiveViewModel viewModel)
+        public async Task<IActionResult> Create(int fixtureId)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
+
             try
             {
-                    var liveMatch = await _context.Live
-                        .Where(l => l.FixtureId == fixtureId)
-                        .Include(l => l.Fixture)
-                        .FirstOrDefaultAsync();
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId)
+                    .Include(l => l.Fixture)
+                    .Include(l => l.League)
+                    .FirstOrDefaultAsync();
 
-                    if (liveMatch == null)
-                    {
-                        return Json(new { success = false, message = "Live match not found." });
-                    }
+                if (liveMatch == null)
+                {
+                    return Json(new { success = false, message = "Live match not found." });
+                }
 
-                    liveMatch.IsLive = false;
-                    liveMatch.IsHalfTime = false;
-                    liveMatch.ISEnded = true;
-                    liveMatch.LiveTime = 90;
+                liveMatch.IsLive = false;
+                liveMatch.IsHalfTime = false;
+                liveMatch.ISEnded = true;
+                liveMatch.LiveTime = 90;
 
-                    _context.Update(liveMatch);
-                    await _context.SaveChangesAsync();
+                _context.Update(liveMatch);
 
-                    RecurringJob.RemoveIfExists($"update-live-time-{liveMatch.LiveId}");
+                var fixture = await _context.Fixture
+                    .Where(f => f.FixtureId == fixtureId)
+                    .Include(f => f.HomeTeam)
+                    .Include(f => f.AwayTeam)
+                    .FirstOrDefaultAsync();
 
-                    var fixture = await _context.Fixture
-                        .Where(f => f.FixtureId == fixtureId)
-                        .Include(f => f.HomeTeam)
-                        .Include(f => f.AwayTeam)
-                        .FirstOrDefaultAsync();
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user?.Id;
 
-                    var user = await _userManager.GetUserAsync(User);
-                    var userId = user?.Id;
+                if (user == null || userId == null)
+                {
+                    throw new InvalidOperationException("User not authenticated or user ID not found.");
+                }
 
-                    if (user == null || userId == null)
-                    {
-                        throw new InvalidOperationException("User not authenticated or user ID not found.");
-                    }
+                var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
 
-                    var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+                if (currentLeague == null)
+                {
+                    ModelState.AddModelError(string.Empty, "No current league found.");
+                    return Json(new { success = false, message = "No current league found." });
+                }
 
-                    if (currentLeague == null)
-                    {
-                        ModelState.AddModelError(string.Empty, "No current league found.");
-                        return Json(new { success = false, message = "No current league found." });
-                    }
+                var matchResultsReport = await _context.MatchResultsReports
+                    .Where(m => m.Season.IsCurrent)
+                    .Include(m => m.Season)
+                    .FirstOrDefaultAsync();
 
-                    var matchResultsReport = await _context.MatchResultsReports
-                        .Where(m => m.Season.IsCurrent)
-                        .Include(m => m.Season)
-                        .FirstOrDefaultAsync();
+                var matchReport = await _context.MatchReports
+                    .Where(m => m.Season.IsCurrent)
+                    .Include(m => m.Season)
+                    .FirstOrDefaultAsync();
 
-                    var matchReport = await _context.MatchReports
-                        .Where(m => m.Season.IsCurrent)
-                        .Include(m => m.Season)
-                        .FirstOrDefaultAsync();
+                var newMatchResults = new MatchResults
+                {
+                    LeagueId = currentLeague.LeagueId,
+                    HomeTeamId = fixture.HomeTeam.ClubId,
+                    AwayTeamId = fixture.AwayTeam.ClubId,
+                    CreatedById = userId,
+                    ModifiedById = userId,
+                    CreatedDateTime = DateTime.Now,
+                    ModifiedDateTime = DateTime.Now,
+                    MatchDate = fixture.KickOffDate,
+                    MatchTime = fixture.KickOffTime,
+                    FixtureId = fixtureId,
+                    HomeTeamScore = liveMatch.HomeTeamScore,
+                    AwayTeamScore = liveMatch.AwayTeamScore,
+                    Location = fixture.Location,
+                };
 
-                    var newMatchResults = new MatchResults
-                    {
-                        LeagueId = currentLeague.LeagueId,
-                        HomeTeamId = fixture.HomeTeam.ClubId,
-                        AwayTeamId = fixture.AwayTeam.ClubId,
-                        CreatedById = userId,
-                        ModifiedById = userId,
-                        CreatedDateTime = DateTime.Now,
-                        ModifiedDateTime = DateTime.Now,
-                        MatchDate = fixture.KickOffDate,
-                        MatchTime = fixture.KickOffTime,
-                        FixtureId = fixtureId,
-                        HomeTeamScore = liveMatch.HomeTeamScore,
-                        AwayTeamScore = liveMatch.AwayTeamScore,
-                        Location = fixture.Location,
-                    };
+                _context.Add(newMatchResults);
 
-                    _context.Add(newMatchResults);
-                    await _context.SaveChangesAsync();
+                var homeStanding = await _context.Standing
+                    .Where(s => s.LeagueId == currentLeague.LeagueId && s.ClubId == fixture.HomeTeam.ClubId)
+                    .FirstOrDefaultAsync();
 
-                    var homeStanding = await _context.Standing
-                        .Where(s => s.LeagueId == currentLeague.LeagueId && s.ClubId == fixture.HomeTeam.ClubId)
-                        .FirstOrDefaultAsync();
+                if (homeStanding != null)
+                {
+                    homeStanding.MatchPlayed++;
+                    homeStanding.GoalsScored += liveMatch.HomeTeamScore;
+                    homeStanding.GoalsConceded += liveMatch.AwayTeamScore;
+                    homeStanding.GoalDifference += liveMatch.HomeTeamScore - liveMatch.AwayTeamScore;
+                    UpdateStandingStats(homeStanding, liveMatch.HomeTeamScore, liveMatch.AwayTeamScore);
+                    homeStanding.ModifiedById = userId;
+                    homeStanding.ModifiedDateTime = DateTime.Now;
 
-                    if (homeStanding != null)
-                    {
-                        homeStanding.MatchPlayed++;
-                        homeStanding.GoalsScored += liveMatch.HomeTeamScore;
-                        homeStanding.GoalsConceded += liveMatch.AwayTeamScore;
-                        homeStanding.GoalDifference += liveMatch.HomeTeamScore - liveMatch.AwayTeamScore;
-                        UpdateStandingStats(homeStanding, liveMatch.HomeTeamScore, liveMatch.AwayTeamScore);
+                    _context.Update(homeStanding);
+                }
 
-                        homeStanding.ModifiedById = userId;
-                        homeStanding.ModifiedDateTime = DateTime.Now;
+                var awayStanding = await _context.Standing
+                    .Where(s => s.LeagueId == currentLeague.LeagueId && s.ClubId == fixture.AwayTeam.ClubId)
+                    .FirstOrDefaultAsync();
 
-                        _context.Update(homeStanding);
-                        await _context.SaveChangesAsync();
-                    }
+                if (awayStanding != null)
+                {
+                    awayStanding.MatchPlayed++;
+                    awayStanding.GoalsScored += liveMatch.AwayTeamScore;
+                    awayStanding.GoalsConceded += liveMatch.HomeTeamScore;
+                    awayStanding.GoalDifference += liveMatch.AwayTeamScore - liveMatch.HomeTeamScore;
+                    UpdateStandingStats(awayStanding, liveMatch.AwayTeamScore, liveMatch.HomeTeamScore);
+                    awayStanding.ModifiedById = userId;
+                    awayStanding.ModifiedDateTime = DateTime.Now;
 
-                    var awayStanding = await _context.Standing
-                        .Where(s => s.LeagueId == currentLeague.LeagueId && s.ClubId == fixture.AwayTeam.ClubId)
-                        .FirstOrDefaultAsync();
+                    _context.Update(awayStanding);
+                }
 
-                    if (awayStanding != null)
-                    {
-                        awayStanding.MatchPlayed++;
-                        awayStanding.GoalsScored += liveMatch.AwayTeamScore;
-                        awayStanding.GoalsConceded += liveMatch.HomeTeamScore;
-                        awayStanding.GoalDifference += liveMatch.AwayTeamScore - liveMatch.HomeTeamScore;
-                        UpdateStandingStats(awayStanding, liveMatch.AwayTeamScore, liveMatch.HomeTeamScore);
+                var homeHeadToHead = new HeadTohead
+                {
+                    HeadToHeadDate = fixture.KickOffDate,
+                    ClubId = fixture.HomeTeam.ClubId,
+                    HomeTeamId = fixture.HomeTeam.ClubId,
+                    AwayTeamId = fixture.AwayTeam.ClubId,
+                    MatchResults = liveMatch.HomeTeamScore > liveMatch.AwayTeamScore ? "W" :
+                                   liveMatch.HomeTeamScore == liveMatch.AwayTeamScore ? "D" :
+                                   "L",
+                    AwayTeamGoals = liveMatch.AwayTeamScore,
+                    HomeTeamGoals = liveMatch.HomeTeamScore
+                };
 
-                        awayStanding.ModifiedById = userId;
-                        awayStanding.ModifiedDateTime = DateTime.Now;
+                _context.Add(homeHeadToHead);
 
-                        _context.Update(awayStanding);
-                        await _context.SaveChangesAsync();
-                    }
+                var awayHeadToHead = new HeadTohead
+                {
+                    HeadToHeadDate = fixture.KickOffDate,
+                    ClubId = fixture.AwayTeam.ClubId,
+                    HomeTeamId = fixture.HomeTeam.ClubId,
+                    AwayTeamId = fixture.AwayTeam.ClubId,
+                    MatchResults = liveMatch.AwayTeamScore > liveMatch.HomeTeamScore ? "W" :
+                                   liveMatch.AwayTeamScore == liveMatch.HomeTeamScore ? "D" :
+                                   "L",
+                    AwayTeamGoals = liveMatch.AwayTeamScore,
+                    HomeTeamGoals = liveMatch.HomeTeamScore
+                };
 
-                    await _context.SaveChangesAsync();
+                _context.Add(awayHeadToHead);
 
-                    var homeHeadToHead = new HeadTohead
-                    {
-                        HeadToHeadDate = fixture.KickOffDate,
-                        ClubId = fixture.HomeTeam.ClubId,
-                        HomeTeamId = fixture.HomeTeam.ClubId,
-                        AwayTeamId = fixture.AwayTeam.ClubId,
-                        MatchResults = liveMatch.HomeTeamScore > liveMatch.AwayTeamScore ? "W" :
-                                       liveMatch.HomeTeamScore == liveMatch.AwayTeamScore ? "D" :
-                                       "L",
-                        AwayTeamGoals = liveMatch.AwayTeamScore,
-                        HomeTeamGoals = liveMatch.HomeTeamScore
-                    };
+                matchResultsReport.ReleasedResultsCount++;
+                if (liveMatch.HomeTeamScore > liveMatch.AwayTeamScore || liveMatch.AwayTeamScore > liveMatch.HomeTeamScore)
+                {
+                    matchResultsReport.WinsCount++;
+                    matchResultsReport.LosesCount++;
+                }
+                else
+                {
+                    matchResultsReport.DrawsCount++;
+                }
 
-                    _context.Add(homeHeadToHead);
-                    await _context.SaveChangesAsync();
-
-                    var awayHeadToHead = new HeadTohead
-                    {
-                        HeadToHeadDate = fixture.KickOffDate,
-                        ClubId = fixture.AwayTeam.ClubId,
-                        HomeTeamId = fixture.HomeTeam.ClubId,
-                        AwayTeamId = fixture.AwayTeam.ClubId,
-                        MatchResults = liveMatch.AwayTeamScore > liveMatch.HomeTeamScore ? "W" :
-                                       liveMatch.AwayTeamScore == liveMatch.HomeTeamScore ? "D" :
-                                       "L",
-                        AwayTeamGoals = liveMatch.AwayTeamScore,
-                        HomeTeamGoals = liveMatch.HomeTeamScore
-                    };
-
-                    _context.Add(awayHeadToHead);
-                    await _context.SaveChangesAsync();
-
-                    matchResultsReport.ReleasedResultsCount++;
-                    if (liveMatch.HomeTeamScore > liveMatch.AwayTeamScore || liveMatch.AwayTeamScore > liveMatch.HomeTeamScore)
-                    {
-                        matchResultsReport.WinsCount++;
-                        matchResultsReport.LosesCount++;
-                    }
-                    else
-                    {
-                        matchResultsReport.DrawsCount++;
-                    }
-
-                    matchReport.PlayedMatchesCounts++;
-
-                    await _context.SaveChangesAsync();
-
-                    var savedMatchResults = await _context.MatchResult
-                        .Where(m => m.Equals(newMatchResults))
-                        .Include(m => m.HomeTeam)
-                        .Include(m => m.AwayTeam)
-                        .FirstOrDefaultAsync();
-
-                    var homeTeamPerformanceReport = await _context.ClubPerformanceReports
-                        .Where(h => h.ClubId == savedMatchResults.HomeTeam.ClubId &&
-                                    h.League.IsCurrent)
-                        .FirstOrDefaultAsync();
-
-                    var awayTeamPerformanceReport = await _context.ClubPerformanceReports
-                        .Where(h => h.ClubId == savedMatchResults.AwayTeam.ClubId &&
-                                    h.League.IsCurrent)
-                        .FirstOrDefaultAsync();
-
-                    if (liveMatch.HomeTeamScore > liveMatch.AwayTeamScore)
-                    {
-                        homeTeamPerformanceReport.GamesWinCount++;
-                        awayTeamPerformanceReport.GamesLoseCount++;
-                    }
-                    else if (liveMatch.HomeTeamScore < liveMatch.AwayTeamScore)
-                    {
-                        homeTeamPerformanceReport.GamesLoseCount++;
-                        awayTeamPerformanceReport.GamesWinCount++;
-                    }
-                    else
-                    {
-                        homeTeamPerformanceReport.GamesDrawCount++;
-                        awayTeamPerformanceReport.GamesDrawCount++;
-                    }
-
-                    homeTeamPerformanceReport.GamesPlayedCount++;
-                    awayTeamPerformanceReport.GamesPlayedCount++;
-
-                    await _context.SaveChangesAsync();
-
-                    var fixtureToUpdate = await _context.Fixture.FindAsync(fixtureId);
-
-                    if (fixtureToUpdate != null)
-                    {
-                        fixtureToUpdate.FixtureStatus = FixtureStatus.Ended;
-                        _context.Update(fixtureToUpdate);
-                        await _context.SaveChangesAsync();
-                    }
+                matchReport.PlayedMatchesCounts++;
 
                 var liveGoals = await _context.LiveGoalHolders
-                     .Where(l => l.LiveId == liveMatch.LiveId)
-                     .ToListAsync();
+                    .Where(l => l.LiveId == liveMatch.LiveId)
+                    .Include(l => l.AssistedBy)
+                    .Include(l => l.ScoredBy)
+                    .Include(l => l.Live)
+                    .Include(l => l.League)
+                    .ToListAsync();
 
                 foreach (var liveGoal in liveGoals)
                 {
@@ -417,15 +364,17 @@ namespace MyField.Controllers
                         RecordedTime = liveGoal.RecordedTime
                     };
 
-                    _context.Add(liveGoal);
-                    await _context.SaveChangesAsync();
+                    _context.Add(newGoal);
                 }
 
                 var liveYellowCards = await _context.LiveYellowCardHolders
-                     .Where(l => l.LiveId == liveMatch.LiveId)
-                     .ToListAsync();
+                    .Where(l => l.LiveId == liveMatch.LiveId)
+                    .Include(l => l.YellowCommitedBy)
+                    .Include(l => l.Live)
+                    .Include(l => l.League)
+                    .ToListAsync();
 
-                foreach(var yellowCard in liveYellowCards)
+                foreach (var yellowCard in liveYellowCards)
                 {
                     var newYellowCard = new YellowCard
                     {
@@ -437,13 +386,14 @@ namespace MyField.Controllers
                     };
 
                     _context.Add(newYellowCard);
-                    await _context.SaveChangesAsync();
                 }
 
-
                 var liveRedCards = await _context.LiveRedCardHolders
-                     .Where(l => l.LiveId == liveMatch.LiveId)
-                      .ToListAsync();
+                    .Where(l => l.LiveId == liveMatch.LiveId)
+                    .Include(l => l.RedCommitedBy)
+                    .Include(l => l.Live)
+                    .Include(l => l.League)
+                    .ToListAsync();
 
                 foreach (var redCard in liveRedCards)
                 {
@@ -457,80 +407,108 @@ namespace MyField.Controllers
                     };
 
                     _context.Add(newRedCard);
-                    await _context.SaveChangesAsync();
-                }
-
-                foreach (var goalScorer in liveGoals)
-                {
-                    var scoredPlayer = await _context.Player
-                        .Where(s => s.Id == goalScorer.ScoredById)
-                        .FirstOrDefaultAsync();
-
-                    var scoredPlayerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where(sp => sp.PlayerId == scoredPlayer.Id)
-                        .FirstOrDefaultAsync();
-
-                    scoredPlayerPerformanceReport.GoalsScoredCount++;
-
-                    _context.Update(scoredPlayerPerformanceReport);
-                    await _context.SaveChangesAsync();
-                }
-
-
-                foreach (var yellowCard in liveYellowCards)
-                {
-                    var issuedPlayer = await _context.Player
-                        .Where(s => s.Id == yellowCard.YellowCommitedById)
-                        .FirstOrDefaultAsync();
-
-                    var yellowCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where(sp => sp.PlayerId == issuedPlayer.Id)
-                        .FirstOrDefaultAsync();
-
-                    yellowCardIssuedPlayerPerformanceReport.YellowCardCount++;
-
-                    _context.Update(yellowCardIssuedPlayerPerformanceReport);
-                    await _context.SaveChangesAsync();
-                }
-
-                foreach (var redCard in liveRedCards)
-                {
-                    var issuedPlayer = await _context.Player
-                        .Where(s => s.Id == redCard.RedCommitedById)
-                        .FirstOrDefaultAsync();
-
-                    var redCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where(sp => sp.PlayerId == issuedPlayer.Id)
-                        .FirstOrDefaultAsync();
-
-                    redCardIssuedPlayerPerformanceReport.RedCardCount++;
-
-                    _context.Update(redCardIssuedPlayerPerformanceReport);
-                    await _context.SaveChangesAsync();
                 }
 
                 var matchPlayers = await _context.Player
                     .Where(p => p.ClubId == fixture.HomeTeamId || p.ClubId == fixture.AwayTeamId)
                     .ToListAsync();
 
-                foreach(var player in matchPlayers)
+                foreach (var player in matchPlayers)
                 {
                     player.HasPlayed = false;
                     player.IsOnPitch = false;
-
                     _context.Update(player);
-                    await _context.SaveChangesAsync();
                 }
 
-                TempData["Message"] = $"You have successfully uploaded results for a match between {savedMatchResults.HomeTeam.ClubName} and {savedMatchResults.AwayTeam.ClubName}";
+                await _context.SaveChangesAsync(); 
 
-                    return Json(new { success = true, message = "Match successfully ended." });
+                foreach (var goalScorer in liveGoals)
+                {
+                    var scoredPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == goalScorer.ScoredById)
+                         .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    var assistedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(ap => ap.PlayerId == goalScorer.AssistedById)
+                         .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    var playerGoals = await _context.TopScores
+                        .Where(t => t.PlayerId == goalScorer.ScoredById)
+                        .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    playerGoals.NumberOfGoals++;
+
+                    assistedPlayerPerformanceReport.AssistsCount++;
+
+                    var playerAssists = await _context.TopAssists
+                        .Where(p => p.PlayerId == goalScorer.AssistedById)
+                        .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    playerAssists.NumberOfAssists++;
+
+                    if (scoredPlayerPerformanceReport != null)
+                    {
+                        scoredPlayerPerformanceReport.GoalsScoredCount++;
+
+                        _context.Update(scoredPlayerPerformanceReport);
+                        _context.Update(assistedPlayerPerformanceReport);
+                    }
+                }
+
+
+                foreach (var yellowCard in liveYellowCards)
+                {
+                    var yellowCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == yellowCard.YellowCommitedById)
+                        .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    if (yellowCardIssuedPlayerPerformanceReport != null)
+                    {
+                        yellowCardIssuedPlayerPerformanceReport.YellowCardCount++;
+                        _context.Update(yellowCardIssuedPlayerPerformanceReport);
+                    }
+                }
+
+                foreach (var redCard in liveRedCards)
+                {
+                    var redCardIssuedPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == redCard.RedCommitedById)
+                        .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    if (redCardIssuedPlayerPerformanceReport != null)
+                    {
+                        redCardIssuedPlayerPerformanceReport.RedCardCount++;
+                        _context.Update(redCardIssuedPlayerPerformanceReport);
+                    }
+                }
+
+                await _context.SaveChangesAsync(); 
+
+                await transaction.CommitAsync();
+
+                return Json(new { success = true, message = "Match results have been updated successfully." });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, message = "An error occurred while ending the match." });
+                return Json(new
+                {
+                    success = false,
+                    message = "Failed to end match: " + ex.StackTrace,
+                    errorDetails = new
+                    {
+                        InnerException = ex.InnerException?.Message,
+                        StackTrace = ex.StackTrace
+                    }
+                });
             }
         }
+
 
 
         private async Task UpdateStandingsOrder()
