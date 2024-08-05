@@ -56,20 +56,33 @@
                                     @item.FixtureStatus
                                 </p>
                             }
+                            else if(item.FixtureStatus == FixtureStatus.Live)
+                            {
+                                <p style="color:blue;">
+                                    @item.FixtureStatus <i class="fa fa-rss-square"></i>
+                                </p>
+                            }
                         </div>
-                        @if(User.IsInRole("Club Manager") && item.FixtureStatus == FixtureStatus.Upcoming)
+
+                        @if (User.IsInRole("Club Manager") && item.FixtureStatus == FixtureStatus.Upcoming)
                         {
                             <div class="card-footer">
                                 <div class="d-flex justify-content-end">
-                                    <a class="btn btn sm btn-outline-primary" asp-action="FixtureDetails" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm">
+                                    <a asp-action="FixtureDetails" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm btn-outline-primary">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                 </div>
                             </div>
                         }
-                        else
+                        else if ((User.IsInRole("Club Manager") || User.IsInRole("Player") || User.IsInRole("Club Administrator")) && item.FixtureStatus == FixtureStatus.Live)
                         {
-
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-end">
+                                    <a asp-controller="Lives" asp-action="StartLive" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm btn-primary">
+                                        Live Scores <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
                         }
                 </div>
                 </div>

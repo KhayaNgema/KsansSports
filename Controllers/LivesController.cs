@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -50,6 +51,8 @@ namespace MyField.Controllers
             return PartialView("_OverviewPartial", overviewViewModel);
         }
 
+
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> StartLive(string fixtureId)
         {
@@ -172,11 +175,6 @@ namespace MyField.Controllers
                 HomeTeam = fixture.HomeTeam.ClubName
             };
 
-            var penaltyTypes = Enum.GetValues(typeof(PenaltyType))
-                 .Cast<PenaltyType>()
-                 .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
-                 .ToList();
-
             var yellowCardTypes = Enum.GetValues(typeof(YellowCardReason))
                   .Cast<YellowCardReason>()
                   .Select(p => new SelectListItem { Value = p.ToString(), Text = p.ToString() })
@@ -275,9 +273,7 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                HomeTeam = fixture.HomeTeam.ClubName,
-
-                PenaltyTypes = penaltyTypes
+                HomeTeam = fixture.HomeTeam.ClubName
             };
 
             var awayPenaltyViewModel = new AwayPenaltyViewModel
@@ -291,9 +287,7 @@ namespace MyField.Controllers
 
                 FixtureId = fixture.FixtureId,
 
-                AwayTeam = fixture.AwayTeam.ClubName,
-
-                PenaltyTypes = penaltyTypes
+                AwayTeam = fixture.AwayTeam.ClubName
             };
 
 
@@ -355,6 +349,11 @@ namespace MyField.Controllers
                 FixtureId = decryptedFixtureId
             };
 
+            var liveMatchViewModel = new LiveMatchViewModel
+            {
+                ReasonForInterruption = null
+            };
+
             var combinedViewModel = new CombinedStartLiveViewModel
             {
                 StartLiveViewModel = startLiveViewModel,
@@ -371,6 +370,7 @@ namespace MyField.Controllers
                 AddedTime = 0,
                 UserRole = userRole,
                 OverviewViewModel = overviewViewModel,
+                LiveMatchViewModel = liveMatchViewModel
             };
 
             return View(combinedViewModel);
@@ -394,6 +394,14 @@ namespace MyField.Controllers
             var currentSeason = await _context.League
                 .Where(c => c.IsCurrent)
                 .FirstOrDefaultAsync();
+
+            var fixture = await _context.Fixture
+                .Where(f => f.FixtureId == viewModel.FixtureId)
+                .FirstOrDefaultAsync();
+
+            fixture.FixtureStatus = FixtureStatus.Live;
+
+            _context.Update(fixture);
 
             if (existingLiveMatch != null)
             {
@@ -887,7 +895,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HomePenalty(int fixtureId, string commitedBy, string penaltyTime, PenaltyType penaltyType, StartLiveViewModel viewModel)
+        public async Task<IActionResult> HomePenalty(int fixtureId, string takenBy, string penaltyTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -913,12 +921,13 @@ namespace MyField.Controllers
                 var newPenalty = new Penalty
                 {
                     LeagueId = liveMatch.LeagueId,
-                    PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     PenaltyTime = penaltyTime,
-                    Type = penaltyType,
+                    PlayerId = takenBy,
                     RecordedTime = DateTime.Now
                 };
+
+                liveMatch.HomeTeamScore++;
 
                 _context.Add(newPenalty);
                 _context.Update(liveMatch);
@@ -941,7 +950,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AwayPenalty(int fixtureId, string commitedBy, string penaltyTime, PenaltyType penaltyType, StartLiveViewModel viewModel)
+        public async Task<IActionResult> AwayPenalty(int fixtureId, string takenBy, string penaltyTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -967,12 +976,13 @@ namespace MyField.Controllers
                 var newPenalty = new Penalty
                 {
                     LeagueId = liveMatch.LeagueId,
-                    PlayerId = commitedBy,
                     LiveId = liveMatch.LiveId,
                     PenaltyTime = penaltyTime,
-                    Type = penaltyType,
+                    PlayerId = takenBy,
                     RecordedTime = DateTime.Now
                 };
+
+                liveMatch.AwayTeamScore++;
 
                 _context.Add(newPenalty);
                 _context.Update(liveMatch);
@@ -1006,7 +1016,8 @@ namespace MyField.Controllers
                     .FirstOrDefaultAsync();
 
                 var playerPerformanceReport = await _context.PlayerPerformanceReports
-                    .Where(p => p.PlayerId == inPlayer)
+                    .Where(p => p.PlayerId == inPlayer && p.League.IsCurrent)
+                    .Include(p => p.Player)
                     .FirstOrDefaultAsync();
 
                 var playerIn = await _context.Player
@@ -1165,7 +1176,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> GetHomeEvents(int fixtureId)
         {
             var homeTeam = await _context.Fixture
-                .Where(h => h.FixtureId == fixtureId && h.League.IsCurrent)
+                .Where(h => h.FixtureId == fixtureId)
                 .Include(h => h.HomeTeam)
                 .FirstOrDefaultAsync();
 
@@ -1298,7 +1309,7 @@ namespace MyField.Controllers
         public async Task<IActionResult> GetAwayEvents(int fixtureId)
         {
             var awayTeam = await _context.Fixture
-                .Where(h => h.FixtureId == fixtureId && h.League.IsCurrent)
+                .Where(h => h.FixtureId == fixtureId)
                 .Include(h => h.AwayTeam)
                 .FirstOrDefaultAsync();
 
@@ -1385,7 +1396,6 @@ namespace MyField.Controllers
                     TakenBy = p.Player != null
                         ? $"{p.Player.FirstName[0]}. {p.Player.LastName}"
                         : "Unknown",
-                    PenaltyType = p.Type,
                     RecordedTime = p.RecordedTime,
                 })
                 .OrderByDescending(p => p.RecordedTime)
@@ -1424,7 +1434,22 @@ namespace MyField.Controllers
         }
 
 
+        [Authorize(Roles = "Sport Coordinator, Sport Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> InterruptLive(int fixtureId, string interruptionReason)
+        {
+            var live = await _context.Live
+                  .Where(f => f.FixtureId == fixtureId)
+                  .FirstOrDefaultAsync();
+
+            live.LiveStatus = LiveStatus.Interrupted;
+            live.ReasonForInterruption = interruptionReason;
+
+            _context.Update(live);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Fixtures", "Fixtures");
+        }
     }
-
-
 }

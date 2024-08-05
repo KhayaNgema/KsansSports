@@ -132,7 +132,6 @@ namespace MyField.Controllers
                         var oldLives = await _context.Live.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldTopScores = await _context.TopScores.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldTopAssists = await _context.TopAssists.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
-                        var oldPenalties = await _context.Penalties.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldLiveGoals = await _context.LiveGoals.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldSubstitutes = await _context.Substitutes.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
                         var oldYellowCards = await _context.YellowCards.Where(t => t.LeagueId == oldLeague.LeagueId).ToListAsync();
@@ -469,20 +468,6 @@ namespace MyField.Controllers
                             await _context.SaveChangesAsync();
                         }
 
-                        foreach (var p in oldPenalties)
-                        {
-                            var archivedPenalties = new Penalty_Archive
-                            {
-                                LeagueId = p.LeagueId,
-                                LiveId = p.LiveId,
-                                PenaltyTime = p.PenaltyTime,
-                                PlayerId = p.PlayerId,
-                            };
-
-                            _context.Penalty_Archives.Add(archivedPenalties);
-                            await _context.SaveChangesAsync();
-                        }
-
                         foreach (var g in oldLiveGoals)
                         {
                             var archivedLiveGoals = new LiveGoals_Archive
@@ -545,7 +530,6 @@ namespace MyField.Controllers
                         _context.Substitutes.RemoveRange(oldSubstitutes);
                         _context.LiveGoals.RemoveRange(oldLiveGoals);
                         _context.LiveGoals.RemoveRange(oldLiveGoals);
-                        _context.Penalties.RemoveRange(oldPenalties);
                         _context.TopScores.RemoveRange(oldTopScores);
                         _context.PlayerPerformanceReports.RemoveRange(oldPlayerPerformanceReports);
                         _context.Live.RemoveRange(oldLives);

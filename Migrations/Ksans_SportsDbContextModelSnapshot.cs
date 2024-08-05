@@ -1172,8 +1172,14 @@ namespace MyField.Migrations
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LiveStatus")
+                        .HasColumnType("int");
+
                     b.Property<int>("LiveTime")
                         .HasColumnType("int");
+
+                    b.Property<string>("ReasonForInterruption")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("RecordedTime")
                         .HasColumnType("datetime2");
@@ -2140,7 +2146,6 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.Event");
 
                     b.Property<string>("AssistedById")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScoreById")
@@ -2163,7 +2168,6 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.Event");
 
                     b.Property<string>("AssistedById")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ScoredById")
@@ -2243,9 +2247,6 @@ namespace MyField.Migrations
                     b.Property<string>("PlayerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.HasIndex("PlayerId");
 
@@ -4176,9 +4177,7 @@ namespace MyField.Migrations
                 {
                     b.HasOne("MyField.Models.Player", "AssistedBy")
                         .WithMany()
-                        .HasForeignKey("AssistedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AssistedById");
 
                     b.HasOne("MyField.Models.Player", "ScoreBy")
                         .WithMany()
@@ -4195,9 +4194,7 @@ namespace MyField.Migrations
                 {
                     b.HasOne("MyField.Models.Player", "AssistedBy")
                         .WithMany()
-                        .HasForeignKey("AssistedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AssistedById");
 
                     b.HasOne("MyField.Models.Player", "ScoredBy")
                         .WithMany()

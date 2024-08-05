@@ -178,7 +178,13 @@ namespace MyField.Controllers
                 .Include(u => u.Club)
                 .FirstOrDefaultAsync();
 
-            var viewModel = new PlayerProfileViewModel
+
+            var playerStats = await _context.PlayerPerformanceReports
+                .Where(ps => ps.PlayerId == decryptedPlayerId && ps.League.IsCurrent)
+                .Include(ps => ps.Player)
+                .FirstOrDefaultAsync();
+
+            var playerProfileViewModel = new PlayerProfileViewModel
             {
                 UserId = decryptedPlayerId,
                 Names = userProfile.FirstName,
@@ -189,6 +195,23 @@ namespace MyField.Controllers
                 JerseyNumber = userProfile.JerseyNumber,
                 Position = userProfile.Position,
                 DateOfBirth = userProfile.DateOfBirth,
+            };
+
+
+            var playerStatsViewModel = new PlayerStatsViewModel
+            {
+                Appearances = playerStats.AppearancesCount,
+                Goals = playerStats.GoalsScoredCount,
+                Assists = playerStats.AssistsCount,
+                YellowCards = playerStats.YellowCardCount,
+                RedCards = playerStats.RedCardCount
+            };
+
+
+            var combinedPlayerViewModel = new CombinedPlayerViewModel
+            {
+                PlayerStatsViewModel = playerStatsViewModel,
+                PlayerProfileViewModel = playerProfileViewModel
             };
 
             var userRole = await _context.UserRoles
@@ -205,7 +228,7 @@ namespace MyField.Controllers
 
             ViewBag.UserRole = userRole;
 
-            return View(viewModel);
+            return View(combinedPlayerViewModel);
         }
 
         [Authorize]

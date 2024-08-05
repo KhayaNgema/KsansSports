@@ -40,6 +40,18 @@ namespace MyField.Models
         public string? HalfTimeScore { get; set; }
 
         public DateTime? RecordedTime { get; set; }
+
+        public LiveStatus LiveStatus { get; set; }
+
+
+        public string? ReasonForInterruption { get; set; }
+    }
+
+    public enum LiveStatus
+    {
+        Ongoing,
+        Interrupted,
+        Ended
     }
 
     public class Event
@@ -67,7 +79,7 @@ namespace MyField.Models
 
         public string ScoredTime { get; set; }
 
-        public string AssistedById { get; set; }
+        public string? AssistedById { get; set; }
 
         public virtual Player AssistedBy { get; set; }
     }
@@ -101,26 +113,6 @@ namespace MyField.Models
         public string PlayerId { get; set; }
 
         public virtual Player Player { get; set; }
-
-        public PenaltyType Type { get; set; }
-    }
-
-    public enum PenaltyType
-    {
-        [Display(Name ="Dangerous play")]
-        Dangerous_Play,
-
-        [Display(Name = "Disrespect")]
-        Disrespect,
-
-        [Display(Name = "Impending progress")]
-        Impending_Progress,
-
-        [Display(Name = "Handball")]
-        Touching_The_Ball,
-
-        [Display(Name = "Technical penalty")]
-        Technical_Penalty
     }
 
 
@@ -146,7 +138,7 @@ namespace MyField.Models
         public string ScoredTime { get; set; }
 
 
-        public string AssistedById { get; set; }
+        public string? AssistedById { get; set; }
 
         public virtual Player AssistedBy { get; set; }
     }
@@ -233,20 +225,6 @@ namespace MyField.Models
             var fieldInfo = value.GetType().GetField(value.ToString());
             var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
             return attribute == null ? value.ToString() : attribute.Description;
-        }
-
-        public static string GetPenaltyTypeDisplayName(this PenaltyType penaltyType)
-        {
-            var fieldInfo = penaltyType.GetType().GetField(penaltyType.ToString());
-            var attribute = (DisplayAttribute)fieldInfo.GetCustomAttribute(typeof(DisplayAttribute));
-            return attribute == null ? penaltyType.ToString() : attribute.Name;
-        }
-
-        public static string GetPenaltyTypeDescription(this PenaltyType penaltyType)
-        {
-            var fieldInfo = penaltyType.GetType().GetField(penaltyType.ToString());
-            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
-            return attribute == null ? penaltyType.ToString() : attribute.Description;
         }
     }
 

@@ -34,16 +34,29 @@ namespace MyField.Controllers
         }
 
         [Authorize]
+
+        public async Task<IActionResult> FindTopScores()
+        {
+            return PartialView("TopScoresPartial");
+        }
+
+
+        [Authorize]
+
+        public async Task<IActionResult> FindTopAssists()
+        {
+            return PartialView("TopAssistsPartial");
+        }
+
+        [Authorize]
         public async Task<IActionResult> TopScores()
         {
             var topScores = await _context.TopScores
                 .Where(t => t.League.IsCurrent)
                 .Include(t => t.Player)
-                .Include(t => t.Player)
-                .ThenInclude(t => t.Club)
-                .OrderByDescending(t => t.NumberOfGoals) 
+                .ThenInclude(p => p.Club)
+                .OrderByDescending(t => t.NumberOfGoals)
                 .ToListAsync();
-
 
             return PartialView("_TopScoresPartial", topScores);
         }
@@ -52,17 +65,16 @@ namespace MyField.Controllers
         [Authorize]
         public async Task<IActionResult> TopAssists()
         {
-
             var topAssists = await _context.TopAssists
-                 .Where(t => t.League.IsCurrent)
-                 .Include(t => t.Player)
-                  .Include(t => t.Player)
-                  .ThenInclude(t => t.Club)
-                 .OrderByDescending(t => t.NumberOfAssists)
-                 .ToListAsync();
+                .Where(t => t.League.IsCurrent)
+                .Include(t => t.Player)
+                .ThenInclude(p => p.Club)
+                .OrderByDescending(t => t.NumberOfAssists)
+                .ToListAsync();
 
             return PartialView("_TopAssistsPartial", topAssists);
         }
+
 
         [Authorize]
         public async Task<IActionResult> TopScoresBackOffice()
@@ -70,13 +82,13 @@ namespace MyField.Controllers
             var topScores = await _context.TopScores
                 .Where(t => t.League.IsCurrent)
                 .Include(t => t.Player)
-                .Include(t => t.Player)
-                .ThenInclude(t => t.Club)
+                .ThenInclude(p => p.Club)  
                 .OrderByDescending(t => t.NumberOfGoals)
                 .ToListAsync();
 
             return View(topScores);
         }
+
 
         [Authorize]
         public async Task<IActionResult> TopAssistsBackOffice()
@@ -84,13 +96,13 @@ namespace MyField.Controllers
             var topAssists = await _context.TopAssists
                 .Where(t => t.League.IsCurrent)
                 .Include(t => t.Player)
-                .Include(t => t.Player)
-                .ThenInclude(t => t.Club)
+                .ThenInclude(p => p.Club) 
                 .OrderByDescending(t => t.NumberOfAssists)
                 .ToListAsync();
 
             return View(topAssists);
         }
+
 
 
         [Authorize(Roles = ("Fans Administrator"))]

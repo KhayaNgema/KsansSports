@@ -1,4 +1,6 @@
-﻿namespace MyField.ViewModels
+﻿using MyField.Models;
+
+namespace MyField.ViewModels
 {
     public class StartLiveViewModel
     {
@@ -33,5 +35,7 @@
         public bool IsHalfTime { get; set; }
 
         public bool IsEnded { get; set; }
+
+        public LiveStatus LiveStatus { get; set; }
     }
 }

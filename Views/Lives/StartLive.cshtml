@@ -102,7 +102,7 @@
     <div class="row justify-content-center mb-4">
         <div class="col-8 text-center">
             <p class="text-center mb-1">@Model.StartLiveViewModel.FixturedClubs</p>
-            <p class="text-center mb-1">@Model.StartLiveViewModel.KickOffTime.ToString("HH:mm"), @Model.StartLiveViewModel.KickOffDate.ToString("ddd, dd MMM yyyy")</p>
+            <p class="text-center mb-1">@Model.StartLiveViewModel.KickOffTime.ToString("HH:mm"), @Model.StartLiveViewModel.KickOffDate.ToString("dddd, dd MMM yyyy")</p>
         </div>
     </div>
     <div class="row text-center">
@@ -128,6 +128,17 @@
                     0
                 </h2>
             </div>
+            <div id="scoreContainer" style="padding-top: 10px; display: none; flex-direction: row; justify-content: center; align-items: center;">
+                <p style="margin: 0; padding-right: 10px;">
+                    HT
+                </p>
+                <p id="halfTimeScore" style="font-size: 16px; margin: 0;">
+                    0-0
+                </p>
+            </div>
+
+
+
 
             <input asp-for="StartLiveViewModel.FixtureId" type="hidden" id="fixtureId" value="@Model.StartLiveViewModel.FixtureId" />
         </div>
@@ -145,10 +156,10 @@
                 <span aria-hidden="true">&times;</span>
             </span>
         </div>
-        <div class="row justify-content-center" style="margin-bottom: 30px;">
+        <div class="row justify-content-center startMatchButton" style="margin-bottom: 30px;">
             <div class="col-4"></div>
             <div class="col-4">
-                <button type="button" class="open-start-live-modal-button" style="
+                <button type="button" class="open-start-live-modal-button startMatch" style="
             display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
             width: 100%;
             padding: 10px;
@@ -167,7 +178,27 @@
                     Start match <i class="fa fa-play" style="margin-left: 8px;"></i>
                 </button>
             </div>
-            <div class="col-4"></div>
+            <div class="col-4" style="display: flex; justify-content: flex-end; align-items: center;">
+                <button class="btn btn-outline-primary btn-sm action-button" type="button" data-id="@Model.StartLiveViewModel.FixtureId" style="display: flex; align-items: center; justify-content: center; padding: 5px 10px;">
+                    <i class="fas fa-info" style="font-size: 16px;"></i>
+                </button>
+                @if(Model.StartLiveViewModel.LiveStatus == LiveStatus.Ongoing)
+                {
+                    <div class="action-tab" id="actionTab-@Model.StartLiveViewModel.FixtureId" style="display: none;">
+                        <a class="tab-item  open-interrupt-live-modal-button">
+                            <i class="fas fa-pause" style="color: red;"></i> Interrupt
+                        </a>
+                    </div>
+                }
+                else if(Model.StartLiveViewModel.LiveStatus == LiveStatus.Interrupted)
+                {
+                    <div class="action-tab" id="actionTab-@Model.StartLiveViewModel.FixtureId" style="display: none;">
+                        <a class="tab-item open-resume-live-modal-button">
+                            <i class="fas fa-play" style="color: green;"></i> Resume
+                        </a>
+                    </div>
+                }
+            </div>
         </div>
 
         <div class="row justify-content-center" style="margin-bottom: 30px;">
@@ -447,7 +478,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center" style="margin-bottom: 30px;">
+        <div class="row justify-content-center fullTimeButton" style="margin-bottom: 30px; display:none;">
             <div class="col-12">
                 <button type="button" class="open-fulltime-modal-button" style="
              display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
@@ -470,10 +501,15 @@
             </div>
         </div>
     </div>
+    
 
      @if(User.IsInRole("Sport Coordinator"))
     {
-        
+        <div id="endMatchMessage" style="display: none; justify-content: center; align-items: center; height: 40vh; text-align: center;">
+            <p style="margin: 0;">
+                Thanks for broadcasting this match until the end. We really appreciate and value your efforts. This match has ended and can no longer be broadcasted.
+            </p>
+        </div>
     }
     else
     {
@@ -500,6 +536,43 @@
     <form id="antiForgeryForm" method="post" action="/Lives/StartMatch">
         @Html.AntiForgeryToken()
     </form>
+
+
+    <div id="interruptLiveModal" class="interrupt-live-modal">
+
+        <div class="interrupt-live-modal-content">
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <p class="text-left mb-0" style="font-size:18px;">
+                        <i class="fa fa-pause" style="color:red;"></i> Are you sure you want to interrupt a live match between @Model.StartLiveViewModel.HomeTeamName and @Model.StartLiveViewModel.AwayTeamName???
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+
+                @await Html.PartialAsync("_InterruptLiveMatchPartial", Model.LiveMatchViewModel)
+
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitInterruptMatch" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="resumeLiveModal" class="resume-live-modal">
+        <div class="resume-live-modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to resume a live match from where it was paused?</p>
+            <button id="confirmResumeLive" class="confirm-button">Yes</button>
+            <button id="cancelResumeLive" class="cancel-button">No</button>
+        </div>
+    </div>
+
+
+
+
 
     <div id="goalHomeModal" class="goal-home-modal">
 
@@ -1205,17 +1278,15 @@
 
     function submitHomePenalty() {
         var fixtureId = $('#fixtureId').val();
-        var penaltyCommitedBy = $('#homePenaltyCommitedBy').val();
+        var takenBy = $('#homePenaltyTakenBy').val();
         var penaltyTime = $('#liveTime').text().trim();
-        var penaltyType = $('#homePenaltyType').val();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
         console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', penaltyCommitedBy);
+        console.log('Taken By:', takenBy);
         console.log('Penalty Time:', penaltyTime);
-        console.log('Penalty Type:', penaltyType);
 
-        if (!fixtureId || !penaltyCommitedBy || !penaltyTime || !penaltyType) {
+        if (!fixtureId || !takenBy || !penaltyTime) {
             alert('Please fill in all required fields.');
             return;
         }
@@ -1226,9 +1297,8 @@
             data: {
                 __RequestVerificationToken: token,
                 fixtureId: fixtureId,
-                commitedBy: penaltyCommitedBy,
-                penaltyTime: penaltyTime,
-                penaltyType: penaltyType
+                takenBy: takenBy,
+                penaltyTime: penaltyTime
             },
             success: function (response) {
                 console.log('Success:', response);
@@ -1262,17 +1332,15 @@
 
     function submitAwayPenalty() {
         var fixtureId = $('#fixtureId').val();
-        var penaltyCommitedBy = $('#awayPenaltyCommitedBy').val();
+        var takenBy = $('#awayPenaltyTakenBy').val();
         var penaltyTime = $('#liveTime').text().trim();
-        var penaltyType = $('#awayPenaltyType').val();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
         console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', penaltyCommitedBy);
+        console.log('Taken By:', takenBy);
         console.log('Penalty Time:', penaltyTime);
-        console.log('Penalty Type:', penaltyType);
 
-        if (!fixtureId || !penaltyCommitedBy || !penaltyTime || !penaltyType) {
+        if (!fixtureId || !takenBy || !penaltyTime) {
             alert('Please fill in all required fields.');
             return;
         }
@@ -1283,9 +1351,8 @@
             data: {
                 __RequestVerificationToken: token,
                 fixtureId: fixtureId,
-                commitedBy: penaltyCommitedBy,
-                penaltyTime: penaltyTime,
-                penaltyType: penaltyType
+                takenBy: takenBy,
+                penaltyTime: penaltyTime
             },
             success: function (response) {
                 console.log('Success:', response);
@@ -1481,6 +1548,58 @@
         });
 
     });
+
+
+    function submitInterruptMatch() {
+        var fixtureId = $('#fixtureId').val();
+        var interruptionReason = $('#interruptionReason').val(); 
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        console.log('Fixture ID:', fixtureId);
+        console.log('Interruption reason:', interruptionReason); 
+
+        if (!fixtureId || !interruptionReason) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/InterruptLive',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                interruptionReason: interruptionReason 
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Match interrupted successfully", "alert-success");
+                    $('#interruptLiveModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to interrupt live match: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitInterruptMatch').on('click', function (event) {
+            event.preventDefault();
+            submitInterruptMatch();
+        });
+
+        $('.interrupt-live-modal .close').on('click', function () {
+            $('#interruptLiveModal').hide();
+        });
+    });
+
+
     document.addEventListener('DOMContentLoaded', function () {
         var fixtureId = $('#fixtureId').val();
 
@@ -1574,6 +1693,8 @@
     var fulltimeModal = document.getElementById('fulltimeModal');
     var addtimeModal = document.getElementById('addtimeModal');
     var resumeHalftimeModal = document.getElementById('resumeHalftimeModal');
+    var interruptLiveModal = document.getElementById('interruptLiveModal');
+    var resumeLiveModal = document.getElementById('resumeLiveModal');
 
     var openStartLiveModalButton = document.querySelector('.open-start-live-modal-button');
     var openGoalHomeModalButton = document.querySelector('.open-goal-home-modal-button');
@@ -1589,6 +1710,8 @@
     var openHalftimeModalButton = document.querySelector('.open-halftime-modal-button');
     var openFulltimeModalButton = document.querySelector('.open-fulltime-modal-button');
     var openAddtimeModalButton = document.querySelector('.open-addtime-modal-button');
+    var openInterruptLiveModalButton = document.querySelector('.open-interrupt-live-modal-button');
+    var openResumeLiveModalButton = document.querySelector('.open-resume-live-modal-button');
     var openResumeHalftimeModalButton = document.querySelector('.open-resume-halftime-modal-button');
 
     var closeButtons = document.querySelectorAll('.close');
@@ -1655,6 +1778,10 @@
         resumeHalftimeModal.style.display = 'block';
     }
 
+    openInterruptLiveModalButton.onclick = function () {
+        interruptLiveModal.style.display = 'block';
+    }
+
     closeButtons.forEach(function (btn) {
         btn.onclick = function () {
             startLiveModal.style.display = 'none';
@@ -1671,6 +1798,8 @@
             halftimeModal.style.display = 'none';
             fulltimeModal.style.display = 'none';
             addtimeModal.style.display = 'none';
+            interruptLiveModal.style.display = 'none';
+            resumeLiveModal.style.display = 'none';
             resumeHalftimeModal.style.display = 'none';
         }
     });
@@ -1730,6 +1859,14 @@
 
         if (event.target === resumeHalftimeModal) {
             resumeHalftimeModal.style.display = 'none';
+        }
+
+        if (event.target === resumeLiveModal) {
+            resumeLiveModal.style.display = 'none';
+        }
+
+        if (event.target === interruptLiveModal) {
+           interruptLiveModal.style.display = 'none';
         }
     }
 
@@ -1822,8 +1959,6 @@
         }, 5000);
     }
 
-
-
     function updateLiveMatchStatus(fixtureId) {
         if (fixtureId) {
             console.log("Fetching live match status for fixtureId:", fixtureId);
@@ -1839,7 +1974,13 @@
                         var homeTeamScoreElement = $('#homeTeamScore');
                         var awayTeamScoreElement = $('#awayTeamScore');
                         var addedTimeElement = $('#timeAdded');
-                        var halfTimeScoreElement = $('#halftime-scores');
+                        var halfTimeScoreElement = $('#halfTimeScore');
+                        var scoreContainer = $('#scoreContainer');
+                        var fullTimeElement = $('.fullTimeButton');
+                        var startMatchElement = $('.startMatchButton');
+                        var buttonsWrapper = $('.button-wrapper');
+                        var matchEndedMessage = $('#endMatchMessage');
+                        var startMatch = $('.startMatch');
 
                         if (liveTimeElement.length && liveStatusElement.length) {
                             var liveTime = data.LiveTime || data.liveTime;
@@ -1861,6 +2002,7 @@
                             if (!wentToHalfTime && liveTime > 45) {
                                 displayTime = "45+" + (liveTime - 45);
                             } else if (liveTime > 90) {
+                                fullTimeElement.show();
                                 displayTime = "90+" + (liveTime - 90);
                             }
 
@@ -1873,7 +2015,7 @@
                                 }
                                 liveTimeElement.html(liveTimeHtml);
                                 liveTimeElement.show();
-
+                                startMatch.hide();
                                 liveStatusElement.text('');
                                 liveStatusElement.show();
 
@@ -1885,6 +2027,7 @@
                                 resumeButton.hide();
                             } else if (isHalfTime) {
                                 liveTimeElement.hide();
+                                startMatchElement.hide();
                                 liveStatusElement.text('Half-time');
                                 liveStatusElement.show();
                                 if (userRole === 'Sport Coordinator') {
@@ -1896,6 +2039,9 @@
                                 }
                             } else if (isEnded) {
                                 liveTimeElement.hide();
+                                buttonsWrapper.hide();
+                                startMatch.hide();
+                                matchEndedMessage.css('display', 'flex').show();
                                 liveStatusElement.text('Full-time');
                                 liveStatusElement.show();
                                 halfTimeButton.hide();
@@ -1921,9 +2067,13 @@
                                 awayTeamScoreElement.text(awayTeamScore);
                             }
 
-                            if (wentToHalfTime){
-                                halfTimeScoreElement.text(halfTimeScore)
+                            if (wentToHalfTime) {
+                                halfTimeScoreElement.text(halfTimeScore);
+                                scoreContainer.css('display', 'flex').show();
+                            } else {
+                                scoreContainer.css('display', 'none').hide();
                             }
+
 
                             console.log("Updated liveTime HTML:", liveTimeElement.html());
                             console.log("Updated liveStatus:", liveStatusElement.text());
@@ -2009,6 +2159,35 @@
                 alert('Failed to set half-time.');
                 console.error('Error:', error);
                 displayMessage("Failed to set half-time", "alert-danger");
+            }
+        });
+    };
+
+
+    document.getElementById("confirmResumeLive").onclick = function () {
+        var fixtureId = $('#fixtureId').val();
+        if (!fixtureId) {
+            console.error("FixtureId is not set correctly.");
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/ResumeLive',
+            type: 'POST',
+            data: { fixtureId: fixtureId },
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function (response) {
+                console.log("Half-time set for fixtureId: " + fixtureId);
+                closehalftimeModal();
+                displayMessage("Match resume from where it was paused", "alert-success");
+                updateLiveMatchStatus(fixtureId);
+            },
+            error: function (xhr, status, error) {
+                alert('Failed to resume livematch.');
+                console.error('Error:', error);
+                displayMessage("Failed to resume live", "alert-danger");
             }
         });
     };

@@ -25,6 +25,8 @@
 
         public OverviewViewModel OverviewViewModel { get; set; }
 
+        public LiveMatchViewModel LiveMatchViewModel { get; set; }
+
         public int AddedTime { get; set; }
 
         public string UserRole { get; set; }

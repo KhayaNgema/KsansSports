@@ -39,6 +39,7 @@ namespace MyField.Controllers
                          (mo.HomeTeamId == awayClubId && mo.AwayTeamId == homeClubId && mo.ClubId == homeClubId))
                 .Include(mo => mo.HomeTeam)
                 .Include(mo => mo.AwayTeam)
+                .OrderByDescending(mo => mo.HeadToHeadDate)
                 .ToListAsync();
 
             ViewBag.homeClubId = homeClubId;
@@ -536,9 +537,7 @@ namespace MyField.Controllers
                 var user = await _userManager.GetUserAsync(User);
                 var userId = user?.Id;
 
-
-                var loggedInUser = await _userManager.GetUserAsync(User);
-                var clubManager = loggedInUser as ClubManager;
+                var clubManager = user as ClubManager;
 
                 if (string.IsNullOrEmpty(userId))
                 {
@@ -548,15 +547,11 @@ namespace MyField.Controllers
                 var lineupXIHolders = await _context.LineUpXIHolder
                     .Include(l => l.ClubPlayer)
                     .ToListAsync();
-                    
 
-                Console.WriteLine("lineupXIHolders: " + lineupXIHolders); 
                 var lineupSubstitutesHolders = await _context.LineUpSubstitutesHolder
                     .Include(l => l.ClubPlayer)
                     .ToListAsync();
-                Console.WriteLine("lineupSubstitutesHolders: " + lineupSubstitutesHolders);
 
-              
                 var lineUp = new LineUp
                 {
                     ClubId = clubManager.ClubId,
@@ -591,38 +586,34 @@ namespace MyField.Controllers
                 foreach (var player in lineupXIHolders)
                 {
                     var playerPerformanceReport = await _context.PlayerPerformanceReports
-                        .FirstOrDefaultAsync(p => p.PlayerId == player.PlayerId);
+                        .Where( p => p.Player.Id == player.ClubPlayer.Id && p.League.IsCurrent)
+                        .Include(p => p.Player)
+                        .FirstOrDefaultAsync();
 
                     if (playerPerformanceReport != null)
                     {
                         playerPerformanceReport.AppearancesCount++;
-                        _context.Update(playerPerformanceReport);
+                        _context.PlayerPerformanceReports.Update(playerPerformanceReport);
                     }
 
                     player.ClubPlayer.HasPlayed = true;
                     player.ClubPlayer.IsOnPitch = true;
-
-                    _context.Update(player);
-                    await _context.SaveChangesAsync();
+                    _context.Player.Update(player.ClubPlayer);
                 }
 
                 foreach (var player in lineupSubstitutesHolders)
                 {
                     player.ClubPlayer.HasPlayed = false;
                     player.ClubPlayer.IsOnPitch = false;
-
-                    _context.Update(player);
-                    await _context.SaveChangesAsync();
+                    _context.Player.Update(player.ClubPlayer);
                 }
 
                 await _context.SaveChangesAsync();
 
-
-                _context.Add(lineUp);
-                await _context.SaveChangesAsync();
-
+                _context.LineUp.Add(lineUp);
                 _context.LineUpXIHolder.RemoveRange(lineupXIHolders);
                 _context.LineUpSubstitutesHolder.RemoveRange(lineupSubstitutesHolders);
+
                 await _context.SaveChangesAsync();
 
                 var fixture = await _context.Fixture
@@ -637,17 +628,14 @@ namespace MyField.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine("An error occurred while creating the match lineup.");
                 Console.WriteLine("Error message: " + ex.Message);
 
-                // Log inner exception details if available
                 if (ex.InnerException != null)
                 {
                     Console.WriteLine("Inner exception: " + ex.InnerException.Message);
                     Console.WriteLine("Inner exception stack trace: " + ex.InnerException.StackTrace);
 
-                    // Return the inner exception details in the JSON error response
                     return Json(new { success = false, error = ex.Message, innerError = ex.InnerException.Message, innerStackTrace = ex.InnerException.StackTrace });
                 }
                 else
@@ -655,8 +643,8 @@ namespace MyField.Controllers
                     return Json(new { success = false, error = ex.Message });
                 }
             }
-
         }
+
 
         [Authorize(Roles = ("Club Manager"))]
         [HttpPost]

@@ -49,18 +49,40 @@
                                         @item.FixtureStatus
                                     </p>
                                 }
+                                else if (item.FixtureStatus == FixtureStatus.Live)
+                                {
+                                    <p style="color:blue;">
+                                        @item.FixtureStatus <i class="fa fa-rss-square"></i>
+                                    </p>
+                                }
                                 else
                                 {
-
+                                    
                                 }
                             </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-end">
-                                    <a asp-action="FixtureDetailsFans" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm">
-                                        <i class="fas fa-arrow-right"></i>
-                                    </a>
+
+                            @if(item.FixtureStatus == FixtureStatus.Live)
+                            {
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <a asp-controller="Lives" asp-action="StartLive" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm btn-primary">
+                                            Live Scores  <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+
+                            }
+                            else
+                            {
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-end">
+                                        <a asp-action="FixtureDetailsFans" asp-route-fixtureId="@encryptedFixtureId" class="btn btn-sm">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
                     </div>
                 }

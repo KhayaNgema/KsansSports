@@ -5,9 +5,6 @@
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 <br />
-@await Html.PartialAsync("_HomeButton")
-<h4 class="text-center">Clubs</h4>
-<br />
 <div class="club-list-Container">
     <ul class="clubsList" style="border:none !important; list-style-type: none; padding: 0;">
         @if (Model.Any())
@@ -16,8 +13,8 @@
             {
                 var encryptedClubId = encryptionService.Encrypt(item.ClubId);
 
-                <li style="margin-bottom:10px;">
-                    <div class="d-flex align-items-center justify-content-between">
+                <li class="club-item" data-club-id="@encryptedClubId" style="margin-bottom:10px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;">
+                    <div class="d-flex align-items-center justify-content-between" style="border: 1px solid #ddd; padding: 10px; border-radius: 8px; background-color: #fff;">
                         <div class="d-flex align-items-center">
                             <img src="~/@item.ClubBadge" alt="@item.ClubName" class="club-badge-image" style="margin-right:20px;" />
                             @Html.DisplayFor(modelItem => item.ClubName) (@Html.DisplayFor(modelItem => item.ClubAbbr))
@@ -35,3 +32,13 @@
         }
     </ul>
 </div>
+
+<script>
+    document.querySelectorAll('.club-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const encryptedClubId = this.getAttribute('data-club-id');
+            const url = '@Url.Action("Details", "Clubs")';
+            window.location.href = `@Url.Action("Details", "Clubs")?clubId=${encodeURIComponent(encryptedClubId)}`;
+        });
+    });
+</script>

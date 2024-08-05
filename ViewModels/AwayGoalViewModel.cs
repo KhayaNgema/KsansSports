@@ -9,7 +9,7 @@ namespace MyField.ViewModels
 
         public string GoalScorerById { get; set; }
 
-        public string AssistedById { get; set;}
+        public string? AssistedById { get; set;}
 
     }
 }

@@ -1918,7 +1918,13 @@ body {
 .players-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 10px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.h2h-container {
+    max-width: 800px;
+    margin: 0 auto;
     border-radius: 7px;
     background-color: white;
 }
@@ -2417,7 +2423,9 @@ body {
 .halftime-modal,
 .fulltime-modal,
 .addtime-modal,
-.resume-halftime-modal {
+.resume-halftime-modal,
+.interrupt-live-modal,
+.resume-live-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -2444,7 +2452,9 @@ body {
 .halftime-modal-content,
 .fulltime-modal-content,
 .addtime-modal-content,
-.resume-halftime-modal-content {
+.resume-halftime-modal-content,
+.interrupt-live-modal-content,
+.resume-live-modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -2531,6 +2541,8 @@ body {
     .open-halftime-modal-button :active,
     .open-fulltime-modal-button :active,
     .open-addtime-modal-button :active,
+    .open-interrupt-live-button :active,
+    .open-resume-live-button :active,
     .open-resume-halftime-modal-button :active {
         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }

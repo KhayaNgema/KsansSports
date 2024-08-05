@@ -164,7 +164,8 @@ namespace MyField.Controllers
                 .Where(f => (f.HomeTeam.ClubId == clubId || f.AwayTeam.ClubId == clubId) &&
                             (f.FixtureStatus == FixtureStatus.Upcoming ||
                              f.FixtureStatus == FixtureStatus.Postponed ||
-                             f.FixtureStatus == FixtureStatus.Interrupted) &&
+                             f.FixtureStatus == FixtureStatus.Interrupted ||
+                             f.FixtureStatus == FixtureStatus.Live) &&
                              f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
@@ -272,38 +273,38 @@ namespace MyField.Controllers
             return View(newfixture);
         }
 
-        [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
+        [Authorize(Roles = "Sport Administrator, Sport Coordinator")]
         public async Task<IActionResult> FixturesBackOffice()
         {
-            var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+            var currentLeague = await _context.League
+                .Where(l => l.IsCurrent)
+                .FirstOrDefaultAsync();
 
             if (currentLeague == null)
             {
                 ModelState.AddModelError(string.Empty, "No current league found.");
+                return View(new List<Fixture>());
             }
 
             var fixtures = await _context.Fixture
-                .Where(f => f.FixtureStatus == FixtureStatus.Upcoming ||
-                            f.FixtureStatus == FixtureStatus.Postponed ||
-                            f.FixtureStatus == FixtureStatus.Interrupted ||
-                            f.FixtureStatus == FixtureStatus.Ended &&
-                            f.League.IsCurrent)
+                .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming ||
+                             f.FixtureStatus == FixtureStatus.Postponed ||
+                             f.FixtureStatus == FixtureStatus.Interrupted ||
+                             f.FixtureStatus == FixtureStatus.Ended) &&
+                            f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
-                .Include (f => f.CreatedBy)
+                .Include(f => f.CreatedBy)
                 .Include(f => f.ModifiedBy)
                 .OrderByDescending(f => f.CreatedDateTime)
                 .ToListAsync();
 
-            var currentSeason = await _context.League
-                .Where(c => c.IsCurrent)
-                .FirstOrDefaultAsync();
-
-
-            ViewBag.CurrentSeason = currentSeason.LeagueYears;
+            ViewBag.CurrentSeason = currentLeague.LeagueYears;
 
             return View(fixtures);
         }
+
+
 
         [Authorize(Policy = "AnyRole")]
         public async Task<IActionResult> FixturesBackOfficeUsers()
@@ -316,9 +317,10 @@ namespace MyField.Controllers
             }
 
             var fixtures = await _context.Fixture
-                .Where(f => f.FixtureStatus == FixtureStatus.Upcoming ||
-                            f.FixtureStatus == FixtureStatus.Postponed ||
-                            f.FixtureStatus == FixtureStatus.Interrupted &&
+                .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming ||
+                             f.FixtureStatus == FixtureStatus.Postponed ||
+                             f.FixtureStatus == FixtureStatus.Interrupted ||
+                             f.FixtureStatus == FixtureStatus.Live) &&
                             f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
@@ -347,6 +349,7 @@ namespace MyField.Controllers
         }
 
 
+
         [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]
         public async Task<IActionResult> Fixtures()
         {
@@ -359,7 +362,8 @@ namespace MyField.Controllers
 
 
             var upcomingFixtures = await _context.Fixture
-                .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming) &&
+                .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming ||
+                f.FixtureStatus == FixtureStatus.Live) &&
                             f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
@@ -369,7 +373,7 @@ namespace MyField.Controllers
             return View(upcomingFixtures);
         }
 
-        
+
         public async Task<IActionResult> Index()
         {
             var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
@@ -377,37 +381,33 @@ namespace MyField.Controllers
             if (currentLeague == null)
             {
                 ModelState.AddModelError(string.Empty, "No current league found.");
+                return View();
             }
 
             var upcomingFixtures = await _context.Fixture
                 .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming ||
                              f.FixtureStatus == FixtureStatus.Postponed ||
-                             f.FixtureStatus == FixtureStatus.Interrupted) &&
+                             f.FixtureStatus == FixtureStatus.Interrupted ||
+                             f.FixtureStatus == FixtureStatus.Live) &&
                             f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .Include(f => f.MatchOfficials)
                 .ToListAsync();
 
-            foreach (var fixture in upcomingFixtures)
-            {
-                var matchReferee = await _context.MatchOfficials
-                    .Where(mo => mo.FixtureId == fixture.FixtureId)
-                    .Include(s => s.Refeere)
-                    .FirstOrDefaultAsync();
+            var referees = upcomingFixtures
+                .SelectMany(f => f.MatchOfficials)
+                .GroupBy(mo => mo.FixtureId)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.FirstOrDefault(mo => mo.Refeere != null)?.Refeere.FirstName + " " + g.FirstOrDefault(mo => mo.Refeere != null)?.Refeere.LastName ?? "Referee information not found"
+                );
 
-                if (matchReferee != null && matchReferee.Refeere != null)
-                {
-                    ViewBag.MatchReferee = matchReferee.Refeere.FirstName + " " + matchReferee.Refeere.LastName;
-                }
-                else
-                {
-                    ViewBag.MatchReferee = "Referee information not found";
-                }
-            }
+            ViewBag.Referees = referees;
 
             return PartialView("_FixturesPartial", upcomingFixtures);
         }
+
 
 
         [Authorize(Policy = "AnyRole")]
@@ -418,13 +418,14 @@ namespace MyField.Controllers
             if (currentLeague == null)
             {
                 ModelState.AddModelError(string.Empty, "No current league found.");
+                return View("Error"); 
             }
 
             var upcomingFixtures = await _context.Fixture
-                .Where(f => f.FixtureStatus == FixtureStatus.Upcoming ||
-                            f.FixtureStatus == FixtureStatus.Postponed ||
-                            f.FixtureStatus == FixtureStatus.Interrupted &&
-                            f.LeagueId == currentLeague.LeagueId)
+                .Where(f => (f.FixtureStatus == FixtureStatus.Upcoming ||
+                             f.FixtureStatus == FixtureStatus.Postponed ||
+                             f.FixtureStatus == FixtureStatus.Interrupted) &&
+                             f.LeagueId == currentLeague.LeagueId)
                 .Include(f => f.HomeTeam)
                 .Include(f => f.AwayTeam)
                 .Include(f => f.CreatedBy)
@@ -450,6 +451,7 @@ namespace MyField.Controllers
 
             return PartialView("_BackOfficeFixturesPartial", upcomingFixtures);
         }
+
 
 
         [Authorize(Roles = ("Sport Administrator, Sport Coordinator"))]

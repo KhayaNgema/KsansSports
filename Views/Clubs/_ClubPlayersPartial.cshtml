@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.Player>
-
+@inject MyField.Interfaces.IEncryptionService encryptionService
 <br />
 <div class="club-players-container">
     @if (Model == null || !Model.Any())
@@ -19,7 +19,9 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr class="player-row" data-user-id="@item.Id" style="cursor: pointer; white-space: nowrap; position: relative;">
+                        var encryptedPlayerId = encryptionService.Encrypt(item.Id);
+
+                        <tr class="player-row" style="white-space: nowrap;" data-user-id="@encryptedPlayerId">
                             <td>
                                 <img src="~/@item.ProfilePicture" alt="@item.FirstName" class="club-badge-image" />
                                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -27,7 +29,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Position)
-                                <span class="profile-arrow"><i class="fas fa-chevron-right"></i></span>
                             </td>
                         </tr>
                     }
@@ -39,17 +40,10 @@
 
 <script>
     document.querySelectorAll('#playersTable .player-row').forEach(row => {
-        row.addEventListener('mouseover', function () {
-            this.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
-            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
-        });
-        row.addEventListener('mouseout', function () {
-            this.style.transform = '';
-            this.style.boxShadow = '';
-        });
         row.addEventListener('click', function () {
-            const userId = this.getAttribute('data-user-id');
-            window.location.href = `@Url.Action("PlayerProfile", "Users")?userId=${userId}`;
+            const encryptedPlayerId = this.getAttribute('data-user-id');
+            const url = '@Url.Action("PlayerProfile", "Users")';
+            window.location.href = `@Url.Action("PlayerProfile", "Users")?userId=${encodeURIComponent(encryptedPlayerId)}`;
         });
     });
 </script>
@@ -81,12 +75,4 @@
             transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-    .profile-arrow {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #324260;
-    }
 </style>

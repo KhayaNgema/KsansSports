@@ -354,25 +354,26 @@ namespace MyField.Controllers
             }
 
             int myPlayersCount = await _context.Player
-                .Where(m => m.ClubId == clubAdministrator.ClubId)
+                .Where(m => m.ClubId == clubAdministrator.ClubId &&
+                !m.IsDeleted)
                 .CountAsync();
 
             return myPlayersCount;
         }
 
-        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
+        [Authorize(Roles = "Club Administrator, Club Manager, Player")]
         public async Task<int> GetMyClubFixturesCount()
         {
+            var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+            if (currentLeague == null)
+            {
+                return 0; 
+            }
+
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
-            {
-                return 0 ;
-            }
-
-            if (!(user is ClubAdministrator clubAdministrator) &&
-                !(user is ClubManager clubManager) &&
-                !(user is Player clubPlayer))
             {
                 return 0;
             }
@@ -386,16 +387,17 @@ namespace MyField.Controllers
                 return 0;
             }
 
-
             int myClubFixturesCount = await _context.Fixture
-                .Where(m => m.HomeTeam.ClubId == clubId ||
-                 m.AwayTeam.ClubId == clubId && 
-                 m.FixtureStatus == FixtureStatus.Upcoming ||
-                   m.FixtureStatus == FixtureStatus.Interrupted)
+                .Where(m => (m.HomeTeam.ClubId == clubId || m.AwayTeam.ClubId == clubId) &&
+                            (m.FixtureStatus == FixtureStatus.Upcoming ||
+                             m.FixtureStatus == FixtureStatus.Postponed ||
+                             m.FixtureStatus == FixtureStatus.Interrupted) &&
+                            m.LeagueId == currentLeague.LeagueId)
                 .CountAsync();
 
             return myClubFixturesCount;
         }
+
 
         [Authorize(Roles = "Club Administrator")]
         public async Task<int> GetMyClubTransferRequestsCount()
@@ -452,19 +454,19 @@ namespace MyField.Controllers
             return announcementsCount;
         }
 
-        [Authorize(Roles = ("Club Administrator, Club Manager, Player"))]
+        [Authorize(Roles = "Club Administrator, Club Manager, Player")]
         public async Task<int> GetMyClubMatchResultsCount()
         {
+            var currentLeague = await _context.League.FirstOrDefaultAsync(l => l.IsCurrent);
+
+            if (currentLeague == null)
+            {
+                return 0; // Ensure current league exists
+            }
+
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
-            {
-                return 0;
-            }
-
-            if (!(user is ClubAdministrator clubAdministrator) &&
-                !(user is ClubManager clubManager) &&
-                !(user is Player clubPlayer))
             {
                 return 0;
             }
@@ -478,14 +480,14 @@ namespace MyField.Controllers
                 return 0;
             }
 
-
             int myClubMatchResultsCount = await _context.MatchResult
-                .Where(m => m.HomeTeam.ClubId == clubId || 
-                m.AwayTeam.ClubId == clubId)
+                .Where(m => (m.HomeTeam.ClubId == clubId || m.AwayTeam.ClubId == clubId) &&
+                            m.LeagueId == currentLeague.LeagueId)
                 .CountAsync();
 
             return myClubMatchResultsCount;
         }
+
 
         [Authorize(Roles = ("Club Manager"))]
         public async Task<int> GetClubManagersMeetingsCount()

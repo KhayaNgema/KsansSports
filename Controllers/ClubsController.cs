@@ -57,14 +57,14 @@ namespace MyField.Controllers
 
         public async Task<IActionResult> HeadToHead(int clubId)
         {
-            // Retrieve the head-to-head records for the specified clubId
+
             var headToHead = await _context.HeadToHead
                 .Include(s => s.HomeTeam)
                 .Include(s => s.AwayTeam)
                 .Where(h => h.ClubId == clubId)
+                .OrderByDescending(mo => mo.HeadToHeadDate)
                 .ToListAsync();
 
-            // Pass the filtered head-to-head records to the partial view
             return PartialView("_ClubStatsPartial", headToHead);
         }
 
@@ -224,6 +224,7 @@ namespace MyField.Controllers
 
             var club = await _context.Club
                 .FirstOrDefaultAsync(m => m.ClubId == decryptedClubId);
+
             if (club == null)
             {
                 return NotFound();

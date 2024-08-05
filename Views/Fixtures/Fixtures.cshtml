@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<MyField.Models.Fixture>
 @inject MyField.Interfaces.IEncryptionService encryptionService
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Update Score";
     Layout = "~/Views/Shared/_PagesLayout.cshtml";
 }
 
 <br />
 @await Html.PartialAsync("_BackButton")
 
-<h4 class="text-center">UPDATE SCORE</h4>
+<h4 class="text-center">Update Score</h4>
 
 <br />
 
@@ -20,7 +20,7 @@
                 <table class="table table-borderless">
                     @foreach (var item in Model)
                     {
-                        var ecryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
+                        var encryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
                         var encryptedHomeTeamId = encryptionService.Encrypt(item.HomeTeamId);
                         var encryptedAwayTeamId = encryptionService.Encrypt(item.AwayTeamId);
 
@@ -45,16 +45,33 @@
                                 }
                             </td>
                             <td class="align-middle text-right">
-                                <a asp-controller="Lives" asp-action="StartLive"
-                                   asp-route-fixtureId="@ecryptedFixtureId"
+                                <a asp-controller="MatchResults" asp-action="Upload"
+                                   asp-route-homeClubName="@item.HomeTeam.ClubName"
+                                   asp-route-awayClubName="@item.AwayTeam.ClubName"
+                                   asp-route-fixtureId="@encryptedFixtureId"
+                                   asp-route-kickoffDate="@item.KickOffDate"
+                                   asp-route-kickoffTime="@item.KickOffTime"
+                                   asp-route-homeTeamBadge="@item.HomeTeam.ClubBadge"
+                                   asp-route-awayTeamBadge="@item.AwayTeam.ClubBadge"
+                                   asp-route-location="@item.Location"
+                                   asp-route-homeTeamId="@encryptedHomeTeamId"
+                                   asp-route-awayTeamId="@encryptedAwayTeamId"
                                    class="btn btn-outline-success"
                                    style="text-decoration: none;">
-                                    <i class="fas fa-futbol"></i> Start live
+                                    <i class="fas fa-futbol"></i> Upload
+                                </a>
+                            </td>
+                            <td class="align-middle text-right">
+                                <a asp-controller="Lives" asp-action="StartLive"
+                                   asp-route-fixtureId="@encryptedFixtureId"
+                                   class="btn btn-outline-primary"
+                                   style="text-decoration: none;">
+                                    <i class="fas fa-broadcast-tower"></i> Go live
                                 </a>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4">
+                            <td colspan="5">
                                 <div style="border-bottom: 1px solid #ccc; margin: 2px 0;"></div>
                             </td>
                         </tr>

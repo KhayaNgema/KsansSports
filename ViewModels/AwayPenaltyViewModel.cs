@@ -10,7 +10,5 @@ namespace MyField.ViewModels
         public IEnumerable<dynamic> Players { get; set; }
 
         public string AwayTeam { get; set; }
-
-        public List<SelectListItem> PenaltyTypes { get; set; }
     }
 }

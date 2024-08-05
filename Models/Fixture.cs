@@ -68,6 +68,8 @@ namespace MyField.Models
         Upcoming,
         Postponed,
         Interrupted,
-        Ended
+        Ended,
+        Live
+
     }
 }

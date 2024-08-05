@@ -5,9 +5,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-group row">
-            <label for="homePenaltyCommitedBy" class="col-sm-3 col-form-label">Commited by:</label>
+            <label for="homePenaltyTakenBy" class="col-sm-3 col-form-label">Taken by:</label>
             <div class="col-sm-9">
-                <select id="homePenaltyCommitedBy" name="homePenaltyCommitedBy" class="form-control">
+                <select id="homePenaltyTakenBy" name="homePenaltyTakenBy" class="form-control">
                     <option value="">Select Player</option>
                     @if (Model?.Players != null && Model.Players.Any())
                     {
@@ -26,26 +26,5 @@
             </div>
         </div>
 
-        <div class="form-group row mt-3">
-            <label for="homePenaltyType" class="col-sm-3 col-form-label">Penalty Type:</label>
-            <div class="col-sm-9">
-                <select id="homePenaltyType" name="homePenaltyType" class="form-control">
-                    <option value="">Select Penalty Type</option>
-                    @if (Model.PenaltyTypes != null)
-                    {
-                        foreach (var penaltyType in Model.PenaltyTypes)
-                        {
-                            <option value="@penaltyType.Value">
-                                @penaltyType.Text
-                            </option>
-                        }
-                    }
-                    else
-                    {
-                        <option value="">No penalty types available</option>
-                    }
-                </select>
-            </div>
-        </div>
     </form>
 </div>
