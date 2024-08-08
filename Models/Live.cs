@@ -33,6 +33,8 @@ namespace MyField.Models
 
         public bool ISEnded { get; set; }
 
+        public bool IsInterrupted { get; set; }
+
         public bool WentToHalfTime { get; set; }
 
         public int? AddedTime { get; set; }

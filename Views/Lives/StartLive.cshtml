@@ -156,7 +156,7 @@
                 <span aria-hidden="true">&times;</span>
             </span>
         </div>
-        <div class="row justify-content-center startMatchButton" style="margin-bottom: 30px;">
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
             <div class="col-4"></div>
             <div class="col-4">
                 <button type="button" class="open-start-live-modal-button startMatch" style="
@@ -177,27 +177,49 @@
                         onmouseup="this.style.boxShadow='';">
                     Start match <i class="fa fa-play" style="margin-left: 8px;"></i>
                 </button>
-            </div>
-            <div class="col-4" style="display: flex; justify-content: flex-end; align-items: center;">
-                <button class="btn btn-outline-primary btn-sm action-button" type="button" data-id="@Model.StartLiveViewModel.FixtureId" style="display: flex; align-items: center; justify-content: center; padding: 5px 10px;">
-                    <i class="fas fa-info" style="font-size: 16px;"></i>
+
+
+                <button type="button" class="open-interrupt-live-modal-button interruptLive" style="
+            display: @(Model.UserRole == "Sport Coordinator" ? "none" : "none");
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#ff0000';"
+                        onmouseout="this.style.backgroundColor='red';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    Interrupt <i class="fa fa-pause" style="margin-left: 8px;"></i>
                 </button>
-                @if(Model.StartLiveViewModel.LiveStatus == LiveStatus.Ongoing)
-                {
-                    <div class="action-tab" id="actionTab-@Model.StartLiveViewModel.FixtureId" style="display: none;">
-                        <a class="tab-item  open-interrupt-live-modal-button">
-                            <i class="fas fa-pause" style="color: red;"></i> Interrupt
-                        </a>
-                    </div>
-                }
-                else if(Model.StartLiveViewModel.LiveStatus == LiveStatus.Interrupted)
-                {
-                    <div class="action-tab" id="actionTab-@Model.StartLiveViewModel.FixtureId" style="display: none;">
-                        <a class="tab-item open-resume-live-modal-button">
-                            <i class="fas fa-play" style="color: green;"></i> Resume
-                        </a>
-                    </div>
-                }
+
+                <button type="button" class="open-resume-live-modal-button resumeLive" style="
+            display: @(Model.UserRole == "Sport Coordinator" ? "none" : "none");
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: green;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            "
+                        onmouseover="this.style.backgroundColor='#008000';"
+                        onmouseout="this.style.backgroundColor='green';"
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    Resume <i class="fa fa-play" style="margin-left: 8px;"></i>
+                </button>
+
+            </div>
+            <div class="col-4">
+            </div>
             </div>
         </div>
 
@@ -1552,11 +1574,11 @@
 
     function submitInterruptMatch() {
         var fixtureId = $('#fixtureId').val();
-        var interruptionReason = $('#interruptionReason').val(); 
+        var interruptionReason = $('#interruptionReason').val();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
         console.log('Fixture ID:', fixtureId);
-        console.log('Interruption reason:', interruptionReason); 
+        console.log('Interruption reason:', interruptionReason);
 
         if (!fixtureId || !interruptionReason) {
             alert('Please fill in all required fields.');
@@ -1569,7 +1591,7 @@
             data: {
                 __RequestVerificationToken: token,
                 fixtureId: fixtureId,
-                interruptionReason: interruptionReason 
+                interruptionReason: interruptionReason
             },
             success: function (response) {
                 console.log('Success:', response);
@@ -1578,11 +1600,46 @@
                     $('#interruptLiveModal').hide();
                     updateLiveMatchStatus(fixtureId);
                 } else {
-                    alert('Failed to interrupt live match: ' + response.message);
+                    alert('Failed to interrupt live match: ' + (response.message || 'Unknown error'));
                 }
             },
             error: function (xhr, status, error) {
                 console.error('Error:', error);
+                console.error('Response:', xhr.responseText);
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    function submitResumeMatch() {
+        var fixtureId = $('#fixtureId').val();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        if (!fixtureId) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/ResumeLive',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+            },
+            success: function (response) {
+                console.log('Success:', response);
+                if (response.success) {
+                    displayMessage("Match resumed successfully", "alert-success");
+                    $('#resumeLiveModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to resume live match: ' + (response.message || 'Unknown error'));
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                console.error('Response:', xhr.responseText);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1594,10 +1651,21 @@
             submitInterruptMatch();
         });
 
-        $('.interrupt-live-modal .close').on('click', function () {
+        $('#confirmResumeLive').on('click', function (event) {
+            event.preventDefault();
+            submitResumeMatch();
+        });
+
+        $('#interruptLiveModal .close').on('click', function () {
             $('#interruptLiveModal').hide();
         });
+
+        $('#resumeLiveModal .close').on('click', function () {
+            $('#resumeLiveModal').hide();
+        });
     });
+
+
 
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -1781,6 +1849,11 @@
     openInterruptLiveModalButton.onclick = function () {
         interruptLiveModal.style.display = 'block';
     }
+
+    openResumeLiveModalButton.onclick = function () {
+        resumeLiveModal.style.display = 'block';
+    }
+
 
     closeButtons.forEach(function (btn) {
         btn.onclick = function () {
@@ -1981,6 +2054,9 @@
                         var buttonsWrapper = $('.button-wrapper');
                         var matchEndedMessage = $('#endMatchMessage');
                         var startMatch = $('.startMatch');
+                        var interruptLiveElement = $('.interruptLive');
+                        var resumeLiveElement = $('.resumeLive');
+
 
                         if (liveTimeElement.length && liveStatusElement.length) {
                             var liveTime = data.LiveTime || data.liveTime;
@@ -1992,6 +2068,7 @@
                             var awayTeamScore = data.AwayTeamScore || data.awayTeamScore;
                             var addedTime = data.AddTime || data.addTime;
                             var halfTimeScore = data.HalfTimeScore || data.halfTimeScore;
+                            var isInterrupted = data.isInterrupted || data.isInterrupted;
 
                             console.log("Live Time:", liveTime);
                             console.log("Added Time:", addedTime);
@@ -2016,6 +2093,8 @@
                                 liveTimeElement.html(liveTimeHtml);
                                 liveTimeElement.show();
                                 startMatch.hide();
+                                interruptLiveElement.show();
+                                resumeLiveElement.hide();
                                 liveStatusElement.text('');
                                 liveStatusElement.show();
 
@@ -2046,7 +2125,17 @@
                                 liveStatusElement.show();
                                 halfTimeButton.hide();
                                 resumeButton.hide();
-                            } else {
+                            } else if (isInterrupted) {
+                                liveTimeElement.hide();
+                                startMatch.hide();
+                                liveStatusElement.text('Interrupted');
+                                liveStatusElement.show();
+                                halfTimeButton.hide();
+                                resumeLiveElement.show();
+                                interruptLiveElement.hide();
+                                resumeButton.hide();
+                            }
+                            else {
                                 liveTimeElement.hide();
                                 liveStatusElement.text('Not started');
                                 liveStatusElement.show();

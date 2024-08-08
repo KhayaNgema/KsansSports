@@ -479,7 +479,8 @@ namespace MyField.Controllers
                 AwayTeamScore = liveMatch.AwayTeamScore,
                 AddTime = liveMatch.AddedTime,
                 HalfTimeScore = liveMatch.HalfTimeScore,
-                RecordedTime = liveMatch.RecordedTime
+                RecordedTime = liveMatch.RecordedTime,
+                IsInterrupted = liveMatch.IsInterrupted
             };
 
             return Ok(response);
@@ -1444,12 +1445,34 @@ namespace MyField.Controllers
                   .FirstOrDefaultAsync();
 
             live.LiveStatus = LiveStatus.Interrupted;
+            live.IsInterrupted = true;
             live.ReasonForInterruption = interruptionReason;
+            live.IsLive = false;
 
             _context.Update(live);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Fixtures", "Fixtures");
+            return Ok();
+        }
+
+
+        [Authorize(Roles = "Sport Coordinator, Sport Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResumeLive(int fixtureId)
+        {
+            var live = await _context.Live
+                  .Where(f => f.FixtureId == fixtureId)
+                  .FirstOrDefaultAsync();
+
+            live.LiveStatus = LiveStatus.Ongoing;
+            live.IsInterrupted = false;
+            live.IsLive = true;
+
+            _context.Update(live);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
     }
 }
