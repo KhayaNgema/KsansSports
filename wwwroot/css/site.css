@@ -2555,10 +2555,22 @@ body {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
 
+.red-card-alt {
+    color: red;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 .yellow-card {
     color: yellow;
     font-size: 16px;
     transform: rotate(15deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.yellow-card-alt {
+    color: yellow;
+    font-size: 16px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -2578,6 +2590,43 @@ body {
     color: red;
     font-size: 16px;
 }
+
+
+
+/*Yes and not modal buttons css*/
+
+
+.confirm-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+    .confirm-button:hover {
+        background-color: #218838;
+    }
+
+.cancel-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .cancel-button:hover {
+        background-color: #c82333;
+    }
+
 
 
 

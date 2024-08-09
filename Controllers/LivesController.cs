@@ -1440,19 +1440,35 @@ namespace MyField.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> InterruptLive(int fixtureId, string interruptionReason)
         {
-            var live = await _context.Live
-                  .Where(f => f.FixtureId == fixtureId)
-                  .FirstOrDefaultAsync();
+            try
+            {
+                var live = await _context.Live
+                .Where(f => f.FixtureId == fixtureId)
+                .FirstOrDefaultAsync();
 
-            live.LiveStatus = LiveStatus.Interrupted;
-            live.IsInterrupted = true;
-            live.ReasonForInterruption = interruptionReason;
-            live.IsLive = false;
+                live.LiveStatus = LiveStatus.Interrupted;
+                live.IsInterrupted = true;
+                live.ReasonForInterruption = interruptionReason;
+                live.IsLive = false;
 
-            _context.Update(live);
-            await _context.SaveChangesAsync();
+                _context.Update(live);
+                await _context.SaveChangesAsync();
 
-            return Ok();
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Failed to interrupt match: " + ex.Message,
+                    errorDetails = new
+                    {
+                        InnerException = ex.InnerException?.Message,
+                        StackTrace = ex.StackTrace
+                    }
+                });
+            }
         }
 
 
@@ -1461,18 +1477,34 @@ namespace MyField.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResumeLive(int fixtureId)
         {
-            var live = await _context.Live
-                  .Where(f => f.FixtureId == fixtureId)
-                  .FirstOrDefaultAsync();
+            try
+            {
+                var live = await _context.Live
+                 .Where(f => f.FixtureId == fixtureId)
+                 .FirstOrDefaultAsync();
 
-            live.LiveStatus = LiveStatus.Ongoing;
-            live.IsInterrupted = false;
-            live.IsLive = true;
+                live.LiveStatus = LiveStatus.Ongoing;
+                live.IsInterrupted = false;
+                live.IsLive = true;
 
-            _context.Update(live);
-            await _context.SaveChangesAsync();
+                _context.Update(live);
+                await _context.SaveChangesAsync();
 
-            return Ok();
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Failed to resume match: " + ex.Message,
+                    errorDetails = new
+                    {
+                        InnerException = ex.InnerException?.Message,
+                        StackTrace = ex.StackTrace
+                    }
+                });
+            }
         }
     }
 }

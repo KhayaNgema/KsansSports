@@ -2,7 +2,7 @@
 
 
 <div>
-    <form id="interruptForm" method="post">
+    <form id="interruptLiveForm">
         @Html.AntiForgeryToken()
 
         <div class="form-floating mb-3">
@@ -11,5 +11,5 @@
             <span asp-validation-for="ReasonForInterruption" class="text-danger"></span>
         </div>
     </form>
-
 </div>
+

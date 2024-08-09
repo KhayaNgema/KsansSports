@@ -12,7 +12,7 @@
 
 <br />
 @await Html.PartialAsync("_HomeButton")
-<h5 class="text-center">@Model.PlayerProfileViewModel.Names @Model.PlayerProfileViewModel.LastName Profile</h5>
+<h5 class="text-center">@Model.PlayerProfileViewModel.Names @Model.PlayerProfileViewModel.LastName 's Profile</h5>
 <br />
 
 <div class="profile-info-container">
@@ -101,7 +101,7 @@
 
     <div class="row mb-3">
         <div class="col-6">
-            <label><i class="fa fa-helping-hands"></i> Assists:</label>
+            <label><i class="fa fa-hands-helping"></i> Assists:</label>
         </div>
         <div class="col-6">
             <p class="form-control-static">@Model.PlayerStatsViewModel.Assists</p>
@@ -109,7 +109,7 @@
     </div>
     <div class="row mb-3">
         <div class="col-6">
-            <label><i class="fa fa-square yellow-card"></i> Yellow cards:</label>
+            <label><i class="fa fa-square yellow-card-alt"></i> Yellow cards:</label>
         </div>
         <div class="col-6">
             <p class="form-control-static">@Model.PlayerStatsViewModel.YellowCards</p>
@@ -118,7 +118,7 @@
 
     <div class="row mb-3">
         <div class="col-6">
-            <label><i class="fa fa-square red-card"></i> Red cards:</label>
+            <label><i class="fa fa-square red-card-alt"></i> Red cards:</label>
         </div>
         <div class="col-6">
             <p class="form-control-static">@Model.PlayerStatsViewModel.RedCards</p>

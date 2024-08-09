@@ -101,7 +101,7 @@
 <div class="container live-match-container" style="margin-top:10px; z-index:1000;">
     <div class="row justify-content-center mb-4">
         <div class="col-8 text-center">
-            <p class="text-center mb-1">@Model.StartLiveViewModel.FixturedClubs</p>
+            <p class="text-center mb-1">@* @Model.StartLiveViewModel.FixturedClubs *@Nkungwini Football Association (NFA)</p>
             <p class="text-center mb-1">@Model.StartLiveViewModel.KickOffTime.ToString("HH:mm"), @Model.StartLiveViewModel.KickOffDate.ToString("dddd, dd MMM yyyy")</p>
         </div>
     </div>
@@ -876,8 +876,8 @@
         <div class="halftime-modal-content">
             <span class="close" id="closeModal">&times;</span>
             <p>Are you sure you want to go to half-time?</p>
-            <button id="confirmHalfTime">Yes</button>
-            <button id="cancelHalfTime">No</button>
+            <button id="confirmHalfTime" class="confirm-button">Yes</button>
+            <button id="cancelHalfTime" class="cancel-button">No</button>
         </div>
     </div>
 
@@ -885,8 +885,8 @@
         <div class="resume-halftime-modal-content">
             <span class="close" id="closeModal">&times;</span>
             <p>Are you sure you want to resume match?</p>
-            <button id="confirmResumeMatch" type="button">Yes</button>
-            <button id="cancelResume" type="button">No</button>
+            <button id="confirmResumeMatch" type="button" class="confirm-button">Yes</button>
+            <button id="cancelResume" type="button" class="cancel-button">No</button>
         </div>
     </div>
 
@@ -934,11 +934,6 @@
         var scoredTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Goal Scored By:', goalScoredBy);
-        console.log('Assisted By:', assistedBy);
-        console.log('Scored Time:', scoredTime);
-
         if (!fixtureId || !goalScoredBy || !scoredTime) {
             alert('Please fill in all required fields.');
             return;
@@ -955,7 +950,6 @@
                 scoredTime: scoredTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Home goal recorded successfully", "alert-success");
                     $('#goalHomeModal').hide();
@@ -965,7 +959,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -995,11 +988,6 @@
         var scoredTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Goal Scored By:', goalScoredBy);
-        console.log('Assisted By:', assistedBy);
-        console.log('Scored Time:', scoredTime);
-
         if (!fixtureId || !goalScoredBy || !scoredTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1016,7 +1004,6 @@
                 scoredTime: scoredTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Away goal recorded successfully", "alert-success");
                     $('#goalAwayModal').hide();
@@ -1026,7 +1013,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1055,10 +1041,6 @@
         var cardTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', yellowCommitedBy);
-        console.log('card Time:', cardTime);
-
         if (!fixtureId || !yellowCommitedBy || !cardTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1075,7 +1057,6 @@
                 cardTime: cardTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Home yellow card recorded successfully", "alert-success");
                     $('#yellowHomeModal').hide();
@@ -1085,7 +1066,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1114,10 +1094,6 @@
         var cardTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', yellowCommitedBy);
-        console.log('card Time:', cardTime);
-
         if (!fixtureId || !yellowCommitedBy || !cardTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1134,7 +1110,6 @@
                 cardTime: cardTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Away yellow card recorded successfully", "alert-success");
                     $('#yellowAwayModal').hide();
@@ -1144,7 +1119,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1187,10 +1161,6 @@
         var cardTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', redCommitedBy);
-        console.log('card Time:', cardTime);
-
         if (!fixtureId || !redCommitedBy || !cardTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1207,7 +1177,6 @@
                 cardTime: cardTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Home red card recorded successfully", "alert-success");
                     $('#redHomeModal').hide();
@@ -1217,7 +1186,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1246,10 +1214,6 @@
         var cardTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Commited By:', redCommitedBy);
-        console.log('card Time:', cardTime);
-
         if (!fixtureId || !redCommitedBy || !cardTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1266,7 +1230,6 @@
                 cardTime: cardTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Away red card recorded successfully", "alert-success");
                     $('#redAwayModal').hide();
@@ -1276,7 +1239,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1302,10 +1264,6 @@
         var penaltyTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Taken By:', takenBy);
-        console.log('Penalty Time:', penaltyTime);
-
         if (!fixtureId || !takenBy || !penaltyTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1321,7 +1279,6 @@
                 penaltyTime: penaltyTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Home penalty recorded successfully", "alert-success");
                     $('#penHomeModal').hide();
@@ -1331,7 +1288,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1356,10 +1312,6 @@
         var penaltyTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Taken By:', takenBy);
-        console.log('Penalty Time:', penaltyTime);
-
         if (!fixtureId || !takenBy || !penaltyTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1375,7 +1327,6 @@
                 penaltyTime: penaltyTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Away penalty recorded successfully", "alert-success");
                     $('#penAwayModal').hide();
@@ -1385,7 +1336,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1411,11 +1361,6 @@
         var subTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Out player:', outPlayer);
-        console.log('In Player:', inPlayer);
-        console.log('Sub Time:', subTime);
-
         if (!fixtureId || !outPlayer || !inPlayer || !subTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1432,7 +1377,6 @@
                 subTime: subTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Home substitute recorded successfully", "alert-success");
                     $('#subHomeModal').hide();
@@ -1442,7 +1386,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1468,11 +1411,6 @@
         var subTime = $('#liveTime').text().trim();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Out player:', outPlayer);
-        console.log('In Player:', inPlayer);
-        console.log('Sub Time:', subTime);
-
         if (!fixtureId || !outPlayer || !inPlayer || !subTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1489,7 +1427,6 @@
                 subTime: subTime
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Away substitute recorded successfully", "alert-success");
                     $('#subAwayModal').hide();
@@ -1499,7 +1436,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1523,10 +1459,6 @@
         var addedTime = $('#addedTime').val();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Added time:', addedTime);
-
-
         if (!fixtureId || !addedTime) {
             alert('Please fill in all required fields.');
             return;
@@ -1541,7 +1473,6 @@
                 addedTime: addedTime,
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Time added successfully", "alert-success");
                     $('#addtimeModal').hide();
@@ -1551,7 +1482,6 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 alert('An error occurred while submitting the form.');
             }
         });
@@ -1575,9 +1505,6 @@
         var interruptionReason = $('#interruptionReason').val();
         var token = $('input[name="__RequestVerificationToken"]').val();
 
-        console.log('Fixture ID:', fixtureId);
-        console.log('Interruption reason:', interruptionReason);
-
         if (!fixtureId || !interruptionReason) {
             alert('Please fill in all required fields.');
             return;
@@ -1592,7 +1519,6 @@
                 interruptionReason: interruptionReason
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Match interrupted successfully", "alert-success");
                     $('#interruptLiveModal').hide();
@@ -1602,12 +1528,24 @@
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
                 console.error('Response:', xhr.responseText);
                 alert('An error occurred while submitting the form.');
             }
         });
     }
+
+
+    $(document).ready(function () {
+        $('#submitInterruptMatch').on('click', function (event) {
+            event.preventDefault();
+            submitInterruptMatch();
+        });
+
+        $('.interrupt-live-modal .close').on('click', function () {
+            $('#interruptLiveModal').hide();
+        });
+
+    });
 
     function submitResumeMatch() {
         var fixtureId = $('#fixtureId').val();
@@ -1626,40 +1564,32 @@
                 fixtureId: fixtureId,
             },
             success: function (response) {
-                console.log('Success:', response);
                 if (response.success) {
                     displayMessage("Match resumed successfully", "alert-success");
-                    $('#resumeLiveModal').hide();
+                    $('#resumeLiveModal').hide(); 
                     updateLiveMatchStatus(fixtureId);
                 } else {
                     alert('Failed to resume live match: ' + (response.message || 'Unknown error'));
                 }
             },
             error: function (xhr, status, error) {
-                console.error('Error:', error);
-                console.error('Response:', xhr.responseText);
                 alert('An error occurred while submitting the form.');
             }
         });
     }
 
     $(document).ready(function () {
-        $('#submitInterruptMatch').on('click', function (event) {
-            event.preventDefault();
-            submitInterruptMatch();
-        });
-
         $('#confirmResumeLive').on('click', function (event) {
             event.preventDefault();
-            submitResumeMatch();
+            submitResumeMatch();  
         });
 
-        $('#interruptLiveModal .close').on('click', function () {
-            $('#interruptLiveModal').hide();
+        $('#cancelResumeLive').on('click', function () {
+            $('#resumeLiveModal').hide();  
         });
 
-        $('#resumeLiveModal .close').on('click', function () {
-            $('#resumeLiveModal').hide();
+        $('.resume-live-modal .close').on('click', function () {
+            $('#resumeLiveModal').hide();  
         });
     });
 
@@ -1668,8 +1598,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         var fixtureId = $('#fixtureId').val();
-
-        // Ensure the 'overview' tab is activated
         handleTabClick({ currentTarget: document.querySelector('.tab.active') }, 'overview');
     });
 
@@ -1679,30 +1607,21 @@
         var awayTeamId = document.getElementById("awayTeamId")?.value;
         var fixtureId = document.getElementById("fixtureId")?.value;
 
-        console.log(`Tab ID: ${tabId}`);
-        console.log(`Fixture ID: ${fixtureId}`);
-        console.log(`Home Team ID: ${homeTeamId}`);
-        console.log(`Away Team ID: ${awayTeamId}`);
-
-        // Hide all tab contents
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].classList.remove("active");
         }
 
-        // Remove active class from all tabs
         tablinks = document.getElementsByClassName("tab");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].classList.remove("active");
         }
 
-        // Show the selected tab content
         document.getElementById(tabId).classList.add("active");
         if (event.currentTarget) {
             event.currentTarget.classList.add("active");
         }
 
-        // Load content if it's not already loaded
         if ($('#' + tabId).html().trim() === '') {
             var url;
             if (tabId === 'overview') {
@@ -1734,7 +1653,6 @@
                         $('#' + tabId).html(data);
                     },
                     error: function (xhr, textStatus, errorThrown) {
-                        console.error("Error loading H2H data:", errorThrown);
                     }
                 });
             }
@@ -1944,14 +1862,9 @@
 
 
 
-    /*Start live match javascript */
 
     function startLiveMatch() {
         var fixtureId = $('#fixtureId').val();
-        if (!fixtureId) {
-            console.error("FixtureId is not set correctly.");
-            return;
-        }
 
         var viewModel = {
             FixtureId: fixtureId,
@@ -1976,7 +1889,6 @@
             success: function (response) {
                 if (response.success) {
                     displayMessage(response.message, 'alert-success');
-                    console.log(response.message); 
 
                     closeModal(); 
 
@@ -1988,7 +1900,6 @@
             error: function (xhr, status, error) {
                 closeModal();
                 displayMessage('Match already started!', 'alert-danger');
-                console.error('Error:', error);
             }
         });
     }
@@ -2032,7 +1943,6 @@
 
     function updateLiveMatchStatus(fixtureId) {
         if (fixtureId) {
-            console.log("Fetching live match status for fixtureId:", fixtureId);
             $.ajax({
                 url: `/Lives/GetLiveMatchStatus?fixtureId=${fixtureId}`,
                 type: 'GET',
@@ -2067,11 +1977,6 @@
                             var addedTime = data.AddTime || data.addTime;
                             var halfTimeScore = data.HalfTimeScore || data.halfTimeScore;
                             var isInterrupted = data.isInterrupted || data.isInterrupted;
-
-                            console.log("Live Time:", liveTime);
-                            console.log("Added Time:", addedTime);
-                            console.log("Server response data:", data);
-                            console.log("Halftime score:", halfTimeScore);
 
                             var displayTime = liveTime;
                             if (!wentToHalfTime && liveTime > 45) {
@@ -2122,6 +2027,8 @@
                                 liveStatusElement.text('Full-time');
                                 liveStatusElement.show();
                                 halfTimeButton.hide();
+                                interruptLiveElement.hide();
+                                resumeLiveElement.hide();
                                 resumeButton.hide();
                             } else if (isInterrupted) {
                                 liveTimeElement.hide();
@@ -2137,6 +2044,8 @@
                                 liveTimeElement.hide();
                                 liveStatusElement.text('Not started');
                                 liveStatusElement.show();
+                                interruptLiveElement.hide();
+                                resumeLiveElement.hide();
                                 if (userRole === 'Sport Coordinator') {
                                     halfTimeButton.show();
                                     resumeButton.hide();
@@ -2161,26 +2070,19 @@
                                 scoreContainer.css('display', 'none').hide();
                             }
 
-
-                            console.log("Updated liveTime HTML:", liveTimeElement.html());
-                            console.log("Updated liveStatus:", liveStatusElement.text());
-                            console.log("Updated homeTeamScore:", homeTeamScoreElement.text());
-                            console.log("Updated addedTime:", addedTimeElement.text());
-
                         } else {
-                            console.error("HTML elements #liveTime or #liveStatus not found.");
+                          
                         }
                     } else {
-                        console.error('No data returned from server.');
+                       
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error('AJAX Error:', error);
-                    console.error('Response Text:', xhr.responseText);
+
                 }
             });
         } else {
-            console.error("Invalid fixtureId:", fixtureId);
+           
         }
     }
 
@@ -2188,31 +2090,31 @@
 
     $(document).ready(function () {
         var fixtureId = $('#fixtureId').val();
-        console.log("Document ready with fixtureId:", fixtureId); // Log the initial fixtureId
+
         if (fixtureId) {
             updateLiveMatchStatus(fixtureId);
             setInterval(function () {
                 updateLiveMatchStatus(fixtureId);
             }, 60000);
         } else {
-            console.error("FixtureId on document ready is not set.");
+
         }
 
         $(document).ready(function () {
             var fixtureId = $('#fixtureId').val();
-            console.log("Document ready with fixtureId:", fixtureId); // Log the initial fixtureId
+
             if (fixtureId) {
                 updateLiveMatchStatus(fixtureId);
                 setInterval(function () {
                     updateLiveMatchStatus(fixtureId);
-                }, 60000); // Update every 60 seconds
+                }, 60000);
             } else {
-                console.error("FixtureId on document ready is not set.");
+
             }
 
             setInterval(function () {
                 $('#flickerSymbol').toggle();
-            }, 1000); // Toggle visibility every second
+            }, 1000);
 
         });
 
@@ -2237,14 +2139,12 @@
                 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
             },
             success: function (response) {
-                console.log("Half-time set for fixtureId: " + fixtureId);
                 closehalftimeModal();
                 displayMessage("Match paused for half-time", "alert-success");
                 updateLiveMatchStatus(fixtureId);
             },
             error: function (xhr, status, error) {
                 alert('Failed to set half-time.');
-                console.error('Error:', error);
                 displayMessage("Failed to set half-time", "alert-danger");
             }
         });
@@ -2254,7 +2154,6 @@
     document.getElementById("confirmResumeLive").onclick = function () {
         var fixtureId = $('#fixtureId').val();
         if (!fixtureId) {
-            console.error("FixtureId is not set correctly.");
             return;
         }
 
@@ -2266,14 +2165,12 @@
                 'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
             },
             success: function (response) {
-                console.log("Half-time set for fixtureId: " + fixtureId);
                 closehalftimeModal();
                 displayMessage("Match resume from where it was paused", "alert-success");
                 updateLiveMatchStatus(fixtureId);
             },
             error: function (xhr, status, error) {
                 alert('Failed to resume livematch.');
-                console.error('Error:', error);
                 displayMessage("Failed to resume live", "alert-danger");
             }
         });
@@ -2307,7 +2204,6 @@
     document.getElementById("confirmResumeMatch").onclick = function () {
         var fixtureId = $('#fixtureId').val();
         if (!fixtureId) {
-            console.error("FixtureId is not set correctly.");
             return;
         }
 
@@ -2326,7 +2222,6 @@
             },
             error: function (xhr, status, error) {
                 alert('Failed to resume match.');
-                console.error('Error:', error);
             }
         });
     };
@@ -2377,7 +2272,6 @@
             },
             success: function (response) {
                 if (response.success) {
-                    console.log("Match ended for fixtureId: " + fixtureId);
                     displayMessage("Match successfully ended", "alert-success");
                     closeFulltimeModal();
                     updateLiveMatchStatus(fixtureId);
@@ -2389,7 +2283,6 @@
             error: function (xhr, status, error) {
                 displayMessage("Match already ended!", "alert-danger");
                 closeFulltimeModal();
-                console.error('Error:', error);
             }
         });
     };
