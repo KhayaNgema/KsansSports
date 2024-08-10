@@ -68,7 +68,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>@ViewData["Title"] - K&S Foundation</title>
+    <title>@ViewData["Title"] - Diski360</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyField.styles.css" asp-append-version="true" />
@@ -116,7 +116,7 @@
                     }
                     else
                     {
-                        <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index" style="color:white;">Ksans-sports</a>
+                        <a class="navbar-brand ml-2" asp-area="" asp-controller="Home" asp-action="Index" style="color:white;">Diski360</a>
                     }
                 </div>
 
@@ -162,6 +162,15 @@
                     </div>
                 </div>
             </nav>
+        <nav class="navbar navbar-light bg-light" id="scrollTextNav">
+            <div class="container-fluid">
+                <div class="scrolling-text-container">
+                    <div class="scrolling-text">
+                        <p>This is a BETA version of our application. We have released this version for testing purposes to gather feedback and improve the final release. Please note that some features available here may be part of a premium version in the full release. We value your input—please share your feedback using the feedback button located at the bottom-right corner of the page. Your comments are crucial in helping us enhance the application.</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
 
         <div id="wrapper">
@@ -341,11 +350,13 @@
         function adjustBodyPadding() {
             var loginNav = document.getElementById('loginNav');
             var homeTabsNav = document.getElementById('homeTabsNav');
+            var homeTabsNav = document.getElementById('scrollTextNav');
 
             var loginNavHeight = loginNav ? loginNav.offsetHeight : 0;
             var homeTabsNavHeight = homeTabsNav ? homeTabsNav.offsetHeight : 0;
+            var scrollTextNavHeight = scrollTextNav ? scrollTextNav.offsetHeight : 0;
 
-            var totalPadding = loginNavHeight + homeTabsNavHeight;
+            var totalPadding = loginNavHeight + homeTabsNavHeight + scrollTextNavHeight;
             document.body.style.paddingTop = totalPadding + 'px';
         }
 

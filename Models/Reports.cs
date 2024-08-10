@@ -275,6 +275,8 @@ namespace MyField.Models
         public int YellowCardCount { get; set; }
 
         public int RedCardCount { get; set; }
+
+        public int OwnGoalsScoredCount { get; set; }
     }
 
 }

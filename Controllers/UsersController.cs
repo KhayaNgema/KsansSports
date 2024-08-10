@@ -195,6 +195,7 @@ namespace MyField.Controllers
                 JerseyNumber = userProfile.JerseyNumber,
                 Position = userProfile.Position,
                 DateOfBirth = userProfile.DateOfBirth,
+                
             };
 
 
@@ -204,7 +205,8 @@ namespace MyField.Controllers
                 Goals = playerStats.GoalsScoredCount,
                 Assists = playerStats.AssistsCount,
                 YellowCards = playerStats.YellowCardCount,
-                RedCards = playerStats.RedCardCount
+                RedCards = playerStats.RedCardCount,
+                OwnGoals = playerStats.OwnGoalsScoredCount
             };
 
 

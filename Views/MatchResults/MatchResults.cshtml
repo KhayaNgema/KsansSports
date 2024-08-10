@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MyField.Models.MatchResults>
+@inject MyField.Interfaces.IEncryptionService encryptionService
 
 @{
     ViewData["Title"] = ViewBag.CurrentSeason + " Match Results";
@@ -11,15 +12,16 @@
 <h4 class="text-center">@ViewBag.CurrentSeason Match Results</h4>
 <br />
 
-
-<div class="matchResultContainer" style="width:100%; padding-right:10px; padding-left:10px;">
+<div class="matchResultContainer" style="width:100%;">
     @if (Model.Any())
     {
         <div class="table-responsive">
             <table class="table table-borderless">
                 <tbody>
-                    @foreach (var item in Model.OrderBy(match => match.MatchDate))
+                    @foreach (var item in Model.OrderByDescending(match => match.MatchDate))
                     {
+                        var encryptedFixtureId = encryptionService.Encrypt(item.FixtureId);
+
                         if (currentDate != item.MatchDate.Date)
                         {
                             <tr>
@@ -51,9 +53,19 @@
                                     </p>
                                 </div>
                             </td>
+                            <td>
+                                <button type="button" onclick="window.location.href='@Url.Action("StartLive", "Lives", new { fixtureId = encryptedFixtureId })';" style="
+                                    background: none;
+                                    border: none;
+                                    cursor: pointer;
+                                    padding: 0;
+                                    margin: 0;">
+                                    <i class="fa fa-info-circle" style="font-size: 18px; color: #011033;"></i>
+                                </button>
+                            </td>
                         </tr>
                         <tr>
-                            <td colspan="3">
+                            <td colspan="4">
                                 <div style="border-bottom: 1px solid #ccc; margin: 2px 0;"></div>
                             </td>
                         </tr>

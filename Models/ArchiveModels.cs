@@ -110,4 +110,9 @@
     {
 
     }
+
+    public class OwnGoals_Archive : LiveOwnGoalHolder
+    {
+
+    }
 }

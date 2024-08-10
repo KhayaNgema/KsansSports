@@ -179,6 +179,48 @@ body {
     transition: margin-left 0.4s ease, padding-left 0.4s ease;
 }
 
+
+
+#scrollTextNav {
+    background-color: #fff;
+    color: black;
+    height: 40px;
+    border-radius: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100%;
+    position: fixed;
+    top: 103px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transition: margin-left 0.4s ease, padding-left 0.4s ease;
+    justify-content:center;
+}
+
+
+#scrollTextNav-pl {
+    background-color: #fff;
+    color: black;
+    height: 40px;
+    border-radius: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transition: margin-left 0.4s ease, padding-left 0.4s ease;
+    justify-content: center;
+}
+
+
 @media screen and (min-width: 992px) {
     #page-content-wrapper {
         height: 100%;
@@ -2425,7 +2467,9 @@ body {
 .addtime-modal,
 .resume-halftime-modal,
 .interrupt-live-modal,
-.resume-live-modal {
+.resume-live-modal,
+.own-goal-home-modal,
+.own-goal-away-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -2454,7 +2498,9 @@ body {
 .addtime-modal-content,
 .resume-halftime-modal-content,
 .interrupt-live-modal-content,
-.resume-live-modal-content {
+.resume-live-modal-content,
+.own-goal-home-modal-content,
+.own-goal-away-modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -2496,7 +2542,9 @@ body {
 .open-halftime-modal-button,
 .open-fulltime-modal-button,
 .open-addtime-modal-button,
-.open-resume-halftime-modal-button {
+.open-resume-halftime-modal-button,
+.open-own-goal-home-modal-button,
+.open-own-goal-away-modal-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -2523,7 +2571,9 @@ body {
     .open-halftime-modal-button :hover,
     .open-fulltime-modal-button :hover,
     .open-addtime-modal-button :hover,
-    .open-resume-halftime-modal-button :hover {
+    .open-resume-halftime-modal-button :hover,
+    .open-own-goal-home-modal-button :hover,
+    .open-own-goal-away-modal-button :hover {
         background-color: #0056b3;
     }
 
@@ -2543,7 +2593,9 @@ body {
     .open-addtime-modal-button :active,
     .open-interrupt-live-button :active,
     .open-resume-live-button :active,
-    .open-resume-halftime-modal-button :active {
+    .open-resume-halftime-modal-button :active,
+    .open-own-goal-home-modal-button :active,
+    .open-own-goal-away-modal-button :active {
         box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
@@ -2628,6 +2680,36 @@ body {
     }
 
 
+.scrolling-text-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+
+.scrolling-text {
+    position: absolute;
+    white-space: nowrap;
+    top: 0;
+    left: 100%;
+    animation: scroll-left 60s linear infinite; 
+}
+
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
 
 
 

@@ -267,5 +267,10 @@ namespace MyField.Data
         public DbSet<MyField.Models.LineUpXI_Archive> LineUpXI_Archives { get; set; } = default!;
 
         public DbSet<MyField.Models.LineUpSubstitutes_Archive> LineUpSubstitutes_Archives { get; set; } = default!;
+
+        public DbSet<MyField.Models.LiveOwnGoalHolder> LiveOwnGoalHolders { get; set; } = default!;
+
+
+        public DbSet<MyField.Models.OwnGoals_Archive> OwnGoals_Archives { get; set; } = default!;
     }
 }

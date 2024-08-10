@@ -11,5 +11,7 @@
         public int YellowCards { get; set; }
 
         public int RedCards { get; set; }
+
+        public int OwnGoals { get; set; }
     }
 }

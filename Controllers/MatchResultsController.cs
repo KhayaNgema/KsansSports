@@ -89,6 +89,7 @@ namespace MyField.Controllers
                 .Include(m => m.AwayTeam)
                 .Include(m => m.CreatedBy)
                 .Include(m => m.ModifiedBy)
+                .OrderByDescending(m => m.CreatedDateTime)
                 .ToListAsync();
 
             var currentSeason = await _context.League
@@ -141,6 +142,7 @@ namespace MyField.Controllers
                                              .Include(m => m.HomeTeam)
                                              .Include(m => m.AwayTeam)
                                              .Where(mo => mo.HomeTeam.ClubId == clubId || mo.AwayTeam.ClubId == clubId)
+                                              .OrderByDescending(m => m.CreatedDateTime)
                                              .ToListAsync();
 
             return View(matchResults);
@@ -162,6 +164,7 @@ namespace MyField.Controllers
                .Include(m => m.AwayTeam)
                .Include(m => m.CreatedBy)
                .Include(m => m.ModifiedBy)
+              .OrderByDescending(m => m.CreatedDateTime)
                .ToListAsync();
 
             return PartialView("_MatchResultsPartial", matchResults);
@@ -183,6 +186,7 @@ namespace MyField.Controllers
                 .Include(m => m.ModifiedBy)
                 .Include(m => m.HomeTeam)
                 .Include(m => m.AwayTeam)
+                  .OrderByDescending(m => m.CreatedDateTime)
                 .ToListAsync();
 
             return PartialView("_BackOfficeMatchResultsPartial", matchResults);
@@ -241,6 +245,30 @@ namespace MyField.Controllers
                     .Include(f => f.HomeTeam)
                     .Include(f => f.AwayTeam)
                     .FirstOrDefaultAsync();
+
+                var homeTeamMatches = await _context.ClubPerformanceReports
+                    .Where(h => h.ClubId == fixture.HomeTeam.ClubId && h.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
+
+                var awayTeamMatches = await _context.ClubPerformanceReports
+                    .Where(h => h.ClubId == fixture.AwayTeam.ClubId && h.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
+                if(homeTeamMatches != null)
+                {
+                    homeTeamMatches.GamesPlayedCount++;
+                }
+
+
+                if (awayTeamMatches != null)
+                {
+                    awayTeamMatches.GamesPlayedCount++;
+                }
+
+                _context.Update(homeTeamMatches);
+                _context.Update(awayTeamMatches);
+                await _context.SaveChangesAsync();
 
                 fixture.FixtureStatus = FixtureStatus.Ended;
 
@@ -417,6 +445,36 @@ namespace MyField.Controllers
                     .Include(l => l.League)
                     .FirstOrDefaultAsync();
 
+                var fixture = await _context.Fixture
+                     .Where(f => f.FixtureId == fixtureId)
+                     .Include(f => f.HomeTeam)
+                     .Include(f => f.AwayTeam)
+                     .FirstOrDefaultAsync();
+
+                var homeTeamMatches = await _context.ClubPerformanceReports
+                      .Where(h => h.ClubId == fixture.HomeTeam.ClubId && h.League.IsCurrent)
+                      .FirstOrDefaultAsync();
+
+
+                var awayTeamMatches = await _context.ClubPerformanceReports
+                    .Where(h => h.ClubId == fixture.AwayTeam.ClubId && h.League.IsCurrent)
+                    .FirstOrDefaultAsync();
+
+                if (homeTeamMatches != null)
+                {
+                    homeTeamMatches.GamesPlayedCount++;
+                }
+
+
+                if (awayTeamMatches != null)
+                {
+                    awayTeamMatches.GamesPlayedCount++;
+                }
+
+                _context.Update(homeTeamMatches);
+                _context.Update(awayTeamMatches);
+                await _context.SaveChangesAsync();
+
 
                 if (liveMatch == null)
                 {
@@ -429,12 +487,6 @@ namespace MyField.Controllers
                 liveMatch.LiveTime = 90;
 
                 _context.Update(liveMatch);
-
-                var fixture = await _context.Fixture
-                    .Where(f => f.FixtureId == fixtureId)
-                    .Include(f => f.HomeTeam)
-                    .Include(f => f.AwayTeam)
-                    .FirstOrDefaultAsync();
 
                 fixture.FixtureStatus = FixtureStatus.Ended;
 
@@ -668,7 +720,30 @@ namespace MyField.Controllers
                     _context.Update(player);
                 }
 
-                await _context.SaveChangesAsync(); 
+                await _context.SaveChangesAsync();
+
+
+                var liveOwnGoals = await _context.LiveOwnGoalHolders
+                   .Where(l => l.LiveId == liveMatch.LiveId && l.League.IsCurrent)
+                   .Include(l => l.OwnGoalScoredBy)
+                   .Include(l => l.Live)
+                   .Include(l => l.League)
+                   .ToListAsync();
+
+                foreach (var ownGoalScorer in liveOwnGoals)
+                {
+                    var scoredPlayerPerformanceReport = await _context.PlayerPerformanceReports
+                        .Where(sp => sp.PlayerId == ownGoalScorer.OwnGoalScoredById && sp.League.IsCurrent)
+                        .Include(t => t.Player)
+                        .FirstOrDefaultAsync();
+
+                    if (scoredPlayerPerformanceReport != null)
+                    {
+                        scoredPlayerPerformanceReport.OwnGoalsScoredCount++;
+
+                        _context.Update(scoredPlayerPerformanceReport);
+                    }
+                }
 
                 foreach (var goalScorer in liveGoals)
                 {

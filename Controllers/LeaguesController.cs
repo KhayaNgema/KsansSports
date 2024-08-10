@@ -139,6 +139,7 @@ namespace MyField.Controllers
                         var oldLineUps = await _context.LineUp.Where(t => t.Fixture.League.IsCurrent).Include(t => t.Fixture).ToListAsync();
                         var oldLineUpXI = await _context.LineUpXI.Where(t => t.Fixture.League.IsCurrent).Include(t => t.ClubPlayer).Include(t => t.Fixture).ToListAsync();
                         var oldLineUpSubs = await _context.LineUpSubstitutes.Where(t => t.Fixture.League.IsCurrent).Include(t => t.ClubPlayer).Include(t => t.Fixture).ToListAsync();
+                        var oldOwnGoals = await _context.LiveOwnGoalHolders.Where(t => t.League.IsCurrent).Include(t => t.OwnGoalScoredBy).ToListAsync();
 
                         foreach (var s in oldStandings)
                         {
@@ -462,6 +463,7 @@ namespace MyField.Controllers
                                 LeagueId = l.LeagueId,
                                 PlayerId = l.PlayerId,
                                 NumberOfAssists = l.NumberOfAssists,
+
                             };
 
                             _context.TopAssists_Archives.Add(archivedTopAssists);
@@ -474,6 +476,7 @@ namespace MyField.Controllers
                             {
                                 LeagueId = g.LeagueId,
                                 ScoreById = g.ScoreById,
+                                RecordedTime = g.RecordedTime,
                                 LiveId = g.LiveId
                             };
 
@@ -489,6 +492,7 @@ namespace MyField.Controllers
                                 LiveId = s.LiveId,
                                 InPlayerId = s.InPlayerId,
                                 OutPlayerId = s.OutPlayerId,
+                                RecordedTime = s.RecordedTime,
                                 LeagueId = s.LeagueId,
                                 SubTime = s.SubTime
                             };
@@ -503,6 +507,7 @@ namespace MyField.Controllers
                             {
                                 LeagueId = y.LeagueId,
                                 YellowCardTime = y.YellowCommitedById,
+                                RecordedTime = y.RecordedTime,
                                 LiveId = y.LiveId,
                                 YellowCommitedById = y.YellowCommitedById,
                             };
@@ -517,6 +522,7 @@ namespace MyField.Controllers
                             {
                                 LeagueId = r.LeagueId,
                                 RedCardTime = r.RedCardTime,
+                                RecordedTime = r.RecordedTime,
                                 LiveId = r.LiveId,
                                 RedCommitedById= r.RedCommitedById,
                             };
@@ -525,6 +531,22 @@ namespace MyField.Controllers
                             await _context.SaveChangesAsync();
                         }
 
+
+                        foreach (var r in oldOwnGoals)
+                        {
+                            var archivedOwnGoals = new OwnGoals_Archive
+                            {
+                                LeagueId = r.LeagueId,
+                                RecordedTime = r.RecordedTime,
+                                OwnGoalScoredById = r.OwnGoalScoredById,
+                                OwnGoalTime = r.OwnGoalTime
+                            };
+
+                            _context.OwnGoals_Archives.Add(archivedOwnGoals);
+                            await _context.SaveChangesAsync();
+                        }
+
+                        _context.LiveOwnGoalHolders.RemoveRange(oldOwnGoals);
                         _context.YellowCards.RemoveRange(oldYellowCards);
                         _context.RedCards.RemoveRange(oldRedCards);
                         _context.Substitutes.RemoveRange(oldSubstitutes);
@@ -655,7 +677,8 @@ namespace MyField.Controllers
                             GoalsScoredCount = 0,
                             AssistsCount = 0,
                             YellowCardCount = 0,
-                            RedCardCount = 0
+                            RedCardCount = 0,
+                            OwnGoalsScoredCount = 0,
                         };
 
                         newPlayerPerformanceReports.Add(newPlayerPerformanceReport);

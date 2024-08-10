@@ -179,7 +179,7 @@
                 </button>
 
                 <button type="button" class="open-interrupt-live-modal-button interruptLive" style="
-        display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
+        display: @(Model.UserRole == "Sport Coordinator" ? "none" : "none");
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -198,7 +198,7 @@
                 </button>
 
                 <button type="button" class="open-resume-live-modal-button resumeLive" style="
-        display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
+        display: @(Model.UserRole == "Sport Coordinator" ? "none" : "none");
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -262,6 +262,49 @@
                 </button>
             </div>
         </div>
+
+        <div class="row justify-content-center" style="margin-bottom: 30px;">
+            <div class="col-4">
+                <button type="button" class="open-own-goal-home-modal-button" data-fixture-id="@Model.StartLiveViewModel.FixtureId" style="
+     display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #dc3545; /* Changed to red */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;"
+                        onmouseover="this.style.backgroundColor='#c82333';" /* Darker red * /
+                        onmouseout="this.style.backgroundColor='#dc3545';" /* Original red * /
+                        onclick="openGoalHomeModal(this);">
+                    <i class="fa fa-futbol" style="margin-right: 8px;"></i> Own Goal H
+                </button>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <button type="button" class="open-own-goal-away-modal-button" style="
+         display: @(Model.UserRole == "Sport Coordinator" ? "block" : "none");
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #dc3545; /* Changed to red */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;"
+                        onmouseover="this.style.backgroundColor='#c82333';" /* Darker red * /
+                        onmouseout="this.style.backgroundColor='#dc3545';" /* Original red * /
+                        onclick="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.3)';"
+                        onmouseup="this.style.boxShadow='';">
+                    <i class="fa fa-futbol" style="margin-right: 8px;"></i> Own Goal A
+                </button>
+            </div>
+        </div>
+
+
 
         <div class="row justify-content-center" style="margin-bottom: 30px;">
             <div class="col-4">
@@ -817,6 +860,65 @@
         </div>
     </div>
 
+
+    <div id="ownGoalHomeModal" class="own-goal-home-modal">
+
+        <div class="own-goal-home-modal-content">
+            <div class="row align-items-center">
+                <div class="col-10">
+                    `
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol own-goal"></i> Own goal @Model.HomeOwnGoalViewModel.HomeTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.HomeOwnGoalViewModel != null)
+            {
+                @await Html.PartialAsync("_HomeOwnGoalPartial", Model.HomeOwnGoalViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitHomeOwnGoal" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="ownGoalAwayModal" class="own-goal-away-modal">
+
+        <div class="own-goal-away-modal-content">
+            <div class="row align-items-center">
+                <div class="col-10">
+                    `
+                    <p class="text-left mb-0" style="font-size:18px; font-weight:bold;">
+                        <i class="fa fa-futbol own-goal"></i> Own goal @Model.AwayOwnGoalViewModel.AwayTeam !!!
+                    </p>
+                </div>
+                <div class="col-2 text-right">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+            @if (Model?.AwayOwnGoalViewModel != null)
+            {
+                @await Html.PartialAsync("_AwayOwnGoalPartial", Model.AwayOwnGoalViewModel)
+            }
+            else
+            {
+                <p>No data available</p>
+            }
+            <div class="form-group rotate-left mt-3">
+                <button type="button" id="submitAwayOwnGoal" class="btn btn-primary" style="float: right;">Post</button>
+            </div>
+        </div>
+    </div>
+
     <div id="penHomeModal" class="pen-home-modal">
 
         <div class="pen-home-modal-content">
@@ -895,8 +997,8 @@
         <div class="fulltime-modal-content">
             <span class="close" onclick="closeFulltimeModal()">&times;</span>
             <p>Are you sure you want to end @Model.StartLiveViewModel.FixturedClubs match?</p>
-            <button id="confirmEndMatch" type="button">Yes</button>
-            <button id="cancelEndMatch" type="button" onclick="closeFulltimeModal()">No</button>
+            <button id="confirmEndMatch" type="button" class="confirm-button">Yes</button>
+            <button id="cancelEndMatch" type="button" onclick="closeFulltimeModal()" class="cancel-button">No</button>
         </div>
     </div>
 
@@ -925,7 +1027,6 @@
 
 <script>
     var userRole = '@userRole';
-
 
     function submitHomeGoal() {
         var fixtureId = $('#fixtureId').val();
@@ -1595,6 +1696,103 @@
 
 
 
+    function submitHomeOwnGoal() {
+        var fixtureId = $('#fixtureId').val();
+        var ownGoalScoredBy = $('#homeOwnGoalScoredBy').val();
+        var ownGoalTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        if (!fixtureId || !ownGoalScoredBy || !ownGoalTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/HomeOwnGoal',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                ownGoalScoredBy : ownGoalScoredBy,
+                ownGoalTime : ownGoalTime
+            },
+            success: function (response) {
+                if (response.success) {
+                    displayMessage("Home own goal recorded successfully", "alert-success");
+                    $('#ownGoalHomeModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record home own goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitHomeOwnGoal').on('click', function (event) {
+            event.preventDefault();
+            submitHomeOwnGoal();
+        });
+
+
+        $('.own-goal-home-modal .close').on('click', function () {
+            $('#ownGoalHomeModal').hide();
+        });
+    });
+
+
+    function submitAwayOwnGoal() {
+        var fixtureId = $('#fixtureId').val();
+        var ownGoalScoredBy = $('#awayOwnGoalScoredBy').val();
+        var ownGoalTime = $('#liveTime').text().trim();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        if (!fixtureId || !ownGoalScoredBy || !ownGoalTime) {
+            alert('Please fill in all required fields.');
+            return;
+        }
+
+        $.ajax({
+            url: '/Lives/AwayOwnGoal',
+            type: 'POST',
+            data: {
+                __RequestVerificationToken: token,
+                fixtureId: fixtureId,
+                ownGoalScoredBy: ownGoalScoredBy,
+                ownGoalTime: ownGoalTime
+            },
+            success: function (response) {
+                if (response.success) {
+                    displayMessage("Away own goal recorded successfully", "alert-success");
+                    $('#ownGoalAwayModal').hide();
+                    updateLiveMatchStatus(fixtureId);
+                } else {
+                    alert('Failed to record away own goal: ' + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('An error occurred while submitting the form.');
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $('#submitAwayOwnGoal').on('click', function (event) {
+            event.preventDefault();
+            submitAwayOwnGoal();
+        });
+
+
+        $('.own-goal-away-modal .close').on('click', function () {
+            $('#ownGoalAwayModal').hide();
+        });
+    });
+
+
+
 
     document.addEventListener('DOMContentLoaded', function () {
         var fixtureId = $('#fixtureId').val();
@@ -1679,6 +1877,8 @@
     var resumeHalftimeModal = document.getElementById('resumeHalftimeModal');
     var interruptLiveModal = document.getElementById('interruptLiveModal');
     var resumeLiveModal = document.getElementById('resumeLiveModal');
+    var ownGoalHomeModal = document.getElementById('ownGoalHomeModal');
+    var ownGoalAwayModal = document.getElementById('ownGoalAwayModal');
 
     var openStartLiveModalButton = document.querySelector('.open-start-live-modal-button');
     var openGoalHomeModalButton = document.querySelector('.open-goal-home-modal-button');
@@ -1697,6 +1897,8 @@
     var openInterruptLiveModalButton = document.querySelector('.open-interrupt-live-modal-button');
     var openResumeLiveModalButton = document.querySelector('.open-resume-live-modal-button');
     var openResumeHalftimeModalButton = document.querySelector('.open-resume-halftime-modal-button');
+    var openOwnGoalHomeModalButton = document.querySelector('.open-own-goal-home-modal-button');
+    var openOwnGoalAwayModalButton = document.querySelector('.open-own-goal-away-modal-button');
 
     var closeButtons = document.querySelectorAll('.close');
 
@@ -1771,6 +1973,19 @@
     }
 
 
+    openResumeLiveModalButton.onclick = function () {
+        resumeLiveModal.style.display = 'block';
+    }
+
+    openOwnGoalHomeModalButton.onclick = function () {
+        ownGoalHomeModal.style.display = 'block';
+    }
+
+    openOwnGoalAwayModalButton.onclick = function () {
+        ownGoalAwayModal.style.display = 'block';
+    }
+
+
     closeButtons.forEach(function (btn) {
         btn.onclick = function () {
             startLiveModal.style.display = 'none';
@@ -1790,6 +2005,8 @@
             interruptLiveModal.style.display = 'none';
             resumeLiveModal.style.display = 'none';
             resumeHalftimeModal.style.display = 'none';
+            ownGoalHomeModal.style.display = 'none';
+            ownGoalAwayModal.style.display = 'none';
         }
     });
 
@@ -1803,7 +2020,7 @@
         if (event.target === goalAwayModal) {
             goalAwayModal.style.display = 'none';
         }
-        if (event.target === goalAwayModal) {
+        if (event.target === yellowHomeModal) {
             yellowHomeModal.style.display = 'none';
         }
         if (event.target === yellowAwayModal) {
@@ -1822,7 +2039,7 @@
             redHomeModal.style.display = 'none';
         }
 
-        if (event.target === subAwayModal) {
+        if (event.target === redAwayModal) {
             redAwayModal.style.display = 'none';
         }
 
@@ -1856,6 +2073,15 @@
 
         if (event.target === interruptLiveModal) {
            interruptLiveModal.style.display = 'none';
+        }
+
+
+        if (event.target === ownGoalHomeModal) {
+            ownGoalHomeModal.style.display = 'none';
+        }
+
+        if (event.target === ownGoalAwayModal) {
+            ownGoalAwayModal.style.display = 'none';
         }
     }
 
@@ -2044,8 +2270,6 @@
                                 liveTimeElement.hide();
                                 liveStatusElement.text('Not started');
                                 liveStatusElement.show();
-                                interruptLiveElement.hide();
-                                resumeLiveElement.hide();
                                 if (userRole === 'Sport Coordinator') {
                                     halfTimeButton.show();
                                     resumeButton.hide();
@@ -2066,6 +2290,7 @@
                             if (wentToHalfTime) {
                                 halfTimeScoreElement.text(halfTimeScore);
                                 scoreContainer.css('display', 'flex').show();
+                                halfTimeButton.hide();
                             } else {
                                 scoreContainer.css('display', 'none').hide();
                             }
@@ -2095,32 +2320,14 @@
             updateLiveMatchStatus(fixtureId);
             setInterval(function () {
                 updateLiveMatchStatus(fixtureId);
-            }, 60000);
-        } else {
-
+            }, 30000);
         }
 
-        $(document).ready(function () {
-            var fixtureId = $('#fixtureId').val();
-
-            if (fixtureId) {
-                updateLiveMatchStatus(fixtureId);
-                setInterval(function () {
-                    updateLiveMatchStatus(fixtureId);
-                }, 60000);
-            } else {
-
-            }
-
-            setInterval(function () {
-                $('#flickerSymbol').toggle();
-            }, 1000);
-
-        });
-
-
-
+        setInterval(function () {
+            $('#flickerSymbol').toggle();
+        }, 1000);
     });
+
 
 
 
@@ -2184,9 +2391,9 @@
         closehalftimeModal();
     };
 
-    function closehalftimeModal() {
+    $('#cancelHalfTime').click(function () {
         $('#halftimeModal').hide();
-    }
+    });
 
     document.getElementById("cancelHalfTime").onclick = function () {
         closeModal();

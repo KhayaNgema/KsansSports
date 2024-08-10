@@ -112,6 +112,10 @@
                             formattedEvent.scoredTime = event.substitutionTime;
                             formattedEvent.scoreBy = `<i class="fa fa-arrow-up" style="font-size:12px; color:green;"> </i> ${event.playerIn}<br><i class="fa fa-arrow-down" style="font-size:12px; color:red;"> </i> ${event.playerOut}`;
                             break;
+                        case 'liveOwnGoals':
+                            formattedEvent.scoredTime = event.scoredTime;
+                            formattedEvent.scoreBy = event.ownGoalScoredBy;
+                            break;
                     }
                     allEvents.push(formattedEvent);
                 });
@@ -143,6 +147,9 @@
                 break;
             case 'substitutes':
                 icon = '';
+                break;
+            case 'liveOwnGoals':
+                icon = '<i class="fa fa-futbol own-goal"></i>';
                 break;
             default:
                 icon = '';

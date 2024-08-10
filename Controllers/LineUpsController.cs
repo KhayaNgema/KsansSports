@@ -205,7 +205,6 @@ namespace MyField.Controllers
             return PartialView("_MatchLineUpSubstitutesFinalPartial", matchSubsXI);
         }
 
-
         [Authorize(Roles =("Club Manager"))]
         public IActionResult CreateMatchLineUp()
         {
@@ -271,7 +270,6 @@ namespace MyField.Controllers
             return PartialView("_MatchSubstitutesHolderPartial", matchSubstitutes);
         }
 
-
         [Authorize(Roles = ("Club Manager"))]
         public async Task<IActionResult> ClubPlayers()
         {
@@ -332,18 +330,20 @@ namespace MyField.Controllers
             return View(newViewModel);
         }
 
-        [Authorize(Roles = ("Club Manager"))]
+        [Authorize(Roles = "Club Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMatchLineUpXIHolder(MatchLineUpXIHolderViewModel viewModel)
         {
             try
             {
+                TempData.Remove("XiMessage");
+                TempData.Remove("SubstitutesMessage");
+
                 var count = _context.LineUpXIHolder.Count(l => l.FixtureId == viewModel.FixtureId);
                 if (count >= 11)
                 {
                     TempData["XiMessage"] = "Starting XI is limited to 11 players per match";
-                    TempData.Remove("SubstitutesMessage");
                     return Ok();
                 }
 
@@ -353,7 +353,6 @@ namespace MyField.Controllers
                 if (existingLineup != null)
                 {
                     TempData["XiMessage"] = "This player has already been added to starting XI";
-                    TempData.Remove("SubstitutesMessage");
                     return Ok();
                 }
 
@@ -363,7 +362,6 @@ namespace MyField.Controllers
                 if (existingSubstitutes != null)
                 {
                     TempData["SubstitutesMessage"] = "This player has already been added to substitutes";
-                    TempData.Remove("XiMessage");
                     return Ok();
                 }
 
@@ -394,7 +392,6 @@ namespace MyField.Controllers
                         await _context.SaveChangesAsync();
 
                         TempData["XiMessage"] = $"{player.FirstName} {player.LastName} ({player.Position}) added to starting XI successfully.";
-                        TempData.Remove("SubstitutesMessage");
                         return Ok();
                     }
                     else
@@ -415,6 +412,7 @@ namespace MyField.Controllers
             }
         }
 
+
         [Authorize(Roles = ("Club Manager"))]
         public IActionResult CreateMatchLineUpSubstitutesHolder(int fixtureId, string playerId)
         {
@@ -426,13 +424,16 @@ namespace MyField.Controllers
             return View(newViewModel);
         }
 
-        [Authorize(Roles = ("Club Manager"))]
+        [Authorize(Roles = "Club Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMatchLineUpSubstitutesHolder(MatchLineUpSubstitutesViewModel viewModel)
         {
             try
             {
+                TempData.Remove("SubstitutesMessage");
+                TempData.Remove("XiMessage");
+
                 if (ModelState.IsValid)
                 {
                     var user = await _userManager.GetUserAsync(User);
@@ -442,7 +443,6 @@ namespace MyField.Controllers
                     if (count >= 7)
                     {
                         TempData["SubstitutesMessage"] = "Substitutes are limited to only 7 players per match!";
-                        TempData.Remove("XiMessage");
                         return Ok();
                     }
 
@@ -452,7 +452,6 @@ namespace MyField.Controllers
                     if (existingLineup != null)
                     {
                         TempData["XiMessage"] = "This player has already been added to starting XI";
-                        TempData.Remove("SubstitutesMessage");
                         return Ok();
                     }
 
@@ -462,13 +461,10 @@ namespace MyField.Controllers
                     if (existingSubstitutes != null)
                     {
                         TempData["SubstitutesMessage"] = "This player has already been added to substitutes";
-                        TempData.Remove("XiMessage");
                         return Ok();
                     }
 
-                    var loggedInUser = await _userManager.GetUserAsync(User);
-                    var clubManager = loggedInUser as ClubManager;
-
+                    var clubManager = user as ClubManager;
                     var player = await _context.Player.FindAsync(viewModel.UserId);
 
                     if (player != null)
@@ -488,7 +484,6 @@ namespace MyField.Controllers
                         await _context.SaveChangesAsync();
 
                         TempData["SubstitutesMessage"] = $"{player.FirstName} {player.LastName} ({player.Position}) added to substitutes successfully.";
-                        TempData.Remove("XiMessage");
                         return Ok();
                     }
                     else
@@ -511,6 +506,7 @@ namespace MyField.Controllers
 
 
 
+
         [Authorize(Roles = ("Club Manager"))]
         public IActionResult CreateMatchLineUpFinal(int fixtureId)
         {
@@ -522,12 +518,15 @@ namespace MyField.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Club Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateMatchLineUpFinal(MatchLineUpFinalViewModel viewModel)
         {
             try
             {
+                TempData.Remove("LineUpMessage");
+
                 if (!ModelState.IsValid)
                 {
                     var errorMessages = ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage));
@@ -536,12 +535,21 @@ namespace MyField.Controllers
 
                 var user = await _userManager.GetUserAsync(User);
                 var userId = user?.Id;
-
                 var clubManager = user as ClubManager;
 
                 if (string.IsNullOrEmpty(userId))
                 {
                     return Json(new { success = false, error = "User ID is null or empty" });
+                }
+
+
+                var existingLineUp = await _context.LineUp
+                    .FirstOrDefaultAsync(l => l.FixtureId == viewModel.FixtureId && l.ClubId == clubManager.ClubId);
+
+                if (existingLineUp != null)
+                {
+                    TempData["LineUpMessage"] = "Lineup already exists for this match.";
+                    return Json(new { success = false, error = "Lineup already exists for this match." });
                 }
 
                 var lineupXIHolders = await _context.LineUpXIHolder
@@ -554,7 +562,7 @@ namespace MyField.Controllers
 
                 var lineUp = new LineUp
                 {
-                    ClubId = clubManager.ClubId,
+                    ClubId = clubManager?.ClubId ?? 0,
                     FixtureId = viewModel.FixtureId,
                     CreatedById = userId,
                     ModifiedById = userId,
@@ -586,7 +594,7 @@ namespace MyField.Controllers
                 foreach (var player in lineupXIHolders)
                 {
                     var playerPerformanceReport = await _context.PlayerPerformanceReports
-                        .Where( p => p.Player.Id == player.ClubPlayer.Id && p.League.IsCurrent)
+                        .Where(p => p.Player.Id == player.ClubPlayer.Id && p.League.IsCurrent)
                         .Include(p => p.Player)
                         .FirstOrDefaultAsync();
 
@@ -624,7 +632,9 @@ namespace MyField.Controllers
 
                 await _activityLogger.Log($"Created match lineup for match of {fixture.HomeTeam.ClubName} and {fixture.AwayTeam.ClubName}", user.Id);
 
-                return Ok();
+                TempData["LineUpMessage"] = "Lineup uploaded successfully.";
+
+                return Ok(new { success = true });
             }
             catch (Exception ex)
             {
@@ -646,6 +656,8 @@ namespace MyField.Controllers
         }
 
 
+
+
         [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -653,6 +665,9 @@ namespace MyField.Controllers
         {
             try
             {
+                TempData.Remove("SubstitutesMessage");
+                TempData.Remove("XiMessage");
+
                 var lineUpXIHolder = await _context.LineUpXIHolder
                     .Include(s => s.ClubPlayer)
                     .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
@@ -667,7 +682,6 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["XiMessage"] = $"You have deleted {playerFirstName} {playerLastName} ({playerPosition}) from the lineup.";
-                    TempData.Remove("SubstitutesMessage");
                 }
                 else
                 {
@@ -679,7 +693,6 @@ namespace MyField.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while deleting the player from LineUpXIHolder: {ex.Message}");
-
                 return View("Error");
             }
         }
@@ -692,6 +705,9 @@ namespace MyField.Controllers
         {
             try
             {
+                TempData.Remove("XiMessage");
+                TempData.Remove("SubstitutesMessage");
+
                 var lineUpSubstitutesHolder = await _context.LineUpSubstitutesHolder
                     .Include(s => s.ClubPlayer)
                     .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
@@ -706,7 +722,6 @@ namespace MyField.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["SubstitutesMessage"] = $"You have deleted {playerFirstName} {playerLastName} ({playerPosition}) from the substitutes.";
-                    TempData.Remove("XiMessage");
                 }
                 else
                 {
@@ -718,11 +733,9 @@ namespace MyField.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while deleting the player from LineUpSubstitutesHolder: {ex.Message}");
-
                 return View("Error");
             }
         }
-
 
         [Authorize(Roles = ("Club Manager"))]
         [HttpPost]
@@ -731,57 +744,47 @@ namespace MyField.Controllers
         {
             try
             {
+                TempData.Remove("XiMessage");
+                TempData.Remove("SubstitutesMessage");
+
                 var count = await _context.LineUpSubstitutesHolder.CountAsync(l => l.FixtureId == fixtureId);
                 if (count >= 7)
                 {
-                    TempData["XiMessage"] = "Please delete one or more players from substitutes to move a player";
-                    TempData.Remove("SubstitutesMessage");
+                    TempData["XiMessage"] = "Please delete one or more players from substitutes to move a player.";
                     return Ok();
                 }
-                
 
-                if (ModelState.IsValid)
+                var player = await _context.LineUpXIHolder
+                    .Include(p => p.ClubPlayer)
+                    .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user?.Id;
+
+                if (player != null)
                 {
+                    _context.LineUpXIHolder.Remove(player);
 
-                    var player = await _context.LineUpXIHolder
-                        .Include(p => p.ClubPlayer)
-                        .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
-                    var user = await _userManager.GetUserAsync(User);
-                    var userId = user?.Id;
-
-                    if (player != null)
+                    _context.LineUpSubstitutesHolder.Add(new LineUpSubstitutesHolder
                     {
+                        ClubId = clubId,
+                        FixtureId = fixtureId,
+                        PlayerId = playerId,
+                        CreatedById = userId,
+                        CreatedDateTime = DateTime.Now,
+                        ModifiedDateTime = DateTime.Now,
+                        ModifiedById = userId
+                    });
 
-                        _context.LineUpXIHolder.Remove(player);
+                    await _context.SaveChangesAsync();
 
-                        _context.LineUpSubstitutesHolder.Add(new LineUpSubstitutesHolder
-                        {
-                            ClubId = clubId,
-                            FixtureId = fixtureId,
-                            PlayerId = playerId,
-                            CreatedById = userId,
-                            CreatedDateTime = DateTime.Now,
-                            ModifiedDateTime = DateTime.Now,
-                            ModifiedById = userId
-                        });
-
-                        await _context.SaveChangesAsync();
-                    }
-
-                    TempData["XiMessage"] = $"You have successfully moved  {player.ClubPlayer.FirstName}  {player.ClubPlayer.LastName} ({player.ClubPlayer.Position}) to substitutes.";
-                    TempData.Remove("SubstitutesMessage");
-                    return Ok();
-                }
-                else
-                {
-                    return BadRequest(ModelState);
+                    TempData["XiMessage"] = $"You have successfully moved {player.ClubPlayer.FirstName} {player.ClubPlayer.LastName} ({player.ClubPlayer.Position}) to substitutes.";
                 }
 
+                return Ok();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred while deleting the player from LineUpXIHolder: {ex.Message}");
-
+                Console.WriteLine($"An error occurred while moving the player from LineUpXIHolder to LineUpSubstitutesHolder: {ex.Message}");
                 return View("Error");
             }
         }
@@ -793,59 +796,47 @@ namespace MyField.Controllers
         {
             try
             {
+                TempData.Remove("XiMessage");
+                TempData.Remove("SubstitutesMessage");
+
                 var count = await _context.LineUpXIHolder.CountAsync(l => l.FixtureId == fixtureId);
                 if (count >= 11)
                 {
-                    TempData["SubstitutesMessage"] = "Please delete one or more players from starting XI to move a player";
-                    TempData.Remove("XiMessage");
+                    TempData["SubstitutesMessage"] = "Please delete one or more players from starting XI to move a player.";
                     return Ok();
                 }
 
-                if (ModelState.IsValid)
-                {
-                    // Find the player in LineUpSubstitutesHolder
-                    var player = await _context.LineUpSubstitutesHolder
-                        .Include(s => s.ClubPlayer)
-                        .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
-                    var user = await _userManager.GetUserAsync(User);
-                    var userId = user?.Id;
+                var player = await _context.LineUpSubstitutesHolder
+                    .Include(s => s.ClubPlayer)
+                    .FirstOrDefaultAsync(m => m.FixtureId == fixtureId && m.PlayerId == playerId);
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user?.Id;
 
-                    if (player != null)
+                if (player != null)
+                {
+                    _context.LineUpSubstitutesHolder.Remove(player);
+
+                    _context.LineUpXIHolder.Add(new LineUpXIHolder
                     {
-                        // Remove the player from LineUpSubstitutesHolder
-                        _context.LineUpSubstitutesHolder.Remove(player);
+                        ClubId = clubId,
+                        FixtureId = fixtureId,
+                        PlayerId = playerId,
+                        CreatedById = userId,
+                        CreatedDateTime = DateTime.Now,
+                        ModifiedDateTime = DateTime.Now,
+                        ModifiedById = userId
+                    });
 
-                        // Add the player to LineUpXIHolder
-                        _context.LineUpXIHolder.Add(new LineUpXIHolder
-                        {
-                            ClubId = clubId,
-                            FixtureId = fixtureId,
-                            PlayerId = playerId,
-                            CreatedById = userId,
-                            CreatedDateTime = DateTime.Now,
-                            ModifiedDateTime = DateTime.Now,
-                            ModifiedById = userId
-                        });
+                    await _context.SaveChangesAsync();
 
-                        await _context.SaveChangesAsync();
-                    }
-
-
-                    TempData["SubstitutesMessage"] = $" You have successfully moved {player.ClubPlayer.FirstName}  {player.ClubPlayer.LastName} ({player.ClubPlayer.Position}) to starting XI.";
-                    TempData.Remove("XiMessage");
-                    return Ok();
+                    TempData["SubstitutesMessage"] = $"You have successfully moved {player.ClubPlayer.FirstName} {player.ClubPlayer.LastName} ({player.ClubPlayer.Position}) to starting XI.";
                 }
-                else
-                {
-                    return BadRequest(ModelState); // Return a bad request response with model state errors
-                }
+
+                return Ok();
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine($"An error occurred while moving the player from LineUpSubstitutesHolder to LineUpXIHolder: {ex.Message}");
-
-                // Return a generic error view
                 return View("Error");
             }
         }

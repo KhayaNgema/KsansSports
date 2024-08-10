@@ -145,6 +145,17 @@ namespace MyField.Models
         public virtual Player AssistedBy { get; set; }
     }
 
+
+    public class LiveOwnGoalHolder : Event
+    {
+        public string OwnGoalScoredById { get; set; }
+
+        public virtual Player OwnGoalScoredBy { get; set; }
+
+        public string OwnGoalTime { get; set; }
+    }
+
+
     public class LiveYellowCardHolder : Event
     {
         public string YellowCommitedById { get; set; }

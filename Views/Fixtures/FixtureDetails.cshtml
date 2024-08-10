@@ -65,7 +65,6 @@
                 formationId: formationId
             },
             success: function (response) {
-                console.log("Success:", response);
 
                 fetchClubFormations(fixtureId);
             },
@@ -84,7 +83,6 @@
             },
             error: function (xhr, status, error) {
                 var errorMessage = xhr.responseText;
-                console.log(errorMessage);
                 alert(errorMessage);
             }
         });
@@ -142,7 +140,6 @@
                 $('#matchSubstitutesHolder').html(data);
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.error("Error:", errorThrown);
             }
         });
     }
@@ -175,7 +172,6 @@
                     $('#' + tabName).html(data);
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    console.error("Error:", errorThrown);
                 }
             });
         }
@@ -253,47 +249,43 @@
                 updateLineUPSubstitutes(fixtureId);
             },
             error: function (xhr, status, error) {
-                console.log("Error:", error);
             }
         });
     }
 
     $(document).ready(function () {
-        // Event delegation for handling click event of #submitButton
         $(document).on('click', '#submitButton', function (e) {
-            e.preventDefault(); // Prevent default form submission
+            e.preventDefault(); 
 
             var fixtureId = $("#fixtureId").val();
 
-            console.log("Submit button clicked!"); // Check if button click event is firing
-
-            // Get the anti-forgery token from the page
             var token = $('input[name="__RequestVerificationToken"]').val();
 
-            // Make AJAX request with the token included in the data
             $.ajax({
                 url: '@Url.Action("CreateMatchLineUpFinal", "LineUps")',
                 type: 'POST',
                 headers: {
-                    "RequestVerificationToken": token // Include anti-forgery token in request headers
+                    "RequestVerificationToken": token 
                 },
                 data: {
-                    FixtureId: fixtureId, // Include fixture ID in the request data
-                    __RequestVerificationToken: token // Include anti-forgery token in the request data
+                    FixtureId: fixtureId,
+                    __RequestVerificationToken: token 
                 },
                 beforeSend: function () {
-                    console.log("Sending request..."); // Check if AJAX request is being sent
                 },
                 success: function (response) {
-                    console.log("Success:", response);
+                    if (response.success) {
+                        displayMessage("Line up set successfully", "alert-success");
 
-                    updateLineUpXI(fixtureId);
-                    updateLineUPSubstitutes(fixtureId);
-                    updateMatchXIHolder(fixtureId);
-                    updateMatchSubstitutes(fixtureId)
+                        updateLineUpXI(fixtureId);
+                        updateLineUPSubstitutes(fixtureId);
+                        updateMatchXIHolder(fixtureId);
+                        updateMatchSubstitutes(fixtureId)
+                    } else {
+                        displayMessage("Line up already exists for this match", "alert-danger");
+                    }
                 },
                 error: function (xhr, textStatus, errorThrown) {
-                    console.error('Error:', errorThrown);
                     var errorMessage = xhr.responseText;
                     alert(errorMessage);
                 }
@@ -317,10 +309,8 @@
                 __RequestVerificationToken: token
             },
             success: function (response) {
-                // Update Starting XI
                 updateMatchXIHolder(fixtureId);
 
-                // Update Substitutes
                 updateMatchSubstitutes(fixtureId);
 
                 updateLineUpXI(fixtureId);
@@ -347,10 +337,9 @@
                 __RequestVerificationToken: token
             },
             success: function (response) {
-                // Update Starting XI
+
                 updateMatchXIHolder(fixtureId);
 
-                // Update Substitutes
                 updateMatchSubstitutes(fixtureId);
 
                 updateLineUpXI(fixtureId);
@@ -374,10 +363,9 @@
                 __RequestVerificationToken: token
             },
             success: function (response) {
-                // Update Starting XI
+
                 updateMatchXIHolder(fixtureId);
 
-                // Update Substitutes
                 updateMatchSubstitutes(fixtureId);
 
                 updateLineUpXI(fixtureId);
@@ -404,10 +392,9 @@
                 __RequestVerificationToken: token
             },
             success: function (response) {
-                // Update Starting XI
+
                 updateMatchXIHolder(fixtureId);
 
-                // Update Substitutes
                 updateMatchSubstitutes(fixtureId);
 
                 updateLineUpXI(fixtureId);

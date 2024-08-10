@@ -87,7 +87,7 @@ namespace MyField.Controllers
             };
 
             var homePlayers = await _context.Player
-                .Where(p => p.ClubId == fixture.HomeTeamId && 
+                .Where(p => p.ClubId == fixture.HomeTeamId &&
                 p.IsOnPitch)
                 .Select(p => new
                 {
@@ -103,28 +103,28 @@ namespace MyField.Controllers
                p.IsOnPitch)
                .Select(p => new
                {
-               PlayerId = p.Id,
-               FullName = $"{p.FirstName} {p.LastName}",
-               JerseyNumber = p.JerseyNumber
+                   PlayerId = p.Id,
+                   FullName = $"{p.FirstName} {p.LastName}",
+                   JerseyNumber = p.JerseyNumber
                })
                .ToListAsync();
 
             var homeLineUpXI = await _context.LineUpXI
-               .Where(l => l.FixtureId == decryptedFixtureId && 
-               l.ClubId == fixture.HomeTeam.ClubId && 
+               .Where(l => l.FixtureId == decryptedFixtureId &&
+               l.ClubId == fixture.HomeTeam.ClubId &&
                l.ClubPlayer.IsOnPitch)
                .Include(l => l.ClubPlayer)
                .Select(l => new
                {
-               PlayerId = l.ClubPlayer.Id,
-               FullName = $"{l.ClubPlayer.FirstName} {l.ClubPlayer.LastName}",
-               JerseyNumber = l.ClubPlayer.JerseyNumber
+                   PlayerId = l.ClubPlayer.Id,
+                   FullName = $"{l.ClubPlayer.FirstName} {l.ClubPlayer.LastName}",
+                   JerseyNumber = l.ClubPlayer.JerseyNumber
                })
               .ToListAsync();
 
             var homeLineUpSubstitutes = await _context.LineUpSubstitutes
-                .Where(l => l.FixtureId == decryptedFixtureId && 
-                l.ClubId == fixture.HomeTeam.ClubId && 
+                .Where(l => l.FixtureId == decryptedFixtureId &&
+                l.ClubId == fixture.HomeTeam.ClubId &&
                 l.ClubPlayer.HasPlayed == false)
                 .Include(l => l.ClubPlayer)
                 .Select(l => new
@@ -136,7 +136,7 @@ namespace MyField.Controllers
                 .ToListAsync();
 
             var awayLineUpXI = await _context.LineUpXI
-                .Where(l => l.FixtureId == decryptedFixtureId && 
+                .Where(l => l.FixtureId == decryptedFixtureId &&
                 l.ClubId == fixture.AwayTeam.ClubId &&
                 l.ClubPlayer.IsOnPitch)
                 .Include(l => l.ClubPlayer)
@@ -149,9 +149,9 @@ namespace MyField.Controllers
                 .ToListAsync();
 
             var awayLineUpSubstitutes = await _context.LineUpSubstitutes
-                .Where(l => l.FixtureId == decryptedFixtureId && 
+                .Where(l => l.FixtureId == decryptedFixtureId &&
                 l.ClubId == fixture.AwayTeam.ClubId &&
-                l.ClubPlayer.HasPlayed== false)
+                l.ClubPlayer.HasPlayed == false)
                 .Include(l => l.ClubPlayer)
                 .Select(l => new
                 {
@@ -354,6 +354,20 @@ namespace MyField.Controllers
                 ReasonForInterruption = null
             };
 
+            var homeOwnGoalViewModel = new HomeOwnGoalViewModel
+            {
+                Players = awayPlayers,
+                HomeTeam = fixture.HomeTeam.ClubName,
+                FixtureId = fixture.FixtureId
+            };
+
+            var awayOwnGoalViewModel = new AwayOwnGoalViewModel
+            {
+                Players = homePlayers,
+                AwayTeam = fixture.AwayTeam.ClubName,
+                FixtureId = fixture.FixtureId
+            };
+
             var combinedViewModel = new CombinedStartLiveViewModel
             {
                 StartLiveViewModel = startLiveViewModel,
@@ -370,7 +384,9 @@ namespace MyField.Controllers
                 AddedTime = 0,
                 UserRole = userRole,
                 OverviewViewModel = overviewViewModel,
-                LiveMatchViewModel = liveMatchViewModel
+                LiveMatchViewModel = liveMatchViewModel,
+                HomeOwnGoalViewModel = homeOwnGoalViewModel,
+                AwayOwnGoalViewModel = awayOwnGoalViewModel
             };
 
             return View(combinedViewModel);
@@ -565,7 +581,7 @@ namespace MyField.Controllers
                     return BadRequest(new { success = false, message = "Live match not found." });
                 }
 
-                if(!liveMatch.IsLive)
+                if (!liveMatch.IsLive)
                 {
 
                     return View(viewModel);
@@ -576,7 +592,7 @@ namespace MyField.Controllers
                 var newGoal = new LiveGoalHolder
                 {
                     LeagueId = liveMatch.LeagueId,
-                    ScoredById= goalScoredBy,
+                    ScoredById = goalScoredBy,
                     LiveId = liveMatch.LiveId,
                     ScoredTime = scoredTime,
                     RecordedTime = DateTime.Now,
@@ -603,7 +619,7 @@ namespace MyField.Controllers
         [HttpGet]
         public async Task<IActionResult> AwayGoal()
         {
-           
+
             return PartialView("_AwayGoalPartial");
         }
 
@@ -691,7 +707,7 @@ namespace MyField.Controllers
                     LeagueId = liveMatch.LeagueId,
                     YellowCommitedById = commitedBy,
                     LiveId = liveMatch.LiveId,
-                    YellowCardTime  = cardTime,
+                    YellowCardTime = cardTime,
                     RecordedTime = DateTime.Now,
                     YellowCardReason = yellowCardReason
                 };
@@ -771,7 +787,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HomeRed(int fixtureId, string commitedBy,RedCardReason redCardReason ,string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> HomeRed(int fixtureId, string commitedBy, RedCardReason redCardReason, string cardTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -834,7 +850,7 @@ namespace MyField.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AwayRed(int fixtureId, string commitedBy, RedCardReason redCardReason , string cardTime, StartLiveViewModel viewModel)
+        public async Task<IActionResult> AwayRed(int fixtureId, string commitedBy, RedCardReason redCardReason, string cardTime, StartLiveViewModel viewModel)
         {
             try
             {
@@ -1169,8 +1185,142 @@ namespace MyField.Controllers
             _context.Update(liveMatch);
             await _context.SaveChangesAsync();
 
-            return Ok(new {success = true});
+            return Ok(new { success = true });
         }
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> HomeOwnGoal()
+        {
+            return PartialView("_HomeOwnGoalPartial");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> HomeOwnGoal(int fixtureId, string ownGoalScoredBy, string ownGoalTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
+                    .FirstOrDefaultAsync();
+
+                var playerPerformanceReport = await _context.PlayerPerformanceReports
+                    .Where(p => p.PlayerId == ownGoalScoredBy && p.League.IsCurrent)
+                    .Include(p => p.Player)
+                    .FirstOrDefaultAsync();
+
+                liveMatch.HomeTeamScore++;
+
+                _context.Update(playerPerformanceReport);
+                await _context.SaveChangesAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newOwnGoal = new LiveOwnGoalHolder
+                {
+                    OwnGoalScoredById = ownGoalScoredBy,
+                    OwnGoalTime = ownGoalTime,
+                    RecordedTime = DateTime.Now,
+                    LeagueId = liveMatch.LeagueId,
+                    LiveId = liveMatch.LiveId,
+                    
+                };
+
+                _context.Add(newOwnGoal);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> AwayOwnGoal()
+        {
+            return PartialView("_HomeOwnGoalPartial");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AwayOwnGoal(int fixtureId, string ownGoalScoredBy, string ownGoalTime, StartLiveViewModel viewModel)
+        {
+            try
+            {
+                Console.WriteLine($"Received Fixture ID: {fixtureId}");
+
+                var liveMatch = await _context.Live
+                    .Where(l => l.FixtureId == fixtureId && l.IsLive)
+                    .Include(l => l.League)
+                    .FirstOrDefaultAsync();
+
+                var playerPerformanceReport = await _context.PlayerPerformanceReports
+                    .Where(p => p.PlayerId == ownGoalScoredBy && p.League.IsCurrent)
+                    .Include(p => p.Player)
+                    .FirstOrDefaultAsync();
+
+                liveMatch.AwayTeamScore++;
+
+                _context.Update(playerPerformanceReport);
+                await _context.SaveChangesAsync();
+
+                if (liveMatch == null)
+                {
+                    Console.WriteLine("Live match not found.");
+                    return BadRequest(new { success = false, message = "Live match not found." });
+                }
+
+                if (!liveMatch.IsLive)
+                {
+
+                    return View(viewModel);
+                }
+
+                var newOwnGoal = new LiveOwnGoalHolder
+                {
+                    OwnGoalScoredById = ownGoalScoredBy,
+                    OwnGoalTime = ownGoalTime,
+                    RecordedTime = DateTime.Now,
+                    LeagueId = liveMatch.LeagueId,
+                    LiveId = liveMatch.LiveId,
+
+                };
+
+                _context.Add(newOwnGoal);
+                _context.Update(liveMatch);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, new { success = false, message = "An error occurred while processing your request." });
+            }
+        }
+
 
 
         [HttpGet]
@@ -1180,6 +1330,13 @@ namespace MyField.Controllers
                 .Where(h => h.FixtureId == fixtureId)
                 .Include(h => h.HomeTeam)
                 .FirstOrDefaultAsync();
+
+
+            var awayTeam = await _context.Fixture
+             .Where(h => h.FixtureId == fixtureId)
+             .Include(h => h.AwayTeam)
+             .FirstOrDefaultAsync();
+
 
             if (homeTeam == null)
             {
@@ -1194,6 +1351,24 @@ namespace MyField.Controllers
             {
                 return NotFound("Live match not found.");
             }
+
+
+            var liveOwnGoals = await _context.LiveOwnGoalHolders
+                .Where(g => g.LiveId == liveMatch.LiveId &&
+                            g.OwnGoalScoredBy.ClubId == awayTeam.AwayTeam.ClubId)
+                .Include(g => g.OwnGoalScoredBy)
+                .Select(g => new
+                {
+                    OwnGoalScoredBy = g.OwnGoalScoredBy != null
+                        ? $"{g.OwnGoalScoredBy.FirstName[0]}. {g.OwnGoalScoredBy.LastName}"
+                        : "Unknown",
+                    ScoredTime = g.OwnGoalTime,
+                    RecordedTime = g.RecordedTime
+                })
+                .OrderByDescending(g => g.RecordedTime)
+                .ToListAsync();
+
+
 
             var liveGoals = await _context.LiveGoalHolders
                 .Where(g => g.LiveId == liveMatch.LiveId &&
@@ -1239,7 +1414,7 @@ namespace MyField.Controllers
                 .Where(r => r.LiveId == liveMatch.LiveId &&
                 r.RedCommitedBy.ClubId == homeTeam.HomeTeam.ClubId)
                 .Include(r => r.RedCommitedBy)
-                .ToListAsync(); 
+                .ToListAsync();
 
 
             var processedRedCards = redCards.Select(r => new
@@ -1300,7 +1475,8 @@ namespace MyField.Controllers
                 yellowCards = processedYellowCards,
                 redCards = processedRedCards,
                 penalties,
-                substitutes
+                substitutes,
+                liveOwnGoals
             };
 
             return Ok(events);
@@ -1313,6 +1489,12 @@ namespace MyField.Controllers
                 .Where(h => h.FixtureId == fixtureId)
                 .Include(h => h.AwayTeam)
                 .FirstOrDefaultAsync();
+
+
+            var homeTeam = await _context.Fixture
+              .Where(h => h.FixtureId == fixtureId)
+              .Include(h => h.HomeTeam)
+              .FirstOrDefaultAsync();
 
             if (awayTeam == null)
             {
@@ -1327,6 +1509,23 @@ namespace MyField.Controllers
             {
                 return NotFound("Live match not found.");
             }
+
+
+            var liveOwnGoals = await _context.LiveOwnGoalHolders
+                .Where(g => g.LiveId == liveMatch.LiveId &&
+                            g.OwnGoalScoredBy.ClubId == homeTeam.HomeTeam.ClubId)
+                .Include(g => g.OwnGoalScoredBy)
+                .Select(g => new
+                {
+                    OwnGoalScoredBy = g.OwnGoalScoredBy != null
+                        ? $"{g.OwnGoalScoredBy.FirstName[0]}. {g.OwnGoalScoredBy.LastName}"
+                        : "Unknown",
+                    ScoredTime = g.OwnGoalTime,
+                    RecordedTime = g.RecordedTime
+                })
+                .OrderByDescending(g => g.RecordedTime)
+                .ToListAsync();
+
 
             var liveGoals = await _context.LiveGoalHolders
                 .Where(g => g.LiveId == liveMatch.LiveId &&
@@ -1351,7 +1550,7 @@ namespace MyField.Controllers
                 .Where(y => y.LiveId == liveMatch.LiveId &&
                 y.YellowCommitedBy.ClubId == awayTeam.AwayTeam.ClubId)
                 .Include(y => y.YellowCommitedBy)
-                .ToListAsync(); 
+                .ToListAsync();
 
             var processedYellowCards = yellowCards.Select(y => new
             {
@@ -1428,7 +1627,8 @@ namespace MyField.Controllers
                 yellowCards = processedYellowCards,
                 redCards = processedRedCards,
                 penalties,
-                substitutes
+                substitutes,
+                liveOwnGoals
             };
 
             return Ok(events);
@@ -1446,12 +1646,19 @@ namespace MyField.Controllers
                 .Where(f => f.FixtureId == fixtureId)
                 .FirstOrDefaultAsync();
 
+                var fixture = await _context.Fixture
+                    .Where(f => f.FixtureId == fixtureId)
+                    .FirstOrDefaultAsync();
+
                 live.LiveStatus = LiveStatus.Interrupted;
                 live.IsInterrupted = true;
                 live.ReasonForInterruption = interruptionReason;
                 live.IsLive = false;
 
+                fixture.FixtureStatus = FixtureStatus.Interrupted;
+
                 _context.Update(live);
+                _context.Update(fixture);
                 await _context.SaveChangesAsync();
 
                 return Ok(new { success = true });
@@ -1483,10 +1690,18 @@ namespace MyField.Controllers
                  .Where(f => f.FixtureId == fixtureId)
                  .FirstOrDefaultAsync();
 
+                var fixture = await _context.Fixture
+                  .Where(f => f.FixtureId == fixtureId)
+                  .FirstOrDefaultAsync();
+
+
                 live.LiveStatus = LiveStatus.Ongoing;
                 live.IsInterrupted = false;
                 live.IsLive = true;
 
+                fixture.FixtureStatus = FixtureStatus.Live;
+
+                _context.Update(fixture);
                 _context.Update(live);
                 await _context.SaveChangesAsync();
 

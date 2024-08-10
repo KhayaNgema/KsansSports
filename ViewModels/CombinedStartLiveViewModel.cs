@@ -27,6 +27,10 @@
 
         public LiveMatchViewModel LiveMatchViewModel { get; set; }
 
+        public HomeOwnGoalViewModel HomeOwnGoalViewModel { get; set; }
+
+        public AwayOwnGoalViewModel AwayOwnGoalViewModel { get; set; }
+
         public int AddedTime { get; set; }
 
         public string UserRole { get; set; }

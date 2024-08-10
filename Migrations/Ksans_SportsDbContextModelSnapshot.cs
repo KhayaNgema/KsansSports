@@ -2197,6 +2197,23 @@ namespace MyField.Migrations
                     b.HasDiscriminator().HasValue("LiveGoalHolder");
                 });
 
+            modelBuilder.Entity("MyField.Models.LiveOwnGoalHolder", b =>
+                {
+                    b.HasBaseType("MyField.Models.Event");
+
+                    b.Property<string>("OwnGoalScoredById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("OwnGoalTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("OwnGoalScoredById");
+
+                    b.HasDiscriminator().HasValue("LiveOwnGoalHolder");
+                });
+
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>
                 {
                     b.HasBaseType("MyField.Models.Event");
@@ -2792,6 +2809,9 @@ namespace MyField.Migrations
                     b.Property<int>("LeagueId")
                         .HasColumnType("int");
 
+                    b.Property<int>("OwnGoalsScoredCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("PlayerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -2994,6 +3014,13 @@ namespace MyField.Migrations
                     b.HasBaseType("MyField.Models.LiveGoal");
 
                     b.HasDiscriminator().HasValue("LiveGoals_Archive");
+                });
+
+            modelBuilder.Entity("MyField.Models.OwnGoals_Archive", b =>
+                {
+                    b.HasBaseType("MyField.Models.LiveOwnGoalHolder");
+
+                    b.HasDiscriminator().HasValue("OwnGoals_Archive");
                 });
 
             modelBuilder.Entity("MyField.Models.Penalty_Archive", b =>
@@ -4208,6 +4235,17 @@ namespace MyField.Migrations
                     b.Navigation("AssistedBy");
 
                     b.Navigation("ScoredBy");
+                });
+
+            modelBuilder.Entity("MyField.Models.LiveOwnGoalHolder", b =>
+                {
+                    b.HasOne("MyField.Models.Player", "OwnGoalScoredBy")
+                        .WithMany()
+                        .HasForeignKey("OwnGoalScoredById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OwnGoalScoredBy");
                 });
 
             modelBuilder.Entity("MyField.Models.LiveRedCardHolder", b =>
